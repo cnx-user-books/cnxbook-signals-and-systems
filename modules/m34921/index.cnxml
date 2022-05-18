@@ -1,0 +1,1069 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Continuous Time Filter Design</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34921</md:content-id>
+  <md:title>Continuous Time Filter Design</md:title>
+  <md:abstract>Describes how to design a general filter from the Laplace Transform and its pole/zero plots.</md:abstract>
+  <md:uuid>86669b6a-8f33-4542-bb92-b445f080fe89</md:uuid>
+</metadata>
+
+<content>
+
+
+    
+
+  <section id="eip-645"><title>Introduction</title><para id="eip-194">
+Analog (Continuous-Time) filters are useful for a wide variety of applications, and are especially useful in that they are very simple to build using standard, passive R,L,C components. Having a grounding in basic filter design theory can assist one in solving a wide variety of signal processing problems. 
+</para></section><section id="freq">
+     <title>Estimating Frequency Response from Z-Plane</title>
+
+     <para id="zp_freq">
+	One of the motivating factors for analyzing the pole/zero
+	plots is due to their relationship to the frequency response
+	of the system.  Based on the position of the poles and zeros,
+	one can quickly determine the frequency response.  This is a
+	result of the correspondence between the frequency response
+	and the transfer function evaluated on the unit circle in the
+	pole/zero plots.  The frequency response, or DTFT, of the
+	system is defined as:
+       
+     <equation id="freqr1">     
+        <m:math>
+	  <m:apply>
+   	     <m:eq/>
+             <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	     </m:apply>
+             <m:apply>	         
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>z</m:ci>
+		</m:bvar>	
+		<m:condition>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>		
+		  </m:apply>
+		</m:condition>
+                <m:apply>
+                  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>	     
+                </m:apply>
+	     </m:apply>
+	     <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:ci>0</m:ci>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>M</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>			  
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>
+	  </m:apply>
+	</m:math>
+     </equation>
+
+	Next, by factoring the transfer function into poles and zeros
+	and multiplying the numerator and denominator by
+	<m:math><m:apply><m:exp/><m:apply><m:times/><m:imaginaryi/><m:ci>w</m:ci></m:apply></m:apply></m:math>
+	we arrive at the following equations:
+
+     <equation id="freqr2">
+	<m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>1</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>		  
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>c</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>		  			
+		    </m:apply>			
+		  </m:apply>
+
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>1</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>		  
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>d</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>		  			
+		    </m:apply>			
+		    
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	From <link target-id="freqr2" strength="3"/> we have the
+	frequency response in a form that can be used to interpret
+	physical characteristics about the filter's frequency
+	response. The numerator and denominator contain a product of
+	terms of the form 
+	<m:math><m:apply> 
+	    <m:abs/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply><m:exp/><m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply></m:apply>
+	      <m:ci>h</m:ci>
+	    </m:apply>
+	  </m:apply></m:math>,
+	where <m:math><m:ci>h</m:ci></m:math> is either a zero, denoted by 
+	<m:math><m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci></m:math>
+	or a pole, denoted by <m:math><m:ci>
+	    <m:msub>
+	      <m:mi>d</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci></m:math>.  Vectors are commonly used to represent
+	the term and its parts on the complex plane. The pole or zero,
+	<m:math><m:ci>h</m:ci></m:math>, is a vector from the origin
+	to its location anywhere on the complex plane and
+	<m:math><m:apply>
+	<m:exp/><m:apply><m:times/><m:imaginaryi/><m:ci>w</m:ci></m:apply>
+	</m:apply></m:math> is a vector from the origin to its
+	location on the unit circle. The vector connecting these two
+	points, <m:math><m:apply> <m:abs/>
+	  <m:apply>
+	   <m:minus/>
+	   <m:apply><m:exp/><m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>w</m:ci>
+	   </m:apply></m:apply>
+	   <m:ci>h</m:ci>
+	  </m:apply>
+	</m:apply></m:math>, connects the pole or zero location to a
+	place on the unit circle dependent on the value of
+	<m:math><m:ci>w</m:ci></m:math>. From this, we can begin to
+	understand how the magnitude of the frequency response is a
+	ratio of the distances to the poles and zero present in the
+	z-plane as <m:math><m:ci>w</m:ci></m:math> goes from zero to
+	pi. These characteristics allow us to interpret
+	<m:math><m:apply><m:abs/><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:apply></m:math>
+	as follows:
+
+	<equation id="freq_simple">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+		</m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>∏</m:ci>
+		  <m:ci>"distances from zeros"</m:ci>		
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>∏</m:ci>
+		  <m:ci>"distances from poles"</m:ci>		
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	</equation>
+
+	In conclusion, using the distances from the unit circle to the
+	poles and zeros, we can plot the frequency response of the
+	system.  As <m:math><m:ci>w</m:ci></m:math> goes from
+	<m:math><m:cn>0</m:cn></m:math> to <m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	  </m:apply>
+	</m:math>, the following two properties, taken from the above
+	    equations, specify how one should draw <m:math><m:apply>
+	    <m:abs/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	    </m:apply>
+	  </m:apply></m:math>.
+
+	<list id="mag_freq" list-type="enumerated">
+	  <title>While moving around the unit circle...</title>
+   	  <item>
+	    if close to a zero, then the magnitude is small.  If a
+	    zero is on the unit circle, then the frequency response is
+	    zero at that point.</item>
+  	  <item>
+	    if close to a pole, then the magnitude is large.  If a
+	    pole is on the unit circle, then the frequency response
+	    goes to infinity at that point.</item>
+ 	</list>
+
+      </para>
+    </section>
+
+
+
+
+
+<!-- ####################################################### -->
+<!-- #####################  NEW SECTION  ################### -->
+
+    <section id="freq_draw">
+     <title>Drawing Frequency Response from Pole/Zero Plot</title>
+
+     <para id="draw1">
+	Let us now look at several examples of determining the
+	magnitude of the frequency response from the pole/zero plot of
+	a z-transform.  If you have forgotten or are unfamiliar with
+	pole/zero plots, please refer back to the <link document="m10556" strength="3">Pole/Zero Plots</link> module.
+     </para>
+
+    <example id="eg1">
+	<para id="eg1-1">
+	  In this first example we will take a look at the very simple
+	  z-transform shown below:
+
+	  <m:math display="block">
+             <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+                </m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>z</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>			
+		  <m:power/>
+		  <m:ci>z</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>	
+	      </m:apply>
+	    </m:apply>
+  	  </m:math>
+	  
+	  <m:math display="block">	    
+            <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	      </m:apply>
+	      <m:apply>	
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>			 
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>			 
+		</m:apply>	  	       		 
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  For this example, some of the vectors represented by 	
+	  <m:math><m:apply>
+	      <m:abs/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply><m:exp/><m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply></m:apply>
+		<m:ci>h</m:ci>
+	      </m:apply>
+	    </m:apply></m:math>, for random values of
+	  <m:math><m:ci>w</m:ci></m:math>, are explicitly drawn onto
+	  the complex plane shown in the <link target-id="eg1a_fig" strength="2">figure</link> below. These vectors show how the
+	  amplitude of the frequency response changes as
+	  <m:math><m:ci>w</m:ci></m:math> goes from
+	  <m:math><m:cn>0</m:cn></m:math> to
+	  <m:math><m:apply><m:times/><m:cn>2</m:cn><m:pi/></m:apply></m:math>,
+	  and also show the physical meaning of the terms in <link target-id="freqr2" strength="3"/> above. One can see that
+	  when
+	  <m:math><m:apply><m:eq/><m:ci>w</m:ci><m:cn>0</m:cn></m:apply></m:math>,
+	  the vector is the longest and thus the frequency response
+	  will have its largest amplitude here.  As
+	  <m:math><m:ci>w</m:ci></m:math> approaches
+	  <m:math><m:pi/></m:math>, the length of the vectors decrease
+	  as does the amplitude of
+	  <m:math><m:apply><m:abs/><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:apply></m:math>. Since
+	  there are no poles in the transform, there is only this one
+	  vector term rather than a ratio as seen in <link target-id="freqr2" strength="3"/>.
+	</para>
+
+    	<figure id="eg1_fig" orient="horizontal">
+  	  <subfigure id="eg1_fig1">
+		<title>Pole/Zero Plot</title>
+    	    	<media id="id1169679378026" alt=""><image src="../../media/filt_eg1_pz.jpg" mime-type="image/jpeg"/></media>  	
+	  </subfigure>
+  	  <subfigure id="eg1_fig2">
+		<title>Frequency Response: |H(w)|</title>
+		<media id="id1169679388141" alt=""><image src="../../media/filt_eg1_fig.jpg" mime-type="image/jpeg"/></media>
+  	  </subfigure>
+	  <caption>
+	    The first figure represents the pole/zero plot with a few
+	    representative vectors graphed while the second shows the
+	    frequency response with a peak at +2 and graphed between
+	    plus and minus <m:math><m:pi/></m:math>.
+	  </caption>
+	</figure>
+    </example>
+
+     <example id="eg2">
+     	<para id="eg2-1">
+	   For this example, a more complex transfer function is
+	   analyzed in order to represent the system's frequency
+	   response.
+
+	   <m:math display="block">
+             <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+                </m:apply>
+		<m:apply>
+		<m:divide/>
+		<m:ci>z</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>z</m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>	  	     
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>	
+		  </m:apply>	  	       
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+  	  </m:math>
+	  
+	  <m:math display="block">	    
+            <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+                </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+	  	  <m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>	
+		  </m:apply>	  	       
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="eg2_figs">
+	  Below we can see the two figures described by the above
+	  equations.  The <link target-id="eg2_fig1"/> represents the
+	  basic pole/zero plot of the z-transform,
+	  <m:math><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:math>.  <link target-id="eg2_fig2"/> shows the magnitude of the frequency
+	  response.  From the formulas and statements in the previous
+	  section, we can see that when
+	  <m:math><m:apply><m:eq/><m:ci>w</m:ci><m:cn>0</m:cn></m:apply></m:math>
+	  the frequency will peak since it is at this value of
+	  <m:math><m:ci>w</m:ci></m:math> that the pole is closest to
+	  the unit circle.  The ratio from <link target-id="freqr2" strength="3"/> helps us see the mathematics behind
+	  this conclusion and the relationship between the distances
+	  from the unit circle and the poles and zeros.  As
+	  <m:math><m:ci>w</m:ci></m:math> moves from
+	  <m:math><m:cn>0</m:cn></m:math> to <m:math><m:pi/></m:math>,
+	  we see how the zero begins to mask the effects of the pole
+	  and thus force the frequency response closer to
+	  <m:math><m:cn>0</m:cn></m:math>.
+	</para>
+
+	<figure id="eg2_fig" orient="horizontal">
+  	  <subfigure id="eg2_fig1">
+		<title>Pole/Zero Plot</title>
+    	    	<media id="id1169679388446" alt=""><image src="../../media/filt_eg2_pz.jpg" mime-type="image/jpeg"/></media>	  
+	  </subfigure>
+  	  <subfigure id="eg2_fig2">
+		<title>Frequency Response: |H(w)|</title>
+		<media id="id1169679388473" alt=""><image src="../../media/filt_eg2_freq.jpg" mime-type="image/jpeg"/></media>
+  	  </subfigure>
+	  <caption>
+		The first figure represents the pole/zero plot while
+		the second shows the frequency response with a peak at
+		+2 and graphed between plus and minus
+		<m:math><m:pi/></m:math>.
+	  </caption>
+	</figure>
+
+     </example>
+    </section><section id="eip-248"><title>Types of Filters</title><section id="butter1"><title>Butterworth Filters</title>
+    <para id="para1">The Butterworth filter is the simplest filter. It can be constructed out
+      of passive R, L, C circuits.  The magnitude of the transfer
+      function for this filter is
+      <equation id="eqn1">
+	<title>Magnitude of Butterworth Filter Transfer Function</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:abs/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci>ω</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>ω</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      where <m:math><m:ci>n</m:ci></m:math> is the <term>order</term>
+      of the filter and
+      <m:math><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub></m:math>
+      is the <term>cutoff frequency</term>.  The cutoff frequency is
+      the frequency where the magnitude experiences a 3 dB dropoff
+      (where
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:abs/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>ω</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:root/>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>).
+    </para>
+
+
+    <figure id="fig1">
+      <media id="id1166223237528" alt=""><image src="../../media/bwFreq2a.jpg" mime-type="image/jpeg"/></media>
+     <caption>
+	Three different orders of lowpass Butterworth
+	analog filters: 
+        <m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:set>
+	      <m:cn>1</m:cn>
+	      <m:cn>4</m:cn>
+	      <m:cn>10</m:cn>
+	    </m:set>
+	  </m:apply>
+	</m:math>.  As <m:math><m:ci>n</m:ci></m:math> increases, the
+        filter more closely approximates an ideal brickwall lowpass
+        response.
+      </caption>
+    </figure>
+
+
+    <para id="para2">
+      The important aspects of <link target-id="fig1" strength="3"/> are
+      that it does not ripple in the passband or stopband as other
+      filters tend to, and that the larger
+      <m:math><m:ci>n</m:ci></m:math>, the sharper the cutoff (the
+      smaller the <link document="m10126" strength="2">transition
+      band</link>).
+    </para>
+
+    
+
+    <para id="para4">
+      Butterworth filters give transfer functions 
+      (<m:math>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:ci>ω</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      and
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>s</m:ci>
+	</m:apply>
+      </m:math>) that are <term>rational functions</term>.  They also
+      have only <link document="m10112" strength="3">poles</link>,
+      resulting in a transfer function of the form 
+      <equation id="eqn3">
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:ci><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:ci><m:msub><m:mi>s</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:ci>⋯</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:ci><m:msub><m:mi>s</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      and a pole-zero plot of
+    </para>
+
+    <figure id="fig2">
+      <media id="id1166236757681" alt=""><image src="../../media/bwSPlane2a.jpg" mime-type="image/jpeg"/></media>
+      <caption>
+	Poles of a 10th-order (
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:cn>5</m:cn>
+	  </m:apply>
+	</m:math>
+	) lowpass Butterworth filter.
+      </caption>
+    </figure>
+
+
+    <para id="para5">
+      Note that the poles lie along a circle in the s-plane.
+    </para>
+</section><section id="eip-817"><title>Chebyshev Filters</title><para id="id2255554">The Butterworth filter does not give a sufficiently good
+approximation across the complete passband in many cases. The
+Taylor's series approximation is often not suited to the way
+specifications are given for filters. An alternate error measure is
+the maximum of the absolute value of the difference between the
+actual filter response and the ideal. This is considered over the
+total passband. This is the Chebyshev error measure and was defined
+and applied to the FIR filter design problem. For the IIR filter,
+the Chebyshev error is minimized over the passband and a Taylor's
+series approximation at <m:math><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mi>∞</m:mi></m:mrow></m:math> is used to determine the
+stopband performance. This mixture of methods in the IIR case is
+called the Chebyshev filter, and simple design formulas result, just
+as for the Butterworth filter.</para>
+      <para id="id2255586">The design of Chebyshev filters is particularly interesting,
+because the results of a very elegant theory insure that
+constructing a frequency-response function with the proper form of
+equal ripple in the error will result in a minimum Chebyshev error
+without explicitly minimizing anything. This allows a
+straightforward set of design formulas to be derived which can be
+viewed as a generalization of the Butterworth formulas
+<link target-id="bid0"/>, <link target-id="bid1"/>.</para>
+      <para id="id2255607">The form for the magnitude squared of the frequency-response
+function for the Chebyshev filter is</para>
+      <equation id="uid2">
+        <m:math mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>F</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:msup>
+                  <m:mi>ϵ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:msub>
+                  <m:mi>C</m:mi>
+                  <m:mi>N</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2255693">where <m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mi>N</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is an Nth-order
+Chebyshev polynomial and <m:math><m:mi>ϵ</m:mi></m:math> is a parameter that controls the
+ripple size. This polynomial in <m:math><m:mi>ω</m:mi></m:math> has very special characteristics
+that result in the optimality of the response function (<link target-id="uid2"/>).</para><para id="eip-791"><figure id="uid14" orient="horizontal">
+          <media id="id1166963008170" alt=""><image src="../../media/figIIR7.png" mime-type="image/png" width="419"/><image for="pdf" src="../../media/figIIR7.eps" mime-type="application/postscript"/></media>
+          <caption>Fifth Order Chebyshev Filter Frequency Response</caption>
+        </figure></para></section><section id="eip-694"><title>Bessel filters</title><para id="eip-195">
+Insert bessel filter information
+
+</para></section><section id="eip-690"><title>Elliptic Filters</title><para id="idElliptic">There is yet another method that has been developed that uses
+a Chebyshev error criterion in both the passband and the stopband.
+This is the fourth possible combination of Chebyshev and Taylor's
+series approximations in the passband and stopband. The resulting
+filter is called an elliptic-function filter, because elliptic
+functions are normally used to calculate the pole and zero
+locations. It is also sometimes called a Cauer filter or a rational
+Chebyshev filter, and it has equal ripple approximation error in
+both pass and stopbands <link target-id="bid0"/>, <link target-id="bid1"/>, <link target-id="bid2"/>, <link target-id="bid3"/>.</para>
+      <para id="idEllipticnext">The error criteria of the elliptic-function filter are
+particularly well suited to the way specifications for filters
+are often given. For that reason, use of the elliptic-function
+filter design usually gives the lowest order filter of the four
+classical filter design methods for a given set of
+specifications. Unfortunately, the design of this filter is the
+most complicated of the four. However, because of the efficiency
+of this class of filters, it is worthwhile gaining some
+understanding of the mathematics behind the design procedure.</para>
+      <para id="id2255600">This section sketches an outline of the theory of elliptic-
+function filter design. The details and properties of the elliptic
+functions themselves should simply be accepted, and attention put on
+understanding the overall picture. A more complete development is
+available in <link target-id="bid0"/>, <link target-id="bid4"/>.</para>
+      <para id="idEllipticpara2">Because both the passband and stopband approximations are
+over the entire bands, a transition band between the two must be
+defined. Using a normalized passband edge, the bands are defined by</para>
+      <equation id="id2255630">
+        <m:math mode="display">
+          <m:mrow>
+            <m:mn>0</m:mn>
+            <m:mo>&lt;</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo>&lt;</m:mo>
+            <m:mn>1</m:mn>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mtext>passband</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id2255664">
+        <m:math mode="display">
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>&lt;</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo>&lt;</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>s</m:mi>
+            </m:msub>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mtext>transition</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>band</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="uidelliptic2">
+        <m:math mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mi>s</m:mi>
+            </m:msub>
+            <m:mo>&lt;</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo>&lt;</m:mo>
+            <m:mi>∞</m:mi>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mspace width="4pt"/>
+            <m:mtext>stopband</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="idelliptic2255747">This is illustrated in Figure .</para>
+<!--empty paragraphs get left behind.-->
+      <figure id="uidelliptic3" orient="horizontal">
+        <media id="id1165252603717" alt=""><image src="../../media/figIIR10.png" mime-type="image/png" width="417"/><image for="pdf" src="../../media/figIIR10.eps" mime-type="application/postscript"/></media>
+        <caption>Third Order Analog Elliptic Function Lowpass Filter showing the
+Ripples and Band Edges</caption>
+      </figure>
+      <para id="id2255768">The characteristics of the elliptic function
+filter are best described in terms of the four parameters that
+specify the frequency response:</para>
+      <list id="id2255778" list-type="enumerated">
+        <item id="uid4">The maximum variation or ripple in the passband <m:math><m:msub><m:mi>δ</m:mi><m:mn>1</m:mn></m:msub></m:math>,
+</item>
+        <item id="uid5">The width of the transition band <m:math><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>,
+</item>
+        <item id="uid6">The maximum response or ripple in the stopband <m:math><m:msub><m:mi>δ</m:mi><m:mn>2</m:mn></m:msub></m:math>, and
+</item>
+        <item id="uid7">The order of the filter <m:math><m:mi>N</m:mi></m:math>.
+</item>
+      </list>
+      <para id="id2255885">The result of the design is that for any three of the parameters
+given, the fourth is minimum. This is a very flexible and
+powerful description of a filter frequency response.</para>
+      <para id="id2255892">The form of the frequency-response function is a
+generalization of that for the Chebyshev filter</para>
+      <equation id="uid8">
+        <m:math mode="display">
+          <m:mrow>
+            <m:mi>F</m:mi>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>F</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:msup>
+                  <m:mi>ϵ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:msup>
+                  <m:mi>G</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2256222">where</para>
+      <equation id="uid9">
+        <m:math mode="display">
+          <m:mrow>
+            <m:mi>F</m:mi>
+            <m:mi>F</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>F</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>)</m:mo>
+            <m:mi>F</m:mi>
+            <m:mo>(</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2256268">with <m:math><m:mrow><m:mi>F</m:mi><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:math> being the prototype analog filter transfer
+function similar to that for the Chebyshev filter. <m:math><m:mrow><m:mi>G</m:mi><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>)</m:mo></m:mrow></m:math> is a
+rational function that approximates zero in the passband and infinity in
+the stopband. The definition of this function is a generalization of the
+definition of the Chebyshev polynomial.</para></section></section><section id="eip-995"><title>Filter Design Demonstration</title><para id="eip-725"/></section><section id="eip-285"><title>Conclusion</title><para id="eip-17">
+As can be seen, there is a large amount of information available in filter design, more than an introductory module can cover. Even for designing Discrete-time IIR filters, it is important to remember that there is a far larger body of literature for design methods for the analog signal processing world than there is for the digital. Therefore, it is often easier and more practical to implement an IIR filter using standard analog methods, and then discretize it using methods such as the Bilateral Transform.
+</para></section>
+    
+  </content>
+</document>

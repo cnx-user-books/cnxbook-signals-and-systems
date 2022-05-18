@@ -1,0 +1,720 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Common Discrete Time Fourier Transforms</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34771</md:content-id>
+  <md:title>Common Discrete Time Fourier Transforms</md:title>
+  <md:abstract>This module includes a listing of commonly encountered discrete time fourier transforms.</md:abstract>
+  <md:uuid>dab78625-ca20-4ece-a493-fcaed2ac0521</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-439" class="cn"><title>Common DTFTs</title><table id="eip-751" summary="DTFTs">
+<tgroup cols="3"><tbody>
+  <row>
+    <entry>Time Domain x[n]</entry>
+    <entry>Frequency Domain X(w)</entry>
+    <entry>Notes</entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>δ</m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>n</m:mi>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math></entry>
+    <entry>1</entry>
+    <entry/>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>δ</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>M</m:mi><m:mo>]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>w</m:mi><m:mi>M</m:mi></m:mrow></m:msup></m:math> </entry>
+    <entry>integer M</entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>δ</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>M</m:mi><m:mi>m</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:msubsup>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>m</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>w</m:mi>
+              <m:mi>M</m:mi>
+              <m:mi>m</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>M</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mi>δ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>w</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mi>k</m:mi>
+              <m:mi>M</m:mi>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>integer M</entry>
+  </row>
+<row>
+    <entry><m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>a</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+          <m:mi>δ</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>w</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>a</m:mi>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>real number a</entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>u</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>w</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>+</m:mo>
+          <m:msubsup>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mi>π</m:mi>
+          <m:mi>δ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>w</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+            <m:mi>k</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry/>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup><m:mi>u</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>-</m:mo>
+            <m:mi>a</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>w</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:mfrac>
+      </m:math>
+    </entry>
+    <entry>if    <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:mi>o</m:mi><m:mi>s</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>π</m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>δ</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>w</m:mi>
+          <m:mo>-</m:mo>
+          <m:mi>a</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mi>δ</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>w</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>a</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>real number a</entry>
+  </row>
+  
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>W</m:mi><m:mo>·</m:mo><m:mi>s</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:msup><m:mi>c</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>W</m:mi><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>t</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>i</m:mi>
+          <m:mo>(</m:mo>
+          <m:mfrac>
+            <m:mi>w</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>π</m:mi>
+              <m:mi>W</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>real number W, <m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>&lt;</m:mo>
+          <m:mi>W</m:mi>
+          <m:mo>≤</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+          <m:mn>5</m:mn>
+        </m:mrow>
+      </m:math>
+    </entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>W</m:mi><m:mo>·</m:mo><m:mi>s</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:mi>c</m:mi><m:mo>[</m:mo><m:mi>W</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>a</m:mi><m:mo>)</m:mo><m:mo>]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>r</m:mi>
+          <m:mi>e</m:mi>
+          <m:mi>c</m:mi>
+          <m:mi>t</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>w</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>W</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>·</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>a</m:mi>
+              <m:mi>w</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>real numbers W,a <m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>&lt;</m:mo>
+          <m:mi>W</m:mi>
+          <m:mo>≤</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:math>
+    </entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mi>e</m:mi><m:mi>c</m:mi><m:mi>t</m:mi><m:mo>[</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>M</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mi>M</m:mi></m:mfrac><m:mo>]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mrow><m:mi>s</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:mo>[</m:mo><m:mi>w</m:mi><m:mo>(</m:mo><m:mi>M</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow><m:mrow><m:mi>s</m:mi><m:mi>i</m:mi><m:mi>n</m:mi><m:mo>(</m:mo><m:mi>w</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>w</m:mi><m:mi>M</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mstyle></m:math></entry>
+    <entry>integer M</entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfrac>
+            <m:mi>W</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>a</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mi>π</m:mi>
+              <m:mi>W</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mi>c</m:mi>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mi>W</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>}</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>j</m:mi>
+          <m:mi>w</m:mi>
+          <m:mo>·</m:mo>
+          <m:mi>r</m:mi>
+          <m:mi>e</m:mi>
+          <m:mi>c</m:mi>
+          <m:mi>t</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>w</m:mi>
+              <m:mrow>
+                <m:mi>π</m:mi>
+                <m:mi>W</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mi>j</m:mi>
+          </m:msup>
+          <m:mi>a</m:mi>
+          <m:mi>w</m:mi>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>real numbers W,a <m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>&lt;</m:mo>
+          <m:mi>W</m:mi>
+          <m:mo>≤</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:math>
+    </entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mi>π</m:mi>
+              <m:msup>
+                <m:mi>n</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>]</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mi>w</m:mi>
+          <m:mo>|</m:mo>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry/>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll">
+        <m:mtable>
+          <m:mtr>
+            <m:mtd columnalign="left">
+              <m:mfenced separators="" open="{" close="">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mfrac>
+                        <m:msup>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mo>-</m:mo>
+                            <m:mn>1</m:mn>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:msup>
+                        <m:mi>n</m:mi>
+                      </m:mfrac>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mtext>elsewhere</m:mtext>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+            </m:mtd>
+          </m:mtr>
+        </m:mtable>
+      </m:math>
+    </entry>
+    <entry><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>j</m:mi>
+          <m:mi>w</m:mi>
+        </m:mrow>
+      </m:math>
+    </entry>
+    <entry>differentiator filter</entry>
+  </row>
+  <row>
+    <entry><m:math overflow="scroll">
+        <m:mtable>
+          <m:mtr>
+            <m:mtd columnalign="left">
+              <m:mfenced separators="" open="{" close="">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mtext>  odd</m:mtext>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mfrac>
+                        <m:mn>2</m:mn>
+                        <m:mrow>
+                          <m:mi>π</m:mi>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mtext>  even</m:mtext>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+            </m:mtd>
+          </m:mtr>
+        </m:mtable>
+      </m:math>
+    </entry>
+    <entry><m:math overflow="scroll">
+        <m:mtable>
+          <m:mtr>
+            <m:mtd columnalign="left">
+              <m:mfenced separators="" open="{" close="">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mi>j</m:mi>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>w</m:mi>
+                        <m:mo>&lt;</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>w</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                      </m:mrow>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mrow>
+                        <m:mi>w</m:mi>
+                        <m:mo>&gt;</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+            </m:mtd>
+          </m:mtr>
+        </m:mtable>
+      </m:math>
+    </entry>
+    <entry>Hilbert Transform</entry>
+  </row>
+</tbody>
+
+
+</tgroup>
+</table><para id="eip-134"><title>Notes</title>rect(t) is the rectangle function for arbitrary real-valued <m:math overflow="scroll"><m:mi>t</m:mi></m:math>.
+</para><equation id="eip-667"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mtext>rect(t)</m:mtext>
+          <m:mo>=</m:mo>
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mfenced separators="" open="{" close="">
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mn>0</m:mn>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mspace width="4.pt"/>
+                          <m:mo>|</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo>|</m:mo>
+                          <m:mo>&gt;</m:mo>
+                          <m:mn>1</m:mn>
+                          <m:mo>/</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo>/</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mspace width="4.pt"/>
+                          <m:mo>|</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo>|</m:mo>
+                          <m:mo>=</m:mo>
+                          <m:mn>1</m:mn>
+                          <m:mo>/</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mn>1</m:mn>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mspace width="4.pt"/>
+                          <m:mo>|</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo>|</m:mo>
+                          <m:mo>&lt;</m:mo>
+                          <m:mn>1</m:mn>
+                          <m:mo>/</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mfenced>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mrow>
+      </m:math>
+    </equation><para id="eip-515">tri(t) is the triangle function for arbitrary real-valued <m:math overflow="scroll"><m:mi>t</m:mi></m:math>.</para><para id="eip-344"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mtext>tri(t)</m:mtext>
+          <m:mo>=</m:mo>
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mfenced separators="" open="{" close="">
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo>+</m:mo>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mo>-</m:mo>
+                          <m:mn>1</m:mn>
+                          <m:mo>≤</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo>≤</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo>-</m:mo>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mspace width="4.pt"/>
+                          <m:mn>0</m:mn>
+                          <m:mo>&lt;</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo>≤</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mn>0</m:mn>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mtext>otherwise</m:mtext>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mfenced>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mrow>
+      </m:math>
+    </para></section>
+</content>
+
+</document>

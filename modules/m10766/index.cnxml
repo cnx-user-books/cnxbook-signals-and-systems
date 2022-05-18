@@ -1,0 +1,856 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Approximation and Projections in Hilbert Space</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10766</md:content-id>
+  <md:title>Approximation and Projections in Hilbert Space</md:title>
+  <md:abstract>This module introduces approximation and projections in Hilbert space.</md:abstract>
+  <md:uuid>89a05763-f4df-467f-a6fd-2d50e36575bb</md:uuid>
+</metadata>
+
+<content>
+    <section id="int">
+      <title>Introduction</title>    
+      <para id="para1">
+	Given a line 'l' and a point 'p' in the plane, what's the closest
+	point 'm' to 'p' on 'l'?  
+      </para>
+
+      <figure id="fig1">
+	<media id="id1165436872519" alt=""><image src="../../media/approx_f1.png" mime-type="image/png"/></media>
+	<caption>
+	  Figure of point 'p' and line 'l' mentioned above.
+	</caption>
+      </figure> 
+
+      <para id="para2">
+	Same problem: Let <m:math><m:ci>x</m:ci></m:math>
+	and <m:math><m:ci>v</m:ci></m:math> be vectors in 
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:reals/>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:math>. Say 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>. For what value of
+	<m:math><m:ci>α</m:ci></m:math> is 
+
+	<m:math>
+	  <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>  
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>x</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>α</m:ci>
+		<m:ci>v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:msub>
+	    <m:mi/>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:math> minimized? (what point in span{v} <emphasis>best
+	  approximates</emphasis> <m:math><m:ci>x</m:ci></m:math>?) 
+      </para>
+      
+      <figure id="fig2">
+	<media id="id1165436873407" alt=""><image src="../../media/approx_f2.png" mime-type="image/png"/></media>
+	
+      </figure> 
+
+      <para id="para3">
+	The condition is that 
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>x</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:mover accent="true">
+		  <m:mi>α</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover>
+	      </m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> and 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>α</m:ci>
+	    <m:ci>v</m:ci>
+	  </m:apply>
+	</m:math> are <term>orthogonal</term>.
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Calculating α</title>
+      <para id="p1_sec2">
+	How to calculate 
+	<m:math>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>α</m:mi>
+	      <m:mo>^</m:mo>
+	    </m:mover>
+	  </m:ci>
+	</m:math>?
+      </para>
+      
+      <para id="para4">
+	We know that (
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>x</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:mover accent="true">
+		  <m:mi>α</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover>
+	      </m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>) is perpendicular to every vector in span{v}, so 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar><m:ci>β</m:ci></m:bvar>
+	    <m:condition>
+	      <m:apply>
+		<m:mo>∀</m:mo>
+		<m:ci>β</m:ci>
+	      </m:apply>
+	    </m:condition>	      
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:scalarproduct/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>α</m:mi>
+			<m:mo>^</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:ci>v</m:ci>
+		  </m:apply>
+		</m:apply>  
+		<m:apply>
+		  <m:times/>
+		  <m:ci>β</m:ci>
+		  <m:ci>v</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:conjugate/>
+		  <m:ci>β</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:scalarproduct/>
+		  <m:ci>x</m:ci>
+		  <m:ci>v</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>α</m:mi>
+		    <m:mo>^</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:apply>
+		  <m:conjugate/>
+		  <m:ci>β</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:scalarproduct/>
+		  <m:ci>v</m:ci>
+		  <m:ci>v</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+	
+	because 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci>v</m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>  
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>, so 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:implies/>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:scalarproduct/>
+		  <m:ci>x</m:ci>
+		  <m:ci>v</m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>α</m:mi>
+		    <m:mo>^</m:mo>
+		  </m:mover>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:mover accent="true">
+		  <m:mi>α</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover>
+	      </m:ci>
+	      <m:apply>
+		<m:scalarproduct/>
+		<m:ci>x</m:ci>
+		<m:ci>v</m:ci>
+	      </m:apply>  
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Closest vector in span{v} = 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci>x</m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	    <m:ci>v</m:ci>
+	  </m:apply>
+	</m:math>, where 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci>x</m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	    <m:ci>v</m:ci>
+	  </m:apply>
+	</m:math> is the projection of <m:math><m:ci type="vector">x</m:ci></m:math> onto <m:math><m:ci type="vector">v</m:ci></m:math>.
+      </para>
+      
+      
+      
+      
+       
+
+      <para id="para6">
+	We can do the same thing in higher dimensions.
+      </para>
+
+      
+      <exercise id="exercise1">
+	<problem id="id7565010">
+	  <para id="exe1para1">
+	    Let 
+	    <m:math>
+	      <m:apply>
+		<m:prsubset/>
+		<m:ci>V</m:ci>
+		<m:ci>H</m:ci>
+	      </m:apply>
+	    </m:math> be a subspace of a <link document="m10755" strength="3">Hilbert space</link> H. Let
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>x</m:ci>
+		<m:ci>H</m:ci>
+	      </m:apply>
+	    </m:math> be given. Find the 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>y</m:ci>
+		<m:ci>V</m:ci>
+	      </m:apply>
+	    </m:math> that <term>best approximates</term>
+	    <m:math><m:ci>x</m:ci></m:math>. i.e.,  
+	    <m:math>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>x</m:ci>
+		  <m:ci>y</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math> is minimized. 
+	  </para>
+	</problem>
+	<solution id="id7565114">
+	  <para id="exe1para2">
+	    <list id="list1" list-type="enumerated">
+	      <item>
+		Find an <link document="m10772" target-id="orthon_b" strength="3">orthonormal basis</link>
+		<m:math>
+		  <m:set>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		    <m:ci>…</m:ci>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+		  </m:set>
+		</m:math> for 
+		<m:math><m:ci>V</m:ci></m:math>
+	      </item>
+	      <item>
+		Project <m:math><m:ci>x</m:ci></m:math>
+		onto <m:math><m:ci>V</m:ci></m:math> using 
+		
+		<m:math display="block">
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci>y</m:ci>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>i</m:ci></m:bvar>
+		      <m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+		      <m:uplimit><m:ci>k</m:ci></m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>x</m:ci>
+			  <m:ci><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+			</m:apply>
+			<m:ci><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+
+		then <m:math><m:ci>y</m:ci></m:math> is the closest
+		point in V to x and (x-y) ⊥ V (
+		<m:math>
+		  <m:apply>
+		    <m:forall/>
+		    <m:bvar><m:ci>v</m:ci></m:bvar>
+		    <m:condition>
+		      <m:apply>
+			<m:in/>
+			<m:apply>
+			  <m:mo>∀</m:mo>
+			  <m:ci>v</m:ci>
+			</m:apply>
+			<m:ci>V</m:ci>
+		      </m:apply>
+		    </m:condition>
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:scalarproduct/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>x</m:ci>
+			  <m:ci>y</m:ci>
+			</m:apply>
+			<m:ci>v</m:ci>
+		      </m:apply>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </item>
+	    </list>
+	  </para>
+	</solution>
+      </exercise>
+
+
+      <example id="example1">
+	<para id="exam1para1">
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>x</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>V</m:ci>
+	      <m:apply>
+		<m:ci type="fn">span</m:ci>
+		<m:set>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:set>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>x</m:ci>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>a</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>b</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>c</m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:math>. So, 
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>y</m:ci>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>i</m:ci></m:bvar>
+		<m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+		<m:uplimit><m:cn>2</m:cn></m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci>x</m:ci>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+		  </m:apply>
+		  <m:ci><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>a</m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>b</m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>a</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>b</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>0</m:cn>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<!--
+      <figure id='fig4'>
+      <name></name>
+      <media type="image/png" src="fig4.png"/>
+      <caption></caption>
+      </figure> 
+	-->
+
+      </example>
+
+
+      <example id="example2">
+	<para id="exam2para1">
+	  V = {space of periodic signals with frequency no greater
+	  than
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>3</m:cn>
+	      <m:ci>
+		<m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>}. Given periodic f(t), what is the signal in V that
+	  best approximates f?
+
+	  <list id="list2" list-type="enumerated">
+	    <item>
+	      { 
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:root/>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>
+			<m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>k</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>, k = -3, -2, ..., 2, 3} is an ONB for V
+	    </item>
+
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">g</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>k</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:cn>-3</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:cn>3</m:cn>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:apply>
+			    <m:ci type="fn">f</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:exp/>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:ci>
+				<m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub>
+			      </m:ci>
+			      <m:ci>k</m:ci>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>
+			      <m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub>
+			    </m:ci>
+			    <m:ci>k</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math> is the closest signal in V to f(t)
+	      ⇒ reconstruct f(t) using only 7 terms
+	      of its <link document="m10496" strength="3">Fourier
+	      series</link>.
+	    </item>
+	  </list>
+	</para>
+      </example>
+
+      
+      <example id="example3">
+	<para id="exam3para1">
+	  Let V = {functions piecewise constant between the integers}
+	</para>
+
+	<!--      
+      <figure id='fig5'>
+      <name></name>
+      <media type="image/png" src="fig5.png"/>
+      <caption></caption>
+      </figure> 
+	-->
+
+	<para id="exam3para2">
+	  <list id="list3" list-type="enumerated">
+	    <item>
+	      ONB for V.
+	    </item>
+	  </list>
+	</para>
+	
+	<!--      
+      <figure id='fig6'>
+      <name></name>
+      <media type="image/png" src="fig6.png"/>
+      <caption></caption>
+      </figure> 
+	-->
+	
+	<para id="exam3para3">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub>
+	      </m:ci>
+	      <m:piecewise>
+		<m:piece>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:leq/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>i</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>i</m:ci>
+		  </m:apply>
+		</m:piece>
+		<m:otherwise>
+		  <m:cn>0</m:cn>
+		</m:otherwise>
+	      </m:piecewise>
+	    </m:apply>
+	  </m:math>
+
+	  where
+	  {<m:math><m:ci><m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub></m:ci></m:math>}
+	  is an ONB.
+	</para>
+
+	<!--   
+      <figure id='fig7'>
+      <name></name>
+      <media type="image/png" src="fig7.png"/>
+      <caption></caption>
+      </figure> 
+	-->
+	
+	<para id="exam3para4">
+	  Best piecewise constant approximation? 
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>i</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit><m:infinity/></m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:scalarproduct/>
+		<m:ci>f</m:ci>
+		<m:ci>
+		  <m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit><m:infinity/></m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>b</m:mi><m:mi>i</m:mi></m:msub>
+		    </m:ci>  
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>i</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>i</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </example>
+
+      <example id="approximation_demo">
+	<para id="approximation_demo_1">
+	  This demonstration explores approximation using a Fourier
+	  basis and a Haar Wavelet basis.See <link document="m11550">here</link> for instructions on how to use
+	  the demo.
+	</para>
+	<media id="id1165436840775" alt="" display="block"><labview src="Approximation.llb" viname="approximation.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="approximation.viinfo"/></labview></media>
+      </example>
+
+    </section>
+
+  </content>
+</document>

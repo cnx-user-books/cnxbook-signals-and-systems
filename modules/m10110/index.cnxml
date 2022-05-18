@@ -1,0 +1,535 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Laplace Transform</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10110</md:content-id>
+  <md:title>Laplace Transform</md:title>
+  <md:abstract>Describes Laplace transforms.</md:abstract>
+  <md:uuid>2831c394-2e7a-42d5-a37f-2470accc9a9b</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="eip-379" class="in"><title>Introduction</title><para id="eip-56">
+The Laplace transform is a generalization of the <link document="m10098" strength="2">Continuous-Time Fourier
+      Transform</link>.  It is used because the CTFT does not converge/exist for many important signals, and yet it does for the Laplace-transform (e.g., signals with infinite 
+<m:math>
+<m:msub>
+<m:ci>l</m:ci>
+<m:ci>2</m:ci>
+</m:msub>
+</m:math>
+norm). It is also used because it is notationally cleaner than the CTFT. However, instead of using <link document="m10784" strength="2">complex exponentials</link> of the form
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:ci>ω</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+     with purely imaginary parameters, the Laplace transform uses the more general, 
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+      where
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>s</m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>σ</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+is complex, to analyze signals in terms of exponentially weighted sinusoids.
+</para></section>
+
+    <section id="eip-177" class="th"><title>The Laplace Transform</title><section id="eip-36"><title>Bilateral Laplace Transform Pair</title><para id="eip-466">Although Laplace transforms are rarely solved in practice using integration
+      (<link document="m10111" strength="2">tables</link> and
+      computers (<foreign>e.g.</foreign> Matlab) are much more
+      common), we will provide the <term>bilateral Laplace transform
+      pair</term> here for purposes of discussion and derivation.  These define the forward and inverse Laplace
+      transformations.  Notice the similarities between the forward
+      and inverse transforms.  This will give rise to many of the same
+      symmetries found in <link document="m10096" strength="2">Fourier
+      analysis</link>.
+
+      <equation id="eqn1">
+	<title>Laplace Transform</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">F</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <equation id="eqn2">
+	<title>Inverse Laplace Transform</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>s</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>c</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>c</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">F</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para><note id="eip-335">We have defined the bilateral Laplace transform. There is also a <term>unilateral Laplace transform
+</term> , 
+
+
+	<equation id="unilateral_z-transform"><m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">F</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:ci>0</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math></equation>  
+      
+
+
+which is useful for solving the difference equations with nonzero initial conditions. This is similar to the <term> unilateral Z Transform</term> in Discrete time.</note></section>
+
+    
+
+    <section id="eip-481"><title>Relation between Laplace and CTFT</title><para id="eip-915">Taking a look at the equations describing the Z-Transform and the Discrete-Time Fourier Transform:
+
+<equation id="eip-540"><title>Continuous-Time Fourier Transform</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation><equation id="eip-338"><title>Laplace Transform</title><m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">F</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+
+We can see many similarities; first, that :
+
+
+<equation id="eip-794"><m:math>
+	<m:apply>
+	   <m:eq/>
+	   <m:apply>
+	      <m:ci type="fn">ℱ</m:ci>
+
+	      <m:ci>Ω</m:ci>
+	    
+
+           </m:apply>
+           <m:apply>
+	      <m:ci type="fn">F</m:ci><m:ci>s</m:ci>
+	   </m:apply>
+	</m:apply>
+</m:math></equation>
+
+
+
+
+for all 
+
+<m:math>
+    <m:apply>
+	   <m:eq/>
+
+	   <m:ci>Ω</m:ci>
+           
+
+	   <m:ci>s</m:ci>
+
+     </m:apply>
+</m:math></para>
+
+
+
+
+
+<note id="eip-74">the CTFT is a complex-valued function of a real-valued variable 
+
+<m:math>
+<m:ci>ω</m:ci>
+</m:math>   
+
+(and 2
+
+<m:math>
+
+<m:pi/>
+</m:math>
+
+periodic).
+
+
+The Z-transform is a complex-valued function of a complex valued variable z.
+
+<figure id="figz1" orient="horizontal"><title>Plots</title><media id="Shining_Star" alt=""><image src="../../media/splanefigure1.png" mime-type="image/png"/></media>
+	  
+	</figure></note>
+</section><section id="sect2">
+      <title>Visualizing the Laplace Transform</title>
+      <para id="para13">
+	With the Fourier transform, we had a <term>complex-valued
+	function</term> of a <emphasis>purely imaginary
+	variable</emphasis>,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">F</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  This was something we could envision with two
+	2-dimensional plots (real and imaginary parts or magnitude and
+	phase).  However, with Laplace, we have a <term>complex-valued
+	function</term> of a <emphasis>complex variable</emphasis>.
+	In order to examine the magnitude and phase or real and
+	imaginary parts of this function, we must examine
+	3-dimensional surface plots of each component.
+      </para>
+
+      <figure id="fig1" orient="horizontal">
+	<title>real and imaginary sample plots</title>
+	<subfigure id="fig1a">
+	  <media id="id1172440032141" alt=""><image src="../../media/laplace1.png" mime-type="image/png"/></media>
+	  <caption>
+	    The Real part of
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+	  <media id="id1172440032172" alt=""><image src="../../media/laplace2.png" mime-type="image/png"/></media>
+	  <caption>
+	    The Imaginary part of
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<caption>
+	  Real and imaginary parts of 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	  are now each 3-dimensional surfaces.
+	</caption>
+      </figure>
+
+      <figure id="fig2" orient="horizontal">
+	<title>magnitude and phase sample plots</title>
+	<subfigure id="fig2a">
+	  <media id="id1172440032256" alt=""><image src="../../media/laplace3.png" mime-type="image/png"/></media>
+	  <caption>
+	    The Magnitude of
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig2b">
+	  <media id="id1172440032299" alt=""><image src="../../media/laplace4.png" mime-type="image/png"/></media>
+	  <caption>
+	    The Phase of
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<caption>
+	  Magnitude and phase of 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	  are also each 3-dimensional surfaces.  This representation
+	  is more common than real and imaginary parts.
+	</caption>
+      </figure>
+
+      <para id="para14">
+	While these are legitimate ways of looking at a signal in the
+	Laplace domain, it is quite difficult to draw and/or analyze.
+	For this reason, a simpler method has been developed.
+	Although it will not be discussed in detail here, the method
+	of <link document="m10112" strength="2">Poles and Zeros</link>
+	is much easier to understand and is the way both the Laplace
+	transform and its discrete-time counterpart the <link document="m10549" strength="2">Z-transform</link> are
+	represented graphically.
+      </para>
+    </section><section id="eip-483"><title>Using a Computer to find the Laplace Transform</title><para id="eip-238">Using a computer to find Laplace transforms is relatively
+	  painless.  Matlab has two functions,
+	  <code>laplace</code> and
+	  <code>ilaplace</code>, that are both part of the
+	  symbolic toolbox, and will find the Laplace and inverse
+	  Laplace transforms respectively.  This method is generally
+	  preferred for more complicated functions.  Simpler and more
+	  contrived functions are usually found easily enough by <link target-id="sect1c" strength="2">using tables</link>.
+	
+      </para>
+
+      
+    </section>
+
+</section><section id="eip-670"><title>Laplace Transform Definition Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="LaplaceTransformDemo">
+<image mime-type="image/png" src="../../media/LTDefinition_display.cdf" thumbnail="LTDefinition_display.png" width="400"/>
+<object width="400" height="400" src="LTDefinition_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/LTDefinition_display.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating the Laplace Transform. To Download, right-click and save target as .cdf.</caption>
+</figure>
+</para></section><section id="eip-337"><title>Interactive Demonstrations</title><para id="eip-473"><figure id="Khan_Laplace"><title>Khan Lecture on Laplace</title><media id="yt-media" display="block" alt="Khan_Lecture_On_Laplace">
+  <flash id="yt-video" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/OiNh2DswFt4&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xd0d0d0&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1" width="640" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+
+<caption>See the attached video on the basics of the Unilateral Laplace Transform from <link target-id="http://www.khanacademy.org/">Khan Academy</link></caption></figure>
+</para></section><section id="eip-686" class="cn"><title>Conclusion</title><para id="eip-923">The laplace transform proves a useful, more general form of the Continuous Time Fourier Transform. It applies equally well to describing systems as well as signals using the eigenfunction method, and to describing a larger class of signals better described using the pole-zero method.</para></section>
+
+  </content>
+</document>

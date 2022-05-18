@@ -1,0 +1,298 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Continuous Time Convolution and the CTFT</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34849</md:content-id>
+  <md:title>Continuous Time Convolution and the CTFT</md:title>
+  <md:abstract>This module describes the relationship between continuous convolution and the fourier transform.</md:abstract>
+  <md:uuid>f5ad0d40-df7d-4b7b-8d57-17be69d1b477</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-243" class="in"><title>Introduction</title><para id="eip-628">This module discusses convolution of continuous signals in the time and frequency domains.
+</para></section><section id="eip-151" class="th"><title>Continuous Time Fourier Transform</title><para id="eip-382">The <link document="10098">CTFT</link> transforms a infinite-length continuous signal in the time domain into an infinite-length continuous signal in the frequency domain.  
+
+	</para><equation id="eip-194"><title>CTFT</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation><equation id="eip-163"><title>Inverse CTFT</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>Ω</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">ℱ</m:ci>
+		      <m:ci>Ω</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation></section><section id="eip-916" class="th"><title>Convolution Integral</title><para id="eip-116">The convolution integral expresses the output of an LTI system based
+	on an input signal,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>, and the system's impulse response,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">h</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.  The
+	<term>convolution integral</term> is expressed as
+
+	<equation id="eq_cint">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>τ</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">h</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>τ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	Convolution is such an important tool that it is represented
+	by the symbol <m:math>
+	  <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+	  </m:apply>
+	</m:math>, and can be written as
+
+	<equation id="eq_convshort">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">h</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	
+	Convolution is commutative. For more information on the characteristics of the convolution
+	integral, read about the <link document="m10088" strength="3">Properties of Convolution</link>. 
+      
+</para></section><section id="eip-637"><title>Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="CTFTdenoiseDemo">
+<image mime-type="image/png" src="../../media/Lecture18-CTFTdenoise_display.cdf" thumbnail="Lecture18-CTFTdenoise_display.png" width="400"/>
+<object width="400" height="400" src="Lecture18-CTFTdenoise_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Lecture18-CTFTdenoise_display.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating Use of the CTFT in signal denoising. To Download, right-click and save target as .cdf.</caption>
+</figure>
+</para></section><section id="eip-441" class="th"><title>Convolution Theorem</title><para id="eip-153">Let <m:math overflow="scroll"><m:mi>f</m:mi></m:math> and <m:math overflow="scroll"><m:mi>g</m:mi></m:math> be two functions with convolution <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>*</m:mo><m:mi>g</m:mi></m:mrow></m:math>..
+Let <m:math overflow="scroll"><m:mi>F</m:mi></m:math> be the Fourier transform operator. Then
+</para><equation id="eip-293"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>f</m:mi>
+          <m:mo>*</m:mo>
+          <m:mi>g</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>f</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>·</m:mo>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>g</m:mi>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="eip-924"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>f</m:mi>
+          <m:mo>·</m:mo>
+          <m:mi>g</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		</m:apply>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>f</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>*</m:mo>
+          <m:mi>F</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>g</m:mi>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="eip-499">By applying the inverse Fourier transform <m:math overflow="scroll"><m:msup><m:mi>F</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math>, we can write:</para><equation id="eip-513"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>f</m:mi>
+          <m:mo>*</m:mo>
+          <m:mi>g</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>·</m:mo>
+            <m:mi>F</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>g</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </equation></section>
+
+<section id="eip-111" class="cn"><title>Conclusion</title><para id="eip-571">The Fourier transform of a convolution is the pointwise product of Fourier transforms. In other words, convolution in one domain (e.g., time domain) corresponds to point-wise multiplication in the other domain (e.g., frequency domain).
+</para></section>
+</content>
+
+</document>

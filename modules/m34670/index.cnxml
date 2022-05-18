@@ -1,0 +1,949 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Matched Filter Detector</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34670</md:content-id>
+  <md:title>Matched Filter Detector</md:title>
+  <md:abstract>This module develops the matched filter detector, including its mathematical justification based on the Cauchy-Scwarz inequality, its practical implementation via convolution, and several example applications.</md:abstract>
+  <md:uuid>ef10862b-84c7-41d0-a8eb-165d603f69ec</md:uuid>
+</metadata>
+
+<content>
+
+
+    <section id="eip-460" class="in"><title>Introduction</title><para id="id332907">A great many applications in signal processing, image processing, and beyond involve determining the presence and location of a target signal within some other signal. A radar system, for example, searches for copies of a transmitted radar pulse in order to determine the presence of and distance to reflective objects such as buildings or aircraft. A communication system searches for copies of waveforms representing digital 0s and 1s in order to receive a message.</para>
+      <para id="id329908">Two key mathematical tools that contribute to these applications are <link url="http://cnx.org/content/m12101/latest/">inner products</link> and the <link url="http://cnx.org/content/m10757/latest/">Cauchy-Schwarz inequality</link>.  As is shown in the module on the Cauchy-Schwarz inequality, the expression <m:math overflow="scroll"><m:mfenced separators="" open="|" close="|"><m:mfenced separators="" open="〈" close="〉"><m:mfrac><m:mi>x</m:mi><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>,</m:mo><m:mfrac><m:mi>y</m:mi><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mfenced></m:mfenced></m:math> attains its upper bound, which is 1, when <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>a</m:mi><m:mi>x</m:mi></m:mrow></m:math> for some scalar <m:math overflow="scroll"><m:mi>a</m:mi></m:math> in a real or complex field. The lower bound, which is 0, is attained when <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and <m:math overflow="scroll"><m:mi>y</m:mi></m:math> are orthogonal. In informal intuition, this means that the expression is maximized when the vectors <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and <m:math overflow="scroll"><m:mi>y</m:mi></m:math> have the same shape or pattern and minimized when <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and <m:math overflow="scroll"><m:mi>y</m:mi></m:math> are very different. A pair of vectors with similar but unequal shapes or patterns will produce relatively large value of the expression less than 1, and a pair of vectors with very different but not orthogonal shapes or patterns will produce relatively small values of the expression greater than 0. Thus, the above expression carries with it a notion of the degree to which two signals are “alike”, the magnitude of the normalized correlation between the signals in the case of the standard inner products.</para>
+      <para id="id333131">This concept can be extremely useful. For instance consider a situation in which we wish to determine which signal, if any, from a set <m:math overflow="scroll"><m:mi>X</m:mi></m:math> of signals most resembles a particular signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. In order to accomplish this, we might evaluate the above expression for every signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>X</m:mi></m:mrow></m:math>, choosing the one that results in maxima provided that those maxima are above some threshold of “likeness”. This is the idea behind the matched filter detector, which compares a set of signals against a target signal using the above expression in order to determine which is most like the target signal.</para></section>
+
+
+<section id="eip-627" class="th"><title>Matched Filter Detector Theory</title><section id="uid9"><title>Signal Comparison</title><para id="id65757">The simplest variant of the matched filter detector scheme would be to find the member signal in a set <m:math overflow="scroll"><m:mi>X</m:mi></m:math> of signals that most closely matches a target signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. Thus, for every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>X</m:mi></m:mrow></m:math> we wish to evaluate</para>
+        <equation id="id65794">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>m</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>y</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfenced separators="" open="〈" close="〉">
+                  <m:mfrac>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>,</m:mo>
+                  <m:mfrac>
+                    <m:mi>y</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mfenced>
+              </m:mfenced>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id65869">in order to compare every member of <m:math overflow="scroll"><m:mi>X</m:mi></m:math> to the target signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. Since the member of <m:math overflow="scroll"><m:mi>X</m:mi></m:math> which most closely matches the target signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math> is desired, ultimately we wish to evaluate</para>
+        <equation id="id65911">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi>X</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfenced separators="" open="〈" close="〉">
+                  <m:mfrac>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>,</m:mo>
+                  <m:mfrac>
+                    <m:mi>y</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mfenced>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id65998">Note that the target signal does not technically need to be normalized to produce a maximum, but gives the desirable property that <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> is bounded to <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>]</m:mo></m:mrow></m:math>.</para>
+        <para id="id66043">The element <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub><m:mo>∈</m:mo><m:mi>X</m:mi></m:mrow></m:math> that produces the maximum value of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> is not necessarily unique, so there may be more than one matching signal in <m:math overflow="scroll"><m:mi>X</m:mi></m:math>. Additionally, the signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub><m:mo>∈</m:mo><m:mi>X</m:mi></m:mrow></m:math> producing the maximum value of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> may not produce a very large value of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> and thus not be very much like the target signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. Hence, another matched filter scheme might identify the argument producing the maximum but only above a certain threshold, returning no matching signals in <m:math overflow="scroll"><m:mi>X</m:mi></m:math> if the maximum is below the threshold. There also may be a signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>X</m:mi></m:mrow></m:math> that produces a large value of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> and thus has a high degree of “likeness” to <m:math overflow="scroll"><m:mi>y</m:mi></m:math> but does not produce the maximum value of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Thus, yet another matched filter scheme might identify all signals in <m:math overflow="scroll"><m:mi>X</m:mi></m:math> producing local maxima that are above a certain threshold.</para>
+<example id="eip-947">
+<para id="id66252">For example, consider the target signal given in <link target-id="fig1"/> and the set of two signals given in <link target-id="fig2"/>. By inspection, it is clear that the signal <m:math overflow="scroll"><m:msub><m:mi>g</m:mi><m:mn>2</m:mn></m:msub></m:math> is most like the target signal <m:math overflow="scroll"><m:mi>f</m:mi></m:math>. However, to make that conclusion mathematically, we use the matched filter detector with the <m:math overflow="scroll"><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub></m:math> inner product. If we were to actually make the necessary computations, we would first normalize each signal and then compute the necessary inner products in order to compare the signals in <m:math overflow="scroll"><m:mi>X</m:mi></m:math> with the target signal <m:math overflow="scroll"><m:mi>f</m:mi></m:math>. We would notice that the absolute value of the inner product for <m:math overflow="scroll"><m:msub><m:mi>g</m:mi><m:mn>2</m:mn></m:msub></m:math> with <m:math overflow="scroll"><m:mi>f</m:mi></m:math> when normalized is greater than the absolute value of the inner product of <m:math overflow="scroll"><m:msub><m:mi>g</m:mi><m:mn>1</m:mn></m:msub></m:math> with <m:math overflow="scroll"><m:mi>f</m:mi></m:math> when normalized, mathematically stated as</para>
+        <equation id="id66366">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>g</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mo>{</m:mo>
+                  <m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mo>}</m:mo>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfenced separators="" open="〈" close="〉">
+                  <m:mfrac>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>,</m:mo>
+                  <m:mfrac>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mfenced>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+      	<figure id="fig1"><title>Template Signal</title><media id="id1168938873141" alt=""><image src="../../media/csi_f1.png" mime-type="image/png"/></media>
+	  
+	<caption>We wish to find a match for this target signal in the set of signals below.</caption></figure>
+	
+	<figure id="fig2" orient="horizontal"><title>Candidate Signals</title><subfigure id="subf1">
+	    <media id="id1168938588198" alt=""><image src="../../media/csi_f2.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="subf2">
+	    <media id="id1168938588217" alt=""><image src="../../media/csi_f3.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  
+	<caption>We wish to find a match for the above target signal in this set of signals.</caption></figure>
+</example>
+</section>
+
+
+
+<section id="eip-265"><title>Pattern Detection</title><para id="id68047">A somewhat more involved matched filter detector scheme would involve attempting to match a target time limited signal <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>f</m:mi></m:mrow></m:math> to a set of of time shifted and windowed versions of a single signal <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>=</m:mo><m:mo>{</m:mo><m:mi>w</m:mi><m:msub><m:mi>S</m:mi><m:mi>t</m:mi></m:msub><m:mi>g</m:mi><m:mo>|</m:mo><m:mi>t</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi><m:mo>}</m:mo></m:mrow></m:math> indexed by <m:math overflow="scroll"><m:mi mathvariant="double-struck">R</m:mi></m:math>. The windowing funtion is given by <m:math overflow="scroll"><m:mrow><m:mi>w</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>u</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>-</m:mo><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>-</m:mo><m:mi>u</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>-</m:mo><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> where <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:math> is the interval to which <m:math overflow="scroll"><m:mi>f</m:mi></m:math> is time limited. This scheme could be used to find portions of <m:math overflow="scroll"><m:mi>g</m:mi></m:math> that have the same shape as <m:math overflow="scroll"><m:mi>f</m:mi></m:math>. If the absolute value of the inner product of the normalized versions of <m:math overflow="scroll"><m:mi>f</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>w</m:mi><m:msub><m:mi>S</m:mi><m:mi>t</m:mi></m:msub><m:mi>g</m:mi></m:mrow></m:math> is large, which is the absolute value of the normalized correlation for standard inner products, then <m:math overflow="scroll"><m:mi>g</m:mi></m:math> has a high degree of “likeness” to <m:math overflow="scroll"><m:mi>f</m:mi></m:math> on the interval to which <m:math overflow="scroll"><m:mi>f</m:mi></m:math> is time limited but left shifted by <m:math overflow="scroll"><m:mi>t</m:mi></m:math>. Of course, if <m:math overflow="scroll"><m:mi>f</m:mi></m:math> is not time limited, it means that the entire signal has a high degree of “likeness” to <m:math overflow="scroll"><m:mi>f</m:mi></m:math> left shifted by <m:math overflow="scroll"><m:mi>t</m:mi></m:math>.</para>
+        <para id="id68328">Thus, in order to determine the most likely locations of a signal with the same shape as the target signal <m:math overflow="scroll"><m:mi>f</m:mi></m:math> in a signal <m:math overflow="scroll"><m:mi>g</m:mi></m:math> we wish to compute</para>
+        <equation id="id68349">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>t</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfenced separators="" open="〈" close="〉">
+                  <m:mfrac>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>,</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mi>w</m:mi>
+                      <m:msub>
+                        <m:mi>S</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:msub>
+                      <m:mi>g</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mo>|</m:mo>
+                        <m:mi>w</m:mi>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>S</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:msub>
+                      <m:mi>g</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mfenced>
+              </m:mfenced>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id68458">to provide the desired shift. Assuming the inner product space examined is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:mrow></m:math> (similar results hold for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">R</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>), this produces</para>
+        <equation id="id68585">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>t</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>w</m:mi>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>S</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mfrac>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>∞</m:mi>
+                  </m:mrow>
+                  <m:mi>∞</m:mi>
+                </m:msubsup>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>w</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mover>
+                  <m:mrow>
+                    <m:mi>g</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>¯</m:mo>
+                </m:mover>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id68728">Since <m:math overflow="scroll"><m:mi>f</m:mi></m:math> and <m:math overflow="scroll"><m:mi>w</m:mi></m:math> are time limited to the same interval</para>
+        <equation id="id68752">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>t</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>w</m:mi>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>S</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mfrac>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:msubsup>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mover>
+                  <m:mrow>
+                    <m:mi>g</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>¯</m:mo>
+                </m:mover>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id68892">Making the subsitution <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mover><m:mrow><m:mi>g</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>¯</m:mo></m:mover></m:mrow></m:math>,</para>
+        <equation id="id68934">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>t</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>w</m:mi>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>S</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mfrac>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:msubsup>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>h</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id69070">Noting that this expression contains a convolution operation</para>
+        <equation id="id69076">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>t</m:mi>
+                <m:mi>m</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>*</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo>)</m:mo>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>w</m:mi>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi>S</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:msub>
+                    <m:mi>g</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id69178">where <m:math overflow="scroll"><m:mi>h</m:mi></m:math> is the conjugate of the time reversed version of <m:math overflow="scroll"><m:mi>g</m:mi></m:math> defined by <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>h</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mover>
+                <m:mrow>
+                  <m:mi>g</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mo>-</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>¯</m:mo>
+              </m:mover>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </para>
+        
+        <para id="id69241">In the special case in which the target signal <m:math overflow="scroll"><m:mi>f</m:mi></m:math> is not time limited, <m:math overflow="scroll"><m:mi>w</m:mi></m:math> has unit value on the entire real line. Thus, the norm can be evaluated as <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>w</m:mi></m:mrow><m:msub><m:mi>S</m:mi><m:mi>t</m:mi></m:msub><m:mrow><m:mi>g</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>S</m:mi><m:mi>t</m:mi></m:msub><m:mrow><m:mi>g</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>g</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>h</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mrow></m:math>. Therefore, the function reduces to
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>t</m:mi><m:mi>m</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mo form="prefix">argmax</m:mo><m:mrow><m:mi>t</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:msub><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>*</m:mo><m:mi>h</m:mi><m:mo>)</m:mo><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>h</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math>
+where <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mover><m:mrow><m:mi>g</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>¯</m:mo></m:mover><m:mo>.</m:mo></m:mrow></m:math> The function
+<m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>*</m:mo><m:mi>g</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>*</m:mo><m:mi>h</m:mi><m:mo>)</m:mo><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>h</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:math>
+is known as the normalized cross-correlation of <m:math overflow="scroll"><m:mi>f</m:mi></m:math> and <m:math overflow="scroll"><m:mi>g</m:mi></m:math>.</para>
+        <para id="id69539">Hence, this matched filter scheme can be implemented as a convolution. Therefore, it may be expedient to implement it in the frequency domain. Similar results hold for the <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">R</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>]</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> spaces. It is especially useful to implement the <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>]</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> cases in the frequency domain as the power of the Fast Fourier Transform algorithm can be leveraged to quickly perform the computations in a computer program. In the <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">R</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>l</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mrow><m:mo>[</m:mo><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>]</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> cases, care must be taken to zero pad the signal if wrap-around effects are not desired. Similar results also hold for spaces on higher dimensional intervals with the same inner products.</para>
+        <para id="id69754">Of course, there is not necessarily exactly one instance of a target signal in a given signal. There could be one instance, more than one instance, or no instance of a target signal. Therefore, it is often more practical to identify all shifts corresponding to local maxima that are above a certain threshold.</para>
+        <example id="eip-582">
+<para id="id69760">The signal in <link target-id="fig4"/> contains an instance of the template signal seen in <link target-id="fig3"/> beginning at time <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> as shown by the plot in <link target-id="figconv1"/>. Therefore,</para>
+        <equation id="id69791">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>s</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mo form="prefix">argmax</m:mo>
+                <m:mrow>
+                  <m:mi>t</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mi mathvariant="double-struck">R</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mfenced separators="" open="|" close="|">
+                <m:mfenced separators="" open="〈" close="〉">
+                  <m:mfrac>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>,</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mi>w</m:mi>
+                      <m:msub>
+                        <m:mi>S</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:msub>
+                      <m:mi>g</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mo>|</m:mo>
+                        <m:mi>w</m:mi>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>S</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:msub>
+                      <m:mi>g</m:mi>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mo>|</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mfenced>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+      
+      
+
+	<figure id="fig3"><title>Pattern Signal</title><media id="id1168938588596" alt=""><image src="../../media/csi_pattern.png" mime-type="image/png"/></media>
+	  
+	<caption>This function shows tha pattern we are looking for in the signal below, which occurs at time <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.</caption></figure>
+	
+	<figure id="fig4"><title>Longer Signal</title><media id="id1168938588631" alt=""><image src="../../media/csi_long.png" mime-type="image/png"/></media>
+	  
+	<caption>This signal contains an instance of the above signal starting at time <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.</caption></figure>
+
+	
+      
+
+<figure id="figconv1"><title>Absolute Value of Output</title><media id="matchedconv" alt=""><image src="../../media/mfout2.png" mime-type="image/png"/></media>
+      <caption>This signal shows a sketch of the absolute value of the matched filter output for the interval shown.  Note that this was just an "eyeball approximation" sketch.  Observe the pronounced peak at time <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.</caption></figure>
+</example></section></section>
+
+<section id="sec2" class="ap"><title>Practical Applications</title><section id="sub3a"><title>Image Detection</title><para id="p1_2d">Matched Filtering is used in image processing to detect a template image within a reference image. This has real-word applications in verifying fingerprints for security or in verifying someone's photo.  As a simple example, we can turn to the ever-popular "Where's Waldo?" books (known as Wally in the UK!), where the reader is tasked with finding the specific face of Waldo/Wally in a confusing background rife with look-alikes!  If we are given the template head and a reference image, we can run a two dimensional convolution of the template image across the reference image to obtain a three dimensional convolution map, <link target-id="subfig1"/>, where the height of the convolution map is determined by the degree of correlation, higher being more correlated.  Finding our target then becomes a matter of determining the spot where the local surface area is highest. The process is  demonstrated in <link target-id="subfig2"/>. In the field of image processing, this matched filter-based process is known as <term> template matching</term>.
+	  </para>
+	  
+	  <figure id="waldo" orient="vertical"><subfigure id="subfig1">
+	      <media id="id1168938589522" alt=""><image src="../../media/Waldosurf.png" mime-type="image/png" height="500" width="700"/></media>
+	    </subfigure>
+	    <subfigure id="subfig2">
+	      <media id="id1168938589540" alt=""><image src="../../media/waldoplot2.png" mime-type="image/png" height="500" width="800"/></media>
+	    </subfigure>
+	    
+	  <caption>Example of "Where's Waldo?" picture.  Our Matched Filter
+	      Detector can be implemented to find a possible match for
+	      Waldo. 
+	    </caption></figure>
+	  
+	  <para id="p2_2d">
+	    then we could easily develop a program to find the closest
+	    resemblance to the image of Waldo's head in the larger
+	    picture.  We would simply implement our same match filter
+	    algorithm: take the inner products at each shift and see
+	    how large our resulting answers are.  This idea was
+	    implemented on this same picture for a <link url="http://www.owlnet.rice.edu/~elec301/Projects99/waldo/process.html">
+	    Signals and Systems Project</link> at Rice University
+	    (click the link to learn more).
+	  </para>
+	
+
+
+
+
+<exercise id="eip-449"><title>Pros and Cons</title><problem id="eip-pros">
+  <para id="exampleimageprob">What are the advantages of the matched filter algorithm to image detection? What are the drawbacks of this method?
+  </para>
+</problem>
+
+<solution id="eip-sol">
+  <para id="examplesoltalk">This algorithm is very simple and thus easy to code. However, it is susceptible to certain types of noise - for example, it would be difficult to find Waldo if his face was rotated, flipped, larger or smaller than expected, or distorted in some other way.
+  </para>
+</solution>
+</exercise> </section>
+
+	
+	<section id="sub3b">
+	  <title>Communications Systems</title>
+	  <para id="p1_sub3b">Matched filter detectors are also commonly used in <link document="m0002" strength="3">Communications Systems</link>.
+	    In fact, they are the <emphasis>optimal</emphasis>
+	    detectors in Gaussian noise.  Signals in the real-world
+	    are often distorted by the environment around them, so
+	    there is a constant struggle to develop ways to be able to
+	    receive a distorted signal and then be able to filter it
+	    in some way to determine what the original signal was.
+	    Matched filters provide one way to compare a received
+	    signal with two possible original ("template") signals and
+	    determine which one is the closest match to the received
+	    signal. 
+	  </para>
+	  <para id="p1a_sub3b">
+	    For example, below we have a simplified example of <link document="m0545" strength="3">Frequency Shift Keying</link>
+	    (FSK) where we having the following coding for '1' and
+	    '0':
+	  </para>
+
+	  <figure id="fig_fsk1">
+	    <media id="id1168938589654" alt=""><image src="../../media/mfilt_1.png" mime-type="image/png"/></media>
+	    <caption>
+	      Frequency Shift Keying for '1' and '0'.
+	    </caption>
+	  </figure>
+
+	  <para id="p2_sub3b">
+	    Based on the above coding, we can create digital signals
+	    based on 0's and 1's by putting together the above two
+	    "codes" in an infinite number of ways.  For this example
+	    we will transmit a basic 3-bit number, 101, which is
+	    displayed in <link target-id="fig_fsk2"/>:
+	  </para>
+
+	  <figure id="fig_fsk2">
+	    <media id="id1168938589698" alt=""><image src="../../media/mfilt_2.png" mime-type="image/png"/></media>
+	    <caption>
+	      The bit stream "101" coded with the above FSK.
+	    </caption>
+	  </figure>
+
+	  <para id="p3_sub3b">
+	    Now, the signal picture above represents our original
+	    signal that will be transmitted over some communication
+	    system, which will inevitably pass through the
+	    "communications channel," the part of the system that will
+	    distort and alter our signal.  As long as the noise is not
+	    too great, our matched filter should keep us from having
+	    to worry about these changes to our transmitted signal.
+	    Once this signal has been received, we will pass the noisy
+	    signal through a simple system, similar to the simplified
+	    version shown in <link target-id="fig_fsk3"/>:
+	  </para>
+	  
+	  <figure id="fig_fsk3">
+	    <media id="id1168938589744" alt=""><image src="../../media/mfilt_3.png" mime-type="image/png"/></media>
+	    <caption>
+	      Block diagram of matched filter detector.
+	    </caption>
+	  </figure>
+	  
+	  <para id="p4_sub3b">
+	    <link target-id="fig_fsk3"/> basically shows that our noisy
+	    signal will be passed in (we will assume that it passes in
+	    one "bit" at a time) and this signal will be split and
+	    passed to two different matched filter detectors.  Each
+	    one will compare the noisy, received signal to one of the
+	    two codes we defined for '1' and '0.'  Then this value
+	    will be passed on and whichever value is higher
+	    (<foreign>i.e.</foreign> whichever FSK code signal the
+	    noisy signal most resembles) will be the value that the
+	    receiver takes.  For example, the first bit that will be
+	    sent through will be a '1' so the upper level of the block
+	    diagram will have a higher value, thus denoting that a '1'
+	    was sent by the signal, even though the signal may appear
+	    very noisy and distorted.
+	  </para><para id="eip-405">The interactive example below supposes that our transmitter sends 1000 bits, plotting how many of those bits are received and interpreted correctly as either 1s and 0s, and also keeps a tally of how many are accidentally misinterpreted. You can play around with the distance between the energy of the "1" and the "0" (discriminability), the degree of noise present in the channel, and the location of the criterion (threshold) to get a feel for the basics of signal detection theory.
+</para><example id="eip-1000"><para id="eip-193">Let's use a matched filter to find the "0" bits in a simple signal.</para>
+
+      <para id="eip-978">Let's use the signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> from example 1 to represent the bits. <m:math overflow="scroll"><m:mrow><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> represents 0, while <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> represents 1.</para><para id="para8">
+	<m:math>
+	  <m:apply>
+	    <m:implies/>
+            <m:apply>
+              <m:implies/>
+	      <m:cn>0</m:cn>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>b</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+            </m:apply>
+            <m:apply>
+              <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+            </m:apply>
+	  </m:apply>
+	</m:math> for
+	
+	<m:math>
+	  <m:apply>
+	    <m:leq/>
+            <m:cn>0</m:cn>
+            <m:ci>t</m:ci>
+            <m:ci>T</m:ci>
+	  </m:apply>
+	</m:math>
+      </para>
+
+      <para id="para9">
+	<m:math>
+	  <m:apply>
+	    <m:implies/>
+            <m:apply>
+              <m:implies/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>b</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+            </m:apply>
+            <m:apply>
+              <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+            </m:apply>
+	  </m:apply>
+	</m:math>
+	  for  
+	<m:math>
+	  <m:apply>
+	    <m:leq/>
+            <m:cn>0</m:cn>
+            <m:ci>t</m:ci>
+            <m:ci>T</m:ci>
+	  </m:apply>
+	</m:math>
+
+	<equation id="eq17">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>X</m:mi>
+                  <m:mi>t</m:mi>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:sum/>
+		<m:bvar>
+		  <m:ci>i</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>P</m:ci>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>P</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>i</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+      </para>
+
+      <figure id="digcom4">
+	<media id="id1170666948968" alt=""><image src="../../media/Figure4-29-9e34.png" mime-type="image/png"/></media>
+      </figure><para id="eip-730">The matched filter output clearly shows the location of the "0" bits.</para></example>
+	</section><section id="eip-837"><title>Radar</title><para id="eip-683">One of the first, and more intriguing forms of communication that used the matched filter concept was radar. A known electromagnetic signal is sent out by a transmitter at a target and reflected off of the target back to the sender with a time delay proportional to the distance between target and sender. This scaled, time-shifted signal is then convolved with the original template signal, and the time at which the output of this convolution is highest is noted.
+
+</para>
+
+
+<para id="eip-412">This technology proved vital in the 1940s for the powers that possessed it. A short set of videos below shows the basics of how the technology works, its applications, and its impact in World War 2.
+
+<figure id="RadarHistory"><title>History of Radar</title>
+<media id="airboydradar-media" display="block" alt="History of Radar">
+  <flash id="airboydyoutube" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/Zq0uE7nUlEQ&amp;hl=en_US&amp;fs=1&amp;" width="480" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+</figure>
+
+
+</para><para id="eip-533">See the video in <link target-id="cruisecontrol"/> for an analysis of the same basic principle being applied to adaptive cruise control systems for the modern car.</para><para id="eip-434"><figure id="cruisecontrol"><media id="radar-basedadaptivecar-media" display="block" alt="radar-based adaptive cruise control">
+  <flash id="carradaryoutube" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/VabT6UMjLNY&amp;hl=en_US&amp;fs=1" width="480" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+<caption>Video on radar-based adaptive cruise control from The Science Channel.</caption></figure>
+
+</para></section>
+      </section><section id="eip-376" class="ie"><title>Matched Filter Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="MatchedFilterDemo">
+<image mime-type="image/png" src="../../media/Lecture 1-Matched Filterfinal_display.cdf" thumbnail="Lecture 1-Matched Filterfinalizing.png" width="400"/>
+<object width="400" height="400" src="Lecture 1-Matched Filterfinal_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="Lecture 22-PLecture 1-Matched Filterfinalizing.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating the Matched Filter. To Download, right-click and save target as .cdf.</caption>
+</figure>
+</para></section><section id="eip-940" class="cn"><title>Matched Filter Summary</title><para id="eip-876">As can be seen, the matched filter detector is an important signal processing application, rich both in theoretical concepts and in practical applications.  The matched filter supports a wide array of uses related to pattern recognition, including image detection, frequency shift keying demodulation, and radar signal interpretation.   Despite this diversity of purpose, all matched filter applications operate in essentially the same way.  Every member of some set of signals is compared to a target signal by evaluating the absolute value of the inner product of the the two signals after normalization.  However, the signal sets and result interpretations are application specific.  </para></section>
+
+    
+
+  </content>
+</document>

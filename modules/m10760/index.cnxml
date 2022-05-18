@@ -1,0 +1,1983 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Orthonormal Basis Expansions</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10760</md:content-id>
+  <md:title>Orthonormal Basis Expansions</md:title>
+  <md:abstract>The module looks at decomposing signals through orthonormal basis expansion to provide an alternative representation.  The module presents many examples of solving these problems and looks at them in several spaces and dimensions.</md:abstract>
+  <md:uuid>3e138339-43de-4f75-b78e-716384605dea</md:uuid>
+</metadata>
+
+<content>
+    <section id="sec1">
+      <title>Main Idea</title>
+      <para id="p1_sec1">
+	When working with signals many times it is helpful to break up
+	 a signal into smaller, more manageable parts.  Hopefully by
+	 now you have been exposed to the concept of <link document="m10736" strength="2">eigenvectors</link> and there
+	 use in decomposing a signal into one of its possible basis.
+	 By doing this we are able to simplify our calculations of
+	 signals and systems through <link document="m10500" strength="3">eigenfunctions of LTI systems</link>.
+      </para>
+      
+      <para id="p2_sec1">
+	Now we would like to look at an alternative way to represent
+	signals, through the use of <term>orthonormal basis</term>.
+	We can think of orthonormal basis as a set of building blocks
+	we use to construct functions.  We will build up the
+	signal/vector as a weighted sum of basis elements.
+      </para>
+      
+      <example id="eg1">
+	<para id="dum"/>
+
+	<para id="p1_eg1">
+	  The complex sinusoids
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:root/>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci><m:msub>
+		    <m:mi>ω</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci>n</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  for all 	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:lt/>
+	      <m:apply>
+		<m:lt/>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:infinity/>
+	    </m:apply>
+	  </m:math>  form an orthonormal basis for
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msup>
+		  <m:mi>L</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msup>
+	      </m:ci>
+	      <m:apply>
+		<m:interval>
+		  <m:cn>0</m:cn>
+		  <m:ci>T</m:ci>
+		</m:interval>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+	<para id="p2_eg1">
+	  In our <link document="m10496" strength="3">Fourier
+	  series</link> equation,
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, the
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math> are just another representation of 
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </example>
+
+      <para id="p3_sec1">
+	<note id="id1171531283661" type="note">
+	  For signals/vectors in a <link document="m10755" target-id="sec2" strength="3">Hilbert Space</link>, the expansion
+	  coefficients are easy to find.
+	</note>
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Alternate Representation</title>
+      <para id="p1_sec2">
+	Recall our definition of a <term>basis</term>:
+	A set of vectors 
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+	      <m:mi>b</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub></m:ci>
+	  </m:set>
+	</m:math> 
+	in a vector space <m:math><m:ci>S</m:ci>
+	</m:math> is a basis if 
+
+	<list id="list1" list-type="enumerated">
+	  <item>
+	    The 
+	    <m:math>
+	      <m:ci><m:msub>
+		<m:mi>b</m:mi>
+		<m:mi>i</m:mi>
+	      </m:msub></m:ci>
+	    </m:math> 
+	    are linearly independent.
+	  </item>
+
+	  <item>
+	    The 
+	    <m:math>
+	      <m:ci><m:msub>
+		<m:mi>b</m:mi>
+		<m:mi>i</m:mi>
+	      </m:msub></m:ci>
+	    </m:math>
+	    <link document="m10734" target-id="span_sec" strength="3">span</link> <m:math><m:ci>S</m:ci>
+	    </m:math>.  That is, we can find
+	    <m:math>
+	      <m:set>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+	      </m:set>
+	    </m:math>, where 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:complexes/>
+	      </m:apply>
+	    </m:math> (scalars) such that
+
+	    <equation id="eq1">
+	      <m:math>
+		<m:apply>
+		  <m:forall/>
+		  <m:bvar>
+		    <m:ci>x</m:ci>
+		  </m:bvar>
+		  <m:condition>
+		    <m:apply>
+		      <m:in/>
+		      <m:ci>x</m:ci>
+		      <m:ci>S</m:ci>
+		    </m:apply>
+		  </m:condition>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:apply>
+		      <m:sum/>
+		      <m:domainofapplication>
+			<m:ci>i</m:ci>
+		      </m:domainofapplication>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			  <m:mi>α</m:mi>
+			  <m:mi>i</m:mi>
+			</m:msub></m:ci>
+			<m:ci><m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>i</m:mi>
+			</m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+	    where <m:math><m:ci type="vector">x</m:ci></m:math> is a
+	    vector in <m:math><m:ci>S</m:ci> </m:math>,
+	    <m:math><m:ci>α</m:ci></m:math> is a scalar in
+	    <m:math><m:complexes/></m:math>, and <m:math><m:ci type="vector">b</m:ci> </m:math> is a vector in
+	    <m:math><m:ci>S</m:ci> </m:math>.
+	  </item>
+	</list>
+      </para>
+
+      <para id="p2_sec2">
+	Condition 2 in the above definition says we can
+	<term>decompose</term> any vector in terms of the 
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+	      <m:mi>b</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub></m:ci>
+	  </m:set>
+	</m:math>.  Condition 1 ensures that the decomposition is
+	<term>unique</term> (think about this at home).
+
+	<note id="id1171538794872" type="note">
+	  The 
+	  <m:math>
+	    <m:set>
+	      <m:ci><m:msub>
+		<m:mi>α</m:mi>
+		<m:mi>i</m:mi>
+	      </m:msub></m:ci>
+	    </m:set>
+	  </m:math> 
+	  provide an alternate representation of <m:math><m:ci type="vector">x</m:ci></m:math>.
+	</note>	  
+      </para>
+      
+      <example id="eg2">
+	<para id="p1_eg2">
+	  Let us look at simple example in 
+	  <m:math>
+	    <m:ci><m:msup>
+	      <m:mi>ℝ</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msup></m:ci>
+	  </m:math>, where we have the following vector:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:vector>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:vector>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Standard Basis:  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:set>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:set>
+	      </m:apply>
+	      <m:apply>
+		<m:set>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:vector>
+		  <m:vector>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:vector>
+		</m:set>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  Alternate Basis:  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:set>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:set>
+	      </m:apply>
+	      <m:apply>
+		<m:set>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:vector>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>-1</m:cn>
+		  </m:vector>
+		</m:set>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>3</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>-1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </example>
+
+      <para id="p3_sec2">
+	In general, given a basis 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>
+	and a vector
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">x</m:ci>
+	      <m:ci><m:msup>
+		<m:mi>ℝ</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msup></m:ci>
+	  </m:apply>
+	</m:math>, how do we find the 
+	<m:math>
+	  <m:ci><m:msub>
+	    <m:mi>α</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub></m:ci>
+	</m:math> and
+	<m:math>
+	  <m:ci><m:msub>
+	    <m:mi>α</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub></m:ci>
+	</m:math> such that
+
+	<equation id="eq2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+    </section>
+
+    <section id="sec3">
+      <title>Finding the Coefficients</title>
+      <para id="p1_sec3">
+	Now let us address the question posed above about finding 
+	<m:math>
+	  <m:ci><m:msub>
+	    <m:mi>α</m:mi>
+	    <m:mi>i</m:mi>
+	  </m:msub></m:ci>
+	</m:math>'s in general for 
+	<m:math>
+	  <m:ci><m:msup>
+	    <m:mi>ℝ</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msup></m:ci>
+	</m:math>.  We start by rewriting <link target-id="eq2" strength="3"/> so that we can stack our  
+	<m:math>
+	  <m:ci type="vector">
+	    <m:msub>
+	      <m:mi>b</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>'s as columns in a 2×2 matrix.
+
+	<equation id="eq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci type="vector">x</m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	
+	<equation id="eq4">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci type="vector">x</m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	      <m:apply>
+		<m:times/>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:matrixrow>
+		</m:matrix>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <example id="eg3">
+	<para id="p1_eg3">
+	  Here is a simple example, which shows a little more detail
+	  about the above equations.
+
+	  <equation id="eq5">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:matrixrow>		
+		</m:matrix>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">
+			    <m:msub>
+			      <m:mi>b</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:cn>0</m:cn>
+			</m:apply>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">
+			    <m:msub>
+			      <m:mi>b</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">
+			    <m:msub>
+			      <m:mi>b</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:cn>0</m:cn>
+			</m:apply>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">
+			    <m:msub>
+			      <m:mi>b</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci><m:msub>
+			    <m:mi>α</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">
+			      <m:msub>
+				<m:mi>b</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:cn>0</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:ci><m:msub>
+			    <m:mi>α</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">
+			      <m:msub>
+				<m:mi>b</m:mi>
+				<m:mn>1</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:cn>0</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci><m:msub>
+			    <m:mi>α</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">
+			      <m:msub>
+				<m:mi>b</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:ci><m:msub>
+			    <m:mi>α</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">
+			      <m:msub>
+				<m:mi>b</m:mi>
+				<m:mn>1</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>			
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  <equation id="eq6">
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:matrixrow>		
+		</m:matrix>
+		<m:apply>
+		  <m:times/>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:ci><m:msub>
+			<m:mi>α</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:ci><m:msub>
+			<m:mi>α</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	</para>
+      </example>
+
+      <section id="sub1_s3">
+	<title>Simplifying our Equation</title>     
+	<para id="p2_sec3"> 
+	  To make notation simpler, we define the following two items
+	  from the above equations:
+
+	  <list id="list2">
+	    <item>
+	      <term>Basis Matrix</term>:
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>B</m:ci>
+		  <m:apply>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:ci>⋮</m:ci>
+			<m:ci>⋮</m:ci>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:ci type="vector">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci type="vector">
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:ci>⋮</m:ci>
+			<m:ci>⋮</m:ci>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      <term>Coefficient Vector</term>:
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">α</m:ci>
+		  <m:apply>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:ci><m:msub>
+			  <m:mi>α</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:ci><m:msub>
+			  <m:mi>α</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+
+	  This gives us the following, concise equation:
+	  
+	  <equation id="eq7">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>B</m:ci>
+		  <m:ci type="vector">α</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  which is equivalent to 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>i</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:cn>1</m:cn>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+	<example id="eg1_s1s3">
+	  <para id="p1_eg1s1s3">
+	    Given a standard basis, 
+	    
+	    <m:math display="inline">
+	      <m:set>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:set>
+	    </m:math>, then we have the following basis matrix:
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>B</m:ci>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+	<para id="p3_s1s3">
+	  To get the 
+	  <m:math>
+	    <m:ci><m:msub>
+	      <m:mi>α</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub></m:ci>
+	  </m:math>'s, we solve for the coefficient vector in <link target-id="eq7" strength="3"/>
+
+	  <equation id="eq8">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">α</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:inverse/>
+		    <m:ci>B</m:ci>
+		  </m:apply>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Where 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:inverse/>
+	      <m:ci>B</m:ci>
+	    </m:apply>
+	  </m:math> is the <link document="m2113" strength="3">inverse
+	  matrix</link> of <m:math><m:ci>B</m:ci></m:math>.
+
+	</para>
+      </section>
+
+      <section id="sub2">
+	<title>Examples</title>
+
+	<example id="eg1_s2s3">
+	  <para id="p1_eg1s2s3">
+	    Let us look at the standard basis first and try to
+	    calculate <m:math><m:ci type="vector">α</m:ci>
+	    </m:math> from it.
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>B</m:ci>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+		<m:ci>I</m:ci>
+	      </m:apply>
+	    </m:math>
+
+	    Where <m:math><m:ci>I</m:ci></m:math> is the
+	    <term>identity matrix</term>.  In order to solve for
+	    <m:math><m:ci type="vector">α</m:ci> </m:math> let
+	    us find the inverse of <m:math><m:ci>B</m:ci></m:math>
+	    first (which is obviously very trivial in this case):
+
+	     <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:inverse/>
+		  <m:ci>B</m:ci>
+		</m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+
+	    Therefore we get,
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">α</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:inverse/>
+		    <m:ci>B</m:ci>
+		  </m:apply>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+	<example id="eg2_s2s3">
+	  <para id="p1_eg2s2s3">
+	    Let us look at a ever-so-slightly more complicated basis
+	    of 
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:set>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>-1</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:set>
+		<m:set>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:set>
+	      </m:apply>
+	    </m:math>
+
+	    Then our basis matrix and inverse basis matrix becomes:
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>B</m:ci>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>-1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:inverse/>
+		  <m:ci>B</m:ci>
+		</m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>-1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+
+	    and for this example it is given that
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>3</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>2</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+
+	    Now we solve for <m:math><m:ci type="vector">α</m:ci>
+	    </m:math>
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">α</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:inverse/>
+		    <m:ci>B</m:ci>
+		  </m:apply>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>-1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>2</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>2.5</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0.5</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:math>
+
+	    and we get
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2.5</m:cn>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>h</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>0.5</m:cn>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>h</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+	<!-- ========= FIRST EXERCISE BELOW ========== -->
+
+	<exercise id="exer1">
+	  <problem id="id2384896">
+	    <para id="p1_prob1">
+	      Now we are given the following basis matrix and <m:math>
+	      <m:ci type="vector">x</m:ci></m:math>:
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:set>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:set>
+		  <m:set>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:cn>1</m:cn>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:cn>2</m:cn>
+		      </m:matrixrow>
+		    </m:matrix>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:cn>3</m:cn>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:cn>0</m:cn>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:set>		 
+		</m:apply>
+	      </m:math>
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>2</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:math>
+
+	      For this problem, make a sketch of the bases and then
+	      represent <m:math><m:ci type="vector">x</m:ci></m:math>
+	      in terms of 
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and 
+	         <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>.
+	    </para>
+	  </problem>
+
+	  <solution id="id1171529167131">
+	    <para id="p1_sol1">
+	      In order to represent <m:math><m:ci type="vector">x</m:ci></m:math> in terms of
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and 
+	         <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> we will follow the same steps we used in the
+	      above example.
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>B</m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		      <m:cn>0</m:cn>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:inverse/>
+		    <m:ci>B</m:ci>
+		  </m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>0</m:cn>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>-1</m:cn>
+			<m:cn>6</m:cn>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">α</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>B</m:ci>
+		    </m:apply>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:cn>1</m:cn>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>2</m:cn>
+			  <m:cn>3</m:cn>
+			</m:apply>
+		      </m:matrixrow>
+		    </m:matrix>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      And now we can write <m:math><m:ci type="vector">x</m:ci></m:math> in terms of
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and 
+	         <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>.
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>2</m:cn>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      
+	      And we can easily substitute in our known values of 
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and 
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> to verify our results.
+	    </para>
+	  </solution>
+	</exercise>
+
+	<para id="para_note">
+	  <note id="id1171531248358" type="note">
+	    A change of basis simply looks at <m:math><m:ci type="vector">x</m:ci></m:math> from a "different
+	    perspective."  
+	    <m:math>
+	      <m:apply>
+		<m:inverse/>
+		<m:ci>B</m:ci>
+	      </m:apply>
+	    </m:math> <term>transforms</term> <m:math><m:ci type="vector">x</m:ci></m:math> from the standard basis to
+	    our new basis, 
+	    <m:math display="inline">
+	      <m:set>
+		<m:ci type="vector">
+		      <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:math>.  Notice that this is a totally mechanical
+	    procedure. 
+	  </note>
+	</para>
+      </section>
+    </section>
+
+    <section id="sec4">
+      <title>Extending the Dimension and Space</title>
+      <para id="p1_sec4">
+	We can also extend all these ideas past just
+	<m:math display="inline">
+	  <m:ci><m:msup>
+	    <m:mi>ℝ</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msup></m:ci>
+	</m:math> and look at them in 
+	<m:math display="inline">
+	  <m:ci><m:msup>
+	    <m:mi>ℝ</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msup></m:ci>
+	</m:math> and
+	<m:math display="inline">
+	  <m:ci><m:msup>
+	    <m:mi>ℂ</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msup></m:ci>
+	</m:math>.  This procedure extends naturally to higher (&gt; 2)
+	dimensions.  Given a basis
+	
+	<m:math display="inline">
+	  <m:set>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>…</m:ci>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		<m:mrow>
+		  <m:mi>n</m:mi>
+		  <m:mo>−</m:mo>
+		  <m:mn>1</m:mn>
+		</m:mrow>
+	      </m:msub>
+	    </m:ci>
+	  </m:set>
+	</m:math> for
+	<m:math display="inline">
+	  <m:ci><m:msup>
+	    <m:mi>ℝ</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msup></m:ci>
+	</m:math>, we want to find
+	
+	<m:math display="inline">
+	  <m:set>
+	    <m:ci><m:msub>
+	      <m:mi>α</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub></m:ci>
+	    <m:ci><m:msub>
+	      <m:mi>α</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub></m:ci>
+	    <m:ci>…</m:ci>
+	    <m:ci><m:msub>
+	      <m:mi>α</m:mi>
+	      <m:mrow>
+		<m:mi>n</m:mi>
+		<m:mo>−</m:mo>
+		<m:mn>1</m:mn>
+	      </m:mrow>
+	    </m:msub></m:ci>
+	  </m:set>
+	</m:math>
+
+	such that
+	
+	<equation id="eq9">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mrow>
+		      <m:mi>n</m:mi>
+		      <m:mo>−</m:mo>
+		      <m:mn>1</m:mn>
+		    </m:mrow>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Again, we will set up a basis matrix
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>B</m:ci>
+	    <m:apply>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>…</m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	  
+	where the columns equal the basis vectors and it will always
+	be an n×n matrix (although the above matrix does not
+	appear to be square since we left terms in vector notation).
+	We can then proceed to rewrite <link target-id="eq7" strength="3"/>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>…</m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	      <m:matrix>
+		<m:matrixrow>
+		 <m:ci> <m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>⋮</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mrow>
+		      <m:mi>n</m:mi>
+		      <m:mo>−</m:mo>
+		      <m:mn>1</m:mn>
+		    </m:mrow>
+		  </m:msub></m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>B</m:ci>
+	      <m:ci type="vector">α</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	and 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">α</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:inverse/>
+		<m:ci>B</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </para>
+
+    </section>
+
+  </content>
+</document>

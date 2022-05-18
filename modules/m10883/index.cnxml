@@ -1,0 +1,447 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Convergence of Sequences</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10883</md:content-id>
+  <md:title>Convergence of Sequences</md:title>
+  <md:abstract>This module will present an introduction into convergence and focus on what a sequence is and how it behaves as it approaches infinity.</md:abstract>
+  <md:uuid>546e591d-3622-415e-a3a2-71e87e08e9cf</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-909"><title>Introduction</title><para id="eip-509">
+Insert paragraph text here.
+</para></section><section id="sec1">
+      <title>Sequences</title>
+      <para id="p1_s1">
+		
+	<definition id="seq">
+	  <term>sequence</term>
+	  <meaning id="id1167766347072">A sequence is a function
+	    <m:math>
+	      <m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+	    </m:math>
+	    defined on the positive integers
+	    '<m:math><m:ci>n</m:ci></m:math>'.  We often denote a
+	    sequence by 
+
+	    <m:math>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:interval>
+		  <m:cn>1</m:cn>
+		  <m:infinity/>
+		</m:interval>
+		<m:apply>
+		  <m:set>
+		    <m:ci type="vector">
+		      <m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+		    </m:ci>
+		  </m:set>
+		</m:apply>	    
+	      </m:apply>
+	    </m:math>
+	  </meaning>
+	  
+	  <example id="def1_ex1">
+	    <para id="p1_d1e1">
+	      A real number sequence:
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </para>
+	  </example>
+
+	  <example id="def1_ex2">
+	    <para id="p1_d1e2">
+	      A vector sequence:
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:divide/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:pi/>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:divide/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:pi/>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:matrixrow>	  
+		  </m:matrix>
+		</m:apply>
+	      </m:math>
+	    </para>
+	  </example>
+
+	  <example id="def1_ex3">
+	    <para id="p1_d1e3">A function sequence:
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:leq/>
+			  <m:cn>0</m:cn>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:piece>
+		    <m:otherwise>
+		      <m:cn>0</m:cn>
+		    </m:otherwise>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+
+	      <note id="id1167758148407" type="note">
+		A function can be thought of as an infinite
+		dimensional vector where for each value of
+		'<m:math><m:ci>t</m:ci></m:math>' we have one
+		dimension
+	      </note>
+
+	    </para>
+	  </example>
+	</definition>
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Convergence of Real Sequences</title>
+      <para id="p1_s2">
+	
+	<definition id="limit">
+	  <term>limit</term>
+	  <meaning id="id1167755547713">A sequence
+	    
+	    <m:math>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:interval>
+		  <m:cn>1</m:cn>
+		  <m:infinity/>
+		</m:interval>
+		<m:apply>
+		  <m:set>
+		    <m:ci type="vector">
+		      <m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+		    </m:ci>
+		  </m:set>
+		</m:apply>	    
+	      </m:apply>
+	    </m:math>
+	    
+	    converges to a limit 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>g</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:math> if for <emphasis>every</emphasis> 
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>ε</m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math> there is an integer <m:math><m:ci>N</m:ci>
+	    </m:math> such that
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci>i</m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:geq/>
+		    <m:ci>i</m:ci>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:lt/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:msub><m:mi>g</m:mi><m:mi>i</m:mi></m:msub>
+		      <m:mi>g</m:mi>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    We usually denote a limit by writing 
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:limit/>
+		  <m:bvar>
+		    <m:ci>i</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:infinity/>
+		  </m:lowlimit>
+		    <m:ci><m:msub><m:mi>g</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+		</m:apply>
+		<m:ci>g</m:ci>
+	      </m:apply>
+	    </m:math>
+
+	    or
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:ci><m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci>g</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </meaning>
+	</definition>
+
+	The above definition means that no matter how small we
+	make <m:math><m:ci>ε</m:ci></m:math>, except for a
+	finite number of
+	<m:math>
+	  <m:ci><m:msub>
+	    <m:mi>g</m:mi>
+	    <m:mi>i</m:mi>
+	  </m:msub></m:ci>
+	</m:math>'s, all points of the sequence are within
+	distance <m:math><m:ci>ε</m:ci></m:math> of 
+	<m:math><m:ci>g</m:ci></m:math>.
+      </para>
+
+      <example id="s2_eg1">
+	<para id="p1_s2eg1">
+	  We are given the following convergent sequence:
+
+	  <equation id="eq1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  Intuitively we can assume the following limit:
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:limit/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:infinity/>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Let us prove this rigorously.  Say that we are given a
+	  real number 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>.  Let us choose 
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:apply>
+		<m:ceiling/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, where 
+	  <m:math>
+	    <m:apply>
+	      <m:ceiling/>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	  </m:math> denotes the smallest integer larger than
+	  <m:math><m:ci>x</m:ci></m:math>.  Then for 
+	  <m:math>
+	    <m:apply>
+	      <m:geq/>
+	      <m:ci>n</m:ci>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:math> we have
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:lt/>
+		<m:apply>
+		  <m:leq/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>ε</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  Thus, 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:limit/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:infinity/>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </example>
+      
+
+      <example id="s2_eg2">
+	<para id="p1_s2eg2">
+	  Now let us look at the following non-convergent sequence
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+	      <m:apply>
+		<m:piecewise>
+		  <m:piece>		    
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>n</m:ci>
+		      <m:ci>even</m:ci>
+		    </m:apply>
+		  </m:piece>
+		  <m:piece>
+		    <m:cn>-1</m:cn>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>n</m:ci>
+		      <m:ci>odd</m:ci>
+		    </m:apply>		  
+		  </m:piece>
+		</m:piecewise>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  This sequence oscillates between 1 and -1, so it will
+	  therefore never converge.
+	</para>
+      </example>
+
+      
+    </section>
+  </content>  
+</document>

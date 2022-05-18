@@ -1,0 +1,548 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Continuous Time Complex Exponential</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10060</md:content-id>
+  <md:title>Continuous Time Complex Exponential</md:title>
+  <md:abstract>Describes the complex exponential function.</md:abstract>
+  <md:uuid>5f67f0dd-49f1-427f-b34d-d94b56f32c26</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="eip-394" class="in"><title>Introduction</title><para id="eip-623">Complex exponentials are some of the most important functions in our study of signals and systems.  Their importance stems from their status as eigenfunctions of linear time invariant systems.  Before proceeding, you should be familiar with complex numbers.
+      </para></section>
+<section id="eip-860" class="th"><title>The Continuous Time Complex Exponential</title><section id="eip-168"><title>Complex Exponentials</title><para id="eip-411">The complex exponential function will become a critical part of
+	your study of signals and systems.  Its general continuous form is
+	written as
+
+	<equation id="eq_exp"><m:math>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	  </m:math>
+	</equation>
+	
+	where
+<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>s</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>σ</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>ω</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is a
+	complex number in terms of
+	<m:math><m:ci>σ</m:ci></m:math>, the attenuation constant, and
+	<m:math><m:ci>ω</m:ci></m:math> the angular frequency.</para></section><section id="eip-987"><title>Euler's Formula</title><para id="id62167">The mathematician Euler proved an important identity relating complex exponentials to trigonometric functions. Specifically, he discovered the eponymously named identity, Euler's formula, which states that</para>
+      <equation id="id62172">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62560">which can be proven as follows.</para>
+      <para id="id62565">In order to prove Euler's formula, we start by evaluating the Taylor series for <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mi>z</m:mi></m:msup></m:math> about <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, which converges for all complex <m:math overflow="scroll"><m:mi>z</m:mi></m:math>, at <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>j</m:mi><m:mi>x</m:mi></m:mrow></m:math>. The result is</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>x</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mi>k</m:mi>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>k</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>k</m:mi>
+                      <m:mo>)</m:mo>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>k</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>k</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mo form="prefix">cos</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id62861">
+because the second expression contains the Taylor series for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math> about <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, which converge for all real <m:math overflow="scroll"><m:mi>x</m:mi></m:math>. Thus, the desired result is proven.</para>
+      <para id="id62921">Choosing <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:math> this gives the result</para>
+      <equation id="id62940">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62995">which breaks a continuous time complex exponential into its real part and imaginary part. Using this formula, we can also derive the following relationships.</para>
+      <equation id="id63002">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id63069">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+    </section><section id="eip-188"><title>Continuous Time Phasors</title><para id="id139577">It has been shown how the complex exponential with purely imaginary frequency can be broken up into its real part and its imaginary part. Now consider a general complex frequency <m:math overflow="scroll"><m:mrow><m:mi>s</m:mi><m:mo>=</m:mo><m:mi>σ</m:mi><m:mo>+</m:mo><m:mi>ω</m:mi><m:mi>j</m:mi></m:mrow></m:math> where <m:math overflow="scroll"><m:mi>σ</m:mi></m:math> is the attenuation factor and <m:math overflow="scroll"><m:mi>ω</m:mi></m:math> is the frequency. Also consider a phase difference <m:math overflow="scroll"><m:mi>θ</m:mi></m:math>. It follows that</para>
+      <equation id="id139625"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mo>)</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>σ</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mo form="prefix">cos</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id139724">Thus, the real and imaginary parts of <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>s</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> appear below.</para>
+      <equation id="id139746">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>σ</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>σ</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id139821">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Im </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>σ</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>σ</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id139895">Using the real or imaginary parts of complex exponential to represent sinusoids with a phase delay multiplied by real exponential is often useful and is called attenuated phasor notation.</para>
+      <para id="id139902">We can see that both the real part and the imaginary part have a
+sinusoid times a real exponential. We also know that
+sinusoids oscillate between one and negative one. From this
+it becomes apparent that the real and imaginary parts of the
+complex exponential will each oscillate within an envelope
+defined by the real exponential part.</para>
+    
+    
+
+      <figure id="fig1" orient="horizontal">
+	<subfigure id="fig1a">
+	  <media id="id4697655" alt=""><image src="../../media/compexp1.png" mime-type="image/png"/></media>
+	  <caption>
+	    If <m:math><m:ci>σ</m:ci></m:math> is negative, we
+	    have the case of a decaying exponential window.
+	  </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+	  <media id="id13865510" alt=""><image src="../../media/compexp2.png" mime-type="image/png"/></media>
+	  <caption>
+	    If <m:math><m:ci>σ</m:ci></m:math> is positive, we
+	    have the case of a growing exponential window.</caption>
+	</subfigure>
+	<subfigure id="fig1c">
+	  <media id="id4626480" alt=""><image src="../../media/compexp3.png" mime-type="image/png"/></media>
+	  <caption>
+	    If <m:math><m:ci>σ</m:ci></m:math> is zero, we have
+	    the case of a constant window.</caption>
+	</subfigure>
+	<caption>
+	  The shapes possible for the real part of a complex
+	  exponential.  Notice that the oscillations are the result of
+	  a cosine, as there is a local maximum at
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>t</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</caption>
+      </figure></section></section>
+
+    
+
+
+    
+
+    <section id="eip-506" class="ie"><title>Complex Exponential Demonstration</title><para id="eip-851"><figure id="demoonline"><media id="CNXdemoonline" alt="ComplexExponentialDemo">
+<image mime-type="image/png" src="../../media/lecture 2 - continuouscomplex exponentials.cdf" thumbnail="lecture 2 - continuouscomplex exponentials.png" width="500"/>
+<object width="700" height="700" src="lecture 2 - continuouscomplex exponentials.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/lecture 2 - continuouscomplex exponentials.png" width="500"/>
+</media>
+
+<caption>Interact (when online) with a Mathematica CDF demonstrating the Continuous Time Complex Exponential. To Download, right-click and save target as .cdf.</caption></figure></para></section>
+<section id="eip-613" class="cn"><title>Continuous Time Complex Exponential Summary</title><para id="eip-314">Continuous time complex exponentials are signals of great importance to the study of signals and systems.  They can be related to sinusoids through Euler's formula, which identifies the real and imaginary parts of purely imaginary complex exponentials.  Eulers formula reveals that, in general, the real and imaginary parts of complex exponentials are sinusoids multiplied by real exponentials.  Thus, attenuated phasor notation is often useful in studying these signals.</para></section>
+
+
+
+  </content>
+</document>

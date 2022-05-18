@@ -1,0 +1,3644 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Properties of the DTFS</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34508</md:content-id>
+  <md:title>Properties of the DTFS</md:title>
+  <md:abstract>This module includes a table of properties of the DTFS.</md:abstract>
+  <md:uuid>ae2e2c8a-fd1e-4544-9fd2-e52c1382df9a</md:uuid>
+</metadata>
+
+<content>
+
+<section id="eip-468" class="in"><title>Introduction</title><para id="eip-720">In this module we will discuss the basic properties of the Discrete-Time Fourier Series. We will begin by refreshing your memory of our basic <link document="m10496" strength="3">Fourier series</link> equations:
+
+      <equation id="fourierxform"><m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		   <m:apply>
+ <m:minus/>
+		    <m:ci>N</m:ci>
+                    <m:ci>1</m:ci>
+</m:apply>
+		  </m:uplimit>
+		  <m:lowlimit>
+<m:ci>0</m:ci>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:apply>
+			  <m:msub>
+	      <m:mi>ω</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+			</m:apply>
+			<m:ci>k</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math></equation>
+      
+      <equation id="inversefourier"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:root/>
+		      <m:ci>N</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		   <m:apply>
+ <m:minus/>
+		    <m:ci>N</m:ci>
+                    <m:ci>1</m:ci>
+</m:apply>
+		  </m:uplimit>
+		  <m:lowlimit>
+<m:ci>0</m:ci>
+		  </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:apply>
+			      <m:divide/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+			      </m:apply>
+			      <m:ci>N</m:ci>
+			    </m:apply>
+			    <m:ci>k</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  
+      </equation>
+
+      Let 
+      <m:math>
+	<m:apply>	  
+	  <m:ci><m:mo>ℱ</m:mo></m:ci>
+	  <m:mi>·</m:mi>
+	</m:apply>
+      </m:math>
+      denote the transformation from 
+      <m:math>
+	<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+      </m:math>
+      to the Fourier coefficients
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci><m:mo>ℱ</m:mo></m:ci>
+	    <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar>
+	      <m:ci>k</m:ci>
+	    </m:bvar>
+	    <m:condition>
+	      <m:apply>
+		<m:in/>
+		<m:ci type="integer">k</m:ci>
+		<m:integers/>
+	      </m:apply>
+	    </m:condition>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>k</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>ℱ</m:mo></m:ci>
+	  <m:mi>·</m:mi>
+	</m:apply>
+      </m:math>
+      maps complex valued functions to sequences of <link document="m0081" strength="3">complex numbers</link>.
+    </para></section>
+
+    <section id="linearity" class="th">
+      <title>Linearity</title>
+      <para id="l1">
+	<m:math>
+	  <m:apply>
+	    <m:ci><m:mo>ℱ</m:mo></m:ci>
+	    <m:mi>·</m:mi>
+	  </m:apply>
+	</m:math>
+	is a <term>linear transformation</term>.
+
+	<rule id="lr1" type="theorem">
+	  <statement id="id1169363788899">
+	    <para id="s1">If 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci><m:mo>ℱ</m:mo></m:ci>
+		    <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:math>
+	      and 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci><m:mo>ℱ</m:mo></m:ci>
+		    <m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:math>.
+	      Then 
+	      <m:math display="block">
+		<m:apply>
+		  <m:forall/>
+		  <m:bvar>
+		    <m:ci>α</m:ci>
+		  </m:bvar>
+		  <m:condition>
+		    <m:apply>
+		      <m:in/>
+		      <m:ci>α</m:ci>
+		      <m:complexes/>
+		    </m:apply>
+		  </m:condition>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>ℱ</m:mo></m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>α</m:ci>
+			<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      and
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci><m:mo>ℱ</m:mo></m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		      <m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>d</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </para>
+	  </statement>
+
+	  <proof id="id1169362662239">
+	    <para id="proof1">
+	      Easy.  Just linearity of integral.
+	      
+	      <equation id="eq_lin1j"><m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>ℱ</m:mo></m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+			<m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>		    
+			<m:sum/>
+			<m:bvar>
+			  <m:ci>n</m:ci>
+			</m:bvar>
+			<m:lowlimit>
+			  <m:cn>0</m:cn>
+			</m:lowlimit>
+			<m:uplimit>
+			  <m:ci>N</m:ci>
+			</m:uplimit>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:plus/>
+			    <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+			    <m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+			  </m:apply>
+			  <m:apply>
+			    <m:exp/>
+			    <m:apply>
+			      <m:minus/>
+			      <m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>
+				  <m:msub>
+				    <m:mi>ω</m:mi>
+				    <m:mn>0</m:mn>
+				  </m:msub>
+				</m:ci>
+				<m:ci>k</m:ci>
+				<m:ci>n</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:plus/>			      
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:cn>1</m:cn>
+			    <m:ci>N</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:sum/>
+			    <m:bvar>
+			      <m:ci>n</m:ci>
+			    </m:bvar>
+			    <m:lowlimit>
+			      <m:cn>0</m:cn>
+			    </m:lowlimit>
+			    <m:uplimit>
+			      <m:ci>N</m:ci>
+			    </m:uplimit>
+			    <m:apply>
+			      <m:times/>
+			      <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+			      <m:apply>
+				<m:exp/>
+				<m:apply>
+				  <m:minus/>
+				  <m:apply>
+				    <m:times/>
+				    <m:imaginaryi/>
+				    <m:ci>
+				      <m:msub>
+					<m:mi>ω</m:mi>
+					<m:mn>0</m:mn>
+				      </m:msub>
+				    </m:ci>
+				    <m:ci>k</m:ci>
+				    <m:ci>n</m:ci>
+				  </m:apply>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply> 
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:cn>1</m:cn>
+			    <m:ci>N</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:sum/>
+			    <m:bvar>
+			      <m:ci>n</m:ci>
+			    </m:bvar>
+			    <m:lowlimit>
+			      <m:cn>0</m:cn>
+			    </m:lowlimit>
+			    <m:uplimit>
+			      <m:ci>N</m:ci>
+			    </m:uplimit>
+			    <m:apply>
+			      <m:times/>
+			      <m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+			      <m:apply>
+				<m:exp/>
+				<m:apply>
+				  <m:minus/>
+				  <m:apply>
+				    <m:times/>
+				    <m:imaginaryi/>
+				    <m:ci>
+				      <m:msub>
+					<m:mi>ω</m:mi>
+					<m:mn>0</m:mn>
+				      </m:msub>
+				    </m:ci>
+				    <m:ci>k</m:ci>
+				    <m:ci>n</m:ci>
+				  </m:apply>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>c</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>d</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>d</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </equation>
+	    </para>
+	  </proof>
+	</rule>
+      </para>  
+    </section>
+
+
+    <section id="shifty" class="th">
+      <title>Shifting</title>
+      <para id="shifty1">
+	Shifting in time equals a phase shift of <link document="m10733" strength="2">Fourier coefficients</link>
+	
+	<rule id="shiftytheorem" type="theorem">
+	  <statement id="id1169360786120">
+	    <para id="shiftystatement"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci><m:mo>ℱ</m:mo></m:ci>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">f</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>n</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>k</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>n</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      if 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:apply>
+			  <m:ci><m:mo>∠</m:mo></m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>c</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>,
+	      then
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>ω</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>k</m:ci>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>n</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>ω</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>k</m:ci>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>n</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci><m:mo>∠</m:mo></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>			
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>n</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci><m:mo>∠</m:mo></m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>		  
+		      <m:ci>
+			<m:msub>
+			  <m:mi>n</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </para>
+	  </statement>
+	  <proof id="id1169362550698">
+	    <para id="shiftyproof">
+	      
+	      <equation id="eq_shiftprf"><m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>ℱ</m:mo></m:ci>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>n</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:ci>N</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:sum/>
+			  <m:bvar>
+			    <m:mi>n</m:mi>
+			  </m:bvar>
+			  <m:lowlimit>
+			    <m:cn>0</m:cn>
+			  </m:lowlimit>
+			  <m:uplimit>
+			    <m:ci>N</m:ci>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:times/>
+			    <m:apply>
+			      <m:ci type="fn" class="discrete">f</m:ci>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci>
+				  <m:msub>
+				    <m:mi>n</m:mi>
+				    <m:mn>0</m:mn>
+				  </m:msub>
+				</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:minus/>
+				<m:apply>
+				  <m:times/>
+				  <m:imaginaryi/>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>ω</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				  <m:ci>k</m:ci>
+				  <m:ci>n</m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:ci>N</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:sum/>
+			  <m:bvar>
+			    <m:mi>n</m:mi>
+			  </m:bvar>
+			  <m:lowlimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>n</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			    </m:apply>
+			  </m:lowlimit>
+			  <m:uplimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>N</m:ci>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>n</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			    </m:apply>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:times/>
+			    <m:apply>
+			      <m:ci type="fn" class="discrete">f</m:ci>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci>
+				  <m:msub>
+				    <m:mi>n</m:mi>
+				    <m:mn>0</m:mn>
+				  </m:msub>
+				</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:minus/>
+				<m:apply>
+				  <m:times/>
+				  <m:imaginaryi/>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>ω</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				  <m:ci>k</m:ci>
+				  <m:apply>
+				    <m:minus/>
+				    <m:ci>n</m:ci>
+				    <m:ci>
+				      <m:msub>
+					<m:mi>n</m:mi>
+					<m:mn>0</m:mn>
+				      </m:msub>
+				    </m:ci>
+				  </m:apply>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:minus/>
+				<m:apply>
+				  <m:times/>
+				  <m:imaginaryi/>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>ω</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				  <m:ci>k</m:ci>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>n</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:ci>N</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:sum/>
+			  <m:bvar>
+			    <m:mi>n</m:mi>
+			  </m:bvar>
+			  <m:lowlimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>n</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			    </m:apply>
+			  </m:lowlimit>
+			  <m:uplimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>N</m:ci>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>n</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			    </m:apply>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:times/>
+			    <m:apply>
+			      <m:ci type="fn" class="discrete">f</m:ci>
+			      <m:apply>
+				<m:ci>
+				  <m:mover accent="true">
+				    <m:mi>n</m:mi>
+				    <m:mo>~</m:mo>
+				  </m:mover>
+				</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:minus/>
+				<m:apply>
+				  <m:times/>
+				  <m:imaginaryi/>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>ω</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				  <m:ci>k</m:ci>
+				  <m:ci>
+				    <m:mover accent="true">
+				      <m:mi>n</m:mi>
+				      <m:mo>~</m:mo>
+				    </m:mover>
+				  </m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:minus/>
+				<m:apply>
+				  <m:times/>
+				  <m:imaginaryi/>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>ω</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				  <m:ci>k</m:ci>
+				  <m:ci>
+				    <m:msub>
+				      <m:mi>n</m:mi>
+				      <m:mn>0</m:mn>
+				    </m:msub>
+				  </m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>k</m:ci>
+			  <m:integers/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>ω</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			      <m:ci>k</m:ci>
+			      <m:ci>
+				<m:mover accent="true">
+				  <m:mi>n</m:mi>
+				  <m:mo>~</m:mo>
+				</m:mover>
+			      </m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>c</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>		      
+		  </m:apply>
+		</m:math>	
+	      </equation>
+	    </para>
+	  </proof>
+	</rule>
+      </para>
+    </section>
+
+
+    <section id="parseval" class="th">
+      <title>Parseval's Relation</title>
+      
+      <para id="p935"><equation id="parsevalsrelation"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">f</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>N</m:ci>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		   <m:apply>
+ <m:minus/>
+		    <m:ci>N</m:ci>
+                    <m:ci>1</m:ci>
+</m:apply>
+		  </m:uplimit>
+		  <m:lowlimit>
+<m:ci>0</m:ci>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	Parseval's relation tells us that the energy of a signal is equal to the energy of its Fourier transform.
+
+	<note id="id1169359683131" type="note">Parseval tells us that the Fourier series
+	  <emphasis>maps</emphasis> 
+	  <m:math> 
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">L</m:ci>		  
+		  <m:cn>0</m:cn>		  	  
+		  <m:ci>N</m:ci>
+
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>
+	  to 
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn">l</m:ci>
+		<m:integers/>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</note>
+      </para>
+
+      <figure id="pars"><media id="id1169358748861" alt=""><image src="../../media/DTFSpars.png" mime-type="image/png"/></media>
+      </figure>	
+
+
+      <exercise id="e1">
+	<problem id="id1169365879465">
+	  <para id="p1">For 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>
+	    to have "finite energy," what do the 
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    do as 
+	    <m:math>
+	      <m:apply>
+		<m:tendsto/>
+		<m:ci>k</m:ci>
+		<m:infinity/>
+	      </m:apply>
+	    </m:math>?
+	  </para>
+	</problem>	
+	<solution id="id1169358774435">
+	  <para id="sol1"><m:math>
+	      <m:apply>
+		<m:lt/>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:infinity/>
+	      </m:apply>	      
+	    </m:math>
+	    for 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>
+	    to have finite energy.
+	  </para>
+	</solution>
+      </exercise>
+
+
+      <exercise id="e2">
+	<problem id="id7741717">
+	  <para id="p2">If 
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>k</m:ci>
+		      </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>		
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, 
+	    is
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>f</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">L</m:ci>
+		    <m:interval closure="closed">		  
+		      <m:cn>0</m:cn>		  	  
+		      <m:ci>N</m:ci>
+		    </m:interval>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>?
+	  </para>
+	</problem>
+	<solution id="id1169358254991">
+	  <para id="sol2">Yes, because
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>k</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>,
+	    which is summable.
+	  </para>
+	</solution>
+      </exercise>
+      
+
+      <exercise id="e3">
+	<problem id="id1169359764508">
+	  <para id="p3">Now, if
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>k</m:ci>
+		      </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>		
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:root/>			
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, 
+	    is 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>f</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">L</m:ci>
+		    <m:interval closure="closed">		  
+		      <m:cn>0</m:cn>		  	  
+		      <m:ci>N</m:ci>
+		    </m:interval>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>?
+	  </para>
+	</problem>
+	<solution id="id1169358349840">
+	  <para id="sol3">No, because
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>		  
+		  <m:ci>k</m:ci>		  
+		</m:apply>
+	      </m:apply>
+	    </m:math>,
+	    which is not summable.
+	  </para>
+	</solution>
+      </exercise>
+
+		    
+      <para id="parsp2">The rate of decay of the Fourier series determines if 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">f</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	has <emphasis>finite energy</emphasis>.
+      </para>
+	    
+    </section>
+			     
+    
+    <section id="eip-83"><title>ParsevalsTheorem Demonstration</title><para id="eip-109"><figure id="Parsevalsdemoonline"><media id="CNXParsevalsdemoonline" alt="ParsevalsDemo">
+<image mime-type="image/png" src="../../media/ParsevalsTheoremDiscrete_display.cdf" thumbnail="ParsevalsTheoremDiscrete_display.png" width="400"/>
+<object width="400" height="400" src="ParsevalsTheoremDiscrete_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/ParsevalsTheoremDiscrete_display.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating Parsevals Theorem. To download, right-click and save as .cdf.</caption>
+</figure>
+</para></section><section id="eip-716" class="th"><title>Symmetry Properties</title><rule id="symmetryproperties" type="rule"><title>Even Signals</title><statement id="statedsymmetry">
+<list id="eip-evenlist" list-type="bulleted" bullet-style="none"><title>Even Signals</title><item>
+<m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi>f</m:mi><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math></item>
+
+
+<item><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∥</m:mo></m:mrow><m:msub><m:mi>c</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>∥</m:mo><m:mo>=</m:mo><m:mo>∥</m:mo></m:mrow><m:msub><m:mi>c</m:mi><m:mrow><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub><m:mrow><m:mo>∥</m:mo></m:mrow></m:mrow></m:math></item>
+
+
+</list>
+</statement>
+
+
+<proof id="evenproof">
+<list id="eip-evenproof" list-type="bulleted" bullet-style="none"><item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+         
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          
+        </m:mrow>
+      </m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+       <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            
+            <m:mo>+</m:mo>
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>-</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+          </m:mfenced>
+         
+        </m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+<m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mn>2</m:mn>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          
+        </m:mrow>
+      </m:math>
+</item>
+    
+
+</list>
+
+
+</proof>
+</rule>
+
+
+
+
+
+
+<rule id="oddsymmetryproperties" type="rule"><title>Odd Signals</title>
+
+<statement id="odd_symmetry">
+<list id="eip-oddlist" list-type="bulleted" bullet-style="none"><title>Odd Signals</title><item>
+<m:math overflow="scroll">
+ <m:mrow>
+   <m:mi>f</m:mi>
+   <m:mo>[</m:mo>
+   <m:mi>n</m:mi>
+   <m:mo>]</m:mo>
+   <m:mo>=</m:mo>
+   <m:mi>-f</m:mi>
+   <m:mo>[</m:mo>
+   <m:mi>-n</m:mi>
+   <m:mo>]</m:mo>
+ </m:mrow>
+</m:math></item>
+
+<item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mrow><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:math>*</item>
+</list>
+</statement>
+
+
+
+
+
+
+
+<proof id="oddproof">
+<list id="eip-oddproof" list-type="bulleted" bullet-style="none"><item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+</m:mrow>
+</m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+</m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+       <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            
+            <m:mo>-</m:mo>
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>-</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+          </m:mfenced>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mn>2</m:mn>
+          <m:mo>ı</m:mo>
+          <m:mo form="prefix">sin</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+    
+
+</list>
+
+
+</proof>
+</rule>
+
+
+
+
+<rule id="Realsymmetryproperties" type="rule"><title>Real Signals</title>
+
+<statement id="realsymmetry">
+<list id="eip-list" list-type="bulleted" bullet-style="none"><title>Real Signals</title><item><m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi>f</m:mi></m:mrow></m:math>*<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math></item>
+
+<item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mrow><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:math>*</item></list>
+</statement>
+
+<proof id="realproof">
+<list id="eip-realproof" list-type="bulleted" bullet-style="none"><item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+<m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">exp</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mo>-</m:mo>
+            <m:mo>ı</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+<item>
+<m:math overflow="scroll" mode="display">
+       <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+
+            <m:mo>+</m:mo>
+            <m:mo form="prefix">exp</m:mo>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>-</m:mo>
+              <m:mo>ı</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>k</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+          </m:mfenced>
+
+        </m:mrow>
+      </m:math>
+</item>
+
+
+<item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msubsup>
+            <m:mn>Σ</m:mn>
+            <m:mn>0</m:mn>
+            <m:mi>N</m:mi>
+          </m:msubsup>
+          <m:mspace width="-0.166667em"/>
+<m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mn>2</m:mn>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>k</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+
+        </m:mrow>
+      </m:math>
+</item>
+    
+
+</list>
+
+
+</proof>
+</rule></section><section id="Diff" class="th">
+      <title>Differentiation in Fourier Domain</title>
+      
+      <para id="differentiation">
+	<equation id="diff"><m:math>
+	    <m:apply>
+	      <m:implies/>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>	  
+		  <m:ci><m:mo>ℱ</m:mo></m:ci>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:eq/>	
+		<m:apply>	  
+		  <m:ci><m:mo>ℱ</m:mo></m:ci>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>		  	    
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">f</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci>k</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ω</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <!--
+      <figure id='difffour'>
+	<media type='image/png' src='diff.png'/>
+      </figure>
+      -->
+
+      <para id="p640">Since
+
+	<equation id="fourierxform2"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:mi>0</m:mi>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:mi>N</m:mi>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>k</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	then
+
+	<equation id="df"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:diff/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>	
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:ci>0</m:ci>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>	
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>ω</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci>k</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:ci>0</m:ci>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:imaginaryi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ω</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>k</m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>k</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	A differentiator <emphasis>attenuates</emphasis> the low
+	frequencies in 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">f</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>	
+	and <emphasis>accentuates</emphasis> the high frequencies.  It
+	removes general trends and accentuates areas of sharp
+	variation. 
+
+	<note id="id3339029" type="note">
+	  A common way to mathematically measure the smoothness of a
+	  function 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">f</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>
+	  is to see how many derivatives are finite energy. 
+	</note>
+	
+	This is done by looking at the Fourier coefficients of the
+	signal, specifically how fast they <emphasis>decay</emphasis>
+	as 
+	<m:math>
+	  <m:apply>
+	    <m:tendsto/>	    
+	    <m:ci>k</m:ci>
+	    <m:infinity/>
+	  </m:apply>	      
+	</m:math>.
+	
+
+	If
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>	  
+	      <m:ci><m:mo>ℱ</m:mo></m:ci>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>	    
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>k</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+	and
+	<m:math>
+	  <m:apply>
+	    <m:abs/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>k</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math> 
+	has the form 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>k</m:ci>
+	      <m:ci>l</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	then
+	<m:math>
+	 <m:apply>
+	    <m:eq/>
+	    <m:apply>	  
+	      <m:ci><m:mo>ℱ</m:mo></m:ci>
+	      <m:apply>
+		<m:diff/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		  <m:degree>
+		    <m:ci>m</m:ci>
+		  </m:degree>		  
+		</m:bvar>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci>k</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ω</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>m</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>	    
+	  </m:apply>
+	</m:math>
+	and has the form 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>k</m:ci>
+	      <m:ci>m</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>k</m:ci>
+	      <m:ci>l</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+ 
+	So for the 
+	<m:math>
+	  <m:ci>
+	    <m:msup>
+	      <m:mi>m</m:mi>
+	      <m:mi>th</m:mi>
+	    </m:msup>
+	  </m:ci>
+	</m:math>
+	derivative to have finite energy, we need
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:lt/>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>	      	
+	      <m:apply>
+		<m:power/>
+		<m:apply>		  
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>k</m:ci>
+		      <m:ci>m</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>k</m:ci>
+		      <m:ci>l</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:infinity/>
+	  </m:apply>
+	</m:math>
+
+	thus
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>k</m:ci>
+	      <m:ci>m</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>k</m:ci>
+	      <m:ci>l</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	decays <emphasis>faster</emphasis> than 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math>
+	which implies that
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:gt/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>l</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>m</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+	
+	or
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>l</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>m</m:ci>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Thus the decay rate of the Fourier series dictates
+	smoothness. 
+      </para>
+    </section>
+      
+
+    <section id="eip-890"><title>Fourier Differentiation Demo</title><para id="eip-110"><figure id="demoonline"><media id="CNXdemoonline" alt="FourierDiffDiscreteDemo">
+<image mime-type="image/png" src="../../media/NumericalDiff_display.cdf" thumbnail="NumericalDiff.png" width="400"/>
+<object width="400" height="400" src="NumericalDiff_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/NumericalDiff.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating Differentiation in a Fourier Domain. To download, right-click and save as .cdf.</caption>
+</figure>
+</para></section><section id="integration" class="th">
+      <title>Integration in the Fourier Domain</title>
+      <para id="intf">
+	If
+
+	<equation id="fourelation"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>	  
+		<m:ci><m:mo>ℱ</m:mo></m:ci>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	then
+
+	<equation id="integratef"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>	  
+		<m:ci><m:mo>ℱ</m:mo></m:ci>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>η</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:ci>0</m:ci>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>n</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">f</m:ci>
+		    <m:ci>η</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>ω</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>		    
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<note id="id1169358106091" type="note">
+	  If 
+	  <m:math>
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>, this expression doesn't make sense.
+	</note>
+      </para>
+
+      <!--
+      <figure id='intfig'>
+	<media type='image/png' src='intfig.png'/>
+      </figure>
+      -->
+      <para id="p9247">
+	Integration accentuates low frequencies and attenuates high
+	frequencies. Integrators bring out the <emphasis>general
+	trends</emphasis> in signals and suppress short term variation
+	(which is noise in many cases). Integrators are
+	<emphasis>much</emphasis> nicer than differentiators.
+      </para>
+    </section>
+
+
+    <section id="eip-803"><title>Fourier Integration Demo</title><para id="eip-111"><figure id="fourierintdemoonline"><media id="CNXfourierintdemoonline" alt="FourierIntDemo">
+<image mime-type="image/png" src="FourierIntegrationDiscrete_display.cdf " thumbnail="FourierIntegration_display.png" width="400"/>
+<object width="400" height="400" src="FourierIntegrationDiscrete_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/FourierIntegration_display-34ab.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating the effect of Integration in a Fourier Domain.To download, right-click and save as .cdf.</caption>
+</figure>
+</para></section><section id="signalmult" class="th">
+      <title>Signal Multiplication</title>
+      <para id="psigmult">Given a signal 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">f</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	with Fourier coefficients
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	and a signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">g</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	with Fourier coefficients
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>d</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>,
+	we can define a new signal,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">y</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>,
+	where
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">y</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">g</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	We find that the Fourier Series representation of
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">y</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>,
+	
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>e</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>,
+	is such that
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>e</m:mi>
+		<m:mi>k</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>l</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:ci>0</m:ci>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:ci>N</m:ci>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>l</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mrow>
+		      <m:mi>k</m:mi>
+		      <m:mo>-</m:mo>
+		      <m:mi>l</m:mi>
+		    </m:mrow>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	This is to say that signal multiplication in the time domain
+	is equivalent to 
+	<link document="m10087" strength="3">discrete-time
+	circular convolution</link> 
+	in the frequency domain.
+	
+	The proof of this is as follows
+
+	<equation id="eqn2">	  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>e</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>N</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">f</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">g</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>k</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>N</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>l</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:ci>0</m:ci>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>c</m:mi>
+			    <m:mi>l</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>ω</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>l</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">g</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>k</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>l</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:ci>0</m:ci>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>l</m:mi>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>N</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>n</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>0</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">g</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>ω</m:mi>
+				  <m:mn>0</m:mn>
+				</m:msub>
+			      </m:ci>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>k</m:ci>
+				<m:ci>l</m:ci>
+			      </m:apply>
+			      <m:ci>n</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>l</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:ci>0</m:ci>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>l</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mrow>
+			<m:mi>k</m:mi>
+			<m:mo>-</m:mo>
+			<m:mi>l</m:mi>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+    </section><section id="eip-476" class="cn"><title>Conclusion</title><para id="eip-911">Like other Fourier transforms, the DTFS has many useful properties, including linearity, equal energy in the time and frequency domains, and analogs for shifting, differentation, and integration.
+</para></section>
+
+
+
+    <table id="uid1" summary="">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry>Property</entry>
+            <entry>Signal</entry>
+            <entry>DTFS</entry>
+          </row>
+          <row>
+            <entry>Linearity</entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>a</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>a</m:mi>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>b</m:mi>
+                  <m:mi>Y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+          </row>
+          <row>
+            <entry>Time Shifting</entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mi>m</m:mi>
+                      <m:mi>k</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>N</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:math>
+            </entry>
+          </row>
+          <row>
+            <entry>Time Modulation</entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mi>m</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>N</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+          </row>
+          <row>
+            <entry>Multiplication</entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>*</m:mo>
+                  <m:mi>Y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+          </row>
+          <row>
+            <entry>Circular Convolution</entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>*</m:mo>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mi>Y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>K</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:math>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+      <caption>Properties of the Discrete Fourier Transform</caption>
+    </table>
+  </content>
+</document>

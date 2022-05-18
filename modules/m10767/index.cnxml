@@ -1,0 +1,977 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Vector Spaces</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10767</md:content-id>
+  <md:title>Vector Spaces</md:title>
+  <md:abstract>This module will define what a vector space is and provide useful examples to the reader.</md:abstract>
+  <md:uuid>acaed134-1bfd-4221-b8fb-3d7989ccb066</md:uuid>
+</metadata>
+
+<content>
+    <section id="int">
+      <title>Introduction</title><para id="causeihaveto"><definition id="def1"><term>Vector space</term>
+	  <meaning id="id19383770">
+	    A vector space
+	    <m:math>
+	      <m:ci>S</m:ci>
+	    </m:math>
+	    is a collection of "vectors" such that (1) if
+	    <m:math>
+	      <m:apply>
+		<m:implies/>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>S</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:in/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:ci>
+		    <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>S</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math> for all scalars <m:math><m:ci>α</m:ci></m:math>
+	    (where 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>α</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>α</m:ci>
+		<m:complexes/>
+	      </m:apply>
+	    </m:math>, or some other field) and (2) if
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      <m:ci>S</m:ci>
+	      </m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>S</m:ci>
+	      </m:apply>
+	    </m:math>, then
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>S</m:ci>
+	      </m:apply>
+	    </m:math>
+	    <!--            </item>
+	  </list>-->
+	  </meaning>
+	</definition>
+	
+	To define an vector space, we need
+	<list id="vectorspace" list-type="bulleted"><item> A set of things called "vectors" (<m:math><m:ci>X</m:ci>
+	    </m:math>)</item>
+	  <item> A set of things called "scalars" that form a field (<m:math><m:ci>A</m:ci>
+	    </m:math>)</item>
+	  <item> A vector addition operation (<m:math><m:apply><m:plus/>
+	      </m:apply>
+	    </m:math>)</item>
+	  <item> A scalar multiplication operation (<m:math><m:ci>*</m:ci>
+	    </m:math>)</item>
+	</list>
+	
+	The operations need to have all the properties of given
+	below. Closure is usually the most important to show.
+      </para>
+    </section>
+    
+    
+    <section id="sec1">
+      <title>Vector Spaces</title>
+      
+      <para id="para2">
+        If the scalars <m:math><m:ci>α</m:ci></m:math> are real, 
+        <m:math><m:ci>S</m:ci></m:math> is called a <term>real vector
+	  space</term>.
+      </para>
+
+      <para id="para3">
+        If the scalars <m:math><m:ci>α</m:ci></m:math> are complex, 
+        <m:math><m:ci>S</m:ci></m:math> is called a <term>complex
+	  vector space</term>.
+      </para>
+
+      <para id="para4">
+        If the "vectors" in <m:math><m:ci>S</m:ci></m:math> are functions
+        of a continuous variable, we sometimes call 
+        <m:math><m:ci>S</m:ci></m:math> a <term>linear function
+	  space</term>
+      </para>
+
+
+      <section id="vector">
+	<title>Properties</title>
+	<para id="p5">
+	  We define a set 
+	  <m:math display="inline">
+	    <m:ci type="set">V</m:ci>
+	  </m:math>
+	  to be a vector space if
+	  
+	  <list id="list1" list-type="enumerated"><item>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci type="vector">y</m:ci>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math> for each
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci type="vector">y</m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math>
+
+	    </item>
+
+	    <item>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:ci type="vector">y</m:ci>
+			<m:ci type="vector">z</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:ci type="vector">x</m:ci>
+			<m:ci type="vector">y</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci type="vector">z</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>		 
+	
+	      for each
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math>,
+	      <m:math display="inline">
+		<m:ci type="vector">y</m:ci>
+	      </m:math>, and 
+	      <m:math display="inline">
+		<m:ci type="vector">z</m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math>
+	    </item>
+	    
+	    <item>
+	      There is a unique "zero vector" such that
+	      <m:math display="inline">
+		<m:apply><m:eq/>
+		  <m:apply><m:plus/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+	      </m:math> for each 
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> in
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math>
+(0 is the field additive identity)
+	    </item>
+
+	    <item>For each 
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> in
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math> there is a unique vector 
+	      <m:math display="inline">
+		<m:apply><m:minus/>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+	      </m:math>  such that
+	      <m:math display="inline">
+		<m:apply><m:eq/>
+		  <m:apply><m:plus/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:apply><m:minus/>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    
+	    <item>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>1</m:cn>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+	      </m:math>
+(1 is the field multiplicative identity)
+	    </item>
+
+	    <item>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:mrow>
+			<m:mo>(</m:mo>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+			<m:mo>⁢</m:mo>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+			<m:mo>)</m:mo>
+		      </m:mrow></m:ci>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:ci><m:msub>
+			<m:mi>c</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:mrow>
+			<m:mo>(</m:mo>
+			<m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+			<m:mo>⁢</m:mo>
+			<m:mi>x</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow></m:ci>		
+		  </m:apply>
+		</m:apply>
+	      </m:math> for each 
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> in
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+	      </m:math> and  
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="complex">ℂ</m:ci>
+	      </m:math>
+	    </item>
+	    
+	    <item>
+	      <m:math display="inline">
+		<m:apply><m:eq/>
+		  <m:apply><m:times/>
+		    <m:ci>c</m:ci>
+		    <m:apply><m:plus/>
+		      <m:ci type="vector">x</m:ci>
+		      <m:ci type="vector">y</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:plus/>
+		    <m:apply><m:times/>
+		      <m:ci>c</m:ci>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		    <m:apply><m:times/>
+		      <m:ci>c</m:ci>
+		      <m:ci type="vector">y</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      for each 
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci type="vector">y</m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci>c</m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="complex">ℂ</m:ci>
+	      </m:math>
+	    </item>
+	    
+	    <item>
+	      <m:math display="inline">
+		<m:apply><m:eq/>
+		  <m:apply><m:times/>
+		    <m:apply><m:plus/>
+		      <m:ci><m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>		
+		    </m:apply>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  
+		  <m:apply><m:plus/>
+		    <m:apply><m:times/>
+		      <m:ci><m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		    <m:apply><m:times/>
+		      <m:ci><m:msub>
+			  <m:mi>c</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		  </m:apply>    
+		</m:apply>
+	      </m:math>
+	      for each  
+	      <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	      </m:math> in
+	      <m:math display="inline">
+		<m:ci type="set">V</m:ci>
+	      </m:math> and 
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+	      </m:math>	and 
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:math> in 
+	      <m:math display="inline">
+		<m:ci type="complex">ℂ</m:ci>
+	      </m:math>
+	    </item> 
+	  </list>
+	</para>
+      </section>
+
+
+      <section id="sub1">
+	<title>Examples</title>
+	<para id="p1_sub1">
+	  
+	  <list id="list2" list-type="bulleted">
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:power/>
+		    <m:reals/>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:ci>real vector space</m:ci>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:power/>
+		    <m:complexes/>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:ci>complex vector space</m:ci>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msup>
+			<m:mi>L</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msup>
+		    </m:ci>
+		    <m:reals/>
+		  </m:apply>
+		  <m:set>
+		    <m:bvar>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:bvar>
+		    <m:condition>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:int/>
+			  <m:bvar><m:ci>t</m:ci></m:bvar>
+			  <m:lowlimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:infinity/>
+			    </m:apply>
+			  </m:lowlimit>
+			  <m:uplimit>
+			    <m:infinity/>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:abs/>
+			    <m:apply>
+			      <m:ci type="fn">f</m:ci>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:infinity/>
+		      </m:apply>
+		    </m:condition>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:set>
+		</m:apply>
+	      </m:math> is a vector space
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msup>
+			<m:mi>L</m:mi>
+			<m:mi>∞</m:mi>
+		      </m:msup>
+		    </m:ci>
+		    <m:reals/>
+		  </m:apply>
+		  <m:set>
+		    <m:bvar>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:bvar>
+		    <m:condition>
+		      <m:ci>
+			<m:mrow>
+			  <m:mrow>
+			    <m:mi>f</m:mi>
+			    <m:mo>⁡</m:mo>
+			    <m:mo>(</m:mo>
+			    <m:mi>t</m:mi>
+			    <m:mo>)</m:mo>
+			  </m:mrow>
+			  <m:mi> is bounded</m:mi>
+			</m:mrow>
+		      </m:ci>
+		    </m:condition>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:set>
+		</m:apply>
+	      </m:math> is a vector space
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msup>
+			<m:mi>L</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msup>
+		    </m:ci>
+		    <m:reals/>
+		  </m:apply>
+		  <m:set>
+		    <m:bvar>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:bvar>
+		    <m:condition>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:int/>
+			  <m:bvar><m:ci>t</m:ci></m:bvar>
+			  <m:lowlimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:infinity/>
+			    </m:apply>
+			  </m:lowlimit>
+			  <m:uplimit>
+			    <m:infinity/>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:power/>
+			    <m:apply>
+			      <m:abs/>
+			      <m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:infinity/>
+		      </m:apply>
+		    </m:condition>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:set>
+		  <m:ci>finite energy signals</m:ci>
+		</m:apply>
+	      </m:math> is a vector space
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msup>
+			<m:mi>L</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msup>
+		    </m:ci>
+		    <m:apply>
+		      <m:interval>
+			<m:cn>0</m:cn>
+			<m:ci>T</m:ci>
+		      </m:interval>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>finite energy functions on interval [0,T]</m:ci>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mi>∞</m:mi>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>		
+	      </m:math> are vector spaces
+	    </item>
+	    <item>
+	      The collection of functions piecewise constant between the
+	      integers is a vector space
+	    </item>
+	  </list>
+	</para>
+
+        <figure id="fig1">
+          <media id="id19699115" alt=""><image src="../../media/vecsp_f1.png" mime-type="image/png"/></media>
+        </figure>
+
+	<list id="list3" list-type="bulleted">
+          <item>
+            <m:math>
+              <m:apply>
+                <m:eq/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ℝ</m:mi>
+		      <m:mo>+</m:mo>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:set>
+		  <m:bvar>
+		    <m:vector>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>x</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>x</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:vector>
+		  </m:bvar>
+		  <m:condition>
+		    <m:apply>
+		      <m:and/>
+		      <m:apply>
+			<m:gt/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>x</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:gt/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>x</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:condition>
+		  <m:vector>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:vector>
+		</m:set>
+              </m:apply>
+            </m:math> is <emphasis>not</emphasis> a vector space.
+            <m:math>
+              <m:apply>
+                <m:in/>
+		<m:vector>
+		  <m:cn>1</m:cn>
+		  <m:cn>1</m:cn>
+		</m:vector>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ℝ</m:mi>
+		      <m:mo>+</m:mo>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+              </m:apply>
+            </m:math>, but
+            <m:math>
+              <m:apply>
+                <m:forall/>
+		<m:bvar><m:ci>α</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:lt/>
+		    <m:ci>α</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:notin/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:vector>
+		      <m:cn>1</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:vector>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>ℝ</m:mi>
+			<m:mo>+</m:mo>
+		      </m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+            </m:math>
+          </item>
+          <item>
+            <m:math>
+              <m:apply>
+                <m:eq/>
+		<m:ci>D</m:ci>
+		<m:set>
+		  <m:apply>
+		    <m:forall/>
+		    <m:bvar>
+		      <m:ci>z</m:ci>
+		    </m:bvar>
+		    <m:condition>
+		      <m:apply>
+			<m:leq/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>z</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:condition>
+		    <m:apply>
+		      <m:in/>
+		      <m:ci>z</m:ci>
+		      <m:complexes/>
+		    </m:apply>
+		  </m:apply>
+		</m:set>
+	      </m:apply>
+	    </m:math>
+
+	    is <emphasis>not</emphasis> a vector space.
+            
+	    <m:math>
+              <m:apply>
+                <m:in/>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>z</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:ci>D</m:ci>
+              </m:apply>
+            </m:math>,
+            <m:math>
+              <m:apply>
+                <m:in/>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>z</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:imaginaryi/>
+		</m:apply>
+		<m:ci>D</m:ci>
+              </m:apply>
+            </m:math>, but
+            <m:math>
+              <m:apply>
+                <m:notin/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>z</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>z</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>D</m:ci>
+              </m:apply>
+            </m:math>,
+            <m:math>
+              <m:apply>
+                <m:gt/>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>z</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>z</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+              </m:apply>
+            </m:math>
+          </item>
+        </list>
+
+        <para id="para7">
+	  <note id="id19699672" type="note">
+	    Vector spaces can be collections of functions, collections
+	    of sequences, as well as collections of traditional
+	    vectors (<foreign>i.e.</foreign> finite lists of numbers)
+	  </note>
+        </para>
+
+      </section>
+    </section>
+
+  </content>
+</document>

@@ -1,0 +1,2132 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Eigenvectors and Eigenvalues</title>
+
+   <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10736</md:content-id>
+  <md:title>Eigenvectors and Eigenvalues</md:title>
+  <md:abstract>This module defines eigenvalues and eigenvectors and explains a method of finding them given a matrix.  These ideas are presented, along with many examples, in hopes of leading up to an understanding of the Fourier Series.</md:abstract>
+  <md:uuid>5df15b47-f398-43f7-9f97-aac7ffb189fb</md:uuid>
+</metadata>
+
+<content>
+    <para id="intro">
+      In this section, our linear systems will be n×n matrices
+      of complex numbers.  For a little background into some of the
+      concepts that this module is based on, refer to the basics of
+      <link document="m10734" strength="2">linear algebra</link>.
+    </para>   
+
+    <section id="eigvec">
+      <title>Eigenvectors and Eigenvalues</title>
+      <para id="p1_eigvec">
+	Let
+	<m:math display="inline">
+	  <m:ci>A</m:ci>
+	</m:math> be an n×n matrix, where 
+	<m:math display="inline">
+	  <m:ci>A</m:ci>
+	</m:math> is a linear operator on vectors in 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>.
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">b</m:ci>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	where 
+	<m:math display="inline">
+	  <m:ci type="vector">x</m:ci>
+	</m:math> and
+	<m:math display="inline">
+	  <m:ci type="vector">b</m:ci>
+	</m:math>
+	are n×1 vectors (<link target-id="fig1"/>).
+      </para>
+
+      <figure id="fig1" orient="vertical">
+	<subfigure id="sub1_f1">
+	  <media id="id1167641140406" alt=""><image src="../../media/eigv_f1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="sub2_f1">
+	  <media id="id1167645401185" alt=""><image src="../../media/eigv_f2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  Illustration of linear system and vectors.
+	</caption>
+      </figure>
+      
+      
+      <definition id="def_eigvec">
+	<term>eigenvector</term>
+	<meaning id="id1167648211897">
+	  An eigenvector of 
+	  <m:math display="inline">
+	    <m:ci>A</m:ci>
+	  </m:math> is a vector
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:in/>
+	      <m:ci type="vector">v</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> such that
+	  
+	  <equation id="eq2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>λ</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  where 
+	  <m:math display="inline">
+	    <m:ci>λ</m:ci> </m:math> is called the
+	  corresponding <term>eigenvalue</term>.
+	  <m:math display="inline">
+	    <m:ci>A</m:ci>
+	  </m:math> only changes the <emphasis>length</emphasis> of
+	   <m:math display="inline">
+	    <m:ci type="vector">v</m:ci>
+	  </m:math>, not its direction.
+	</meaning>
+      </definition>
+
+      <section id="geo_look">
+	<title>Graphical Model</title>
+	<para id="p1_geolk">
+	  Through <link target-id="eigf3"/> and <link target-id="eigf4"/>,
+	  let us look at the difference between <link target-id="eq1" strength="2"/> and <link target-id="eq2" strength="2"/>.
+	</para>
+
+	<figure id="eigf3">
+	  <media id="id1167641268170" alt=""><image src="../../media/eigv_f3.png" mime-type="image/png"/></media>
+	  <caption>
+	    Represents <link target-id="eq1" strength="2"/>, 
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:ci type="vector">b</m:ci>
+	      </m:apply>
+	    </m:math>.
+	  </caption>
+	</figure>
+
+	<para id="p2_geolk">
+	  If 
+	  <m:math display="inline">
+	    <m:ci type="vector">v</m:ci>
+	  </m:math> is an eigenvector of 
+	  <m:math display="inline">
+	    <m:ci>A</m:ci> </m:math>, then only its length changes.
+	  See <link target-id="eigf4"/> and notice how our vector's
+	  length is simply scaled by our variable,
+	  <m:math><m:ci>λ</m:ci></m:math>, called the
+	  <term>eigenvalue</term>:
+	</para>
+
+	<figure id="eigf4">
+	  <media id="id1167631784605" alt=""><image src="../../media/eigv_f4.png" mime-type="image/png"/></media>
+	  <caption>
+	    Represents <link target-id="eq2" strength="2"/>,
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>λ</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </caption>
+	</figure>	
+
+	<para id="p3_geolk">
+	  <note id="id1167650371223" type="note">
+	    When dealing with a matrix  
+	    <m:math display="inline">
+	      <m:ci>A</m:ci> </m:math>, eigenvectors are the
+	    <emphasis>simplest</emphasis> possible vectors to operate
+	    on.
+	  </note>
+	</para>
+	
+      </section>
+   
+      <section id="eigv_eg">
+	<title>Examples</title>
+	
+	<exercise id="exer1">
+	  <problem id="id1167633734793">
+	    <para id="pr1_exer1">
+	      From inspection and understanding of eigenvectors, find
+	      the two eigenvectors,
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>,
+	      of 
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:cn>3</m:cn>
+			<m:cn>0</m:cn>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:cn>0</m:cn>
+			<m:cn>-1</m:cn>
+		      </m:matrixrow>		      
+		    </m:matrix>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      Also, what are the corresponding eigenvalues, 
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	      </m:math>?  Do not worry if you are having problems
+	      seeing these values from the information given so far,
+	      we will look at more rigorous ways to find these values
+	      soon.
+	    </para>
+	  </problem>
+	  
+	  <solution id="id1167631694536">
+	    <para id="sol1_exer1">	    
+	      The eigenvectors you found should be:
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:vector>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:math>
+
+	      And the corresponding eigenvalues are
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:cn>3</m:cn>
+		</m:apply>
+	      </m:math>
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+	      </m:math>
+	    </para>
+	  </solution>
+	</exercise>
+
+
+	<exercise id="exer2">
+	  <problem id="id1167644555509">
+	    <para id="pr1_exer2">
+	      Show that these two vectors,
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>-1</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:math>
+	      
+	      are eigenvectors of 
+	      <m:math display="inline">
+		<m:ci>A</m:ci> 
+	      </m:math>, where
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>A</m:ci>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		      <m:cn>-1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>-1</m:cn>
+		      <m:cn>3</m:cn>
+		    </m:matrixrow>		      
+		  </m:matrix>
+		</m:apply>
+	      </m:math>.  Also, find the corresponding eigenvalues.
+	    </para>
+	  </problem>
+
+	  <solution id="id8588841">
+	    <para id="p1_sol1e2">
+	      In order to prove that these two vectors are
+	      eigenvectors, we will show that these statements meet
+	      the requirements stated in the <link target-id="def_eigvec" strength="2">definition</link>.
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:matrix>
+			<m:matrixrow>
+			  <m:cn>3</m:cn>
+			  <m:cn>-1</m:cn>
+			</m:matrixrow>
+			<m:matrixrow>
+			  <m:cn>-1</m:cn>
+			  <m:cn>3</m:cn>
+			</m:matrixrow>		      
+		      </m:matrix>
+		    </m:apply>
+		    <m:apply>
+		      <m:vector>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		      </m:vector>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:vector>
+		      <m:cn>2</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:vector>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	       <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:matrix>
+			<m:matrixrow>
+			  <m:cn>3</m:cn>
+			  <m:cn>-1</m:cn>
+			</m:matrixrow>
+			<m:matrixrow>
+			  <m:cn>-1</m:cn>
+			  <m:cn>3</m:cn>
+			</m:matrixrow>		      
+		      </m:matrix>
+		    </m:apply>
+		    <m:apply>
+		      <m:vector>
+			<m:cn>1</m:cn>
+			<m:cn>-1</m:cn>
+		      </m:vector>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:vector>
+		      <m:cn>4</m:cn>
+		      <m:cn>-4</m:cn>
+		    </m:vector>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      These results show us that 
+	      <m:math display="inline">
+		<m:ci>A</m:ci>
+	      </m:math>
+	      only scales the two vectors (<foreign>i.e.</foreign>
+	      changes their length) and thus it proves that <link target-id="eq2" strength="3"/> holds true for the following
+	      two eigenvalues that you were asked to find:
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:cn>4</m:cn>
+		</m:apply>
+	      </m:math>
+	      	      
+	      If you need more convincing, then one could also easily
+	      graph the vectors and their corresponding product with
+	      <m:math><m:ci>A</m:ci></m:math> to see that the results
+	      are merely scaled versions of our original vectors,
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math> and
+	      <m:math display="inline">
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>.
+	    </para>
+	  </solution>
+
+	</exercise>
+      </section><para id="eip-651"><figure id="Khan_Eigenvector"><title>Khan Lecture on Eigenvectors</title><media id="yt-media" display="block" alt="Khan_Lecture_On_Laplace">
+  <flash id="yt-video" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/PhfbEr2btGQ&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xd0d0d0&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1" width="640" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+
+<caption>video from <link target-id="http://www.khanacademy.org/">Khan Academy</link> - Introduction to Eigenvectors and Eigenvalues - 7:43 min. </caption></figure></para>
+    </section>
+
+
+    <section id="sec2">
+      <title>Calculating Eigenvalues and Eigenvectors</title>
+      <para id="p1_sec2">
+	In the above examples, we relied on your understanding of the
+	definition and on some basic observations to find and prove the
+	values of the eigenvectors and eigenvalues.  However, as you
+	can probably tell, finding these values will not always be
+	that easy.  Below, we walk through a rigorous and mathematical
+	approach at calculating the eigenvalues and eigenvectors of a
+	matrix.
+      </para>
+
+      <section id="sub1_s2">
+	<title>Finding Eigenvalues</title>
+	<para id="p1_s1s2">
+	  Find 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>λ</m:ci>
+	      <m:complexes/>
+	    </m:apply>
+	  </m:math> such that 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci type="vector">v</m:ci>
+	      <m:ci type="vector">0</m:ci>
+	    </m:apply>
+	  </m:math>,
+	  where   
+	  <m:math display="inline">
+	    <m:ci type="vector">0</m:ci>
+	  </m:math> is the "zero vector."  We will start with <link target-id="eq2" strength="3"/>, and then work our way down
+	  until we find a way to explicitly calculate  
+	  <m:math display="inline">
+	    <m:ci>λ</m:ci>
+	  </m:math>.
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>λ</m:ci>
+		  <m:ci type="vector">v</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>	  
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>	  
+	  </m:math>
+
+	  In the previous step, we used the fact that 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:ci>I</m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  where <m:math><m:ci>I</m:ci></m:math> is the identity
+	  matrix.
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>I</m:ci>
+	      <m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:ci>…</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		    <m:ci>…</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:ci>⋱</m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>0</m:cn>
+		    <m:ci>…</m:ci>
+		    <m:ci>…</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	  
+	  
+	  So, 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:ci>I</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> is just a new matrix.
+	</para>
+
+
+	<example id="eg1_eva">
+	  <para id="p1_eg1eva">
+	    Given the following matrix, 
+	    <m:math><m:ci>A</m:ci></m:math>, then we can find our new
+	    matrix, 
+	    <m:math display="inline">
+	      <m:apply>
+		<m:minus/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>λ</m:ci>
+		  <m:ci>I</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	    
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:minus/>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		      <m:apply>
+			<m:minus/>
+		    <m:apply>
+		      <m:selector/>
+		      <m:ci>a</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	  </para>
+	</example>
+
+	<para id="p2_s2s2">
+	  If 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>	  
+	  </m:math> for some 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci type="vector">v</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>, then
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:ci>I</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> is <emphasis>not invertible</emphasis>.  This
+	  means:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:determinant/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  This determinant (shown directly above) turns out to be a
+	  polynomial expression (of order
+	  <m:math><m:ci>n</m:ci></m:math>).  Look at the examples
+	  below to see what this means.
+	</para>
+
+	<example id="eg2_eva">
+	  <para id="p1_eg2eva">
+	    Starting with matrix <m:math><m:ci>A</m:ci></m:math>
+	    (shown below), we will find the polynomial expression,
+	    where our eigenvalues will be the dependent variable.
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		      <m:cn>-1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>-1</m:cn>
+		      <m:cn>3</m:cn>
+		    </m:matrixrow>		      
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:minus/>
+			<m:cn>3</m:cn>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		      <m:cn>-1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>-1</m:cn>
+		      <m:apply>
+			<m:minus/>
+			<m:cn>3</m:cn>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    </m:matrixrow>		      
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:determinant/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>A</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>λ</m:ci>
+		      <m:ci>I</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>3</m:cn>
+		      <m:ci>λ</m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:cn>-1</m:cn>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>λ</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>6</m:cn>
+		      <m:ci>λ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>8</m:cn>
+		</m:apply>		
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>λ</m:ci>
+		<m:apply>
+		  <m:set>
+		    <m:cn>2</m:cn>
+		    <m:cn>4</m:cn>
+		  </m:set>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+
+	<example id="eg3_eva">
+	  <para id="p1_eg3eva">
+	    Starting with matrix <m:math><m:ci>A</m:ci></m:math>
+	    (shown below), we will find the polynomial expression,
+	    where our eigenvalues will be the dependent variable.
+
+	        <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+		    </m:matrixrow>
+		      <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>	    
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:apply>
+			<m:minus/>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		       <m:apply>
+			<m:minus/>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    </m:matrixrow>
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>	    
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:determinant/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>A</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>λ</m:ci>
+		      <m:ci>I</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>λ</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:plus/>
+		      <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		      <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+			</m:apply>
+			<m:ci>λ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:selector/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+			<m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+	<para id="p3_s3s2">
+	  If you have not already noticed it, calculating the
+	  eigenvalues is equivalent to calculating the roots of
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:determinant/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>I</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>λ</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mrow>
+		      <m:mi>n</m:mi>
+		      <m:mo>−</m:mo>
+		      <m:mn>1</m:mn>
+		    </m:mrow>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>λ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci>λ</m:ci>
+		</m:apply>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+	  
+	  <note id="id1167646385118" type="conclusion"><label>Conclusion</label>
+	    Therefore, by simply using calculus to solve for the roots
+	    of our polynomial we can easily find the eigenvalues of our
+	    matrix.
+	  </note>
+
+	</para>
+      </section>
+      
+      <section id="sub2_s2">
+	<title>Finding Eigenvectors</title>
+	<para id="p1_s2s2">
+	  Given an eigenvalue, 
+	  <m:math>
+	    <m:ci><m:msub>
+	      <m:mi>λ</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub></m:ci>
+	  </m:math>, the associated eigenvectors are given by
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	    <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:vector>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:vector>
+	      </m:apply>
+	      <m:vector>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>⋮</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:vector>
+	    </m:apply>
+	  </m:math>
+
+	  set of <m:math><m:ci>n</m:ci></m:math> equations with
+	  <m:math><m:ci>n</m:ci></m:math> unknowns.  Simply
+	  <emphasis>solve the <m:math><m:ci>n</m:ci></m:math>
+	  equations</emphasis> to find the eigenvectors.
+	</para>
+      </section><para id="eip-858"><figure id="Khan_Eigenvectorexample">
+ <title>Khan Lecture on Deriving Eigenvectors and Eigenvalues</title>
+ <media id="yt-mediaexample" display="block" alt="Khan_Lecture_On_Laplace">
+  <flash id="yt-videoexample" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/pZ6mMVEE89g&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xd0d0d0&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1" width="640" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+<caption> video from <link target-id="http://www.khanacademy.org/">Khan Academy</link> - Example Deriving Eignevectors and Eigenvalues - 5:39 min. </caption>
+</figure></para>
+    </section>
+
+
+    <section id="sec3">
+      <title>Main Point</title>
+      <para id="p1_sec3">
+	Say the eigenvectors of <m:math><m:ci>A</m:ci></m:math>,
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>, 
+	<link document="m10734" target-id="span_sec">span</link> 
+	
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>, meaning 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math> are <link document="m10734" target-id="lin_ind" strength="2">linearly independent</link> and we can write any 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:complexes/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> as
+
+	<equation id="eq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	where 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math>.  All that we are doing is rewriting <m:math><m:ci type="vector">x</m:ci></m:math> in terms of eigenvectors of
+	<m:math><m:ci>A</m:ci></m:math>.  Then,
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci>A</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>b</m:ci>
+	  </m:apply>
+	</m:math>
+
+	Therefore we can write,
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	and this leads us to the following depicted system:	  
+      </para>
+      
+      <figure id="eigf5">
+	<media id="id1167631214198" alt=""><image src="../../media/eigv_sys.png" mime-type="image/png"/></media>
+	<caption>
+	  Depiction of system where we break our vector, <m:math><m:ci type="vector">x</m:ci></m:math>, into a sum of its
+	  eigenvectors.
+	</caption>
+      </figure>
+      
+      <para id="pf_mp">
+	where in <link target-id="eigf5"/> we have,
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>b</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<note id="id1167638232682" type="Main Point"><label>Main Point</label>
+	  By breaking up a vector, <m:math><m:ci type="vector">x</m:ci></m:math>, into a combination of
+	  eigenvectors, the calculation of 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	  </m:math> is broken into "easy to swallow" pieces.
+	</note>
+      </para>
+
+    </section>
+    
+    <section id="sec4">
+      <title>Practice Problem</title>
+   	
+      <exercise id="exer_fin">
+	<problem id="id1167632959236">
+	  <para id="pr1_ef">
+	    For the following matrix, <m:math><m:ci>A</m:ci></m:math> and
+	    vector, <m:math><m:ci type="vector">x</m:ci></m:math>, solve
+	    for their product.  Try solving it using two different
+	    methods: directly and using eigenvectors. 
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:matrix>
+		    <m:matrixrow>
+		      <m:cn>3</m:cn>
+		      <m:cn>-1</m:cn>
+		    </m:matrixrow>
+		    <m:matrixrow>
+		      <m:cn>-1</m:cn>
+		      <m:cn>3</m:cn>
+		    </m:matrixrow>		      
+		  </m:matrix>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:vector>
+		    <m:cn>5</m:cn>
+		    <m:cn>3</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</problem>
+
+	<solution id="id7631730">
+	  <para id="sol1_ef">
+	    <emphasis>Direct Method</emphasis> (use basic matrix
+	    multiplication) 
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:cn>3</m:cn>
+			<m:cn>-1</m:cn>
+		      </m:matrixrow>
+		      <m:matrixrow>
+			<m:cn>-1</m:cn>
+			<m:cn>3</m:cn>
+		      </m:matrixrow>		      
+		    </m:matrix>
+		  </m:apply>
+		  <m:apply>
+		    <m:vector>
+		      <m:cn>5</m:cn>
+		      <m:cn>3</m:cn>
+		    </m:vector>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:vector>
+		    <m:cn>12</m:cn>
+		    <m:cn>4</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    <emphasis>Eigenvectors</emphasis> (use the eigenvectors
+	    and eigenvalues we found earlier for this same matrix)
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:vector>
+		  <m:cn>1</m:cn>
+		  <m:cn>1</m:cn>
+		</m:vector>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:vector>
+		  <m:cn>1</m:cn>
+		  <m:cn>-1</m:cn>
+		</m:vector>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:math>
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:cn>4</m:cn>
+	      </m:apply>
+	    </m:math>
+	    
+	    As shown in <link target-id="eq3" strength="3"/>, we want to
+	    represent <m:math><m:ci type="vector">x</m:ci></m:math> as
+	    a sum of its scaled eigenvectors.  For this case, we have:
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>4</m:cn>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	     <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:vector>
+		    <m:cn>5</m:cn>
+		    <m:cn>3</m:cn>
+		  </m:vector>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>4</m:cn>
+		    <m:apply>
+		      <m:vector>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		      </m:vector>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:vector>
+		      <m:cn>1</m:cn>
+		      <m:cn>-1</m:cn>
+		    </m:vector>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>4</m:cn>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>v</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>4</m:cn>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>v</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    Therefore, we have
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>4</m:cn>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:vector>
+			<m:cn>1</m:cn>
+			<m:cn>1</m:cn>
+		      </m:vector>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>4</m:cn>
+		    <m:apply>
+		      <m:vector>
+			<m:cn>1</m:cn>
+			<m:cn>-1</m:cn>
+		      </m:vector>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:vector>
+		    <m:cn>12</m:cn>
+		    <m:cn>4</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	    Notice that this method using eigenvectors required
+	    <emphasis>no</emphasis> matrix multiplication.  This may
+	    have seemed more complicated here, but just imagine
+	    <m:math><m:ci>A</m:ci></m:math> being really big, or even
+	    just a few dimensions larger!
+	  </para>
+	</solution>
+      </exercise><para id="element-369"><media id="id1167643860706" alt=""><labview src="LinearAlgebraCalc3.llb" viname="Linear Algebra Calculator.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="420" width="625"><param name="lvfppviname" value="Linear Algebra Calculator.vi"/></labview></media></para>
+
+
+
+    </section>
+
+  </content>
+</document>

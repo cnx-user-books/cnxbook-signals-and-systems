@@ -1,0 +1,285 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Linear Constant Coefficient Difference Equations</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m12325</md:content-id>
+  <md:title>Linear Constant Coefficient Difference Equations</md:title>
+  <md:abstract>A module concerns the concepts of linear constant-coefficient difference equations.</md:abstract>
+  <md:uuid>223e0ced-c37e-46a4-9bc6-ede7ab05281d</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction: Difference Equations</title>
+      <para id="id157161">In our study of signals and systems, it will often be useful to describe systems using equations involving the rate of change in some quantity. In discrete time, this is modeled through difference equations, which are a specific type of recurrance relation. For instance, recall that the funds in an account with discretely componded interest rate <m:math overflow="scroll"><m:mi>r</m:mi></m:math> will increase by <m:math overflow="scroll"><m:mi>r</m:mi></m:math> times the previous balance. Thus, a discretely compounded interest system is described by the first order difference equation shown in <link target-id="uid1"/>.</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>r</m:mi>
+            <m:mo>)</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id157574">Given a sufficiently descriptive set of initial conditions or boundary conditions, if there is a solution to the difference equation, that solution is unique and describes the behavior of the system. Of course, the results are only accurate to the degree that the model mirrors reality.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Linear Constant Coefficient Difference Equations</title>
+      <para id="id157590">An important subclass of difference equations is the set of linear constant coefficient difference equations. These equations are of the form</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>C</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>f</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id157629">where <m:math overflow="scroll"><m:mi>C</m:mi></m:math> is a difference operator of the form given</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>C</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mi>N</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>D</m:mi>
+              <m:mi>N</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:msup>
+              <m:mi>D</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi>D</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id157911">in which <m:math overflow="scroll"><m:mi>D</m:mi></m:math> is the first difference operator</para>
+      <equation id="uid4"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>D</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id157979">Note that operators of this type satisfy the linearity conditions, and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> are real constants.</para>
+      <para id="id158018">However, <link target-id="uid2"/> can easily be written as a linear constant coefficient recurrence equation without difference operators. Conversely, linear constant coefficient recurrence equations can also be written in the form of a difference equation, so the two types of equations are different representations of the same relationship. Although we will still call them linear constant coefficient difference equations in this course, we typically will not write them using difference operators. Instead, we will write them in the simpler recurrence relation form</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>N</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>M</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>b</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id158124">where <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is the input to the system and <m:math overflow="scroll"><m:mi>y</m:mi></m:math> is the output. This can be rearranged to find <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> as</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+            </m:mfrac>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mo>-</m:mo>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+                <m:mi>N</m:mi>
+              </m:munderover>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>+</m:mo>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mi>M</m:mi>
+              </m:munderover>
+              <m:msub>
+                <m:mi>b</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id158283">The forms provided by <link target-id="uid5"/> and <link target-id="uid6"/> will be used in the remainder of this course.</para>
+      <para id="id158297">A similar concept for continuous time setting, differential equations, is discussed in the chapter on time domain analysis of continuous time systems. There are many parallels between the discussion of linear constant coefficient ordinary differential equations and linear constant coefficient differece equations.</para>
+    </section>
+    <section id="cid3" class="ap">
+      <title>Applications of Difference Equations</title>
+      <para id="id158312">Difference equations can be used to describe many useful digital filters as described in the chapter discussing the z-transform. An additional illustrative example is provided here.</para>
+      <example id="eip-304"><para id="id158325">Recall that the Fibonacci sequence describes a (very unrealistic) model of what happens when a pair rabbits get left alone in a black box... The assumptions are that a pair of rabits never die and produce a pair of offspring every month starting on their second month of life. This system is defined by the recursion relation for the number of rabit pairs <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> at month <m:math overflow="scroll"><m:mi>n</m:mi></m:math></para>
+        <equation id="id158354">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>y</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>y</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>y</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id158401">with the initial conditions <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. The result is a very fast growth in the sequence.  This is why we do not open black boxes.</para>
+      </example>
+    </section><section id="eip-992" class="cn"><title>Linear Constant Coefficient Difference Equations Summary</title><para id="eip-616">Difference equations are an important mathematical tool for modeling discrete time systems.  An important subclass of these is the class of linear constant coefficient difference equations.  Linear constant coefficient difference equations are often particularly easy to solve as will be described in the module on solutions to linear constant coefficient difference equations and are useful in describing a wide range of situations that arise in electrical engineering and in other fields.</para></section>
+  </content>
+</document>

@@ -1,0 +1,99 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Aliasing Phenomena</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34847</md:content-id>
+  <md:title>Aliasing Phenomena</md:title>
+  <md:abstract>This module introduces aliasing phenomena and discusses its implications for reconstruction.</md:abstract>
+  <md:uuid>cab1c8df-4792-4898-9fae-e4551a352919</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id270824">Through discussion of the Nyquist-Shannon sampling theorem and Whittaker-Shannon reconstruction formula, it has already been shown that a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> continuous time signal can be reconstructed from its samples at rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:mrow></m:math> via the sinc interpolation filter if <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. Now, this module will investigate a problematic phenomenon, called aliasing, that can occur if this sufficient condition for perfect reconstruction does not hold. When aliasing occurs the spectrum of the samples has different form than the original signal spectrum, so the samples cannot be used to reconstruct the original signal through Whittaker-Shannon interpolation.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Aliasing</title>
+      <para id="id271250">Aliasing occurs when each period of the spectrum of the samples does not have the same form as the spectrum of the original signal. Given a continuous time signals <m:math overflow="scroll"><m:mi>x</m:mi></m:math> with continuous time Fourier transform <m:math overflow="scroll"><m:mi>X</m:mi></m:math>, recall that the spectrum <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> of sampled signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> is given by</para>
+      <equation id="id271490">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>s</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mi>X</m:mi>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mrow>
+                  <m:mi>ω</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mi>k</m:mi>
+                </m:mrow>
+                <m:msub>
+                  <m:mi>T</m:mi>
+                  <m:mi>s</m:mi>
+                </m:msub>
+              </m:mfrac>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id271578">As has already been mentioned several times, if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> then each period of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> has the same form as <m:math overflow="scroll"><m:mi>X</m:mi></m:math>. However, if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is not bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, then the <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mfenced separators="" open="(" close=")"><m:mfrac><m:mrow><m:mi>ω</m:mi><m:mo>-</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi></m:mrow><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:mfrac></m:mfenced></m:mrow></m:math> can overlap and sum together. This is illustrated in <link target-id="uid1"/> in which sampling above the Nyquist frequency produces a samples spectrum of the same shape as the original signal, but sampling below the Nyquist frequency produces a samples spectrum with very different shape. Whittaker-Shannon interpolation of each of these sequences produces different results. The low frequencies not affected by the overlap are the same, but there is noise content in the higher frequencies caused by aliasing. Higher frequency energy masquerades as low energy content, a highly undesirable effect.</para>
+      <figure id="uid1">
+        <media id="uid1_media" alt="">
+          <image mime-type="image/png" src="../../media/alias1.png" id="uid1_onlineimage" width="506"><!-- NOTE: attribute width changes image size online (pixels). original width is 506. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/alias1.eps" id="uid1_printimage"/>
+        </media>
+        <caption>The spectrum of a bandlimited signals is shown as well as the spectra of its samples at rates above and below the Nyquist frequency. As is shown, no aliasing occurs above the Nyquist frequency, and the period of the samples spectrum centered about the origin has the same form as the spectrum of the original signal scaled in frequency. Below the Nyquist frequency, aliasing can occur and causes the spectrum to take a different than the original spectrum.</caption>
+      </figure>
+      <para id="id271759">Unlike when sampling above the Nyquist frequency, sampling below the Nyquist frequency does not yield an injective (one-to-one) function from the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited continuous time signals to the discrete time signals. Any signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> with spectrum <m:math overflow="scroll"><m:mi>X</m:mi></m:math> which overlaps and sums to <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> samples to <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math>. It should be intuitively clear that there are very many <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals that sample to a given discrete time signal below the Nyquist frequency, as is demonstrated in <link target-id="uid2"/>. It is quite easy to construct uncountably infinite families of such signals.</para>
+      <para id="id271853">Aliasing obtains it name from the fact that multiple, in fact infinitely many, <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals sample to the same discrete sequence if <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. Thus, information about the original signal is lost in this noninvertible process, and these different signals effectively assume the same identity, an “alias”. Hence, under these conditions the Whittaker-Shannon interpolation formula will not produce a perfect reconstruction of the original signal but will instead give the unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal that samples to the discrete sequence.</para>
+      <figure id="uid2">
+        <media id="uid2_media" alt="">
+          <image mime-type="image/png" src="../../media/alias2.png" id="uid2_onlineimage" width="497"><!-- NOTE: attribute width changes image size online (pixels). original width is 497. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/alias2.eps" id="uid2_printimage"/>
+        </media>
+        <caption>The spectrum of a discrete time signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math>, taken from <link target-id="uid1"/>, is shown along with the spectra of three <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> signals that sample to it at rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. From the sampled signal alone, it is impossible to tell which, if any, of these was sampled at rate <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub></m:math> to produce <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math>. In fact, there are infinitely many <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals that sample to <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> at a sampling rate below the Nyquist rate.</caption>
+      </figure>
+    </section>
+    <section id="cid3" class="ie"><title>Aliasing Demonstration</title><para id="eip-109"><figure id="samplingdemoonline"><media id="CNXdemoonline" alt="samplingDemo">
+<image mime-type="image/png" src="../../media/Lecture 19-SamplingDan_display.cdf" thumbnail="SamplingDemoThumbnail.png" width="600"/>
+<object width="500" height="500" src="Lecture 19-SamplingDan_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/SamplingDemoThumbnail.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating sampling and aliasing for a sinusoid. To Download, right-click and save target as .cdf.</caption>
+</figure>
+</para></section>
+    <section id="cid4" class="cn">
+      <title>Aliasing Summary</title>
+      <para id="id272095">Aliasing, essentially the signal processing version of identity theft, occurs when each period of the spectrum of the samples does not have the same form as the spectrum of the original signal. As has been shown, there can be infinitely many <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals that sample to a given discrete time signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> at a rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> below the Nyquist frequency. However, there is a unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal that samples to <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math>, which is given by the Whittaker-Shannon interpolation of <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math>, at rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>≥</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> as no aliasing occurs above the Nyquist frequency. Unfortunately, sufficiently high sampling rates cannot always be produced. Aliasing is detrimental to many signal processing applications, so in order to process continuous time signals using discrete time tools, it is often necessary to find ways to avoid it other than increasing the sampling rate. Thus, anti-aliasing filters, are of practical importance.</para>
+    </section>
+  </content>
+</document>

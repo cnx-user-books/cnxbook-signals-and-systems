@@ -1,0 +1,1339 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Matrix Diagonalization</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10738</md:content-id>
+  <md:title>Matrix Diagonalization</md:title>
+  <md:abstract>(Blank Abstract)</md:abstract>
+  <md:uuid>12b5cedc-00b7-4360-9d3a-5ea412cf4226</md:uuid>
+</metadata>
+
+<content>
+    
+    <!--   <section id='intro'>
+  <name>Introduction</name> -->
+
+    <para id="p1_int">
+      From our understanding of <link document="m10736" strength="3">eigenvalues and eigenvectors</link> we have
+      discovered several things about our operator matrix,
+      <m:math><m:ci>A</m:ci></m:math>.  We know that if the
+      eigenvectors of <m:math><m:ci>A</m:ci></m:math> span
+      <m:math display="inline">
+	<m:apply>
+	  <m:power/>
+	  <m:complexes/>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math> 
+      <emphasis>and</emphasis> we know how to express any vector 
+      <m:math><m:ci type="vector">x</m:ci></m:math> in terms of
+      <m:math display="inline">
+	<m:apply>
+	  <m:set>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>…</m:ci>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:set>
+	</m:apply>
+      </m:math>, then we have the operator
+      <m:math><m:ci>A</m:ci></m:math> all figured out.  If we have
+      <m:math><m:ci>A</m:ci></m:math> acting on <m:math><m:ci type="vector">x</m:ci></m:math>, then this is equal to
+      <m:math><m:ci>A</m:ci></m:math> acting on the combinations of
+      eigenvectors.  Which we know proves to be fairly easy!  </para>
+    
+    <para id="p2_int">
+      We are still left with two questions that need to be
+      addressed:
+
+      <list id="list_int" list-type="enumerated">
+	<item>
+	  When do the eigenvectors 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math> of  <m:math><m:ci>A</m:ci></m:math> span
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:power/>
+	      <m:complexes/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math> 
+	  (assuming <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math> are linearly independent)?
+	</item>
+
+	<item>
+	  How do we express a given vector <m:math><m:ci type="vector">x</m:ci></m:math> in terms of
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math>?	    
+	</item>
+      </list>	
+    </para>
+    
+    <section id="ans1">
+      <title>Answer to Question #1</title>
+      <para id="p1_ans1">
+
+	<note id="id1170523903339" type="Question #1"><label>Question #1</label>
+	  When do the eigenvectors 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math> of  <m:math><m:ci>A</m:ci></m:math> span
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:power/>
+	      <m:complexes/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>?
+	</note>
+
+	If <m:math><m:ci>A</m:ci></m:math> has
+	<m:math><m:ci>n</m:ci></m:math> <emphasis>distinct</emphasis>
+	eigenvalues
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar>
+	      <m:ci>i</m:ci>
+	    </m:bvar>
+	    <m:condition>
+	      <m:apply>
+		<m:neq/>
+		<m:ci>i</m:ci>
+		<m:ci>j</m:ci>
+	      </m:apply>
+	    </m:condition>
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci><m:msub>
+		<m:mi>λ</m:mi>
+		<m:mi>i</m:mi>
+	      </m:msub></m:ci>
+	      <m:ci><m:msub>
+		<m:mi>λ</m:mi>
+		<m:mi>j</m:mi>
+	      </m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	where <m:math><m:ci>i</m:ci></m:math> and
+	<m:math><m:ci>j</m:ci></m:math> are integers, then 
+	<m:math><m:ci>A</m:ci></m:math> has
+	<m:math><m:ci>n</m:ci></m:math> linearly independent
+	eigenvectors
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math> 
+	which then span
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>.
+
+	<note id="id1170535657528" type="aside">
+	  The proof of this statement is not very hard, but is not
+	  really interesting enough to include here.  If you wish to
+	  research this idea further, read Strang, G., "Linear Algebra
+	  and its Application" for the proof.
+	</note>
+
+	Furthermore, <m:math><m:ci>n</m:ci></m:math> distinct
+	eigenvalues means 
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:determinant/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>λ</m:ci>
+		  <m:ci>I</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>λ</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>−</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>λ</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci>λ</m:ci>
+	      </m:apply>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub></m:ci>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+
+	has <m:math><m:ci>n</m:ci></m:math> distinct roots.
+      </para>
+    </section>
+
+
+    <section id="ans2">
+      <title>Answer to Question #2</title>
+      <para id="p1_ans2">
+	
+	<note id="id1170530114835" type="Question #2"><label>Question #2</label>
+	  How do we express a given vector <m:math><m:ci type="vector">x</m:ci></m:math> in terms of
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math>?	    
+	</note>
+
+	We want to find 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:set>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci>…</m:ci>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:set>
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math>
+	such that
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	In order to find this set of variables, we will begin by
+	collecting the vectors
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>
+	as columns in a n×n matrix <m:math><m:ci>V</m:ci>
+	</m:math>.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>V</m:ci>
+	    <m:apply>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>⋮</m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci> </m:ci>
+		  <m:ci>⋮</m:ci>		  
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>…</m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>⋮</m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci> </m:ci>
+		  <m:ci>⋮</m:ci>		  
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Now <link target-id="eq1" strength="3"/> becomes
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci> </m:ci>
+		    <m:ci>⋮</m:ci>		  
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>…</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci> </m:ci>
+		    <m:ci>⋮</m:ci>		  
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	      <m:vector>
+		<m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+		<m:ci>⋮</m:ci>
+		<m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:vector>
+	    </m:apply>	   
+	  </m:apply>
+	</m:math>		
+	
+	or
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>V</m:ci>
+	      <m:ci type="vector">α</m:ci>
+	    </m:apply>	  
+	  </m:apply>
+	</m:math>	
+
+	which gives us an easy form to solve for our variables in
+	question, <m:math><m:ci type="vector">α</m:ci></m:math>:
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">α</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>V</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>	
+	
+	Note that <m:math><m:ci>V</m:ci></m:math> is invertible since
+	it has <m:math><m:ci>n</m:ci></m:math> linearly independent
+	columns.
+      </para>
+
+
+      <section id="sub1_ans2">
+	<title>Aside</title>
+	<para id="p1_s1ans2">Let us recall our knowledge of functions and their basis and
+	  examine the role of <m:math><m:ci>V</m:ci></m:math>.
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>V</m:ci>
+		<m:ci type="vector">α</m:ci>
+	      </m:apply>	  
+	    </m:apply>
+	  </m:math>	
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:vector>
+		<m:ci><m:msub>
+		  <m:mi>x</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci>⋮</m:ci>
+		<m:ci><m:msub>
+		  <m:mi>x</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:vector>
+	      <m:apply>
+		<m:times/>
+		<m:ci>V</m:ci>
+		<m:vector>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		</m:vector>
+	      </m:apply>	  
+	    </m:apply>
+	  </m:math>	
+	  
+	  where <m:math><m:ci type="vector">α</m:ci></m:math> is
+	  just <m:math><m:ci type="vector">x</m:ci></m:math> expressed
+	  in a different <link document="m10734" target-id="sec_bas" strength="3">basis</link>:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:ci>⋮</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:vector>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:vector>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		    <m:ci>⋮</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:vector>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:vector>
+		    <m:cn>0</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:ci>⋮</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:vector>
+		    <m:ci>⋮</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:vector>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		   <m:vector>
+		    <m:ci>⋮</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:vector>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:vector>
+		    <m:ci>⋮</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>⋮</m:ci>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	
+	  <m:math><m:ci>V</m:ci></m:math> <term>transforms</term>
+	  <m:math><m:ci type="vector">x</m:ci></m:math> from the
+	  standard basis to the basis
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:set>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </section>
+    </section>
+
+    <section id="md_out">
+      <title>Matrix Diagonalization and Output</title>
+      <para id="p1_mdout">
+	We can also use the vectors 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:set>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci type="vector">
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>
+	to represent the output, <m:math><m:ci type="vector">b</m:ci>
+	</m:math>, of a system:
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">b</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci type="vector">b</m:ci>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci> </m:ci>
+		    <m:ci>⋮</m:ci>		  
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>…</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:ci>⋮</m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci> </m:ci>
+		    <m:ci>⋮</m:ci>		  
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	      <m:vector>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>
+		<m:ci>⋮</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		</m:apply>
+	      </m:vector>
+	    </m:apply>	   
+	  </m:apply>
+	</m:math>		
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>V</m:ci>
+	      <m:ci>Λ</m:ci>
+	      <m:ci type="vector">α</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>	
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>V</m:ci>
+	      <m:ci>Λ</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>V</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	where <m:math><m:ci>Λ</m:ci></m:math> is the matrix
+	with the eigenvalues down the diagonal:
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>Λ</m:ci>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:cn>0</m:cn>
+		<m:ci>…</m:ci>
+		<m:cn>0</m:cn>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:cn>0</m:cn>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci>…</m:ci>
+		<m:cn>0</m:cn>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:cn>⋮</m:cn>
+		<m:cn>⋮</m:cn>
+		<m:ci>⋱</m:ci>
+		<m:cn>⋮</m:cn>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:cn>0</m:cn>
+		<m:cn>0</m:cn>
+		<m:ci>…</m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:apply>
+	</m:math>
+
+	Finally, we can cancel out the <m:math><m:ci type="vector">x</m:ci>
+	</m:math> and are left with a final equation for
+	<m:math><m:ci>A</m:ci></m:math>:
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>A</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>V</m:ci>
+	      <m:ci>Λ</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>V</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      </para>
+
+      <section id="interp">
+	<title>Interpretation</title>
+	<para id="p1_inter">
+	  For our interpretation, recall our key formulas:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">α</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>b</m:ci>
+	      <m:apply>
+		<m:sum/>
+		<m:domainofapplication>
+		  <m:ci>i</m:ci>
+		</m:domainofapplication>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  We can interpret operating on <m:math><m:ci type="vector">x</m:ci></m:math> with
+	  <m:math><m:ci>A</m:ci></m:math> as:
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:tendsto/>
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:tendsto/>
+		  <m:vector>
+		    <m:ci><m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci><m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		  </m:vector>
+
+		  <m:vector>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:ci>⋮</m:ci>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		  </m:vector>
+		</m:apply>
+		<m:vector>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>λ</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  </m:apply>
+		  <m:ci>⋮</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>λ</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:ci><m:msub>
+		      <m:mi>α</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		  </m:apply>
+		</m:vector>
+	      </m:apply>
+	      <m:vector>
+		<m:ci><m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci>⋮</m:ci>
+		<m:ci><m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:vector>
+	    </m:apply>
+	  </m:math>		      
+	  
+	  where the three steps (arrows) in the above illustration represent
+	  the following three operations:
+	  <list id="inter_list" list-type="enumerated">
+	    <item>
+	      Transform <m:math><m:ci type="vector">x</m:ci> </m:math>
+	      using
+	      <m:math>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+	      </m:math>, which yields 
+	      <m:math><m:ci type="vector">α</m:ci></m:math>
+	    </item>
+	    <item>
+	      Multiplication by <m:math><m:ci>Λ</m:ci>
+	      </m:math>
+	    </item>
+	    <item>
+	      Inverse transform using <m:math><m:ci>V</m:ci>
+	      </m:math>, which gives us <m:math><m:ci type="vector">b</m:ci></m:math>
+	    </item>
+	  </list>
+
+	  <emphasis>This is the paradigm we will use for LTI systems!</emphasis>
+	</para>
+
+	<figure id="fig1">
+	  <media id="id7064953" alt=""><image src="../../media/eigv_sys.png" mime-type="image/png"/></media>
+	  <caption>
+	    Simple illustration of LTI system!
+	  </caption>
+	</figure>
+
+      </section><para id="element-342"><media id="id1170526647123" alt=""><labview src="LinearAlgebraCalc3.llb" viname="Linear Algebra Calculator.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="420" width="625"><param name="lvfppviname" value="Linear Algebra Calculator.vi"/></labview></media></para>
+
+
+    </section>
+    
+
+  </content>
+</document>

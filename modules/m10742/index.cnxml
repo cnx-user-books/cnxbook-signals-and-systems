@@ -1,0 +1,341 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Eigen-stuff in a Nutshell</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10742</md:content-id>
+  <md:title>Eigen-stuff in a Nutshell</md:title>
+  <md:abstract>This module provides a brief overview and review of the importance of eigenvectors and eigenvalues in analyzing and understanding LTI systems.</md:abstract>
+  <md:uuid>a3fa6eea-7606-414f-b615-f017009a08b8</md:uuid>
+</metadata>
+<featured-links>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit below.
+       Changes to the links section in the source will not be saved. -->
+    <link-group type="supplemental">
+      <link url="http://cnx.rice.edu/content/m10496/latest/" strength="2">Fourier Series: Eigenfunction Approach</link>
+    </link-group>
+    <link-group type="prerequisite">
+      <link url="http://cnx.rice.edu/content/m10736/latest/" strength="3">Eigenvectors and Eigenvalues</link>
+      <link url="http://cnx.rice.edu/content/m10734/latest/" strength="2">Basics of Linear Algebra</link>
+    </link-group>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit above.
+       Changes to the links section in the source will not be saved. -->
+</featured-links>
+<content>
+    <section id="sec1">
+      <title>A Matrix and its Eigenvector</title>
+      <para id="p1_s1">
+	The reason we are stressing <link document="m10736" strength="3">eigenvectors</link> and their importance is
+	because the action of a matrix <m:math><m:ci>A</m:ci></m:math>
+	on one of its eigenvectors <m:math><m:ci type="vector">v</m:ci></m:math> is
+
+	<list id="list1" list-type="enumerated">
+	  <item>
+	    extremely easy (and fast) to calculate
+	    
+	    <equation id="eq1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:ci type="vector">v</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>λ</m:ci>
+		    <m:ci type="vector">v</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+	    just <emphasis>multiply</emphasis> <m:math><m:ci type="vector">v</m:ci></m:math> by
+	    <m:math><m:ci>λ</m:ci> </m:math>.
+	  </item>
+
+	  <item>
+	    easy to interpret:  <m:math><m:ci>A</m:ci></m:math> just
+	    <emphasis>scales</emphasis> <m:math><m:ci type="vector">v</m:ci></m:math>, keeping its direction
+	    constant and only altering the vector's length.
+	  </item>
+	</list>
+
+	If only every vector were an eigenvector of
+	<m:math><m:ci>A</m:ci></m:math>....
+
+      </para>   
+    </section>
+
+    <section id="sec2">
+      <title>Using Eigenvectors' Span</title>
+      <para id="p1_sec2">
+	Of course, not every vector can be ... BUT ... For certain
+	matrices (including ones with distinct eigenvalues,
+	<m:math><m:ci>λ</m:ci></m:math>'s), their eigenvectors
+	<link document="m10734" target-id="span_sec" strength="2">span</link> 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>, meaning that for <emphasis>any</emphasis>
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:complexes/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, we can find 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:set>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      </m:set>
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math>
+	such that:
+
+	<equation id="eq2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>α</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Given <link target-id="eq2" strength="2"/>, we can rewrite
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:ci type="vector">b</m:ci>
+	  </m:apply>
+	</m:math>.  This equation is modeled in our LTI system
+	pictured below:
+      </para>
+      
+      <figure id="fig1">
+	<media id="id6791898" alt=""><image src="../../media/eigv_sys.png" mime-type="image/png"/></media>
+	<caption>
+	  LTI System.
+	</caption>
+      </figure>
+
+      <para id="p2_sec2">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>b</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+	The LTI system above represents our <link target-id="eq1" strength="2"/>.  Below is an illustration of the steps taken
+	to go from <m:math><m:ci type="vector">x</m:ci></m:math> to 
+	<m:math><m:ci type="vector">b</m:ci></m:math>.
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:tendsto/>
+	    <m:apply>
+	      <m:tendsto/>
+	      <m:apply>
+		<m:tendsto/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci type="vector">α</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>V</m:ci>
+			<m:cn>-1</m:cn>
+		      </m:apply>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:apply>
+		<m:times/>
+		<m:ci>Λ</m:ci>
+		 <m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>V</m:ci>
+		<m:ci>Λ</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">b</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	where the three steps (arrows) in the above illustration represent
+	the following three operations:
+	<list id="inter_list" list-type="enumerated">
+	  <item>
+	    Transform <m:math><m:ci type="vector">x</m:ci> </m:math>
+	    using
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:ci>V</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+	    </m:math> - yields 
+	    <m:math><m:ci type="vector">α</m:ci></m:math>
+	  </item>
+	  <item>
+	    Action of <m:math><m:ci>A</m:ci></m:math> in new basis -
+	    a multiplication by <m:math><m:ci>Λ</m:ci>
+	    </m:math>
+	  </item>
+	  <item>
+	    Translate back to old basis - inverse transform using a
+	    multiplication by <m:math><m:ci>V</m:ci> </m:math>, which
+	    gives us <m:math><m:ci type="vector">b</m:ci></m:math>
+	  </item>
+	</list>
+
+      </para>
+    </section>
+
+  </content>
+</document>

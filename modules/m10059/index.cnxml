@@ -1,0 +1,332 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Continuous Time Impulse Function</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10059</md:content-id>
+  <md:title>Continuous Time Impulse Function</md:title>
+  <md:abstract>Explains the use of the continuous time impulse function: the Dirac Delta Function.</md:abstract>
+  <md:uuid>f2c48118-e020-4010-84df-ee2f5627c934</md:uuid>
+</metadata>
+<featured-links>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit below.
+       Changes to the links section in the source will not be saved. -->
+    <link-group type="prerequisite">
+      <link url="http://cnx.rice.edu/content/m0009/latest/" strength="2">Discrete-Time Signals</link>
+    </link-group>
+    <link-group type="supplemental">
+      <link url="http://cnx.rice.edu/content/m10085/latest/" strength="2">Continuous-Time Convolution</link>
+      <link url="http://cnx.rice.edu/content/m10087/latest/" strength="2">Discrete-Time Convolution</link>
+    </link-group>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit above.
+       Changes to the links section in the source will not be saved. -->
+</featured-links>
+<content>
+
+    <section id="eip-415" class="in"><title>Introduction</title><para id="eip-73">In engineering, we often deal with the idea of an action
+      occurring at a point.  Whether it be a force at a point in space
+      or some other signal at a point in time, it becomes worth while to
+      develop some way of quantitatively defining this.  This leads us
+      to the idea of a unit impulse, probably the second most
+      important function, next to the complex exponential, in this systems and signals
+      course.
+    </para></section>
+
+
+    <section id="sect1" class="th">
+      <title>Dirac Delta Function</title>
+      <para id="para2">The <term>Dirac delta function</term>, often referred to as
+	the unit impulse or delta function, is the function that
+	defines the idea of a unit impulse in continuous-time.  Informally, this function is one that
+	is infinitesimally narrow, infinitely tall, yet integrates to
+	 one.  Perhaps the simplest way to visualize
+	this is as a rectangular pulse from
+	<m:math display="inline">
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>a</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	to
+	<m:math display="inline">
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>a</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	with a height of
+	<m:math display="inline">
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>ε</m:ci>
+	  </m:apply>
+	</m:math>.
+	As we take the limit of this setup as 
+	<m:math display="inline">
+	  <m:ci>ε</m:ci>
+	</m:math> approaches 0, we see that the width tends to zero and the height
+	tends to infinity as the total area remains constant at one.
+	The impulse function is often written as 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">δ</m:ci><m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <equation id="eq_un">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:ci type="fn">δ</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <figure id="fig1">
+	<media id="id3946527" alt=""><image src="../../media/impulsefunc1.png" mime-type="image/png"/></media>
+	<caption>
+	  This is one way to visualize the Dirac Delta Function.
+	</caption>
+      </figure>
+
+      <figure id="fig2">
+	<media id="id3990867" alt=""><image src="../../media/impulsefunc2.png" mime-type="image/png"/></media>
+	<caption>
+	  Since it is quite difficult to draw something that is
+	  infinitely tall, we represent the Dirac with an arrow
+	  centered at the point it is applied.  If we wish to scale
+	  it, we may write the value it is scaled by next to the point
+	  of the arrow.  This is a unit impulse (no
+	  scaling).
+	</caption>
+      </figure><para id="eip-340">Below is a brief list a few important properties of
+	  the unit impulse without going into detail of their proofs.
+	  <list id="props2"><title>Unit Impulse Properties</title><item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:abs/>
+			<m:ci>α</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:apply>
+		      <m:ci type="fn">u</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>, where  
+	      <m:math><m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> is the unit step.
+	    </item>
+
+	  <item>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>f</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi>δ</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>f</m:mi>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mi>δ</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:math>
+</item></list>	  
+The last of these is especially important as it gives rise to the sifting property of the dirac delta function, which selects the value of a function at a specific time and is especially important in studying the relationship of an operation called convolution to time domain analysis of linear time invariant systems.  The sifting property is shown and derived below.
+<equation id="eqn">
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msubsup>
+            <m:mo>∫</m:mo>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>δ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>d</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>=</m:mo>
+          <m:msubsup>
+            <m:mo>∫</m:mo>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>δ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>d</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msubsup>
+            <m:mo>∫</m:mo>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>∞</m:mi>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mi>δ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>d</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>f</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+</equation></para>
+
+
+</section>
+
+<section id="eip-367" class="ie"><title>Unit Impulse Limiting Demonstration</title><figure id="demoonline"><media id="CNXdemoonline" alt="CTIDemo">
+<image mime-type="image/png" src="../../media/ContinuousTimeImpulse_display.cdf" thumbnail="ContinuousTimeImpulse_display.png" width="300"/>
+<object width="300" height="300" src="ContinuousTimeImpulse_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/ContinuousTimeImpulse_display.png" width="300"/>
+</media>
+<caption>Click on the above thumbnail image (when online) to download an interactive Mathematica Player demonstrating the Continuous Time Impulse Function.</caption></figure></section>
+<section id="eip-890" class="cn"><title>Continuous Time Unit Impulse Summary</title><para id="eip-974">The continuous time unit impulse function, also known as the Dirac delta function, is of great importance to the study of signals and systems.  Informally, it is a function with infinite height ant infinitesimal width that integrates to one, which can be viewed as the limiting behavior of a unit area rectangle as it narrows while preserving area.  It has several important properties that will appear again when studying systems.</para></section>
+
+  </content>
+</document>

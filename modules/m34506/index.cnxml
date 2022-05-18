@@ -1,0 +1,663 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Solving Linear Constant Coefficient Differential Equations</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34506</md:content-id>
+  <md:title>Solving Linear Constant Coefficient Differential Equations</md:title>
+  <md:abstract>This module contains information on solving linear constant coefficient differential equations.</md:abstract>
+  <md:uuid>e93796fe-8766-40e3-83e3-e3ca514b68bb</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-411" class="in"><title>Introduction</title><para id="eip-18">The approach to solving linear constant coefficient ordinary differential equations is to find the general form of all possible solutions to the equation and then apply a number of conditions to find the appropriate solution. The two main types of problems are initial value problems, which involve constraints on the solution and its derivatives at a single point, and boundary value problems, which involve constraints on the solution or its derivatives at several points.</para><para id="eip-67">The number of initial conditions needed for an <m:math overflow="scroll"><m:mi>N</m:mi></m:math>th order differential equation, which is the order of the highest order derivative, is <m:math overflow="scroll"><m:mi>N</m:mi></m:math>, and a unique solution is always guaranteed if these are supplied. Boundary value problems can be slightly more complicated and will not necessarily have a unique solution or even a solution at all for a given set of conditions. Thus, this module will focus exclusively on initial value problems.</para></section>
+<section id="cid1" class="th">
+      <title>Solving Linear Constant Coefficient Ordinary Differential Equations</title>
+      
+      
+      <para id="id62199">Consider some linear constant coefficient ordinary differential equation given by <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>, where <m:math overflow="scroll"><m:mi>A</m:mi></m:math> is a differential operator of the form</para>
+      <equation id="id62578">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>A</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>n</m:mi>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62107">Let <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> be two functions such that <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:msub><m:mi>x</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. By the linearity of <m:math overflow="scroll"><m:mi>A</m:mi></m:math>, note that <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Thus, the form of the general solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>g</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> to any linear constant coefficient ordinary differential equation is the sum of a homogeneous solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> to the equation <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and a particular solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> that is specific to the forcing function <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id63175">We wish to determine the forms of the homogeneous and nonhomogeneous solutions in full generality in order to avoid incorrectly restricting the form of the solution before applying any conditions. Otherwise, a valid set of initial or boundary conditions might appear to have no corresponding solution trajectory. The following discussion shows how to accomplish this for linear constant coefficient ordinary differential equations.</para><section id="eip-951"><title>Finding the Homogeneous Solution</title><para id="id63191">In order to find the homogeneous solution to <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>, consider the differential equation <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. We know that the solutions have the form <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>λ</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:math> for some complex constants <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:mo>,</m:mo><m:mi>λ</m:mi></m:mrow></m:math>. Since <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>c</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>λ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for a solution, it follows that</para>
+      <equation id="id63304">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfenced separators="" open="(" close=")">
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:mfrac>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msup>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msub>
+              <m:mfrac>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msup>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>+</m:mo>
+              <m:mo>.</m:mo>
+              <m:mo>.</m:mo>
+              <m:mo>.</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mfrac>
+                <m:mi>d</m:mi>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+            </m:mfenced>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>λ</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>,</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63450">so it also follows that</para>
+      <equation id="id63455">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>λ</m:mi>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:msup>
+              <m:mi>λ</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi>λ</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63540">Therefore, the parameters of the solution exponents are the roots of the above polynomial, called the characteristic polynomial.</para>
+      <para id="id63546">For equations of order two or more, there will be several roots. If all of the roots are distinct, then the the general form of the homogeneous solution is simply</para>
+      <equation id="id63551">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63637">If a root has multiplicity that is greater than one, the repeated solutions must be multiplied by each powers of <m:math overflow="scroll"><m:mi>t</m:mi></m:math> from 0 to one less than the root multiplicity (in order to ensure linearly independent solutions). For instance, if <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub></m:math> had multiplicity 2 and <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub></m:math> had multiplicity 3, the homogeneous solution would be</para>
+      <equation id="id63679">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mi>t</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>4</m:mn>
+            </m:msub>
+            <m:mi>t</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>5</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>t</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>λ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <example id="eip-283"><para id="id63844">Consider the decay model in which a quantity of an unstable isotope decreases at a rate proportional to the quanity of unstable isotope remaining. Thus, the decay of the isotope is modeled by the first order linear constant coefficient differential equation</para>
+      <equation id="id63850">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mi>r</m:mi>
+            <m:mi>x</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63882">where <m:math overflow="scroll"><m:mi>r</m:mi></m:math> is some real rate. This differential equation could easily be solved through straightforward integration. However, the methods described above will be used instead. Note that the forcing function is zero, so only a homogenous solution is needed. It is easy to see that the characteristic polynomial is <m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>+</m:mo><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, so there is one root <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow></m:math>. Thus the solution is of the form</para>
+      <equation id="id63934">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>r</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63975">Given a rate and an initial condition, this can be applied to a specific situation. For instance, we know that carbon-14 decays at a rate of approximately <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>21</m:mn><m:mi mathvariant="normal">x</m:mi><m:msup><m:mn>10</m:mn><m:mrow><m:mo>-</m:mo><m:mn>4</m:mn></m:mrow></m:msup></m:mrow></m:math><m:math overflow="scroll"><m:msup><m:mi> year </m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math>, and if we normalize the natural concentration of carbon-14 to <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> the solution becomes <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>21</m:mn><m:mi mathvariant="normal">x</m:mi><m:msup><m:mn>10</m:mn><m:mrow><m:mo>-</m:mo><m:mn>4</m:mn></m:mrow></m:msup><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:math>. Knowledge of this curve would be useful for radioisotope based dating.</para>
+</example>
+
+    </section><section id="eip-723"><title>Finding the Particular Solution</title><para id="id64111">Finding the particular solution is slightly more complicated task than finding the homogeneous solution. A formal method, called variation of parameters accomplishes this, and there are also several heuristics that can be used.  It can also be found through convolution of the input with the unit impulse response, once the unit impulse response is known.  Finding the particular solution to a differential equation is discussed further in the chapter concerning the Laplace transform, which greatly simplifies the procedure for solving linear constant coefficient ordinary differential equations using frequency domain tools.</para>
+      <example id="eip-434"><para id="id64119">Consider the series RLC circuit shown in <link target-id="uid1"/>. This system can be modeled using differential equations. We can use the voltage equations for each circuit element and Kirchoff's voltage law to write a second order linear constant coefficient differential equation describing the charge on the capacitor.</para>
+      <para id="id64129">The voltage across the battery is simply <m:math overflow="scroll"><m:mi>V</m:mi></m:math>. The voltage across the capacitor is <m:math overflow="scroll"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>C</m:mi></m:mfrac><m:mi>q</m:mi></m:mrow></m:math>. The voltage across the resistor is <m:math overflow="scroll"><m:mrow><m:mi>R</m:mi><m:mfrac><m:mrow><m:mi>d</m:mi><m:mi>q</m:mi></m:mrow><m:mrow><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math>. Finally, the voltage across the inductor is <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mfrac><m:mrow><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup><m:mi>q</m:mi></m:mrow><m:mrow><m:mi>d</m:mi><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math>. Therefore, by Kirchoff's voltage law, it follows that</para>
+      <equation id="id64211">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>L</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mi>q</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mi>R</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>q</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+            <m:mi>q</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>V</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <figure id="uid1">
+        <media id="uid1_media" alt="">
+          <image mime-type="image/png" src="../../media/circuit.png" id="uid1_onlineimage" width="480"><!-- NOTE: attribute width changes image size online (pixels). original width is 480. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/circuit-be94.eps" id="uid1_printimage" print-width="3in">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>A series RLC circuit.</caption>
+      </figure>
+      <para id="id64293">First, the homogeneous solution is found. It is easy to see that the characteristic polynomial is <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:msup><m:mi>λ</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mi>R</m:mi><m:mi>λ</m:mi><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>C</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. Therefore, the two roots are <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>-</m:mo><m:mi>R</m:mi><m:mo>-</m:mo><m:msqrt><m:mrow><m:msup><m:mi>R</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mfrac><m:mrow><m:mn>4</m:mn><m:mi>L</m:mi></m:mrow><m:mi>C</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>L</m:mi></m:mrow></m:mfrac></m:mrow></m:math>
+and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>-</m:mo><m:mi>R</m:mi><m:mo>+</m:mo><m:msqrt><m:mrow><m:msup><m:mi>R</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mfrac><m:mrow><m:mn>4</m:mn><m:mi>L</m:mi></m:mrow><m:mi>C</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>L</m:mi></m:mrow></m:mfrac></m:mrow></m:math>. Often, these are stated in terms of the attenuation factor <m:math overflow="scroll"><m:mrow><m:mi>α</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>R</m:mi><m:mn>2</m:mn></m:mfrac><m:msqrt><m:mfrac><m:mi>C</m:mi><m:mi>L</m:mi></m:mfrac></m:msqrt></m:mrow></m:math> and the resonant frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:msqrt><m:mrow><m:mi>L</m:mi><m:mi>C</m:mi></m:mrow></m:msqrt></m:mfrac></m:mrow></m:math>. Thus, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>α</m:mi><m:mo>-</m:mo><m:msqrt><m:mrow><m:msup><m:mi>α</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:msubsup><m:mi>ω</m:mi><m:mn>0</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>α</m:mi><m:mo>+</m:mo><m:msqrt><m:mrow><m:msup><m:mi>α</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:msubsup><m:mi>ω</m:mi><m:mn>0</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:mrow></m:math>.</para>
+      <para id="id64581">Thus, the homogeneous equation is of the form</para>
+      <equation id="id64585">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>α</m:mi>
+                <m:mo>-</m:mo>
+                <m:msqrt>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>-</m:mo>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>0</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msubsup>
+                  </m:mrow>
+                </m:msqrt>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>α</m:mi>
+                <m:mo>+</m:mo>
+                <m:msqrt>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>-</m:mo>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>0</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msubsup>
+                  </m:mrow>
+                </m:msqrt>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64704">It turns out that the response to the constant voltage source forcing function is a constant, so</para>
+      <equation id="id64710">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>p</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64743">Hence, the general solution is</para>
+      <equation id="id64748">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>α</m:mi>
+                <m:mo>-</m:mo>
+                <m:msqrt>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>-</m:mo>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>0</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msubsup>
+                  </m:mrow>
+                </m:msqrt>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>α</m:mi>
+                <m:mo>+</m:mo>
+                <m:msqrt>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>-</m:mo>
+                    <m:msubsup>
+                      <m:mi>ω</m:mi>
+                      <m:mn>0</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msubsup>
+                  </m:mrow>
+                </m:msqrt>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64867">where <m:math overflow="scroll"><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub></m:math> and <m:math overflow="scroll"><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:math> depend on the initial conditions. The system demonstrates a rich array of behaviors based on the relative values of <m:math overflow="scroll"><m:mi>α</m:mi></m:math> and <m:math overflow="scroll"><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub></m:math>, which the reader is encouraged to explore.</para>
+</example>
+
+    </section>
+    </section><section id="eip-410" class="cn"><title>Solving Differential Equations Summary</title><para id="eip-966">Linear constant coefficient ordinary differential equations are useful for modeling a wide variety of continuous time systems.  The approach to solving them is to find the general form of all possible solutions to the equation and then apply a number of conditions to find the appropriate solution.  This is done by finding the homogeneous solution to the differential equation that does not depend on the forcing function input and a particular solution to the differential equation that does depend on the forcing function input.</para></section>
+    
+    
+  </content>
+</document>

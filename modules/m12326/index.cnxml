@@ -1,0 +1,665 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Solving Linear Constant Coefficient Difference Equations</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m12326</md:content-id>
+  <md:title>Solving Linear Constant Coefficient Difference Equations</md:title>
+  <md:abstract>A module concerning the concepts involved in solving linear constant-coefficient difference equations.</md:abstract>
+  <md:uuid>9e31defa-646f-4b16-9e07-f591f007dfa4</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-332" class="in"><title>Introduction</title><para id="eip-565">The approach to solving linear constant coefficient difference equations is to find the general form of all possible solutions to the equation and then apply a number of conditions to find the appropriate solution. The two main types of problems are initial value problems, which involve constraints on the solution at several consecutive points, and boundary value problems, which involve constraints on the solution at nonconsecutive points.</para><para id="eip-272">The number of initial conditions needed for an <m:math overflow="scroll"><m:mi>N</m:mi></m:math>th order difference equation, which is the order of the highest order difference or the largest delay parameter of the output in the equation, is <m:math overflow="scroll"><m:mi>N</m:mi></m:math>, and a unique solution is always guaranteed if these are supplied. Boundary value probelms can be slightly more complicated and will not necessarily have a unique solution or even a solution at all for a given set of conditions. Thus, this section will focus exclusively on initial value problems.</para></section><section id="cid1" class="th">
+      <title>Solving Linear Constant Coefficient Difference Equations</title>
+      
+      
+      <para id="id62200">Consider some linear constant coefficient difference equation given by <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math>, in which <m:math overflow="scroll"><m:mi>A</m:mi></m:math> is a difference operator of the form</para>
+      <equation id="id62578">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>A</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>N</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>D</m:mi>
+              <m:mi>N</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:msup>
+              <m:mi>D</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi>D</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62842">where <m:math overflow="scroll"><m:mi>D</m:mi></m:math> is the first difference operator</para>
+      <equation id="id62856">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>D</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62907">Let <m:math overflow="scroll"><m:mrow><m:msub><m:mi>y</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>y</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> be two functions such that <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:msub><m:mi>y</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:msub><m:mi>y</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. By the linearity of <m:math overflow="scroll"><m:mi>A</m:mi></m:math>, note that <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Thus, the form of the general solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>y</m:mi><m:mi>g</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> to any linear constant coefficient ordinary differential equation is the sum of a homogeneous solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>y</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> to the equation <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and a particular solution <m:math overflow="scroll"><m:mrow><m:msub><m:mi>y</m:mi><m:mi>p</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> that is specific to the forcing function <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id63205">We wish to determine the forms of the homogeneous and nonhomogeneous solutions in full generality in order to avoid incorrectly restricting the form of the solution before applying any conditions. Otherwise, a valid set of initial or boundary conditions might appear to have no corresponding solution trajectory. The following sections discuss how to accomplish this for linear constant coefficient difference equations.</para><section id="eip-386"><title>Finding the Homogeneous Solution</title><para id="id63221">In order to find the homogeneous solution to a difference equation described by the recurrence relation <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>N</m:mi></m:msubsup><m:msub><m:mi>a</m:mi><m:mi>k</m:mi></m:msub><m:mi>y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, consider the difference equation <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>N</m:mi></m:msubsup><m:msub><m:mi>a</m:mi><m:mi>k</m:mi></m:msub><m:mi>y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. We know that the solutions have the form <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:msup><m:mi>λ</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> for some complex constants <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:mo>,</m:mo><m:mi>λ</m:mi></m:mrow></m:math>. Since <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>N</m:mi></m:msubsup><m:msub><m:mi>a</m:mi><m:mi>k</m:mi></m:msub><m:mi>c</m:mi><m:msup><m:mi>λ</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for a solution it follows that</para>
+      <equation id="id63409">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>c</m:mi>
+            <m:msup>
+              <m:mi>λ</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>N</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>N</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>λ</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63473">so it also follows that</para>
+      <equation id="id63478">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>λ</m:mi>
+              <m:mi>N</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>N</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63527">Therefore, the solution exponential are the roots of the above polynomial, called the characteristic polynomial.</para>
+      <para id="id63533">For equations of order two or more, there will be several roots. If all of the roots are distinct, then the general form of the homogeneous solution is simply</para>
+      <equation id="id63538">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63612">If a root has multiplicity that is greater than one, the repeated solutions must be multiplied by each power of <m:math overflow="scroll"><m:mi>n</m:mi></m:math> from 0 to one less than the root multipicity (in order to ensure linearly independent solutions). For instance, if <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub></m:math> had a multiplicity of 2 and <m:math overflow="scroll"><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub></m:math> had multiplicity 3, the homogeneous solution would be</para>
+      <equation id="id63655">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>1</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>4</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>5</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>n</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:msubsup>
+              <m:mi>λ</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:msubsup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><example id="eip-231"><para id="id63803">Recall that the Fibonacci sequence describes a (very unrealistic) model of what happens when a pair rabbits get left alone in a black box... The assumptions are that a pair of rabits never die and produce a pair of offspring every month starting on their second month of life. This system is defined by the recursion relation for the number of rabit pairs <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> at month <m:math overflow="scroll"><m:mi>n</m:mi></m:math></para>
+      <equation id="id63831">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63883">with the initial conditions <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>.</para>
+      <para id="id63927">Note that the forcing function is zero, so only the homogenous solution is needed. It is easy to see that the characteristic polynomial is <m:math overflow="scroll"><m:mrow><m:msup><m:mi>λ</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mi>λ</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, so there are two roots with multiplicity one. These are <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:msqrt><m:mn>5</m:mn></m:msqrt></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>λ</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:msqrt><m:mn>5</m:mn></m:msqrt></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>. Thus, the solution is of the form</para>
+      <equation id="id64019">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:msqrt>
+                      <m:mn>5</m:mn>
+                    </m:msqrt>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>-</m:mo>
+                    <m:msqrt>
+                      <m:mn>5</m:mn>
+                    </m:msqrt>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64111">Using the initial conditions, we determine that</para>
+      <equation id="id64116">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msqrt>
+                <m:mn>5</m:mn>
+              </m:msqrt>
+              <m:mn>5</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64142">and</para>
+      <equation id="id64147">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msqrt>
+                <m:mn>5</m:mn>
+              </m:msqrt>
+              <m:mn>5</m:mn>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64177">Hence, the Fibonacci sequence is given by</para>
+      <equation id="id64183">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msqrt>
+                <m:mn>5</m:mn>
+              </m:msqrt>
+              <m:mn>5</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:msqrt>
+                      <m:mn>5</m:mn>
+                    </m:msqrt>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msqrt>
+                <m:mn>5</m:mn>
+              </m:msqrt>
+              <m:mn>5</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>-</m:mo>
+                    <m:msqrt>
+                      <m:mn>5</m:mn>
+                    </m:msqrt>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+    </example>
+    </section><section id="eip-72"><title>Finding the Particular Solution</title><para id="id64282">Finding the particular solution is a slightly more complicated task than finding the homogeneous solution. It can be found through convolution of the input with the unit impulse response once the unit impulse response is known. Finding the particular solution ot a differential equation is discussed further in the chapter concerning the z-transform, which greatly simplifies the procedure for solving linear constant coefficient differential equations using frequency domain tools.</para><example id="eip-395"><para id="id64299">Consider the following difference equation describing a system with feedback</para>
+      <equation id="id64303">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>x</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64350">In order to find the homogeneous solution, consider the difference equation</para>
+      <equation id="id64356">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64397">It is easy to see that the characteristic polynomial is <m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>-</m:mo><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, so <m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mi>a</m:mi></m:mrow></m:math> is the only root. Thus the homogeneous solution is of the form</para>
+      <equation id="id64434">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64477">In order to find the particular solution, consider the output for the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> unit impulse case</para>
+      <equation id="id64509">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>δ</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64556">By inspection, it is clear that the impulse response is <m:math overflow="scroll"><m:mrow><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup><m:mi>u</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Hence, the particular solution for a given <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> is</para>
+      <equation id="id64602">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>p</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>*</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:msup>
+                <m:mi>a</m:mi>
+                <m:mi>n</m:mi>
+              </m:msup>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64666">Therefore, the general solution is</para>
+      <equation id="id64671">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>g</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>h</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>p</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>*</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:msup>
+                <m:mi>a</m:mi>
+                <m:mi>n</m:mi>
+              </m:msup>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64786">Initial conditions and a specific input can further tailor this solution to a specific situation.</para>
+    </example>
+    </section>
+    </section>
+    
+    
+    
+    
+    <section id="cid6" class="cn">
+      <title>Solving Difference Equations Summary</title>
+      <para id="id64801">Linear constant coefficient difference equations are useful for modeling a wide variety of discrete time systems. The approach to solving them is to find the general form of all possible solutions to the equation and then apply a number of conditions to find the appropriate solution. This is done by finding the homogeneous solution to the difference equation that does not depend on the forcing function input and a particular solution to the difference equation that does depend on the forcing function input.</para>
+    </section>
+  </content>
+</document>

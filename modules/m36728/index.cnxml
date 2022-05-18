@@ -1,0 +1,68 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Getting Started With Mathematica</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36728</md:content-id>
+  <md:title>Getting Started With Mathematica</md:title>
+  <md:abstract>This module is a starting point for embedding Content using Mathematica CDF.</md:abstract>
+  <md:uuid>d3ccf911-4341-4da8-8519-ac44818213a8</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-223"><title>What is Mathematica?</title><para id="eip-16">
+Mathematica is a computational software program used in technical fields. It is developed by Wolfram Research. Mathematica makes it easy to visualize data and create GUIs in only a few lines of code.
+</para></section><section id="eip-278"><title>How can I run, create, and find Mathematica files?</title><para id="eip-847"><title>Run</title>The free <link url="http://www.wolfram.com/cdf-player/" window="new">CDF Player</link> is available for running non-commercial Mathematica programs. The option exists of downloading source files and running on your computer, but the CDF-player comes with a plug-in for viewing dynamic content online on your web browser! 
+
+
+
+</para><para id="eip-985"><title>Create</title>Mathematica 8 is available for <link url="http://www.wolfram.com/products/mathematica/purchase.html" window="new">purchase</link> from Wolfram. 
+Many universities (including Rice) and companies already have a Mathematica license. Wolfram has a free, save-disabled 15-day <link url="http://www.wolfram.com/products/mathematica/experience/request.cgi" window="new">trial version</link> of Mathematica. 
+
+</para><para id="eip-617"><title>Find</title>Wolfram has thousands of Mathematica programs (including source code) available at the <link url="http://demonstrations.wolfram.com/index.html" window="new">Wolfram Demonstrations Project</link>. Anyone can create and submit a Demonstration. Also, many other websites (including Connexions) have a lot of Mathematica content.
+
+ </para></section><section id="eip-904"><title>What do I need to run interactive content?</title><para id="eip-1000">Mathematica 8 is supported on Linux, Microsoft Windows, Mac OS X, and Solaris. Mathematica's free CDF-player is available for Windows and Mac OS X, and is in development for Linux; the CDF-Player plugin is available for IE, Firefox, Chrome, Safari, and Opera.
+</para></section><section id="eip-443"><title>How can I upload a Mathematica file to a Connexions module?</title><para id="eip-531">Go to the Files tab at the top of the module and upload your .cdf file, along with an (optional) screenshot of the file in use. In order to generate a clean bracket-less screenshot, you should do the following:
+
+<list id="eip-548"><item>Open your .cdf in Mathematica and left click on the bracket surrounding the manipulate command.</item>
+<item>Click on Cell-&gt;Convert To-&gt;Bitmap. </item>
+<item>Then click on File-&gt;Save Selection As, and save the image file in your desired image format.</item></list>
+
+ 
+
+
+
+
+</para><para id="eip-882">Embed the files into the module in any way you like. Some tags you may find helpful include image, figure, download, and link (if linking to an .cdf file on another website). The best method is to create an interactive figure, and include a fallback png image of the cdf file should the CDF image not render properly. See the interactive demo/image below.</para>
+
+<para id="code"><code id="eip-107" display="block"><title>Convolution Demo</title>&lt;figure id="demoonline"&gt;
+&lt;media id="CNXdemoonline" alt="timeshiftDemo"&gt;
+&lt;image mime-type="image/png" src="Convolutiondisplay-4.cdf" thumbnail="Convolution4.0Display.png" width="600"/&gt;
+&lt;object width="500" height="500" src="Convolutiondisplay-4.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/&gt;
+&lt;image mime-type="application/postscript" for="pdf" src="Convolution4.0Display.png" width="400"/&gt;
+&lt;/media&gt;
+&lt;caption&gt;Interact (when online) with a Mathematica CDF demonstrating Convolution. To Download, right-click and save target as .cdf.%lt;/caption&gt;
+&lt;/figure&gt;
+</code>
+</para>
+
+<para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="timeshiftDemo">
+<image mime-type="image/png" src="../../media/Convolutiondisplay-4.cdf" thumbnail="Lecture6-Convolution.png" width="600"/>
+<object width="500" height="500" src="Convolutiondisplay-4.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Lecture6-Convolution.png" width="400"/>
+</media>
+
+<caption>Interact (when online) with a Mathematica CDF demonstrating Convolution. To Download, right-click and save target as .cdf.</caption></figure>
+</para><para id="eip-425">Alternatively, this is how it looks when you use a thumbnail link to a live online demo.</para><para id="eip-532"><figure id="demo"><media id="thumbnailmedia" alt="Convolution Demo">
+      <image mime-type="image/png" src="http://www.lablets.org/PhET/Convolution" thumbnail="Lecture6-Convolution.png" width="600"/>
+<image mime-type="application/postscript" for="pdf" src="Convolution4.0Display.png" width="500"/>
+   </media>
+
+        
+<caption>Click on the above thumbnail image (when online) to view an interactive Mathematica Player demonstrating Convolution.</caption></figure></para></section><section id="eip-635"><title>How can I learn Mathematica?</title><para id="eip-14">Open Mathematica and go to the Getting Started section of the "Welcome to Mathematica" screen, or check out Help: Documentation Center.</para><para id="eip-642">The <link url="http://www.wolfram.com/learningcenter/" window="new">Mathematica Learning Center</link> has lots of screencasts, how-tos, and tutorials.
+
+</para><para id="eip-358">When troubleshooting, the error messages are often unhelpful, so it's best to evaluate often so the problem can be easily located. Search engines like Google are useful when you're looking for an explanation of specific error messages.</para></section><para id="delete_me">
+     <!-- Insert module text here -->
+  </para>
+</content>
+
+</document>

@@ -1,0 +1,325 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Introduction to Fourier Analysis</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10096</md:content-id>
+  <md:title>Introduction to Fourier Analysis</md:title>
+  <md:abstract>Lists the four Fourier transforms and when to use them.</md:abstract>
+  <md:uuid>3b9a3fa5-7135-4d14-9f98-69a196f4c67b</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-746"><title>Fourier's Daring Leap</title><para id="eip-304">Fourier postulated around 1807 that any periodic signal (equivalently finite length signal) can be built up as an infinite linear combination of harmonic sinusoidal waves.
+</para><section id="eip-806"><title/><para id="id62170">i.e. Given the collection</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>B</m:mi>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mrow>
+                <m:mo>{</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>n</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>}</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62576">any</para>
+      <equation id="id62579">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>∈</m:mo>
+            <m:msup>
+              <m:mi>L</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>,</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62110">can be approximated arbitrarily closely by</para>
+      <equation id="id62116">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>C</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mspace width="0.166667em"/>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                  </m:mrow>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+                <m:mi>n</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+    </section><para id="eip-898">Now, The issue of exact convergence did bring
+      <link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">Fourier</link> 
+
+      much criticism from the French Academy of Science (Laplace,
+      Lagrange, Monge and LaCroix comprised the review committee) for
+      several years after its presentation on 1807.  It was not
+      resolved for also a century, and its resolution is interesting
+      and important to understand from a practical viewpoint. See more in the section on <term>Gibbs Phenomena</term>.</para></section><para id="para1">
+      Fourier analysis is fundamental to understanding the behavior of
+      signals and systems.  This is a result of the fact that
+      sinusoids are <link document="m10500" strength="2">Eigenfunctions</link> of <link document="m10084" strength="2">linear, time-invariant (LTI)</link> systems.
+      This is to say that if we pass any particular sinusoid through a
+      LTI system, we get a scaled version of that same sinusoid on the
+      output.  Then, since Fourier analysis allows us to redefine the
+      signals in terms of sinusoids, all we need to do is determine
+      how any given system effects all possible sinusoids (its <link document="m0028" strength="2">transfer function</link>) and we
+      have a complete understanding of the system.  Furthermore, since
+      we are able to define the passage of sinusoids through a system
+      as multiplication of that sinusoid by the transfer function at
+      the same frequency, we can convert the passage of any signal
+      through a system from <link document="m10088" strength="2">convolution</link> (in time) to multiplication
+      (in frequency).  These ideas are what give Fourier analysis its
+      power.
+    </para>
+    <para id="para2">
+      Now, after hopefully having sold you on the value of this method
+      of analysis, we must examine exactly what we mean by Fourier
+      analysis.  The four Fourier transforms that comprise this
+      analysis are the <link document="m10097" strength="2">Fourier
+      Series</link>, <link document="m10098" strength="2">Continuous-Time Fourier Transform</link>,
+      <link document="m10108" strength="2">Discrete-Time Fourier
+      Transform</link> and <link document="m0502" strength="2">Discrete Fourier Transform</link>.  For this
+      document, we will view the <link document="m10110" strength="2">Laplace Transform</link> and <link document="m10119" strength="2">Z-Transform</link> as simply
+      extensions of the CTFT and DTFT respectively.  All of these
+      transforms act essentially the same way, by converting a signal
+      in time to an equivalent signal in frequency (sinusoids).
+      However, depending on the nature of a specific signal
+      <foreign>i.e.</foreign> whether it is finite- or infinite-length
+      and whether it is discrete- or continuous-time) there is an
+      appropriate transform to convert the signal into the frequency
+      domain.  Below is a table of the four Fourier transforms and
+      when each is appropriate.  It also includes the relevant
+      convolution for the specified space.
+    </para>
+    
+    <table id="table1" frame="all" summary="">
+      <title>Table of Fourier Representations</title>
+      <tgroup cols="4">
+	<thead>
+	  <row>
+	    <entry>Transform</entry>
+	    <entry>Time Domain</entry>
+	    <entry>Frequency Domain</entry>
+	    <entry>Convolution</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry>Continuous-Time Fourier Series</entry>
+	    <entry align="center">
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>L</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:interval closure="closed-open">
+		    <m:cn>0</m:cn>
+		    <m:ci>T</m:ci>
+		  </m:interval>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>l</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>Continuous-Time Circular</entry>
+	  </row>
+	  <row>
+	    <entry>Continuous-Time Fourier Transform</entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>L</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>L</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>Continuous-Time Linear</entry>
+	  </row>
+	  <row>
+	    <entry>Discrete-Time Fourier Transform</entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>l</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>L</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:interval closure="closed-open">
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:interval>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>Discrete-Time Linear</entry>
+	  </row>
+	  <row>
+	    <entry>Discrete Fourier Transform</entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>l</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:interval closure="closed-closed">
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:interval>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry align="center">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>l</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup></m:ci>
+		  <m:interval closure="closed-closed">
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:interval>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>Discrete-Time Circular</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+  </content>
+</document>

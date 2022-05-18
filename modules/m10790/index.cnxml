@@ -1,0 +1,324 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Perfect Reconstruction</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10790</md:content-id>
+  <md:title>Perfect Reconstruction</md:title>
+  <md:abstract>This module examines the conditions and filters involved in perfect reconstruction.</md:abstract>
+  <md:uuid>fa3ba57a-6894-43d7-bdb7-2cac723ceae8</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id72067">If certain additional assumptions about the original signal and sampling rate hold, then the original signal can be recovered exactly from its samples using a particularly important type of filter. More specifically, it will be shown that if a bandlimited signal is sampled at a rate greater than twice its bandlimit, the Whittaker-Shannon reconstruction formula perfectly reconstructs the original signal. This formula makes use of the ideal lowpass filter, which is related to the sinc function. This is extremely useful, as sampled versions of continuous time signals can be filtered using discrete time signal processing, often in a computer. The results may then be reconstructed to produce the same continuous time output as some desired continuous time system.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Perfect Reconstruction</title>
+      <para id="id72086">In order to understand the conditions for perfect reconstruction and the filter it employs, consider the following. As a beginning, a sufficient condition under which perfect reconstruction is possible will be discussed. Subsequently, the filter and process used for perfect reconstruction will be detailed.</para>
+      <para id="id72092">Recall that the sampled version <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> of a continuous time signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> has a spectrum given by</para>
+      <equation id="id72468">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>s</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mi>X</m:mi>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mrow>
+                  <m:mi>ω</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mi>k</m:mi>
+                </m:mrow>
+                <m:msub>
+                  <m:mi>T</m:mi>
+                  <m:mi>s</m:mi>
+                </m:msub>
+              </m:mfrac>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id72557">As before, note that if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, meaning that <m:math overflow="scroll"><m:mi>X</m:mi></m:math> is only nonzero on <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, then each period of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> has the same form as <m:math overflow="scroll"><m:mi>X</m:mi></m:math>. Thus, we can identify the original spectrum <m:math overflow="scroll"><m:mi>X</m:mi></m:math> from the spectrum of the samples <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> and, by extension, the original signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> from its samples <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> at rate <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id72955">If a signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math>, then it is also bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> provided that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>&lt;</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>B</m:mi></m:mrow></m:math>. Thus, if we ensure that <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is sampled to <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sufficiently high sampling angular frequency
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> and have a way of identifying the unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal corresponding to a discrete time signal at sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>, then <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> can be used to reconstruct <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>˜</m:mo></m:mover><m:mo>=</m:mo><m:mi>x</m:mi></m:mrow></m:math> exactly. The frequency <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> is known as the angular Nyquist rate. Therefore, the condition that the sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> be greater than the Nyquist rate is a sufficient condition for perfect reconstruction to be possible.</para>
+      <para id="id73241">The correct filter must also be known in order to perform perfect reconstruction. The ideal lowpass filter defined by <m:math overflow="scroll"><m:mrow><m:mi>G</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mfenced separators="" open="(" close=")"><m:mi>u</m:mi><m:mfenced separators="" open="(" close=")"><m:mi>ω</m:mi><m:mo>+</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:mfenced><m:mo>-</m:mo><m:mi>u</m:mi><m:mfenced separators="" open="(" close=")"><m:mi>ω</m:mi><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:mfenced></m:mfenced></m:mrow></m:math>, which is shown in <link target-id="uid1"/>, removes all signal content not in the frequency range <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>. Therefore, application of this filter to the impulse train <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>-</m:mo><m:mi>n</m:mi><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> results in an output bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id73476">We now only need to confirm that the impulse response <m:math overflow="scroll"><m:mi>g</m:mi></m:math> of the filter <m:math overflow="scroll"><m:mi>G</m:mi></m:math> satisfies our sufficient condition to be a reconstruction filter. The inverse Fourier transform of <m:math overflow="scroll"><m:mrow><m:mi>G</m:mi><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>)</m:mo></m:mrow></m:math> is</para>
+      <equation id="id73512">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>g</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">sinc</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>/</m:mo>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>t</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo form="prefix">sin</m:mo>
+                        <m:mo>(</m:mo>
+                        <m:mi>π</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>π</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>t</m:mi>
+                      <m:mo>≠</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>,</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id73632">which is shown in <link target-id="uid1"/>. Hence,</para>
+      <equation id="id73641">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>g</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">sinc</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo form="prefix">sin</m:mo>
+                        <m:mo>(</m:mo>
+                        <m:mi>π</m:mi>
+                        <m:mi>n</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>π</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>≠</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>≠</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id73786">Therefore, the ideal lowpass filter <m:math overflow="scroll"><m:mi>G</m:mi></m:math> is a valid reconstruction filter. Since it is a valid reconstruction filter and always produces an output that is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, this filter always produces the unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal that samples to a given discrete time sequence at sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> when the impulse train <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>-</m:mo><m:mi>n</m:mi><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is input.</para>
+      <para id="id73952">Therefore, we can always reconstruct any <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal from its samples at sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> by the formula</para>
+      <equation id="id74009">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>s</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo form="prefix">sinc</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>/</m:mo>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id74090">This perfect reconstruction formula is known as the Whittaker-Shannon interpolation formula and is sometimes also called the cardinal series. In fact, the sinc function is the infinite order cardinal basis spline <m:math overflow="scroll"><m:msub><m:mi>η</m:mi><m:mi>∞</m:mi></m:msub></m:math>. Consequently, the set <m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:mo form="prefix">sinc</m:mo><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>-</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo><m:mi>n</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mo>}</m:mo></m:mrow></m:math> forms a basis for the vector space of <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals where the signal samples provide the corresponding coefficients. It is a simple exercise to show that this basis is, in fact, an orthogonal basis.</para>
+      <figure id="uid1"><media id="uid1_media" alt="">
+          <image mime-type="image/png" src="../../media/lowsinc.png" id="uid1_onlineimage" width="560"><!-- NOTE: attribute width changes image size online (pixels). original width is 875. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/lowsinc.eps" id="uid1_printimage" print-width="4.5in">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>The above plots show the ideal lowpass filter and its inverse Fourier transform, the sinc function.</caption></figure>
+      <figure id="uid2">
+        <media id="uid2_media" alt="">
+          <image mime-type="image/png" src="../../media/PRex.png" id="uid2_onlineimage" width="560"><!-- NOTE: attribute width changes image size online (pixels). original width is 560. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/PRex.eps" id="uid2_printimage" print-width="4.5in">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>The plots show an example discrete time signal and its Whittaker-Shannon sinc reconstruction.</caption>
+      </figure>
+    </section>
+    <section id="cid3" class="cn">
+      <title>Perfect Reconstruction Summary</title>
+      <para id="id74235">This module has shown that bandlimited continuous time signals can be reconstructed exactly from their samples provided that the sampling rate exceeds the Nyquist rate, which is twice the bandlimit. The Whittaker-Shannon reconstruction formula computes this perfect reconstruction using an ideal lowpass filter, with the resulting signal being a sum of shifted sinc functions that are scaled by the sample values. Sampling below the Nyquist rate can lead to aliasing which makes the original signal irrecoverable as is described in the subsequent module. The ability to perfectly reconstruct bandlimited signals has important practical implications for the processing of continuous time signals using the tools of discrete time signal processing.</para>
+    </section>
+  </content>
+</document>

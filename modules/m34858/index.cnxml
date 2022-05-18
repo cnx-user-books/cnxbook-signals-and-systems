@@ -1,0 +1,1449 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Z-Transform</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34858</md:content-id>
+  <md:title>Z-Transform</md:title>
+  <md:abstract>Describes Z transforms.</md:abstract>
+  <md:uuid>16ce759b-b713-47e3-ba97-22a85ab1f0ee</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="eip-137" class="in"><title>Introduction</title><para id="eip-294">The Z transform is a generalization of the <link document="m10108" strength="2">Discrete-Time Fourier
+      Transform</link>. It is used because the DTFT does not converge/exist for many important signals, and yet does for the z-transform. It is also used because it is notationally cleaner than the DTFT. In contrast to the DTFT, instead of using <link document="m10784" strength="2">complex exponentials</link> of the form
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:ci>ω</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+     with purely imaginary parameters, the Z transform uses the more general, 
+      <m:math>
+	<m:apply>
+	  <m:power/>
+            <m:ci>z</m:ci>
+	    <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>,
+      where
+      <m:math>
+	<m:apply>
+	  <m:ci>z</m:ci>
+	</m:apply>
+      </m:math>
+is complex. The Z-transform thus allows one to bring in the power of complex variable theory into Digital Signal Processing.
+</para></section>
+
+    <section id="eip-649" class="th"><title>The Z-Transform</title>
+
+
+<section id="eip-785"><title>Bilateral Z-transform Pair</title><para id="eip-466">Although Z transforms are rarely solved in practice using integration
+      (<link document="m10119" strength="2">tables</link> and
+      computers (<foreign>e.g.</foreign> Matlab) are much more
+      common), we will provide the <term>bilateral Z transform
+      pair</term> here for purposes of discussion and derivation.  These define the forward and inverse Z
+      transformations.  Notice the similarities between the forward
+      and inverse transforms.  This will give rise to many of the same
+      symmetries found in <link document="m10096" strength="2">Fourier
+      analysis</link>.
+
+      <equation id="eqn1"><title>Z Transform</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>	
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>	
+		  <m:infinity/>	
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci> 
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>	
+	    </m:apply>	
+	  </m:math></equation>
+
+      <equation id="eqn2"><title>Inverse Z Transform</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#surfaceintegral"/>
+		  <m:bvar>
+		    <m:ci>z</m:ci>
+		  </m:bvar>
+		  <m:domainofapplication>
+		    <m:ci>r</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">X</m:ci>
+		      <m:ci>z</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+      </equation>
+    </para><note id="eip-335">We have defined the bilateral z-transform. There is also a <term>unilateral z-transform
+</term> , 
+
+
+	<equation id="unilateral_z-transform">     
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:uplimit>	
+		  <m:infinity/>	
+		</m:uplimit>
+	        <m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci> 
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>	   
+		    <m:power/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	 
+	    </m:apply>	
+	  </m:math>
+	</equation>  
+      
+
+
+which is useful for solving the difference equations with nonzero initial conditions. This is similar to the <term> unilateral Laplace Transform</term> in continuous time.</note></section>
+
+    <section id="sect1"><title>Relation between Z-transform and DTFT</title><para id="eip-915">Taking a look at the equations describing the Z-Transform and the Discrete-Time Fourier Transform:
+
+<equation id="eip-540"><title>Discrete-Time Fourier Transform</title><m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">X</m:ci>
+            <m:apply>
+	           <m:exp/>
+	           <m:apply>
+	                <m:times/>
+	                <m:imaginaryi/>
+	                <m:ci>ω</m:ci>
+	    
+	           </m:apply>
+	   </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:sum/>
+	    <m:bvar>
+	      <m:ci>n</m:ci>
+	    </m:bvar>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:minus/>
+		<m:infinity/>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:uplimit>
+	      <m:infinity/>
+	    </m:uplimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>ω</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation><equation id="eip-338"><title>Z-Transform</title><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>	
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>	
+		  <m:infinity/>	
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci> 
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>	
+	    </m:apply>	
+	  </m:math></equation>
+
+
+We can see many similarities; first, that :
+
+
+<equation id="eip-794"><m:math>
+	<m:apply>
+	   <m:eq/>
+	   <m:apply>
+	      <m:ci type="fn">X</m:ci>
+           
+              <m:apply>
+	           <m:exp/>
+	           <m:apply>
+	                <m:times/>
+	                <m:imaginaryi/>
+	                <m:ci>ω</m:ci>
+	    
+	           </m:apply>
+	   </m:apply>
+           </m:apply>
+           <m:apply>
+	      <m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	   </m:apply>
+	</m:apply>
+</m:math></equation>
+
+
+
+
+for all 
+
+<m:math>
+    <m:apply>
+	   <m:eq/>
+
+	   <m:ci>z</m:ci>
+           
+           <m:apply>
+	           <m:exp/>
+	           <m:apply>
+	                <m:times/>
+	                <m:imaginaryi/>
+	                <m:ci>ω</m:ci>
+	    
+	           </m:apply>
+	   </m:apply>
+     </m:apply>
+</m:math></para>
+
+
+
+
+
+
+
+      
+    </section><section id="eip-51"><title>Visualizing the Z-transform</title><para id="eip-828">With the DTFT, we have a complex-valued function of a real-valued variable 
+
+<m:math>
+<m:ci>ω</m:ci>
+</m:math>   
+
+(and 2
+
+<m:math>
+
+<m:pi/>
+</m:math>
+
+periodic).
+
+
+The Z-transform is a complex-valued function of a complex valued variable z.
+
+<figure id="figz1" orient="horizontal"><title>Plots</title><media id="Shining_Star" alt=""><image src="../../media/zplanefigure1.png" mime-type="image/png"/></media>
+	  
+	</figure></para><para id="para13">With the Fourier transform, we had a <term>complex-valued
+	function</term> of a <emphasis>purely imaginary
+	variable</emphasis>,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">F</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  This was something we could envision with two
+	2-dimensional plots (real and imaginary parts or magnitude and
+	phase).  However, with Z, we have a <term>complex-valued
+	function</term> of a <emphasis>complex variable</emphasis>.
+	In order to examine the magnitude and phase or real and
+	imaginary parts of this function, we must examine
+	3-dimensional surface plots of each component.
+      </para>
+
+      <para id="id204411">Consider the z-transform given by <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>z</m:mi></m:mrow></m:math>, as illustrated below.</para>
+
+<figure id="figztransform" orient="horizontal"><media id="ztransformpng.png" alt=""><image src="../../media/ztransform.jpg" mime-type="image/jpg" height="400" width="500"/></media>
+	  
+	</figure>
+
+
+      <para id="id204436">The corresponding DTFT has magnitude and phase given below.<note id="eip-813">While these are legitimate ways of looking at a signal in the
+	Z domain, it is quite difficult to draw and/or analyze.
+	For this reason, a simpler method has been developed.
+	Although it will not be discussed in detail here, the method
+	of <link document="m10112" strength="2">Poles and Zeros</link>
+	is much easier to understand and is the way both the Z
+	transform and its continuous-time counterpart the <term>Laplace-transform</term> are
+	represented graphically.
+      </note>
+</para>
+      
+
+<figure id="figzmagphase" orient="horizontal">
+
+<subfigure id="ztransmagnitude"><media id="graphfirst.png" alt=""><image src="../../media/graph1.png" mime-type="image/png"/></media>
+	  
+	</subfigure>
+
+<subfigure id="ztransphase"><media id="graphsecond.png" alt=""><image src="../../media/graph2.png" mime-type="image/png"/></media>
+	  </subfigure>
+<caption>Magnitude and Phase of H(z).</caption>
+
+	</figure>
+
+
+
+<para id="id204440">What could the system H be doing? It is a perfect all-pass, linear-phase
+system. But what does this mean?</para>
+      <para id="id204444">Suppose <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>δ</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:mrow></m:math>. Then</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>n</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>n</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id204654">Thus, <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math> is the <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-transform of a system that simply delays the input by <m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:math>. <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-transform of a unit-delay.</para>
+
+      <para id="id204742">Now consider <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>α</m:mi><m:mi>n</m:mi></m:msup><m:mi>u</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math></para>
+
+<figure id="graph3stem" orient="horizontal"><media id="stemgraph3.png" alt=""><image src="../../media/graph3.png" mime-type="image/png"/></media>
+	  
+	</figure>
+
+
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msup>
+                    <m:mi>α</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>α</m:mi>
+                        <m:mi>z</m:mi>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>-</m:mo>
+                      <m:mfrac>
+                        <m:mi>α</m:mi>
+                        <m:mi>z</m:mi>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>i</m:mi>
+                    <m:mi>f</m:mi>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mfrac>
+                    <m:mi>α</m:mi>
+                    <m:mi>z</m:mi>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>G</m:mi>
+                    <m:mi>e</m:mi>
+                    <m:mi>o</m:mi>
+                    <m:mi>m</m:mi>
+                    <m:mi>e</m:mi>
+                    <m:mi>t</m:mi>
+                    <m:mi>r</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>c</m:mi>
+                    <m:mi>S</m:mi>
+                    <m:mi>e</m:mi>
+                    <m:mi>r</m:mi>
+                    <m:mi>i</m:mi>
+                    <m:mi>e</m:mi>
+                    <m:mi>s</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mi>z</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205058">What if <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mfrac><m:mi>α</m:mi><m:mi>z</m:mi></m:mfrac><m:mrow><m:mo>|</m:mo><m:mo>≥</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math>? Then <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mspace width="-0.166667em"/><m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>α</m:mi><m:mi>z</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math> does not converge! Therefore, whenever we compute a <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-tranform, we must also specify the set of <m:math overflow="scroll"><m:mi>z</m:mi></m:math>'s for which the <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-transform exists. This is called the <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mi>e</m:mi><m:mi>g</m:mi><m:mi>i</m:mi><m:mi>o</m:mi><m:mi>n</m:mi><m:mi>o</m:mi><m:mi>f</m:mi><m:mi>c</m:mi><m:mi>o</m:mi><m:mi>n</m:mi><m:mi>v</m:mi><m:mi>e</m:mi><m:mi>r</m:mi><m:mi>g</m:mi><m:mi>e</m:mi><m:mi>n</m:mi><m:mi>c</m:mi><m:mi>e</m:mi></m:mrow></m:math>(ROC).</para>
+
+      <note id="eip-82"><title>Using a computer to find the Z-Transform</title>Matlab has two functions,
+	  <code>ztrans</code> and
+	  <code>iztrans</code>, that are both part of the
+	  symbolic toolbox, and will find the Z and inverse
+	  Z transforms respectively.  This method is generally
+	  preferred for more complicated functions.  Simpler and more
+	  contrived functions are usually found easily enough by using <link document="m10119" strength="2">tables</link>.</note>
+
+
+    </section>
+
+    
+</section>
+
+<section id="eip-514" class="ap"><title>Application to Discrete Time Filters</title><para id="id205224">The <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-transform might seem slightly ugly. We have to worry about the region of convergence, and stability issues, and so forth. However, in the end it is worthwhile because it proves extremely useful in analyzing digital filters with feedback. For example, consider the system illustrated below</para>
+
+
+<figure id="figzgraph4" orient="horizontal"><title>Plots</title><media id="graph4digitalfilter" alt=""><image src="../../media/graph4.png" mime-type="image/png"/></media>
+	  
+	</figure>
+
+
+      <para id="id205239">We can analyze this system via the equations</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>v</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205339">and</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>v</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205433">More generally,</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>v</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>N</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205511">and</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:mi>v</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205601">or equivalently,</para>
+      <equation id="uid8">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>N</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205724">What does the <m:math overflow="scroll"><m:mi>z</m:mi></m:math>-transform of this relationship look like?</para>
+      <equation id="uid9">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>Z</m:mi>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mi>M</m:mi>
+                    </m:munderover>
+                    <m:mspace width="-0.166667em"/>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>Z</m:mi>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mi>M</m:mi>
+                    </m:munderover>
+                    <m:mspace width="-0.166667em"/>
+                    <m:msub>
+                      <m:mi>b</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>Z</m:mi>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:mi>y</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>Z</m:mi>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id205963">Note that</para>
+      <equation id="uid10">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>Z</m:mi>
+                  <m:mo>{</m:mo>
+                  <m:mi>y</m:mi>
+                  <m:mo>[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>]</m:mo>
+                  <m:mo>}</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>Y</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id206154">Thus the relationship reduces to</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>Y</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>N</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>Y</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>M</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>N</m:mi>
+                  </m:munderover>
+                  <m:mspace width="-0.166667em"/>
+                  <m:msub>
+                    <m:mi>b</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mi>Y</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi>X</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:msubsup>
+                      <m:mspace width="-0.166667em"/>
+                      <m:msub>
+                        <m:mi>b</m:mi>
+                        <m:mi>k</m:mi>
+                      </m:msub>
+                      <m:msup>
+                        <m:mi>z</m:mi>
+                        <m:mrow>
+                          <m:mo>-</m:mo>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mi>M</m:mi>
+                      </m:msubsup>
+                      <m:mspace width="-0.166667em"/>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mi>k</m:mi>
+                      </m:msub>
+                      <m:msup>
+                        <m:mi>z</m:mi>
+                        <m:mrow>
+                          <m:mo>-</m:mo>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id206500">Hence, given a system the one above, we can easily determine the system's transfer function, and end up with a ratio of two polynomials in <m:math overflow="scroll"><m:mi>z</m:mi></m:math>: a rational function. Similarly, given a rational function, it is easy to realize this function in a simple hardware architecture.</para>
+
+    </section><section id="eip-795" class="ie"><title>Interactive Z-Transform Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="ZTDefinitionDemo">
+<image mime-type="image/png" src="../../media/ZTDefinition_display.cdf" thumbnail="ZTDefinition_display.png" width="400"/>
+<object width="400" height="400" src="ZTDefinition_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/ZTDefinition_display.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating the Z Transform. To Download, right-click and save target as .cdf.</caption>
+</figure></para></section><section id="conc" class="cn"><title>Conclusion</title><para id="conclusionpara">The z-transform proves a useful, more general form of the Discrete Time Fourier Transform. It applies equally well to describing systems as well as signals using the eigenfunction method, and proves extremely useful in digital filter design.</para>
+</section>
+
+  </content>
+</document>

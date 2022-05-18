@@ -1,0 +1,1457 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Inverse Laplace Transform</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34857</md:content-id>
+  <md:title>Inverse Laplace Transform</md:title>
+  <md:abstract>This module describes the inverse Laplace transform (based on Inverse Z-transform module by Benjamin Fite, notation changed).</md:abstract>
+  <md:uuid>bdd439cf-04de-4db6-bd04-915189678d2d</md:uuid>
+</metadata>
+
+<content>
+       
+    <section id="eip-48" class="in"><title>Introduction</title><para id="izxform">When using the 
+      <link document="m10110" strength="2">Laplace-transform</link> 
+
+      <equation id="Laplacexform"> 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar> 
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>	
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>	
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">h</m:ci> 
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>s</m:ci>
+		  <m:apply> 
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	
+	    </m:apply>	
+	  </m:apply>	
+	</m:math>
+      </equation> 
+
+      it is often useful to be able to find 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">h</m:ci> 
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      given 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>s</m:ci>
+	</m:apply>
+      </m:math>.
+
+      There are at least 4 different methods to do this:
+      <list id="types" list-type="enumerated">
+	<item>
+	  <link target-id="inspect" strength="3">Inspection</link>
+	</item>
+
+	<item>
+	  <link target-id="PFE" strength="3">Partial-Fraction Expansion</link>
+	</item>
+	<item>
+	  <link target-id="PSE" strength="3">Power Series Expansion</link>
+	</item>
+	<item>
+	  <link target-id="CI" strength="3">Contour Integration</link>
+	</item>
+
+      </list>
+
+</para>
+      </section>
+
+<section id="inspect" class="th">
+      <title>Inspection Method</title>
+      <para id="tion">This "method" is to basically become familiar with the <link document="m10111" strength="2">Laplace-transform pair tables</link>
+	and then "reverse engineer".
+      </para>
+      
+      <example id="simple">
+	<para id="simp">When given
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci>α</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  with an <link document="m10622" strength="1">ROC</link> of 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:ci>α</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  we could determine "by inspection" that 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>	      
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>		
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	</para>
+      </example>
+
+    </section>
+
+
+    <section id="PFE" class="th">
+      <title>Partial-Fraction Expansion Method</title>
+      <para id="partfracexp">When dealing with <term>linear time-invariant systems</term>
+	the z-transform is often of the form
+
+	<equation id="pfeeq1"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:ci type="fn">B</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">A</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>M</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply> 
+			<m:minus/>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply> 
+			<m:minus/>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	This can also expressed as
+
+	<equation id="pfeeq2"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>1</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>c</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:inverse/>
+			  <m:ci>s</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>1</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>d</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:inverse/>
+			  <m:ci>s</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	where 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	represents the nonzero zeros of 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>
+	and 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>d</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	represents the nonzero poles.
+      </para>
+      
+      <para id="pfe2">If 
+	<m:math>
+	  <m:apply>
+	    <m:lt/>
+	    <m:ci>M</m:ci>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:math>
+	then 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>
+	can be represented as 
+	<equation id="pfeeq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>1</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:ci>N</m:ci>
+		</m:uplimit>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>d</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	This form allows for easy inversions of each term of the sum
+	using the <link target-id="inspect" strength="3">inspection
+	method</link> and the <link document="m10119" strength="2">transform table</link>.  If the numerator is
+	a polynomial, however, then it becomes necessary to use <link document="m2111" strength="2">partial-fraction
+	expansion</link> to put
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>
+	in the above form. If 
+	<m:math>
+	  <m:apply>
+	    <m:geq/>
+	    <m:ci>M</m:ci>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:math>
+	then 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>
+	can be expressed as
+
+	<equation id="pfeeq4">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>r</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>M</m:ci>
+		      <m:ci>N</m:ci>
+		    </m:apply>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>B</m:mi>
+			<m:mi>r</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply> 
+			<m:minus/>
+			<m:ci>r</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msubsup>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			  <m:mo>'</m:mo>
+			</m:msubsup>
+		      </m:ci>
+		      <m:apply>
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:apply> 
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:apply> 
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para> 
+
+
+      <example id="pfeex1">
+	<para id="ex1pfe">Find the inverse z-transform of 
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:cn>-2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>		    
+		    <m:cn>-3</m:cn>		    
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>		    
+		    <m:cn>2</m:cn>		    
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:cn>-2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  where the ROC is 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>.
+
+	  In this case 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>M</m:ci>
+	      <m:ci>N</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>,
+	  so we have to use long division to get 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>7</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>		      
+		      <m:cn>-3</m:cn>			    
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>		      
+		      <m:cn>2</m:cn>		      
+		      <m:apply>
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:cn>-2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  Next factor the denominator.
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>-1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>5</m:cn>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>			
+			<m:cn>2</m:cn>			
+			<m:apply>
+			  <m:inverse/>
+			  <m:ci>s</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  Now do partial-fraction expansion.
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>		      
+		      <m:cn>2</m:cn>		      
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>9</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>		      
+		      <m:cn>2</m:cn>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>-4</m:cn>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  Now each term can be inverted using the inspection method
+	  and the Laplace-transform table. Thus, since the ROC is 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>,
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>9</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>		    
+		    <m:cn>2</m:cn>		    
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">u</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>-4</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">u</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </example>
+    </section>
+
+
+    <section id="eip-643" class="ie"><title>Demonstration of Partial Fraction Expansion</title><para id="eip-359">
+<figure id="eip-idpartialfractiondecomposition"><media id="PartialFractionExpansion" alt="A demonstration involving Partial Fraction Expansion">
+      <image mime-type="image/jpg" src="http://demonstrations.wolfram.com/PartialFractionDecomposition/thumbnail_174.jpg"/>
+   </media><caption>Interactive experiment illustrating how the Partial Fraction Expansion method is used to solve a variety of numerator and denominator problems. (To view and interact with 
+the simulation, download the free Mathematica player at
+http://www.wolfram.com/products/player/download.cgi)</caption></figure>
+</para><para id="eip-820"><figure id="Khan_Laplace">
+ <title>Khan Lecture on Partial Fraction Expansion</title>
+ <media id="yt-media" display="block" alt="Khan_Lecture_On_PFE">
+  <flash id="yt-video" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/S-XKGBesRzk&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xd0d0d0&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1" width="640" height="385">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+<caption> video from <link target-id="http://www.khanacademy.org/">Khan Academy</link></caption>
+</figure></para></section>
+
+
+<section id="PSE" class="th">
+      <title>Power Series Expansion Method</title>
+      <para id="powserexp">When the z-transform is defined as a power series in the form    
+
+	<equation id="zxform2"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar> 
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>	
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>	
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">h</m:ci> 
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:apply> 
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>	
+	    </m:apply>	
+	  </m:math>
+	</equation> 
+	
+	then each term of the sequence 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">h</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	can be determined by looking at the coefficients of the
+	respective power of 	
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>s</m:ci>
+	    <m:apply> 
+	      <m:minus/>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+      
+      <example id="ex1pse">
+	<para id="pex1pse"><!-- Add link for finite-length sequence -->
+	  Now look at the Laplace-transform of a  <term>finite-length
+	    sequence</term>.  
+	  
+	  <equation id="eq1pse"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:inverse/>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>5</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>		   
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  In this case, since there were no poles, we multiplied the
+	  factors of	  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>.
+	  Now, by inspection, it is clear that
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:ci type="fn">δ</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>t</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>5</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>		
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>t</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>		
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </example>
+      
+      <para id="p2pse">
+	One of the advantages of the power series expansion method is
+	that many functions encountered in engineering problems have
+	their power series' tabulated.  Thus functions such as log,
+	sin, exponent, sinh, etc, can be easily inverted.
+      </para>
+
+      <example id="ex2pse">
+	<para id="pex2pse">Suppose 
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply> 
+	      <m:apply>
+		<m:log/>
+		<m:logbase>
+		  <m:ci>t</m:ci>
+		</m:logbase>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:apply>
+		      <m:inverse/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Noting that 
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:log/>
+		<m:logbase>
+		  <m:ci>t</m:ci>
+		</m:logbase>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar> 
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>1</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>	
+		</m:uplimit>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:power/>
+		      <m:cn>-1</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>t</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>x</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Then 
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply> 
+	      <m:apply>
+		<m:sum/>
+		<m:bvar> 
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>1</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>	
+		</m:uplimit>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:power/>
+		      <m:cn>-1</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>t</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>α</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Therefore 
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply> 
+	      <m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:power/>
+			  <m:cn>-1</m:cn>
+			  <m:apply>
+			    <m:plus/>
+			    <m:ci>t</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>α</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply> 
+		      </m:apply>
+		      <m:ci>t</m:ci>  
+		    </m:apply>
+		    <m:apply>
+		      <m:geq/>
+		      <m:ci>t</m:ci>  
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:piece>
+		  <m:piece>
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:leq/>
+		      <m:ci>t</m:ci>  
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		  </m:piece>
+		</m:piecewise>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	</para>
+      </example>
+
+    </section>
+
+
+    <section id="CI">
+      <title>Contour Integration Method</title>
+      <para id="contourint">Without going in to much detail
+	
+	<equation id="cieq1"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#surfaceintegral"/>
+		  <m:bvar>
+		    <m:ci>s</m:ci>
+		  </m:bvar>
+		  <m:domainofapplication>
+		    <m:ci>r</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	where 
+	<m:math>
+	  <m:ci>r</m:ci>
+	</m:math>
+	is a counter-clockwise contour in the ROC of 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>
+
+	encircling the origin of the s-plane.  To further expand on
+	this method of finding the inverse requires the knowledge of
+	complex variable theory and thus will not be addressed in this
+	module.			   
+      </para>
+    </section>
+
+<section id="eip-177" class="ie"><title>Demonstration of Contour Integration</title><para id="eip-253">
+<figure id="eip-id1163922361482"><media id="DigCommSigDetectie" alt="A demonstration involving Contour Integration">
+      <image mime-type="image/jpg" src="http://demonstrations.wolfram.com/ContourIntegralAroundASimplePole/thumbnail_174.jpg"/>
+   </media><caption>Interactive experiment illustrating how the contour integral is applied on a simple example. For a more in-depth discussion of this method, some background in complex analysis is required. (To view and interact with 
+the simulation, download the free Mathematica player at
+http://www.wolfram.com/products/player/download.cgi)</caption></figure>
+</para></section>
+
+<section id="conc" class="cn"><title>Conclusion</title>
+<para id="concpara">The Inverse Laplace-transform is very useful to know for the purposes of designing a filter, and there are many ways in which to calculate it, drawing from many disparate areas of mathematics. All nevertheless assist the user in reaching the desired time-domain signal that can then be synthesized in hardware(or software) for implementation in a real-world filter. </para>
+</section>
+  </content>
+</document>

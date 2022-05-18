@@ -1,0 +1,443 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Discrete Time Complex Exponential</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34573</md:content-id>
+  <md:title>Discrete Time Complex Exponential</md:title>
+  <md:abstract>Describes the complex exponential function for discrete time.</md:abstract>
+  <md:uuid>871f287f-c3b6-4d32-beee-4bfa4ee36926</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="eip-543" class="in"><title>Introduction</title><para id="eip-741">Complex exponentials are some of the most important functions in our study of signals and systems.  Their importance stems from their status as eigenfunctions of linear time invariant systems; as such, it can be both convenient and insightful to represent signals in terms of complex exponentials.  Before proceeding, you should be familiar with complex numbers.</para></section>
+<section id="eip-15" class="th"><title>The Discrete Time Complex Exponential</title><section id="eip-924"><title>Complex Exponentials</title><para id="eip-411">The complex exponential function will become a critical part of your study of signals and systems.  Its general discrete form is written as
+	<equation id="eq1"><m:math>
+<m:mrow>
+	<m:msup>
+		<m:mi>z</m:mi>
+		<m:mi>n</m:mi>
+	</m:msup>
+</m:mrow>
+</m:math>
+	</equation>
+where <m:math><m:mi>z</m:mi></m:math> is a complex number. Recalling the polar expression of complex numbers, <m:math><m:mi>z</m:mi></m:math> can be expressed in terms of its magnitude <m:math><m:apply><m:abs/><m:ci>z</m:ci></m:apply></m:math> and its angle (or argument) <m:math><m:mi>ω</m:mi></m:math> in the complex plane: <m:math><m:apply><m:eq/><m:ci>z</m:ci><m:apply><m:times/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:apply><m:exp/><m:apply><m:times/><m:ci>j</m:ci><m:ci>ω</m:ci></m:apply></m:apply></m:apply></m:apply></m:math>.  Thus <m:math><m:apply><m:eq/><m:apply><m:power/><m:ci>z</m:ci><m:ci>n</m:ci></m:apply><m:apply><m:times/><m:apply><m:power/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:ci>n</m:ci></m:apply><m:apply><m:exp/><m:apply><m:times/><m:ci>j</m:ci><m:ci>ω</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:apply></m:apply></m:math>.  In the context of complex exponentials, <m:math><m:mi>ω</m:mi></m:math> is referred to as frequency.
+
+For the time being, let's consider complex exponentials for which <m:math><m:apply><m:eq/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:cn>1</m:cn></m:apply></m:math>.</para><para id="eip-560">These discrete time complex exponentials have the following property, which will become evident through discussion of Euler's formula.
+
+	    <equation id="eq5a"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		       <m:ci>j</m:ci>
+		      <m:ci>ω</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>ω</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			</m:apply>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    Given this property, if we have a complex exponential with frequency
+	    <m:math>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>ω</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, then this signal "aliases" to a complex exponential with
+	    frequency <m:math><m:ci>ω</m:ci></m:math>, implying that the equation representations of discrete complex exponentials are not unique.
+
+	    
+	  </para></section><section id="eip-640"><title>Euler's Formula</title><para id="id63152">The mathematician Euler proved an important identity relating complex exponentials to trigonometric functions. Specifically, he discovered the eponymously named identity, Euler's formula, which states that for any real number <m:math><m:mi>x</m:mi></m:math>,</para><equation id="id63157">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63206">which can be proven as follows.</para>
+      <para id="id63212">In order to prove Euler's formula, we start by evaluating the Taylor series for <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mi>z</m:mi></m:msup></m:math> about <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, which converges for all complex <m:math overflow="scroll"><m:mi>z</m:mi></m:math>, at <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>j</m:mi><m:mi>x</m:mi></m:mrow></m:math>. The result is</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>x</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mi>k</m:mi>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>k</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>k</m:mi>
+                      <m:mo>)</m:mo>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>k</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>k</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                      <m:mo>!</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mo form="prefix">cos</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo>)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id63505">
+because the second expression contains the Taylor series for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math> about <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, which converge for all real <m:math overflow="scroll"><m:mi>x</m:mi></m:math>. Thus, the desired result is proven.</para>
+      <para id="id63567">Choosing <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:math>, we have:</para><equation id="id63586">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>n</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63641">which breaks a discrete time complex exponential into its real part and imaginary part. Using this formula, we can also derive the following relationships.</para>
+      <equation id="id63648">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>n</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>n</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id63715">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>n</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>n</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation></section><section id="eip-529"><title>Real and Imaginary Parts of Complex Exponentials</title><para id="id138532">Now let's return to the more general case of complex exponentials, <m:math><m:apply><m:power/><m:ci>z</m:ci><m:ci>n</m:ci></m:apply></m:math>.  Recall that <m:math><m:apply><m:eq/><m:apply><m:power/><m:ci>z</m:ci><m:ci>n</m:ci></m:apply><m:apply><m:times/><m:apply><m:power/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:ci>n</m:ci></m:apply><m:apply><m:exp/><m:apply><m:times/><m:ci>j</m:ci><m:ci>ω</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:apply></m:apply></m:math>.  We can express this in terms of its real and imaginary parts:</para>
+      
+      
+      <equation id="id140912"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:apply><m:power/><m:ci>z</m:ci><m:ci>n</m:ci></m:apply>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:apply><m:times/><m:apply><m:power/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:ci>n</m:ci></m:apply><m:apply><m:cos/><m:apply><m:times/><m:ci>ω</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:apply>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id140987"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Im </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:apply><m:power/><m:ci>z</m:ci><m:ci>n</m:ci></m:apply>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:apply><m:times/><m:apply><m:power/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:ci>n</m:ci></m:apply><m:apply><m:sin/><m:apply><m:times/><m:ci>ω</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:apply>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id141064">We see now that the magnitude of <m:math><m:mi>z</m:mi></m:math> establishes an exponential envelope to the signal, with <m:math><m:mi>ω</m:mi></m:math> controlling rate of the sinusoidal oscillation within the envelope.  </para>
+      
+    
+
+      <figure id="fig1" orient="vertical"><subfigure id="fig1a">
+	  <media id="id4697655" alt=""><image src="../../media/dt1.png" mime-type="image/png"/></media>
+	  <caption>
+	    If <m:math><m:apply><m:lt/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:cn>1</m:cn></m:apply></m:math>, we
+	    have the case of a decaying exponential envelope.
+	  </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+	  <media id="id13865510" alt=""><image src="../../media/dt2.png" mime-type="image/png"/></media>
+	  <caption>
+	    If <m:math><m:apply><m:gt/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:cn>1</m:cn></m:apply></m:math>, we
+	    have the case of a growing exponential envelope.</caption>
+	</subfigure>
+	<subfigure id="fig1c">
+	  <media id="id4626480" alt=""><image src="../../media/dt3.png" mime-type="image/png"/></media>
+	  <caption>
+	   If <m:math><m:apply><m:eq/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:cn>1</m:cn></m:apply></m:math>, we have
+	    the case of a constant envelope.</caption>
+	</subfigure>
+	
+      </figure></section></section>
+
+    
+
+
+    
+
+    <section id="eip-729" class="ie"><title>Discrete Complex Exponential Demonstration</title><para id="eip-851"><figure id="demoonline"><media id="CNXdemoonline" alt="ComplexExponentialDemo">
+<image mime-type="image/png" src="../../media/lecture 2 - discretecomplex exponentials.cdf" thumbnail="lecture 2 - discretecomplex exponentials.png" width="500"/>
+<object width="700" height="700" src="lecture 2 - discretecomplex exponentials.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/lecture 2 - discretecomplex exponentials.png" width="500"/>
+</media>
+
+<caption>Interact (when online) with a Mathematica CDF demonstrating the Discrete Time Complex Exponential. To Download, right-click and save target as .cdf.</caption></figure></para></section><section id="eip-360" class="cn"><title>Discrete Time Complex Exponential Summary</title><para id="eip-220">Discrete time complex exponentials are signals of great importance to the study of signals and systems.  They can be related to sinusoids through Euler's formula, which identifies the real and imaginary parts of complex exponentials.  Eulers formula reveals that, in general, the real and imaginary parts of complex exponentials are sinusoids multiplied by real exponentials.</para></section>
+
+
+
+  </content>
+</document>

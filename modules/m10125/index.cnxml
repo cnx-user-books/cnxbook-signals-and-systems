@@ -1,0 +1,199 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Signal Operations</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10125</md:content-id>
+  <md:title>Signal Operations</md:title>
+  <md:abstract>This module will look at two signal operations affecting the time parameter of the signal, time shifting and time scaling.  These operations are very common  components to real-world systems and, as such, should be understood thoroughly when learning about signals and systems.</md:abstract>
+  <md:uuid>6e522cd5-cbe8-4710-a16a-0b5cc6080872</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-184" class="in"><title>Introduction</title><para id="eip-487">This module will look at two signal operations affecting the time parameter of the signal, time shifting and time scaling.  These operations are very common  components to real-world systems and, as such, should be understood thoroughly when learning about signals and systems.</para></section>
+    
+    <section id="eip-987" class="th"><title>Manipulating the Time Parameter</title><section id="eip-427"><title>Time Shifting</title><para id="p2">Time shifting is, as the name suggests, the shifting of a
+	signal in time.  This is done by adding or subtracting a
+	quantity of the shift to the time variable in the function.
+	Subtracting a fixed positive quantity from the time variable will shift
+	the signal to the right (delay) by the subtracted quantity, while adding a fixed positive amount to
+	the time variable will shift the signal to the left (advance) by the added quantity.
+      </para>
+      <figure id="fig1" orient="vertical">
+	<media id="id1164265888264" alt=""><image src="../../media/sigops1.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>t</m:ci>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  moves (delays) 
+	  <m:math display="inline">
+	    <m:ci>f</m:ci>
+	  </m:math> 
+	  to the right by 
+	  <m:math display="inline">
+	    <m:ci>T</m:ci>
+	  </m:math>.
+	</caption>
+      </figure>
+    </section><section id="eip-787"><title>Time Scaling</title><para id="p3">Time scaling compresses or dilates a signal by multiplying
+	the time variable by some quantity.  If that quantity is greater
+	than one, the signal becomes narrower and the operation is
+	called compression, while if the quantity is less than one, the
+	signal becomes wider and is called dilation.
+      </para>
+
+      <figure id="fig2" orient="vertical">
+	<media id="id1164240285802" alt=""><image src="../../media/sigops2.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>a</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  compresses 
+	  <m:math display="inline"> 
+	    <m:ci>f</m:ci> 
+	  </m:math> by 
+	  <m:math display="inline"> 
+	    <m:ci>a</m:ci> 
+	  </m:math>.
+	</caption>
+      </figure>
+    </section><example id="eip-31"><para id="p5">Given <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> we woul like to plot <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mi>t</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:math>.  The figure below describes a method to accomplish this.</para>
+      <figure id="fig3" orient="horizontal">
+	<subfigure id="fig4">
+	  <media id="id1164276972815" alt=""><image src="../../media/sigops4.png" mime-type="image/png"/></media>
+	  <caption>Begin with
+	    <m:math display="inline">
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig5">
+	  <media id="id1164250146370" alt=""><image src="../../media/sigops5.png" mime-type="image/png"/></media>
+	  <caption>Then replace
+	    <m:math display="inline">
+	      <m:ci>t</m:ci>
+	    </m:math>
+	    with
+	    <m:math display="inline">
+	      <m:apply>
+		<m:times/>
+		<m:ci>a</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	    to get
+	    <m:math display="inline">
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>a</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig6">
+	  <media id="id1164220130859" alt=""><image src="../../media/sigops6.png" mime-type="image/png"/></media>
+	  <caption>Finally, replace
+	    <m:math display="inline">
+	      <m:ci>t</m:ci>
+	    </m:math>
+	    with
+	    <m:math display="inline">
+	      <m:apply>
+		<m:minus/>
+		<m:ci>t</m:ci>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>b</m:ci>
+		  <m:ci>a</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    to get
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>b</m:ci>
+			<m:ci>a</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>b</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+      </figure>
+    
+</example><section id="eip-570"><title>Time Reversal</title><para id="p7">
+	A natural question to consider when learning about time
+	scaling is: What happens when the time variable is multiplied
+	by a negative number?  The answer to this is time reversal.
+	This operation is the reversal of the time axis, or flipping
+	the signal over the y-axis.
+      </para>
+      <figure id="fig7">
+	<media id="id1164224968573" alt=""><image src="../../media/sigops3.png" mime-type="image/png"/></media>
+	<caption>Reverse the time axis</caption>
+      </figure>
+
+
+
+    </section></section>
+
+    
+
+    
+
+    <section id="eip-789" class="ie"><title>Time Scaling and Shifting Demonstration</title><figure id="HarmonicDiscretedemoonline"><media id="CNXdemoonline" alt="timeshiftDemo">
+
+<image mime-type="application/vnd.wolfram.cdf" src="../../media/TimeshifterDrill_display.cdf" thumbnail="TimeshifterDrill.png" width="400"/>
+<object width="400" height="400" src="TimeshifterDrill_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/TimeshifterDrill.png" width="400"/>
+</media>
+
+<caption><link resource="TimeshifterDrill_display.cdf">Download</link> or Interact (when online) with a Mathematica CDF demonstrating Discrete Harmonic Sinusoids.</caption></figure></section><section id="eip-731" class="cn"><title>Signal Operations Summary</title><para id="eip-291">Some common operations on signals affect the time parameter of the signal.  One of these is time shifting in which a quantity is added to the time parameter in order to advance or delay the signal.  Another is the time scaling in which the time parameter is multiplied by a quantity in order to dilate or compress the signal in time.  In the event that the quantity involved in the latter operation is negative, time reversal occurs.</para></section>
+  </content>
+</document>

@@ -1,0 +1,1790 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Fields and Complex Numbers</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34514</md:content-id>
+  <md:title>Fields and Complex Numbers</md:title>
+  <md:abstract>An introduction to fields and complex numbers.</md:abstract>
+  <md:uuid>af290b86-2945-4053-89bc-381e5301462f</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Fields</title>
+      <para id="id62167">In order to propely discuss the concept of vector spaces in linear algebra, it is necessary to develop the notion of a set of “scalars” by which we allow a vector to be multiplied. A framework within which our concept of real numbers would fit is desireable. Thus, we would like a set with two associative, commutative operations (like standard addition and multiplication) and a notion of their inverse operations (like subtraction and division). The mathematical algebraic construct that addresses this idea is the field. A field <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>S</m:mi><m:mo>,</m:mo><m:mo>+</m:mo><m:mo>,</m:mo><m:mo>*</m:mo><m:mo>)</m:mo></m:mrow></m:math> is a set <m:math overflow="scroll"><m:mi>S</m:mi></m:math> together with two binary operations <m:math overflow="scroll"><m:mo>+</m:mo></m:math> and <m:math overflow="scroll"><m:mo>*</m:mo></m:math> such that the following properties are satisfied.</para>
+      <list id="id62562" display="block" list-type="enumerated"><item id="uid1">Closure of S under <m:math overflow="scroll"><m:mo>+</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid2">Associativity of S under <m:math overflow="scroll"><m:mo>+</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mo>(</m:mo><m:mi>y</m:mi><m:mo>+</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+</item>
+        <item id="uid3">Existence of <m:math overflow="scroll"><m:mo>+</m:mo></m:math> identity element: There is a <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mo>+</m:mo></m:msub><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> such that for every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mo>+</m:mo></m:msub><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:msub><m:mi>e</m:mi><m:mo>+</m:mo></m:msub><m:mo>=</m:mo><m:mi>x</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid4">Existence of <m:math overflow="scroll"><m:mo>+</m:mo></m:math> inverse elements: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> there is a <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:msub><m:mi>e</m:mi><m:mo>+</m:mo></m:msub></m:mrow></m:math>.
+</item>
+        <item id="uid5">Commutativity of S under <m:math overflow="scroll"><m:mo>+</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>+</m:mo><m:mi>x</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid6">Closure of S under <m:math overflow="scroll"><m:mo>*</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>*</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid7">Associativity of S under <m:math overflow="scroll"><m:mo>*</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>*</m:mo><m:mi>y</m:mi><m:mo>)</m:mo><m:mo>*</m:mo><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>*</m:mo><m:mo>(</m:mo><m:mi>y</m:mi><m:mo>*</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+</item>
+        <item id="uid8">Existence of <m:math overflow="scroll"><m:mo>*</m:mo></m:math> identity element: There is a <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mo>*</m:mo></m:msub><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> such that for every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>e</m:mi><m:mo>*</m:mo></m:msub><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:msub><m:mi>e</m:mi><m:mo>*</m:mo></m:msub><m:mo>=</m:mo><m:mi>x</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid9">Existence of <m:math overflow="scroll"><m:mo>*</m:mo></m:math> inverse elements: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> with <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>≠</m:mo><m:msub><m:mi>e</m:mi><m:mo>+</m:mo></m:msub></m:mrow></m:math> there is a <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>*</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>*</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:msub><m:mi>e</m:mi><m:mo>*</m:mo></m:msub></m:mrow></m:math>.
+</item>
+        <item id="uid10">Commutativity of S under <m:math overflow="scroll"><m:mo>*</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>*</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>*</m:mo><m:mi>x</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid11">Distributivity of <m:math overflow="scroll"><m:mo>*</m:mo></m:math> over <m:math overflow="scroll"><m:mo>+</m:mo></m:math>: For every <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>∈</m:mo><m:mi>S</m:mi></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>*</m:mo><m:mo>(</m:mo><m:mi>y</m:mi><m:mo>+</m:mo><m:mi>z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>+</m:mo><m:mi>x</m:mi><m:mi>z</m:mi></m:mrow></m:math>.
+</item>
+      </list>
+      <para id="id63561">While this definition is quite general, the two fields used most often in signal processing, at least within the scope of this course, are the real numbers and the complex numbers, each with their typical addition and multiplication operations.</para>
+    </section>
+    <section id="cid2">
+      <title>The Complex Field</title>
+      <para id="id63575">The reader is undoubtedly already sufficiently familiar with the real numbers with the typical addition and multiplication operations. However, the field of complex numbers with the typical addition and multiplication operations may be unfamiliar to some. For that reason and its importance to signal processing, it merits a brief explanation here.</para><section id="eip-157"><title>Definitions</title><para id="def1"> 
+	The notion of the square root of 
+	<m:math>
+	  <m:cn>-1</m:cn>    
+	</m:math>
+	originated with the quadratic formula:
+	the solution of certain quadratic equations mathematically exists only if the so-called imaginary quantity
+	<m:math>
+	  <m:apply>
+	    <m:root/>	      
+	    <m:cn>-1</m:cn>
+	  </m:apply>      
+	</m:math>
+	could be defined.
+	<link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Euler.html">
+	  Euler</link> first used <m:math><m:ci>i</m:ci></m:math> for the
+	imaginary unit but that notation did not take hold until
+	roughly Ampère's time.
+	<link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Ampere.html">
+	  Ampère</link>
+	used the symbol <m:math><m:ci>i</m:ci></m:math> to denote
+	current (intensité de current).
+    It wasn't until the twentieth century that the importance of complex numbers to circuit
+	theory became evident.  By then, using
+	<m:math><m:ci>i</m:ci></m:math> for current was entrenched and
+	electrical engineers now choose <m:math><m:ci>j</m:ci></m:math>
+	for writing complex numbers.
+	</para>
+	
+	<para id="imagdef">An <term>imaginary number</term> has the form
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:apply><m:times/>
+	      <m:ci>j</m:ci>
+	      <m:ci>b</m:ci>
+	    </m:apply>
+	    <m:apply><m:root/>
+	      <m:apply><m:minus/>
+	         <m:apply><m:power/>
+	           <m:ci>b</m:ci>
+	           <m:cn>2</m:cn>
+	         </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	A <term>complex number</term>, <m:math><m:ci>z</m:ci></m:math>, consists of the ordered pair (<m:math><m:ci>a</m:ci></m:math>,<m:math><m:ci>b</m:ci></m:math>),  <m:math><m:ci>a</m:ci></m:math> is the real component and <m:math><m:ci>b</m:ci></m:math> is the imaginary component (the <m:math><m:ci>j</m:ci></m:math> is suppressed because the imaginary component of the pair is always in the second position).
+	The imaginary number
+	<m:math>
+	  <m:apply><m:times/><m:ci>j</m:ci><m:ci>b</m:ci></m:apply>
+	</m:math>
+	equals (<m:math><m:cn>0</m:cn></m:math>,<m:math><m:ci>b</m:ci></m:math>).
+	Note that <m:math><m:ci>a</m:ci></m:math> and <m:math><m:ci>b</m:ci></m:math> are real-valued numbers.
+	</para>
+	
+	<para id="zinplane"><link target-id="planefig" strength="3"/> shows that we can locate a complex number in what we call the <term>complex plane</term>.
+    Here, <m:math><m:ci>a</m:ci></m:math>, the real part, is the <m:math><m:ci>x</m:ci></m:math>-coordinate and <m:math><m:ci>b</m:ci></m:math>, the imaginary part, is the <m:math><m:ci>y</m:ci></m:math>-coordinate.
+
+    <figure id="planefig" orient="vertical"><title>The Complex Plane</title><media id="id1165366277776" alt=""><image src="../../media/complex.png" mime-type="image/png"/></media>
+      
+    <caption>A complex number is an ordered pair
+       (<m:math><m:ci>a</m:ci></m:math>,<m:math><m:ci>b</m:ci></m:math>) that can be regarded as coordinates in the plane.
+       Complex numbers can also be expressed in polar coordinates as
+      <m:math>
+        <m:apply><m:times/>
+          <m:ci>r</m:ci><m:cn>∠</m:cn><m:ci>θ</m:ci>
+        </m:apply>
+      </m:math>.
+   </caption></figure>   
+
+    From analytic geometry, we know that locations in the plane can be expressed as the sum of vectors, with the vectors corresponding to the <m:math><m:ci>x</m:ci></m:math> and <m:math><m:ci>y</m:ci></m:math> directions.
+    Consequently, a complex number <m:math><m:ci>z</m:ci></m:math> can be expressed as the (vector) sum
+       <m:math>
+         <m:apply><m:eq/>
+           <m:ci>z</m:ci>
+           <m:apply><m:plus/>
+             <m:ci>a</m:ci>
+             <m:apply><m:times/>
+               <m:ci>j</m:ci>
+               <m:ci>b</m:ci>
+             </m:apply>
+           </m:apply>
+         </m:apply>
+       </m:math>
+       where <m:math><m:ci>j</m:ci></m:math> indicates the <m:math><m:ci>y</m:ci></m:math>-coordinate.
+	This representation is known as the <term>Cartesian form of <m:math><m:ci>z</m:ci></m:math></term>.
+	An imaginary number can't be numerically added to a real number;
+	rather, this notation for a complex number represents vector addition, but it provides a convenient notation when we perform arithmetic manipulations.
+    </para>
+	
+	<para id="terminolgy">The <term>real part</term> of the complex number
+       <m:math>
+         <m:apply><m:eq/>
+           <m:ci>z</m:ci>
+           <m:apply><m:plus/>
+             <m:ci>a</m:ci>
+             <m:apply><m:times/>
+               <m:ci>j</m:ci>
+               <m:ci>b</m:ci>
+             </m:apply>
+           </m:apply>
+         </m:apply>
+       </m:math>, written
+	as
+	<m:math>
+	  <m:apply>
+	    <m:real/>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>, equals <m:math><m:ci>a</m:ci></m:math>.  We consider the
+	real part as a function that works by selecting that component
+	of a complex number <emphasis>not</emphasis> multiplied by
+	<m:math><m:ci>j</m:ci></m:math>.
+	The <term>imaginary part</term> of <m:math><m:ci>z</m:ci></m:math>,
+	<m:math>
+	  <m:apply>
+	    <m:imaginary/>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>, equals <m:math><m:ci>b</m:ci></m:math>:
+	that part of a complex number that is multiplied by
+	<m:math><m:ci>j</m:ci></m:math>.
+	Again, both the real and imaginary parts of a complex number are real-valued.
+	</para>
+	
+    <para id="conjugation"> The <term>complex conjugate</term> of
+	<m:math><m:ci>z</m:ci></m:math>, written as
+	<m:math>
+	  <m:apply>
+	    <m:conjugate/>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>,
+	has the same real part as <m:math><m:ci>z</m:ci></m:math>
+	but an imaginary part of the opposite sign.
+	
+	<equation id="eq1">
+	  <m:math>
+	    <m:mtable>
+	      <m:mtr>
+	      <m:mtd>
+	    <m:apply>     
+	      <m:eq/>
+	      <m:ci>z</m:ci>
+	      <m:apply>  
+		<m:plus/>
+		<m:apply>
+		  <m:real/>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:imaginary/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>  
+	      </m:apply>
+	    </m:apply>
+	    </m:mtd>
+	    </m:mtr>
+	    
+	    <m:mtr>
+	      <m:mtd>
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:conjugate/>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>  
+		<m:minus/>
+		<m:apply>
+		  <m:real/>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:imaginary/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>  
+	    </m:apply>      
+	      </m:mtd>
+	    </m:mtr>
+	    </m:mtable>
+	  </m:math>
+	</equation>
+    </para>
+    
+	<para id="props">
+    Using Cartesian notation, the following properties easily follow.
+    <list id="prop" list-type="bulleted"><item>
+        If we add two complex numbers, the real part of the result equals the sum of the real parts and the imaginary part equals the sum of the imaginary parts.
+        This property follows from the laws of vector addition.
+        <m:math display="block">
+          <m:apply><m:eq/>
+            <m:apply><m:plus/>
+              <m:apply><m:plus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                <m:apply><m:times/>
+                  <m:ci>j</m:ci>
+                  <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                </m:apply>
+              </m:apply>
+              <m:apply><m:plus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                <m:apply><m:times/>
+                  <m:ci>j</m:ci>
+                  <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+            <m:apply><m:plus/>
+              <m:apply><m:plus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+              </m:apply>
+              <m:apply><m:times/>
+               <m:ci>j</m:ci>
+                <m:apply><m:plus/>
+                  <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                  <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:math>
+        In this way, the real and imaginary parts remain separate.
+      </item>
+      <item>
+        The product of <m:math><m:ci>j</m:ci></m:math> and a real number is an imaginary number:
+        <m:math>
+          <m:apply><m:times/>
+            <m:ci>j</m:ci>
+            <m:ci>a</m:ci>
+          </m:apply>
+        </m:math>.
+        The product of <m:math><m:ci>j</m:ci></m:math> and an imaginary number is a real number:
+        <m:math>
+          <m:apply><m:eq/>
+            <m:apply><m:times/>
+              <m:ci>j</m:ci>
+              <m:apply><m:times/>
+                <m:ci>j</m:ci>
+                <m:ci>b</m:ci>
+              </m:apply>
+            </m:apply>
+            <m:apply><m:minus/>
+              <m:ci>b</m:ci>
+            </m:apply>
+          </m:apply>
+        </m:math>
+        because
+        <m:math>
+          <m:apply><m:eq/>
+            <m:apply><m:power/>
+              <m:ci>j</m:ci>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:minus/>
+              <m:cn>1</m:cn>
+            </m:apply>
+          </m:apply>
+        </m:math>.
+      Consequently, multiplying a complex number by <m:math><m:ci>j</m:ci></m:math> <emphasis>rotates</emphasis> the number's position by <m:math><m:cn>90</m:cn></m:math> degrees.
+      </item>
+    </list>
+    </para>
+    <exercise id="exer2">
+	<problem id="id1165379950972">
+	  <para id="exer2a">
+	    Use the definition of addition to show that the real and
+	    imaginary parts can be expressed as a sum/difference
+	    of a complex number and its conjugate.
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:real/>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:ci>z</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    and
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:imaginary/>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:ci>z</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:ci>j</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+	</problem>
+	<solution id="id5732148">
+	  <para id="exer2b">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>z</m:ci>
+		  <m:apply>
+		    <m:conjugate/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>a</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci>b</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>a</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:apply>
+		    <m:real/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.  Similarly,  
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>z</m:ci>
+		  <m:apply>
+		    <m:conjugate/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>j</m:ci>
+		  <m:ci>b</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:cn>2</m:cn>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:imaginary/>
+		      <m:ci>z</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	  </para>
+	</solution>
+      </exercise>
+
+    <para id="polarForm">Complex numbers can also be expressed in
+	an alternate form, <term>polar form</term>, which we will find
+	quite useful.  Polar form arises arises from the geometric interpretation of complex numbers.
+	The Cartesian form of a complex number can be re-written as
+	 <m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>a</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>j</m:ci>
+		<m:ci>b</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>a</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>a</m:ci>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>a</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>b</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		    <m:apply>
+		    <m:divide/>
+		    <m:ci>b</m:ci>
+		    <m:apply>
+		      <m:root/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>a</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>b</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    </m:apply>
+		</m:apply>
+	      </m:apply> 
+	    </m:apply>  
+	  </m:apply>      
+	</m:math>
+
+
+	By forming a right triangle having sides
+	<m:math><m:ci>a</m:ci></m:math> and
+	<m:math><m:ci>b</m:ci></m:math>, we see that the real and imaginary parts correspond to the cosine and sine of the triangle's base angle.
+        We thus obtain the
+	<term>polar form</term> for complex numbers.
+	
+	  <m:math display="block">
+	    <m:mtable columnalign="left">
+	      <m:mtr>
+	        <m:mtd>
+	          <m:apply><m:eq/>
+	            <m:ci>z</m:ci>
+	            <m:apply><m:plus/>
+                  <m:ci>a</m:ci>
+		          <m:apply><m:times/><m:ci>j</m:ci><m:ci>b</m:ci></m:apply>
+	            </m:apply>
+	            <m:apply><m:times/>
+		          <m:ci>r</m:ci>
+                  <m:cn>∠</m:cn>
+                  <m:ci>θ</m:ci>
+	            </m:apply>
+	          </m:apply>
+	        </m:mtd>
+	      </m:mtr>
+	      
+	      <m:mtr>
+	        <m:mtd>
+	       <m:apply>
+	      <m:eq/>
+	      <m:ci>r</m:ci>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>a</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	        </m:mtd>
+	      </m:mtr>
+	      
+	      <m:mtr>
+	        <m:mtd>
+	         <m:apply>
+	      <m:eq/>
+	      <m:ci>a</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>r</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:ci>θ</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	        </m:mtd>
+	      </m:mtr>
+	      
+	      <m:mtr>
+	        <m:mtd>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>b</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>r</m:ci>
+		<m:apply>
+		  <m:sin/>
+		  <m:ci>θ</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	        </m:mtd>
+	      </m:mtr>
+	      
+	      <m:mtr>
+	        <m:mtd>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>θ</m:ci>
+	      <m:apply>
+		<m:arctan/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>b</m:ci>
+		  <m:ci>a</m:ci>
+		</m:apply>
+	      </m:apply>    
+	    </m:apply>
+	        </m:mtd>
+	      </m:mtr>
+	    </m:mtable>
+	  </m:math>
+
+	The quantity <m:math><m:ci>r</m:ci></m:math> is known as the
+	<term>magnitude</term> of the complex number
+	<m:math><m:ci>z</m:ci></m:math>, and is frequently written as
+	<m:math>
+	  <m:apply><m:abs/>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>.
+    The quantity <m:math><m:ci>θ</m:ci></m:math> is the
+	complex number's <term>angle</term>.
+	In using the arc-tangent formula to find the angle, we must take into account the quadrant in which the complex number lies.
+	</para>
+
+      <exercise id="exer1">
+	<problem id="id1165384439769">
+	  <para id="exer1a">
+	    Convert 
+	    <m:math>      
+	      <m:apply>
+		<m:minus/>
+		<m:cn>3</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>j</m:ci>
+		</m:apply>	    
+	      </m:apply>
+	    </m:math>
+	    to polar form.
+	  </para>
+	</problem>
+
+	<solution id="id1165376139511">
+	  <para id="exer1b">To convert 
+	    <m:math>      
+	      <m:apply>
+		<m:minus/>
+		<m:cn>3</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>j</m:ci>
+		</m:apply>	    
+	      </m:apply>
+	    </m:math>
+	    to polar form, we first locate the number in the complex
+	    plane in the fourth quadrant. The distance from the origin
+	    to the complex number is the magnitude
+	    <m:math><m:ci>r</m:ci></m:math>, which equals
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:root/>		
+		  <m:cn>13</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:cn>3</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:minus/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply> 
+	    </m:math>.  The angle equals
+	    <m:math>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:arctan/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>2</m:cn>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    or <m:math><m:cn>-0.588</m:cn></m:math> radians
+	    (<m:math><m:apply><m:minus/><m:cn>33.7</m:cn></m:apply></m:math> degrees).
+	    The final answer is
+
+	    <!-- replace with this when stylesheet is fixed?
+	  <m:math>
+	  <m:cn type='complex-polar'>
+	  <m:msqrt><m:mn>13</m:mn></m:msqrt>
+	  <m:sep/>
+	  <m:msup>
+	  <m:mn>-33.7</m:mn>
+	  <m:mi>&deg;</m:mi>
+	  </m:msup>
+	  </m:cn>
+	  </m:math>-->
+	    <m:math>
+	      <m:apply><m:times/>
+		    <m:apply><m:root/><m:cn>13</m:cn></m:apply>
+		    <m:ci>∠</m:ci>
+		    <m:apply><m:minus/><m:cn>33.7</m:cn></m:apply>
+	      </m:apply>
+	    </m:math> degrees.
+	  </para>
+	</solution>
+      </exercise>
+    </section><section id="eip-392"><title>Euler's Formula</title><para id="euler1">Surprisingly, the polar form of a complex number <m:math><m:ci>z</m:ci></m:math> can be expressed mathematically as
+	<equation id="polar">
+	  <m:math>
+	    <m:apply><m:eq/>
+	      <m:ci>z</m:ci>
+	      <m:apply><m:times/>
+	        <m:ci>r</m:ci>
+	        <m:apply><m:exp/>
+	          <m:apply><m:times/>
+	            <m:ci>j</m:ci>
+	            <m:ci>θ</m:ci>
+	          </m:apply>
+	        </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	To show this result, we use <term>Euler's relations</term> that express exponentials with imaginary arguments in terms of trigonometric functions.
+	<equation id="eq2">
+	  <m:math>         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/> 
+		  <m:ci>j</m:ci>
+		  <m:ci>θ</m:ci>
+		</m:apply>	    
+	      </m:apply>
+	      <m:apply>  
+		<m:plus/>
+		<m:apply>
+		  <m:cos/>
+		  <m:ci>θ</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:sin/>
+		    <m:ci>θ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>  
+	  </m:math>   
+	</equation>
+
+	<equation id="eq3">
+	  <m:math>         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:cos/>
+		<m:ci>θ</m:ci>
+	      </m:apply>	    
+	      <m:apply> 
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>θ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:exp/>
+		      <m:apply><m:minus/>
+		        <m:apply><m:times/>
+			      <m:ci>j</m:ci><m:ci>θ</m:ci>
+		        </m:apply>
+		      </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>  
+	  </m:math>
+	</equation>
+	
+	  <m:math display="block">         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:sin/>
+		<m:ci>θ</m:ci>
+	      </m:apply>	    
+	      <m:apply> 
+		<m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>θ</m:ci>		    
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:exp/>
+		    <m:apply><m:minus/>
+		      <m:apply><m:times/>
+			    <m:ci>j</m:ci><m:ci>θ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>	      
+		  <m:cn>2</m:cn>
+		  <m:ci>j</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	The first of these is easily derived from the Taylor's series
+	for the exponential.
+
+	  <m:math display="block">         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:exp/> 
+		<m:ci>x</m:ci>    
+	      </m:apply>
+	      <m:apply>  
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:factorial/>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:factorial/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>x</m:ci>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:factorial/>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>   
+
+	Substituting  
+	<m:math>         
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>j</m:ci>
+	    <m:ci>θ</m:ci>
+	  </m:apply>      
+	</m:math>
+	for <m:math><m:ci>x</m:ci></m:math>, we find that
+	
+	  <m:math display="block">         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/> 
+		  <m:ci>j</m:ci>
+		  <m:ci>θ</m:ci>
+		</m:apply>	    
+	      </m:apply>
+	      <m:apply>  
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>	      
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>θ</m:ci>
+			<m:apply>
+			  <m:factorial/>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>θ</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:factorial/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>θ</m:ci>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:factorial/>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+	      </m:apply>
+	    </m:apply>  
+	  </m:math>   
+
+	because 
+	<m:math>         
+	  <m:apply>  
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>j</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:cn>-1</m:cn>
+	  </m:apply>      
+	</m:math>, 
+
+	<m:math>         
+	  <m:apply>  
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>j</m:ci>
+	      <m:cn>3</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>j</m:ci>
+	    </m:apply>
+	  </m:apply>      
+	</m:math>, and 
+
+	<m:math>         
+	  <m:apply>  
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>j</m:ci>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.  Grouping separately
+	the real-valued terms and the imaginary-valued ones,
+
+	  <m:math display="block">         
+	    <m:apply>     
+	      <m:eq/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/> 
+		  <m:ci>j</m:ci>
+		  <m:ci>θ</m:ci>
+		</m:apply>	    
+	      </m:apply>
+	      <m:apply>  
+		<m:plus/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>θ</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:factorial/>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>θ</m:ci>
+			<m:apply>
+			  <m:factorial/>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>θ</m:ci>
+			  <m:cn>3</m:cn>
+			</m:apply>
+			<m:apply>
+			  <m:factorial/>
+			  <m:cn>3</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>       
+
+	The real-valued terms correspond to the Taylor's series for  
+	<m:math>         
+	  <m:apply>
+	    <m:cos/>
+	    <m:ci>θ</m:ci>
+	  </m:apply>      
+	</m:math>, the imaginary ones to   
+	<m:math>         
+	  <m:apply>
+	    <m:sin/>
+	    <m:ci>θ</m:ci>
+	  </m:apply>
+	</m:math>,
+	and Euler's first relation results. The remaining relations
+	are easily derived from the first.
+	Because of <link target-id="carttopolar" strength="3"/>, we see that multiplying the exponential in <link target-id="eq2" strength="3"/> by a real constant corresponds to setting the radius of the complex number by the constant.
+      </para>
+
+    </section><section id="eip-259"><title>Calculating with Complex Numbers</title><para id="AddingComplexNums">
+	Adding and subtracting complex numbers expressed in Cartesian
+	form is quite easy: You add (subtract) the real parts and
+	imaginary parts separately.
+	<equation id="eq13">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci><m:mo>±</m:mo></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:ci><m:mo>±</m:mo></m:ci>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:ci><m:mo>±</m:mo></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	To multiply two complex numbers in Cartesian form is not quite
+	as easy, but follows directly from following the usual rules of arithmetic.
+
+	<equation id="eq14">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	Note that we are, in a sense, multiplying two vectors to obtain another vector.
+	Complex arithmetic provides a unique way of defining vector multiplication.
+      </para>
+      
+      <exercise id="exer3">
+	<problem id="id1165384015788">
+	  <para id="exer3a">
+	    What is the product of a complex number and its conjugate?
+	  </para>
+	</problem>
+	<solution id="id1165356084948">
+	  <para id="exer3b">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>z</m:ci>
+		  <m:apply>
+		    <m:conjugate/>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>a</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	    Thus, 
+	    <m:math>
+	      <m:apply><m:eq/>
+		    <m:apply><m:times/>
+		      <m:ci>z</m:ci>
+		      <m:apply><m:conjugate/><m:ci>z</m:ci></m:apply>
+		    </m:apply>
+		    <m:apply><m:power/><m:ci>r</m:ci><m:cn>2</m:cn></m:apply>
+		    <m:apply><m:power/>
+		      <m:apply><m:abs/><m:ci>z</m:ci></m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+	      </m:apply>
+	    </m:math>.	  
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="ComplexDivision">
+	Division requires mathematical manipulation. We convert the
+	division problem into a multiplication problem by multiplying
+	both the numerator and denominator by the conjugate of the
+	denominator.
+	<equation id="eq15">
+	  <m:math>
+	    <m:apply><m:eq/>
+	      <m:apply><m:divide/>
+		    <m:msub><m:ci>z</m:ci><m:cn>1</m:cn></m:msub>
+		    <m:msub><m:ci>z</m:ci><m:cn>2</m:cn></m:msub>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		    <m:apply><m:plus/>
+              <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply><m:times/>
+		        <m:ci>j</m:ci>
+		        <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply><m:plus/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      <m:apply><m:times/>
+		        <m:ci>j</m:ci>
+		        <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+	      </m:apply>
+	      
+	      <m:apply><m:times/>
+	        <m:apply><m:divide/>
+		      <m:apply><m:plus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		        <m:apply><m:times/>
+		          <m:ci>j</m:ci>
+		          <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		        </m:apply>
+		      </m:apply>
+		      <m:apply><m:plus/>
+		        <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        <m:apply><m:times/>
+		          <m:ci>j</m:ci>
+		          <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        </m:apply>
+		      </m:apply>
+	        </m:apply>
+	        <m:apply><m:divide/>
+		      <m:apply><m:minus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        <m:apply><m:times/>
+		          <m:ci>j</m:ci>
+		          <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        </m:apply>
+		      </m:apply>
+		      <m:apply><m:minus/>
+                <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        <m:apply><m:times/>
+		          <m:ci>j</m:ci>
+		          <m:ci><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        </m:apply>
+		      </m:apply>
+	        </m:apply>
+	      </m:apply>
+
+	      <m:apply><m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub></m:ci>
+			<m:ci><m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+			<m:ci><m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply> 
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci><m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Because the final result is so complicated, it's best to
+	remember <emphasis>how</emphasis> to perform
+	division—multiplying numerator and denominator by the
+	complex conjugate of the denominator—than trying to
+	remember the final result.
+      </para>
+
+
+      <para id="ExponentialProperties">The properties of the exponential make calculating the product and ratio of two complex numbers much simpler when the numbers are expressed in polar form.
+	<equation id="eq16">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci><m:msub>
+			<m:mi>θ</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci><m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci><m:msub>
+			<m:mi>θ</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	  	
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>z</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci><m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci><m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>θ</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	To multiply, the radius equals the product of the radii and
+	the angle the sum of the angles. To divide, the radius equals
+	the ratio of the radii and the angle the difference of the
+	angles.  When the original complex numbers are in Cartesian
+	form, it's usually worth translating into polar form, then
+	performing the multiplication or division (especially in the
+	case of the latter).  Addition and subtraction of polar forms
+	amounts to converting to Cartesian form, performing the
+	arithmetic operation, and converting back to polar form.
+      </para>
+    </section>
+    </section>
+    
+    
+    
+    
+    
+
+    
+
+
+    
+    
+  </content>
+</document>

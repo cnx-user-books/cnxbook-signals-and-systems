@@ -1,0 +1,501 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Rational Functions and the Z-Transform</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10593</md:content-id>
+  <md:title>Rational Functions and the Z-Transform</md:title>
+  <md:abstract>This module will introduce rational functions and describe some of their properties.  In particular, it will discuss how rational functions relate to the z-transform and provide a useful tool for characterizing LTI systems.</md:abstract>
+  <md:uuid>37876a93-e994-4d0b-b4a0-2e0a540c811c</md:uuid>
+</metadata>
+
+<content>
+    
+    <section id="intro" class="in">
+      <title>Introduction</title>
+      <para id="p_intro">
+	When dealing with operations on polynomials, the term <term>rational
+	  function</term> is a simple way to describe a particular
+	relationship between two polynomials. 
+      </para>
+      
+      <definition id="r_func">
+	<term>rational function</term>
+	<meaning id="id4410140">
+	  For any two polynomials, A and B, their quotient is called a
+	  rational function.
+	</meaning>
+	
+	<example id="eg_rfunc">
+	  <para id="p_rfeg">
+	    Below is a simple example of a basic rational function, 
+	    <m:math>	    
+	      <m:apply><m:ci type="fn">f</m:ci><m:ci>x</m:ci></m:apply>
+	    </m:math>.
+	    Note that the numerator and denominator can be polynomials of
+	    any order, but the rational function is undefined when the
+	    denominator equals zero.
+	    
+	    <equation id="eq_rf">
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>		  
+			<m:power/>
+			<m:ci>x</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:apply>
+			    <m:power/>
+			    <m:ci>x</m:ci>
+			    <m:cn>2</m:cn>
+			  </m:apply>			  
+			</m:apply>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		      <m:cn>3</m:cn>
+		    </m:apply>		
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</example>	
+      </definition>
+
+      
+      <para id="p_intro2">
+	If you have begun to study the 
+	<link document="m10549" strength="3">Z-transform</link>, you
+	should have noticed by now they are all rational functions.
+	Below we will look at some of the properties of rational
+	functions and how they can be used to reveal important
+	characteristics about a z-transform, and thus a signal or LTI system.
+      </para>
+    </section>
+    
+    
+    <section id="props" class="th">
+      <title>Properties of Rational Functions</title>
+      <para id="p_prop1">
+	In order to see what makes rational functions special, let us
+	look at some of their basic properties and characteristics.
+	If you are familiar with rational functions and basic
+	algebraic properties, skip to the <link target-id="rf_ztrans" strength="2">next section</link> to see how
+	rational functions are useful when dealing with the z-transform.
+      </para>
+      
+      <section id="prop1">
+	<title>Roots</title>
+	<para id="fact">
+	  To understand many of the following characteristics of a
+	  rational function, one must begin by finding the roots of
+	  the rational function.  In order to do this, let us factor
+	  both of the polynomials so that the roots can be easily determined.
+	  Like all polynomials, the roots will provide us with
+	  information on many key properties.  The function below
+	  shows the results of factoring the above rational function, 
+	  <link target-id="eq_rf" strength="3"/>. 
+	</para>
+	
+	<equation id="eq_rf_fact">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+	      </m:apply>		    
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>		
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	<para id="rts">
+	  Thus, the roots of the rational function are as follows:
+	</para>
+	
+	<para id="rts_num">
+	  Roots of the numerator are: 
+	  <m:math>
+	    <m:set>
+	      <m:cn>-2</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:set>
+ 	  </m:math>
+	</para>
+	
+	<para id="rts_den">
+	  Roots of the denominator are:
+	  <m:math>
+	    <m:set>
+	      <m:cn>-3</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:set>
+	  </m:math>
+	</para>
+	
+	<para id="rts_warn">
+	  <note id="id1169569006553" type="note">
+	    In order to understand rational functions, it is essential
+	    to know and understand the roots that make up the rational
+	    function.
+	  </note>
+	</para>
+      </section>
+
+
+      <section id="discont">
+	<title>Discontinuities</title>
+	<para id="p_dis">
+	  Because we are dealing with division of two polynomials, we
+	  must be aware of the values of the variable that will cause
+	  the denominator of our fraction to be zero.  When this
+	  happens, the rational function becomes undefined,
+	  <foreign>i.e.</foreign> we have a discontinuity in the
+	  function.  Because we have already solved for our roots, it
+	  is very easy to see when this occurs.  When the variable in
+	  the denominator equals any of the roots of the denominator,
+	  the function becomes undefined.
+	</para>
+	
+	<example id="eg_disc">
+	  <para id="eg_p">
+	    Continuing to look at our rational function above, 
+	    <link target-id="eq_rf" strength="3"/>, we can see that
+	    the function will have discontinuities at the following
+	    points: 
+	    
+	    <!--<equation id='eg_disceq'> -->
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>x</m:ci>
+		<m:apply>
+		  <m:set>
+		    <m:cn>-3</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:set>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	  </para>
+	</example>
+	
+	<para id="p_dis2">In respect to the Cartesian plane, we say that the
+	  discontinuities are the values along the x-axis where the
+	  function is undefined.  These discontinuities often appear
+	  as <term>vertical asymptotes</term> on the graph to
+	  represent the values where the function is undefined. 
+	</para>
+	
+      </section>
+      
+      <section id="domain">
+	<title>Domain</title>
+
+	<para id="p_dom">
+	  Using the roots that we found above, the <term>domain</term>
+	  of the rational function can be easily defined.
+	  
+	  <definition id="def_domain">
+	    <term>domain</term>
+	    <meaning id="id1169561746805">
+	      The group, or set, of values that are defined by a given
+	      function. 
+	    </meaning>
+	    <example id="def_eg">
+	      <para id="def_P1">
+		Using the rational function above, 
+		<link target-id="eq_rf" strength="3"/>, the domain
+		can be defined as any real number 
+		<m:math><m:ci>x</m:ci></m:math> where 
+		<m:math><m:ci>x</m:ci></m:math> does not equal 1 or
+		negative 3.  Written out mathematical, we get the following:
+	      </para>
+
+	      <!-- should read:  {x set of Reals | x!=-3 & x!=1}  -->
+	      <equation id="def_dom_eqtn1">
+		<m:math>
+		  <m:apply>
+		    <m:set>
+		      <m:bvar>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>x</m:ci>
+			  <m:reals/>
+			</m:apply>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:and/>
+			  <m:apply>
+			    <m:neq/>
+			    <m:ci>x</m:ci>
+			    <m:cn>-3</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:neq/>
+			    <m:ci>x</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:condition>
+		     <!-- <m:ci> x </m:ci> -->
+		    </m:set>
+		  </m:apply>
+		</m:math>		
+	      </equation>
+	      
+	    </example>
+	  </definition>
+	</para>
+
+      </section>
+
+
+      <section id="intercepts">
+	<title>Intercepts</title>
+
+	<para id="int_x">
+	  The <term>x-intercept</term> is defined as the point(s) where
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+	    </m:apply>
+	  </m:math>, <foreign>i.e.</foreign> the output of the
+	  rational functions, equals zero.  Because we have already
+	  found the roots of the equation this process is very simple.
+	  From algebra, we know that the output will be zero whenever
+	  the numerator of the rational function is equal to zero.
+	  Therefore, the function will have an x-intercept wherever
+	  <m:math><m:ci>x</m:ci></m:math> equals one of the roots of
+	  the numerator.
+	</para>
+
+	<para id="int_y">
+	  The <term>y-intercept</term> occurs whenever
+	  <m:math><m:ci>x</m:ci></m:math> equals zero.  This can be
+	  found by setting all the values of
+	  <m:math><m:ci>x</m:ci></m:math> equal to zero and solving
+	  the rational function.  
+	</para>
+
+      </section>
+    </section>
+
+
+    <section id="rf_ztrans" class="ap">
+      <title>Rational Functions and the Z-Transform</title>
+      <para id="p_rship1">
+	As we have stated above, all z-transforms can be written as
+	rational functions, which have become the most common way of
+	representing the z-transform.  	Because of this, we can use the
+	properties above, especially those of the roots, in order to
+	reveal certain characteristics about the signal or LTI system
+	described by the z-transform.  
+      </para>
+
+      <para id="p_rship2">
+	Below is the general form of
+	the z-transform written as a rational function:
+
+	<equation id="rfunc_gen">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+    	 	<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>M</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>M</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		
+		<m:apply>		  
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>N</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	  
+	</equation>
+
+	If you have already looked at the module about 
+	<link document="m10556" strength="3">Understanding Pole/Zero Plots and
+	the Z-transform</link>, you should see how the roots of the
+	rational function play an important role in understanding the
+	z-transform.  The equation above, <link target-id="rfunc_gen" strength="3"/>, can be expressed in factored form just as
+	was done for the simple rational function above, see <link target-id="eq_rf_fact" strength="2"/>.  Thus, we can easily
+	find the roots of the numerator and denominator of the
+	z-transform.  The following two relationships become apparent:
+	
+	<list id="ztrans_props">
+	  <title>Relationship of Roots to Poles and Zeros</title>
+	  <item> 
+	    The roots of the numerator in the rational function will be the
+	    <term>zeros</term> of the z-transform
+	  </item>
+	  <item>
+	    The roots of the denominator in the rational function will be the
+	    <term>poles</term> of the z-transform
+	  </item>
+	</list>
+
+      </para>
+    </section>
+	
+    <section id="conc" class="cn">
+      <title>Conclusion</title>
+      
+      <para id="p_conc">
+	Once we have used our knowledge of rational functions to find its
+	roots, we can manipulate a z-transform in a number of useful
+	ways.  We can apply this knowledge to representing an LTI
+	system graphically through a <link document="m10556" strength="3">Pole/Zero Plot</link>, or to analyze and design a
+	digital filter through <link document="m10548" strength="3">Filter Design from the Z-Transform</link>.
+      </para>      
+      
+    </section>
+
+  </content>
+</document>

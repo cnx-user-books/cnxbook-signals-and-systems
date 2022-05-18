@@ -1,0 +1,392 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Uniform Convergence of Function Sequences</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10895</md:content-id>
+  <md:title>Uniform Convergence of Function Sequences</md:title>
+  <md:abstract>Another form of convergence, uniform convergence, is defined and described in this module.  Also, its relationship to pointwise convergence is also shown.</md:abstract>
+  <md:uuid>1bdc0c4b-f1d8-4deb-ae80-1aeb866dcec1</md:uuid>
+</metadata>
+
+<content>
+    <section id="sec6">
+      <title>Uniform Convergence of Function Sequences</title>
+      <para id="p1_s6">
+	For this discussion, we will only consider functions with
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>g</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub></m:ci>
+	</m:math> where
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:tendsto/>
+	    <m:reals/>
+	    <m:reals/>
+	  </m:apply>
+	</m:math>
+	
+	<definition id="unif">
+	  <term>Uniform Convergence</term>
+	  <meaning id="id1167779844327">
+	    The <link document="m10883" strength="3">sequence</link> 
+	    <m:math>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:interval>
+		  <m:cn>1</m:cn>
+		  <m:infinity/>
+		</m:interval>
+		<m:set>
+		  <m:ci type="vector"><m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		</m:set>	    
+	      </m:apply>
+	    </m:math> 
+	    converges uniformly to function
+	    <m:math><m:ci>g</m:ci></m:math> if for every 
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>ε</m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math> there is an integer
+	    <m:math><m:ci>N</m:ci></m:math> such that
+	    <m:math>
+	      <m:apply>
+		<m:geq/>
+		<m:ci>n</m:ci>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	    </m:math> implies
+
+	    <equation id="eq7">
+	      <m:math>
+		<m:apply>
+		  <m:leq/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>n</m:mi>
+			  </m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    for <emphasis>all</emphasis> 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>t</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:math>.
+	  </meaning>
+	</definition>
+
+	Obviously every uniformly convergent sequence is <link document="m10894" strength="3">pointwise</link> convergent.  The
+	difference between pointwise and uniform convergence is this:
+	If
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:set>
+	</m:math> converges pointwise to
+	<m:math><m:ci>g</m:ci></m:math>, then for every 
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>ε</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math> and for every 
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>t</m:ci>
+	    <m:reals/>
+	  </m:apply>
+	</m:math> there is an integer <m:math><m:ci>N</m:ci></m:math>
+	depending on <m:math><m:ci>ε</m:ci></m:math>
+	<emphasis>and</emphasis> <m:math><m:ci>t</m:ci></m:math> such
+	that <link target-id="eq7" strength="3"/> holds if 
+	<m:math>
+	  <m:apply>
+	    <m:geq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:math>.  If 
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:set>
+	</m:math> 
+	converges uniformly to <m:math><m:ci>g</m:ci></m:math>, it is
+	possible for each 
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>ε</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math> to find <emphasis>one</emphasis> integer
+	<m:math><m:ci>N</m:ci></m:math> that will do for all 
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>t</m:ci>
+	    <m:reals/>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <example id="eg1_unif">
+	<para id="p1_eg1u">
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>t</m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Let 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> 
+	  be given.  Then choose 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:apply>
+		<m:ceiling/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Obviously,
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:geq/>
+		  <m:ci>n</m:ci>
+		  <m:ci>N</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:leq/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>g</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>ε</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+		  
+	  for all <m:math><m:ci>t</m:ci></m:math>.  Thus, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> converges uniformly to
+	  <m:math><m:cn>0</m:cn></m:math>.  
+	</para>
+      </example>
+
+      <example id="eg2_unif">
+	<para id="p1_eg2u">
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>t</m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>t</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+
+	  <!-- FIGURE HERE -->
+
+
+	  Obviously for any 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> we cannot find a single function 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> for which <link target-id="eq7" strength="3"/> holds
+	  with 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> for all <m:math><m:ci>t</m:ci></m:math>.  Thus 
+	  <m:math>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:math> is not uniformly convergent. However we do have:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:tendsto/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:mtext>  pointwise</m:mtext>
+	  </m:math>
+	
+	  <note id="id1167779823273" type="conclusion"><label>Conclusion</label>
+	    Uniform convergence always implies pointwise convergence,
+	    but pointwise convergence does not guarantee uniform
+	    convergence. 
+	  </note>	  
+	</para>
+      </example>
+
+
+      
+    </section>
+	    
+  </content>  
+</document>

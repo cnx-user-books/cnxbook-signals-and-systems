@@ -1,0 +1,384 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Anti-Aliasing Filters</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10794</md:content-id>
+  <md:title>Anti-Aliasing Filters</md:title>
+  <md:abstract>This module discusses the use of anti-aliasing filters when sampling at a rate below the Nyquist frequency.</md:abstract>
+  <md:uuid>7e3fab2d-ccd0-4660-9d66-3fcebd8b9e56</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id62167">It has been shown that a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal can be perfectly reconstructed from its samples at a rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>≥</m:mo><m:mi>B</m:mi></m:mrow></m:math>. However, it is not always practically possible to produce sufficiently high sampling rates or to ensure that the input is bandlimited in real situations. Aliasing, which manifests itself as a difference in shape between the periods of the samples signal spectrum and the original spectrum, would occur without any further measures to correct this. Thus, it often becomes necessary to filter out signal energy at frequencies above <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math> in order to avoid the detrimental effects of aliasing. This is the role of the anti-aliasing filter, a lowpass filter applied before sampling to ensure that the signal is <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math> bandlimited or at least nearly so.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Anti-Aliasing Filters</title>
+      <para id="id62635">Aliasing can occur when a signal with energy at frequencies other that <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> is sampled at rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. Thus, when sampling below the Nyquist frequency, it is desirable to remove as much signal energy outside the frequency range <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> as possible while keeping as much signal energy in the frequency range <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> as possible. This suggests that the ideal lowpass filter with cutoff frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math> would be the optimal anti-aliasing filter to apply before sampling. While this is true, the ideal lowpass filter can only be approximated in real situations.</para>
+      <para id="id62741">In order to demonstrate the importance of anti-aliasing filters, consider the calculation of the error energy between the original signal and its Whittaker-Shannon reconstruction from its samples taken with and without the use of an anti-aliasing filter. Let <m:math overflow="scroll"><m:mi>x</m:mi></m:math> be the original signal and <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>G</m:mi><m:mi>x</m:mi></m:mrow></m:math> be the anti-alias filtered signal where <m:math overflow="scroll"><m:mi>G</m:mi></m:math> is the ideal lowpass filter with cutoff frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>. It is easy to show that the reconstructed spectrum using no anti-aliasing filter is given by</para>
+      <equation id="id62798">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mover accent="true">
+              <m:mi>X</m:mi>
+              <m:mo>˜</m:mo>
+            </m:mover>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>T</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:msub>
+                        <m:mi>X</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>|</m:mo>
+                        <m:mo>&lt;</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi> otherwise </m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>-</m:mo>
+                          <m:mi>∞</m:mi>
+                        </m:mrow>
+                        <m:mi>∞</m:mi>
+                      </m:munderover>
+                      <m:mi>X</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:msub>
+                          <m:mi>ω</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>|</m:mo>
+                        <m:mo>&lt;</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi> otherwise </m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63166">Thus, the reconstruction error spectrum for this case is</para>
+      <equation id="id63171">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>X</m:mi>
+              <m:mo>-</m:mo>
+              <m:mover accent="true">
+                <m:mi>X</m:mi>
+                <m:mo>˜</m:mo>
+              </m:mover>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mi>∞</m:mi>
+                      </m:munderover>
+                      <m:mfenced separators="" open="(" close=")">
+                        <m:mi>X</m:mi>
+                        <m:mrow>
+                          <m:mo>(</m:mo>
+                          <m:mi>ω</m:mi>
+                          <m:mo>+</m:mo>
+                          <m:mi>k</m:mi>
+                          <m:msub>
+                            <m:mi>ω</m:mi>
+                            <m:mi>s</m:mi>
+                          </m:msub>
+                          <m:mo>)</m:mo>
+                        </m:mrow>
+                        <m:mo>+</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mrow>
+                          <m:mo>(</m:mo>
+                          <m:mi>ω</m:mi>
+                          <m:mo>-</m:mo>
+                          <m:mi>k</m:mi>
+                          <m:msub>
+                            <m:mi>ω</m:mi>
+                            <m:mi>s</m:mi>
+                          </m:msub>
+                          <m:mo>)</m:mo>
+                        </m:mrow>
+                      </m:mfenced>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>|</m:mo>
+                        <m:mo>&lt;</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>X</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi> otherwise </m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63328">Similarly, the reconstructed spectrum using the ideal lowpass anti-aliasing filter is given by</para>
+      <equation id="id63334">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mover accent="true">
+              <m:mi>Y</m:mi>
+              <m:mo>˜</m:mo>
+            </m:mover>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>X</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>|</m:mo>
+                        <m:mo>&lt;</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi> otherwise </m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63427">Thus, the reconstruction error spectrum for this case is</para>
+      <equation id="id63432">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>X</m:mi>
+              <m:mo>-</m:mo>
+              <m:mover accent="true">
+                <m:mi>Y</m:mi>
+                <m:mo>˜</m:mo>
+              </m:mover>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>|</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo>|</m:mo>
+                        <m:mo>&lt;</m:mo>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mi>ω</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mi>X</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi> otherwise </m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63522">Hence, by Parseval's theorem, it follows that <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi></m:mrow><m:mo>-</m:mo><m:mover accent="true"><m:mi>y</m:mi><m:mo>˜</m:mo></m:mover><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>≤</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi></m:mrow><m:mo>-</m:mo><m:mover accent="true"><m:mi>x</m:mi><m:mo>˜</m:mo></m:mover><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mrow></m:math>. Also note that the spectrum of <m:math overflow="scroll"><m:mover accent="true"><m:mi>Y</m:mi><m:mo>˜</m:mo></m:mover></m:math> is identical to that of the original signal <m:math overflow="scroll"><m:mi>X</m:mi></m:math> at frequencies <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi><m:mo>∈</m:mo><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>.</m:mo></m:mrow></m:math> This is graphically shown in <link target-id="uid1"/>.</para>
+      <figure id="uid1"><media id="uid1_media" alt="">
+          <image mime-type="image/png" src="../../media/antialiasing.png" id="uid1_onlineimage" width="800"><!-- NOTE: attribute width changes image size online (pixels). original width is 1057. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/antialiasing.eps" id="uid1_printimage" print-width="4.5in">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>The figure above illustrates the use of an anti-aliasing filter to improve the process of sampling and reconstruction when using a sampling frequency below the Nyquist frequency. Notice that when using an ideal lowpass anti-aliasing filter, the reconstructed signal spectrum has the same shape as the original signal spectrum for all frequencies below half the sampling rate. This results in a lower error energy when using the anti-aliasing filter, as can be seen by comparing the error spectra shown.</caption></figure>
+    </section>
+    <section id="cid3" class="cn">
+      <title>Anti-Aliasing Filters Summary</title>
+      <para id="id63681">As can be seen, anti-aliasing filters ensure that the signal is <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math> bandlimited, or at least nearly so. The optimal anti-aliasing filter would be the ideal lowpass filter with cutoff frequency at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>, which would ensure that the original signal spectrum and the reconstructed signal spectrum are equal on the interval <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>ω</m:mi><m:mi>s</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math>. However, the ideal lowpass filter is not possible to implement in practice, and approximations must be accepted instead. Anti-aliasing filters are an important component of systems that implement discrete time processing of continuous time signals, as will be shown in the subsequent module.</para>
+    </section>
+  </content>
+</document>

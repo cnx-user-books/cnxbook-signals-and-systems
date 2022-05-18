@@ -1,0 +1,597 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Gibbs Phenomena</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10092</md:content-id>
+  <md:title>Gibbs Phenomena</md:title>
+  <md:abstract>The Fourier Series is the representation of continuous-time,
+periodic signals in terms of complex exponentials. The Dirichlet
+conditions suggest that discontinuous signals may have a Fourier
+Series representation so long as there are a finite number of
+discontinuities. This seems counter-intuitive, however, as
+complex exponentials are continuous functions. It does not seem
+possible to exactly reconstruct a discontinuous function from a
+set of continuous ones. In fact, it is not. However, it can be
+if we relax the condition of exactly and replace it with the idea
+of almost everywhere. This is to say that the reconstruction is
+exactly the same as the original signal except at a finite number
+of points. These points, not necessarily suprisingly, occur at
+the points of discontinuities.</md:abstract>
+  <md:uuid>219c40e2-9b36-4529-ad00-75b744150e85</md:uuid>
+</metadata>
+
+<content>
+    <section id="intro">
+      <title>Introduction</title>
+      <para id="p_intro">
+	The <link document="m10496" strength="3">Fourier Series</link>
+	is the representation of continuous-time, periodic signals in
+	terms of complex exponentials.  The <link document="m10089" strength="2">Dirichlet conditions</link> suggest that
+	discontinuous signals may have a Fourier Series representation
+	so long as there are a finite number of discontinuities.  This
+	seems counter-intuitive, however, as <link document="m10060" strength="3">complex exponentials</link> are continuous
+	functions.  It does not seem possible to exactly reconstruct a
+	discontinuous function from a set of continuous ones.  In
+	fact, it is not.  However, it can be if we relax the condition
+	of 'exactly' and replace it with the idea of 'almost
+	everywhere'.  This is to say that the reconstruction is
+	exactly the same as the original signal except at a finite
+	number of points.  These points, not necessarily surprisingly,
+	occur at the points of discontinuities.
+      </para>
+      
+      <section id="int_sub1">
+	<title>History</title>
+	<para id="p1_hist">
+	  In the late 1800s, many machines were built to calculate
+	  Fourier coefficients and re-synthesize:
+
+	  <equation id="eq1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:diff/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Albert Michelson (an extraordinary experimental physicist)
+	  built a machine in 1898 that could compute 
+	  <m:math display="inline">
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub>
+	  </m:math>up to 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>n</m:ci>
+	      <m:apply>
+		<m:ci><m:mo>±</m:mo></m:ci>
+		<m:cn>79</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, and he re-synthesized
+
+	  <equation id="eq2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:diff/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>79</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:cn>79</m:cn>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>-79</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>ω</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  The machine performed very well on all tests except those
+	  involving <term>discontinuous functions</term>.  When a
+	  square wave, like that shown in <link target-id="four_four" strength="3"/>, was inputed into the machine, "wiggles"
+	  around the discontinuities appeared, and even as the number
+	  of Fourier coefficients approached infinity, the wiggles
+	  never disappeared - these can be seen in the last plot in
+	  <link target-id="four_four" strength="3"/>.  J. Willard Gibbs
+	  first explained this phenomenon in 1899, and therefore these
+	  discontinuous points are referred to as <term>Gibbs
+	  Phenomenon</term>.	  
+	</para>
+      </section>
+
+    </section>
+
+    <section id="main"><title>Explanation</title><para id="m_p1">
+	We begin this discussion by taking a signal with a finite
+	number of discontinuities (like a <term>square pulse</term>)
+	and finding its Fourier Series representation.  We then
+	attempt to reconstruct it from these Fourier coefficients.
+	What we find is that the more coefficients we use, the more
+	the signal begins to resemble the original.  However, around
+	the discontinuities, we observe rippling that does not seem to
+	subside.  As we consider even more coefficients, we notice
+	that the ripples narrow, but do not shorten.  As we approach
+	an infinite number of coefficients, this rippling still does
+	not go away.  This is when we apply the idea of almost
+	everywhere.  While these ripples remain (never dropping below
+	9% of the pulse height), the area inside them tends to zero,
+	meaning that the energy of this ripple goes to zero.  This
+	means that their width is approaching zero and we can assert
+	that the reconstruction is exactly the original except at the
+	points of discontinuity.  Since the Dirichlet conditions
+	assert that there may only be a finite number of
+	discontinuities, we can conclude that the principle of almost
+	everywhere is met.  This phenomenon is a specific case of
+	<term>nonuniform convergence</term>.
+      </para>
+
+      <para id="m_p2">
+	Below we will use the square wave, along with its Fourier
+	Series representation, and show several figures that reveal
+	this phenomenon more mathematically.
+      </para>
+
+      <section id="sub1"><title>Square Wave</title><para id="p_sub1">
+	  The Fourier series representation of a square signal below
+	  says that the left and right sides are "equal."  In order to
+	  understand Gibbs Phenomenon we will need to redefine the way
+	  we look at equality. 
+
+	  <equation id="seriesrepresent">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>1</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:divide/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>k</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:ci>T</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>1</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:divide/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>k</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:ci>T</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	</para>	
+
+      <example id="sub2"><para id="p_sub2"><link target-id="four_four">Figure 1</link> shows several Fourier series <link document="m0041" strength="3">approximations of the square
+	    wave</link> using a varied number of terms, denoted by
+	    <m:math><m:ci>K</m:ci></m:math>:
+	</para>
+
+	<figure id="four_four"><title>Fourier series approximations of a square wave</title><media id="id1167520120229" alt=""><image src="../../media/fourier4.png" mime-type="image/png"/></media>
+	  
+	<caption>Fourier series approximation to
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">sq</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>.  The number of terms in the Fourier sum is
+	    indicated in each plot, and the square wave is shown as a
+	    dashed line over two periods.
+	  </caption></figure>
+
+      </example>
+
+	<para id="para1">
+	  When comparing the square wave to its Fourier series
+	  representation in <link target-id="four_four" strength="3"/>,
+	  it is not clear that the two are equal. The fact that the
+	  square wave's Fourier series requires more terms for a given
+	  representation accuracy is not important. However, close
+	  inspection of <link target-id="four_four" strength="3"/> does
+	  reveal a potential issue: Does the Fourier series really
+	  equal the square wave at <emphasis>all</emphasis> values of
+	  <m:math display="inline"><m:ci>t</m:ci></m:math>? In
+	  particular, at each step-change in the square wave, the
+	  Fourier series exhibits a peak followed by rapid
+	  oscillations. As more terms are added to the series, the
+	  oscillations seem to become more rapid and smaller, but the
+	  peaks are not decreasing. Consider this mathematical
+	  question intuitively: Can a discontinuous function, like the
+	  square wave, be expressed as a sum, even an infinite one, of
+	  continuous ones?  One should at least be suspicious, and in
+	  fact, it can't be thus expressed. This issue brought <link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">
+	  Fourier</link> much criticism from the French Academy of
+	  Science (Laplace, Legendre, and Lagrange comprised the
+	  review committee) for several years after its presentation
+	  on 1807.  It was not resolved for also a century, and its
+	  resolution is interesting and important to understand from a
+	  practical viewpoint.
+	</para>
+
+	<para id="para2">
+	  The extraneous peaks in the square wave's Fourier series
+	  <emphasis>never</emphasis> disappear; they are termed
+	  <term>Gibb's phenomenon</term> after the American physicist
+	  Josiah Willard Gibbs. They occur whenever the signal is
+	  discontinuous, and will always be present whenever the
+	  signal has jumps.
+	</para>
+
+      </section>
+
+      <section id="equal">
+	<title>Redefine Equality</title>
+	<para id="p_eq">
+	  Let's return to the question of equality; how can the equal
+	  sign in the <link document="m0039" target-id="sine">definition
+	  of the Fourier series</link> be justified? The partial
+	  answer is that pointwise--each and every value of
+
+	  <m:math display="inline">
+	    <m:ci>t</m:ci> </m:math>--equality is
+	  <emphasis>not</emphasis> guaranteed. What mathematicians
+	  later in the nineteenth century showed was that the rms
+	  error of the Fourier series was always zero.
+
+	  <equation id="eqn1">
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:limit/>
+		  <m:bvar><m:ci>K</m:ci></m:bvar>
+		  <m:lowlimit><m:infinity/></m:lowlimit>
+		  <m:apply>
+		    <m:ci type="fn">rms</m:ci>
+		    <m:ci><m:msub>
+			<m:mi>ε</m:mi>
+			<m:mi>K</m:mi>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  What this means is that the difference between an actual signal
+	  and its Fourier series representation may not be zero, but the
+	  square of this quantity has <emphasis>zero</emphasis> integral!
+	  It is through the eyes of the rms value that we define equality:
+	  Two signals
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>,
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  are said to be equal in the <term>mean square </term> if
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">rms</m:ci>
+		<m:apply><m:minus/>
+		  <m:ci><m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci><m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>. These signals are said to be equal
+	  <term>pointwise</term> if
+
+	  <m:math display="inline">
+	    <m:apply><m:eq/>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  for all values of
+
+	  <m:math display="inline">
+	    <m:ci>t</m:ci> </m:math>.  For Fourier series, Gibb's
+	  phenomenon peaks have finite height and zero width: The
+	  error differs from zero only at isolated points--whenever
+	  the periodic signal contains discontinuities--and equals
+	  about 9% of the size of the discontinuity. The value of a
+	  function at a finite set of points does not affect its
+	  integral. This effect underlies the reason why defining the
+	  value of a discontinuous function at its discontinuity is
+	  meaningless. Whatever you pick for a value has no practical
+	  relevance for either the signal's spectrum or for how a
+	  system responds to the signal.  The Fourier series value
+	  "at" the discontinuity is the average of the values on
+	  either side of the jump.
+	</para>
+      </section>
+
+
+
+    </section><section id="eip-656"><title>Visualizing Gibb's Phenomena</title><para id="eip-357">The following VI demonstrates the occurrence of Gibb's Phenomena. Note how the wiggles near the square pulse to the left remain even if you drastically increase the order of the approximation, even though they do become narrower. Also notice how the approximation of the smooth region in the middle is much better than that of the discontinuous region, especially at lower orders.
+</para>
+
+<para id="eip-109"><figure id="gibbsdemoonline"><media id="CNXgibbsdemoonline" alt="GibbsPhenomenaDemo">
+<image mime-type="image/png" src="../../media/Gibby-display.cdf" thumbnail="Gibby.png" width="400"/>
+<object width="400" height="400" src="Gibby-display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Gibby.png" width="400"/>
+</media>
+
+<caption>Interact (when online) with a Mathematica CDF demonstrating Gibbs Phenomena. To download, right click and save as .cdf.</caption></figure>
+</para></section><section id="eip-922"><title>Conclusion</title><para id="eip-851">We can <emphasis>approximate</emphasis> a function by
+	  re-synthesizing using only some of the Fourier coefficients
+	  (truncating the F.S.)
+
+	  <equation id="eq4">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:diff/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:domainofapplication>
+		    <m:apply>
+		      <m:leq/>
+		      <m:ci>n</m:ci>
+		      <m:apply>
+			<m:abs/>
+			<m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci><m:msub>
+			  <m:mi>ω</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci>n</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>		  
+
+	  This approximation works well where
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	  is continuous, but not so well where    
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	  is discontinuous. In the regions of discontinuity, we will always find Gibb's Phenomena, which never decrease below 9% of the height of the discontinuity, but become narrower and narrower as we add more terms.</para></section>
+    
+  </content>
+</document>

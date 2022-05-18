@@ -1,0 +1,67 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Viewing Embedded LabVIEW Content in Connexions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34460</md:content-id>
+  <md:title>Viewing Embedded LabVIEW Content in Connexions</md:title>
+  <md:abstract>A step-by-step guide for installing the necessary software to view embedded LabVIEW content in Connexions.</md:abstract>
+  <md:uuid>a8a48ea4-c634-460d-bee1-5c1f179ef823</md:uuid>
+</metadata>
+<featured-links>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit below.
+       Changes to the links section in the source will not be saved. -->
+    <link-group type="supplemental">
+      <link url="http://www.cnx.org/content/m13768/latest/" strength="3">Including LabVIEW Content in Connexions Modules</link>
+    </link-group>
+  <!-- WARNING! The 'featured-links' section is read only. Do not edit above.
+       Changes to the links section in the source will not be saved. -->
+</featured-links>
+<content>
+    
+<section id="eip-599" class="in"><title>Introduction</title><para id="eip-851">In order to view LabVIEW content embedded in Connexions modules, you must install and enable the LabVIEW 8.0 and 8.5 Local VI Execution Browser Plug-in for Windows.  Step-by-step installation instructions are given below.  Once installation is complete, the placeholder box at the bottom of this module should display a demo LabVIEW virtual instrument (VI).</para></section>
+
+
+
+<section id="sect-01" class="th">
+<title>Installing the LabVIEW Run-time Engine on Microsoft Windows</title>
+
+<list id="list-01" list-type="enumerated"><item>Download and install the LabVIEW 8.0 Runtime Engine found at: <link url="http://zone.ni.com/devzone/cda/tut/p/id/4346">http://zone.ni.com/devzone/cda/tut/p/id/4346</link>.</item>
+
+<item>Download and install the LabVIEW 8.5 Runtime Engine found at: <link url="http://zone.ni.com/devzone/cda/tut/p/id/6633">http://zone.ni.com/devzone/cda/tut/p/id/6633</link>.</item>
+
+<item>Dowload the <code>LVBrowserPlugin.ini</code> file from <link url="http://zone.ni.com/devzone/cda/tut/p/id/8288">http://zone.ni.com/devzone/cda/tut/p/id/8288</link>, and place it in the <code>My Documents\LabVIEW Data</code> folder. (You may have to create this folder if it doesn't already exist.)</item>
+
+<item>Restart your computer to complete the installation.</item>
+
+<item>The placeholder box at the bottom of this module should now display a demo LabVIEW virtual instrument (VI).</item>
+</list>
+
+</section><section id="eip-838" class="cn"><title>Example Virtual Instrument</title><figure id="eip-id1167688659119"><media id="id1171259452474" alt=""><labview src="DFD_Utility.llb" viname="DEP Tree Main.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="540" width="840"><param name="lvfppviname" value="DEP Tree Main.vi"/></labview></media>
+
+<caption>Digital filter design LabVIEW virtual instrument from <link url="http://cnx.org/content/m13115/latest/">http://cnx.org/content/m13115/latest/</link>.</caption></figure></section>
+
+<!-- MAC OS NOT YET SUPPORTED
+<section id="sect-02">
+<name>Installing the LabVIEW Run-time Engine on Mac OS X</name>
+
+
+<para id="para-03">
+<note type="note">To run embedded LabVIEW content on a different platform, the content must have been compiled on the desired platform. Since much of the LabVIEW content in Connexions was compiled only on Windows, the majority of embedded VIs will not be viewable on a Mac.</note>
+</para>
+
+<list id="list-02" type="enumerated"><item>Point your web browser to the LabVIEW Run-time Engine download page at: <link src="http://digital.ni.com/softlib.nsf/websearch/3918bdc628bb65a68625711c0062bee4">http://digital.ni.com/softlib.nsf/websearch/3918bdc628bb65a68625711c0062bee4</link>.</item>
+<item>If you're not logged in to NI, click the link to continue the download process at the bottom of the page.</item>
+<item>Login or create a profile with NI to continue.</item>
+<item>Once logged in, click the <code>LabVIEW_8.0.1_Runtime_Engine.dmg</code> link and save the file to disk.</item>
+<item>Once the file has downloaded, double click it to mount the LabView Run-time Engine disk image.</item>
+<item>Double click the <code>LabVIEW80Runtime</code> application and follow the steps to install the run-time engine.</item>
+<item>Download the LabVIEW Browser Plug-in at: <link src="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/LVBrowserPlugin.ini.zip">http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/LVBrowserPlugin.ini.zip</link>.</item>
+<item>Put the <code>LVBrowserPlugin.ini</code> file in the <code>Documents/LabVIEW Data</code> folder in your home directory. (You may have to create this folder if it doesn't already exist.)</item>
+<item>Restart your web browser to complete the installation of the plug-in.</item>
+</list>
+
+</section>
+-->
+
+</content>
+  
+</document>

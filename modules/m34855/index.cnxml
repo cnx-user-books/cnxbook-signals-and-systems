@@ -1,0 +1,703 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Poles and Zeros in the S-Plane</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34855</md:content-id>
+  <md:title>Poles and Zeros in the S-Plane</md:title>
+  <md:abstract>This module will look at the relationships between the Laplace transform and the complex plane.  Specifically, the creation of pole/zero plots and some of their useful properties are discussed.</md:abstract>
+  <md:uuid>392db5e3-cc45-415e-9bfa-81757fa6d9f1</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="definition" class="in"><title>Introduction to Poles and Zeros of the Laplace-Transform</title><para id="eip-12">It is quite difficult to qualitatively analyze the <link document="m10110" strength="2">Laplace transform</link> and
+	<link document="m10549" strength="2">Z-transform</link>, since
+	mappings of their magnitude and phase or real part and
+	imaginary part result in multiple mappings of 2-dimensional
+	surfaces in 3-dimensional space.  For this reason, it is very
+	common to examine a plot of a <link document="m0028" strength="2">transfer function's</link> poles and zeros to
+	try to gain a qualitative idea of what a system does.
+      </para><para id="intro">Once the Laplace-transform of a system has been determined, one can
+	use the information contained in function's polynomials to
+	graphically represent the function and easily observe many
+	defining characteristics.  The Laplace-transform will have the below
+	structure, based on <link document="m10593" strength="3">Rational
+	  Functions</link>:
+	
+	<equation id="tf">   
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+    	 	<m:divide/>
+		<m:apply>
+		  <m:ci type="fn">P</m:ci><m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">Q</m:ci><m:ci>s</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>       
+      
+      <para id="intro2">The two polynomials, <m:math><m:apply><m:ci type="fn">P</m:ci><m:ci>s</m:ci></m:apply></m:math> and
+	<m:math><m:apply><m:ci type="fn">Q</m:ci><m:ci>s</m:ci></m:apply></m:math>, allow us
+	to find the <term>poles and
+	zeros</term> of the Laplace-Transform.
+
+	<definition id="Laplace_def"><term>zeros</term>
+  	  <meaning id="id1165283074422">The value(s) for <m:math><m:ci>s</m:ci></m:math> where 
+	    <m:math><m:apply><m:eq/>
+		<m:apply><m:ci type="fn">P</m:ci><m:ci>s</m:ci></m:apply>
+		<m:apply><m:cn>0</m:cn></m:apply></m:apply>
+	    </m:math>.</meaning>
+	  <meaning id="id1165269552632">
+	    The complex frequencies that make the overall gain of the
+	    filter transfer function zero.</meaning>
+  	</definition>
+
+	<definition id="p_def">
+  	  <term>poles</term>
+  	  <meaning id="id8468639">The value(s) for <m:math><m:ci>s</m:ci></m:math> where
+	    <m:math><m:apply><m:eq/>
+		<m:apply><m:ci type="fn">Q</m:ci><m:ci>s</m:ci></m:apply>
+		<m:apply><m:cn>0</m:cn></m:apply></m:apply>
+	    </m:math>.</meaning>
+	  <meaning id="id1165277499880">
+	    The complex frequencies that make the overall gain of the
+	    filter transfer function infinite.</meaning>
+  	</definition>
+      </para>
+      
+      <example id="eg1">
+        <para id="eg1-1">Below is a simple transfer function with the poles and zeros
+	  shown below it.
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>s</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+      	</para>   
+	
+	<para id="eg1-2">
+	  The zeros are: 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg1-3">
+	  The poles are: 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>4</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+      </example>
+
+    </section>
+
+
+
+    <section id="zplane" class="th"><title>The S-Plane</title><para id="graph">
+	Once the poles and zeros have been found for a given
+	Laplace Transform, they can be plotted onto the S-Plane.  The
+	S-plane is a complex plane with an imaginary and real axis
+	referring to the complex-valued variable
+	<m:math><m:ci>z</m:ci></m:math>.  The position on the complex
+	plane is given by <m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>r</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>θ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>	
+	</m:math>
+
+	and the angle from the positive, real axis around the plane is
+	denoted by <m:math><m:ci>θ</m:ci></m:math>.  When
+	mapping poles and zeros onto the plane, poles are denoted by
+	an "x" and zeros by an "o".  The below figure shows the
+	S-Plane, and examples of plotting zeros and poles onto the
+	plane can be found in the following section.
+      </para>
+
+      <figure id="splanepic"><title>S-Plane</title><media id="id1165279055700" alt=""><image src="../../media/splane.png" mime-type="image/png"/></media>
+      </figure>
+
+    </section>
+
+
+
+
+    <section id="examples">
+      <title>Examples of Pole/Zero Plots</title>
+
+      <para id="eg_intro">This section lists several examples of finding the poles and
+	zeros of a transfer function and then plotting them onto the
+	S-Plane.
+      </para>
+      
+      <example id="eg2">
+	<title>Simple Pole/Zero Plot</title>
+	<para id="eg2-1"><m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>s</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </para>
+	
+	<para id="eg2-2">
+	  The zeros are: 
+	  <m:math>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg2-3">
+	  The poles are: 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>4</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<figure id="pz_eg2"><title>Pole/Zero Plot</title><media id="id1165273840140" alt=""><image src="../../media/sp_eg1.png" mime-type="image/png"/></media>
+	  
+        <caption>Using the zeros and poles found from the transfer
+	    function, the one zero is mapped to zero and the two poles
+	    are placed at
+	    <m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply></m:math>
+	    and
+	    <m:math><m:apply><m:minus/><m:apply><m:divide/><m:cn>3</m:cn><m:cn>4</m:cn></m:apply></m:apply></m:math>
+	  </caption></figure>
+      </example>
+
+
+      <example id="eg3">
+	<title>Complex Pole/Zero Plot</title>
+	<para id="eg3-1"><m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>s</m:ci>
+	      </m:apply>
+	      
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>s</m:ci>
+		    <m:imaginaryi/>
+		  </m:apply>		  
+		</m:apply>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>			
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:imaginaryi/>
+		      </m:apply>			  
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>				   
+		      </m:apply>
+		      <m:apply>
+			
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:imaginaryi/>
+			
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </para>
+	
+
+	<para id="eg3-2">
+	  The zeros are: 
+	  <m:math>
+	    <m:set>
+	      <m:imaginaryi/>
+	      <m:apply>
+		<m:minus/>
+		<m:imaginaryi/>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg3-3">
+	  The poles are: 
+	  <m:math>
+	    <m:set>
+	      <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>  
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<figure id="pz_eg3"><title>Pole/Zero Plot</title><media id="id1165278205185" alt=""><image src="../../media/sp_eg2.png" mime-type="image/png"/></media>
+	  
+	<caption>Using the zeros and poles found from the transfer
+	    function, the zeros are mapped to
+	    <m:math><m:apply><m:ci><m:mo>±</m:mo></m:ci><m:imaginaryi/>
+	      </m:apply></m:math>,
+	    and the poles are placed at
+	    <m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    and 
+	    <m:math>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </caption></figure>
+
+      </example>
+
+      <example id="eip-967"><title>Pole-Zero Cancellation</title><para id="eip-341">
+  An easy mistake to make with regards to poles and zeros is to
+	think that a function like
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>s</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	is the same as
+	<m:math>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>s</m:ci>
+	    <m:cn>3</m:cn>
+	  </m:apply>
+	</m:math>.
+	In theory they are equivalent, as the pole and zero at
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>s</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+
+	cancel each other out in what is known as <term>pole-zero
+	  cancellation</term>.  However, think about what may happen
+	  if this were a transfer function of a system that was
+	  created with physical circuits.  In this case, it is very
+	  unlikely that the pole and zero would remain in exactly the
+	  same place.  A minor temperature change, for instance, could
+	  cause one of them to move just slightly.  If this were to
+	  occur a tremendous amount of volatility is created in that
+	  area, since there is a change from infinity at the pole to
+	  zero at the zero in a very small range of signals.  This is
+	  generally a very bad way to try to eliminate a pole.  A much
+	  better way is to use <term>control theory</term> to move the
+	  pole to a better place.
+      
+</para>
+</example><note id="eip-319"><title>Repeated Poles and Zeros</title>It is possible to have more than one pole or zero at any given
+	point.  For instance, the discrete-time transfer function
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>z</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	will have two zeros at the origin and the continuous-time
+	function
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:ci>s</m:ci>
+		<m:cn>25</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	will have 25 poles at the origin.
+      </note><para id="pz_matlab">
+	<emphasis>MATLAB</emphasis> - If access to MATLAB is readily
+	available, then you can use its functions to easily create
+	pole/zero plots.  Below is a short program that plots the
+	poles and zeros from the above example onto the Z-Plane.
+      </para>
+
+      <code id="pzplot" display="block">
+	
+	% Set up vector for zeros
+	z = [j ; -j];
+
+	% Set up vector for poles
+	p = [-1 ; .5+.5j ; .5-.5j];
+
+	figure(1);
+	zplane(z,p);
+	title('Pole/Zero Plot for Complex Pole/Zero Plot Example');
+	
+      </code>
+    </section>
+
+
+
+
+    <section id="eip-231" class="ie"><title>Interactive Demonstration of Poles and Zeros</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="Pole-ZeroDrillDemo">
+<image mime-type="image/png" src="../../media/Lecture 22-Pole-ZeroDrill_display.cdf" thumbnail="Lecture 22-Pole-ZeroDrill.png" width="400"/>
+<object width="400" height="400" src="Lecture 22-Pole-ZeroDrill_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Lecture 22-Pole-ZeroDrill.png" width="400"/>
+</media>
+<caption>Interact (when online) with a Mathematica CDF demonstrating Pole/Zero Plots. To Download, right-click and save target as .cdf.</caption>
+</figure>
+</para>
+</section><section id="eip-561"><title>Applications for pole-zero plots</title><section id="eip-74"><title>Stability and Control theory</title><para id="eip-176">
+Now that we have found and plotted the poles and zeros, we
+	must ask what it is that this plot gives us.  Basically what
+	we can gather from this is that the magnitude of the transfer
+	function will be larger when it is closer to the poles and
+	smaller when it is closer to the zeros.  This provides us with
+	a qualitative understanding of what the system does at various
+	frequencies and is crucial to the discussion of <link document="m10113" strength="2">stability</link>.
+</para></section>
+
+
+
+<section id="eip-531"><title>Pole/Zero Plots and the Region of Convergence</title><para id="roc_intro">
+	The region of convergence (ROC) for <m:math><m:apply><m:ci type="fn">X</m:ci><m:ci>z</m:ci></m:apply></m:math> in the
+	complex Z-plane can be determined from the pole/zero plot.
+	Although several regions of convergence may be possible, where
+	each one corresponds to a different impulse response, there
+	are some choices that are more practical.  A ROC can be chosen
+	to make the transfer function causal and/or stable depending
+	on the pole/zero plot.
+
+	<list id="roc_l">
+  	  <title>Filter Properties from ROC</title>
+  	  <item>
+	  If the ROC extends outward from the outermost pole, then the
+	  system is <term>causal</term>.</item>
+  	  <item>
+	  If the ROC includes the unit circle, then the system is
+	  <term>stable</term>.</item>
+	</list>
+
+	Below is a pole/zero plot with a possible ROC of the
+	Z-transform in the <link target-id="eg2" strength="3">Simple
+	Pole/Zero Plot</link> discussed earlier.  The shaded region
+	indicates the ROC chosen for the filter.  From this figure, we
+	can see that the filter will be both causal and stable since
+	the above listed conditions are both met.
+      </para>
+
+      <example id="eg_roc">
+	<para id="egroc">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>z</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<figure id="pz_roc"><title>Region of Convergence for the Pole/Zero Plot</title><media id="id1165271515398" alt=""><image src="../../media/sp_roc.png" mime-type="image/png"/></media>
+	  
+        <caption>The shaded area represents the chosen ROC for the transfer
+	    function.
+	  </caption></figure>
+
+      </example></section><section id="eip-511"><title>Frequency Response and Pole/Zero Plots</title><para id="zp_freq">The reason it is helpful to understand and create these
+	pole/zero plots is due to their ability to help us easily
+	design a filter.  Based on the location of the poles and
+	zeros, the magnitude response of the filter can be quickly
+	understood.  Also, by starting with the pole/zero plot, one
+	can design a filter and obtain its transfer function very
+	easily.
+      </para></section>
+
+    </section><section id="eip-562" class="cn"><title>Conclusion</title><para id="eip-914">
+Pole-Zero Plots are clearly quite useful in the study of the Laplace and Z transform, affording us a method of visualizing the at times confusing mathematical functions.
+</para></section>
+
+    
+    
+    
+
+
+
+    
+
+    
+
+  </content>  
+</document>

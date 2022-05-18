@@ -1,0 +1,1838 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Differential Equations</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m34510</md:content-id>
+  <md:title>Differential Equations</md:title>
+  <md:abstract>This module describes the use of the Laplace transform in finding solutions to differential equations.</md:abstract>
+  <md:uuid>d083d077-3eeb-44f2-ad9c-13fc78b12ff8</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Differential Equations</title>
+      <para id="id214982">It is often useful to describe systems using equations involving the rate of change in some quantity through differential equations. Recall that one important subclass of differential equations, linear constant coefficient ordinary differential equations, takes the form</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>A</m:mi>
+            <m:mi>y</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>x</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id215360">where <m:math overflow="scroll"><m:mi>A</m:mi></m:math> is a differential operator of the form</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>A</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>n</m:mi>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>.</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id215684">The differential equation in <link target-id="uid1"/> would describe some system modeled by <m:math overflow="scroll"><m:mi>A</m:mi></m:math> with an input forcing function <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> that produces an output solution signal <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>. However, the unilateral Laplace transform permits a solution for initial value problems to be found in what is usually a much simpler method. Specifically, it greatly simplifies the procedure for nonhomogeneous differential equations.</para>
+    </section>
+    <section id="eip-360"><title>General Formulas for the Differential Equation</title><para id="p_gen1">As stated briefly in the definition above, a differential
+	equation is a very useful tool in describing and calculating
+	the change in an output of a system described by the formula for a given
+	input.  The key property of
+	the differential equation is its ability to help easily find the
+	transform,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>,
+	of a system.  In the following two subsections, we will look at
+	the general form of the differential equation and the general
+	conversion to a Laplace-transform directly from the differential
+	equation.
+      </para>
+
+      
+      
+      <section id="gen_sub2"><title>Conversion to Laplace-Transform</title><para id="p_gen_sub2">Using the definition, 
+	  <link target-id="lccde_eqtn" strength="3"/>, we can 
+	  easily generalize the <term>transfer function</term>, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>, for any differential equation.  Below are the steps
+	  taken to convert any differential equation into its transfer
+	  function, <foreign>i.e.</foreign> Laplace-transform.  The first
+	  step involves taking the <link document="m0046" strength="2">Fourier Transform</link> of all the terms in
+	  <link target-id="lccde_eqtn" strength="3"/>.  Then we use
+	  the linearity property to pull the transform inside the
+	  summation and the time-shifting property of the Laplace-transform
+	  to change the time-shifting terms to exponentials.  Once
+	  this is done, we arrive at the following equation:
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>.
+	  
+
+	  <equation id="eq_gsub1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">Y</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>a</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">Y</m:ci>
+			  <m:ci>s</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>s</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>	
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">X</m:ci>
+			<m:ci>s</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <equation id="eq_gsub2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">Y</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>a</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>s</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>	
+	  
+	</para>
+      </section>
+      
+      <section id="gensub3">
+	<title>Conversion to Frequency Response</title>
+	<para id="p_gensub3">Once the Laplace-transform has been calculated from the differential
+	  equation, we can go one step further to define the frequency
+	  response of the system, or filter, that is being
+	  represented by the differential equation.
+	  
+	  <note id="id1164792752829" type="note">
+	    Remember that the reason we are dealing with these
+	    formulas is to be able to aid us in filter design.  A LCCDE
+	    is one of the easiest ways to represent FIR filters.  By
+	    being able to find the frequency response, we will be able to
+	    look at the basic properties of any filter represented by a
+	    simple LCCDE.	    
+	  </note>
+
+	  Below is the general formula for the frequency response of a
+	  Laplace-transform.  The conversion is simply a matter of taking
+	  the Laplace-transform formula, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>,
+	  and replacing every instance of 
+	  <m:math><m:ci>s</m:ci></m:math> 
+	  with 
+	  <m:math>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>w</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+
+	  <equation id="eq_gensub3">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>w</m:ci>
+		</m:apply>
+		<m:apply>	         
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		  <m:bvar>
+		    <m:ci>s</m:ci>
+		  </m:bvar>	
+		  <m:condition>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>w</m:ci>
+		      </m:apply>		
+		    </m:apply>
+		  </m:condition>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci><m:ci>s</m:ci>	     
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>0</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>			  
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  Once you understand the derivation of this formula, look at
+	  the module concerning <link document="m10548">Filter Design
+	  from the Laplace-Transform</link> for a look into how all of these
+	  ideas of the <link document="m10110" strength="3">Laplace-transform</link>, Differential Equation, and
+	  <link document="m10556" strength="3"> Pole/Zero Plots</link>
+	  play a role in filter design.
+	</para>
+      </section>	 
+
+    </section><section id="eip-443"><title>Solving a LCCDE</title><para id="p_solve">In order for a linear constant-coefficient difference equation
+	to be useful in analyzing a LTI system, we must be able to
+	find the systems output based upon a known input,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>, and a set of initial conditions.  Two common
+	methods exist for solving a LCCDE: the <term>direct
+	  method</term> and the <term>indirect method</term>, the latter
+	being based on the Laplace-transform.  Below we will briefly discuss
+	the formulas for solving a LCCDE using each of these methods.
+      </para>
+      
+      <section id="direct_solve">
+	<title>Direct Method</title>
+	<para id="p_direct">The final solution to the output based on the direct method
+	  is the sum of two parts, expressed in the following
+	  equation:
+
+	  <equation id="eq_direct"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>p</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  The first part,  
+	  <m:math><m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>h</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>, is referred to as the <term>homogeneous
+	    solution</term> and the second part,    
+	  <m:math><m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>h</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>, is referred to as <term>particular
+	    solution</term>.  The following method is very similar to
+	  that used to solve many differential equations, so if you
+	  have taken a differential calculus course or used
+	  differential equations before then this should seem very
+	  familiar.
+	</para>
+
+	<section id="homog_sol">
+	  <title>Homogeneous Solution</title>
+	  <para id="p_homo">We begin by assuming that the input is zero, 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>.
+	    
+	    Now we simply need to solve the homogeneous differential
+	    equation:
+
+	    <equation id="eq_hom1"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    In order to solve this, we will make the assumption that
+	    the solution is in the form of an exponential.  We will
+	    use lambda, <m:math><m:ci>λ</m:ci></m:math>, to
+	    represent our exponential terms.  We now have to solve the
+	    following equation:
+	    
+	    <equation id="eq_hom2"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>λ</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+	    We can expand this equation out and factor out all of the
+	    lambda terms. This will give us a large polynomial in
+	    parenthesis, which is referred to as the
+	    <term>characteristic polynomial</term>.  The roots of this
+	    polynomial will be the key to solving the homogeneous
+	    equation.  If there are all distinct roots, then the
+	    general solution to the equation will be as follows:
+
+	    <equation id="eq_homsol1"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mi>N</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mi>N</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    However, if the characteristic equation contains multiple
+	    roots then the above general solution will be slightly
+	    different.  Below we have the modified version for an
+	    equation where  
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>1</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math> has <m:math><m:ci>K</m:ci></m:math> multiple
+	    roots:
+	    
+	    <equation id="eq_homsol2"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>t</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>K</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mi>N</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mi>N</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</section>
+
+	<section id="part_sol">
+	  <title>Particular Solution</title>
+	  <para id="p_part">The particular solution, 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mi>p</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>, will be any solution that will solve the
+	    general differential equation:
+
+	    <equation id="part_lccde_eqtn">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>y</m:mi>
+			    <m:mi>p</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    In order to solve, our guess for the solution to  
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mi>p</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math> will take on the form of the input, 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>.  After guessing at a solution to the above
+	    equation involving the particular solution, one only
+	    needs to plug the solution into the differential equation
+	    and solve it out.
+	  </para>	  
+	</section>
+      </section> 
+
+      <section id="z_method"><title>Indirect Method</title><para id="p_ind">The indirect method utilizes the relationship between the
+	  differential equation and the Laplace-transform, discussed <link target-id="gen" strength="3">earlier</link>, to find a
+	  solution.  The basic idea is to convert the differential
+	  equation into a Laplace-transform, as described <link target-id="gen_sub2" strength="3">above</link>, to get the
+	  resulting output, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">Y</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>.
+	  Then by inverse transforming this and using partial-fraction
+	  expansion, we can arrive at the solution.
+	</para>
+	
+      
+
+  
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mfrac>
+                <m:mi>d</m:mi>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>s</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id215821">This can be interatively extended to an arbitrary order derivative as in Equation <link target-id="uid4"/>.</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mfrac>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msup>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>s</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>m</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>m</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:msup>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>m</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id215963">Now, the Laplace transform of each side of the differential equation can be taken</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mi>n</m:mi>
+              </m:munderover>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mfrac>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msup>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mi>x</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216065">which by linearity results in</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mfrac>
+                <m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msup>
+                <m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msup>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mi>x</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216167">and by differentiation properties in</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mfenced separators="" open="(" close=")">
+              <m:msup>
+                <m:mi>s</m:mi>
+                <m:mi>k</m:mi>
+              </m:msup>
+              <m:mi>L</m:mi>
+              <m:mfenced separators="" open="{" close="}">
+                <m:mi>y</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mfenced>
+              <m:mo>-</m:mo>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>m</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:munderover>
+              <m:msup>
+                <m:mi>s</m:mi>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:msup>
+              <m:msup>
+                <m:mi>y</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>0</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mi>x</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216324">Rearranging terms to isolate the Laplace transform of the output,</para>
+      <equation id="uid8">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>L</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mi>y</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mfenced separators="" open="{" close="}">
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mfenced>
+                <m:mo>+</m:mo>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi>n</m:mi>
+                </m:msubsup>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>m</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msubsup>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msup>
+                <m:msup>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+              <m:mrow>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi>n</m:mi>
+                </m:msubsup>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216503">Thus, it is found that</para>
+      <equation id="uid9">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>s</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>X</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>+</m:mo>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi>n</m:mi>
+                </m:msubsup>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>m</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msubsup>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msup>
+                <m:msup>
+                  <m:mi>y</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+              <m:mrow>
+                <m:msubsup>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi>n</m:mi>
+                </m:msubsup>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216663">In order to find the output, it only remains to find the Laplace transform <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:math> of the input, substitute the initial conditions, and compute the inverse Laplace transform of the result. Partial fraction expansions are often required for this last step. This may sound daunting while looking at Equation <link target-id="uid9"/>, but it is often easy in practice, especially for low order differential equations. Equation <link target-id="uid9"/> can also be used to determine the transfer function and frequency response.</para>
+      <para id="id216694">As an example, consider the differential equation</para>
+      <equation id="uid10">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>4</m:mn>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216792">with the initial conditions <m:math overflow="scroll"><m:mrow><m:msup><m:mi>y</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>
+Using the method described above, the Laplace transform of the solution <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is given by</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>s</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>s</m:mi>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msup>
+                    <m:mi>s</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mn>3</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>s</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+                <m:mo>(</m:mo>
+                <m:mi>s</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>3</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id216960">Performing a partial fraction decomposition, this also equals</para>
+      <equation id="uid12">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>s</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>25</m:mn>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>s</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>-</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>35</m:mn>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>s</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>3</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>1</m:mn>
+            <m:mfrac>
+              <m:mi>s</m:mi>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>2</m:mn>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>s</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id217074">Computing the inverse Laplace transform,</para>
+      <equation id="uid13">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo>(</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>25</m:mn>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>35</m:mn>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>3</m:mn>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mo>.</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>)</m:mo>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id217190">One can check that this satisfies that this satisfies both the differential equation and the initial conditions.</para></section>
+</section><section id="eip-865"><title>Summary</title><para id="eip-954">One of the most important concepts of DSP is to be able to
+	properly represent the input/output relationship to a given LTI
+	system.  A linear constant-coefficient <term>difference
+	  equation</term> (LCCDE) serves as a way to express just this
+	relationship in a discrete-time system.  Writing the sequence
+	of inputs and outputs, which represent the characteristics of
+	the LTI system, as a difference equation helps in understanding
+	and manipulating a system.
+</para></section>
+  </content>
+</document>
