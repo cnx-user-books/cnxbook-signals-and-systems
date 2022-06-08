@@ -1,0 +1,930 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 10:The Discrete-Time Sampling</title>
+  <metadata>
+  <md:content-id>m26679</md:content-id><md:title>Lecture 10:The Discrete-Time Sampling</md:title>
+  <md:abstract>Sampling of DT signals is an important tool for digital signal processing.</md:abstract>
+  <md:uuid>6071ef18-ea7f-43f9-8b65-39a0515b6cf3</md:uuid>
+</metadata>
+
+<content>
+    <para id="id11636260">Lecture #10: </para>
+    <para id="id11636267">THE DISCRETE-TIME SAMPLING</para>
+    <para id="id11636274">Motivation:</para>
+    <list id="id11917539" list-type="bulleted">
+      <item>Sampling of DT signals is an important tool for digital signal processing.</item>
+    </list>
+    <para id="id11917549">Outline:</para>
+    <list id="id11917553" list-type="bulleted">
+      <item>Sampling DT signals, up-sampling, down-sampling</item>
+      <item>Conclusion</item>
+    </list>
+    <para id="id11932432">I. REVIEW DT PROCESSING OF CT SIGNALS</para>
+    <para id="id11932436">DT filtering of CT signals can be modeled as a cascade of signal transformations. The C/D converter transforms a CT signal to a DT signal, the D/C converter transforms a DT signal to a CT signal.</para>
+    <figure id="id6723654">
+      <media id="id1170809392696" alt=""><image src="../../media/graphics1-2891.png" mime-type="image/png" height="98" width="405"/></media>
+    </figure>
+    <para id="id4947391">1/ Review discrete time Fourier transform (DTFT)</para>
+    <figure id="id4947402">
+      <media id="id1170802863256" alt=""><image src="../../media/graphics2-3e3b.png" mime-type="image/png" height="104" width="413"/></media>
+    </figure>
+    <para id="id4945240">An aperiodic discrete time function has a DTFT that is periodic in φ with period φ=1.</para>
+    <para id="id6900819">2/ Model of C/D converter</para>
+    <figure id="id6679279">
+      <media id="id5042595" alt=""><image src="../../media/graphics3-46d9.png" mime-type="image/png" height="221" width="472"/></media>
+    </figure>
+    <para id="id5256376">3/ Model of D/C converter</para>
+    <figure id="id5256386">
+      <media id="id1170802038039" alt=""><image src="../../media/graphics4-3cc7.png" mime-type="image/png" height="211" width="507"/></media>
+    </figure>
+    <para id="id6776831">II. SAMPLING OF DT SIGNALS</para>
+    <para id="id11265621">DT signals can be sampled in a manner analogous to the sampling of CT signals. We develop the Sampling Theorem for DT signals and then consider two additional sampling schemes called upsampling and downsampling. In upsampling, the time scale of the sample wave is expanded, in downsampling the time scale is compressed. These methods are integral parts of the design of digital signal processing systems.</para>
+    <para id="id2966700">1/ Sampling</para>
+    <para id="id2966707">Sampling of DT signals is analogous to sampling of CT signals.</para>
+    <figure id="id6776837">
+      <media id="id1170799128808" alt=""><image src="../../media/graphics5-8be3.png" mime-type="image/png" height="275" width="488"/></media>
+    </figure>
+    <para id="id10416428">The sampling theorem for DT signal follows directly from examining the Fourier transform of the sampled DT sequence.</para>
+    <figure id="id10416441">
+      <media id="id7504405" alt=""><image src="../../media/graphics6-c60a.png" mime-type="image/png" height="144" width="357"/></media>
+    </figure>
+    <para id="id11047640">No overlap of lobes occurs if</para>
+    <para id="id11566257">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>a</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">&gt;</m:mo>
+                  <m:mi>a</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {  {1}  over  {N} }  - a&gt;a} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11973875">Hence, to recover the sampled DT signal from its samples, the sampling frequency must exceed twice the highest frequency in the DT signal, i.e., 1/N &gt; 2α.</para>
+    <para id="id7359895">2/ Upsampling — expanding the time scale</para>
+    <para id="id7359904">An important operation that is used in digital signal processing is upsampling.</para>
+    <figure id="id11932279">
+      <media id="id1170796322910" alt=""><image src="../../media/graphics7-c5e0.png" mime-type="image/png" height="109" width="480"/></media>
+    </figure>
+    <para id="id4612401">We will determine the effect of upsampling on the Fourier transform by first showing that upsampling can be represented by</para>
+    <para id="id4612408">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>up</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>mN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{ ital "up"} } = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {x \[ m \] δ \[ n -  ital "mN" \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9997734">What does δ[n − mN] mean? Note</para>
+    <para id="id11382874">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:mtext>mN</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="true">{</m:mo>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>if</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>mN</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>and</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">∧</m:mo>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>are</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mtext>int</m:mtext>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>egers</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mn>0</m:mn>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow>
+                                      <m:mtable>
+                                        <m:mtr>
+                                          <m:mtd>
+                                            <m:mrow>
+                                              <m:mtable>
+                                                <m:mtr>
+                                                  <m:mtd>
+                                                    <m:mrow>
+                                                      <m:mtable>
+                                                        <m:mtr>
+                                                          <m:mtd>
+                                                            <m:mrow>
+                                                            <m:mtable>
+                                                            <m:mtr>
+                                                            <m:mtd>
+                                                            <m:mrow/>
+                                                            </m:mtd>
+                                                            <m:mtd>
+                                                            <m:mrow/>
+                                                            </m:mtd>
+                                                            </m:mtr>
+                                                            </m:mtable>
+                                                            <m:mrow/>
+                                                            </m:mrow>
+                                                          </m:mtd>
+                                                          <m:mtd>
+                                                            <m:mrow/>
+                                                          </m:mtd>
+                                                        </m:mtr>
+                                                      </m:mtable>
+                                                      <m:mrow/>
+                                                    </m:mrow>
+                                                  </m:mtd>
+                                                  <m:mtd>
+                                                    <m:mrow/>
+                                                  </m:mtd>
+                                                  <m:mtd>
+                                                    <m:mrow/>
+                                                  </m:mtd>
+                                                </m:mtr>
+                                              </m:mtable>
+                                              <m:mrow/>
+                                            </m:mrow>
+                                          </m:mtd>
+                                          <m:mtd>
+                                            <m:mrow/>
+                                          </m:mtd>
+                                        </m:mtr>
+                                      </m:mtable>
+                                      <m:mrow/>
+                                    </m:mrow>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>otherwise</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{δ \[ n -  ital "mN" \] = left lbrace  matrix {
+1 matrix {
+ {} # {}
+}  ital "if" matrix {
+ {} # {}
+} n -  ital "mN"=0 matrix {
+ {} # {}
+}  ital "and" matrix {
+ {} # {}
+} m&amp;n matrix {
+ {} # {}
+}  ital "are" matrix {
+ {} # {}
+} "int" ital "egers" {} ##
+0 matrix {
+ matrix {
+ matrix {
+ matrix {
+ matrix {
+ {} # {}
+}  {} # {}
+}  {} #  {} # {}
+}  {} # {}
+}  {} # {}
+}  ital "otherwise"{}
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7582062">Therefore, δ[n − mN] = 1 for the following conditions</para>
+    <para id="id7953302">if m = 0 then n = 0 ,</para>
+    <para id="id10737162">if m = 1 then n = N ,</para>
+    <para id="id10247879">if m = 2 then n = 2N,</para>
+    <para id="id3735653">if m = 3 then n = 3N,</para>
+    <figure id="id8261045">
+      <media id="id1170807161367" alt=""><image src="../../media/graphics8-ee8b.png" mime-type="image/png" height="92" width="476"/></media>
+    </figure>
+    <para id="id5035127">Now examine</para>
+    <para id="id5035131">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>up</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>mN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{ ital "up"} } = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {x \[ m \] δ \[ n -  ital "mN" \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7371345">term by term as follows.</para>
+    <figure id="id11619074">
+      <media id="id8579184" alt=""><image src="../../media/graphics9-91ab.png" mime-type="image/png" height="235" width="448"/></media>
+    </figure>
+    <para id="id11558895">Now we can find the Fourier transform of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>up</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{ ital "up"} }  \[ n \] } {}</m:annotation></m:semantics></m:math> as follows:</para>
+    <para id="id10026167">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mover>
+                              <m:mi>X</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mtext>~</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mover>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>up</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>ϕ</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:munderover>
+                                <m:mo stretchy="false">∑</m:mo>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>n</m:mi>
+                                      <m:mo stretchy="false">=</m:mo>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mo stretchy="false">∞</m:mo>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mo stretchy="false">∞</m:mo>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:munderover>
+                              <m:mrow>
+                                <m:msub>
+                                  <m:mi>x</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mstyle fontstyle="italic">
+                                        <m:mrow>
+                                          <m:mtext>up</m:mtext>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mi fontstyle="italic">j2πnϕ</m:mi>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>up</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ϕ</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:mfenced open="[" close="]">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:munderover>
+                                  <m:mo stretchy="false">∑</m:mo>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mi>m</m:mi>
+                                        <m:mo stretchy="false">=</m:mo>
+                                        <m:mrow>
+                                          <m:mo stretchy="false">−</m:mo>
+                                          <m:mo stretchy="false">∞</m:mo>
+                                        </m:mrow>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mo stretchy="false">∞</m:mo>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:munderover>
+                                <m:mi>x</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:mi>δ</m:mi>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>mN</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                              <m:mo stretchy="false">]</m:mo>
+                            </m:mrow>
+                          </m:mfenced>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi fontstyle="italic">j2πnϕ</m:mi>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>up</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ϕ</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>m</m:mi>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mfenced open="[" close="]">
+                            <m:mrow>
+                              <m:munderover>
+                                <m:mo stretchy="false">∑</m:mo>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>m</m:mi>
+                                      <m:mo stretchy="false">=</m:mo>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mo stretchy="false">∞</m:mo>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mo stretchy="false">∞</m:mo>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:munderover>
+                              <m:mrow>
+                                <m:mi>δ</m:mi>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>mN</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mi fontstyle="italic">j2πnϕ</m:mi>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mfenced>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>up</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ϕ</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>m</m:mi>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi fontstyle="italic">j2πnϕ</m:mi>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>up</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ϕ</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">Nϕ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{ {X}  cSup { size 8{ "~" } }  rSub { size 8{ ital "up"} }  \( ϕ \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {x rSub { size 8{ ital "up"} }  \[ n \] e rSup { size 8{ - j2πnϕ} } } }  {} # 
+ {X}  cSup { size 8{ "~" } }  rSub { size 8{ ital "up"} }  \( ϕ \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  { left [ Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {x}  \[ m \] δ \[ n -  ital "mN" \]  right ]e rSup { size 8{ - j2πnϕ} } }  {} # 
+ {X}  cSup { size 8{ "~" } }  rSub { size 8{ ital "up"} }  \( ϕ \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {x \[ m \]  left [ Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {δ \[ n -  ital "mN" \] e rSup { size 8{ - j2πnϕ} } }  right ]}  {} # 
+ {X}  cSup { size 8{ "~" } }  rSub { size 8{ ital "up"} }  \( ϕ \) = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {x \[ m \] e rSup { size 8{ - j2πnϕ} } }  {} # 
+ {X}  cSup { size 8{ "~" } }  rSub { size 8{ ital "up"} }  \( ϕ \) = {X}  cSup { size 8{ "~" } }  \( Nϕ \)  {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5851353">Hence, upsampling results in a compression of the frequency scale.</para>
+    <figure id="id5851361">
+      <media id="id1170808609489" alt=""><image src="../../media/graphics10-48e8.png" mime-type="image/png" height="267" width="389"/></media>
+    </figure>
+    <para id="id11560752">Note that expanding the time scale by N compresses the frequency scale by N.</para>
+    <para id="id10417731">3/ Downsampling — compressing the time scale</para>
+    <para id="id10417740">In downsampling by N, every 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>N</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>th</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{N rSup { size 8{ ital "th"} } } {}</m:annotation></m:semantics></m:math> sample is kept and the intervening samples are removed. We can represent downsampling by a sequence of two operations we have already analyzed —sampling and decimation which is the reverse of upsampling.</para>
+    <figure id="id10264101">
+      <media id="id4708400" alt=""><image src="../../media/graphics11-6fb3.png" mime-type="image/png" height="109" width="441"/></media>
+    </figure>
+    <figure id="id10455998">
+      <media id="id4972787" alt=""><image src="../../media/graphics12-4275.png" mime-type="image/png" height="223" width="504"/></media>
+    </figure>
+    <para id="id10461228">Note that compressing the time scale by N expands the frequency scale by N and divides the amplitude of the DTFT by N.</para>
+    <para id="id7415182">III. CONCLUSIONS</para>
+    <list id="id11567249" list-type="bulleted">
+      <item>Expansion/compression of DT signals was interpreted as compression/ expansion of the DTFT.</item>
+    </list>
+  </content>
+</document>
