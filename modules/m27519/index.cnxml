@@ -1,0 +1,3606 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 5:The Laplace Transform Method of Solution</title>
+  <metadata>
+  <md:content-id>m27519</md:content-id><md:title>Lecture 5:The Laplace Transform Method of Solution</md:title>
+  <md:abstract>Continue to describe methods for representing signals as superpositions of complex exponential functions.
+Develop efficient methods for analyzing LTI systems.</md:abstract>
+  <md:uuid>db04dde4-600c-483e-b758-b7aa74ead86e</md:uuid>
+</metadata>
+
+<content>
+    <para id="id5614366">9/23/99 (T.F. Weiss)</para>
+    <para id="id7032872">Lecture #5: The Laplace transform method of solution</para>
+    <para id="id5692577">Motivation:</para>
+    <list id="id4627336" list-type="bulleted">
+      <item>Continue to describe methods for representing signals as superpositions of complex exponential functions</item>
+      <item>Develop efficient methods for analyzing LTI systems</item>
+    </list>
+    <para id="id4455752">Outline:</para>
+    <list id="id3637684" list-type="bulleted">
+      <item>Review of last lecture</item>
+    </list>
+    <list id="id5138422" list-type="bulleted">
+      <item>Laplace transform of the family of singularity functions</item>
+    </list>
+    <list id="id3205090" list-type="bulleted">
+      <item>More on the region of convergence</item>
+    </list>
+    <list id="id3216500" list-type="bulleted">
+      <item>Analysis of networks with the Laplace transform — the impedance method</item>
+    </list>
+    <list id="id4943279" list-type="bulleted">
+      <item>Finding inverse transforms — partial fraction expansion</item>
+    </list>
+    <list id="id7424101" list-type="bulleted">
+      <item>Conclusion</item>
+    </list>
+    <list id="id3089245" list-type="bulleted">
+      <item>Historical perspective — Oliver Heaviside</item>
+    </list>
+    <para id="id3591676">Review</para>
+    <list id="id6175088" list-type="bulleted">
+      <item>The Laplace transform represents a time function as a superposition of complex exponentials.</item>
+    </list>
+    <list id="id3149001" list-type="bulleted">
+      <item>A time function is related uniquely to a Laplace transform if the ROC is specified.</item>
+    </list>
+    <list id="id3557137" list-type="bulleted">
+      <item>If the Laplace transform of a sum of causal and anti-causal exponential time functions exists, its ROC is a strip in the s-plane parallel to the jω-axis.</item>
+    </list>
+    <para id="id6151853">Laplace transforms of singularity functions</para>
+    <para id="id3456042">Unit impulse function</para>
+    <para id="id3577019">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>L</m:mi>
+                  <m:mrow>
+                    <m:mfenced open="{" close="}">
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfenced>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mtext>.</m:mtext>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>st</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{L left lbrace δ \( t \)  right rbrace = Sum cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {δ \( t \)  "." e rSup { size 8{ -  ital "st"} }  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3766640">Recall the definition of the unit impulse</para>
+    <para id="id8430290">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo stretchy="false">∑</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mrow/>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{ {}= infinity } }  cSup { size 8{ infinity } }  {δ \( t \) f \( t \)  ital "dt"=f \( 0 \) } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7919633">Hence, </para>
+    <para id="id3483797">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>L</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{L lbrace δ \( t \)  rbrace =1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3175023">for all values of s. The region of convergence is the entire s plane.</para>
+    <para id="id3064570">Unit impulse function delayed — use of properties</para>
+    <para id="id7414243">The Laplace transform of an impulse located at t = 0 is</para>
+    <para id="id5296490">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>L</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{L lbrace δ \( t \)  rbrace =1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4924632">Using the delay property,
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \)  { dlrarrow }  cSup { size 8{L} } X \( s \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id6185048">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>T</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>s</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">/</m:mo>
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t - T \)  { dlrarrow }  cSup { size 8{L} } X \( s \) e rSup { size 8{ - s/T} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7585002">the Laplace transform of the delayed impulse is</para>
+    <para id="id3139832">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>L</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>sT</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{L lbrace δ \( t - T \)  rbrace =e rSup { size 8{ -  ital "sT"} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3453288">and the region of convergence is the whole s plane.</para>
+    <para id="id3179602">Two-minute miniquiz problem</para>
+    <para id="id2883725">Problem 5-1</para>
+    <para id="id7822656">Find the Laplace transform including the ROC for</para>
+    <para id="id4479012">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mn>4</m:mn>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - 2 \( t - 4 \) } } u \( t - 4 \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3100694">Two-minute miniquiz solution</para>
+    <para id="id8266264">Problem 5-1</para>
+    <para id="id3063028">We use the Laplace transform of the causal exponential time function and time delay property to solve this problem.</para>
+    <para id="id5103884">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2t</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mrow>
+                      <m:mi/>
+                      <m:mo stretchy="false">⇔</m:mo>
+                    </m:mrow>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ - 2t} } u \( t \)  {` dlrarrow }  cSup { size 8{L} } ` {  {1}  over  {s+2} } `~ matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} ~σ&gt; - 2} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3084691">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>4</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mrow>
+                      <m:mi/>
+                      <m:mo stretchy="false">⇔</m:mo>
+                      <m:mi/>
+                    </m:mrow>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>4s</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ - 2 \( t - 4 \) } } u \( t - 4 \)  {` dlrarrow `}  cSup { size 8{L} }  {  {1}  over  {s+2} } e rSup { size 8{ - 4s} } ` matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt; - 2} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6905093">Singularity functions and their relatives</para>
+    <para id="id3136762">The Laplace transform of a unit impulse is</para>
+    <para id="id3085661">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mn>1</m:mn>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>all</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{δ \( t \)  { dlrarrow }  cSup { size 8{L} } 1 matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} ` ital "all" matrix {
+ {} # {}
+} `s} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3115054">and from the Laplace transform of a causal exponential with 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math> = 0 we have the Laplace transform of a causal step function</para>
+    <para id="id3591602"/>
+    <para id="id8129290">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>s</m:mi>
+                  </m:mfrac>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{u \( t \)  { dlrarrow }  cSup { size 8{L} }  {  {1}  over  {s} }  matrix {
+ {} # {}
+}  ital "for"` matrix {
+ {} # {}
+} σ&gt;0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3745015">Note this fits together with the time differentiation property</para>
+    <para id="id4442731">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dx</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:mtext>dt</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mfrac>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>sX</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {  { ital "dx" \( t \) }  over  { ital "dt"} }  { dlrarrow }  cSup { size 8{L} }  ital "sX" \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4489892">since in a generalized function sense</para>
+    <para id="id3576292">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>du</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mi>L</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>s</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>s</m:mi>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{δ \( t \) = {  { ital "du" \( t \) }  over  { ital "dt"} } ` { dlrarrow }  cSup { size 8{L} } `L lbrace δ \( t \)  rbrace =s \(  {  {1}  over  {s} }  \) =1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6114447">Singularity functions and their relatives, cont’d</para>
+    <para id="id3187061">We use the multiplication by t property</para>
+    <para id="id7373486">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>tx</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dX</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>ds</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ ital "tx" \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~ -  {  { ital "dX" \( s \) }  over  { ital "ds"} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3575660">to obtain</para>
+    <para id="id4132729">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>tu</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>ds</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>s</m:mi>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ ital "tu" \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~ -  {  {d}  over  { ital "ds"} }  \(  {  {1}  over  {s} }  \) = {  {1}  over  {s rSup { size 8{2} } } } ~ ital "for"`σ&gt;0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7694222">and use it again to obtain</para>
+    <para id="id3579126">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>ds</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msup>
+                      <m:mi>s</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>3</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{t rSup { size 8{2} } u \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~ -  {  {d}  over  { ital "ds"} }  \(  {  {1}  over  {s rSup { size 8{2} } } }  \) = {  {1}  over  {s rSup { size 8{3} } } } ~ ital "for"`σ&gt;0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6114446">which implies that by induction</para>
+    <para id="id3658206">or</para>
+    <para id="id3753472">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>t</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                          <m:mi>u</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mi/>
+                          <m:mover>
+                            <m:mo stretchy="false">⇔</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>L</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mover>
+                          <m:mi/>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mi>!</m:mi>
+                            </m:mrow>
+                            <m:msup>
+                              <m:mi>s</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mi>n</m:mi>
+                                    <m:mo stretchy="false">+</m:mo>
+                                    <m:mn>1</m:mn>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mfrac>
+                          <m:mi/>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>for</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mi/>
+                          <m:mrow>
+                            <m:mi>σ</m:mi>
+                            <m:mo stretchy="false">&gt;</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow/>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{t rSup { size 8{n} } u \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~ {  {n!}  over  {s rSup { size 8{n+1} } } } ~ ital "for"`σ&gt;0}  {} # 
+ {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5232302">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>t</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>!</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msup>
+                      <m:mi>s</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mfrac>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {  {t rSup { size 8{n - 1} } }  over  { \( n - 1 \) !} } u \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~ {  {1}  over  {s rSup { size 8{n} } } } ~ ital "for"`σ&gt;0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5979069">Summary of singularity functions and their relatives</para>
+    <figure id="id6439034">
+      <media id="id2931073" alt=""><image src="../../media/graphics1-d29c.png" mime-type="image/png" height="351" width="542"/></media>
+    </figure>
+    <para id="id3497631">Wild and crazy singularity functions</para>
+    <para id="id4438528">Since taking the derivative of a time function corresponds to multiplying the Laplace transform by s we can contemplate the derivative of the unit impulse called the unit doublet.</para>
+    <para id="id4467966">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi fontstyle="italic">dδ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {  {dδ \( t \) }  over  { ital "dt"} } =δ \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~s} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7007912">This process can be continued by taking successive derivatives of the impulse to form the unit triplet which has Laplace transform 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>s</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{s rSup { size 8{2} } } {}</m:annotation></m:semantics></m:math>, unit quadruplet, etc. In general, the nth derivative of the unit impulse has a Laplace transform 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>s</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{s rSup { size 8{n} } } {}</m:annotation></m:semantics></m:math>. We shall consider the usefulness of these higher order singularity functions later!</para>
+    <para id="id7185354">General comments on the ROC</para>
+    <list id="id5320640" list-type="bulleted">
+      <item>Unit impulse ⇒ ROC is the whole s plane.</item>
+    </list>
+    <list id="id6903911" list-type="bulleted">
+      <item>Finite duration, absolutely integrable time function ⇒ ROC is the whole s plane.</item>
+    </list>
+    <list id="id4951025" list-type="bulleted">
+      <item>Time shifting a time function does not change its ROC.</item>
+    </list>
+    <list id="id6953275" list-type="bulleted">
+      <item>Right-sided time function ⇒ ROC is to the right of the rightmost pole.</item>
+    </list>
+    <list id="id4138359" list-type="bulleted">
+      <item>Left-sided time function ⇒ ROC is to left of the left-most pole.</item>
+    </list>
+    <para id="id3561185">General comments on the ROC, cont’d</para>
+    <list id="id4133324" list-type="bulleted">
+      <item>A sum of causal and anti-causal exponential time functions that has a Laplace transform ⇒ ROC is a strip in the s plane.</item>
+    </list>
+    <list id="id8225967" list-type="bulleted">
+      <item>There are no poles in the ROC.</item>
+    </list>
+    <list id="id4579598" list-type="bulleted">
+      <item>Some time functions do not have Laplace transforms, e.g., 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi>t</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - t} } } {}</m:annotation></m:semantics></m:math> for all t.</item>
+    </list>
+    <para id="id4425629">Analysis of networks with the Laplace transform — the impedance method Kirchhoff’s laws</para>
+    <para id="id3557231">Kirchhoff’s current and voltage laws are algebraic equations that</para>
+    <para id="id3302286">link the branch variables in a network,</para>
+    <para id="id5274204">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munder>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>node</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munder>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>i</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>k</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>loop</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>v</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>k</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{ ital "node"} }  {i rSub { size 8{k} }  \( t \) =0 matrix {
+ {} # {}
+} }  ital "and" matrix {
+ {} # {}
+}  Sum cSub { size 8{ ital "loop"} }  {v rSub { size 8{k} }  \( t \) } =0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3135913">If we take the Laplace transform of these equations then we obtain</para>
+    <para id="id3545063">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munder>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>node</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munder>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>I</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>k</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>loop</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>V</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>k</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{ ital "node"} }  {I rSub { size 8{k} }  \( s \) =0 matrix {
+ {} # {}
+} }  ital "and" matrix {
+ {} # {}
+}  Sum cSub { size 8{ ital "loop"} }  {V rSub { size 8{k} }  \( s \) } =0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6239818">Hence, the Laplace transforms of the branch variables satisfy KCL and KVL.</para>
+    <para id="id3532288">Constitutive relations</para>
+    <para id="id3211946">Resistance, capacitance, and inductance</para>
+    <figure id="id3224789">
+      <media id="id1169367587904" alt=""><image src="../../media/graphics2-f8a9.png" mime-type="image/png" height="320" width="301"/></media>
+    </figure>
+    <para id="id5606676">Impedance and admittance</para>
+    <para id="id4804745">The ratios of voltage to current and current to voltage are system functions with special names. The impedance is defined as</para>
+    <para id="id5272353">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>Z</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>V</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>I</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Z \( s \) = {  {V \( s \) }  over  {I \( s \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5567666">and the admittance is defined as</para>
+    <para id="id5567669">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>Y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>I</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>V</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Y \( s \) = {  {I \( s \) }  over  {V \( s \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7236147">The impedance and admittance of the resistance, capacitance, and inductance are</para>
+    <figure id="id3714001">
+      <media id="id2811393" alt=""><image src="../../media/graphics3-adce.png" mime-type="image/png" height="211" width="408"/></media>
+    </figure>
+    <para id="id3493186">Significance</para>
+    <list id="id6192013" list-type="bulleted">
+      <item>The equilibrium equations of a network involve KCL, KVL, and the constitutive relations.</item>
+    </list>
+    <list id="id5024456" list-type="bulleted">
+      <item>KCL and KVL are algebraic equations for both time functions and their Laplace transforms.</item>
+    </list>
+    <list id="id3463597" list-type="bulleted">
+      <item>In terms of time functions, the constitutive relations involve derivatives.</item>
+    </list>
+    <list id="id3507762" list-type="bulleted">
+      <item>In terms of Laplace transforms, the constitutive relations are algebraic.</item>
+    </list>
+    <para id="id6686540">Conclusions</para>
+    <list id="id3441161" list-type="bulleted">
+      <item>Analysis of a network in the time domain leads to differential equations.</item>
+      <item>Analysis of a network in the Laplace transform domain leads to algebraic equations.</item>
+    </list>
+    <para id="id4648306">Thus, R, L, and C networks can be analyzed using methods developed for resistive networks. These include: use of series and parallel combinations, voltage and current dividers, as well as Thévenin’s and Norton’s equivalents. Methods work just as well for any system (e.g., mechanical, acoustic, chemical, etc.) that is analogous to an electric circuit.</para>
+    <para id="id6519298">Example — impulse response of an RLC network</para>
+    <para id="id3192846">We wish to find the output voltage 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math> for the RLC network to an impulse of input voltage,</para>
+    <para id="id5188530">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) =δ \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3174849">
+      <media id="id2920708" alt=""><image src="../../media/graphics4-85f3.png" mime-type="image/png" height="122" width="275"/></media>
+    </figure>
+    <para id="id3207022">The numbers show the values of the capacitance, resistance, and inductance in farads, ohms, and henries, respectively.</para>
+    <para id="id3724090">The response of an LTI system to an impulse is important and is called the impulse response and is usually designated by h(t).</para>
+    <para id="id4973905">Solution to network by impedance method</para>
+    <para id="id4944542">The first step is to redraw the network in terms of Laplace transforms of variables and the impedances of the elements.</para>
+    <figure id="id3636762">
+      <media id="id2549495" alt=""><image src="../../media/graphics5-f1b1.png" mime-type="image/png" height="102" width="268"/></media>
+    </figure>
+    <para id="id5985590">The impedance is shown next to each network element.</para>
+    <para id="id5457866">Vi(s) is divided between the voltage on the capacitance and that on the parallel resistance and inductance combination. The impedance of the parallel resistance and inductance is</para>
+    <para id="id4449342">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>Z</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>RL</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mfrac>
+                          <m:mn>2</m:mn>
+                          <m:mi>s</m:mi>
+                        </m:mfrac>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>3</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mfrac>
+                    <m:mi>s</m:mi>
+                    <m:mrow>
+                      <m:mn>3s</m:mn>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Z rSub { size 8{ ital "RL"} } = {  {1}  over  { \(  {  {2}  over  {s} }  \) +3} } = {  {s}  over  {3s+2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3536528">and therefore the output voltage is</para>
+    <para id="id3189226">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>ο</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mfrac>
+                        <m:mi>s</m:mi>
+                        <m:mrow>
+                          <m:mn>3s</m:mn>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:mrow>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mi>s</m:mi>
+                        </m:mfrac>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mi>s</m:mi>
+                          <m:mrow>
+                            <m:mn>3s</m:mn>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>s</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>2</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>3s</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{ο} }  \( s \) = {  { {  {s}  over  {3s+2} } }  over  { {  {1}  over  {s} } + {  {s}  over  {3s+2} } } } V rSub { size 8{i} }  \( s \) = {  {s rSup { size 8{2} } }  over  {s rSup { size 8{2} } +3s+2} } V rSub { size 8{i} }  \( s \) = {  {s rSup { size 8{2} } }  over  { \( s+1 \)  \( s+2 \) } } V rSub { size 8{i} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3558449"/>
+    <para id="id3504173">Laplace transform of output voltage</para>
+    <para id="id7951784">The next step is to find the Laplace transform of the input voltage. Since</para>
+    <para id="id6410669">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) =δ \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4614431">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>all</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{i} }  \( s \) =1~ matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} ` ital "all" matrix {
+ {} # {}
+} `s} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3758888">Therefore, since</para>
+    <para id="id4465527">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>.</m:mtext>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \)  "." V rSub { size 8{i} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5271567">Where</para>
+    <para id="id4442632">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) = {  {s rSup { size 8{2} } }  over  { \( s+1 \)  \( s+2 \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7726534">This shows that the Laplace transform of the impulse response</para>
+    <para id="id7787064">of a system equals the system function,</para>
+    <para id="id3694265">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~H \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5613452">Since H(s) characterizes the system, so does h(t).</para>
+    <para id="id3685364">Region of convergence of system function</para>
+    <para id="id4802165">What is the ROC of this system function? Because the network is a passive RLC network, the system is causal, i.e., the impulse response cannot precede the occurrence of the impulse. Thus, the ROC is to the right of the rightmost pole, i.e., 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>σ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ} {}</m:annotation></m:semantics></m:math> &gt; −1. So we have the following pole-zero diagram and ROC for</para>
+    <para id="id7792417">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) = {  {s rSup { size 8{2} } }  over  { \( s+1 \)  \( s+2 \) } }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} `σ&gt;1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id5273466">
+      <media id="id6081854" alt=""><image src="../../media/graphics6-0d07.png" mime-type="image/png" height="175" width="254"/></media>
+    </figure>
+    <para id="id4974354">Partial fraction expansion of the Laplace transform of the</para>
+    <para id="id4943857">output voltage</para>
+    <para id="id3458875">The Laplace transform of the output voltage is</para>
+    <para id="id3543354">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) = {  {s rSup { size 8{2} } }  over  { \( s+1 \)  \( s+2 \) } }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} `σ&gt; - 1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4456325">Note that H(s) is an improper rational function. A rational function is a ratio of polynomials. A proper rational function has a denominator polynomial whose order exceeds that of the numerator. The first step in finding the voltage as a function of time is to expand H(s) into a polynomial and a proper rational function.</para>
+    <para id="id6554995">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>P</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msub>
+                      <m:mi>H</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>P</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{H \( s \) =P \( s \) +H rSub { size 8{P} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3189717">where P(s) is a polynomial and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>P</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{H rSub { size 8{P} }  \( s \) } {}</m:annotation></m:semantics></m:math> is a proper rational function.</para>
+    <para id="id4951960">Synthetic division</para>
+    <para id="id7491428">We can synthetically divide the denominator into the numerator of
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>V</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>H</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mrow><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mfrac><m:msup><m:mi>s</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">+</m:mo><m:mn>1</m:mn></m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">+</m:mo><m:mn>2</m:mn></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow><m:mo stretchy="false">=</m:mo><m:mfrac><m:msup><m:mi>s</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup><m:mrow><m:mrow><m:msup><m:mi>s</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">+</m:mo><m:mn>3s</m:mn></m:mrow><m:mo stretchy="false">+</m:mo><m:mn>2</m:mn></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) = {  {s rSup { size 8{2} } }  over  { \( s+1 \)  \( s+2 \) } } = {  {s rSup { size 8{2} } }  over  {s rSup { size 8{2} } +3s+2} } } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id4613830">as follows</para>
+    <para id="id5045056">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:msup>
+                        <m:mi>s</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>s</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>3s</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>s</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>3s</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mn>3s</m:mn>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>s</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>2</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>3s</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>3s</m:mn>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {  {s rSup { size 8{2} } }  over  { \( s rSup { size 8{2} } +3s+2 \) } } = {  { \( s rSup { size 8{2} } +3s+2 \)  -  \( 3s+2 \) }  over  {s rSup { size 8{2} } +3s+2} } =1 -  {  {3s+2}  over  { \( s+1 \)  \( s+2 \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4615928">Partial fraction expansion</para>
+    <para id="id4615933">We can expand the proper rational function in a partial fraction expansion of the form</para>
+    <para id="id3511235">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>p</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>3s</m:mn>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>s</m:mi>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>s</m:mi>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>A</m:mi>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mfrac>
+                        <m:mi>B</m:mi>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{H rSub { size 8{p} }  \( s \) = -  {  {3s+2}  over  { \( s+1 \)  \( s+2 \) } } = {  {A}  over  {s+1} } + {  {B}  over  {s+2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3540980">The coefficient A is found as follows</para>
+    <para id="id4469465">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mfenced open="[" close="]">
+                    <m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:msub>
+                        <m:mi>H</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>p</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:mfenced>
+                  <m:mtext>.</m:mtext>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mo stretchy="false">∣</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mi>s</m:mi>
+                            <m:mrow>
+                              <m:mi/>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mi/>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfenced open="[" close="]">
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mrow>
+                          <m:mfrac>
+                            <m:mi>A</m:mi>
+                            <m:mrow>
+                              <m:mi>s</m:mi>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mfrac>
+                          <m:mi>B</m:mi>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:mfenced>
+                  </m:mrow>
+                  <m:mtext>.</m:mtext>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mo stretchy="false">∣</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mi>s</m:mi>
+                            <m:mrow>
+                              <m:mi/>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mi/>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>A</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ left [ \( s+1 \) H rSub { size 8{p} }  \( s \)  right ] "."  \rline  rSub { size 8{`s``=`` - 1} } = left [ \( s+1 \)  {  {A}  over  {s+1} } + \( s+1 \)  {  {B}  over  {s+2} }  right ] "."  \rline  rSub { size 8{`s``=`` - 1} } =A} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7917206">Therefore,</para>
+    <para id="id3522539">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>A</m:mi>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>3</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{A= {  {3 - 2}  over  { - 1+2} } =1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3067670">By a similar argument</para>
+    <para id="id3067674">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>B</m:mi>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>6</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mrow>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{B= {  {6 - 2}  over  { - 2+1} } = - 4} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6042743">so that</para>
+    <para id="id7952910">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mfrac>
+                        <m:mn>4</m:mn>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) =1+ {  {1}  over  {s+1} }  -  {  {4}  over  {s+2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4453227">Inverse Laplace transform of output voltage</para>
+    <para id="id3548702">The partial fraction expansion shows that</para>
+    <para id="id3548706">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mfrac>
+                        <m:mn>4</m:mn>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =H \( s \) =1+ {  {1}  over  {s+1} }  -  {  {4}  over  {s+2} } ~ ital "for"~σ&gt; - 1} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3470106">Therefore,</para>
+    <para id="id4637943">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2t</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) =h \( t \) =δ \( t \) +e rSup { size 8{ - t} } u \( t \)  - 4e rSup { size 8{ - 2t} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3494012">
+      <media id="id1169365832767" alt=""><image src="../../media/graphics7-c946.png" mime-type="image/png" height="198" width="292"/></media>
+    </figure>
+    <para id="id3470738">Physical interpretation of result</para>
+    <figure id="id3503329">
+      <media id="id1169370790265" alt=""><image src="../../media/graphics8-5bcf.png" mime-type="image/png" height="181" width="388"/></media>
+    </figure>
+    <para id="id3973030">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2t</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) =h \( t \) =δ \( t \) +e rSup { size 8{ - t} } u \( t \)  - 4e rSup { size 8{ - 2t} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6441258">How can we explain the impulse response of this circuit in physical terms. There are three critical times: </para>
+    <para id="id3643612">(1) at t = 0, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math> has a unit impulse and a discontinuity of value −3; </para>
+    <para id="id3733438">(2) for t&gt;0, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math> consists of complexex ponentials at the frequencies −1 and −2; </para>
+    <para id="id6860715">(3) as 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">→</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{t rightarrow  infinity } {}</m:annotation></m:semantics></m:math>, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">→</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \)  rightarrow 0} {}</m:annotation></m:semantics></m:math></para>
+    <para id="id5974423">The voltages and currents in the network must satisfy KVL and KCL plus the constitutive relations of the elements.</para>
+    <list id="id6114213" list-type="bulleted">
+      <item>The reasoning at t = 0 is tricky. If the impulse in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) } {}</m:annotation></m:semantics></m:math> appeared in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>C</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{C} }  \( t \) } {}</m:annotation></m:semantics></m:math> that would cause a doublet in current that cannot be matched to satisfy KCL. Therefore, the impulse appears in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math> which causes an impulse in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>i</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>R</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>3δ</m:mn></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{i rSub { size 8{R} }  \( t \) =3δ \( t \) } {}</m:annotation></m:semantics></m:math> which flows through the capacitance to cause a step 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>C</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>3u</m:mn></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{C} }  \( t \) =3u \( t \) } {}</m:annotation></m:semantics></m:math> which appears as an initial step in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math>.</item>
+    </list>
+    <list id="id3139804" list-type="bulleted">
+      <item>After the impulse occurs, the capacitance has an initial voltage and the inductance has an initial current, i.e., the network is energized. All voltages and currents now relaxex ponentially at the natural frequencies of −1 and −2.</item>
+    </list>
+    <list id="id5393531" list-type="bulleted">
+      <item>Since the network is lossy, the natural frequencies are in the left-half of the s plane all voltages and current decay to zero.</item>
+    </list>
+    <para id="id4135696">Two-minute miniquiz problem</para>
+    <para id="id4137005">Problem 5-2</para>
+    <para id="id3702222">Consider the network shown below.</para>
+    <figure id="id5945579">
+      <media id="id1169374004791" alt=""><image src="../../media/graphics9-11b3.png" mime-type="image/png" height="135" width="234"/></media>
+    </figure>
+    <para id="id5127486">The input voltage 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) } {}</m:annotation></m:semantics></m:math>is</para>
+    <para id="id4557601">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) =e rSup { size 8{ - t} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3843120">Determine 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id8080202">Two-minute miniquiz solution</para>
+    <para id="id8191454">Problem 5-2</para>
+    <para id="id8191458">The system function is</para>
+    <para id="id5961033">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>V</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>0</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>V</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>i</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mi>s</m:mi>
+                        </m:mfrac>
+                        <m:mrow>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mn>2</m:mn>
+                          </m:mfrac>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mi>s</m:mi>
+                          </m:mfrac>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>2</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{H \( s \) = {  {V rSub { size 8{0} }  \( s \) }  over  {V rSub { size 8{i} }  \( s \) } } = {  { {  {1}  over  {s} } }  over  { {  {1}  over  {2} } + {  {1}  over  {s} } } } = {  {2}  over  {s+2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7032833">The Laplace transform of the input voltage is</para>
+    <para id="id8414458">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{i} }  \( s \) = {  {1}  over  {s+1} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8410708">Therefore,</para>
+    <para id="id7964715">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>V</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>V</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>i</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mn>2</m:mn>
+                        <m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mn>2</m:mn>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mfrac>
+                        <m:mn>2</m:mn>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{0} }  \( s \) =V rSub { size 8{i} }  \( s \) H \( s \) = {  {2}  over  { \( s+1 \)  \( s+2 \) } } = {  {2}  over  {s+1} }  -  {  {2}  over  {s+2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8099479">And</para>
+    <para id="id6952112">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2t</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \) =2e rSup { size 8{ - t} } u \( t \)  - 2e rSup { size 8{ - 2t} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id7835438">Conclusion — Laplace transform method for finding the</para>
+    <para id="id7835444">response of an LTI system</para>
+    <para id="id7435011">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <figure id="id7558595">
+        <media id="id1169366355240" alt=""><image src="graphics10.wmf" mime-type="image/wmf" height="94" width="275"/></media>
+      </figure>
+    </para>
+    <list id="id8429897" list-type="bulleted">
+      <item>Find Laplace transform of input 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mi/><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover><m:mi/><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~X \( s \) } {}</m:annotation></m:semantics></m:math></item>
+    </list>
+    <para id="id6500867">Conclusion cont’d</para>
+    <list id="id8123482" list-type="bulleted">
+      <item>Determine system function H(s) from</item>
+    </list>
+    <list id="id7540771" list-type="bulleted">
+      <item>impulse response of system 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mi/><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover><m:mi/><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{h \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~H \( s \) } {}</m:annotation></m:semantics></m:math></item>
+      <item>structural model of system using impedance method PLUS knowledge about causality, stability. etc.;</item>
+      <item>differential equation PLUS knowledge about causality, stability, etc.</item>
+    </list>
+    <list id="id5275494" list-type="bulleted">
+      <item>Determine Laplace transform of output Y (s) = H(s)X(s).</item>
+    </list>
+    <list id="id3451727" list-type="bulleted">
+      <item>Determine output time function 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mi/><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover><m:mi/><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y \( t \) ~ { dlrarrow }  cSup { size 8{L} } ~Y \( s \) } {}</m:annotation></m:semantics></m:math></item>
+    </list>
+    <para id="id8232516">Conclusion cont’d</para>
+    <para id="id7713650">This method can be summarized as follows</para>
+    <figure id="id7558107">
+      <media id="id1169364864446" alt=""><image src="../../media/graphics11-ea92.png" mime-type="image/png" height="315" width="493"/></media>
+    </figure>
+    <para id="id7895149">Historical perspective</para>
+    <para id="id7558168">Oliver Heaviside (1850-1925)</para>
+    <figure id="id7905072">
+      <media id="id1169376393868" alt=""><image src="../../media/graphics12-e6e4.png" mime-type="image/png" height="269" width="200"/></media>
+    </figure>
+    <para id="id7845137">James Clerk Maxwell (1831-1879) died of cancer at age 48 before his ideas on electromagnetic theory could be completely worked out and disseminated. That job was left to three younger men known as the Maxwellians — Oliver Lodge, George Francis FitzGerald, and Oliver Heaviside (shown on the left).</para>
+    <para id="id8325082">Oliver Heaviside, cont’d</para>
+    <list id="id7806278" list-type="bulleted">
+      <item>Born in London on May 18, 1850.</item>
+      <item>Nephew of Charles Wheatstone a pioneer in telegraphy who sparked Oliver’s interest in electrical science.</item>
+      <item>He had a serious hearing defect and difficulties in school which he quit at age 16. He was largely self-taught.</item>
+      <item>Worked as a telegrapher from age 18 to 24 at which time he retired.</item>
+    </list>
+    <para id="id7461287">Oliver Heaviside, cont’d</para>
+    <list id="id7461291" list-type="bulleted">
+      <item>He was supported by his parents first and then his brother. His needs were modest and his family regarded him as a genius.</item>
+      <item>He had no academic appointment, attended scientific meetings very rarely, and published largely in an electrical trade journal The Electrician.</item>
+      <item>He was a recluse, worked in a small room that he kept extremely hot and filled with pipe smoke. He was combative with a caustic wit — “a first-rate oddity”. He was devoid of social skills and avoided social contacts.</item>
+    </list>
+    <para id="id6227938">Oliver Heaviside, cont’d</para>
+    <list id="id6227943" list-type="bulleted">
+      <item>He made many important contributions to science, mathematics, and especially to electrical engineering, including:</item>
+    </list>
+    <list id="id8080503" list-type="bulleted">
+      <item>He introduced the concepts of inductance, capacitance, and impedance (labelled it Z).</item>
+      <item>He was first to write Maxwell’s equations in the modern (vector) form.</item>
+      <item>He solved problems of signal propagation in the atmosphere and in cables.</item>
+      <item>He used operational calculus to solve differential equations and electric networks. He defined his resistance operator p = d/dt to calculate impedances directly from circuits.</item>
+    </list>
+    <para id="id7607655">Oliver Heaviside, cont’d</para>
+    <list id="id7607660" list-type="bulleted">
+      <item>He was a contemporary of James Clerk Maxwell, Charles Darwin, Michael Faraday, George Stokes, William Thomson (Lord Kelvin). He corresponded with many of these and other scientists and was highly respected by the leading scientists of his day.</item>
+    </list>
+    <list id="id4952764" list-type="bulleted">
+      <item>He died February 3, 1925.</item>
+    </list><para id="element-619"><link resource="ps4sol.pdf"> Exercises.</link>
+</para><para id="element-563"><link resource="ps4.pdf">Solution of exercises.</link>
+</para>
+  </content>
+</document>

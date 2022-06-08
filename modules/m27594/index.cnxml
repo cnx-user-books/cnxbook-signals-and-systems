@@ -1,0 +1,1681 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 17:Modulation, Broadcast Radio</title>
+  <metadata>
+  <md:content-id>m27594</md:content-id><md:title>Lecture 17:Modulation, Broadcast Radio</md:title>
+  <md:abstract>Modulation is widely used to encode a signal so as to more effectively utilize it.
+Modulation is fundamental to electronic communication systems—radio, TV, satellite communications, cell phones, etc.</md:abstract>
+  <md:uuid>54c83c45-3c0d-4323-9894-b55910745592</md:uuid>
+</metadata>
+
+<content>
+    <para id="id4065741">Lecture #17: </para>
+    <para id="id3197400">MODULATION, BROADCAST RADIO</para>
+    <para id="id3197404">Motivation:</para>
+    <list id="id3197408" list-type="bulleted">
+      <item>Modulation is widely used to encode a signal so as to more effectively utilize it.</item>
+    </list>
+    <list id="id3201608" list-type="bulleted">
+      <item>Modulation is fundamental to electronic communication systems—radio, TV, satellite communications, cell phones, etc.</item>
+    </list>
+    <para id="id3166568">Outline:</para>
+    <list id="id3166572" list-type="bulleted">
+      <item>General description of modulation</item>
+    </list>
+    <list id="id4095068" list-type="bulleted">
+      <item>Amplitude modulation</item>
+    </list>
+    <list id="id4095076" list-type="bulleted">
+      <item>Broadcast AM radio</item>
+    </list>
+    <list id="id4755797" list-type="bulleted">
+      <item>Conclusions</item>
+    </list>
+    <para id="id4560844">I. GENERAL DESCRIPTION OF MODULATION</para>
+    <para id="id4560848">1/ Overview</para>
+    <para id="id4560855">The word modulation in an electronic context means to recode a signal for the purpose of more effectively manipulating that signal. For example, suppose we have some signal xm(t) that we wish to process in some way.</para>
+    <para id="id3090059">
+      <media id="id1172212813008" alt=""><image src="../../media/graphics1-489e.png" mime-type="image/png" height="85" width="225"/></media>
+    </para>
+    <para id="id3990305">For example, we wish to</para>
+    <list id="id4021991" list-type="bulleted">
+      <item>transmit it through a channel,</item>
+    </list>
+    <list id="id4022000" list-type="bulleted">
+      <item>filter it,</item>
+    </list>
+    <list id="id4732504" list-type="bulleted">
+      <item>amplify it,</item>
+    </list>
+    <list id="id3201550" list-type="bulleted">
+      <item>display it,</item>
+    </list>
+    <list id="id4061099" list-type="bulleted">
+      <item>record it.</item>
+    </list>
+    <para id="id4061107">However, it is not efficient, convenient, economical, or possible to do so directly. Then we encode the signal and process the encoded signal to improve some aspect of the processing.</para>
+    <para id="id4061111">2/ Wave-parameter modulation</para>
+    <para id="id6176464">Modulation can involve varying some feature of a CT signal to encode the signal. Varying the amplitude of a sinusoid (amplitude modulation or AM) or its frequency (frequency modulation or FM) in proportion to a signal is called wave-parameter modulation.</para>
+    <figure id="id4764114">
+      <media id="id1172208779691" alt=""><image src="../../media/graphics2-04ec.png" mime-type="image/png" height="134" width="357"/></media>
+    </figure>
+    <para id="id3220895">3/ Pulse-parameter modulation</para>
+    <para id="id6166320">Modulation can also encode the CT signal with the parameters of pulses called pulse-parameter modulation. A number of different pulse-parameter modulation schemes are shown below.</para>
+    <figure id="id5431825">
+      <media id="id1172213747795" alt=""><image src="../../media/graphics3-6a90.png" mime-type="image/png" height="203" width="230"/></media>
+    </figure>
+    <para id="id4065104">In PWM, the width of pulses encodes the amplitude of the CT signal. In PAM the amplitude of pulses encodes the CT signal. In PCM the amplitude of the quantized CT signal is encoded as a binary number that is represented by a pulse code.</para>
+    <para id="id3961208">4/ Example of the use of modulation — pigeon telemetry</para>
+    <para id="id3961215">An ornithologist wishes to record the sounds made by a Lahore pigeon (shown below) while in flight.</para>
+    <figure id="id3159971">
+      <media id="id1172205353956" alt=""><image src="../../media/graphics4-0ec7.png" mime-type="image/png" height="136" width="135"/></media>
+    </figure>
+    <para id="id4066225">Typical pigeon sounds have a spectrum in the frequency range 0.1-3 kHz. Since the pigeon is in flight, we need to make a small (light weight) system consisting of a microphone and a telemetering system that will transmit the sound information.</para>
+    <para id="id4367435">One might simply transduce the audio signal from the microphone and transmit the electrical signal to the ground. A question arises — what size antenna is needed to transmit the signal in an energetically efficiently manner?</para>
+    <para id="id4367442">For energetic efficiency, the dimensions of the antenna cannot be orders of magnitude smaller than the wavelength of the transmitted signal. The wavelength λ of the transmitted signal is</para>
+    <para id="id5061986">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi>λ</m:mi>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mfrac>
+                          <m:mi>c</m:mi>
+                          <m:mi>f</m:mi>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mo stretchy="false">≈</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mn>3</m:mn>
+                            <m:mo stretchy="false">×</m:mo>
+                            <m:msup>
+                              <m:mtext>10</m:mtext>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>8</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">/</m:mo>
+                            <m:mi>s</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mn>3</m:mn>
+                            <m:mo stretchy="false">×</m:mo>
+                            <m:msup>
+                              <m:mtext>10</m:mtext>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>3</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>Hz</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">≈</m:mo>
+                    <m:mtext>100</m:mtext>
+                  </m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>km</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{λ= {  {c}  over  {f} }  approx  {  {3 times "10" rSup { size 8{8} } m/s}  over  {3 times "10" rSup { size 8{3} }  ital "Hz"} }  approx "100" ital "km"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4215967">If we make the antenna λ/10, then the antenna dimensions are at least 10 km. Thus, the antenna dimensions exceed that of the pigeon by a factor of more than 104!</para>
+    <figure id="id3384606">
+      <media id="id1172213567090" alt=""><image src="../../media/graphics5-f734.png" mime-type="image/png" height="97" width="241"/></media>
+    </figure>
+    <para id="id3206644">On the left is a scale drawing of the pigeon (in red) and the antenna (in dark blue).</para>
+    <para id="id3206652">The pigeon will not get off the ground!</para>
+    <para id="id6165111">One solution is to move the spectrum of the transduced pigeon sounds to a high frequency, to transmit this modulated signal to the ground, and then to demodulate to audio frequencies.</para>
+    <figure id="id4559404">
+      <media id="id1172214085015" alt=""><image src="../../media/graphics6-5dc9.png" mime-type="image/png" height="194" width="531"/></media>
+    </figure>
+    <para id="id4054462"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>If the signal is transmitted at a carrier frequency
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">=</m:mo><m:mtext>600</m:mtext></m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Mhz</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } ="600" ital "Mhz"} {}</m:annotation></m:semantics></m:math>, then the 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>λ</m:mi><m:mo stretchy="false">≈</m:mo><m:mfrac><m:mrow><m:mrow><m:mn>3</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>8</m:mn></m:mrow></m:mstyle></m:msup></m:mrow><m:mtext> m/s</m:mtext></m:mrow><m:mrow><m:mrow><m:mn>6</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>8</m:mn></m:mrow></m:mstyle></m:msup></m:mrow><m:mi/><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Hz</m:mtext></m:mrow></m:mstyle></m:mrow></m:mfrac></m:mrow><m:mo stretchy="false">≈</m:mo><m:mn>0</m:mn></m:mrow><m:mtext>.</m:mtext><m:mn>5</m:mn><m:mi/><m:mi>m</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{λ approx  {  {3 times "10" rSup { size 8{8} } " m/s"}  over  {6 times "10" rSup { size 8{8} } ` ital "Hz"} }  approx 0 "." 5`m} {}</m:annotation></m:semantics></m:math> so that an antenna whose length is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mi>λ</m:mi><m:mo stretchy="false">/</m:mo><m:mtext>10</m:mtext></m:mrow><m:mo stretchy="false">≈</m:mo><m:mn>5</m:mn></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{λ/"10" approx 5} {}</m:annotation></m:semantics></m:math> cm which is much more manageable for the pigeon.</para>
+    <para id="id4094608">5/ Narrow-band signals</para>
+    <para id="id5131988">The modulated transduced pigeon sound has a spectrum that is centered about the carrier frequency 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> and has a bandwidth of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mn>2f</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{2f rSub { size 8{m} } } {}</m:annotation></m:semantics></m:math> where 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{m} } } {}</m:annotation></m:semantics></m:math> is the maximum frequency of the pigeon sound.</para>
+    <figure id="id4061682">
+      <media id="id1172214498097" alt=""><image src="../../media/graphics7-da93.png" mime-type="image/png" height="149" width="431"/></media>
+    </figure>
+    <para id="id4061194">For the pigeon sound we have 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{m} } } {}</m:annotation></m:semantics></m:math> = 3 kHz and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> = 600 MHz. Thus, the bandwidth is only 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mtext>10</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>5</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"10" rSup { size 8{ - 5} } } {}</m:annotation></m:semantics></m:math>of the carrier frequency — an example of a narrowband signal.</para>
+    <para id="id4065628">An arbitrary narrowband signal can be expressed as</para>
+    <para id="id4065633">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>cos</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>sin</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =x rSub { size 8{c} }  \( t \) "cos" \( 2πf rSub { size 8{c} } t \) +x rSub { size 8{s} }  \( t \) "sin" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3905399">where 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{c} }  \( t \) } {}</m:annotation></m:semantics></m:math>and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>s</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{s} }  \( t \) } {}</m:annotation></m:semantics></m:math> are lowpass time functions. We can expand x(t) as follows</para>
+    <para id="id3165146">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>c</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mi>j</m:mi>
+                            </m:mfrac>
+                          </m:mrow>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>s</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mi fontstyle="italic">j2πf</m:mi>
+                                      <m:mstyle fontsize="6pt">
+                                        <m:mrow>
+                                          <m:mi>c</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mi>t</m:mi>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mi>c</m:mi>
+                          </m:msub>
+                          <m:mstyle fontsize="12pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:mi>t</m:mi>
+                                <m:mrow>
+                                  <m:mo stretchy="false">)</m:mo>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mfrac>
+                                    <m:mn>1</m:mn>
+                                    <m:mi>j</m:mi>
+                                  </m:mfrac>
+                                </m:mrow>
+                                <m:msub>
+                                  <m:mi>x</m:mi>
+                                  <m:mi>s</m:mi>
+                                </m:msub>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="12pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:msub>
+                                        <m:mi fontstyle="italic">j2πf</m:mi>
+                                        <m:mstyle fontsize="6pt">
+                                          <m:mrow>
+                                            <m:mi>c</m:mi>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:msub>
+                                    </m:mrow>
+                                    <m:mi>t</m:mi>
+                                  </m:mrow>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="12pt">
+                            <m:mrow>
+                              <m:mi>,</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi>R</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">{</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msub>
+                                <m:mi>x</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>c</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mo stretchy="false">+</m:mo>
+                                <m:mfrac>
+                                  <m:mn>1</m:mn>
+                                  <m:mi>j</m:mi>
+                                </m:mfrac>
+                              </m:mrow>
+                              <m:msub>
+                                <m:mi>x</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>s</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:msub>
+                                        <m:mi fontstyle="italic">j2πf</m:mi>
+                                        <m:mstyle fontsize="6pt">
+                                          <m:mrow>
+                                            <m:mi>c</m:mi>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:msub>
+                                      <m:mi>t</m:mi>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                            </m:mrow>
+                            <m:mo stretchy="false">}</m:mo>
+                          </m:mrow>
+                          <m:mi>,</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi>a</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mtext>cos</m:mtext>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:msub>
+                            <m:mn>2πf</m:mn>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>c</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mrow>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mi>ϕ</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mi>,</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{x \( t \) = {  {1}  over  {2} }  \( x rSub { size 8{c} }  \( t \) + {  {1}  over  {j} } x rSub { size 8{s} }  \( t \)  \) e rSup { size 8{j2πf rSub { size 6{c} } t} } + {  {1}  over  {2} }  \( x rSub {c}  size 12{ \( t \)  -  {  {1}  over  {j} } x rSub {s} } size 12{ \( t \)  \) e rSup { - j2πf rSub { size 6{c} } t} } size 12{,}}  {} # 
+ size 12{x \( t \) =R lbrace  \( x rSub { size 8{c} }  \( t \) + {  {1}  over  {j} } x rSub { size 8{s} }  \( t \)  \) e rSup { size 8{j2πf rSub { size 6{c} } t} }  rbrace ,}  {} # 
+ size 12{x \( t \) =a \( t \) "cos" \( 2πf rSub { size 8{c} } t+ϕ \( t \)  \) ,}  {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3825141">Where</para>
+    <para id="id5061533">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>a</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msqrt>
+                      <m:mrow>
+                        <m:msubsup>
+                          <m:mi>x</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>c</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msubsup>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:msubsup>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>s</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>2</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msubsup>
+                        </m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:msqrt>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>ϕ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:msup>
+                        <m:mtext>tan</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mtext>.</m:mtext>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{a \( t \) = sqrt {x rSub { size 8{c} }  rSup { size 8{2} }  \( t \) +x rSub { size 8{s} }  rSup { size 8{2} }  \( t \) } ~ matrix {
+ {} # {}
+}  ital "and"~ matrix {
+ {} # {}
+} ϕ \( t \) = - "tan" rSup { size 8{ - 1} }  {  {x rSub { size 8{s} }  \( t \) }  over  {x rSub { size 8{c} }  \( t \) } }  "." } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5131954">An arbitrary narrowband signal can be written as</para>
+    <para id="id6166146">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>a</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>Cos</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>ϕ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =a \( t \) ` ital "Cos"` \( 2πf rSub { size 8{c} } t+ϕ \( t \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4022197">Thus, a general narrowband signal contains both amplitude and phase/frequency modulation. In amplitude modulation (AM) 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>ϕ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ϕ \( t \) } {}</m:annotation></m:semantics></m:math> is constant; in phase/frequency modulation (PM or FM) a(t) is constant.</para>
+    <para id="id4217076">II. AMPLITUDE MODULATION</para>
+    <para id="id4217080">1/ AM, suppressed carrier</para>
+    <figure id="id6180277">
+      <media id="id1172209629316" alt=""><image src="../../media/graphics8-ac11.png" mime-type="image/png" height="101" width="146"/></media>
+    </figure>
+    <para id="id4702511">Perhaps the simplest amplitude modulation scheme is the suppressed carrier scheme in which</para>
+    <para id="id5131765">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">×</m:mo>
+                    <m:mtext>cos</m:mtext>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =x rSub { size 8{m} }  \( t \)  times "cos" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4456498">Therefore, the Fourier transform is</para>
+    <para id="id4456503">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>f</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>f</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">∗</m:mo>
+                            <m:mi>F</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">{</m:mo>
+                            <m:mrow>
+                              <m:mtext>cos</m:mtext>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msub>
+                                <m:mn>2πf</m:mn>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>c</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                            <m:mo stretchy="false">}</m:mo>
+                          </m:mrow>
+                          <m:mi>,</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">∗</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mi>δ</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>,</m:mi>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>.</m:mtext>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{x \( f \) =x rSub { size 8{m} }  \( f \) *F lbrace "cos" \( 2πf rSub { size 8{c} } t \)  rbrace ,}  {} # 
+x \( f \) =x rSub { size 8{m} }  \( f \) * {  {1}  over  {2} }  \( δ \( f - f rSub { size 8{c} }  \) +δ \( f+f rSub { size 8{c} }  \)  \) , {} # 
+x \( f \) = {  {1}  over  {2} }  \( x rSub { size 8{m} }  \( f - f rSub { size 8{c} }  \) +x rSub { size 8{m} }  \( f+f rSub { size 8{c} }  \)  \)  "."  {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5432057">The Fourier transform of the modulated signal x(t) can be obtained graphically.</para>
+    <figure id="id4067088">
+      <media id="id1172208673266" alt=""><image src="../../media/graphics9-b370.png" mime-type="image/png" height="103" width="514"/></media>
+    </figure>
+    <para id="id6171931">The Fourier transform 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>f</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{m} }  \( f \) } {}</m:annotation></m:semantics></m:math> is repeated at 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">±</m:mo><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ +- f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id3661897">2/ Demodulation (detection) of AM, suppressed carrier</para>
+    <figure id="id3209310">
+      <media id="id1172208997586" alt=""><image src="../../media/graphics10-8cff.png" mime-type="image/png" height="104" width="264"/></media>
+    </figure>
+    <para id="id4023206">The original signal 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{m} }  \( t \) } {}</m:annotation></m:semantics></m:math> can be recovered by modulating the modulated signal and passing the result through a lowpass filter, a process called demodulation or detection.</para>
+    <figure id="id6181035">
+      <media id="id1172204244831" alt=""><image src="../../media/graphics11-7472.png" mime-type="image/png" height="183" width="527"/></media>
+    </figure>
+    <para id="id4563127">3/ AM, suppressed carrier radio</para>
+    <para id="id5431923">A radio communication system that consists of a transmitter and receiver and which uses suppressed carrier AM is shown below. </para>
+    <para id="id4078857">
+      <media id="id1172212551032" alt=""><image src="../../media/graphics12-e72f.png" mime-type="image/png" height="117" width="397"/></media>
+    </para>
+    <para id="id3893000">Therefore,</para>
+    <para id="id3893004">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mtext>cos</m:mtext>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:msub>
+                            <m:mn>2πf</m:mn>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>c</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mi/>
+                          <m:mi>,</m:mi>
+                          <m:mi/>
+                          <m:mi>y</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi>x</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mtext>cos</m:mtext>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:msub>
+                            <m:mn>2πf</m:mn>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>c</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mi>,</m:mi>
+                          <m:mi/>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>and</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msup>
+                      <m:mtext>cos</m:mtext>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mn>2πf</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mtext>cos</m:mtext>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mn>4πf</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>.</m:mtext>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{x \( t \) =x rSub { size 8{m} }  \( t \) "cos" \( 2πf rSub { size 8{c} } t \) ~,~y \( t \) =x \( t \) "cos" \( 2πf rSub { size 8{c} } t \) ,~ ital "and"}  {} # 
+y \( t \) =x rSub { size 8{m} }  \( t \) "cos" rSup { size 8{2} }  \( 2πf rSub { size 8{c} } t \) = {  {x rSub { size 8{m} }  \( t \) }  over  {2} }  \( 1+"cos" \( 4πf rSub { size 8{c} } t \)  \)  "."  {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4067526">Hence, </para>
+    <para id="id6181212">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>Y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>4</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msub>
+                      <m:mn>2f</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>4</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msub>
+                      <m:mn>2f</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>.</m:mtext>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Y \( f \) = {  {1}  over  {2} } X rSub { size 8{m} }  \( f \) + {  {1}  over  {4} } X rSub { size 8{m} }  \( f - 2f rSub { size 8{c} }  \) + {  {1}  over  {4} } X rSub { size 8{m} }  \( f+2f rSub { size 8{c} }  \)  "." } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5373781">The spectrum of y(t) involves the spectrum of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msup><m:mtext>cos</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">(</m:mo><m:msub><m:mn>2πf</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"cos" rSup { size 8{2} }  \( 2πf rSub { size 8{c} } t \) } {}</m:annotation></m:semantics></m:math> which can be found by the trigonometric identity or as shown below.</para>
+    <para id="id4563250">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mtext>cos</m:mtext>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">×</m:mo>
+                    <m:mtext>cos</m:mtext>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">×</m:mo>
+                    <m:mtext>cos</m:mtext>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x rSub { size 8{m} }  \( t \) "cos" rSup { size 8{2} }  \( 2πf rSub { size 8{c} } t \) =x rSub { size 8{m} }  \( t \)  times "cos" \( 2πf rSub { size 8{c} } t \)  times "cos" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4059933">can be written as</para>
+    <para id="id4059937">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>Y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>X</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>F</m:mi>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mrow>
+                        <m:mtext>cos</m:mtext>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mn>2πf</m:mn>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>c</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>F</m:mi>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo stretchy="false">{</m:mo>
+                    <m:mrow>
+                      <m:mtext>cos</m:mtext>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:msub>
+                        <m:mn>2πf</m:mn>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>c</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">}</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Y \( f \) =X rSub { size 8{m} }  \( f \) *F lbrace "cos" \( 2πf rSub { size 8{c} } t \)  rbrace *F lbrace "cos" \( 2πf rSub { size 8{c} } t \)  rbrace } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4020893">The Fourier transform of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>F</m:mi><m:mrow><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mtext>cos</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mn>2πf</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow><m:mo stretchy="false">∗</m:mo><m:mi>F</m:mi></m:mrow><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mtext>cos</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mn>2πf</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{F lbrace "cos" \( 2πf rSub { size 8{c} } t \)  rbrace *F lbrace "cos" \( 2πf rSub { size 8{c} } t \)  rbrace } {}</m:annotation></m:semantics></m:math> is shown below.</para>
+    <figure id="id4021633">
+      <media id="id1172204077645" alt=""><image src="../../media/graphics13-72a1.png" mime-type="image/png" height="111" width="543"/></media>
+    </figure>
+    <para id="id3214699">Thus, using Fourier transform properties it is easy to derive trigonometric identities.</para>
+    <para id="id4454799">Two-minute miniquiz problem</para>
+    <para id="id4454803">Problem 23-1 — AM, suppressed carrier radio</para>
+    <para id="id4203781">A slight alternative to the AM suppressed carrier radio system is shown below.</para>
+    <figure id="id4203790">
+      <media id="id1172210854532" alt=""><image src="../../media/graphics14-b8f8.png" mime-type="image/png" height="113" width="508"/></media>
+    </figure>
+    <para id="id4053335">Using an appropriate low pass filter, H(f), to detect 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>f</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{m} }  \( f \) } {}</m:annotation></m:semantics></m:math>, determine the spectrum 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>Y</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>f</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{Y rSub { size 8{m} }  \( f \) } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id4062961">Solution</para>
+    <para id="id4062966">We need to convolve the spectrum of the modulated function X(f) with the Fourier transform of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Sin</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">(</m:mo><m:msub><m:mn>2πf</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ ital "Sin" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation></m:semantics></m:math>.</para>
+    <figure id="id4557525">
+      <media id="id1172204304450" alt=""><image src="../../media/graphics15-7bf5.png" mime-type="image/png" height="169" width="510"/></media>
+    </figure>
+    <para id="id5131693">Thus, the output is zero.</para>
+    <para id="id4063672">The following reviews the results for suppressed carrier radio.</para>
+    <figure id="id4063680">
+      <media id="id1172205577204" alt=""><image src="../../media/graphics16-7c4b.png" mime-type="image/png" height="189" width="488"/></media>
+    </figure>
+    <para id="id4562652">Suppressed carrier AM requires that the transmitter and receiver be perfectly synchronized. A small difference in frequency of transmitter and receiver oscillators results in a drift in the phase difference between the oscillators which causes variations in the amplitude of the detected signal, called signal strength fading.</para>
+    <para id="id4557386">4/ Synchronous detection</para>
+    <para id="id4557393">Synchronous detection is effectively used when the oscillators in the modulator and detector are the same. For example in the chopper-stabilized DC amplifier shown below. </para>
+    <figure id="id4063502">
+      <media id="id1172209246072" alt=""><image src="../../media/graphics17-fa82.png" mime-type="image/png" height="101" width="409"/></media>
+    </figure>
+    <para id="id4465676">In DC amplifiers, the signal component at DC interacts with the biasing of the transistors in the amplifier complicating the design. In a chopper stabilized amplifier, the DC signal is modulated, amplified by an AC amplifier, and then detected. Thus, amplification at DC is achieved with an AC amplifier.</para>
+    <para id="id4465686">III. BROADCAST AM RADIO</para>
+    <para id="id3987217">1/ Brief history</para>
+    <figure id="id5131920">
+      <media id="id1172210097109" alt=""><image src="../../media/graphics18-7964.png" mime-type="image/png" height="205" width="148"/></media>
+    </figure>
+    <para id="id6180671">1864 James Clerk Maxwell published his equations of electromagnetism. </para>
+    <figure id="id4022042">
+      <media id="id1172213370044" alt=""><image src="../../media/graphics19-7140.png" mime-type="image/png" height="283" width="218"/></media>
+    </figure>
+    <para id="id6173923">1887 Heinrich Hertz proved that waves travel through the “ether” by creating a spark in a gap between two wires and picking up a voltage in a loop of wire — the first transmitter and receiver of electromagnetic waves.</para>
+    <para id="id6173934">Brief history, cont’d</para>
+    <para id="id6173935">
+      <figure id="id3198600">
+        <media id="id1172204315834" alt=""><image src="../../media/graphics20-04f7.png" mime-type="image/png" height="230" width="178"/></media>
+      </figure>
+    </para>
+    <para id="id3999896">1896 Guglielmo Marconi took out patents on a system of wireless telegraphy.</para>
+    <para id="id3988558">1906 Lee de Forrest invented the triode vacuum tube for sensitive detection of telegraphy signals. Despite the fact that De Forrest did not understand how the “audion” worked this invention began the modern electronic era.</para>
+    <para id="id4065410">1906 Reginald Aubrey Fessenden transmitted voice and music over radio waves using a 100,000 Hz alternator designed by Charles Steinmetz at General Electric Company. This was the beginning of broadcasting of audio over the airways.</para>
+    <figure id="id5162610">
+      <media id="id1172213581642" alt=""><image src="../../media/graphics21-4635.png" mime-type="image/png" height="219" width="173"/></media>
+    </figure>
+    <para id="id4079490">1912 Edwin Howard Armstrong analyzed the operation of the audion tube and made the first vacuum tube amplifier as part of a sensitive receiver of wireless telegraphy. He used regeneration now called feedback. Noting that the vacuum tube circuit could be made to oscillate, he used this to make the first electronic transmitter. Armstrong’s work ushered in the modern era of radio transmission and reception.</para>
+    <figure id="id4061133">
+      <media id="id1172204288257" alt=""><image src="../../media/graphics22-3468.png" mime-type="image/png" height="227" width="324"/></media>
+    </figure>
+    <para id="id5095398">1916 David Sarnoff, working for the Marconi Company, envisaged “music boxes” (radios) as consumer products and the system of radio broadcast as we have it today.</para>
+    <para id="id3962287">1918 Armstrong enlisted in the army during World War I and worked for the Signal Corps in Paris. He developed the superheterodyne receiver which became, and is to this day, the basis of AM radio receivers.</para>
+    <para id="id4563341">1919 The Radio Corporation of America was formed out of General Electric Company and the American Marconi Company with David Sarnoffas commercial manager. Between 1918 and 1923 radio broadcasting became pervasive as inexpensive radios became widely available. Sarnoffb ecame president and perhaps the most powerful person in the burgeoning communications industry.</para>
+    <para id="id6176010">2/ The conception of broadcast radio</para>
+    <para id="id4130779">The important conception was to develop a radio broadcast system that consisted of relatively small number of transmitters each transmitting at different (carrier) frequencies and a large numbers of inexpensive receivers that could be tuned to different transmission frequencies. In order to be sufficiently inexpensive so that everyone could own one, the receivers had to be simple to manufacture. Thus, the system consisted of a small number of expensive transmitters and a large number of inexpensive receivers.</para>
+    <para id="id4062916">3/ AM radio transmitter</para>
+    <para id="id4130786">A typical AM radio transmitter has a block diagram shown below.</para>
+    <para id="id4054202"><media id="id1172213315578" alt=""><image src="../../media/graphics23-415a.png" mime-type="image/png" height="196" width="290"/></media> The modulator produces a signal that has the form</para>
+    <para id="id4022624">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>A</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>cos</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mn>2πf</m:mn>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =A \( 1+x rSub { size 8{m} }  \( t \)  \) "cos" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4063402">Thus, the transmitted signal has the same spectrum as the suppressed carrier AM signal except that the carrier frequency is broadcast. Thus, synchronization of transmitter and receiver is achieved.</para>
+    <para id="id6128991">4/ Spectrum of transmitted signal</para>
+    <para id="id6128998">The typical spectrum of an AM station is shown below with the nomenclature defined for its different components.</para>
+    <para id="id4022479">
+      <media id="id1172213077070" alt=""><image src="../../media/graphics24-b844.png" mime-type="image/png" height="150" width="225"/></media>
+    </para>
+    <para id="id4761990">The Federal Communication Commission (FCC) allots 10 kHz of bandwidth for each station. Stations in any one locale differ in their carrier frequencies, which are the numbers indicated on the radio dial.</para>
+    <para id="id4761997">5/ AM broadcast band</para>
+    <para id="id4054951">The FCC allocates frequency bands in the radio spectrum (3kHz- 300GHz) for communications purposes. The frequency band from 535 to 1605 kHz is reserved for AM broadcast radio. This is a bandwidth of 1070 kHz. Since each station is allotted a bandwidth of 10 kHz, 107 non-overlapping stations can operate in each locale.</para>
+    <para id="id4054728">
+      <media id="id1172208803228" alt=""><image src="../../media/graphics25-1af6.png" mime-type="image/png" height="136" width="267"/></media>
+    </para>
+    <para id="id3107368">6/ Signal at input to an AM receiver</para>
+    <para id="id4722056">An AM receiver input spectrum consists of AM signals of different carrier frequencies and different signal strengths resulting from differences in strengths of transmitters and differences in their distances from the receiver.</para>
+    <figure id="id4060488">
+      <media id="id1172204225847" alt=""><image src="../../media/graphics26-b3ca.png" mime-type="image/png" height="205" width="539"/></media>
+    </figure>
+    <para id="id4020606">The receiver allows the listener to tune into a station and minimizes the interference of other stations.</para>
+    <para id="id4020612">7/ Superheterodyne AM receiver</para>
+    <figure id="id6181083">
+      <media id="id1172212622929" alt=""><image src="../../media/graphics27-5d7d.png" mime-type="image/png" height="135" width="558"/></media>
+    </figure>
+    <para id="id3214304">Radio frequency (RF) amplifier. Tunable, broadly frequency selective amplifier that attenuates image station at 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mn>2f</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } +2f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> and has a gain of 5-15 dB.</para>
+    <para id="id4734347">Local oscillator. Provides frequencies 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> to the RF amplifier and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{0} } =f rSub { size 8{c} } +f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> to the modulator.</para>
+    <para id="id6180724">Intermediate frequency (IF) amplifier. Fixed frequency (at
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math>), highly frequency selective amplifier with a gain of 30 dB. </para>
+    <para id="id4054174">Audio amplifier. Amplifier with a gain 15-30 dB.</para>
+    <para id="id3989321">This design has two important attributes: (1) it segregates sharp frequency selectivity from tuning in different stages which simplifies the design; (2) it distributes overall gain over three frequency ranges which improves the stability of the receiver.</para>
+    <para id="id3989330">The RF amplifier provides some frequency selectivity about the selected station carrier frequency 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math>. The modulator shifts the spectrum of the output of the RF amplifier so that the frequency 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> is shifted to 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> with another copy of the spectrum centered on 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mn>2f</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } +2f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math>. The IF amplifier is sharply tuned and centered on fi.</para>
+    <figure id="id6165873">
+      <media id="id1172210875810" alt=""><image src="../../media/graphics28-4233.png" mime-type="image/png" height="201" width="497"/></media>
+    </figure>
+    <para id="id6180949">The spectrum of the output of the IF amplifier is the spectrum of the selected station shifted from
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> to
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> . Hence, the output is an AM signal whose carrier frequency is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math>.</para>
+    <figure id="id4114405">
+      <media id="id1172204072854" alt=""><image src="../../media/graphics29-99fe.png" mime-type="image/png" height="122" width="218"/></media>
+    </figure>
+    <para id="id4732457">This system modulates the selected station from
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } } {}</m:annotation></m:semantics></m:math> to 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> . However, note that a station whose carrier frequency is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mn>2f</m:mn><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } +2f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math> is also modulated down to 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{i} } } {}</m:annotation></m:semantics></m:math>. A purpose of the RF amplifier is to attenuate this image station.</para>
+    <para id="id4561938">The peak (or envelope) detector demodulates the AM signal. A simple circuit that detects an AM signal is shown below.</para>
+    <figure id="id4561947">
+      <media id="id1172210699159" alt=""><image src="../../media/graphics30-9721.png" mime-type="image/png" height="183" width="318"/></media>
+    </figure>
+    <para id="id3202171">The peak detector works well when</para>
+    <para id="id6173022">For these conditions, the filter attenuates the carrier frequency</para>
+    <para id="id6173028">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>c</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mtext>&gt;&gt;</m:mtext>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mn>2π</m:mn>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>RC</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mtext>&gt;&gt;</m:mtext>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } "&gt;&gt;" {  {1}  over  {2π ital "RC"} } "&gt;&gt;"f rSub { size 8{m} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4062639">but not the frequency of the signal</para>
+    <para id="id4079546">SIMULINK can be used to study properties of the peak detector. The following is a block diagram of a peak detector that can be found in the matlab folder as peakdetector.m.</para>
+    <figure id="id6175024">
+      <media id="id1172212907950" alt=""><image src="../../media/graphics31-8d45.png" mime-type="image/png" height="250" width="504"/></media>
+    </figure>
+    <para id="id4063379">IV. CONCLUSIONS</para>
+    <para id="id4413355">Technological developments, such as the use of modulation for signal transmission, can have enormous social implications. The development of telegraphy, telephony, radio, TV, and now the internet, cable TV, and cellular phones have revolutionized how people relate to each other world wide.</para><para id="element-474"><link resource="ps10.pdf">Exercises .</link>
+</para><para id="element-47"><link resource="ps10sol.pdf"> Solutions of Exercises.</link>
+</para>
+  </content>
+</document>

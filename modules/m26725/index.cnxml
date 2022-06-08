@@ -1,0 +1,3253 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 9:Sampling of CT Signals</title>
+  <metadata>
+  <md:content-id>m26725</md:content-id><md:title>Lecture 9:Sampling of CT Signals</md:title>
+  <md:abstract>Some data acquisition inherently samples a CT signal, e.g., in image acquisition. Signal processing of a CT signal on a digital computer requires that the CT signal be sampled.
+One method of signal processing, recording, or transmission is to convert CT signals to digital signals, process, record, or transmit the digital signals, and then convert the processed digital signals to CT signals.</md:abstract>
+  <md:uuid>792816e8-89d0-4298-a536-546ac666ba43</md:uuid>
+</metadata>
+
+<content>
+    <para id="id6899436">Lecture #9: </para>
+    <para id="id9227205">SAMPLING OF CT SIGNALS</para>
+    <para id="id9073501">Motivation:</para>
+    <list id="id9379911" list-type="bulleted">
+      <item>Some data acquisition inherently samples a CT signal, e.g., in image acquisition. Signal processing of a CT signal on a digital computer requires that the CT signal be sampled.</item>
+    </list>
+    <list id="id4321386" list-type="bulleted">
+      <item>One method of signal processing, recording, or transmission is to convert CT signals to digital signals, process, record, or transmit the digital signals, and then convert the processed digital signals to CT signals.</item>
+    </list>
+    <list id="id4479207" list-type="bulleted">
+      <item>Problems with aliasing of sampled signals — distortion.</item>
+    </list>
+    <list id="id11594136" list-type="bulleted">
+      <item>Opportunities with aliasing of sampled signals — stop action imaging</item>
+    </list>
+    <para id="id8473131">Outline:</para>
+    <list id="id3355319" list-type="bulleted">
+      <item>Examples of the use of sampling — digital image acquisition, digital audio</item>
+      <item>Model of sampling — impulse modulation</item>
+      <item>The CTFT of a sampled signal</item>
+      <item>Recovering a bandlimited signal from its samples; the Sampling Theorem</item>
+      <item>Effects of sampling above, at, or below the Nyquist rate</item>
+    </list>
+    <list id="id7550456" list-type="bulleted">
+      <item>Sampling sinusoidal time functions — under and over sampling</item>
+      <item>Demonstration of effect of aliasing on audio signals</item>
+      <item>Demonstration of stroboscopic illumination</item>
+      <item>Sampling images</item>
+      <item>Conclusion</item>
+    </list>
+    <para id="id9523709">I. EXAMPLES OF THE USE OF SAMPLING</para>
+    <para id="id11939545">Image acquisition — photographic emulsion</para>
+    <para id="id10714413">Photographic emulsions are generally made with photoreactive crystals of AgBr with grain size in the range 0.04-1.5 μm.</para>
+    <figure id="id8708898">
+      <media id="id1171585511502" alt=""><image src="../../media/graphics1-c6cd.png" mime-type="image/png" height="202" width="307"/></media>
+    </figure>
+    <para id="id10204534">Image acquisition — CCD camera</para>
+    <para id="id5128210">CCD (charge coupled device) chips are the basis of digital cameras and displays. CCD chips are fabricated with VLSI technology. The phototransducer is a solid-state, back-biased diode whose current is sensitive to light intensity.</para>
+    <figure id="id5098827">
+      <media id="id1171590920229" alt=""><image src="../../media/graphics2-2f43.png" mime-type="image/png" height="102" width="150"/></media>
+    </figure>
+    <para id="id9663100">Photomicrograph of a CCD camera surface showing portions of 16 unit cells each with dimensions 13 × 11 μm. Each unit cell corresponds to a pixel. The chip has 500 × 582 pixels in an area of 10 × 9.3 mm.</para>
+    <para id="id8534423">Image acquisition — retina</para>
+    <para id="id11629512">The human retina contains photoreceptors (rods and cones) whose dimensions and spacings are of the order of 10 μm.</para>
+    <figure id="id9745702">
+      <media id="id1171585446893" alt=""><image src="../../media/graphics3-688e.png" mime-type="image/png" height="198" width="211"/></media>
+    </figure>
+    <para id="id8657350">Image acquisition — conclusion</para>
+    <para id="id8484364">Therefore, for each of these image acquisition systems — photographic emulsion, CCD camera, and retina — the light striking the surface of the phototransducer is sampled at discrete points in space (pixels) to produce a discrete time image.</para>
+    <para id="id3435131">Digital audio — recording system</para>
+    <para id="id7685780">In a number of applications, analog audio signals (e.g., speech or music) are converted into digital signals and processed by DT systems and then converted back to analog audio. Applications include compact discs, digital audio tape, digital broadcasting, digital telephony, etc. A single channel of such a recording system is shown below. If stereo is recorded then there are two channels — one for the left and the other for the right channel — that are passed through a multiplexer which is typically interposed before the error correction block.</para>
+    <figure id="id7954503">
+      <media id="id1171590657499" alt=""><image src="../../media/graphics4-8d51.png" mime-type="image/png" height="114" width="429"/></media>
+    </figure>
+    <para id="id10525648">Digital audio — reproduction system</para>
+    <para id="id6899427">A single channel of a digital audio reproduction system is illustrated with a block diagram. The reproduction system input is the digital data from the recording medium or from the incoming transmitted data. The output of the reproductions system is designed to reproduce the originally recorded/transmitted audio signal. </para>
+    <figure id="id10832418">
+      <media id="id1171586996545" alt=""><image src="../../media/graphics5-98ca.png" mime-type="image/png" height="114" width="429"/></media>
+    </figure>
+    <para id="id10894872">Sample-and-hold circuit</para>
+    <para id="id8132135">In this lecture we are concerned only with the sampling of a CT signal to produce a sampled CT signal. Later we will discuss how to form a DT signal from the sampled CT signal. We will not describe how to form a digital signal which involves converting infinite precision numbers to finite precision numbers, a process called analog-to-digital conversion. A schematic diagram of a sample-and-hold circuit that produces samples of a CT signal is shown below.</para>
+    <figure id="id11920029">
+      <media id="id1171585579285" alt=""><image src="../../media/graphics6-3909.png" mime-type="image/png" height="117" width="429"/></media>
+    </figure>
+    <para id="id11470769">Definition</para>
+    <para id="id9679721">Sampling a one-dimensional signal x(t) at t = nT where T is the sampling period yields the samples x(nT). Sampling a two dimensional signal f(x, y) at x = nδx and y = mδy yields the samples f(nδx,mδy).</para>
+    <figure id="id11573189">
+      <media id="id1171585977934" alt=""><image src="../../media/graphics7-b9ac.png" mime-type="image/png" height="154" width="429"/></media>
+    </figure>
+    <para id="id12109426">Key issues</para>
+    <para id="id10251688">We shall consider the sampling of one-dimensional signals only. The issues are as follows.</para>
+    <list id="id7717965" list-type="bulleted">
+      <item>How should we model the sampling process?</item>
+      <item>Under which conditions can you recover x(t) from x(nT)?</item>
+      <item>How do you recover x(t) from x(nT) when these conditions are met?</item>
+      <item>What happens when these conditions are not met?</item>
+    </list>
+    <para id="id10770383">II. MODEL OF SAMPLING — IMPULSE MODULATION</para>
+    <para id="id11939573">1/ Definition</para>
+    <para id="id10426824">Let x(t) be a continuous time function and let s(t) be a uniform impulse train of period T, </para>
+    <para id="id11608131"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>s</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:munder>
+
+    <m:mo>∑</m:mo>
+
+    <m:mi>n</m:mi>
+
+   </m:munder>
+
+   <m:mrow>
+
+    <m:mi>δ</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mrow>
+
+      <m:mi>t</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>−</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>nT</m:mi>
+
+     </m:mrow>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11346612">The sampled time function is</para>
+    <para id="id11918387"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mi>s</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:munder>
+
+      <m:mo>∑</m:mo>
+
+      <m:mi>n</m:mi>
+
+     </m:munder>
+
+     <m:mrow>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mrow>
+
+        <m:mi>t</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mi>−</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mi>nT</m:mi>
+
+       </m:mrow>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math>
+<m:math>
+
+ <m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:munder>
+
+     <m:mo>∑</m:mo>
+
+     <m:mi>n</m:mi>
+
+    </m:munder>
+
+    <m:mrow>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>t</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>δ</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mrow>
+
+       <m:mi>t</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>−</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>nT</m:mi>
+
+      </m:mrow>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:munder>
+
+     <m:mo>∑</m:mo>
+
+     <m:mi>n</m:mi>
+
+    </m:munder>
+
+    <m:mrow>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>nT</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>δ</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mrow>
+
+       <m:mi>t</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>−</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>nT</m:mi>
+
+      </m:mrow>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11928559">Multiplication of time functions is called modulation. Therefore, multiplication by an impulse train is called impulse modulation.</para>
+    <para id="id6957853">Therefore, we have</para>
+    <para id="id6957857"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mi>s</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:munder>
+
+     <m:mo>∑</m:mo>
+
+     <m:mi>n</m:mi>
+
+    </m:munder>
+
+    <m:mrow>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>nT</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>δ</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mrow>
+
+       <m:mi>t</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>−</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>nT</m:mi>
+
+      </m:mrow>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <figure id="id11460549">
+      <media id="id1171586579348" alt=""><image src="../../media/graphics8-ff6f.png" mime-type="image/png" height="180" width="436"/></media>
+    </figure>
+    <para id="id7022891">2/ The essence of sampling is captured by impulse modulation</para>
+    <para id="id7998181">Note that with impulse modulation, the sampled signal is represented as a sequence of impulses whose areas are the sample values, i.e.,</para>
+    <para id="id11543953"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mi>s</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:munder>
+
+     <m:mo>∑</m:mo>
+
+     <m:mi>n</m:mi>
+
+    </m:munder>
+
+    <m:mrow>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>nT</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>δ</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mrow>
+
+       <m:mi>t</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>−</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>nT</m:mi>
+
+      </m:mrow>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11540443">The only property of the impulses that have any consequences are their areas and these are the sample values. Hence, impulse modulation is an effective model of sampling; the sample values, and only the sample values, are preserved by impulse modulation.</para>
+    <para id="id11419624">3/ Physical samplers can be modeled with an impulse modulator and a filter</para>
+    <para id="id11695506">A sampler that produces rectangular pulses can be represented.</para>
+    <figure id="id11385269">
+      <media id="id1171585488744" alt=""><image src="../../media/graphics9-b4a4.png" mime-type="image/png" height="186" width="436"/></media>
+    </figure>
+    <para id="id11711950"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>y</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>*</m:mo>
+
+    <m:mi>p</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mrow>
+
+      <m:munder>
+
+       <m:mo>∑</m:mo>
+
+       <m:mi>n</m:mi>
+
+      </m:munder>
+
+      <m:mrow>
+
+       <m:mi>x</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mi>nT</m:mi>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>δ</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mrow>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>*</m:mo>
+
+    <m:mi>p</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math>
+<m:math>
+
+ <m:mrow>
+
+  <m:mtext>  </m:mtext>
+
+  <m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mtext> </m:mtext>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:munder>
+
+      <m:mo>∑</m:mo>
+
+      <m:mi>n</m:mi>
+
+     </m:munder>
+
+     <m:mrow>
+
+      <m:mi>x</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>nT</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mrow>
+
+        <m:mi>δ</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mrow>
+
+         <m:mo>(</m:mo>
+
+         <m:mrow>
+
+          <m:mi>t</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>−</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>nT</m:mi>
+
+         </m:mrow>
+
+         <m:mo>)</m:mo>
+
+        </m:mrow>
+
+        <m:mo>*</m:mo>
+
+        <m:mi>p</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mrow>
+
+         <m:mo>(</m:mo>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>)</m:mo>
+
+        </m:mrow>
+
+       </m:mrow>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+    <m:mo>=</m:mo>
+
+    <m:mrow>
+
+     <m:munder>
+
+      <m:mo>∑</m:mo>
+
+      <m:mi>n</m:mi>
+
+     </m:munder>
+
+     <m:mrow>
+
+      <m:mi>x</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>nT</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>p</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+       <m:mo>.</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11941437">III. THE CTFT OF A SAMPLED SIGNAL</para>
+    <para id="id10040270">The condition for recovering x(t) from _x(t) is more readily seen in the frequency domain.</para>
+    <para id="id7113184">1/ Derivation</para>
+    <para id="id8729134"><m:math>
+
+ <m:mrow>
+
+  <m:mtext fontfamily="CMMI8" mathsize="10"> </m:mtext>
+
+  <m:mrow>
+
+   <m:mi>x</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mtext>  </m:mtext>
+
+    <m:mover>
+
+     <m:mo>⟺</m:mo>
+
+     <m:mi>F</m:mi>
+
+    </m:mover>
+
+    <m:mtext>   </m:mtext>
+
+    <m:mi>X</m:mi>
+
+   </m:mrow>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11637676"><m:math>
+
+ <m:mrow>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mi>s</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:munder>
+
+      <m:mo>∑</m:mo>
+
+      <m:mi>n</m:mi>
+
+     </m:munder>
+
+     <m:mrow>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+       <m:mtext>   </m:mtext>
+
+       <m:mover>
+
+        <m:mo>⟺</m:mo>
+
+        <m:mi>F</m:mi>
+
+       </m:mover>
+
+       <m:mtext>     </m:mtext>
+
+       <m:mi>S</m:mi>
+
+      </m:mrow>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>f</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+    <m:mo>=</m:mo>
+
+    <m:mrow>
+
+     <m:mfrac>
+
+      <m:mn>1</m:mn>
+
+      <m:mi>T</m:mi>
+
+     </m:mfrac>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:munder>
+
+       <m:mo>∑</m:mo>
+
+       <m:mi>n</m:mi>
+
+      </m:munder>
+
+      <m:mrow>
+
+       <m:mi>δ</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>f</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mfrac>
+
+          <m:mi>n</m:mi>
+
+          <m:mi>T</m:mi>
+
+         </m:mfrac>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11421313"><m:math>
+
+ <m:mrow>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>t</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mo>×</m:mo>
+
+     <m:mi>s</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>t</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+      <m:mtext>   </m:mtext>
+
+      <m:mover>
+
+       <m:mo>⟺</m:mo>
+
+       <m:mi>F</m:mi>
+
+      </m:mover>
+
+      <m:mtext>    </m:mtext>
+
+      <m:mover>
+
+       <m:mi>X</m:mi>
+
+       <m:mo>^</m:mo>
+
+      </m:mover>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>f</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+    <m:mo>=</m:mo>
+
+    <m:mrow>
+
+     <m:mi>X</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>f</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mtext> </m:mtext>
+
+     <m:mo>*</m:mo>
+
+     <m:mtext> </m:mtext>
+
+     <m:mi>S</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>f</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11942049"><m:math>
+
+ <m:mrow>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:munder>
+
+      <m:mo>∑</m:mo>
+
+      <m:mi>n</m:mi>
+
+     </m:munder>
+
+     <m:mrow>
+
+      <m:mi>x</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>nT</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+       <m:mtext>  </m:mtext>
+
+       <m:mover>
+
+        <m:mo>⟺</m:mo>
+
+        <m:mi>F</m:mi>
+
+       </m:mover>
+
+       <m:mtext>    </m:mtext>
+
+       <m:mover>
+
+        <m:mi>X</m:mi>
+
+        <m:mo>^</m:mo>
+
+       </m:mover>
+
+      </m:mrow>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mi>f</m:mi>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+    <m:mo>=</m:mo>
+
+    <m:mrow>
+
+     <m:mfrac>
+
+      <m:mn>1</m:mn>
+
+      <m:mi>T</m:mi>
+
+     </m:mfrac>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:munder>
+
+       <m:mo>∑</m:mo>
+
+       <m:mi>n</m:mi>
+
+      </m:munder>
+
+      <m:mrow>
+
+       <m:mi>X</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>f</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mfrac>
+
+          <m:mi>n</m:mi>
+
+          <m:mi>T</m:mi>
+
+         </m:mfrac>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <figure id="id11637834">
+      <media id="id1171590893040" alt=""><image src="../../media/graphics10-05cf.png" mime-type="image/png" height="281" width="500"/></media>
+    </figure>
+    <para id="id12108433">2/ Sampling Theorem</para>
+    <para id="id11637650">The Fourier transform of the sampled time function equals that of the unsampled time function repeated periodically at the sampling frequency fs = 1/T and scaled by 1 /T . </para>
+    <figure id="id11544170">
+      <media id="id1171590768198" alt=""><image src="../../media/graphics11-24a1.png" mime-type="image/png" height="176" width="382"/></media>
+    </figure>
+    <para id="id10984577">No overlap of lobes occurs for</para>
+    <para id="id10984581"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mrow>
+
+     <m:mfrac>
+
+      <m:mn>1</m:mn>
+
+      <m:mi>T</m:mi>
+
+     </m:mfrac>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>−</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>W</m:mi>
+
+    </m:mrow>
+
+    <m:mo>&gt;</m:mo>
+
+    <m:mi>W</m:mi>
+
+   </m:mrow>
+
+   <m:mtext> </m:mtext>
+
+   <m:mo>⇒</m:mo>
+
+   <m:mtext> </m:mtext>
+
+   <m:mfrac>
+
+    <m:mn>1</m:mn>
+
+    <m:mi>T</m:mi>
+
+   </m:mfrac>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:msub>
+
+    <m:mi>f</m:mi>
+
+    <m:mi>s</m:mi>
+
+   </m:msub>
+
+   <m:mtext> </m:mtext>
+
+   <m:mo>&gt;</m:mo>
+
+   <m:mrow>
+
+    <m:mn>2</m:mn>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>W</m:mi>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id10789503">Thus, if a band-limited time function, i.e.,</para>
+    <para id="id10789508"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>X</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mn>0</m:mn>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>for</m:mi>
+
+   </m:mrow>
+
+   <m:mo>|</m:mo>
+
+   <m:mi>f</m:mi>
+
+   <m:mo>|</m:mo>
+
+   <m:mrow>
+
+    <m:mo>&gt;</m:mo>
+
+    <m:mi>W</m:mi>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11673388">is sampled with a sampling frequency fs &gt; 2W, then in principle the time function can be recovered perfectly from the samples. This is called the Sampling Theorem, and 2W is called the Nyquist sampling rate.</para>
+    <para id="id11003878">IV. RECOVERING A BANDLIMITED SIGNAL FROM ITS SAMPLES</para>
+    <para id="id11003887">1/ Frequency domain</para>
+    <para id="id11178478"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>X</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>X</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mi>H</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <figure id="id11175516">
+      <media id="id1171590927817" alt=""><image src="../../media/graphics12-27c7.png" mime-type="image/png" height="215" width="428"/></media>
+    </figure>
+    <para id="id10605171">2/ Frequency and time domain</para>
+    <figure id="id11673255">
+      <media id="id1171586650927" alt=""><image src="../../media/graphics13-3893.png" mime-type="image/png" height="246" width="444"/></media>
+    </figure>
+    <para id="id11972389">3/ The impulse response of the ideal lowpass filter</para>
+    <figure id="id11972467">
+      <media id="id1171585471307" alt=""><image src="../../media/graphics14-7e80.png" mime-type="image/png" height="179" width="557"/></media>
+    </figure>
+    <para id="id11540481">4/ Interpolating the sampled time function with a sinc function</para>
+    <para id="id10605875">Since</para>
+    <para id="id10605880"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>X</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>X</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>f</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>H</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mi>f</m:mi>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+     <m:mtext>    </m:mtext>
+
+     <m:mover>
+
+      <m:mo>⟺</m:mo>
+
+      <m:mi>F</m:mi>
+
+     </m:mover>
+
+     <m:mrow>
+
+      <m:mtext>    </m:mtext>
+
+      <m:mtext fontfamily="CMMI8" mathsize="10"> </m:mtext>
+
+     </m:mrow>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mi>x</m:mi>
+
+    </m:mrow>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>*</m:mo>
+
+    <m:mi>h</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11995004">we have</para>
+    <para id="id11995008"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>x</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:munder>
+
+    <m:mo>∑</m:mo>
+
+    <m:mi>n</m:mi>
+
+   </m:munder>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>nT</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>δ</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mrow>
+
+      <m:mi>t</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>−</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>nT</m:mi>
+
+     </m:mrow>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>*</m:mo>
+
+    <m:mn>2</m:mn>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>WT</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mfrac>
+
+      <m:mrow>
+
+       <m:mi>sin</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mn>2</m:mn>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>πWt</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+      <m:mrow>
+
+       <m:mn>2</m:mn>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>πWt</m:mi>
+
+      </m:mrow>
+
+     </m:mfrac>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11481933">The convolution reproduces the sinc function every nT as follows</para>
+    <para id="id11178855"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>x</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:munder>
+
+    <m:mo>∑</m:mo>
+
+    <m:mi>n</m:mi>
+
+   </m:munder>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>nT</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mn>2</m:mn>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mi>WT</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mfrac>
+
+      <m:mrow>
+
+       <m:mi>sin</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mn>2</m:mn>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>πW</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+      <m:mrow>
+
+       <m:mn>2</m:mn>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>πW</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mfrac>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11540543">The interpolation is particularly simple to visualize when 1/T = 2W, i.e, when the sampling frequency equals the Nyquist rate,</para>
+    <para id="id10775858"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>x</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:munder>
+
+    <m:mo>∑</m:mo>
+
+    <m:mi>n</m:mi>
+
+   </m:munder>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>nT</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mfrac>
+
+      <m:mrow>
+
+       <m:mi>sin</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>π</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mfrac>
+
+         <m:mrow>
+
+          <m:mi>t</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>−</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>nT</m:mi>
+
+         </m:mrow>
+
+         <m:mi>T</m:mi>
+
+        </m:mfrac>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+      <m:mrow>
+
+       <m:mtext> </m:mtext>
+
+       <m:mrow>
+
+        <m:mi>π</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mrow>
+
+         <m:mo>(</m:mo>
+
+         <m:mfrac>
+
+          <m:mrow>
+
+           <m:mi>t</m:mi>
+
+           <m:mo>⁢</m:mo>
+
+           <m:mi>−</m:mi>
+
+           <m:mo>⁢</m:mo>
+
+           <m:mi>nT</m:mi>
+
+          </m:mrow>
+
+          <m:mi>T</m:mi>
+
+         </m:mfrac>
+
+         <m:mo>)</m:mo>
+
+        </m:mrow>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mfrac>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11986572">For 1/T = 2W,</para>
+    <para id="id11192036"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mi>x</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>t</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:munder>
+
+    <m:mo>∑</m:mo>
+
+    <m:mi>n</m:mi>
+
+   </m:munder>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>nT</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mfrac>
+
+      <m:mrow>
+
+       <m:mi>sin</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>π</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mfrac>
+
+         <m:mrow>
+
+          <m:mi>t</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>−</m:mi>
+
+          <m:mo>⁢</m:mo>
+
+          <m:mi>nT</m:mi>
+
+         </m:mrow>
+
+         <m:mi>T</m:mi>
+
+        </m:mfrac>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+      </m:mrow>
+
+      <m:mrow>
+
+       <m:mtext> </m:mtext>
+
+       <m:mrow>
+
+        <m:mi>π</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mrow>
+
+         <m:mo>(</m:mo>
+
+         <m:mfrac>
+
+          <m:mrow>
+
+           <m:mi>t</m:mi>
+
+           <m:mo>⁢</m:mo>
+
+           <m:mi>−</m:mi>
+
+           <m:mo>⁢</m:mo>
+
+           <m:mi>nT</m:mi>
+
+          </m:mrow>
+
+          <m:mi>T</m:mi>
+
+         </m:mfrac>
+
+         <m:mo>)</m:mo>
+
+        </m:mrow>
+
+       </m:mrow>
+
+      </m:mrow>
+
+     </m:mfrac>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11997520">we can sketch the interpolation simply.</para>
+    <figure id="id11994470">
+      <media id="id1171584706143" alt=""><image src="../../media/graphics15-68c0.png" mime-type="image/png" height="141" width="375"/></media>
+    </figure>
+    <para id="id11997503">V. EFFECTS OF SAMPLING ABOVE, AT, AND BELOW THE NYQUIST RATE</para>
+    <para id="id11934126">1/ Effect of varying the sampling rate</para>
+    <figure id="id11934136">
+      <media id="id1171586603360" alt=""><image src="../../media/graphics16-21bd.png" mime-type="image/png" height="234" width="401"/></media>
+    </figure>
+    <para id="id11941680">2/ Aliasing and truncation</para>
+    <figure id="id11941687">
+      <media id="id1171586603405" alt=""><image src="../../media/graphics17-7046.png" mime-type="image/png" height="253" width="234"/></media>
+    </figure>
+    <para id="id10025146">In general, if x(t) is sampled below the Nyquist rate</para>
+    <para id="id11544132"><m:math>
+
+ <m:mrow>
+
+  <m:mfrac>
+
+   <m:mn>1</m:mn>
+
+   <m:mi>T</m:mi>
+
+  </m:mfrac>
+
+  <m:mo>&lt;</m:mo>
+
+  <m:mrow>
+
+   <m:mn>2</m:mn>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mi>W</m:mi>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11314270">x(t) cannot be recovered from its samples. Two types of errors occur — aliasing in which a high frequency component of the signal appears (under an alias) at a lower frequency, and truncation in which high frequency components of the signal are filtered out.</para>
+    <para id="id11314507">Two-minute miniquiz problem</para>
+    <para id="id11314511">Problem 19-1 — Design of a digital audio system</para>
+    <para id="id11314517">Human hearing extends over the approximate frequency range 20Hz to 20KHz. Therefore, it is proposed to design a digital audio music reproduction system whose front end is as shown. </para>
+    <figure id="id11941862">
+      <media id="id1171584543704" alt=""><image src="../../media/graphics18-01da.png" mime-type="image/png" height="63" width="475"/></media>
+    </figure>
+    <para id="id11202861">The sample-and-hold circuit samples the music at 40 kHz which is twice the rate required to reproduce audible sounds. What is wrong with this system? How should this system be improved?</para>
+    <para id="id11074934">Solution</para>
+    <para id="id11074941">The problem with this system is that sounds above 20 kHz will be aliased down to a lower frequency and will distort the reproduced music. The solution is to include an anti-aliasing filter, located before the sample-and-hold system, that sharply attenuates sounds above 20 kHz.</para>
+    <figure id="id10770339">
+      <media id="id1171583277794" alt=""><image src="../../media/graphics19-52d7.png" mime-type="image/png" height="79" width="526"/></media>
+    </figure>
+    <para id="id11436533">VI. SAMPLING SINUSOIDAL TIME FUNCTIONS</para>
+    <para id="id11003804">To illustrate what happens when sampling above, at, and below the Nyquist rate, we investigate sampling a sinusoid.</para>
+    <figure id="id11003814">
+      <media id="id1171583277849" alt=""><image src="../../media/graphics20-795a.png" mime-type="image/png" height="97" width="134"/></media>
+    </figure>
+    <para id="id10792083">If x(t) = cos(2πWt),</para>
+    <para id="id11149816"><m:math>
+
+ <m:mrow>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mi>x</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mi>s</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math>
+<m:math>
+
+ <m:mrow>
+
+  <m:mtext> </m:mtext>
+
+  <m:mrow>
+
+   <m:mrow>
+
+    <m:mover>
+
+     <m:mi>x</m:mi>
+
+     <m:mo>^</m:mo>
+
+    </m:mover>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mi>t</m:mi>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+   </m:mrow>
+
+   <m:mo>=</m:mo>
+
+   <m:mrow>
+
+    <m:mi>cos</m:mi>
+
+    <m:mo>⁢</m:mo>
+
+    <m:mrow>
+
+     <m:mo>(</m:mo>
+
+     <m:mrow>
+
+      <m:mn>2</m:mn>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mi>πWt</m:mi>
+
+     </m:mrow>
+
+     <m:mo>)</m:mo>
+
+    </m:mrow>
+
+    <m:mo>×</m:mo>
+
+    <m:mrow>
+
+     <m:munderover>
+
+      <m:mo>∑</m:mo>
+
+      <m:mrow>
+
+       <m:mi>n</m:mi>
+
+       <m:mo>=</m:mo>
+
+       <m:mrow>
+
+        <m:mo>-</m:mo>
+
+        <m:mi>∞</m:mi>
+
+       </m:mrow>
+
+      </m:mrow>
+
+      <m:mi>∞</m:mi>
+
+     </m:munderover>
+
+     <m:mrow>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mrow>
+
+        <m:mo>(</m:mo>
+
+        <m:mrow>
+
+         <m:mi>t</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>−</m:mi>
+
+         <m:mo>⁢</m:mo>
+
+         <m:mi>nT</m:mi>
+
+        </m:mrow>
+
+        <m:mo>)</m:mo>
+
+       </m:mrow>
+
+       <m:mo>.</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id11694969"><m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>X</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mi>X</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+   <m:mtext> </m:mtext>
+
+   <m:mo>*</m:mo>
+
+   <m:mtext> </m:mtext>
+
+   <m:mi>S</m:mi>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math>
+<m:math>
+
+ <m:mrow>
+
+  <m:mrow>
+
+   <m:mover>
+
+    <m:mi>X</m:mi>
+
+    <m:mo>^</m:mo>
+
+   </m:mover>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mi>f</m:mi>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+  </m:mrow>
+
+  <m:mo>=</m:mo>
+
+  <m:mrow>
+
+   <m:mfrac>
+
+    <m:mn>1</m:mn>
+
+    <m:mn>2</m:mn>
+
+   </m:mfrac>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:mo>(</m:mo>
+
+    <m:mrow>
+
+     <m:mrow>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mrow>
+
+        <m:mi>f</m:mi>
+
+        <m:mo>+</m:mo>
+
+        <m:mi>W</m:mi>
+
+       </m:mrow>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+     <m:mo>+</m:mo>
+
+     <m:mrow>
+
+      <m:mi>δ</m:mi>
+
+      <m:mo>⁢</m:mo>
+
+      <m:mrow>
+
+       <m:mo>(</m:mo>
+
+       <m:mrow>
+
+        <m:mi>f</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mi>−</m:mi>
+
+        <m:mo>⁢</m:mo>
+
+        <m:mi>W</m:mi>
+
+       </m:mrow>
+
+       <m:mo>)</m:mo>
+
+      </m:mrow>
+
+     </m:mrow>
+
+    </m:mrow>
+
+    <m:mo>)</m:mo>
+
+   </m:mrow>
+
+   <m:mo>*</m:mo>
+
+   <m:mfrac>
+
+    <m:mn>1</m:mn>
+
+    <m:mi>T</m:mi>
+
+   </m:mfrac>
+
+   <m:mo>⁢</m:mo>
+
+   <m:mrow>
+
+    <m:munderover>
+
+     <m:mo>∑</m:mo>
+
+     <m:mrow>
+
+      <m:mi>n</m:mi>
+
+      <m:mo>=</m:mo>
+
+      <m:mrow>
+
+       <m:mo>-</m:mo>
+
+       <m:mi>∞</m:mi>
+
+      </m:mrow>
+
+     </m:mrow>
+
+     <m:mi>∞</m:mi>
+
+    </m:munderover>
+
+    <m:mrow>
+
+     <m:mi>δ</m:mi>
+
+     <m:mo>⁢</m:mo>
+
+     <m:mrow>
+
+      <m:mo>(</m:mo>
+
+      <m:mrow>
+
+       <m:mi>f</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mi>−</m:mi>
+
+       <m:mo>⁢</m:mo>
+
+       <m:mfrac>
+
+        <m:mi>n</m:mi>
+
+        <m:mi>T</m:mi>
+
+       </m:mfrac>
+
+      </m:mrow>
+
+      <m:mo>)</m:mo>
+
+     </m:mrow>
+
+    </m:mrow>
+
+   </m:mrow>
+
+  </m:mrow>
+
+ </m:mrow>
+
+</m:math></para>
+    <para id="id10025158">Therefore, the Fourier transform  contains lots of impulses, and is best examined graphically.</para>
+    <para id="id11964830">1/ Sampling above the Nyquist rate — over sampling</para>
+    <para id="id11964836">In this example fs = 1/T = 8W, i.e., there are eight samples per period of the cosine wave.</para>
+    <figure id="id8811877">
+      <media id="id1171585709944" alt=""><image src="../../media/graphics21-ff7d.png" mime-type="image/png" height="186" width="454"/></media>
+    </figure>
+    <para id="id11003453">If the sampled signal is passed through an ideal lowpass filter with cut-off frequency just above W, which is the frequency of the cosine, then the spectrum of the original cosine wave is recovered completely.</para>
+    <figure id="id11236432">
+      <media id="id1171590917084" alt=""><image src="../../media/graphics22-af7a.png" mime-type="image/png" height="185" width="454"/></media>
+    </figure>
+    <para id="id11695026">Because the spectrum of the original cosine wave is recovered completely so is the time function.</para>
+    <figure id="id11179056">
+      <media id="id1171586782317" alt=""><image src="../../media/graphics23-4f0c.png" mime-type="image/png" height="207" width="490"/></media>
+    </figure>
+    <para id="id11997283">2/ Sampling at the Nyquist rate</para>
+    <para id="id11997287">In this example fs = 2W, i.e., there are two samples per period of the cosine wave. The cosine wave is sampled at the Nyquist rate.</para>
+    <figure id="id11710769">
+      <media id="id1171586587083" alt=""><image src="../../media/graphics24-c63a.png" mime-type="image/png" height="207" width="490"/></media>
+    </figure>
+    <para id="id11498154">If the sampled signal is passed through an ideal lowpass filter with cut-off frequency just above W, which is the frequency of the cosine wave, then the original cosine wave is again recovered completely from its samples.</para>
+    <figure id="id11994710">
+      <media id="id1171586587129" alt=""><image src="../../media/graphics25-a887.png" mime-type="image/png" height="207" width="490"/></media>
+    </figure>
+    <para id="id11673727">In this example fs = 2W, but a sine wave rather than a cosine wave is sampled at the Nyquist rate, i.e., x(t) = sin(2πWt). </para>
+    <figure id="id10990591">
+      <media id="id1171586740274" alt=""><image src="../../media/graphics26-802d.png" mime-type="image/png" height="207" width="490"/></media>
+    </figure>
+    <para id="id10333994">The sinusoid is sampled at the zero crossings — both the time function and its Fourier transform are zero. The sinusoid cannot be recovered from its samples.</para>
+    <para id="id10334008">Thus, sampling exactly at the Nyquist rate does not always lead to recovery of the original signal, and recovery depends upon the phase of the sinusoid. To understand this, we sample x(t)=Acos(2πWt+θ) at the Nyquist rate.</para>
+    <figure id="id11178817">
+      <media id="id1171590757846" alt=""><image src="../../media/graphics27-800d.png" mime-type="image/png" height="453" width="519"/></media>
+    </figure>
+    <para id="id11948044">For x(t) = Acos(2πWt + θ), y(t) = (Acos θ) cos(2πWt). Thus, there is an ambiguity in the amplitude and the original phase of the cosinusoid is lost.</para>
+    <para id="id10025207">In general, sampling at, as opposed to above, the Nyquist rate will not lead to recovery of the original signal from its samples.</para>
+    <para id="id10025220">3/ Sampling below the Nyquist rate — undersampling</para>
+    <para id="id10025226">In this example fs = (3/2)W and x(t) = sin(2πWt).</para>
+    <figure id="id10984672">
+      <media id="id1171585955659" alt=""><image src="../../media/graphics28-4821.png" mime-type="image/png" height="219" width="498"/></media>
+    </figure>
+    <para id="id11994688">If the sampled signal is passed through an ideal lowpass filter with cut-off frequency just above W, then y(t) = sin(2πWt) − sin(2π(W/2)t). The second term is the sine wave aliased to the frequency of W/2.</para>
+    <figure id="id10957324">
+      <media id="id1171584351789" alt=""><image src="../../media/graphics29-bce8.png" mime-type="image/png" height="192" width="485"/></media>
+    </figure>
+    <para id="id11994815">The time waveforms when undersampling with fs = (3/2)W and with an ideal lowpass filter with cut-off frequency just above W results in the waveforms shown below. x(t) = sin(2πWt) and y(t) = sin(2πWt) − sin(2π(W/2)t).</para>
+    <figure id="id11236448">
+      <media id="id1171585787777" alt=""><image src="../../media/graphics30-2089.png" mime-type="image/png" height="203" width="335"/></media>
+    </figure>
+    <para id="id11994654">If the sampled signal is passed through an ideal lowpass filter with cut-off frequency just above W/2, then y(t) = −sin(2π(W/2)t), i.e., the undersampled sine wave has been reduced in frequency from W to W/2.</para>
+    <figure id="id11178261">
+      <media id="id1171585837939" alt=""><image src="../../media/graphics31-fcd4.png" mime-type="image/png" height="198" width="476"/></media>
+    </figure>
+    <para id="id11997722">The original signal, x(t) = sin(2πWt), and the sampled and filtered signal, y(t) = −sin(2π(W/2)t), are compared below.</para>
+    <figure id="id10990334">
+      <media id="id1171585837986" alt=""><image src="../../media/graphics32-d5a2.png" mime-type="image/png" height="128" width="280"/></media>
+    </figure>
+    <para id="id11203068">The dark points show the locations of samples of x(t) = sin(2πWt) which is sampled at fs = (3/2)W. The sampled signal is passed through an ideal lowpass filter whose cut-off frequency is just above W/2 to yield y(t) = −sin(2π(W/2)t).</para>
+    <para id="id11934162">VII. DEMONSTRATIONS</para>
+    <para id="id11934170">1/ The effect of sampling on sinusoidal audio signals</para>
+    <figure id="id11483421">
+      <media id="id1171584632201" alt=""><image src="../../media/graphics33-d18c.png" mime-type="image/png" height="245" width="460"/></media>
+    </figure>
+    <para id="id11473412">2/ The effect of sampling and quantization on audio signals</para>
+    <figure id="id11473420">
+      <media id="id1171583409663" alt=""><image src="../../media/graphics34-cf42.png" mime-type="image/png" height="181" width="454"/></media>
+    </figure>
+    <para id="id10769504">3/ Quantization</para>
+    <para id="id10769508">To transfer a CT signal into a computer, the CT signal must be sampled and quantized. Quantization converts a sample whose amplitude is specified with infinite precision into a number with limited precision. The transfer function of the quantizer is shown for quantizers of different precision specified by the number of bits. The A/D and D/A converter in this demonstration has 14 bit precision.</para>
+    <figure id="id10769526">
+      <media id="id1171585982547" alt=""><image src="../../media/graphics35-9ff3.png" mime-type="image/png" height="188" width="444"/></media>
+    </figure>
+    <para id="id11237615">The difference between the original signal and the quantized signal constitutes an error. The error decreases as the number of quantization levels is increased.</para>
+    <figure id="id11933897">
+      <media id="id1171584318578" alt=""><image src="../../media/graphics36-1541.png" mime-type="image/png" height="132" width="458"/></media>
+    </figure>
+    <para id="id11694981">4/ Stroboscopic illumination of a fan</para>
+    <figure id="id11694988">
+      <media id="id1171584318623" alt=""><image src="../../media/graphics37-8ad2.png" mime-type="image/png" height="168" width="464"/></media>
+    </figure>
+    <para id="id10755263">The sampled time function appears as if θ(t) is increasing so that motion of the fan appears clockwise.</para>
+    <figure id="id11460795">
+      <media id="id1171585982874" alt=""><image src="../../media/graphics38-bf70.png" mime-type="image/png" height="168" width="231"/></media>
+    </figure>
+    <para id="id11617429">The sampled time function appears as if θ(t) is decreasing so that motion of the fan appears counterclockwise.</para>
+    <para id="id11617457">5/ Effect of sampling on images</para>
+    <para id="id11941874">We examine sampling of images using a MATLAB software package that allows display of images, sampled images, reconstructed images both with and without anti-alias filtering.</para>
+    <figure id="id11941887">
+      <media id="id1171590894868" alt=""><image src="../../media/graphics39-67be.png" mime-type="image/png" height="227" width="256"/></media>
+    </figure>
+    <para id="id11635814">The image on the left has been sampled by keeping every 4th pixel to produce the sampled image on the right.</para>
+    <figure id="id11635835">
+      <media id="id1171590912578" alt=""><image src="../../media/graphics40-6b48.png" mime-type="image/png" height="197" width="402"/></media>
+    </figure>
+    <para id="id10802497">The sampled image has been reconstructed with a zero-order hold (staircase approximation) on the left and a first-order hold (linear interpolation) on the right.</para>
+    <figure id="id12108156">
+      <media id="id1171590649064" alt=""><image src="../../media/graphics41-13bb.png" mime-type="image/png" height="207" width="417"/></media>
+    </figure>
+    <para id="id12108183">The original image is shown on the left and the same image passed through an anti-alias filter appropriate to sampling every 4th point is shown on the right.</para>
+    <figure id="id11941784">
+      <media id="id1171590649110" alt=""><image src="../../media/graphics42-372f.png" mime-type="image/png" height="207" width="417"/></media>
+    </figure>
+    <para id="id11626608">The effect of the anti-aliasing filter is seen by comparing the reconstructed filter without anti-alias filtering (left) with that using an anti-alias filter (right) both using a first-order hold (linear interpolation).</para>
+    <figure id="id11626619">
+      <media id="id1171590915045" alt=""><image src="../../media/graphics43-cb3c.png" mime-type="image/png" height="207" width="434"/></media>
+    </figure>
+    <para id="id11436674">VI. CONCLUSIONS</para>
+    <para id="id11436681">The central idea in sampling a CT signal is the Sampling Theorem and its consequences.</para>
+    <list id="id11436690" list-type="bulleted">
+      <item>Let x(t) be a bandlimited time function, i.e., X(f) = 0 for |f| &gt; |W|. Let x(t) be sampled at a sampling frequency fs &gt; 2W, where 2W is called the Nyquist rate. Then x(t) can, in principle, be completely recovered from the samples.</item>
+    </list>
+    <list id="id11986529" list-type="bulleted">
+      <item>x(t) can be recovered bypassing the sampled signal through an ideal LPF with cutoff frequency at f = W.</item>
+    </list>
+    <list id="id11461441" list-type="bulleted">
+      <item>The recovery of x(t) is equivalent to interpolating the samples of x(t) with a sinc function which is the inverse Fourier transform of the ideal LPF.</item>
+    </list>
+  </content>
+</document>

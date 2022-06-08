@@ -1,0 +1,3059 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 3: Sinusoidal Steady-State Response and DT Filters</title>
+  <metadata>
+  <md:content-id>m27485</md:content-id><md:title>Lecture 3: Sinusoidal Steady-State Response and DT Filters</md:title>
+  <md:abstract>DT filtering has a number of advantages over CT filtering.</md:abstract>
+  <md:uuid>a4b8b882-be8a-4f7e-b16a-b34a841696c7</md:uuid>
+</metadata>
+
+<content>
+    <para id="id9054241">Lecture #3: </para>
+    <para id="id9961831">SINUSOIDAL STEADY-STATE RESPONSE AND DT FILTERS</para>
+    <para id="id10174943">Motivation: DT filtering has a number of advantages over CT filtering</para>
+    <list id="id6993998" list-type="bulleted">
+      <item>Filters can be causal and noncausal</item>
+    </list>
+    <list id="id2965420" list-type="bulleted">
+      <item>Filters easily modified - change software or firmware rather than hardware</item>
+    </list>
+    <list id="id9979748" list-type="bulleted">
+      <item>Filters are accurate - 32-64 bit precision</item>
+    </list>
+    <list id="id4916272" list-type="bulleted">
+      <item>Filters are reliable - no component drift</item>
+    </list>
+    <list id="id9342390" list-type="bulleted">
+      <item>Filters are easily designed - full automatic tools available</item>
+    </list>
+    <para id="id2895932">Outline:</para>
+    <list id="id9945188" list-type="bulleted">
+      <item>Filtering DT time functions, DT images</item>
+    </list>
+    <list id="id4317037" list-type="bulleted">
+      <item>Automobile audio system</item>
+    </list>
+    <list id="id3834041" list-type="bulleted">
+      <item>Review steady-state response</item>
+    </list>
+    <list id="id9044966" list-type="bulleted">
+      <item>Sinusoidal steady-state response and DT frequency response</item>
+    </list>
+    <list id="id9552509" list-type="bulleted">
+      <item>DT filters</item>
+    </list>
+    <list id="id8776849" list-type="bulleted">
+      <item>Conclusion</item>
+    </list>
+    <para id="id4421555">Acknowledgment: Don MacLellan of the Bose Corporation provided</para>
+    <para id="id10538686">the data on the Bose music system.</para>
+    <para id="id9815168">I. EXAMPLES OF DISCRETE-TIME SYSTEMS</para>
+    <para id="id4300271">Filtering DT time functions</para>
+    <para id="id2998169">Demo showing filtering of daily DJIA from 1930-1992.</para>
+    <figure id="id3460781">
+      <media id="id7838358" alt=""><image src="../../media/graphics1-4b1e.png" mime-type="image/png" height="244" width="563"/></media>
+    </figure>
+    <para id="id2916586">Filtering a DT image</para>
+    <para id="id10530998">An image can be considered as a two-dimensional signal or as a set of one-dimensional signals.</para>
+    <figure id="id9942834">
+      <media id="id1170211230179" alt=""><image src="../../media/graphics2-7d76.png" mime-type="image/png" height="332" width="485"/></media>
+    </figure>
+    <para id="id3266381">Filtering a DT image, cont’d</para>
+    <para id="id7834730">This shows the same image before and after application of DT,third-order lowpass filter to each row.</para>
+    <figure id="id10318819">
+      <media id="id7809458" alt=""><image src="../../media/graphics3-250e.png" mime-type="image/png" height="331" width="482"/></media>
+    </figure>
+    <para id="id9959604">This shows the same image before and after application of DT,third-order lowpass filter to each column.</para>
+    <figure id="id6381382">
+      <media id="id1170209944418" alt=""><image src="../../media/graphics4-205b.png" mime-type="image/png" height="328" width="477"/></media>
+    </figure>
+    <para id="id2968129">Design of a high-performance automobile audio system</para>
+    <para id="id4914761">Description of system</para>
+    <para id="id5619792">If you can afford a car like a Cadillac, you will want an excellent music reproduction system. The incremental cost is small!</para>
+    <figure id="id6775592">
+      <media id="id1170208145930" alt=""><image src="../../media/graphics5-9ef3.png" mime-type="image/png" height="282" width="366"/></media>
+    </figure>
+    <para id="id2954225">Bose music systems are available for a number of different automobiles including the Cadilllac Eldorado and Seville. The system contains 4 audio channels consisting of driver amplifiers and speakers — two located in the front and two in the back.</para>
+    <figure id="id6741624">
+      <media id="id1170205555918" alt=""><image src="../../media/graphics6-d098.png" mime-type="image/png" height="336" width="236"/></media>
+    </figure>
+    <para id="id3003134">Each channel has a block diagram as shown below.</para>
+    <figure id="id10520624">
+      <media id="id1170210238194" alt=""><image src="../../media/graphics7-835f.png" mime-type="image/png" height="74" width="484"/></media>
+    </figure>
+    <para id="id10405888">The equalizer filter is used to compensate for the undesirable acoustic characteristics of the speaker and the enclosure (the car interior).</para>
+    <para id="id9179307">Without the equalizer, the frequency response of the system linking the sound source to the sound at the location of the driver’s head is complicated. This frequency response depends upon such factors as the speaker electromechanics, the dimensions of the car interior, the acoustic characteristics of the interior surface of the car, etc.</para>
+    <figure id="id8265476">
+      <media id="id1170210213440" alt=""><image src="../../media/graphics8-0563.png" mime-type="image/png" height="247" width="281"/></media>
+    </figure>
+    <para id="id2948272">Without the equalizer, the frequency response of the system linking the sound source to the sound at the location of the driver’s head differs for the front and rear speaker pair.</para>
+    <figure id="id10454840">
+      <media id="id1170210201175" alt=""><image src="../../media/graphics9-ae58.png" mime-type="image/png" height="227" width="283"/></media>
+    </figure>
+    <para id="id4898674">Without the equalizer, the frequency response of the system linking the sound source to the sound at the location of the driver’s head is different for the Cadillac Eldorado and the Seville.</para>
+    <figure id="id9780790">
+      <media id="id1170208380607" alt=""><image src="../../media/graphics10-877f.png" mime-type="image/png" height="223" width="273"/></media>
+    </figure>
+    <para id="id3773252">Equalization</para>
+    <para id="id3555605">Equalizers must be designed to remove the undesirable characteristics and generate a frequency response that is pleasant for listening to music. The equalized frequency response for the Bose music system is proprietary.</para>
+    <figure id="id5969722">
+      <media id="id1170204490703" alt=""><image src="../../media/graphics11-26b8.png" mime-type="image/png" height="221" width="223"/></media>
+    </figure>
+    <para id="id3391495">The equalizer must have a complex frequency response. Equalizers for different speakers in the same car differ and equalizers for different car models differ. Bose music systems are available for over 100 different models of cars and all are equalized individually.</para>
+    <para id="id6036654">The problem</para>
+    <para id="id3745421">Equalization filters can be designed using active filters such as the one shown below.</para>
+    <figure id="id4002257">
+      <media id="id1170207048947" alt=""><image src="../../media/graphics12-1919.png" mime-type="image/png" height="230" width="495"/></media>
+    </figure>
+    <para id="id3509916">For this second-order lowpass filter, the values of 4 resistors and 2 capacitors need to be set. Typically, resistors for such an application have tolerance of 1%; the capacitances have tolerances of 5-10%.</para>
+    <para id="id2966934">For an equalization filter with 5 poles, the values of the order of 5 resistors and 5 capacitors need to be chosen to match the desired frequency response. Since there are 4 different equalization filters, the values of about 40 components must be chosen to match the equalizer characteristics for each model of car. This has been done in the past with analog filters. It is difficult to design complex analog filters with multiple components that:</para>
+    <list id="id3525099" list-type="bulleted">
+      <item>are constant in time in the face of changing environmental variables (e.g., temperature).</item>
+    </list>
+    <list id="id9285512" list-type="bulleted">
+      <item>can be adjusted to meet some desired frequency response</item>
+    </list>
+    <para id="id10308135">(e.g., to accommodate variability in models, interiors, etc.).</para>
+    <para id="id4448830">The digital solution</para>
+    <para id="id2918019">There are advantages to using digital rather than analog filters and Bose is now installing digital filter systems for car music systems. The digital equalization filter consists of an analog-to-digital converter, a DT filter, and a digital-to-analog converter. Both the input and output of the DT filter are sequences of numbers, i.e., DT signals.</para>
+    <figure id="id9086397">
+      <media id="id1170204339781" alt=""><image src="../../media/graphics13-a5ac.png" mime-type="image/png" height="68" width="416"/></media>
+    </figure>
+    <para id="id4063582">This is an example of DT processing of a CT signal. The filter characteristics can be modified by changes in software rather than in changes in hardware.</para>
+    <figure id="id6949154">
+      <media id="id6950882" alt=""><image src="graphics14.wmf" mime-type="image/wmf" height="19" width="39"/></media>
+    </figure>
+    <para id="id4843814">II. REVIEW STEADY-STATE RESPONSE</para>
+    <para id="id8564020">1/ Definition</para>
+    <para id="id3392619">Suppose we have a DT LTI system with an input that is an eternal complex geometric sequence</para>
+    <para id="id5199426">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>Xz</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] = ital "Xz" rSup { size 8{n} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3293991">
+      <media id="id5832463" alt=""><image src="../../media/graphics15-92a5.png" mime-type="image/png" height="92" width="272"/></media>
+    </figure>
+    <para id="id7015291">As with CT systems, steady state occurs if z is in the ROC of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) } {}</m:annotation></m:semantics></m:math> . Under those conditions,</para>
+    <para id="id4274578">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>X</m:mi>
+                  </m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =X {H}  cSup { size 8{ "~" } }  \( z \) z rSup { size 8{n} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6579983">2/ The z-plane</para>
+    <para id="id8397409">Consider a causal, stable system with pole-zero diagram shown below</para>
+    <figure id="id7793172">
+      <media id="id1170211343503" alt=""><image src="../../media/graphics16-3375.png" mime-type="image/png" height="227" width="234"/></media>
+    </figure>
+    <para id="id2962784">For z in the shaded region, the response to 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mrow><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:msup><m:mtext>Xz</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] = ital "Xz" rSup { size 8{n} } } {}</m:annotation></m:semantics></m:math> is the steady-state response .</para>
+    <para id="id7353863">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:msup>
+                            <m:mtext>Yz</m:mtext>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>X</m:mi>
+                  </m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = ital "Yz" rSup { size 8{n} } =X {H}  cSup { size 8{ "~" } }  \( z \) z rSup { size 8{n} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10492697">3/ Sinusoidal steady-state response and DT frequency response</para>
+    <para id="id4475332">a/ DT sinusoids</para>
+    <para id="id9793664">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mtext>cos</m:mtext>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>πϕ</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] ="cos" \( 2 ital "πϕ"n \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id2832131">Listen to sinusoidal sounds with MATLAB.</para>
+    <figure id="id10174254">
+      <media id="id8028892" alt=""><image src="../../media/graphics17-634c.png" mime-type="image/png" height="251" width="380"/></media>
+    </figure>
+    <para id="id3545077">b/ Relation of frequency response to system function</para>
+    <figure id="id9982048">
+      <media id="id6576747" alt=""><image src="../../media/graphics18-ad1e.png" mime-type="image/png" height="233" width="452"/></media>
+    </figure>
+    <para id="id10351633">c/ Vectorial interpretation</para>
+    <para id="id4460287">The frequency response is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) } {}</m:annotation></m:semantics></m:math> for 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>z</m:mi><m:mo stretchy="false">=</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z=e rSup { size 8{j %OMEGA } } } {}</m:annotation></m:semantics></m:math> or 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> where 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> is the DT radian frequency, i.e., evaluated on the unit circle.</para>
+    <figure id="id6719739">
+      <media id="id1170210945507" alt=""><image src="../../media/graphics19-fda8.png" mime-type="image/png" height="213" width="239"/></media>
+    </figure>
+    <para id="id3025222">The radian frequency is the angle that the unit vector makes with the real axis.
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> can be evaluated vectorially by computing pole and zero vectors.</para>
+    <para id="id9979827">d/ DT radian frequency and DT frequency</para>
+    <list id="id10519105" list-type="bulleted">
+      <item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> is the radian frequency in units of radians/sample. </item>
+    </list>
+    <list id="id4072782" list-type="bulleted">
+      <item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> can be expressed as 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mo stretchy="false">Ω</m:mo><m:mo stretchy="false">=</m:mo><m:mn>2</m:mn></m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>πϕ</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA =2 ital "πϕ"} {}</m:annotation></m:semantics></m:math>.</item>
+    </list>
+    <list id="id9383178" list-type="bulleted">
+      <item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>ϕ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ϕ} {}</m:annotation></m:semantics></m:math> is the frequency in units of cyles/sample.</item>
+    </list>
+    <list id="id4825651" list-type="bulleted">
+      <item>The frequency response 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi fontstyle="italic">j2</m:mi><m:mstyle fontstyle="italic"><m:mrow><m:mtext>πϕ</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j2 ital "πϕ"} }  \) } {}</m:annotation></m:semantics></m:math> is often plotted versus 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>ϕ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ϕ} {}</m:annotation></m:semantics></m:math>.</item>
+    </list>
+    <para id="id7305958">e/ Properties of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> — periodicity</para>
+    <para id="id10503578">Note</para>
+    <para id="id10503582">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mo stretchy="false">Ω</m:mo>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>2π</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mover>
+                      <m:mi>H</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mtext>~</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mover>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi fontstyle="italic">j2π</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mover>
+                      <m:mi>H</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mtext>~</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mover>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j \(  %OMEGA +2π \) } }  \) = {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } } e rSup { size 8{j2π \) } }  \) = {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3490117">which shows that the DT frequency response is periodic with period 2π. This is evident from the vector diagram.</para>
+    <figure id="id10245362">
+      <media id="id1170211652488" alt=""><image src="../../media/graphics20-609b.png" mime-type="image/png" height="215" width="229"/></media>
+    </figure>
+    <para id="id3786347">Therefore, it is only necessary to plot the DT frequency response over 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mn>2π</m:mn></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{2π} {}</m:annotation></m:semantics></m:math> radians.</para>
+    <para id="id3056411">f/ Properties of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> — symmetry</para>
+    <para id="id8957406">For a DT LTI system, if the input 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mrow><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">=</m:mo><m:mi>δ</m:mi></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] =δ \[ n \] } {}</m:annotation></m:semantics></m:math> then the output is the unit sample response which we designate h[n]. In the Z-transform domain, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {X}  cSup { size 8{ "~" } }  \( z \) =1} {}</m:annotation></m:semantics></m:math> , and </para>
+    <para id="id4537487">Thus,</para>
+    <para id="id4513900">which evaluated on the unit circle is</para>
+    <para id="id4513904">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>j</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">Ω</m:mo>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {h \[ n \] e rSup { size 8{ - j %OMEGA n} } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3846340">We assume that h[n] is a real sequence. Then we expand the exponential</para>
+    <para id="id7605162">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mtext>cos</m:mtext>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo stretchy="false">Ω</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>j</m:mi>
+                        </m:mrow>
+                        <m:mtext>sin</m:mtext>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo stretchy="false">Ω</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {h \[ n \]  \( "cos" \(  %OMEGA n \)  - j"sin" \(  %OMEGA n \)  \) } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4550292">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mover>
+                        <m:mi>H</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mtext>~</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mover>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>r</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>j</m:mi>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mover>
+                      <m:mi>H</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mtext>~</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mover>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) +j {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8138984">Therefore, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> can be expanded into its real and imaginary parts and the magnitude computed as follows.</para>
+    <para id="id6040058"><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mstyle fontsize="8pt"><m:mrow><m:mi>r</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mrow><m:munderover><m:mo stretchy="false">∑</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mo stretchy="false">∞</m:mo></m:mrow></m:mstyle></m:munderover><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext>cos</m:mtext><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">Ω</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {h \[ n \] "cos" \(  %OMEGA n \) } } {}</m:annotation></m:semantics></m:math> even function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>,</para>
+    <para id="id9910663"><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:mrow><m:munderover><m:mo stretchy="false">∑</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mo stretchy="false">∞</m:mo></m:mrow></m:mstyle></m:munderover><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext>sin</m:mtext><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">Ω</m:mo><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) = -  Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {h \[ n \] "sin" \(  %OMEGA n \) } } {}</m:annotation></m:semantics></m:math> odd function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>,</para>
+    <para id="id7969136"><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msqrt><m:mrow><m:mover><m:msub><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:msup><m:mi>r</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle></m:msub><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:mi>j</m:mi></m:mrow><m:mover><m:msub><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:msup><m:mi>i</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle></m:msub><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline  {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = sqrt { {H rSub { size 8{r}   rSup { size 8{2} } } }  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) +j {H rSub { size 8{i}   rSup { size 8{2} } } }  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) }  \lline } {}</m:annotation></m:semantics></m:math> even function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>,</para>
+    <para id="id6741198">The angle can be computed as follows,</para>
+    <para id="id9814803">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>∠</m:mi>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="true">{</m:mo>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:msup>
+                                <m:mtext>tan</m:mtext>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:mn>1</m:mn>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mfenced open="[" close="]">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>i</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>r</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                </m:mfrac>
+                              </m:mfenced>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>for</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:msub>
+                                <m:mover>
+                                  <m:mi>H</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mtext>~</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mover>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>r</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>j</m:mi>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mo stretchy="false">&gt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>π</m:mi>
+                                <m:mo stretchy="false">+</m:mo>
+                                <m:msup>
+                                  <m:mtext>tan</m:mtext>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mn>1</m:mn>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                              <m:mfenced open="[" close="]">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>i</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>r</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                </m:mfrac>
+                              </m:mfenced>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>for</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:msub>
+                                <m:mover>
+                                  <m:mi>H</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mtext>~</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mover>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>r</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>j</m:mi>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mo stretchy="false">&lt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{∠ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = left lbrace  matrix {
+"tan" rSup { size 8{ - 1} }  left [ {  { {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) }  over  { {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) } }  right ] matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+}  {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) &gt;0 {} ##
+π+"tan" rSup { size 8{ - 1} }  left [ {  { {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) }  over  { {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) } }  right ] matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+}  {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) &lt;0{}
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3846338">But, since 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">±</m:mo><m:mi fontstyle="italic">n2π</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ +- n2π} {}</m:annotation></m:semantics></m:math> can always be added to the angle, and since 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msup><m:mtext>tan</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mstyle></m:msup><m:mfenced open="[" close="]"><m:mfrac><m:mrow><m:msub><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mstyle fontsize="8pt"><m:mrow><m:mi>i</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:msub><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mstyle fontsize="8pt"><m:mrow><m:mi>r</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mfenced></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"tan" rSup { size 8{ - 1} }  left [ {  { {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) }  over  { {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) } }  right ]} {}</m:annotation></m:semantics></m:math> is an odd function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>,</para>
+    <para id="id4504938">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>∠</m:mi>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mo stretchy="false">Ω</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="true">{</m:mo>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:msup>
+                                  <m:mtext>tan</m:mtext>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mn>1</m:mn>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                              <m:mfenced open="[" close="]">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>i</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>r</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                </m:mfrac>
+                              </m:mfenced>
+                              <m:mi/>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mi/>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>for</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mi/>
+                              <m:msub>
+                                <m:mover>
+                                  <m:mi>H</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mtext>~</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mover>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>r</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>j</m:mi>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow>
+                                <m:mi/>
+                                <m:mo stretchy="false">&gt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:msup>
+                                  <m:mtext>tan</m:mtext>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mn>1</m:mn>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                              <m:mfenced open="[" close="]">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>i</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                  <m:mrow>
+                                    <m:msub>
+                                      <m:mover>
+                                        <m:mi>H</m:mi>
+                                        <m:mstyle fontsize="8pt">
+                                          <m:mrow>
+                                            <m:mtext>~</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mover>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mi>r</m:mi>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                    <m:mo stretchy="false">(</m:mo>
+                                    <m:msup>
+                                      <m:mi>e</m:mi>
+                                      <m:mstyle fontsize="8pt">
+                                        <m:mrow>
+                                          <m:mrow>
+                                            <m:mi>j</m:mi>
+                                            <m:mo stretchy="false">Ω</m:mo>
+                                          </m:mrow>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msup>
+                                    <m:mo stretchy="false">)</m:mo>
+                                  </m:mrow>
+                                </m:mfrac>
+                              </m:mfenced>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>for</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mi/>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:msub>
+                                <m:mover>
+                                  <m:mi>H</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mtext>~</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mover>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>r</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mi>j</m:mi>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow>
+                                <m:mi/>
+                                <m:mo stretchy="false">&lt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{∠ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) = left lbrace  matrix {
+ - "tan" rSup { size 8{ - 1} }  left [ {  { {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) }  over  { {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) } }  right ]` matrix {
+ {} # {}
+} ` ital "for" matrix {
+ {} # {}
+} ` {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) `&gt;0 {} ##
+ - π - "tan" rSup { size 8{ - 1} }  left [ {  { {H}  cSup { size 8{ "~" } }  rSub { size 8{i} }  \( e rSup { size 8{j %OMEGA } }  \) }  over  { {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) } }  right ] matrix {
+ {} # {}
+}  ital "for"` matrix {
+ {} # {}
+}  {H}  cSup { size 8{ "~" } }  rSub { size 8{r} }  \( e rSup { size 8{j %OMEGA } }  \) `&lt;0{}
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10351458">Therefore, 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>∠</m:mi><m:mover><m:mi>H</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>~</m:mtext></m:mrow></m:mstyle></m:mover><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{∠ {H}  cSup { size 8{ "~" } }  \( e rSup { size 8{j %OMEGA } }  \) } {}</m:annotation></m:semantics></m:math> is an odd function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id10532659">g/ Plotting the frequency response</para>
+    <para id="id3394615">Plots of the frequency response of a DT lowpass filter show the period in 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mn>2π</m:mn></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{2π} {}</m:annotation></m:semantics></m:math>, the magnitude is an even function, and the angle is an odd function of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math>. All information about the frequency response is contained in the range 0 ≤ 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> ≤
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>π</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{π} {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id10337188">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) = Sum cSub { size 8{n= -  infinity } }  cSup { size 8{ infinity } }  {h \[ n \] z rSup { size 8{ - n} } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3766126">
+      <media id="id1170207514789" alt=""><image src="../../media/graphics21-e76a.png" mime-type="image/png" height="275" width="600"/></media>
+    </figure>
+    <para id="id4661708">h/ Plotting scales for the frequency response</para>
+    <para id="id10310471">Three frequency scales are commonly used. Radian frequency 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mo stretchy="false">Ω</m:mo></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA } {}</m:annotation></m:semantics></m:math> is related to frequency 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>ϕ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ϕ} {}</m:annotation></m:semantics></m:math> by </para>
+    <para id="id2968002">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo stretchy="false">Ω</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>πϕ</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA =2 ital "πϕ"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3807104">MATLAB uses a normalized frequency defined as </para>
+    <para id="id7635016">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>normalized</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>frequency</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mo stretchy="false">Ω</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mfrac>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>2ϕ</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ ital "normalized"` ital "frequency"`=` {  { %OMEGA }  over  {π} } =2ϕ} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3552810">The different frequencies are displayed in the complex z plane below.</para>
+    <figure id="id3503564">
+      <media id="id1132831" alt=""><image src="../../media/graphics22-94ef.png" mime-type="image/png" height="171" width="200"/></media>
+    </figure>
+    <para id="id3800955">Three frequency scales are displayed along the unit circle. Ω is the radian frequency and φ is the frequency.</para>
+    <para id="id3760700">III. DT FILTERS</para>
+    <para id="id3760704">A variety of DT filters can be synthesized.</para>
+    <list id="id3520455" list-type="bulleted">
+      <item>DT filters similar to CT filters can be synthesized, e.g., lowpass filters, highpass filters, bandpass filters, bandreject filters, notchfilters</item>
+    </list>
+    <list id="id8418835" list-type="bulleted">
+      <item>DT filters synthesized from recursive difference equations</item>
+    </list>
+    <para id="id9423030">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo stretchy="false">∑</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>K</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mi>k</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>l</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>L</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>b</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{k=0} }  cSup { size 8{K} }  {a rSub { size 8{k} } y \[ n+k \] = Sum cSub { size 8{l=0} }  cSup { size 8{L} }  {b rSub { size 8{1} } x \[ n+1 \] } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3468914">have poles (in addition to those at z = 0 or 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>z</m:mi><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z= infinity } {}</m:annotation></m:semantics></m:math>) and infinite impulse responses and are called infinite impulse response or IIR filters.</para>
+    <list id="id3710826" list-type="bulleted">
+      <item>DT filters synthesized from nonrecursive difference equations</item>
+    </list>
+    <para id="id3993098">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>l</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>L</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>b</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{l=0} }  cSup { size 8{L} }  {b rSub { size 8{1} } x \[ n+1 \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3488088">consist of all zeros (except at z = 0 or 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>z</m:mi><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z= infinity } {}</m:annotation></m:semantics></m:math>), have finite impulse responses, and are called finite impulse response or FIR filters.</para>
+    <para id="id3847083">Demo of relation of pole-zero diagram, time waveforms, vector diagrams, and frequency response.</para>
+    <figure id="id3161711">
+      <media id="id7503645" alt=""><image src="../../media/graphics23-7439.png" mime-type="image/png" height="221" width="564"/></media>
+    </figure>
+    <para id="id4299190">1/ Causal, first-order, IIR, lowpass filter</para>
+    <para id="id4299194">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo stretchy="false">&lt;</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:msup>
+                          <m:mi fontstyle="italic">αz</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">∣</m:mo>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mo stretchy="false">∣</m:mo>
+                  </m:mrow>
+                  <m:mi>a</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \] =α rSup { size 8{n} } u \[ n \] `` matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} ```0&lt;α&lt;1`` { dlrarrow }  cSup { size 8{Z} } `` {H}  cSup { size 8{ "~" } }  \( z \) = {  {1}  over  {1 - αz rSup { size 8{ - 1} } } } `` matrix {
+ {} # {}
+} ` ital "for" matrix {
+ {} # {}
+} ``` \lline z \lline &gt; \lline a \lline } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3790642">
+      <figure id="id10358568">
+        <media id="id3015698" alt=""><image src="../../media/graphics24-a869.png" mime-type="image/png" height="319" width="380"/></media>
+      </figure>
+    </para>
+    <para id="id3713274">A pole at 0 &lt; α &lt; 1 yields a lowpass frequency response. As |α| decreases, the unit sample response approaches a unit sample, the frequency response magnitude approaches 1 (0 dB) and the angle approaches 0.</para>
+    <para id="id9181507">2/ Causal, first-order, IIR, highpass filter</para>
+    <para id="id3042610">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mtable>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                          </m:mtr>
+                        </m:mtable>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">&lt;</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi/>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:msup>
+                          <m:mi fontstyle="italic">αz</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>α</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \] =α rSup { size 8{n} } u \[ n \] `` matrix {
+ {} # {}
+}  ital "for"`` matrix {
+ {} # {}
+}  - 1&lt;α&lt;0``` { dlrarrow }  cSup { size 8{Z} } ``` {H}  cSup { size 8{ "~" } }  \( z \) = {  {1}  over  {1 - αz rSup { size 8{ - 1} } } } `` matrix {
+ {} # {}
+} ` ital "for"` matrix {
+ {} # {}
+} ` \lline z \lline `&gt;` \lline α \lline } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3717986">
+      <media id="id3113396" alt=""><image src="../../media/graphics25-d10a.png" mime-type="image/png" height="269" width="329"/></media>
+    </figure>
+    <para id="id3045879">A pole at −1 &lt; 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math> &lt; 0 yields a highpass frequency response. As 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>α</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline α \lline } {}</m:annotation></m:semantics></m:math> decreases, the unit sample response approaches a unit sample, the frequency response magnitude approaches 1 (0 dB) and the angle approaches 0.</para>
+    <para id="id10293235">3/ Causal, first-order, FIR, lowpass filter</para>
+    <para id="id7794391">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:mtext>αδ</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi/>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">&lt;</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:msup>
+                            <m:mtext>az</m:mtext>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">≠</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \] =δ \[ n \]  -  ital "αδ" \[ n - 1 \] ``` matrix {
+ {} # {}
+}  ital "for"`` matrix {
+ {} # {}
+} ` - 1&lt;α&lt;0 { dlrarrow }  cSup { size 8{Z} }  {H}  cSup { size 8{ "~" } }  \( z \) =1 -  ital "az" rSup { size 8{ - 1} }  matrix {
+ {} # {}
+}  ital "for"` matrix {
+ {} # {}
+} `z &lt;&gt; 0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id9798380">
+      <media id="id5105666" alt=""><image src="../../media/graphics26-e32c.png" mime-type="image/png" height="265" width="326"/></media>
+    </figure>
+    <para id="id7902780">A filter with a zero located at −1&lt;
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math>&lt;0 has a lowpass frequency response and a finite impulse response.</para>
+    <para id="id10238262">4/ Causal, first-order, FIR, highpass filter</para>
+    <para id="id3528843">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:mtext>αδ</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi/>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">&lt;</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:msup>
+                            <m:mtext>az</m:mtext>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">≠</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \] =δ \[ n \]  -  ital "αδ" \[ n - 1 \] ` matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} ` - 1&lt;α&lt;0 { dlrarrow }  cSup { size 8{Z} }  {H}  cSup { size 8{ "~" } }  \( z \) =1 -  ital "az" rSup { size 8{ - 1} }  matrix {
+ {} # {}
+}  ital "for"`` matrix {
+ {} # {}
+} z &lt;&gt; 0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id3852211">
+      <media id="id4979110" alt=""><image src="../../media/graphics27-35b3.png" mime-type="image/png" height="246" width="309"/></media>
+    </figure>
+    <para id="id3742378">A filter with a zero located at 0 &lt; 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math> &lt; 1 has a highpass frequency response and a finite impulse response.</para>
+    <para id="id8886354">5/ Causal, second-order, IIR, bandpass filter</para>
+    <para id="id3730560">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:msup>
+                            <m:mi fontstyle="italic">αe</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi>j</m:mi>
+                                  <m:msub>
+                                    <m:mo stretchy="false">Ω</m:mo>
+                                    <m:mstyle fontsize="6pt">
+                                      <m:mrow>
+                                        <m:mn>0</m:mn>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:msub>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:msup>
+                                  <m:mi fontstyle="italic">αe</m:mi>
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:mi>j</m:mi>
+                                    </m:mrow>
+                                    <m:msub>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                      <m:mstyle fontsize="6pt">
+                                        <m:mrow>
+                                          <m:mn>0</m:mn>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                  </m:mrow>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>z</m:mi>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:msup>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>α</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) = {  {1}  over  { \( 1 - αe rSup { size 8{j %OMEGA  rSub { size 6{0} } } } z rSup { - 1}  size 12{ \)  \( 1 - αe rSup { - j %OMEGA  rSub { size 6{0} } } } size 12{z rSup { - 1} } size 12{ \) }} } ``` \lline z \lline `&gt;` \lline α \lline } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id8557140">
+      <media id="id4731938" alt=""><image src="../../media/graphics28-383a.png" mime-type="image/png" height="311" width="386"/></media>
+    </figure>
+    <para id="id3705866">A filter with a pair of complex conjugate poles has a bandpass frequency response. The center frequency of the bandpass filter is determined by the radian frequency of the pole location.</para>
+    <para id="id3527983">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:msup>
+                            <m:mi fontstyle="italic">αe</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi>j</m:mi>
+                                  <m:msub>
+                                    <m:mo stretchy="false">Ω</m:mo>
+                                    <m:mstyle fontsize="6pt">
+                                      <m:mrow>
+                                        <m:mn>0</m:mn>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:msub>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:msup>
+                                  <m:mi fontstyle="italic">αe</m:mi>
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:mi>j</m:mi>
+                                    </m:mrow>
+                                    <m:msub>
+                                      <m:mo stretchy="false">Ω</m:mo>
+                                      <m:mstyle fontsize="6pt">
+                                        <m:mrow>
+                                          <m:mn>0</m:mn>
+                                        </m:mrow>
+                                      </m:mstyle>
+                                    </m:msub>
+                                  </m:mrow>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>z</m:mi>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:msup>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>α</m:mi>
+                  <m:mo stretchy="false">∣</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) = {  {1}  over  { \( 1 - αe rSup { size 8{j %OMEGA  rSub { size 6{0} } } } z rSup { - 1}  size 12{ \)  \( 1 - αe rSup { - j %OMEGA  rSub { size 6{0} } } } size 12{z rSup { - 1} } size 12{ \) }} } `` matrix {
+ {} # {}
+} ` \lline z \lline `&gt;` \lline α \lline } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id5600474">
+      <media id="id5384222" alt=""><image src="../../media/graphics29-ee6a.png" mime-type="image/png" height="317" width="397"/></media>
+    </figure>
+    <para id="id10336998">A filter with a pair of complex conjugate poles has a bandpass frequency response. The bandwidth of the bandpass filter decreases as the pole location approaches the unit circle.</para>
+    <para id="id3055627">6/ Causal, second-order, FIR, bandreject filter</para>
+    <para id="id4372210">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi fontstyle="italic">αe</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>j</m:mi>
+                            <m:msub>
+                              <m:mo stretchy="false">Ω</m:mo>
+                              <m:mstyle fontsize="6pt">
+                                <m:mrow>
+                                  <m:mn>0</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:msup>
+                            <m:mi fontstyle="italic">αe</m:mi>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>j</m:mi>
+                              </m:mrow>
+                              <m:msub>
+                                <m:mo stretchy="false">Ω</m:mo>
+                                <m:mstyle fontsize="6pt">
+                                  <m:mrow>
+                                    <m:mn>0</m:mn>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                            </m:mrow>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:msup>
+                        <m:mi>z</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>,</m:mi>
+                        <m:mtable>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                          </m:mtr>
+                        </m:mtable>
+                        <m:mi/>
+                        <m:mo stretchy="false">∣</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">∣</m:mo>
+                          <m:mo stretchy="false">≠</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) = \( 1 - αe rSup { size 8{j %OMEGA  rSub { size 6{0} } } } z rSup { - 1}  size 12{ \)  \( 1 - αe rSup { - j %OMEGA  rSub { size 6{0} } } } size 12{z rSup { - 1} } size 12{ \) , matrix {
+ {} # {}
+} ` \lline z \lline  &lt;&gt; 0}} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9999914">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <media id="id5121214" alt=""><image src="../../media/graphics30-12fb.png" mime-type="image/png" height="318" width="384"/></media>
+    </para>
+    <para id="id3487112">A filter with a pair of complex conjugate zeros has a bandreject frequency response. The bandwidth of the bandreject filter decreases as the zero location approaches the unit circle.</para>
+    <para id="id3707114">7/ Causal, second-order, notch filter</para>
+    <para id="id3707118">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi fontstyle="italic">jπ</m:mi>
+                                  <m:mo stretchy="false">/</m:mo>
+                                  <m:mn>4</m:mn>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mi fontstyle="italic">jπ</m:mi>
+                                  </m:mrow>
+                                  <m:mo stretchy="false">/</m:mo>
+                                  <m:mn>4</m:mn>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mtext>.</m:mtext>
+                        <m:mn>9</m:mn>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi fontstyle="italic">jπ</m:mi>
+                                <m:mo stretchy="false">/</m:mo>
+                                <m:mn>4</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mtext>.</m:mtext>
+                        <m:mn>9</m:mn>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi fontstyle="italic">jπ</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">/</m:mo>
+                                <m:mn>4</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">∣</m:mo>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mtext>.</m:mtext>
+                  <m:mn>9</m:mn>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {H}  cSup { size 8{ "~" } }  \( z \) = {  { \( 1 - e rSup { size 8{jπ/4} } z rSup { size 8{ - 1} }  \)  \( 1 - e rSup { size 8{ - jπ/4} } z rSup { size 8{ - 1} }  \) }  over  { \( 1 - 0 "." 9e rSup { size 8{jπ/4} } z rSup { size 8{ - 1} }  \)  \( 1 - 0 "." 9e rSup { size 8{ - jπ/4} } z rSup { size 8{ - 1} }  \) } }  matrix {
+ {} # {}
+}  \lline z \lline &gt;0 "." 9} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id4503267">
+      <media id="id5963049" alt=""><image src="../../media/graphics31-784a.png" mime-type="image/png" height="259" width="566"/></media>
+    </figure>
+    <para id="id4928456">IV. CONCLUSIONS ON DT FILTERS</para>
+    <list id="id4928459" list-type="bulleted">
+      <item>Real poles between z = 0 and z = 1  lowpass filter.</item>
+    </list>
+    <list id="id6112978" list-type="bulleted">
+      <item>Real zeros between z = −1 and z = 0  lowpass filter.</item>
+    </list>
+    <list id="id9801170" list-type="bulleted">
+      <item>Real poles between z = −1 and z = 0  highpass filter.</item>
+    </list>
+    <list id="id4445142" list-type="bulleted">
+      <item>Real zeros between z = 0 and z = 1  highpass filter.</item>
+    </list>
+    <list id="id8102518" list-type="bulleted">
+      <item>Complex conjugate poles with |z| &lt;1  bandpass filter.</item>
+    </list>
+    <list id="id3754849" list-type="bulleted">
+      <item>Complex conjugate zeros with |z| &lt;1  bandreject filter.</item>
+    </list>
+    <list id="id9116578" list-type="bulleted">
+      <item>Complex conjugate poles 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>α</m:mi><m:mo stretchy="false">∣</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>j</m:mi><m:msub><m:mo stretchy="false">Ω</m:mo><m:mstyle fontsize="6pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline α \lline e rSup { size 8{j %OMEGA  rSub { size 6{0} } } } } {}</m:annotation></m:semantics></m:math>, have center frequencies that increase as 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msub><m:mo stretchy="false">Ω</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mn>0</m:mn></m:mrow></m:mstyle></m:msub></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ %OMEGA  rSub { size 8{0} } } {}</m:annotation></m:semantics></m:math> increases.</item>
+    </list>
+    <list id="id3791585" list-type="bulleted">
+      <item>Complex conjugate poles and zeros nearer the unit circle yield filters with narrower bandwidth.</item>
+    </list><para id="element-500"><link resource="ps2.doc">Exercises for this lecture.</link>
+</para><para id="element-509"><link resource="ps2sol.pdf"> Solutions of Exercises.</link>
+</para>
+  </content>
+</document>
