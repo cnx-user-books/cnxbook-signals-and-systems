@@ -1,0 +1,1598 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 1: Introduction to Signals</title>
+  <metadata>
+  <md:content-id>m27489</md:content-id><md:title>Lecture 1: Introduction to Signals</md:title>
+  <md:abstract>To describe signals, both man-made and naturally occurring, in forms of mathematical expressions in time and frequency domains.</md:abstract>
+  <md:uuid>db57ae16-bff3-4742-a53b-ddd51f002922</md:uuid>
+</metadata>
+
+<content>
+    <para id="id3587949">Lecture #1:</para>
+    <para id="id11384232">INTRODUCTION TO SIGNALS</para>
+    <para id="id8162421">Motivation: To describe signals, both man-made and naturally occurring, in forms of mathematical expressions in time and frequency domains.</para>
+    <para id="id10135322">Outline:</para>
+    <list id="id11799019" list-type="bulleted">
+      <item>Classification of signals</item>
+    </list>
+    <list id="id11540205" list-type="bulleted"><item>Building-block signals — complex exponentials, impulses.</item>
+</list>
+    <list id="id12130726" list-type="bulleted">
+      <item>Conclusions</item>
+    </list>
+    <para id="id4870640">Signals and systems</para>
+    <para id="id11633555">This subject deals with mathematical methods used to describe signals and to analyze and synthesize systems.</para>
+    <list id="id11371174" list-type="bulleted">
+      <item>Signals are variables that carry information</item>
+      <item>Systems process input signals to produce output signals.</item>
+    </list>
+    <para id="id12362110">Today — SIGNALS; Next time — SYSTEMS.</para>
+    <para id="id11840355">Demonstration of different types of signals</para>
+    <figure id="id8438793">
+      <media id="id1164830369281" alt=""><image src="../../media/graphics1-033a.png" mime-type="image/png" height="127" width="429"/></media>
+    </figure>
+    <para id="id11605327">I. CLASSIFICATION OF SIGNALS</para>
+    <para id="id12022754">Identity of the independent variable</para>
+    <para id="id11604190">Time is often the independent variable for signals. For example, the electrical activity of the heart recorded with electrodes on the surface of the chest — the electrocardiogram (ECG or EKG).</para>
+    <figure id="id3501284">
+      <media id="id1164829750008" alt=""><image src="../../media/graphics2-f540.png" mime-type="image/png" height="135" width="429"/></media>
+    </figure>
+    <para id="id8923090">Generic time</para>
+    <para id="id8658523">The term time is often used generically to represent the independent variable of a signal. The independent variable may be a spatial variable as in an image. Here color information is specified as a function of position.</para>
+    <figure id="id11733716">
+      <media id="id1164827844498" alt=""><image src="../../media/graphics3-ad0b.png" mime-type="image/png" height="161" width="140"/></media>
+    </figure>
+    <para id="id11407808">Dimensionality of the independent variable</para>
+    <para id="id11165547">The independent variable can be 1-D (time t in the EKG signal) or 2-D (space x, y in the image), 3-D, or N-D.<media id="id1164830587142" alt=""><image src="../../media/graphics4-e914.png" mime-type="image/png" height="247" width="603"/></media></para>
+    <para id="id10815355">In this course, we shall consider largely 1-D signals, but signals in many applications (e.g., radio astronomy, medical imaging, seismometry) have multiple dimensions.</para>
+    <para id="id11689221">1. Continuous time (CT) and discrete time (DT) signals</para>
+    <para id="id10635578">CT signals take on real or complex values as a function of an independent variable that ranges over the real numbers and are denoted as x(t). DT signals take on real or complex values as a function of an independent variable that ranges over the integers and are denoted as x[n]. Note the subtle use of parentheses and square brackets to distinguish between CT and DT signals.</para>
+    <figure id="id12108832">
+      <media id="id1164831788722" alt=""><image src="../../media/graphics5-b9a2.png" mime-type="image/png" height="179" width="439"/></media>
+    </figure>
+    <para id="id9827035">For example, consider the image shown on the left and its DT representation shown on the right</para>
+    <figure id="id11116116">
+      <media id="id8414011" alt=""><image src="../../media/graphics6-387c.png" mime-type="image/png" height="179" width="439"/></media>
+    </figure>
+    <para id="id12028652">The image on the left consists of 302 × 435 picture elements (pixels) each of which is represented by a triplet of numbers {R,G,B} that encode the color. Thus, the signal is represented by c[n,m] where m and n are the independent variables that specify pixel location and c is a color vector specified by a triplet of hues {R,G,B} (red, green, and blue).</para>
+    <para id="id11799829">2/ Real and complex signals</para>
+    <para id="id2971454">Signals can be real, imaginary, or complex. An important class of signals are the complex exponentials:</para>
+    <list id="id9948674" list-type="bulleted">
+      <item>the CT signal x(t) = 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math> where is s is a complex number,</item>
+      <item>the DT signal x[n] =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>z</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z rSup { size 8{n} } } {}</m:annotation></m:semantics></m:math> where z is a complex number.</item>
+    </list>
+    <para id="id11803799">Q. Why do we deal with complex signals? </para>
+    <para id="id10783662">A. They are often analytically simpler to deal with than real signals.</para>
+    <para id="id11988705">For both exponential CT (x(t) =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math>) and DT (x[n] =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>z</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z rSup { size 8{n} } } {}</m:annotation></m:semantics></m:math>) signals, x is a complex quantity. To plot x, we can choose to plot either its magnitude and angle or its real and imaginary parts - whichever is more convenient for the analysis.</para>
+    <para id="id10066874">For example, suppose s = jπ/8</para>
+    <para id="id11762583">and z =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi fontstyle="italic">jπ</m:mi><m:mo stretchy="false">/</m:mo><m:mn>8</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{jπ/8} } } {}</m:annotation></m:semantics></m:math>, then the real parts R</para>
+    <para id="id9860766">are:</para>
+    <para id="id10159773">R{x(t)} = R{
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi fontstyle="italic">jπ</m:mi><m:mo stretchy="false">/</m:mo><m:mn>8</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{jπ/8} } } {}</m:annotation></m:semantics></m:math>} = cos(πt/8)</para>
+    <para id="id12018401">R{x[n]} = R{
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi fontstyle="italic">jπ</m:mi><m:mo stretchy="false">/</m:mo><m:mn>8</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{jπ/8} } } {}</m:annotation></m:semantics></m:math>} = cos[πn/8]</para>
+    <figure id="id10359634">
+      <media id="id4385386" alt=""><image src="../../media/graphics7-7c57.png" mime-type="image/png" height="236" width="303"/></media>
+    </figure>
+    <para id="id9772591">3/ Periodic and aperiodic signals</para>
+    <para id="id5777126">Periodic signals have the property that x(t + T) = x(t) for all t. The smallest value of T that satisfies the definition is called the period. Shown below are an aperiodic signal (left) and a periodic signal (right).</para>
+    <figure id="id10787429">
+      <media id="id1164826709523" alt=""><image src="../../media/graphics8-79bc.png" mime-type="image/png" height="139" width="445"/></media>
+    </figure>
+    <para id="id5508242">4/ Causal and anti-causal signals</para>
+    <para id="id9638487">A causal signal is zero for t &lt; 0 and an anti-causal signal is zero for t &gt; 0</para>
+    <figure id="id11589354">
+      <media id="id1164829557807" alt=""><image src="../../media/graphics9-4ef9.png" mime-type="image/png" height="90" width="322"/></media>
+    </figure>
+    <para id="id11771297">5/ Right- and left-sided signals</para>
+    <para id="id9901557">A right-sided signal is zero for t &lt; T and a left-sided signal is zero for t &gt; T where T can be positive or negative.</para>
+    <figure id="id11495280">
+      <media id="id4561699" alt=""><image src="../../media/graphics10-1d72.png" mime-type="image/png" height="90" width="322"/></media>
+    </figure>
+    <para id="id7416670">6/ Bounded and unbounded signals</para>
+    <figure id="id11654188">
+      <media id="id1164827597131" alt=""><image src="../../media/graphics11-729b.png" mime-type="image/png" height="213" width="467"/></media>
+    </figure>
+    <para id="id11095884">7/ Even and odd signals</para>
+    <para id="id8727553">Even signals xe(t) and odd signals xo(t) are defined as</para>
+    <para id="id9347739">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo stretchy="true">{</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>e</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>e</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mi/>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mi/>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>o</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:msub>
+                                <m:mi>x</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>o</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                            </m:mrow>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ left lbrace  matrix {
+x rSub { size 8{e} }  \( t \) =x rSub { size 8{e} }  \(  - t \) ` {} ##
+`x rSub { size 8{o} }  \( t \) = - x rSub { size 8{o} }  \(  - t \) 
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id9967739">
+      <media id="id6766386" alt=""><image src="../../media/graphics12-ccd1.png" mime-type="image/png" height="86" width="324"/></media>
+    </figure>
+    <para id="id12016346">Any signal is a sum of unique odd and even signals. Using</para>
+    <para id="id11291682">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo stretchy="true">{</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>e</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mi/>
+                          </m:mrow>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>o</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>e</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>o</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ left lbrace  matrix {
+x \( t \) =x rSub { size 8{e} }  \( t \) `+`x rSub { size 8{o} }  \( t \)  {} ##
+x \(  - t \) =x rSub { size 8{e} }  \( t \)  - x rSub { size 8{o} }  \( t \) 
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6244325">Yields</para>
+    <para id="id9042226">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo stretchy="true">{</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>e</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mi>x</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mi/>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>o</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                          </m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>x</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ left lbrace  matrix {
+x rSub { size 8{e} }  \( t \) = {  {1}  over  {2} }  \( x \( t \) +x \(  - t \)  \)  {} ##
+`x rSub { size 8{o} }  \( t \) = {  {1}  over  {2} }  \( x \( t \)  - x \(  - t \)  \) 
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id12061030">
+      <media id="id8705824" alt=""><image src="../../media/graphics13-6489.png" mime-type="image/png" height="201" width="300"/></media>
+    </figure>
+    <para id="id12057614">II. BUILDING-BLOCK SIGNALS</para>
+    <para id="id12217045">We will represent signals as sums of building-block signals. Important families of building-block signals are the eternal, complex exponentials and the unit impulse functions.</para>
+    <para id="id9083330">1/ Eternal, complex exponentials</para>
+    <para id="id9159880">These signals have the form x(t) = X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math> for all t and x[n] = X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>z</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{z rSup { size 8{n} } } {}</m:annotation></m:semantics></m:math> for all n, where X, s, and z are complex numbers. We illustrate the richness of this class of functions for CT signals; DT signals are similarly rich. In general s is complex and can be written as s = σ +jω, where σ and ω are the real and imaginary parts of s.</para>
+    <para id="id11747940">a/ Eternal, complex exponentials — real s</para>
+    <para id="id11653915">If s = σ is real and X is real then</para>
+    <para id="id11989049">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>Xe</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi fontstyle="italic">σt</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = ital "Xe" rSup { size 8{σt} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11836281">and we get the family of real exponential functions.</para>
+    <para id="id3346639">b/ Eternal, complex exponentials — imaginary s</para>
+    <para id="id8881611">If s = jω is imaginary and X is real then</para>
+    <para id="id12217146">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:msup>
+                            <m:mtext>Xe</m:mtext>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi fontstyle="italic">jϖt</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>X</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mtext>cos</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi fontstyle="italic">ϖt</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>j</m:mi>
+                  </m:mrow>
+                  <m:mtext>sin</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi fontstyle="italic">ϖt</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = ital "Xe" rSup { size 8{jϖt} } =X \( "cos" \( ϖt \) +j"sin" \( ϖt \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9179217">and we get the family of sinusoidal functions.</para>
+    <para id="id10150757">c/ Eternal, complex exponentials — complex s</para>
+    <para id="id10716894">If s = σ +jω is complex and X is real then</para>
+    <para id="id9026166">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:msup>
+                            <m:mtext>Xe</m:mtext>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">(</m:mo>
+                                  <m:mrow>
+                                    <m:mi>σ</m:mi>
+                                    <m:mo stretchy="false">+</m:mo>
+                                    <m:mi fontstyle="italic">jϖ</m:mi>
+                                  </m:mrow>
+                                  <m:mo stretchy="false">)</m:mo>
+                                  <m:mi>t</m:mi>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>Xe</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi fontstyle="italic">σt</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mtext>cos</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi fontstyle="italic">ϖt</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>j</m:mi>
+                  </m:mrow>
+                  <m:mtext>sin</m:mtext>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi fontstyle="italic">ϖt</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = ital "Xe" rSup { size 8{ \( σ+jϖ \) t} } = ital "Xe" rSup { size 8{σt} }  \( "cos" \( ϖt \) +j"sin" \( ϖt \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10260806">and we get the family of damped sinusoidal functions.</para>
+    <para id="id11427620">For x(t) = X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math>, R{x(t)}= X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi fontstyle="italic">σt</m:mi></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{σt} } } {}</m:annotation></m:semantics></m:math>cosωt is plotted for different values of s superimposed on the complex s-plane.</para>
+    <figure id="id11653408">
+      <media id="id1164826621352" alt=""><image src="../../media/graphics14-8d75.png" mime-type="image/png" height="288" width="397"/></media>
+    </figure>
+    <para id="id9529413">For x(t) = X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math>, I {x(t)} = X
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ ital "st"} } } {}</m:annotation></m:semantics></m:math> sinωt is plotted for different values of s superimposed on the complex s-plane.</para>
+    <figure id="id10122847">
+      <media id="id3432750" alt=""><image src="../../media/graphics15-c316.png" mime-type="image/png" height="286" width="408"/></media>
+    </figure>
+    <para id="id11604186">d/ Eternal complex exponentials — why are they important?</para>
+    <list id="id3189509" list-type="bulleted">
+      <item>Almost any signal of practical interest can be represented as a superposition (sum) of eternal complex exponentials.</item>
+    </list>
+    <list id="id9136458" list-type="bulleted">
+      <item>The output of a linear, time-invariant (LTI) system (to be defined next time) is simple to compute if the input is a sum of eternal complex exponentials.</item>
+    </list>
+    <list id="id11795989" list-type="bulleted">
+      <item>Eternal complex exponentials are the eigenfunctions or characteristic (unforced, homogeneous) responses of LTI systems.</item>
+    </list>
+    <para id="id11759207">2/ Unit impulse — definition</para>
+    <para id="id11371511">The unit impulse δ(t), called the Dirac delta function, is not a function in the ordinary sense. It is defined by the integral relation</para>
+    <para id="id8508197">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msubsup>
+                    <m:mo stretchy="false">∫</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:mtext>dt</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow>
+                      <m:mi/>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mi/>
+                    </m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {f \( t \) δ \( t \)  ital "dt"`=`f \( 0 \) } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9772330">and is called a generalized function.</para>
+    <para id="id12018325">The unit impulse is not defined in terms of its values, but is defined by how it acts inside an integral when multiplied by a smooth function f(t). To see that the area of the unit impulse is 1, choose f(t) = 1 in the definition. We represent the unit impulse schematically as shown below; the number next to the impulse is its area. </para>
+    <figure id="id9606126">
+      <media id="id1621292" alt=""><image src="../../media/graphics16-2b87.png" mime-type="image/png" height="107" width="151"/></media>
+    </figure>
+    <para id="id4776805">a/ Unit impulse — narrow pulse approximation</para>
+    <para id="id9923560">To obtain an intuitive feeling for the unit impulse, it is often helpful to imagine a set of rectangular pulses where each pulse has width ε and height 1/ ε so that its area is 1.</para>
+    <figure id="id11910692">
+      <media id="id1160188" alt=""><image src="../../media/graphics17-ce78.png" mime-type="image/png" height="160" width="275"/></media>
+    </figure>
+    <para id="id8722370">The unit impulse is the quintessential tall and narrow pulse!</para>
+    <para id="id8495431">b/ Unit impulse — intuiting the definition</para>
+    <para id="id8722016">To obtain some intuition about the meaning of the integral definition of the impulse, we will use a tall rectangular pulse of unit area as an approximation to the unit impulse.</para>
+    <figure id="id9727624">
+      <media id="id7318322" alt=""><image src="../../media/graphics18-7ba0.png" mime-type="image/png" height="147" width="479"/></media>
+    </figure>
+    <para id="id9840706">As the rectangular pulse gets taller and narrower,</para>
+    <para id="id11568300">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:munder>
+                    <m:mtext>lim</m:mtext>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>ε</m:mi>
+                          <m:mo stretchy="false">→</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:munder>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:msub>
+                        <m:mi>p</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>ε</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mi/>
+                      <m:mo stretchy="false">→</m:mo>
+                      <m:mi/>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mi>f</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mn>0</m:mn>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                        <m:mi>ε</m:mi>
+                      </m:mfrac>
+                      <m:mtext>.</m:mtext>
+                      <m:mrow>
+                        <m:mi>ε</m:mi>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi>f</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi/>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ {"lim"}  cSub { size 8{ε rightarrow 0} }  Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {f \( t \) p rSub { size 8{ε} }  \( t \)  ital "dt"` rightarrow ` {  {f \( 0 \) }  over  {ε} }  "." ε=f \( 0 \) `} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8725826">c/ Unit impulse — the shape does not matter</para>
+    <para id="id11828520">There is nothing special about the rectangular pulse approximation to the unit impulse. A triangular pulse approximation is just as good. As far as our definition is concerned both the rectangular and triangular pulse are equally good approximations. Both act as impulses.</para>
+    <figure id="id11086411">
+      <media id="id1452122" alt=""><image src="../../media/graphics19-ac15.png" mime-type="image/png" height="134" width="346"/></media>
+    </figure>
+    <para id="id4032518">d/ Unit impulse — the values do not matter</para>
+    <para id="id9314308">The values of the approximating functions do not matter either. The function on the left has unit area and takes on the arbitrary value A for t = 0. The function on the right, which we shall encounter frequently in later lectures, has the property that it has non-zero values at most of its values, all but a countably infinite number of points, but still acts as a unit impulse.</para>
+    <figure id="id8036791">
+      <media id="id4653793" alt=""><image src="../../media/graphics20-578e.png" mime-type="image/png" height="121" width="350"/></media>
+    </figure>
+    <para id="id11787941">What all these approximations have in common is that as ε gets small the area of each function occupies an increasingly narrow time interval centered on t = 0.</para>
+    <para id="id5941978">Two-minute miniquiz problem</para>
+    <para id="id12109076">Problem 1-1</para>
+    <para id="id11308904">Interpret and sketch the generalized function x(t) where</para>
+    <para id="id10210850">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">/</m:mo>
+                            <m:mn>4</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{t/4} } δ \( t+4 \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12193240">Solution</para>
+    <para id="id12318933">To determine the meaning of x(t) we place it in an integral</para>
+    <para id="id11407198">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">/</m:mo>
+                              <m:mn>4</m:mn>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mrow>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mn>4</m:mn>
+                      </m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mrow/>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>τ</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>4</m:mn>
+                              </m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mo stretchy="false">/</m:mo>
+                                <m:mn>4</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi fontstyle="italic">dτ</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {e rSup { size 8{t/4} } δ \( t+4 \)  ital "dt"={}}  Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {e rSup { size 8{ \( τ - 4 \) /4} } δ \( τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12362460">From the definition of the unit impulse,</para>
+    <para id="id11156544">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msubsup>
+                    <m:mo stretchy="false">∫</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {f \( t \) δ \( t \)  ital "dt"=f \( 0 \) } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11448648">the integral equals 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ - 1} } } {}</m:annotation></m:semantics></m:math>. Therefore,</para>
+    <para id="id12265571">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mn>4</m:mn>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - 1} } δ \( t+4 \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11085100">The result can also be seen graphically. The left panel shows both 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">/</m:mo><m:mn>4</m:mn></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{t/4} } } {}</m:annotation></m:semantics></m:math> and δ(t+4), and the right panel shows their product.</para>
+    <figure id="id11095787">
+      <media id="id1164831660928" alt=""><image src="../../media/graphics21-12c2.png" mime-type="image/png" height="151" width="417"/></media>
+    </figure>
+    <para id="id11491593">e/ Unit impulse — what do we need it for?</para>
+    <para id="id10168609">The unit impulse is a valuable idealization and is used widely in science and engineering. Impulses in time are useful idealizations.</para>
+    <list id="id11393632" list-type="bulleted">
+      <item>Impulse of current in time delivers a unit charge instantaneously to a network.</item>
+    </list>
+    <list id="id11623156" list-type="bulleted">
+      <item>Impulse of force in time delivers an instantaneous momentum to a mechanical system.</item>
+    </list>
+    <list id="id11867809" list-type="bulleted">
+      <item>Impulses in space are also useful.</item>
+    </list>
+    <list id="id11883525" list-type="bulleted">
+      <item>Impulse of mass density in space represents a point mass.</item>
+    </list>
+    <list id="id12284185" list-type="bulleted">
+      <item>Impulse of charge density in space represents a point charge.</item>
+    </list>
+    <list id="id9902509" list-type="bulleted">
+      <item>Impulse of light intensity in space represents a point of light.</item>
+    </list>
+    <para id="id11877357">We can imagine impulses in space and time.</para>
+    <list id="id12153121" list-type="bulleted">
+      <item>Impulse of light intensity in space and time represents a brief flash of light at a point in space.</item>
+    </list>
+    <para id="id12212120">f/ Unit step</para>
+    <para id="id9824768">Integration of the unit impulse yields the unit step function</para>
+    <para id="id10135433">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{u \( t \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{t} }  {δ \( τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11958429">which is defined as</para>
+    <para id="id11394486">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="true">{</m:mo>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mn>0</m:mn>
+                              <m:mi/>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">&lt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                              <m:mi/>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">≥</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{u \( t \) = left lbrace  matrix {
+0``` \( t&lt;0 \)  {} ##
+1```` \( t &gt;= 0 \) 
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id12093294">
+      <media id="id1164827839471" alt=""><image src="../../media/graphics22-83f2.png" mime-type="image/png" height="101" width="223"/></media>
+    </figure>
+    <para id="id4895336">g/ Unit impulse as the derivative of the unit step</para>
+    <para id="id11380721">As an example of the method for dealing with generalized functions consider the generalized function</para>
+    <para id="id12181063">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = {  {d}  over  { ital "dt"} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5396627">Since u(t) is discontinuous, its derivative does not exist as an ordinary function, but it does as a generalized function. To see what x(t) means, put it in an integral with a smooth testing function</para>
+    <para id="id9915223">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mi>f</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mfrac>
+                          <m:mi>d</m:mi>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>dt</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mfrac>
+                        <m:mi>u</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {f \( t \)  {  {d}  over  { ital "dt"} } u \( t \)  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9914789">and apply the usual integration-by-parts theorem</para>
+    <para id="id9914792">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">∣</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mi>u</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mfrac>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =f \( t \) u \( t \)  \lline  matrix {
+ infinity  {} ##
+ -  infinity 
+} `` - `` Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {u \( t \)  {  {d}  over  { ital "dt"} } f \( t \)  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9914852">to obtain</para>
+    <para id="id9914856">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mo stretchy="false">∞</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>d</m:mi>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mfrac>
+                      <m:mi>f</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:mi>f</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =f \(  infinity  \) `` - `` Int rSub { size 8{0} }  rSup { size 8{ infinity } }  { {  {d}  over  { ital "dt"} } f \( t \)  ital "dt"} ``=``f \( 0 \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11142278">The result is that</para>
+    <para id="id11414227">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msubsup>
+                    <m:mo stretchy="false">∫</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mi>f</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mrow>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {f \( t \)  {  {d}  over  { ital "dt"} } u \( t \)  ital "dt"=0} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12304530">which, from the definition of the unit impulse, implies that</para>
+    <para id="id11259191">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{δ \( t \) = {  {d}  over  { ital "dt"} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8160904">That is, the unit impulse is the derivative of the unit step in a generalized function sense.</para>
+    <para id="id8946634">h/ Successive integration of the unit impulse</para>
+    <para id="id3769935">Successive integration of the unit impulse yields a family of functions.</para>
+    <figure id="id5370002">
+      <media id="id1164829741593" alt=""><image src="../../media/graphics23-26c0.png" mime-type="image/png" height="152" width="421"/></media>
+    </figure>
+    <para id="id12026357">Later we will talk about the successive derivatives of δ(t), but these are too horrible to contemplate in the first lecture.</para>
+    <para id="id11876233">3/ Building-block signals can be combined to make a rich population of signals</para>
+    <para id="id4909605">Eternal complex exponentials and unit steps can be combined to produce causal and anti-causal decaying exponentials</para>
+    <figure id="id3650273">
+      <media id="id1164829488022" alt=""><image src="../../media/graphics24-8084.png" mime-type="image/png" height="107" width="436"/></media>
+    </figure>
+    <para id="id11908828">Unit steps and unit ramps can be combined to produce pulse signals.</para>
+    <figure id="id11239787">
+      <media id="id8702010" alt=""><image src="../../media/graphics25-3581.png" mime-type="image/png" height="136" width="428"/></media>
+    </figure>
+    <para id="id9803161">III. CONCLUSIONS</para>
+    <list id="id9803165" list-type="bulleted">
+      <item>We are awash in a sea of signals.</item>
+      <item>Signal categories — identity of independent variable, dimensionality, CT &amp; DT, real &amp; complex, periodic &amp; aperiodic, causal &amp; anti-causal, bounded &amp; unbounded, even &amp; odd, etc.</item>
+    </list>
+    <list id="id10192712" list-type="bulleted">
+      <item>Building block signals — eternal complex exponentials and impulse functions — are a rich class of signals that can be superimposed to represent virtually any signal of physical interest.</item>
+    </list>
+    <para id="id12106755"><link resource="ps1.doc">Exercises .</link>
+</para><para id="element-233"><link resource="ps1sol.doc"> Solutions of Exercises.</link>
+</para>
+  </content>
+</document>

@@ -1,0 +1,3617 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 4:The Superposition Sum (DT System) and The Superposition Integral (CT System) of LTI Systems</title>
+  <metadata>
+  <md:content-id>m27499</md:content-id><md:title>Lecture 4:The Superposition Sum (DT System) and The Superposition Integral (CT System) of LTI Systems</md:title>
+  <md:abstract>The superposition sum/integral gives an insight into the operation of LTI systems that complements the insight given by the transform methods.</md:abstract>
+  <md:uuid>525d918a-9eed-48c4-9482-7f3f161b0dd1</md:uuid>
+</metadata>
+
+<content>
+    <para id="id4412022">Lecture #4: </para>
+    <para id="id2848760">THE SUPERPOSITION SUM (DT SYSTEM) AND THE SUPERPOSITION INTEGRAL (CT SYSTEM) OF LTI SYSTEMS</para>
+    <para id="id8912810">Motivation:</para>
+    <list id="id4049974" list-type="bulleted">
+      <item>The superposition sum/integral gives an insight into the operation of LTI systems that complements the insight given by the transform methods</item>
+    </list>
+    <list id="id9213233" list-type="bulleted">
+      <item>Solutions of LTI systems in the time domain using the superposition sum/integral can give efficient methods of solution</item>
+    </list>
+    <list id="id4231679" list-type="bulleted">
+      <item>The unit sample response of an LTI DT system and the unit impulse response of an LTI CT system characterize those systems</item>
+    </list>
+    <para id="id7931777">Outline:</para>
+    <list id="id9009813" list-type="bulleted">
+      <item>The superposition sum for DT systems</item>
+    </list>
+    <list id="id5396610" list-type="bulleted">
+      <item>The superposition integral for CT systems</item>
+    </list>
+    <list id="id9519780" list-type="bulleted">
+      <item>Relation of time domain and transform domain characterization of LTI systems</item>
+    </list>
+    <list id="id8852622" list-type="bulleted">
+      <item>The unit sample/impulse response</item>
+    </list>
+    <list id="id8269476" list-type="bulleted">
+      <item>Unit impulse/sample responses of different classes of LTI systems</item>
+    </list>
+    <list id="id8288447" list-type="bulleted">
+      <item>Conclusions</item>
+    </list>
+    <para id="id7879300">I. DERIVATION OF SUPERPOSITION SUM/INTEGRAL</para>
+    <para id="id8612842">We will show that for a DT system</para>
+    <para id="id8910343">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {x \[ m \] h \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8612270">where x[n] is an arbitrary input, h[n] is the unit sample response, y[n] is the output, and the above relation is called the superposition sum.</para>
+    <para id="id8355737">We will show that for a CT system</para>
+    <para id="id9065416">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) h \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9351774">where x(t) is an arbitrary input, h(t) is the unit impulse response, y(t) is the output, and the above relation is called the superposition integral.</para>
+    <para id="id8198704">II. THE SUPERPOSITION SUM FOR DT SYSTEMS</para>
+    <para id="id4622375">1/ Graphic view of superposition sum</para>
+    <figure id="id3190656">
+      <media id="id4102834" alt=""><image src="../../media/graphics1-20f9.png" mime-type="image/png" height="211" width="436"/></media>
+    </figure>
+    <para id="id8414436">2/ Derivation of superposition sum</para>
+    <figure id="id3241806">
+      <media id="id4106707" alt=""><image src="../../media/graphics2-339d.png" mime-type="image/png" height="213" width="465"/></media>
+    </figure>
+    <para id="id3271041">3/ Convolution sum</para>
+    <para id="id5352115">The relation</para>
+    <para id="id9570497">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] δ \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3899218">expresses the sifting property of the unit sample. Note that the only non-zero term in this sum occurs when m = n, hence demonstrating the validity of the equation. The major conclusion of the derivation is that for an arbitrary input x[n], the output is</para>
+    <para id="id6460444">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4015103">which is called the superposition sum. Such a relation is called a convolution sum when it involves arbitrary functions, i.e.,</para>
+    <para id="id9133571">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>m</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{z \[ n \] = Sum cSub { size 8{m} }  {x rSub { size 8{1} } }  \[ m \] x rSub { size 8{2} }  \[ n - m \] } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3949088">Thus, the superposition sum is a special case of the convolution sum.</para>
+    <para id="id6750408">4/ Notation</para>
+    <para id="id8362060">We shall write the convolution sum of two DT signals as</para>
+    <para id="id8154554">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>x</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:msub>
+                          <m:mi>x</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{z \[ n \] =x rSub { size 8{1} }  \[ n \]  * x rSub { size 8{2} }  \[ n \] = Sum cSub { size 8{m} }  {x rSub { size 8{1} }  \[ m \] x rSub { size 8{2} }  \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id2842764">The symbol for convolution in various textbooks includes</para>
+    <para id="id4568851">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi>,</m:mi>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi>⊗</m:mi>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{1} }  \[ n \]  * x rSub { size 8{2} }  \[ n \] ,x rSub { size 8{1} }  \[ n \]  * x rSub { size 8{2} }  \[ n \]  matrix {
+ {} # {}
+}  ital "and" matrix {
+ {} # {}
+} x rSub { size 8{1} }  \[ n \] ⊗x rSub { size 8{2} }  \[ n \] } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8293746">5/ Mechanics</para>
+    <para id="id9575903">To compute the superposition sum</para>
+    <para id="id9538403">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x \[ n \]  * h \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id2869523">Step 1 Plot x and h vs m since the convolution sum is on m.</para>
+    <para id="id9116017">Step 2 Flip h[m] around the vertical axis to obtain h[−m].</para>
+    <para id="id8642013">Step 3 Shift h[−m] by n to obtain h[n − m].</para>
+    <para id="id8750734"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>Step 4 Multiply to obtain x[m]h[n − m].</para>
+    <para id="id8674999">Step 5 Sum on m to compute. 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:munder><m:mo stretchy="false">∑</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:munder><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mi>m</m:mi></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id7026269">Step 6 Index n and repeat Steps 3-6.</para>
+    <para id="id9131675">Demo of DT convolution</para>
+    <figure id="id8852632">
+      <media id="id4098924" alt=""><image src="../../media/graphics3-e302.png" mime-type="image/png" height="274" width="369"/></media>
+    </figure>
+    <para id="id3227753">6/ DT convolution properties — commutative property</para>
+    <para id="id9112459">x[n]*h[n]=h[n]*x[n]</para>
+    <figure id="id4501095">
+      <media id="id4106520" alt=""><image src="../../media/graphics4-b48f.png" mime-type="image/png" height="54" width="388"/></media>
+    </figure>
+    <para id="id4177120">Proof:</para>
+    <para id="id9522124">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x \[ n \]  * h \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3943027">Let n − m = l then</para>
+    <para id="id9096705">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mn>1</m:mn>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:munder>
+                                <m:mo stretchy="false">∑</m:mo>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mn>1</m:mn>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:munder>
+                              <m:mrow>
+                                <m:mi>h</m:mi>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mn>1</m:mn>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:mi>x</m:mi>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                                <m:mo stretchy="false">]</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mi>h</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mi>x</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x \[ n \]  * h \[ n \] = Sum cSub { size 8{1} }  {x \[ n - 1 \] h \[ 1 \] = Sum cSub { size 8{1} }  {h \[ 1 \] x \[ n - 1 \] } =h \[ n \]  * x \[ n \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3165724">7/ DT convolution properties — associative property</para>
+    <para id="id8290682">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9855598">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>h</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = \( x \[ n \] *h rSub { size 8{1} }  \[ n \]  \) *h rSub { size 8{2} }  \[ n \] =x \[ n \] * \( h rSub { size 8{1} }  \[ n \] *h rSub { size 8{2} }  \[ n \]  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id9524301">
+      <media id="id2400825" alt=""><image src="../../media/graphics5-24fc.png" mime-type="image/png" height="57" width="504"/></media>
+    </figure>
+    <para id="id8875968">Proof:</para>
+    <para id="id2866557">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:munder>
+                            <m:mo stretchy="false">∑</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:munder>
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:msub>
+                              <m:mi>h</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>m</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msub>
+                          <m:mi>h</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mrow>
+                            <m:munder>
+                              <m:mo stretchy="false">∑</m:mo>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:munder>
+                            <m:mrow>
+                              <m:mi>x</m:mi>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:munder>
+                                  <m:mo stretchy="false">∑</m:mo>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mn>1</m:mn>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:munder>
+                                <m:msub>
+                                  <m:mi>h</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mn>1</m:mn>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                              </m:mrow>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:msub>
+                                <m:mi>h</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mn>2</m:mn>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{1} }  { \(  Sum cSub { size 8{m} }  {x \[ m \] h rSub { size 8{1} }  \[ 1 - m \] }  \) h rSub { size 8{2} }  \[ n - 1 \] = Sum cSub { size 8{m} }  {x \[ m \]  \(  Sum cSub { size 8{1} }  {h rSub { size 8{1} } }  \[ 1 - m \] h rSub { size 8{2} }  \[ n - 1 \]  \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8864838">Let k = l − m to obtain</para>
+    <para id="id3058531">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:munder>
+                            <m:mo stretchy="false">∑</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>k</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:munder>
+                          <m:msub>
+                            <m:mi>h</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                        </m:mrow>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:msub>
+                          <m:mi>h</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mrow>
+                            <m:munder>
+                              <m:mo stretchy="false">∑</m:mo>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:munder>
+                            <m:mrow>
+                              <m:mi>x</m:mi>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:mi>h</m:mi>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">]</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{m} }  {x \[ m \]  \(  Sum cSub { size 8{k} }  {h rSub { size 8{1} } }  \[ k \] h rSub { size 8{2} }  \[ n - m - k \]  \) = Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8626147">where</para>
+    <para id="id2893069">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \] =h rSub { size 8{1} }  \[ n \] *h rSub { size 8{2} }  \[ n \] } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id4041081">8/ DT convolution properties — distributive property</para>
+    <para id="id2853715">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>h</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] =x \[ n \] * \( h rSub { size 8{1} }  \[ n \] +h rSub { size 8{2} }  \[ n \]  \) =x \[ n \] *h rSub { size 8{1} }  \[ n \] +x \[ n \] *h rSub { size 8{2} }  \[ n \] } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id8749547">
+      <media id="id4099204" alt=""><image src="../../media/graphics6-389b.png" mime-type="image/png" height="106" width="468"/></media>
+    </figure>
+    <para id="id2875823">Proof:</para>
+    <para id="id3965475">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mrow>
+              <m:mtable>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>y</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>n</m:mi>
+                          <m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:munder>
+                                <m:mo stretchy="false">∑</m:mo>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>m</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:munder>
+                              <m:mrow>
+                                <m:mi>x</m:mi>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:msub>
+                                  <m:mi>h</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mn>1</m:mn>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">]</m:mo>
+                                  <m:mo stretchy="false">+</m:mo>
+                                  <m:msub>
+                                    <m:mi>h</m:mi>
+                                    <m:mstyle fontsize="8pt">
+                                      <m:mrow>
+                                        <m:mn>2</m:mn>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:msub>
+                                </m:mrow>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:mo stretchy="false">)</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+                <m:mtr>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munder>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>m</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munder>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:msub>
+                            <m:mi>h</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mrow>
+                              <m:munder>
+                                <m:mo stretchy="false">∑</m:mo>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>m</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:munder>
+                              <m:mrow>
+                                <m:mi>x</m:mi>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">]</m:mo>
+                                <m:msub>
+                                  <m:mi>h</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mn>2</m:mn>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                                <m:mo stretchy="false">[</m:mo>
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">]</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mtr>
+              </m:mtable>
+              <m:mrow/>
+            </m:mrow>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{y \[ n \] = Sum cSub { size 8{m} }  {x \[ m \]  \( h rSub { size 8{1} }  \[ n - m \] +h rSub { size 8{2} }  \[ n - m \]  \) } }  {} # 
+ matrix {
+ {} # {}
+} = Sum cSub { size 8{m} }  {x \[ n \] h rSub { size 8{1} }  \[ n - m \] + Sum cSub { size 8{m} }  {x \[ m \] h rSub { size 8{2} }  \[ n - m \] } }  {} 
+} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9403370">9/ DT convolution properties — delay accumulation</para>
+    <para id="id4530518">If</para>
+    <para id="id4544550">y[n] = x[n]∗h[n]</para>
+    <para id="id9046050">then</para>
+    <para id="id9672682">x[n − j]∗h[n − k] = y[n − k − j]</para>
+    <figure id="id9852902">
+      <media id="id4075936" alt=""><image src="../../media/graphics7-d265.png" mime-type="image/png" height="126" width="254"/></media>
+    </figure>
+    <para id="id8252773">Proof:</para>
+    <para id="id4607356">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:munder>
+                    <m:mo stretchy="false">∑</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:munder>
+                  <m:mrow>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mi>j</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>k</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mi>m</m:mi>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munder>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munder>
+                        <m:mrow>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mn>1</m:mn>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>k</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>j</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">]</m:mo>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi>y</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>n</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>k</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>j</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{m} }  {x \[ m - j \] h \[ n - k - m \] = Sum cSub { size 8{1} }  {x \[ 1 \] h \[ n - k - j - 1 \] =y \[ n - k - j \] } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id6884455">III. THE SUPERPOSITION INTEGRAL FOR CT SYSTEMS</para>
+    <para id="id4283508">1/ Graphic view of staircase approximation to the superposition integral</para>
+    <figure id="id3992440">
+      <media id="id4302024" alt=""><image src="../../media/graphics8-8798.png" mime-type="image/png" height="226" width="456"/></media>
+    </figure>
+    <para id="id6763349">2/ Definition of a tall and narrow pulse</para>
+    <para id="id5138491">To represent a continuous time function with a staircase approximation, it is useful to define a tall and narrow pulse.</para>
+    <figure id="id8554943">
+      <media id="id4314878" alt=""><image src="../../media/graphics9-64df.png" mime-type="image/png" height="153" width="247"/></media>
+    </figure>
+    <para id="id8652990">As Δ is decreased, the width of the pulse decreases and the amplitude increases while the area remains 1.</para>
+    <para id="id4605110">3/ Derivation of staircase approximation to superposition integral</para>
+    <figure id="id9554736">
+      <media id="id4440140" alt=""><image src="../../media/graphics10-003e.png" mime-type="image/png" height="244" width="600"/></media>
+    </figure>
+    <para id="id8986975">4/ The superposition integral</para>
+    <para id="id4248268">The derivation shows that a staircase approximation to the input x(t)</para>
+    <para id="id8640812">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Δ</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>k</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi fontstyle="italic">kΔ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msub>
+                          <m:mi>δ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>Δ</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi fontstyle="italic">kΔ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>Δ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{Δ} }  \( t \) = Sum cSub { size 8{k} }  {x \( kΔ \) δ rSub { size 8{Δ} }  \( t - kΔ \) Δ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8292793">yields a staircase approximation to the output</para>
+    <para id="id8942892">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Δ</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>k</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi fontstyle="italic">kΔ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msub>
+                          <m:mi>h</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>Δ</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi fontstyle="italic">kΔ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>Δ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y rSub { size 8{Δ} }  \( t \) = Sum cSub { size 8{k} }  {x \( kΔ \) h rSub { size 8{Δ} }  \( t - kΔ \) Δ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9661706">Now we take the limit as Δ→0, k→∞, kΔ=τ, xΔ(t) → x(t), hΔ(t−kΔ) → h(t−τ), and δΔ(t−kΔ) → δ(t−τ) in a generalized function sense. Then the sums approach the integrals</para>
+    <para id="id7333337">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) δ \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id5463906">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) h \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9730502">5/ Sifting property of the unit impulse</para>
+    <para id="id9520593">We examine the sifting property of the unit impulse which is inherent in the expression</para>
+    <para id="id9008881">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) δ \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3855434">To see what this means we approximate the impulse with a tall, narrow pulse.</para>
+    <figure id="id8252876">
+      <media id="id1730496" alt=""><image src="../../media/graphics11-569c.png" mime-type="image/png" height="164" width="527"/></media>
+    </figure>
+    <para id="id8360113">6/ Mechanics</para>
+    <para id="id9853541">To compute the superposition integral</para>
+    <para id="id9521794">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x \( t \) *h \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) h \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9040597">Step 1 Plot x and h vs τ since the convolution integral is on τ.</para>
+    <para id="id9690270">Step 2 Flip h(τ) around the vertical axis to obtain h(−τ).</para>
+    <para id="id9335635">Step 3 Shift h(τ) by t to obtain h(t − τ).</para>
+    <para id="id7920782">Step 4 Multiply to obtain x(τ)h(t − τ).</para>
+    <para id="id9212048">Step 5 Integrate on τ to compute 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:munderover><m:mo stretchy="false">∫</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mo stretchy="false">∞</m:mo></m:mrow></m:mstyle></m:munderover><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mtext>t-</m:mtext><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> d</m:mtext><m:mi>τ</m:mi></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) h \( "t-"τ \) " d"τ} } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id9212031">Step 6 Increase t and repeat Steps 3-6.</para>
+    <para id="id8914885">Demo of CT convolution</para>
+    <figure id="id9132519">
+      <media id="id4772077" alt=""><image src="../../media/graphics12-3803.png" mime-type="image/png" height="280" width="401"/></media>
+    </figure>
+    <para id="id9699577">7/ CT convolution properties</para>
+    <para id="id8930283">The convolution integral has properties similar to those of the convolution sum.</para>
+    <para id="id8985675">Commutative 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:mi>h</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>h</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x \( t \) *h \( t \) =h \( t \) *x \( t \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id9062809">Associative 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:msub><m:mi>h</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:msub><m:mi>h</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y \( t \) = \( x \( t \) *h rSub { size 8{1} }  \( t \)  \) *h rSub { size 8{2} }  \( t \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id9568010">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>h</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x \( t \) * \( h rSub { size 8{1} }  \( t \) *h rSub { size 8{2} }  \( t \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3206469">Distributive 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:msub><m:mi>h</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:msub><m:mi>h</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x \( t \) * \( h rSub { size 8{1} }  \( t \) +h rSub { size 8{2} }  \( t \)  \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id8746340">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:msub>
+                      <m:mi>h</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \( t \) =x \( t \) *h rSub { size 8{1} }  \( t \) +x \( t \) *h rSub { size 8{2} }  \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9687620">Delay accomutation 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">−</m:mo><m:msub><m:mi>τ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">−</m:mo><m:msub><m:mi>τ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">−</m:mo><m:msub><m:mi>τ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:mi>h</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">−</m:mo><m:msub><m:mi>τ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y \( t - τ rSub { size 8{1} }  - τ rSub { size 8{2} }  \) =x \( t - τ rSub { size 8{1} }  \) *h \( t - τ rSub { size 8{2} }  \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id7936544">Derivative accomutation 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msup><m:mi>y</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">+</m:mo><m:mi>m</m:mi></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mstyle></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:msup><m:mi>h</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y rSup { size 8{ \[ n+m \] } }  \( t \) =x rSup { size 8{ \[ n \] } }  \( t \) *h rSup { size 8{ \[ m \] } }  \( t \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id9551388">The last property implies that differentiating the input n times and the impulse response m times results in an output that is differentiated n+m times.</para>
+    <para id="id9728448">IV. RELATION OF TIME DOMAIN AND TRANSFORM DOMAIN CHARACTERIZATION OF LTI SYSTEMS</para>
+    <para id="id9728453">1/ Two methods for characterizing LTI systems</para>
+    <figure id="id8857600">
+      <media id="id4102089" alt=""><image src="../../media/graphics13-bb5c.png" mime-type="image/png" height="193" width="361"/></media>
+    </figure>
+    <para id="id9725687">2/ Convolution in the time domain corresponds to multiplication in the transform domain</para>
+    <para id="id9725695">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>m</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mover>
+                    <m:mi>X</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtext>.</m:mtext>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">∗</m:mo>
+                    <m:mi>h</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] *h \[ m \]  { dlrarrow }  cSup { size 8{Z} }  {X}  cSup { size 8{ "~" } }  \( z \)  "."  {H}  cSup { size 8{ "~" } }  \( z \)  matrix {
+ {} # {}
+}  ital "and" matrix {
+ {} # {}
+} x \( t \) *h \( t \)  { dlrarrow }  cSup { size 8{L} } X \( s \) H \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9519561"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>If the input is a unit sample/impulse, x[n] = δ[n] and x(t) = δ(t) then since δ[n]
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>Z</m:mi></m:mrow></m:mstyle></m:mover></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ { dlrarrow }  cSup { size 8{Z} } } {}</m:annotation></m:semantics></m:math>1 and δ(t)
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ { dlrarrow }  cSup { size 8{L} } } {}</m:annotation></m:semantics></m:math>1, we have </para>
+    <para id="id9551482">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>Z</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mover>
+                    <m:mi>H</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>~</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \[ n \]  { dlrarrow }  cSup { size 8{Z} }  {H}  cSup { size 8{ "~" } }  \( z \)  matrix {
+ {} # {}
+}  ital "and" matrix {
+ {} # {}
+} h \( t \)  { dlrarrow }  cSup { size 8{L} } H \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9551635">V. THE UNIT SAMPLE/IMPULSE RESPONSE</para>
+    <para id="id9551640">The unit sample/impulse response of an LTI system characterizes that system. How can we measure this response on a real system? To indicate how this might be done we will determine the impulse response of a CT LTI system that is a lowpass filter.</para>
+    <figure id="id9551651">
+      <media id="id4304144" alt=""><image src="../../media/graphics14-a728.png" mime-type="image/png" height="154" width="234"/></media>
+    </figure>
+    <para id="id8604025">To find the impulse response we will determine the response to a tall, narrow, rectangular pulse.</para>
+    <para id="id8604031">Two-minute miniquiz problem</para>
+    <para id="id8604035">Problem 14-1 — Rectangular pulse response of a LPF</para>
+    <para id="id8604041">Determine vo(t) in response to the pulse shown.</para>
+    <figure id="id8604072">
+      <media id="id4101928" alt=""><image src="../../media/graphics15-de15.png" mime-type="image/png" height="156" width="346"/></media>
+    </figure>
+    <para id="id8604096">[Hint: use superposition.]</para>
+    <para id="id8604100">Solution</para>
+    <para id="id8604104">Note that vi(t) can be written as the difference of a step and a step delayed that is scaled as follows</para>
+    <para id="id8604134">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>i</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>Δ</m:mi>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>u</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>Δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) = {  {1}  over  {Δ} }  \( u \( t \)  - u \( t - Δ \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8604300">Therefore, we need only find the response of the network to a unit step vi(t)=u(t). We denote the step response as vo(t)=s(t) which is</para>
+    <para id="id9082033">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{s \( t \) = \( 1 - e rSup { size 8{ - αt} }  \) u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9082144">where α = 1/(RC). Therefore, the response to the pulse is</para>
+    <para id="id9082176">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>ο</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>Δ</m:mi>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>α</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>Δ</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>Δ</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{ο} }  \( t \) = {  {1}  over  {Δ} }  \(  \( 1 - e rSup { size 8{ - αt} }  \) u \( t \)  -  \( 1 - e rSup { size 8{ - α \( t - Δ \) } }  \) u \( t - Δ \)  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8690088">1/ Rectangular pulse response of LPF</para>
+    <figure id="id8690098">
+      <media id="id4311725" alt=""><image src="../../media/graphics16-100c.png" mime-type="image/png" height="153" width="333"/></media>
+    </figure>
+    <para id="id8690122">The pulse response can be written as</para>
+    <para id="id8690126">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="true">{</m:mo>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mn>0</m:mn>
+                              <m:mi/>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mi/>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mi/>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">&lt;</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mfrac>
+                                <m:mn>1</m:mn>
+                                <m:mi>Δ</m:mi>
+                              </m:mfrac>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mo stretchy="false">−</m:mo>
+                                        <m:mi fontstyle="italic">αt</m:mi>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mi/>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mn>0</m:mn>
+                                  <m:mo stretchy="false">≤</m:mo>
+                                  <m:mi>t</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">&lt;</m:mo>
+                                <m:mi>Δ</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow>
+                              <m:mfrac>
+                                <m:mn>1</m:mn>
+                                <m:mi>Δ</m:mi>
+                              </m:mfrac>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mi fontstyle="italic">αΔ</m:mi>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:msup>
+                                <m:mi>e</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:mi fontstyle="italic">αt</m:mi>
+                                    </m:mrow>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mtable>
+                                <m:mtr>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                  <m:mtd>
+                                    <m:mrow/>
+                                  </m:mtd>
+                                </m:mtr>
+                              </m:mtable>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">≥</m:mo>
+                                <m:mi>Δ</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mrow/>
+                            </m:mrow>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( 0 \) = left lbrace  matrix {
+0`` matrix {
+ {} # {}
+} ` matrix {
+ {} # {}
+} ` matrix {
+ {} # {}
+}  \( t&lt;0 \)  {} ##
+ {  {1}  over  {Δ} }  \( 1 - e rSup { size 8{ - αt} }  \)  matrix {
+ {} # {}
+} `` \( 0 &lt;= t&lt;Δ \)  {} ##
+ {  {1}  over  {Δ} }  \( e rSup { size 8{αΔ} }  - 1 \) e rSup { size 8{ - αt} }  matrix {
+ {} # {}
+}  \( t &gt;= Δ \) {}
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9550989">2/ Convergence of rectangular pulse response to impulse response</para>
+    <para id="id9550997">As αΔ → 0</para>
+    <para id="id9551022">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">→</m:mo>
+                  <m:mrow>
+                    <m:mo stretchy="true">{</m:mo>
+                    <m:mtable>
+                      <m:mtr>
+                        <m:mtd>
+                          <m:mrow>
+                            <m:mn>0</m:mn>
+                            <m:mi/>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mi/>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">&lt;</m:mo>
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mrow/>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd>
+                          <m:mrow>
+                            <m:mfrac>
+                              <m:mi>α</m:mi>
+                              <m:mi>Δ</m:mi>
+                            </m:mfrac>
+                            <m:mi>t</m:mi>
+                            <m:mi/>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mi/>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mn>0</m:mn>
+                                <m:mo stretchy="false">≤</m:mo>
+                                <m:mi>t</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">&lt;</m:mo>
+                              <m:mi>Δ</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mrow/>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi fontstyle="italic">αe</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mi fontstyle="italic">αt</m:mi>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:mi/>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mi/>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">≥</m:mo>
+                              <m:mi>Δ</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mrow/>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                    </m:mtable>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{0} }  \( t \)  rightarrow  left lbrace  matrix {
+0``` matrix {
+ {} # {}
+} ` matrix {
+ {} # {}
+}  \( t&lt;0 \)  {} ##
+ {  {α}  over  {Δ} } t``` matrix {
+ {} # {}
+} ` \( 0 &lt;= t&lt;Δ \)  {} ##
+αe rSup { size 8{ - αt} } ``` matrix {
+ {} # {}
+} ` \( t &gt;= Δ \) {}
+}  right none } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id9551250">
+      <media id="id2109462" alt=""><image src="../../media/graphics17-f10d.png" mime-type="image/png" height="179" width="255"/></media>
+    </figure>
+    <para id="id9551274">Hence, the impulse response of the LPF is</para>
+    <para id="id9551278">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi fontstyle="italic">αe</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \( t \) =αe rSup { size 8{ - αt} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9728558">Demo showing that the shape of the pulse does not matter</para>
+    <figure id="id9728566">
+      <media id="id2120479" alt=""><image src="../../media/graphics18-0309.png" mime-type="image/png" height="350" width="329"/></media>
+    </figure>
+    <para id="id9728590">3/ Alternative method for finding the impulse response</para>
+    <figure id="id9728602">
+      <media id="id2120576" alt=""><image src="../../media/graphics19-cd6c.png" mime-type="image/png" height="121" width="496"/></media>
+    </figure>
+    <para id="id9728626">To determine the impulse response, we need to evaluate the derivative which we do by parts</para>
+    <para id="id9728631">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>dt</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αΔ</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi fontstyle="italic">αe</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{h \( t \) = {  {d}  over  { ital "dt"} }  \(  \( 1 - e rSup { size 8{ - αΔ} }  \) u \( t \)  \) =αe rSup { size 8{ - αt} } u \( t \) + \( 1 - e rSup { size 8{ - αt} }  \) δ \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9728857">To simplify the impulse response we need to interpret the term 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1</m:mn><m:mo stretchy="false">−</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mo stretchy="false">)</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \( 1 - e rSup { size 8{ - αt} }  \) δ \( t \) } {}</m:annotation></m:semantics></m:math> which we do by placing that term in an integral and noting that</para>
+    <para id="id9082374">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi fontstyle="italic">αt</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi fontstyle="italic">αt</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                      <m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mo stretchy="false">=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  { \( 1 - e rSup { size 8{ - αt} }  \) δ \( t \)  ital "dt"= \( 1 - e rSup { size 8{ - αt} }  \)  rSub { size 8{t=0} } } =0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id9082610">Therefore, the second term is an impulse of area 0 which equals 0, so that the impulse response is
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi fontstyle="italic">αe</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{h \( t \) =αe rSup { size 8{ - αt} } u \( t \) } {}</m:annotation></m:semantics></m:math></para>
+    <para id="id9082719">This agrees with the result obtained by finding the response to a tall, narrow pulse.</para>
+    <para id="id9082725">So how do you “measure” the impulse response of an LTI system?</para>
+    <para id="id9082731">Apply a brief pulse (the waveshape does not matter) and measure the response. Repeat the measurement with a pulse of briefer duration but the same area.</para>
+    <para id="id9082738"><figure id="id9082741"><media id="id4805674" alt=""><image src="../../media/graphics20-929a.png" mime-type="image/png" height="201" width="278"/></media></figure>Response of the LPF to pulses of different durations.</para>
+    <para id="id3375044">Repeat the process with briefer pulses until the changes in the pulse responses do not matter to you. The pulse response to the briefest of these pulses is an estimate of the impulse response.</para>
+    <para id="id3375052">4/ Unit impulse/sample responses of different classes of LTI systems</para>
+    <figure id="id3375063">
+      <media id="id4783981" alt=""><image src="../../media/graphics21-e87d.png" mime-type="image/png" height="194" width="504"/></media>
+    </figure>
+    <para id="id3375087">The condition for the unit impulse/sample response for a BIBO stable system requires some justification.</para>
+    <para id="id3375093">5/ BIBO stable systems</para>
+    <para id="id3375100">We examine the condition for a DT LTI system, the proof is similar for a CT LTI system. For a DT LTI system the output y[n] can be expressed in terms of the input x[n] as</para>
+    <para id="id3375143">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {h \[ m \] x \[ n - m \] } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id3375279">For a BIBO stable system, if x[n] &lt; ∞ then y[n] &lt; ∞. Therefore,</para>
+    <para id="id3375345">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>m</m:mi>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>m</m:mi>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mo stretchy="false">∣</m:mo>
+                        <m:mrow>
+                          <m:mi>h</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mi>m</m:mi>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">[</m:mo>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                          <m:mo stretchy="false">]</m:mo>
+                        </m:mrow>
+                        <m:mo stretchy="false">∣</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi/>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mi/>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mtext>max</m:mtext>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ lline  Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  {h \[ m \] x \[ n - m \] }  rline = Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  { lline h \[ m \] x \[ n - m \]  rline } ~&lt;~x rSub { size 8{"max"} }  Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  { lline h \[ m \]  rline } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8604885">where xmax is the maximum value of |x[m]|. Therefore, if xmax &lt;∞, and if</para>
+    <para id="id8604964">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mo stretchy="false">∞</m:mo>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mrow>
+                      <m:mo stretchy="false">∣</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mo stretchy="false">&lt;</m:mo>
+                  <m:mo stretchy="false">∞</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{m= -  infinity } }  cSup { size 8{ infinity } }  { lline h \[ m \]  rline } &lt; infinity } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id8605078">then y[n] &lt; ∞. This condition is both necessary and sufficient.</para>
+    <para id="id9603624">VI. CONCLUSIONS</para>
+    <list id="id9603628" list-type="bulleted">
+      <item>Time functions can be represented as superpositions of unit samples/impulses,</item>
+    </list>
+    <para id="id9603638">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>m</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mi/>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>and</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mi/>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munderover>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munderover>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>τ</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi>δ</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>τ</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi fontstyle="italic">dτ</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] δ \[ } n - m \] ~ ital "and"~x \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) δ \( t - τ \) dτ} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <list id="id9603854" list-type="bulleted">
+      <item>The unit sample response of an LTI DT system h[n] and the unit impulse response of an LTI CT system h(t) characterize those systems.</item>
+    </list>
+    <list id="id9603900" list-type="bulleted">
+      <item>The superposition sum and integral allow a computation of the output for an arbitrary input given only the unit sample/impulse response,</item>
+    </list>
+    <para id="id9603914">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:munder>
+                        <m:mo stretchy="false">∑</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>m</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:munder>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi>h</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mi/>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>and</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mi/>
+                        <m:mi>y</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mrow>
+                            <m:munderover>
+                              <m:mo stretchy="false">∫</m:mo>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mo stretchy="false">∞</m:mo>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:munderover>
+                            <m:mrow>
+                              <m:mi>x</m:mi>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>τ</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mi>h</m:mi>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>τ</m:mi>
+                              </m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mi fontstyle="italic">dτ</m:mi>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{y \[ n \] = Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] ~ ital "and"~y \( t \) = Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  {x \( τ \) h \( t - τ \) dτ} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para><para id="element-440"><link resource="ps3.pdf"> Exercises .</link>
+</para><para id="element-183"><link resource="ps3sol.pdf"> Solution of exercises.</link>
+</para>
+  </content>
+</document>

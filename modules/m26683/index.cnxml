@@ -1,0 +1,3518 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lecture 13:The Bilateral Laplace Transform</title>
+  <metadata>
+  <md:content-id>m26683</md:content-id><md:title>Lecture 13:The Bilateral Laplace Transform</md:title>
+  <md:abstract>Method for representing signals as superpositions of complex exponential functions, which leads to simpler solving process.</md:abstract>
+  <md:uuid>8840b5f5-4338-4156-a8d5-b0407e937bf0</md:uuid>
+</metadata>
+
+<content>
+    <para id="id10923563">Lecture #13:</para>
+    <para id="id10923571">THE BILATERAL LAPLACE TRANSFORM</para>
+    <para id="id10923575">Motivation: Method for representing signals as superpositions of complex exponential functions, which leads to simpler solving process.</para>
+    <para id="id12295814">Outline:</para>
+    <list id="id12295818" list-type="bulleted">
+      <item>Review of last lecture</item>
+      <item>The bilateral Laplace transform</item>
+    </list>
+    <list id="id11702159" list-type="bulleted">
+      <item>Definition</item>
+      <item>Properties of the Laplace transform</item>
+      <item>Transforms of simple time functions</item>
+      <item>The region of convergence</item>
+    </list>
+    <list id="id12057642" list-type="bulleted">
+      <item>Conclusion</item>
+    </list>
+    <para id="id12202909">I. REVIEW OF LAST LECTURE</para>
+    <para id="id12202913">Solve linear differential equation for a causal exponential input</para>
+    <para id="id11992837">
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo stretchy="false">∑</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo stretchy="false">=</m:mo>
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>d</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                          <m:mi>y</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:msup>
+                              <m:mtext>dt</m:mtext>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mfrac>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>M</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>b</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:msup>
+                                <m:mi>d</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>m</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                              <m:mi>x</m:mi>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:msup>
+                                  <m:mtext>dt</m:mtext>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mi>m</m:mi>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mfrac>
+                          <m:mi/>
+                          <m:mtable>
+                            <m:mtr>
+                              <m:mtd>
+                                <m:mrow/>
+                              </m:mtd>
+                              <m:mtd>
+                                <m:mrow/>
+                              </m:mtd>
+                            </m:mtr>
+                          </m:mtable>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>for</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mi/>
+                          <m:mtable>
+                            <m:mtr>
+                              <m:mtd>
+                                <m:mrow/>
+                              </m:mtd>
+                              <m:mtd>
+                                <m:mrow/>
+                              </m:mtd>
+                            </m:mtr>
+                          </m:mtable>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi/>
+                          </m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:msup>
+                                <m:mtext>Xe</m:mtext>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mstyle fontstyle="italic">
+                                      <m:mrow>
+                                        <m:mtext>st</m:mtext>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mi>u</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{n=0} }  cSup { size 8{N} }  {a rSub { size 8{n} }  {  {d rSup { size 8{n} } y \( t \) }  over  { ital "dt" rSup { size 8{n} } } } = Sum cSub { size 8{m=0} }  cSup { size 8{M} }  {b rSub { size 8{m} }  {  {d rSup { size 8{m} } x \( t \) }  over  { ital "dt" rSup { size 8{m} } } } ` matrix {
+ {} # {}
+}  ital "for"` matrix {
+ {} # {}
+} x \( t \) `=` ital "Xe" rSup { size 8{ ital "st"} } u \( t \) } } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12498247">Solve homogeneous equation for t &gt; 0</para>
+    <para id="id11988631">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>N</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>d</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:mi>y</m:mi>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:msup>
+                                <m:mtext>dt</m:mtext>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>n</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mfrac>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mi/>
+                      </m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mi/>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mtext>by </m:mtext>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mtext>assuming</m:mtext>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>h</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msub>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>Ae</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi fontstyle="italic">λt</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{n=0} }  cSup { size 8{N} }  {a rSub { size 8{n} }  {  {d rSup { size 8{n} } y \( t \) }  over  { ital "dt" rSup { size 8{n} } } } =`0``}  matrix {
+ {} # {}
+} "by " matrix {
+ {} # {}
+} "assuming" matrix {
+ {} # {}
+} y rSub { size 8{h} }  \( t \) = ital "Ae" rSup { size 8{λt} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12626897">Solve characteristic polynomial </para>
+    <para id="id12466122">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>N</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>a</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>λ</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mi/>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi/>
+                  <m:mi>λ</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{n=0} }  cSup { size 8{N} }  {a rSub { size 8{n} } } λ rSup { size 8{n} } =0` matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} `λ} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11562254">Solve for a particular solution for t &gt; 0</para>
+    <para id="id12502761">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:munderover>
+                      <m:mo stretchy="false">∑</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>N</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:munderover>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>a</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mi>n</m:mi>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>d</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>n</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                            <m:msub>
+                              <m:mi>y</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>p</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:msup>
+                                <m:mtext>dt</m:mtext>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>n</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msup>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mfrac>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mrow>
+                          <m:munderover>
+                            <m:mo stretchy="false">∑</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mn>0</m:mn>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>M</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:munderover>
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>b</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mi>m</m:mi>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mfrac>
+                              <m:mrow>
+                                <m:msup>
+                                  <m:mi>d</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mi>m</m:mi>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msup>
+                                <m:mi>x</m:mi>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">)</m:mo>
+                              </m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:msup>
+                                    <m:mtext>dt</m:mtext>
+                                    <m:mstyle fontsize="8pt">
+                                      <m:mrow>
+                                        <m:mi>m</m:mi>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:msup>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mfrac>
+                            <m:mi/>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>for</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mtable>
+                              <m:mtr>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                                <m:mtd>
+                                  <m:mrow/>
+                                </m:mtd>
+                              </m:mtr>
+                            </m:mtable>
+                            <m:mi/>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>Xe</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>st</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{n=0} }  cSup { size 8{N} }  {a rSub { size 8{n} }  {  {d rSup { size 8{n} } y rSub { size 8{p} }  \( t \) }  over  { ital "dt" rSup { size 8{n} } } } = Sum cSub { size 8{m=0} }  cSup { size 8{M} }  {b rSub { size 8{m} }  {  {d rSup { size 8{m} } x \( t \) }  over  { ital "dt" rSup { size 8{m} } } } ` matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} `} } x \( t \) = ital "Xe" rSup { size 8{ ital "st"} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12465248">Assuming 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>y</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>p</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:msup><m:mtext>Ye</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle></m:mrow><m:mi>n</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{y rSub { size 8{p} }  \( t \) = ital "Ye" rSup { size 8{ ital "st"} } n} {}</m:annotation></m:semantics></m:math> and solving for Y yields </para>
+    <para id="id11991545">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>Y</m:mi>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mi>H</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow>
+                    <m:mi>X</m:mi>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>M</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>b</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:msup>
+                            <m:mi>s</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>m</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:munderover>
+                          <m:mo stretchy="false">∑</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                                <m:mo stretchy="false">=</m:mo>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi>N</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:munderover>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>b</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:msup>
+                            <m:mi>s</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mi>X</m:mi>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{Y=H \( s \) X= {  { Sum cSub { size 8{m=0} }  cSup { size 8{M} }  {b rSub { size 8{m} } s rSup { size 8{m} } } }  over  { Sum cSub { size 8{n=0} }  cSup { size 8{N} }  {b rSub { size 8{n} } s rSup { size 8{n} } } } } X} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10840925">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mi>V</m:mi>
+                        <m:mi>I</m:mi>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>C</m:mi>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mi>s</m:mi>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mi>s</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>RC</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>RC</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{H \( s \) = {  {V}  over  {I} } = {  {1}  over  {C} }  \(  {  {s}  over  {s rSup { size 8{2} } + {  {1}  over  { ital "RC"} } s+ {  {1}  over  { ital "RC"} } } }  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id12360088">
+      <media id="id15504467" alt=""><image src="../../media/graphics1-726b.png" mime-type="image/png" height="166" width="540"/></media>
+    </figure>
+    <para id="id12641095">Logic for an analysis method for CT LTI systems</para>
+    <list id="id12641100" list-type="bulleted">
+      <item>H(s) characterizes system  compute H(s) efficiently.</item>
+      <item>In steady state, response to
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mtext>Xe</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"Xe" rSup { size 8{"st"} } } {}</m:annotation></m:semantics></m:math> is
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mtext>Xe</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{H \( s \) "Xe" rSup { size 8{"st"} } } {}</m:annotation></m:semantics></m:math>.</item>
+      <item>Represent arbitrary x(t) as superpositions of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mtext>Xe</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"Xe" rSup { size 8{"st"} } } {}</m:annotation></m:semantics></m:math> on s.</item>
+      <item>Compute response y(t) as superpositions of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mtext>Xe</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{H \( s \) "Xe" rSup { size 8{"st"} } } {}</m:annotation></m:semantics></m:math>on s.</item>
+    </list>
+    <para id="id11764411">II. THE BILATERAL LAPLACE TRANSFORM DEFINITION</para>
+    <para id="id11560720">1/ Analysis formula</para>
+    <para id="id11769426">The bilateral Laplace transform is defined by the analysis formula</para>
+    <para id="id11769431">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>st</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>dt</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {x \( t \) } e rSup { size 8{ -  ital "st"} }  ital "dt"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12236429">X(s) is defined for regions in s — called the region of conver­gence (ROC) — for which the integral exists.</para>
+    <para id="id10929288">2/ Synthesis formula</para>
+    <para id="id11988578">The inverse transform is defined by the synthesis formula</para>
+    <para id="id11988583">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2πj</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:msubsup>
+                      <m:mo stretchy="false">∫</m:mo>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>σ</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>j</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>σ</m:mi>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mi>j</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msubsup>
+                    <m:mrow>
+                      <m:mi>X</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>st</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>ds</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = {  {1}  over  {2πj} }  Int rSub { size 8{σ - j infinity } }  rSup { size 8{σ+j infinity } }  {X \( t \) } e rSup { size 8{ ital "st"} }  ital "ds"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12498694">Since s is a complex quantity, X(s) is a complex function of a complex variable, and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>σ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ} {}</m:annotation></m:semantics></m:math>is in the ROC.</para>
+    <list id="id12102352" list-type="bulleted">
+      <item>The synthesis formula involves integration in the complex s domain. We shall not perform this integration in this subject. The synthesis formula will be used only to prove theorems and not to compute time functions directly.</item>
+      <item>The synthesis formula makes apparent that x(t) is synthe­sized by a superposition of an uncountably infinite number of eternal complex exponentials 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>st</m:mtext></m:mrow></m:mstyle></m:msup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{"st"} } } {}</m:annotation></m:semantics></m:math>each for a different value of s and each of infinitesimal magnitude X(s)ds.</item>
+    </list>
+    <para id="id12051253">3/ Relation to unilateral Laplace transform</para>
+    <para id="id12030088">The difference between the unilateral and the bilateral Laplace transform is in the lower limit of integration, i.e.,</para>
+    <para id="id12091008">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mtext>Bilateral    </m:mtext>
+                  <m:mo stretchy="false">⇒</m:mo>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>st</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>dt</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{"Bilateral    " drarrow X \( s \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {x \( t \) } e rSup { size 8{ -  ital "st"} }  ital "dt"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12666100">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mtext>Unilateral </m:mtext>
+                  <m:mo stretchy="false">⇒</m:mo>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>st</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>dt</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{"Unilateral " drarrow X \( s \) = Int rSub { size 8{0} }  rSup { size 8{ infinity } }  {x \( t \) } e rSup { size 8{ -  ital "st"} }  ital "dt"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <list id="id11691628" list-type="bulleted">
+      <item>The unilateral Laplace transform is restricted to causal time functions, and takes initial conditions into account in a sys­tematic, automatic manner both in the solution of differential equations and in the analysis of systems.</item>
+      <item>The bilateral Laplace transform can represent both causal and non-causal time functions. Initial conditions are ac­counted by including additional inputs.</item>
+    </list>
+    <para id="id12623494">4/ Approach</para>
+    <para id="id12623501">Databases of time functions and their Laplace transforms are developed as follows:</para>
+    <list id="id12498999" list-type="bulleted">
+      <item>Determine the Laplace transforms of simple time functions directly,</item>
+    </list>
+    <list id="id12495558" list-type="bulleted">
+      <item>Use the Laplace transform properties to extend the database of transform pairs.</item>
+    </list>
+    <para id="id12059656">Notation</para>
+    <para id="id12472008">We shall use two useful notations — L {x(t)} signifies the Laplace transform of x(t) and a Laplace transform pair is indicated by</para>
+    <para id="id11990060">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \)  { dlrarrow }  cSup { size 8{L} } X \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12030925">III. LAPLACE TRANSFORM PROPERTIES</para>
+    <para id="id12030929">A few of the important properties are summarized; a more com­plete list is appended.</para>
+    <para id="id12613360">
+      <media id="id15505916" alt=""><image src="../../media/graphics2-96d1.png" mime-type="image/png" height="311" width="653"/></media>
+    </para>
+    <para id="id12094773">Most proofs of properties are simple as indicated below. </para>
+    <para id="id12072716">1/ Linearity </para>
+    <para id="id11992967">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:msub>
+                        <m:mtext>ax</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>bx</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:msub>
+                        <m:mtext>aX</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>bX</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ ital "ax" rSub { size 8{1} }  \( t \) + ital "bx" rSub { size 8{2} }  \( t \)  { dlrarrow }  cSup { size 8{L} }  ital "aX" rSub { size 8{1} }  \( s \) + ital "bX" rSub { size 8{2} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12177843">The proof follows from the definition of the Laplace transform as a definite integral. Let
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msub><m:mtext> ax</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:msub><m:mtext> bx</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \)  =" ax" rSub { size 8{1} }  \( t \)  +" bx" rSub { size 8{2} }  \( t \) } {}</m:annotation></m:semantics></m:math>, and use the analysis formula.</para>
+    <para id="id12592344">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:msub>
+                              <m:mtext>ax</m:mtext>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:msub>
+                                <m:mtext>bx</m:mtext>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mn>2</m:mn>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>st</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  { \(  \(  ital "ax" rSub { size 8{1} }  \( t \) + ital "bx" rSub { size 8{2} }  \( t \)  \) e rSup { size 8{ -  ital "st"} }  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12591642">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:msub>
+                              <m:mtext>ax</m:mtext>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>st</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>dt</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mrow>
+                            <m:msubsup>
+                              <m:mo stretchy="false">∫</m:mo>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mo stretchy="false">∞</m:mo>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mo stretchy="false">∞</m:mo>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msubsup>
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:msub>
+                                    <m:mtext>bx</m:mtext>
+                                    <m:mstyle fontsize="8pt">
+                                      <m:mrow>
+                                        <m:mn>2</m:mn>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:msub>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>st</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>dt</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  { ital "ax" rSub { size 8{1} }  \( t \) e rSup { size 8{ -  ital "st"} }  ital "dt"+ Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  { ital "bx" rSub { size 8{2} }  \( t \) } } e rSup { size 8{ -  ital "st"} }  ital "dt"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12294773">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>aX</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>bX</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = ital "aX" rSub { size 8{1} }  \( s \) + ital "bX" rSub { size 8{2} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12003405">Q. Given the ROC of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{1} }  \( s \)  } {}</m:annotation></m:semantics></m:math>and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{2} }  \( s \) } {}</m:annotation></m:semantics></m:math> what is the ROC of X(s)?</para>
+    <para id="id12666174">A. At least the intersection of the ROCs of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{1} }  \( s \)  } {}</m:annotation></m:semantics></m:math>and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>X</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{X rSub { size 8{2} }  \( s \) } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id11978197">2/ Causal exponential time function</para>
+    <para id="id11978204">If 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mstyle></m:msup></m:mrow><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{αt} } u \( t \) } {}</m:annotation></m:semantics></m:math> then the Laplace transform is</para>
+    <para id="id12501708">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mi fontstyle="italic">αt</m:mi>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mi>u</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>st</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {e rSup { size 8{αt} } u \( t \) e rSup { size 8{ -  ital "st"} }  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12635522">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:msubsup>
+                        <m:mo stretchy="false">∫</m:mo>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msubsup>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mo stretchy="false">(</m:mo>
+                                </m:mrow>
+                                <m:mrow>
+                                  <m:mi>s</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mi>α</m:mi>
+                                </m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mi>t</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>dt</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = Int rSub { size 8{0} }  rSup { size 8{ infinity } }  {e rSup { size 8{ -  \( s - α \) t} }  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12600521">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                            </m:mrow>
+                            <m:mrow>
+                              <m:mi>s</m:mi>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>α</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {1}  over  {s - a} }  \( 1 - e rSup { size 8{ -  \( s - α \)  infinity } }  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12649053">The exponential term has a magnitude of either 0 or ∞. For R{s −
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math>} &gt; 0 the exponential term is zero and the integral con­verges. Let R{s} =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>σ</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ} {}</m:annotation></m:semantics></m:math>, then</para>
+    <para id="id12615341">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi>α</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {1}  over  {s - a} }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt;α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11137298">The region of convergence (ROC) of X(s) is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>σ</m:mi><m:mo stretchy="false">&gt;</m:mo><m:mi>α</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ&gt;α} {}</m:annotation></m:semantics></m:math></para>
+    <para id="id12639975">Thus we have</para>
+    <para id="id12639979">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi fontstyle="italic">αt</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi>α</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{αt} } u \( t \)  matrix {
+ {} # {}
+}  { dlrarrow }  cSup { size 8{L} }  matrix {
+ {} # {}
+} X \( s \) = {  {1}  over  {s - a} }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt;α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id12497856">
+      <media id="id15508485" alt=""><image src="../../media/graphics3-1d35.png" mime-type="image/png" height="201" width="460"/></media>
+    </figure>
+    <para id="id12058612">3/ Relation between time functions and pole-zero diagrams </para>
+    <para id="id12653099">Consider the causal exponential time function and its Laplace transform</para>
+    <para id="id12393537">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi fontstyle="italic">αt</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>α</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mi>α</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{αt} } u \( t \)  matrix {
+ {} # {}
+}  { dlrarrow }  cSup { size 8{L} }  matrix {
+ {} # {}
+} X \( s \) = {  {1}  over  {s - α} }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt;α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10874484">The following shows both the time functions and the pole-zero diagrams for 5 different values of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math></para>
+    <figure id="id12472099">
+      <media id="id15508850" alt=""><image src="../../media/graphics4-7ac0.png" mime-type="image/png" height="225" width="493"/></media>
+    </figure>
+    <para id="id12238313">Demo of relation of pole-zero diagram to time function.</para>
+    <figure id="id10839417">
+      <media id="id15508899" alt=""><image src="../../media/graphics5-beae.png" mime-type="image/png" height="230" width="633"/></media>
+    </figure>
+    <para id="id12104162">Conclusions on relation between causal time functions and</para>
+    <para id="id12602313">pole-zero diagrams</para>
+    <figure id="id12602320">
+      <media id="id15508958" alt=""><image src="../../media/graphics6-63f5.png" mime-type="image/png" height="142" width="653"/></media>
+    </figure>
+    <para id="id12000407">■ Note, st is dimensionless. Hence, s must have units inversely proportional to time.</para>
+    <para id="id12641657">IV. RELATION OF TIME FUNCTIONS TO REGION OF CONVERGENCE</para>
+    <para id="id12611645">We have considered only causal exponential time functions. Now we wish to consider more general time functions. First, we com­pare the Laplace transforms of two time functions: the causal exponential time function 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">σt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mi>u</m:mi><m:mrow><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">−</m:mo><m:mi>t</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - σt} } u \(  - t \) } {}</m:annotation></m:semantics></m:math>and the anti-causal exponential time function 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">σt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow><m:mi>u</m:mi><m:mrow><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">−</m:mo><m:mi>t</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = - e rSup { size 8{ - σt} } u \(  - t \) } {}</m:annotation></m:semantics></m:math>.</para>
+    <para id="id12625272">1/ Causal exponential time function</para>
+    <para id="id12642198">The Laplace transform of the causal exponential time function was worked out earlier and is</para>
+    <para id="id12611473">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {1}  over  {s+a} }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt; - α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12593266">The region of convergence (ROC) of X(s) is
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>σ</m:mi><m:mo stretchy="false">&gt;</m:mo><m:mi>α</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ&gt;α} {}</m:annotation></m:semantics></m:math></para>
+    <para id="id12615834">2/ Anti-causal exponential time function</para>
+    <para id="id12615841">If 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">σt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow></m:mrow><m:mi>u</m:mi><m:mrow><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">−</m:mo><m:mi>t</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = - e rSup { size 8{ - σt} } u \(  - t \) } {}</m:annotation></m:semantics></m:math>then the Laplace transform is</para>
+    <para id="id12393346">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mrow>
+                        <m:msubsup>
+                          <m:mo stretchy="false">∫</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mo stretchy="false">∞</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msubsup>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi fontstyle="italic">αt</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>st</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>dt</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = -  Int rSub { size 8{ -  infinity } }  rSup { size 8{ infinity } }  {e rSup { size 8{ - αt} } } u \(  - t \) e rSup { size 8{ -  ital "st"} }  ital "dt"} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12642871">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mrow>
+                        <m:msubsup>
+                          <m:mo stretchy="false">∫</m:mo>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mo stretchy="false">∞</m:mo>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msubsup>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mrow>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mo stretchy="false">(</m:mo>
+                                  </m:mrow>
+                                  <m:mrow>
+                                    <m:mi>s</m:mi>
+                                    <m:mo stretchy="false">+</m:mo>
+                                    <m:mi>α</m:mi>
+                                  </m:mrow>
+                                  <m:mo stretchy="false">)</m:mo>
+                                  <m:mi>t</m:mi>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msup>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>dt</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = -  Int rSub { size 8{0} }  rSup { size 8{ infinity } }  {e rSup { size 8{ -  \( s+α \) t} }  ital "dt"} } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10884974">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mi>s</m:mi>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mi>α</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">∞</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {1}  over  {s+a} }  \( 1 - e rSup { size 8{ \( s+α \)  infinity } }  \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12016394">The integral converges provided R{s + 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math>} &lt;0, and</para>
+    <para id="id12105364">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>s</m:mi>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>a</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>σ</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mi>α</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {1}  over  {s+a} }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} σ&gt; - α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12498426">The region of convergence (ROC) of X(s) is 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>σ</m:mi><m:mo stretchy="false">&gt;</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:mi>α</m:mi></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{σ&gt; - α} {}</m:annotation></m:semantics></m:math></para>
+    <para id="id12614318">3/ Causal and anti-causal exponential time functions can have the same Laplace transform formula but differ in ROCs</para>
+    <figure id="id12033009">
+      <media id="id15510339" alt=""><image src="../../media/graphics7-f580.png" mime-type="image/png" height="310" width="488"/></media>
+    </figure>
+    <para id="id11753856">4/ The Laplace transform formula plus the ROC uniquely specify the time function</para>
+    <list id="id12496403" list-type="bulleted">
+      <item>1/(s +
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mi>α</m:mi></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{α} {}</m:annotation></m:semantics></m:math>) is the Laplace transform formula of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{e rSup { size 8{ - αt} } u \( t \) } {}</m:annotation></m:semantics></m:math> and of 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:msup><m:mi>e</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mi>u</m:mi><m:mrow><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">−</m:mo><m:mi>t</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ - e rSup { size 8{ - αt} } u \(  - t \) } {}</m:annotation></m:semantics></m:math>.</item>
+    </list>
+    <list id="id11782130" list-type="bulleted">
+      <item>The ROCs for these two time functions are different.</item>
+    </list>
+    <list id="id12089458" list-type="bulleted">
+      <item>The ROC must be known to uniquely compute the time function.</item>
+    </list>
+    <para id="id12089469">5/ More general exponential time functions</para>
+    <para id="id12162076">Now consider</para>
+    <para id="id12162081">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>α</m:mi>
+                            </m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">∣</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">∣</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mrow>
+                    <m:mi>α</m:mi>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - α lline t rline } }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} α&gt;0} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12644436">which is neither causal nor anti-causal but is bounded.</para>
+    <para id="id12644442">
+      <media id="id15510795" alt=""><image src="../../media/graphics8-6f4b.png" mime-type="image/png" height="178" width="285"/></media>
+    </para>
+    <para id="id12003054">Note we can express x(t) as</para>
+    <para id="id11779773">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mi>α</m:mi>
+                              </m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">∣</m:mo>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">∣</m:mo>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi fontstyle="italic">αt</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi fontstyle="italic">αt</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - α lline t rline } } =e rSup { size 8{αt} } u \(  - t \) +e rSup { size 8{ - αt} } u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <figure id="id12652181">
+      <media id="id15511072" alt=""><image src="../../media/graphics9-bdd9.png" mime-type="image/png" height="214" width="350"/></media>
+    </figure>
+    <para id="id12090439">We use the linearity property of the Laplace transform</para>
+    <para id="id11993142">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:msub>
+                        <m:mtext>ax</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>bx</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:msub>
+                        <m:mtext>aX</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mstyle fontstyle="italic">
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext>bX</m:mtext>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{ ital "ax" rSub { size 8{1} }  \( t \) + ital "bx" rSub { size 8{2} }  \( t \)  { dlrarrow }  cSup { size 8{L} }  ital "aX" rSub { size 8{1} }  \( s \) + ital "bX" rSub { size 8{2} }  \( s \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+      <m:math>
+        <m:semantics>
+          <m:mrow/>
+          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10840221">and previous results on the Laplace transforms of anti-causal and causal exponentials to give</para>
+    <para id="id12088808">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>a</m:mi>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mi>a</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = -  {  {1}  over  {s - a} } + {  {1}  over  {s+a} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10912379">We can combine these terms and find a formula that is valid in a region of the s plane as follows</para>
+    <para id="id12592438">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>α</m:mi>
+                            </m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">∣</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">∣</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                  </m:mrow>
+                  <m:mover>
+                    <m:mo stretchy="false">⇔</m:mo>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mi>L</m:mi>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:mover>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2α</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mi>s</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:msup>
+                          <m:mi>α</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mtable>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                            <m:mtd>
+                              <m:mrow/>
+                            </m:mtd>
+                          </m:mtr>
+                        </m:mtable>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mi>α</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">&lt;</m:mo>
+                      <m:mi>σ</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mi>α</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) =e rSup { size 8{ - α lline t rline } }  { dlrarrow }  cSup { size 8{L} } X \( s \) = {  { - 2α}  over  {s rSup { size 8{2} }  - α rSup { size 8{2} } } }  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+}  - α&lt;σ&lt;α} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12016846">6/ Relations of parts of time function to the ROC</para>
+    <para id="id12640919">The ROC of X(s) is a strip in the s plane. We can associate which time function goes with each pole. If the ROC is to the left of a pole then that pole corresponds to an anti-causal (leftsided) time function. If the ROC is to the right of a pole then that pole corresponds to a causal (right-sided) time function.</para>
+    <figure id="id11681736">
+      <media id="id15511887" alt=""><image src="../../media/graphics10-661f.png" mime-type="image/png" height="238" width="564"/></media>
+    </figure>
+    <para id="id12001172">Example — the effect of the ROC</para>
+    <para id="id12001178">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>3</m:mn>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">+</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mi>s</m:mi>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mrow>
+                      <m:mfrac>
+                        <m:mi>A</m:mi>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">+</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mfrac>
+                        <m:mi>B</m:mi>
+                        <m:mrow>
+                          <m:mi>s</m:mi>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  {s+3}  over  { \( s+1 \)  \( s - 2 \) } } = {  {A}  over  {s+1} } + {  {B}  over  {s - 2} } } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12663189"><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>A</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">−</m:mo><m:mfrac><m:mn>2</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{A= -  {  {2}  over  {3} } } {}</m:annotation></m:semantics></m:math> and 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>B</m:mi><m:mo stretchy="false">=</m:mo><m:mfrac><m:mn>5</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{B= {  {5}  over  {3} } } {}</m:annotation></m:semantics></m:math></para>
+    <figure id="id11768940">
+      <media id="id15512209" alt=""><image src="../../media/graphics11-058c.png" mime-type="image/png" height="218" width="546"/></media>
+    </figure>
+    <para id="id12237198">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>R</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">&gt;</m:mo>
+                    <m:mn>2Ơ</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  { - 2}  over  {3} }  \(  {  {1}  over  {s+1} }  \) + {  {5}  over  {3} }  \(  {  {1}  over  {s - 2} }  \)  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} R lbrace s rbrace &gt;2Ơ} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12617188">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mn>3</m:mn>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2t</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = \(  {  { - 2}  over  {3} } e rSup { size 8{ - t} } + {  {5}  over  {3} } e rSup { size 8{2t} }  \) u \( t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12635718">
+      <media id="id15512678" alt=""><image src="../../media/graphics12-230e.png" mime-type="image/png" height="243" width="309"/></media>
+    </para>
+    <para id="id12666782">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mtable>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mrow/>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mi>R</m:mi>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mn>2Ơ</m:mn>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  { - 2}  over  {3} }  \(  {  {1}  over  {s+1} }  \) + {  {5}  over  {3} }  \(  {  {1}  over  {s - 2} }  \)  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+}  - 1&lt;R lbrace s rbrace &lt;2Ơ} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id11990675">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2t</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mi>u</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = {  { - 2}  over  {3} } e rSup { size 8{ - t} } u \( t \) + {  {5}  over  {3} } e rSup { size 8{2t} } u \(  - t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id12599749">
+      <media id="id15513182" alt=""><image src="../../media/graphics13-dfb4.png" mime-type="image/png" height="234" width="307"/></media>
+    </para>
+    <para id="id12000179">
+      <media id="id15513219" alt=""><image src="../../media/graphics14-fcd6.png" mime-type="image/png" height="234" width="303"/></media>
+    </para>
+    <para id="id12237939">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">−</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">+</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mstyle fontstyle="italic">
+                    <m:mrow>
+                      <m:mtext>for</m:mtext>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mrow/>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mi>R</m:mi>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo stretchy="false">{</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mo stretchy="false">}</m:mo>
+                    </m:mrow>
+                    <m:mo stretchy="false">&lt;</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>1Ơ</m:mn>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{X \( s \) = {  { - 2}  over  {3} }  \(  {  {1}  over  {s+1} }  \) + {  {5}  over  {3} }  \(  {  {1}  over  {s - 2} }  \)  matrix {
+ {} # {}
+}  ital "for" matrix {
+ {} # {}
+} R lbrace s rbrace &lt; - 1Ơ} {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10913185">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mstyle fontsize="12pt">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                  </m:mrow>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mn>3</m:mn>
+                  </m:mfrac>
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mi>t</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msup>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mfrac>
+                      <m:mn>5</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mstyle fontsize="8pt">
+                      <m:mrow>
+                        <m:mn>2t</m:mn>
+                      </m:mrow>
+                    </m:mstyle>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>u</m:mi>
+                  <m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mstyle>
+            <m:mrow/>
+          </m:mrow>
+          <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = \(  {  { - 2}  over  {3} } e rSup { size 8{ - t} }  -  {  {5}  over  {3} } e rSup { size 8{2t} }  \) u \(  - t \) } {}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="id10900328">V. CONCLUSIONS</para>
+    <list id="id11680886" list-type="bulleted">
+      <item>The Laplace transform represents a time function as a superposition of complex exponentials.</item>
+    </list>
+    <list id="id12056739" list-type="bulleted">
+      <item>A time function is related uniquely to a Laplace transform if the ROC is specified.</item>
+    </list>
+    <list id="id12603595" list-type="bulleted">
+      <item>If the Laplace transform of a sum of causal and anti-causal exponential time functions exists, its ROC is a strip in the s-plane parallel to the jω-axis.</item>
+    </list><para id="element-646"><link resource="ps6.pdf">Exercises .</link>
+</para><para id="element-550"><link resource="ps6sol.pdf"> Solutions of Exercises.</link>
+</para>
+  </content>
+</document>
