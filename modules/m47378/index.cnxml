@@ -1,0 +1,338 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Sampling Theorem</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47378</md:content-id>
+  <md:title>Sampling Theorem</md:title>
+  <md:abstract>This module builds on the intuition developed in the sampling module to discuss the Nyquist-Shannon sampling theorem, including a full statement and a proof.</md:abstract>
+  <md:uuid>6886993a-9e61-4d7b-8d0b-1a99bac82fb2</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id156341">With the introduction of the concept of signal sampling, which produces a discrete time signal by selecting the values of the continuous time signal at evenly spaced points in time, it is now possible to discuss one of the most important results in signal processing, the Nyquist-Shannon sampling theorem. Often simply called the sampling theorem, this theorem concerns signals, known as bandlimited signals, with spectra that are zero for all frequencies with absolute value greater than or equal to a certain level. The theorem implies that there is a sufficiently high sampling rate at which a bandlimited signal can be recovered exactly from its samples, which is an important step in the processing of continuous time signals using the tools of discrete time signal processing.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Nyquist-Shannon Sampling Theorem</title>
+      <section id="uid1">
+        <title>Statement of the Sampling Theorem</title>
+        <para id="id156368">The Nyquist-Shannon sampling theorem concerns signals with continuous time Fourier transforms that are only nonzero on the interval <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math> for some constant <m:math overflow="scroll"><m:mi>B</m:mi></m:math>. Such a function is said to be bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Essentially, the sampling theorem has already been implicitly introduced in the previous module concerning sampling. Given a continuous time signals <m:math overflow="scroll"><m:mi>x</m:mi></m:math> with continuous time Fourier transform <m:math overflow="scroll"><m:mi>X</m:mi></m:math>, recall that the spectrum <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> of sampled signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> is given by</para>
+        <equation id="id156283"><m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>Ω</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:msub>
+                  <m:mi>T</m:mi>
+                  <m:mi>s</m:mi>
+                </m:msub>
+              </m:mfrac>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>k</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mo>-</m:mo>
+                  <m:mi>∞</m:mi>
+                </m:mrow>
+                <m:mi>∞</m:mi>
+              </m:munderover>
+              <m:mi>X</m:mi>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:msub>
+                      <m:mi>T</m:mi>
+                      <m:mi>s</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mfenced>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation><para id="id157084">It had previously been noted that if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, the period of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>s</m:mi></m:msub></m:math> centered about the origin has the same form as <m:math overflow="scroll"><m:mi>X</m:mi></m:math> scaled in frequency since no aliasing occurs. This is illustrated in <link target-id="uid2"/>. Hence, if any two <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited continuous time signals sampled to the same signal, they would have the same continuous time Fourier transform and thus be identical. Thus, for each discrete time signal there is a unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited continuous time signal that samples to the discrete time signal with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>. Therefore, this <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal can be found from the samples by inverting this bijection.</para><para id="id157294">This is the essence of the sampling theorem. More formally, the sampling theorem states the following. If a signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math>, it is completely determined by its samples with sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>, known as the Nyquist rate. That is to say, <m:math overflow="scroll"><m:mi>x</m:mi></m:math> can be reconstructed exactly from its samples <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. The angular frequency <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:pi/><m:mi>B</m:mi></m:mrow></m:math> is often called the angular Nyquist rate. Equivalently, this can be stated in terms of the sampling period <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:mrow></m:math>. If a signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>)</m:mo></m:mrow></m:math>, it is completely determined by its samples with sampling period <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mi>1</m:mi><m:mo>/</m:mo><m:cn>2</m:cn><m:mi>B</m:mi></m:mrow></m:math>. That is to say, <m:math overflow="scroll"><m:mi>x</m:mi></m:math> can be reconstructed exactly from its samples <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>.</para><figure id="uid2">
+          <media id="uid2_media" alt="">
+            <image mime-type="image/png" src="../../media/alias_eg.png" id="uid2_onlineimage" width="506"><!-- NOTE: attribute width changes image size online (pixels). original width is 506. --></image>
+            <image mime-type="application/postscript" for="pdf" src="../../media/alias_eg.eps" id="uid2_printimage"/>
+          </media>
+          <caption>The spectrum of a bandlimited signals is shown as well as the spectra of its samples at rates above and below the Nyquist frequency. As is shown, no aliasing occurs above the Nyquist frequency, and the period of the samples spectrum centered about the origin has the same form as the spectrum of the original signal scaled in frequency. Below the Nyquist frequency, aliasing can occur and causes the spectrum to take a different than the original spectrum.</caption>
+        </figure>
+      </section>
+      <section id="uid3">
+        <title>Proof of the Sampling Theorem</title>
+        <para id="id157542">The above discussion has already shown the sampling theorem in an informal and intuitive way that could easily be refined into a formal proof. However, the original proof of the sampling theorem, which will be given here, provides the interesting observation that the samples of a signal with period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> provide Fourier series coefficients for the original signal spectrum on <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>.</para><para id="id157600">Let <m:math overflow="scroll"><m:mi>x</m:mi></m:math> be a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signal and <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> be its samples with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>. We can represent <m:math overflow="scroll"><m:mi>x</m:mi></m:math> in terms of its spectrum <m:math overflow="scroll"><m:mi>X</m:mi></m:math> using the inverse continuous time Fourier transfrom and the fact that <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited. The result is</para><equation id="uid4"><m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:mi>x</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:cn>1</m:cn>
+                        <m:mo>/</m:mo>
+                        <m:cn>2</m:cn>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:cn>1</m:cn>
+                        <m:mo>/</m:mo>
+                        <m:cn>2</m:cn>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mi>X</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:cn>2</m:cn>
+                        <m:pi/>
+                        <m:mi>f</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation><para id="id157808">
+This representation of <m:math overflow="scroll"><m:mi>x</m:mi></m:math> may then be sampled with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> to produce</para>
+        <equation id="uid5"><m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mi>s</m:mi>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mi>s</m:mi>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:msub>
+                        <m:mi>T</m:mi>
+                        <m:mi>s</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:cn>1</m:cn>
+                        <m:mo>/</m:mo>
+                        <m:cn>2</m:cn>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:cn>1</m:cn>
+                        <m:mo>/</m:mo>
+                        <m:cn>2</m:cn>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mi>X</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:cn>2</m:cn>
+                        <m:pi/>
+                        <m:mi>f</m:mi>
+                        <m:mi>n</m:mi>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation><para id="id157978">Noticing that this indicates that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> is the <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mi> th </m:mi></m:mrow></m:math> continuous time Fourier series coefficient for <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> on the interval <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>, it is shown that the samples determine the original spectrum <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> and, by extension, the original signal itself.</para></section>
+      <section id="uid6">
+        <title>Perfect Reconstruction</title>
+        <para id="id158096">Another way to show the sampling theorem is to derive the reconstruction formula that gives the original signal <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>˜</m:mo></m:mover><m:mo>=</m:mo><m:mi>x</m:mi></m:mrow></m:math> from its samples <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>, provided <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math>. This is done in the module on perfect reconstruction. However, the result, known as the Whittaker-Shannon reconstruction formula, will be stated here. If the requisite conditions hold, then the perfect reconstruction is given by</para><equation id="id158195"><m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mo>-</m:mo>
+                  <m:mi>∞</m:mi>
+                </m:mrow>
+                <m:mi>∞</m:mi>
+              </m:munderover>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo form="prefix">sinc</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:msub>
+                  <m:mi>T</m:mi>
+                  <m:mi>s</m:mi>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:math>
+        </equation><para id="id158274">where the sinc function is defined as</para>
+        <equation id="id158279">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mo form="prefix">sinc</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>π</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>π</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id158325">From this, it is clear that the set</para>
+        <equation id="id158328">
+          <m:math overflow="scroll" mode="display">
+            <m:mfenced separators="" open="{" close="}">
+              <m:mo form="prefix">sinc</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>/</m:mo>
+              <m:msub>
+                <m:mi>T</m:mi>
+                <m:mi>s</m:mi>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>∈</m:mo>
+              <m:mi mathvariant="double-struck">Z</m:mi>
+            </m:mfenced>
+          </m:math>
+        </equation>
+        <para id="id158379">forms an orthogonal basis for the set of <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited signals, where the coefficients of a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> signal in this basis are its samples with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>.</para></section>
+    </section>
+    <section id="cid3" class="ap">
+      <title>Practical Implications</title>
+      <section id="uid7">
+        <title>Discrete Time Processing of Continuous Time Signals</title>
+        <para id="id158494">The Nyquist-Shannon Sampling Theorem and the Whittaker-Shannon Reconstruction formula enable discrete time processing of continuous time signals. Because any linear time invariant filter performs a multiplication in the frequency domain, the result of applying a linear time invariant filter to a bandlimited signal is an output signal with the same bandlimit. Since sampling a bandlimited continuous time signal above the Nyquist rate produces a discrete time signal with a spectrum of the same form as the original spectrum, a discrete time filter could modify the samples spectrum and perfectly reconstruct the output to produce the same result as a continuous time filter. This allows the use of digital computing power and flexibility to be leveraged in continuous time signal processing as well. This is more thouroughly described in the final module of this chapter.</para>
+      </section>
+      <section id="uid8">
+        <title>Psychoacoustics</title>
+        <para id="id158514">The properties of human physiology and psychology often inform design choices in technologies meant for interactin with people. For instance, digital devices dealing with sound use sampling rates related to the frequency range of human vocalizations and the frequency range of human auditory sensativity. Because most of the sounds in human speech concentrate most of their signal energy between 5 Hz and 4 kHz, most telephone systems discard frequencies above 4 kHz and sample at a rate of 8 kHz. Discarding the frequencies greater than or equal to 4 kHz through use of an anti-aliasing filter is important to avoid aliasing, which would negatively impact the quality of the output sound as is described in a later module. Similarly, human hearing is sensitive to frequencies between 20 Hz and 20 kHz. Therefore, sampling rates for general audio waveforms placed on CDs were chosen to be greater than 40 kHz, and all frequency content greater than or equal to some level is discarded. The particular value that was chosen, 44.1 kHz, was selected for other reasons, but the sampling theorem and the range of human hearing provided a lower bound for the range of choices.</para>
+      </section>
+    </section>
+    <section id="cid4" class="cn">
+      <title>Sampling Theorem Summary</title>
+      <para id="id158537">The Nyquist-Shannon Sampling Theorem states that a signal bandlimited to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> can be reconstructed exactly from its samples with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>. The Whittaker-Shannon interpolation formula, which will be further described in the section on perfect reconstruction, provides the reconstruction of the unique <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>,</m:mo><m:cn>1</m:cn><m:mo>/</m:mo><m:cn>2</m:cn><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> bandlimited continuous time signal that samples to a given discrete time signal with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math>. This enables discrete time processing of continuous time signals, which has many powerful applications.</para></section>
+  </content>
+</document>

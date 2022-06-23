@@ -1,0 +1,323 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Changing Sampling Rates in Discrete Time</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m48038</md:content-id>
+  <md:title>Changing Sampling Rates in Discrete Time</md:title>
+  <md:abstract>This module describes the cases in which the sampling rate applied to a signal can be modified without resorting to reconstruction. This includes downsampling, upsampling, and rational scaling.</md:abstract>
+  <md:uuid>5c879a76-e347-48c1-ba53-ef7e3225ec67</md:uuid>
+</metadata>
+
+<content>
+    <para id="id151106">Up to this point, we have discussed the connection between continuous-time and discrete-time signals that are captured by the concepts of sampling and reconstruction. In particular cases, we might be interested in observing a signal under a variety of sampling rates. For example, the amount of memory or communication bandwidth available for transmission or storage of a discrete-time signal might fluctuate in time, which may require increasing or decreasing the sampling rate (or sampling period) accordingly.</para>
+    <figure id="uid1">
+      <media id="uid1_media" alt="">
+        <image mime-type="image/png" src="../../media/naive.png" id="uid1_onlineimage" width="710"><!-- NOTE: attribute width changes image size online (pixels). original width is 710. --></image>
+        <image mime-type="application/postscript" for="pdf" src="../../media/naive.eps" id="uid1_printimage" print-width="12.0cm">
+          <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      <caption>Changing the sampling frequency by reconstructing and sampling always works, but sometimes it may be possible to do so working only in the discrete-time domain.</caption>
+    </figure>
+    <para id="id151132">Naively, if we have sampled the signal sufficiently often to be able to recover it (according to the Nyquist criterion), then we can always return from the discrete-time signal to a continuous-time signal using reconstruction and then sample the signal at the new desired sampling rate.However, there are specific cases where it is possible to modify the sampling rate of the signal without having to switch back to a continuous-time representation. In other words, certain changes of sampling rate can be performed directly on the discrete-time signal. We discuss three specific cases: downsampling, upsampling, and rational scaling.</para>
+    <section id="cid1">
+      <title>Downsampling</title>
+      <para id="id151149">Consider the case where we start with a sampling frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:math> and are asked to reduce the sampling frequency by an integer factor to a new value <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mfrac><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mi>k</m:mi></m:mfrac></m:mrow></m:math>. When this change is translated to the sampling period <m:math overflow="scroll"><m:mi>T</m:mi></m:math> (as <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>), it is easy to see that the new sampling period <m:math overflow="scroll"><m:mrow><m:msup><m:mi>T</m:mi><m:mo>'</m:mo></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>T</m:mi></m:mrow></m:math> will be <m:math overflow="scroll"><m:mi>k</m:mi></m:math> times larger than its original value. Therefore, the change in sampling frequency can be accounted for by taking the existing discrete signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> (sampled at frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:math>) and decimating it by a factor of <m:math overflow="scroll"><m:mi>k</m:mi></m:math> to obtain the new signal <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>k</m:mi><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> “re-sampled” with sampling frequency <m:math overflow="scroll"><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup></m:math>.</para>
+      <para id="id151687">We know that for both the old and new sampling frequencies the discrete-time Fourier transform of the sampled signal will correspond to a periodized, frequency-scaled version of the continuous-time signal's Fourier transform <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:mi>C</m:mi><m:mi>T</m:mi></m:mrow></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> where the respective periods/sampling frequencies <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup></m:math> each gets mapped to <m:math overflow="scroll"><m:mrow><m:mi>Ω</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>. We now compare how these two discrete-time transforms match to one another:</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>Ω</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>Ω</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mrow>
+                      <m:mi>C</m:mi>
+                      <m:mi>T</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>Ω</m:mi>
+                        <m:msub>
+                          <m:mi>f</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>,</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msup>
+                    <m:mi>X</m:mi>
+                    <m:mo>'</m:mo>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>x</m:mi>
+                    <m:mo>'</m:mo>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>Ω</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>Ω</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mrow>
+                      <m:mi>C</m:mi>
+                      <m:mi>T</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>Ω</m:mi>
+                        <m:msub>
+                          <m:mi>f</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id152221">By connecting the two equations through the right-most terms, it is easy to see that <m:math overflow="scroll"><m:mrow><m:msup><m:mi>X</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>/</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, i.e., that the downsampling performed “expands” the DTFT of the original signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>. Note, however, that since we are still working with a discrete-time signal <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math>, the new transform must remain <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>-periodic, and so this expansion occurs for each copy of the spectrum around its “center”, but the copies stay stationary at multiples of <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>.</para>
+      <figure id="uid3">
+        <media id="uid3_media" alt="">
+          <image mime-type="image/png" src="../../media/downsampling.png" id="uid3_onlineimage" width="996"><!-- NOTE: attribute width changes image size online (pixels). original width is 996. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/downsampling.eps" id="uid3_printimage" print-width="15.0cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>The downsampling operation in time, continuous frequency, and discrete frequency.</caption>
+      </figure>
+      <para id="id152340">Note also that this result effectively provides us with a new property for the DTFT: decimation in the time domain corresponds to a “qualified” expansion in the frequency domain, where the expansion is around the center of each copy of the CT spectrum (<m:math overflow="scroll"><m:mrow><m:mi>Ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>±</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>,</m:mo><m:mo>±</m:mo><m:mn>4</m:mn><m:mi>π</m:mi><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>).</para>
+      <para id="id152382">Finally, notice that in downsampling there is the risk that aliasing may occur when the new frequency <m:math overflow="scroll"><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup></m:math> does not hold the Nyquist frequency criterion (<m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>≥</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>, where <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:math> is the bandwidth of the CT signal). Noticeably, this is the first time that we observe the possibility of aliasing directly in the discrete-time domain. Since aliasing may occur, it is good engineering practice to apply a (discrete-time) anti-aliasing filter to the signal before decimation so that aliasing is prevented. Such a filter will ideally be a perfect low-pass filter with cutoff frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Ω</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>. The combination of an anti-aliasing filter and a decimator is known in the community as a donwsampler, as shown below.</para>
+      <figure id="uid4">
+        <media id="uid4_media" alt="">
+          <image mime-type="image/png" src="../../media/downsampler.png" id="uid4_onlineimage" width="429"><!-- NOTE: attribute width changes image size online (pixels). original width is 429. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/downsampler.eps" id="uid4_printimage" print-width="7.5cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>A downsampler consists of an anti-aliasing filter and a decimator.</caption>
+      </figure>
+    </section>
+    <section id="cid2">
+      <title>Upsampling</title>
+      <para id="id152507">Now, consider the case where we start with a sampling frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:math> and are asked to increase the sampling frequency by an integer factor to a new value <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>·</m:mo><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:mrow></m:math>. When this change is translated to the sampling period <m:math overflow="scroll"><m:mi>T</m:mi></m:math> (as <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>), it is easy to see that the new sampling period <m:math overflow="scroll"><m:mrow><m:msup><m:mi>T</m:mi><m:mo>'</m:mo></m:msup><m:mo>=</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math> will be a fraction (<m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>) of the original sampling period. Therefore, the change in sampling frequency requires the acquisition of new samples in addition to those already available under the old sampling frequency. For this reason, this process is commonly known as up sampling.</para>
+      <para id="id152626">While at first sight this may imply a demand to go back to the continuous-time signal, we must recall that samples that are obtained with a sampling frequency greater than the Nyquist frequency contain all information needed to recover the continuous-time signal, and so it should be possible to infer the new samples directly from existing ones (as long as no aliasing has occurred). For this purpose, we will retrieve the concept of an expanded discrete-time signal:</para>
+      <equation id="uid5"><m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="{" close="">
+                    <m:mtable>
+                      <m:mtr>
+                        <m:mtd columnalign="left">
+                          <m:mrow>
+                            <m:mi>x</m:mi>
+                            <m:mo>[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo>/</m:mo>
+                            <m:mi>k</m:mi>
+                            <m:mo>]</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                        <m:mtd columnalign="left">
+                          <m:mrow>
+                            <m:mtext>if</m:mtext><m:mspace width="5px"/>
+                            <m:mi>n</m:mi>
+                            <m:mo>/</m:mo>
+                            <m:mi>k</m:mi>
+                            <m:mo>∈</m:mo>
+                            <m:mi mathvariant="double-struck">Z</m:mi>
+                            <m:mo>,</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd columnalign="left">
+                          <m:mn>0</m:mn>
+                        </m:mtd>
+                        <m:mtd columnalign="left">
+                          <m:mrow>
+                            <m:mi> otherwise </m:mi>
+                            <m:mo>.</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                    </m:mtable>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation><para id="id152736">Notice that this signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> should match the upsampled signal <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> for indices that are multiples of <m:math overflow="scroll"><m:mi>k</m:mi></m:math>, and our goal is to “fill in” the missing samples in <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> currently having value zero. To see how this can be done, we appeal to the DTFT of the expanded signal: recall that the time expansion property of the DTFT gives us that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, which in practice “compresses” the DTFT in frequency by a factor of <m:math overflow="scroll"><m:mi>k</m:mi></m:math> and makes it <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>-periodic. In contrast, the DTFT of the upsampled signal would remain <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>-periodic, while simultaneously compressing each copy of the signal's spectrum by a factor of <m:math overflow="scroll"><m:mi>k</m:mi></m:math>.</para>
+      <figure id="uid6">
+        <media id="uid6_media" alt="">
+          <image mime-type="image/png" src="../../media/upsampling.png" id="uid6_onlineimage" width="998"><!-- NOTE: attribute width changes image size online (pixels). original width is 998. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/upsampling.eps" id="uid6_printimage" print-width="15.0cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>The upsampling operation in time, continuous frequency, and discrete frequency.</caption>
+      </figure>
+      <para id="id152918">This comparison illuminates a method to retrieve the upsampled signal <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mo>'</m:mo></m:msup><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> from the expanded signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math>: to apply a low-pass filter on the expanded signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> so that one of the <m:math overflow="scroll"><m:mi>k</m:mi></m:math> copies that appear over each <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>-length region of the DTFT is preserved. Such a filter will need a cutoff frequency of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>. The combination of an expander and a low-pass filter is known as an upsampler, as shown below.</para><figure id="uid7"><media id="uid7_media" alt="">
+          <image mime-type="image/png" src="../../media/upsampler.png" id="uid7_onlineimage" width="429"><!-- NOTE: attribute width changes image size online (pixels). original width is 429. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/upsampler.eps" id="uid7_printimage" print-width="7.5cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>An upsampler consists of an expander and a low-pass filter.</caption></figure></section>
+    <section id="cid3">
+      <title>Rational Sampling Frequency Scaling</title>
+      <para id="id153065">A third case where changes in the sampling frequency can be resolved in the discrete-time domain is when the ratio between the new and old sampling frequencies provides a rational number. That is, <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>f</m:mi><m:mi>s</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mfrac><m:mi>a</m:mi><m:mi>b</m:mi></m:mfrac><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:mrow></m:math>. Intuitively, one can see that such a change can be obtained by combining an upsampling by a factor of <m:math overflow="scroll"><m:mi>a</m:mi></m:math> with a downsampling by a factor of <m:math overflow="scroll"><m:mi>b</m:mi></m:math>. However, the order of these two operations is crucial.</para>
+      <para id="id153121">Essentially, if downsampling is applied before upsampling, there is a chance that the downsampling anti-aliasing filter will remove a portion of the signal's spectrum that would alias but would have been “shrunk” into the allowable region during the upsampling, and so the potential for unnecessary distortion is introduced. In contrast, if upsampling is performed before downsampling, the cascade of the two systems will yield a sequence of two low-pass filters, and implementing only the narrower filter would provide the same output as the original cascade. This is illustrated in an example below.</para>
+      <para id="id153133">Consider the case where the original sampling frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>15</m:mn><m:mi> kHz </m:mi></m:mrow></m:math>, the signal's bandwidth is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mn>5</m:mn><m:mi> kHz </m:mi></m:mrow></m:math> (so that the DTFT bandwidth is <m:math overflow="scroll"><m:mrow><m:mi>Ω</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>(</m:mo><m:mn>5</m:mn><m:mi> kHz </m:mi><m:mo>/</m:mo><m:mn>15</m:mn><m:mi> kHz </m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>3</m:mn></m:mrow></m:math>, and we are interested in resampling to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>10</m:mn><m:mi> kHz </m:mi></m:mrow></m:math> (i.e., the minimum allowed sampling frequency under the Nyquist criterion). In this case, applying downsampling before upsampling results in the following:</para>
+      <figure id="uid8">
+        <media id="uid8_media" alt="">
+          <image mime-type="image/png" src="../../media/downthenup.png" id="uid8_onlineimage" width="397"><!-- NOTE: attribute width changes image size online (pixels). original width is 397. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/downthenup.eps" id="uid8_printimage" print-width="9.0cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        <caption>Changing the sampling frequency by downsampling followed by upsampling. The downsampling anti-aliasing filter cut off part of the original spectrum.</caption>
+      </figure>
+      <para id="id153264">and so only the portion of the signal's spectrum below <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mo>.</m:mo><m:mn>5</m:mn><m:mi> kHz </m:mi></m:mrow></m:math> (<m:math overflow="scroll"><m:mrow><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>3</m:mn></m:mrow></m:math> in the original spectrum) survives the process. In contrast, applying upsampling before downsampling allows the entire spectrum to go through, effectively meeting the bound given by the Nyquist criterion.</para>
+      <figure id="uid9"><media id="uid9_media" alt="">
+          <image mime-type="image/png" src="../../media/upthendown.png" id="uid9_onlineimage" width="397"><!-- NOTE: attribute width changes image size online (pixels). original width is 397. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/upthendown.eps" id="uid9_printimage" print-width="9.0cm">
+            <!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Changing the sampling frequency by upsampling followed by downsampling. The entire spectrum is preserved through the process, and one of the lowpass filters is redundant.</caption></figure></section>
+  </content>
+</document>

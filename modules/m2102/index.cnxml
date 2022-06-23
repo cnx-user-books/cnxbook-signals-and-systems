@@ -655,7 +655,7 @@ For all real <m:math overflow="scroll"><m:mi>T</m:mi></m:math> and signals <m:ma
 	<figure id="lti_sys_series_fig" orient="vertical">
 	  <title>Cascaded LTI Systems</title>
 	  <subfigure id="cascadea">
-	  <media id="id17677641" alt=""><image src="../../media/cascade.png" mime-type="image/png"/></media>
+	  <media id="id17677641" alt=""><image src="../../media/cascade-6577.png" mime-type="image/png"/></media>
 	  </subfigure>
 	  <subfigure id="cascadeb">
 	  <media id="id22100514" alt=""><image src="../../media/cascadeflip.png" mime-type="image/png"/></media>

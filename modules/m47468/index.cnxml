@@ -1,0 +1,454 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Discrete Fourier Transform (DFT)</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47468</md:content-id>
+  <md:title>Discrete Fourier Transform (DFT)</md:title>
+  <md:abstract>The Fourier transform can be computed in discrete-time despite the
+    complications caused by a finite signal and continuous frequency.</md:abstract>
+  <md:uuid>72f2e9b1-e253-4814-a4d8-b9b5eed5e540</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Introduction</title>
+      <para id="id62167">The discrete-time Fourier transform (DTFT) can be evaluated when we have an analytic expression for the signal. This is a good match to the digital world, where signals are discrete-time and quantized, and thus it is crucial to implement transforms like the DTFT in a computer. The formula for the DTFT is a sum, which conceptually can be easily computed save for two issues.</para>
+      <list id="id62173" display="block" list-type="bulleted">
+        <item id="uid1"><emphasis effect="italics">Signal duration:</emphasis> The sum extends over the signal's duration, which must be finite to compute the signal's spectrum. It is exceedingly difficult to store an infinite-length signal in any case, so we'll assume that the signal extends over <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>]</m:mo></m:mrow></m:math>.
+</item>
+        <item id="uid2"><emphasis effect="italics">Continuous frequency:</emphasis> Subtler than the signal duration issue is the fact that the frequency variable is continuous: It may only need to span one period, like <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mn>12</m:mn><m:mo>,</m:mo><m:mn>12</m:mn><m:mo>]</m:mo></m:mrow></m:math> or <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>]</m:mo></m:mrow></m:math>, but the DTFT formula as it stands requires evaluating the spectra at all frequencies within a period.
+</item>
+      </list>
+    </section>
+    <section id="cid2">
+      <title>Periodic Discrete-Time Signals</title>
+      <para id="id62619">As a way to bridge finite and infinite-length signals, we can consider the periodization of a signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>N</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> of finite length <m:math overflow="scroll"><m:mi>N</m:mi></m:math>. The signal is periodized to <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> by repeating its values so that <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>N</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>n</m:mi></m:math>. One can also write this relationship using a convolution with a train of impulses:</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mover accent="true">
+                    <m:mi>x</m:mi>
+                    <m:mo>¯</m:mo>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mspace width="3.33333pt"/>
+                    <m:mi> mod </m:mi>
+                    <m:mspace width="3.33333pt"/>
+                    <m:mi>N</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mi>N</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id62848">
+Recall that each convolution with a shifted impulse will contribute one copy of the original signal, therefore providing periodization. Let us consider the effect of periodization in the frequency domain. We denote the DTFTs of <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>N</m:mi></m:msub><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> by <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>N</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, respectively. Note also that the impulse train <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>δ</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mi>N</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:math> can be interpreted as a constant function <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> that has been expanded in time by a factor of <m:math overflow="scroll"><m:mi>N</m:mi></m:math>. Using the properties of the DTFT, we have:</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mover accent="true">
+                    <m:mi>X</m:mi>
+                    <m:mo>¯</m:mo>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi mathvariant="script">F</m:mi>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:munderover>
+                    <m:mi>δ</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mi>N</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mfenced>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>N</m:mi>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>m</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>Ω</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>N</m:mi>
+                  </m:mfrac>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>δ</m:mi>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>Ω</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id63426">In words, the DTFT of the periodic signal <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is equal to the product of the DTFT of the finite-length signal <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:math> and a train of impulses with spacing <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math>. This means that <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is nonzero only for values of <m:math overflow="scroll"><m:mi>Ω</m:mi></m:math> that are multiples of <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math>. Additionally, recall that a DTFT is <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>-periodic; thus, <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is uniquely defined by a set of <m:math overflow="scroll"><m:mi>K</m:mi></m:math> values of the DTFT <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>N</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+      <para id="id63593">Conceptually, we see that periodization in time is reflected as sampling in frequency, and that the DTFT of a <m:math overflow="scroll"><m:mi>N</m:mi></m:math>-periodic signal (completely determined by its <m:math overflow="scroll"><m:mi>N</m:mi></m:math> values in time) is completely determined by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> distinct values of its DTFT. This discrete, finite-length relationship between a signal and its Fourier transform gives rise to the discrete Fourier transform (DFT).</para>
+    </section>
+    <section id="cid3">
+      <title>Discrete Fourier Transform</title>
+      <para id="id63633">Following this narrative, we can consider the DFT as a sampling of the DTFT of the finite-length signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> with a spacing of <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math> between samples. Instead of using the DTFT frequency <m:math overflow="scroll"><m:mi>Ω</m:mi></m:math>, we will index the values of the DFT with integers:</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>N</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:msup>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id63765">
+Similarly, we can define the inverse transform by plugging in <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>Ω</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> into the inverse DTFT, which due to its sampled nature turns the corresponding integral over the range of frequencies <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>]</m:mo></m:mrow></m:math> into a sum:</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>N</m:mi>
+                  </m:mfrac>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>N</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:msup>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation><para id="eip-18">This pair of equations provide the definition for the forward and inverse DFT, respectively.</para>
+    </section>
+    <section id="cid4">
+      <title>Computing the Discrete Fourier Transform</title>
+      <para id="id63917">One would like to simplify the computation process as much as possible, since DFTs are computed so often in science and engineering. One step in this direction can be made by realizing that both the forward and inverse DFT transforms relate to a complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:math> that is dependent only on the length of the signal <m:math overflow="scroll"><m:mi>N</m:mi></m:math>. With this notation, we can then write the pair of transforms as</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>N</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>w</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>,</m:mo>
+                  <m:mspace width="3.33333pt"/>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>N</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>w</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id64122">One may observe that the equation for these two transforms are very reminiscent of one another: in fact, if we write the DFT transform as a "system" using the notation <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>[</m:mo><m:mi>k</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi>D</m:mi><m:mi>F</m:mi><m:mi>T</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>)</m:mo></m:mrow></m:math>, then one could write the inverse transform as <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>I</m:mi><m:mi>D</m:mi><m:mi>F</m:mi><m:mi>T</m:mi><m:mrow><m:mo>(</m:mo><m:mi>X</m:mi><m:mrow><m:mo>[</m:mo><m:mi>k</m:mi><m:mo>]</m:mo></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mi>D</m:mi><m:mi>F</m:mi><m:mi>T</m:mi><m:mrow><m:mo>(</m:mo><m:mi>X</m:mi><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>]</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> - that is, one only need to invert <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>[</m:mo><m:mi>k</m:mi><m:mo>]</m:mo></m:mrow></m:math> in time, run it through the DFT, and divide the output by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> to obtain an equivalent IDFT. The DFT has many additional useful properties that significantly simplify it computation and that are leveraged by modern implementations such as the Fast Fourier Transform (FFT).</para>
+    </section>
+    <section id="cid5">
+      <title>Summary</title>
+      <para id="id64273">By restricting our attention to finite-length signals, it is possible to define a version of the Fourier transform that also has finite length and that can be easily obtained by a computer. This new discrete Fourier transform is intimately related with the discrete-time Fourier transform and can be interpreted as performing a sampling operation in the frequency domain.</para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,1725 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Continuous Time Fourier Series (CTFS)</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47348</md:content-id>
+  <md:title>Continuous Time Fourier Series (CTFS)</md:title>
+  <md:abstract>This module describes the continuous time Fourier Series (CTFS).
+It is based on the following modules:
+Fourier Series: Eigenfunction Approach at http://cnx.org/content/m10496/latest/ by Justin Romberg, 
+Derivation of Fourier Coefficients Equation at http://cnx.org/content/m10733/latest/ by Michael Haag,
+Fourier Series and LTI Systems at http://cnx.org/content/m10752/latest/ by Justin Romberg, and
+Fourier Series Wrap-Up at http://cnx.org/content/m10749/latest/ by Michael Haag and Justin Romberg.</md:abstract>
+  <md:uuid>5b7aebf1-989f-4424-b34c-c64218369dd7</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-201" class="in"><title>Introduction</title><para id="eip-336">In this module, we will derive an expansion for
+	continuous-time, periodic functions, and in doing so, derive the <term>Continuous Time Fourier Series</term> (CTFS).</para><para id="intro">Since <link document="m10060">complex
+	  exponentials</link> are <link document="m47308">
+	  eigenfunctions of linear time-invariant (LTI)
+	  systems</link>, calculating the output of an LTI system
+	  <m:math><m:ci>ℋ</m:ci></m:math> given
+	<m:math display="inline">
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> as an input amounts to simple multiplication, where
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math> is the eigenvalue corresponding to s.  As shown in the figure, a simple exponential input would yield the output
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para><figure id="fig1">
+	<media id="id16571020" alt=""><image src="../../media/simpleLTIsys.png" mime-type="image/png"/></media>
+	<caption>
+	  Simple LTI system.
+	</caption>
+      </figure>
+
+      <para id="calculation">Using this and the fact that <m:math><m:ci>ℋ</m:ci></m:math>
+	is linear, calculating
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> for combinations of complex exponentials is also
+	straightforward.
+	
+	
+
+
+      </para>
+
+      <para id="eip-434"><m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:sum/>
+		  <m:domainofapplication>
+		    <m:ci>n</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:domainofapplication>
+		    <m:ci>n</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math></para><para id="p3">The action of <m:math><m:ci>H</m:ci></m:math> on an input such
+	as those in the two equations above is easy to explain.  
+	<emphasis> <m:math><m:ci>ℋ</m:ci></m:math> independently
+	scales</emphasis> each exponential component
+	<m:math display="inline">
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+	by a different complex number
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub>	    
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math>.  As such, if we can write a function
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">f</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	as a combination of complex exponentials it allows us to easily calculate the output of a system.
+      </para>
+    </section><section id="eip-90" class="th"><title>Fourier Series Synthesis</title><para id="p3_fs"><link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">Joseph
+	  Fourier</link> demonstrated that an arbitrary periodic function  
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> can be written as a linear combination of harmonic
+	complex sinusoids
+
+	<equation id="eq2"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		      <m:ci>n</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	where 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is the fundamental frequency.  For almost all 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> of practical interest, there exists
+	<m:math display="inline">
+	  <m:msub>
+	    <m:mi>c</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msub>
+	</m:math> to make <link target-id="eq2"/> true.  If
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> is finite energy (
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">L</m:ci>
+		<m:cn>0</m:cn>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>), then the equality in <link target-id="eq2"/> 
+	holds in the sense of energy convergence; if
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	is continuous, then <link target-id="eq2"/> holds
+	pointwise.  Also, if 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> meets some mild conditions (the Dirichlet
+	conditions), then <link target-id="eq2"/> holds
+	pointwise everywhere except at points of discontinuity.
+      </para><para id="p4">The 
+	<m:math display="inline">
+	  <m:msub>
+	    <m:ci>c</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:msub>
+	</m:math> - called the Fourier coefficients -
+	tell us "how much" of the sinusoid
+	<m:math display="inline">
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>j</m:ci>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	      <m:ci>n</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is in 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.   
+
+	The formula shows 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> as a sum of complex exponentials, each of which is easily processed by an
+	LTI system (since it is an eigenfunction of
+	<emphasis>every</emphasis> LTI system).  Mathematically, 
+	it tells us that the set of
+	complex exponentials 
+	<m:math display="inline">
+	  <m:set>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>n</m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		  <m:ci>n</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:set>
+	</m:math> form a basis for the space of T-periodic continuous
+	time functions.
+      </para><example id="eip-827"><para id="eip-378">We know from Euler's formula that <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:cn>2</m:cn><m:pi/><m:mi>f</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:cn>2</m:cn><m:pi/><m:mi>f</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>j</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:cn>2</m:cn><m:pi/><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>+</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:cn>2</m:cn><m:pi/><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></para></example>
+
+    </section><section id="eip-526" class="ie"><title>Synthesis with Sinusoids Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="timeshiftDemo">
+<image mime-type="image/png" src="../../media/Lecture8-signalsynthesisDrilldisplay.cdf" thumbnail="Lecture8-signalsynthesisDrill.png" width="500"/>
+<object width="500" height="500" src="Lecture8-signalsynthesisDrilldisplay.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Lecture8-signalsynthesisDrill.png" width="500"/>
+</media>
+<caption>Interact(when online) with a Mathematica CDF demonstrating sinusoid synthesis. To download, right click and save as .cdf.</caption>
+</figure>
+
+</para><para id="eip-754"><figure id="guitaroscillations-youtube"><title>Guitar Oscillations on an iPhone</title><media id="yt-media" display="block" alt="Guitar Oscillations">
+  <flash id="yt-video" mime-type="application/x-shockwave-flash" src="http://www.youtube.com/v/TKF6nFzpHBU?version=3&amp;hl=en_US" width="425" height="344">
+   <param name="allowscriptaccess" value="always"/>
+   <param name="allowsfullscreen" value="true"/>
+  </flash>
+ </media>
+</figure>
+</para></section><section id="eip-394" class="th"><title>Fourier Series Analysis</title><para id="eip-769">Finding the coefficients of the Fourier series expansion involves some algebraic manipulation of the synthesis formula.
+	First of all we will multiply both sides of the equation by
+	<m:math display="inline">
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>j</m:ci>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci><m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+		<m:ci>k</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, where 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>k</m:ci>
+	    <m:integers/>
+	  </m:apply>
+	</m:math>.
+
+	<equation id="eq2a">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci>k</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci>n</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Now integrate both sides over a given period,
+	<m:math><m:ci>T</m:ci></m:math>:
+
+	<equation id="eq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>T</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>T</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci>n</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:ci>k</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	On the right-hand side we can switch the summation and
+	integral and factor the constant out of the
+	integral.
+
+	<equation id="eq4">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>T</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:ci>T</m:ci>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>		    
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Now that we have made this seemingly more complicated, let us
+	focus on just the integral, 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:int/>
+	    <m:bvar>
+	      <m:ci>t</m:ci>
+	    </m:bvar>
+	    <m:uplimit>
+	      <m:ci>T</m:ci>
+	    </m:uplimit>
+	    <m:lowlimit>
+	      <m:cn>0</m:cn>
+	    </m:lowlimit>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>j</m:ci>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci><m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>n</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, on the right-hand side of the above equation.
+
+	For this integral we will need to consider two cases:  
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math> and
+	<m:math display="inline">
+	  <m:apply>
+	    <m:neq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math>.  For 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math> we will have:
+
+	<equation id="eq5">
+	  <m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>n</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	For 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:neq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math>, we will have:
+
+	
+	<equation id="eq6">
+	  <m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:neq/>
+		  <m:ci>n</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:ci>T</m:ci>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>	
+		    <m:apply>
+		      <m:cos/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>	    
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:int/>
+		      <m:bvar>
+			<m:ci>t</m:ci>
+		      </m:bvar>
+		      <m:uplimit>
+			<m:ci>T</m:ci>
+		      </m:uplimit>
+		      <m:lowlimit>
+			<m:cn>0</m:cn>
+		      </m:lowlimit>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	But 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:cos/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci><m:msub>
+		<m:mi>f</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	has an integer number of periods, 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>n</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+	</m:math>, between <m:math><m:cn>0</m:cn></m:math> and 
+	<m:math><m:ci>T</m:ci></m:math>.  Imagine a graph of the
+	cosine; because it has an integer number of periods, there are
+	equal areas above and below the x-axis of the graph.  This
+	statement holds true for 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:sin/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci><m:msub>
+		<m:mi>f</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> as well.  What this means is
+
+	<equation id="eq7">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>T</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>	
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci><m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>	    
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	which also holds for the integral involving the sine function.
+	Therefore, we conclude the following about our integral of
+	interest:
+	
+	<equation id="eq8"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>T</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>	
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci><m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>	    
+	      </m:apply>
+	      <m:piecewise>
+		<m:piece>
+		  <m:ci>T</m:ci>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci>n</m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		</m:piece>
+		<m:otherwise>
+		  <m:cn>0</m:cn>
+		</m:otherwise>
+	      </m:piecewise>	      
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+        We plug in this result in <link target-id="eq4" strength="3"/> to see if we can finish
+	finding an equation for our Fourier coefficients.  Using the
+	facts that we have just proven above, we can see that the only
+	time <link target-id="eq4" strength="3"/> will have a nonzero
+	result is when <m:math><m:ci>k</m:ci></m:math> and 
+	<m:math><m:ci>n</m:ci></m:math> are equal:
+	
+	<equation id="eq9">
+	  <m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>n</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:ci>n</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>T</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Finally, we have our general equation for the Fourier
+	coefficients:
+
+	<equation id="eq10">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			  <m:ci>n</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>		
+      </para><example id="eip-130"><para id="id62567">Consider the square wave function given by</para>
+    <equation id="id62570">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>x</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo>≤</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mi>t</m:mi>
+                    <m:mo>&gt;</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="eip-143">on the unit interval <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">Z</m:mi><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>.</para><equation id="eip-402"><m:math overflow="scroll" mode="display">
+        <m:mtable displaystyle="true">
+          <m:mtr>
+            <m:mtd columnalign="right">
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+            </m:mtd>
+            <m:mtd columnalign="left">
+              <m:mrow>
+                <m:mo>=</m:mo>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mn>1</m:mn>
+                </m:msubsup>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mtd>
+          </m:mtr>
+          <m:mtr>
+            <m:mtd/>
+            <m:mtd columnalign="left">
+              <m:mrow>
+                <m:mo>=</m:mo>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:msubsup>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>-</m:mo>
+                <m:msubsup>
+                  <m:mo>∫</m:mo>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                  <m:mn>1</m:mn>
+                </m:msubsup>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mtd>
+          </m:mtr>
+          <m:mtr>
+            <m:mtd/>
+            <m:mtd columnalign="left">
+              <m:mrow>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>+</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mi>π</m:mi>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mfenced>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mrow>
+            </m:mtd>
+          </m:mtr>
+        </m:mtable>
+      </m:math>
+    </equation>
+    <para id="eip-551">Thus, the Fourier coefficients of this function found using the Fourier series analysis formula are</para><equation id="id62110">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mi>π</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mi mathvariant="normal">k</m:mi>
+                    <m:mi> odd </m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mrow>
+                    <m:mi mathvariant="normal">k</m:mi>
+                    <m:mi> even </m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation></example>
+
+      
+
+    </section><section id="eip-216" class="cn"><title>Fourier Series Summary</title><para id="eip-522">Because complex exponentials are eigenfunctions of LTI systems, it is often useful to represent signals using a set of complex exponentials as a basis.  The continuous time Fourier series synthesis formula expresses a continuous time, periodic function as the sum of continuous time, discrete frequency complex exponentials.
+	<equation id="eq_syn"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		      <m:ci>n</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	The continuous time Fourier series analysis formula gives the coefficients of the Fourier series expansion.
+	<equation id="eq_ana"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			  <m:mi>n</m:mi>
+			  <m:mi>t</m:mi>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	In both of these equations 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+is the fundamental frequency.
+
+	
+      </para></section>
+</content>
+
+</document>

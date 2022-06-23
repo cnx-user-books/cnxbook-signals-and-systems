@@ -1,0 +1,301 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Common Continuous Time Signals</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47606</md:content-id>
+  <md:title>Common Continuous Time Signals</md:title>
+  <md:abstract>Presents several useful continuous time signals.</md:abstract>
+  <md:uuid>c6459621-b720-4d70-9831-9dec6f477c42</md:uuid>
+</metadata>
+
+<content>
+    <section id="eip-176" class="in"><title>Introduction</title><para id="eip-585">Before looking at this module, hopefully you have an
+      idea of what a signal is and what basic classifications and properties a signal can
+      have.  In review, a signal is a function defined with
+      respect to an independent variable.  This variable is often time
+      but could represent  any number of
+      things. Mathematically, continuous time analog
+      signals  have continuous independent and dependent variables.  This module will describe some useful continuous time analog signals.</para></section>
+
+
+    <section id="eip-376" class="th"><title>Important Continuous Time Signals</title><section id="eip-911"><title>Sinusoids</title><para id="p1_sin">One of the most important elemental signal that you will
+	deal with is the real-valued sinusoid.  In its continuous-time
+	form, we write the general expression as
+
+	<equation id="eq_sin"><m:math>	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>ω</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	  </m:math>
+	</equation>
+
+	where <m:math><m:ci>A</m:ci> </m:math> is the amplitude,
+	<m:math><m:ci>ω</m:ci> </m:math> is the frequency, and
+	<m:math><m:ci>φ</m:ci> </m:math> is the phase.  Thus, the period of the sinusoid is
+	
+	<equation id="eq_per">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>T</m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		</m:apply>
+		<m:ci>ω</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>	    
+      </para>
+
+      <figure id="sinwav" orient="horizontal"><media id="id1168242887982" alt="">
+<image src="../../media/cosine_arunMod.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/sinwave.eps" mime-type="application/postscript"/></media>
+	
+      <caption>Sinusoid with 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>A</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>, 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>w</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>, and
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>φ</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</caption></figure></section><section id="eip-230"><title>Unit Step</title><para id="para1">
+	Another very basic signal is the <term>unit-step
+	function</term> that is defined as 
+
+	<equation id="eq_step">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">u</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:piecewise>
+		<m:piece>
+		  <m:cn>0</m:cn>
+		  <m:apply>
+		    <m:lt/>
+		    <m:ci>t</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:piece>
+		<m:piece>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:geq/>
+		    <m:ci>t</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:piece>
+	      </m:piecewise>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+          
+      <figure id="fig_unstep" orient="horizontal"><media id="id1168247374280" alt="">
+<image src="../../media/unit_step.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/unit_step.eps" mime-type="application/postscript"/></media>
+      <caption>Continuous-Time Unit-Step Function
+	</caption></figure>
+
+      <para id="p2_step">The step function is a useful tool
+	for testing and for defining other signals.  For example, when
+	different shifted versions of the step function are multiplied
+	by other signals, one can select a certain portion of the
+	signal and zero out the rest.
+      </para></section><section id="eip-42"><title>Unit Pulse</title><para id="p1_pulse">Many engineers interpret the unit step function as the representation of turning on a switch and leaving it on. The <term>unit-pulse
+	function</term> can be thought of as turning a switch on and off after a unit of time. It is defined as 
+
+	<equation id="eq_pulse"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">p</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:piecewise>
+		<m:piece>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:leq/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>0.5</m:cn>
+		    </m:apply>
+		    <m:ci>t</m:ci>
+		    <m:cn>0.5</m:cn>
+		  </m:apply>
+		</m:piece>
+		<m:piece>
+		  <m:cn>0</m:cn>
+                  <m:mrow>
+		  <m:apply>
+		    <m:lt/>
+		    <m:ci>t</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>0.5</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:mo> or </m:mo>
+		  <m:apply>
+		    <m:gt/>
+		    <m:ci>t</m:ci>
+		    <m:cn>0.5</m:cn>
+		  </m:apply>
+                  </m:mrow>
+		</m:piece>
+	      </m:piecewise>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+so that it is an even function.      </para><figure id="fig_unpulse" orient="horizontal"><media id="id1168247374281" alt="">
+<image src="../../media/pulse.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/pulse.eps" mime-type="application/postscript"/></media>
+      <caption>Continuous-Time Unit-Step Function
+	</caption></figure>
+
+      <para id="p2_pulse">Note that the pulse can be easily written in terms of unit step functions as 
+<m:math>
+<m:apply>
+<m:eq/>
+<m:apply>
+<m:ci>p</m:ci>
+<m:ci>t</m:ci>
+</m:apply>
+<m:apply>
+<m:minus/>
+<m:apply>
+<m:ci>u</m:ci>
+<m:apply>
+<m:plus/>
+<m:ci>t</m:ci>
+<m:cn>0.5</m:cn>
+</m:apply>
+</m:apply>
+<m:apply>
+<m:ci>u</m:ci>
+<m:apply>
+<m:minus/>
+<m:ci>t</m:ci>
+<m:cn>0.5</m:cn>
+</m:apply>
+</m:apply>
+</m:apply>
+</m:apply>
+</m:math></para></section><section id="eip-645"><title>Triangle Function</title><para id="p1_tri">The last function we will introduce is the <term>triangle
+	function</term>, which represents and input that increases and then decreases linearly with time. It is defined as 
+
+	<equation id="eq_tri"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">Λ</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:piecewise>
+		<m:piece>
+		  <m:apply>
+		  <m:plus/>
+		  <m:ci>t</m:ci>
+		  <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:leq/>
+		    <m:cn>-1</m:cn>
+		    <m:ci>t</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:piece>
+		<m:piece>
+		  <m:apply>
+		  <m:minus/>
+		  <m:ci>1</m:ci>
+		  <m:cn>t</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:leq/>
+		    <m:cn>0</m:cn>
+		    <m:ci>t</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:piece>
+		<m:piece>
+		  <m:cn>0</m:cn>
+                  <m:mrow>
+		  <m:apply>
+		    <m:lt/>
+		    <m:ci>t</m:ci>
+		    <m:cn>-1</m:cn>
+		  </m:apply>
+		  <m:mo> or </m:mo>
+		  <m:apply>
+		    <m:gt/>
+		    <m:ci>t</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+                  </m:mrow>
+		</m:piece>
+	      </m:piecewise>
+	    </m:apply>
+	  </m:math>
+	</equation></para><figure id="fig_untri" orient="horizontal"><media id="id1168247374282" alt="">
+<image src="../../media/triangle.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/triangle.eps" mime-type="application/postscript"/></media>
+      <caption>Continuous-Time Triangle Function
+	</caption></figure></section></section>
+<section id="eip-552" class="cn"><title>Common Continuous Time Signals Summary</title><para id="eip-697">Some of the most important and most frequently encountered signals have been discussed in this module.  There are, of course, many other signals of significant consequence not discussed here.  As you will see later, many of the other more complicated signals will be studied in terms of those listed here.  Especially take note of the complex exponentials and unit impulse functions, which will be the key focus of several topics included in this course.</para></section>
+
+
+
+    
+    
+    
+    
+
+
+    
+
+
+    
+
+    
+    
+    
+  </content>
+</document>

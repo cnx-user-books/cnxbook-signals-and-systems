@@ -1,0 +1,1359 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Complex Numbers: Algebra of Complex Numbers</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m50948</md:content-id>
+  <md:title>Complex Numbers: Algebra of Complex Numbers</md:title>
+  <md:abstract/>
+  <md:uuid>ca26a20d-7bb5-4d68-b55c-32be8cedee54</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-888">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258263">The complex numbers form a mathematical “field” on which the usual
+operations of addition and multiplication are defined. Each of these operations
+has a simple geometric interpretation.</para>
+    <section id="uid1"><title>Addition and Multiplication.</title><para id="id2258281">The complex numbers <m:math><m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> are</para>
+      <para id="id2258955">added according to the rule</para>
+      <equation id="id2258958"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+       
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+                   <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+          
+            <m:mo>+</m:mo>
+                          <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+                   <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+     
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            
+            <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>          
+        </m:math>
+            </equation>
+      
+      <para id="id2259101">We say that the real parts add and the imaginary parts add. As illustrated
+in <link target-id="uid2"/>, the complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> is computed from a “parallelogram
+rule,” wherein <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> lies on the node of a parallelogram formed from <m:math><m:msub>
+<m:mi>z</m:mi><m:mn>1</m:mn></m:msub></m:math>
+and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>.</para>
+     
+<exercise id="eip-id10876490">
+<problem id="eip-id10876492">
+ <para id="id2259188">Let 
+
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>r</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math>. Find a polar formula <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:msub><m:mi>r</m:mi><m:mn>3</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> that involves <emphasis effect="italics">only</emphasis> the variables <m:math overflow="scroll"><m:mrow><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>r</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math>. The formula for <m:math>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> is the “law of cosines.”</para></problem></exercise>
+      <para id="id2259717">The product of <emphasis effect="italics">z<sub>1</sub></emphasis> and <emphasis effect="italics">z<sub>2</sub></emphasis> is</para>
+      <equation id="id2259748"><m:math overflow="scroll" mode="display">
+          <m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+         
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+                 </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+             <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+        
+            <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+        </m:math>
+      
+      </equation>
+      
+      <figure id="uid2"><media id="uid2_media" alt="This cartesian graph has a three line segments extending from the origin. The middle line follow a positive slope to a point labeled z_1+z_2. The upper line follows a more positive slope to a point labeled a_2 and then from that point to point z_1+z_2 there is a dashed line. The bottom line segment has the the least positive but still positive slope and ends at a point labeled z_1. from that point a dashed line proceeds up to point z_1+z_2. Together the lines form a diamond bisected by the middle line that extends from the origin to the point z_1+z_2.">
+          <image mime-type="image/png" src="../../media/pic004.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 139. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic004.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Adding Complex Numbers</caption></figure>
+      <para id="id2259932">If the polar representations for <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are used, then the product may be
+written as <footnote id="uid3">We have used the trigonometric identities <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo></m:mrow></m:math>
+sin <emphasis effect="italics">θ<sub>1</sub></emphasis> sin <emphasis effect="italics">θ<sub>2</sub></emphasis> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> sin <emphasis effect="italics">θ<sub>2</sub></emphasis> to derive this result.</footnote></para>
+      <equation id="id2260157"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+                      <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>θ</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+           </m:mrow> 
+       </m:msup>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>θ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+              </m:mrow>
+            </m:msup>
+          </m:mtd>
+        </m:mtr>
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo form="prefix">cos</m:mo>
+<m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo>
+<m:mi>j</m:mi>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo form="prefix">sin</m:mo>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo>)</m:mo>
+<m:mo>(</m:mo>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo form="prefix">cos</m:mo>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo form="prefix">sin</m:mo>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>)</m:mo>
+</m:mtd>
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mo>(</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mtd>
+</m:mtr>
+      
+
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>+</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mi>j</m:mi>
+            <m:mo>(</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mtd>
+</m:mtr>
+  
+
+<m:mtr>
+<m:mtd/>    
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>θ</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>θ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>θ</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>θ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+         </m:mtd>
+        </m:mtr>
+      
+
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>θ</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>θ</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+        </m:mtd>
+        </m:mtr>
+      
+
+
+</m:mtable>
+</m:math>
+      </equation>
+      
+      
+      
+      
+      
+      <para id="id2260773">We say that the magnitudes multiply and the angles add. As illustrated in
+<link target-id="uid4"/>, the product <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> lies at the angle <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <figure id="uid4"><media id="uid4_media" alt="This cartesian graph contains three line segments extending from the origrin at different positive slopes. The upper line extends at the most positive slop to a point labeled z_1z_2. About three fourths of the way up this line there is the label r_1r_2. The middle line extends from the origin to a point labeled z_2. The bottom line extends from the origin to a point labeled z_1. From the x-axis to the middle of the upper line there is a curved line intesecting all of the previously mentioned line segments. The area of the curved line between the bottom and middle line segment is labeled θ_1+θ_2.">
+          <image mime-type="image/png" src="../../media/pic005a.png" id="uid4_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 162. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic005a.eps" id="uid4_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Multiplying Complex Numbers</caption></figure>
+      <para id="id2260847"><emphasis effect="italics">Rotation.</emphasis> There is a special case of complex multiplication that will
+become very important in our study of phasors in <link document="m21469">the chapter on Phasors</link>. When 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> is the
+complex number 
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> is the complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math>, then
+the product of <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> is</para>
+      <equation id="eip-827"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msup><m:mo>=</m:mo><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math> </equation>
+      <para id="id2261077">As illustrated in <link target-id="uid5"/>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> is just a rotation of <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> through the angle <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>.</para>
+      <figure id="uid5"><media id="uid5_media" alt="The Cartesian graph contains two line segments extending from the origin. The upper line follows a positive slope to point z_1e^{jθ_2}. The bottom line follows a positive slope to a point labeled z_1. There is a curved line in between these lines the labels the angle created by these line segments as θ_2.">
+          <image mime-type="image/png" src="../../media/pic005.png" id="uid5_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 151. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic005.eps" id="uid5_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Rotation of Complex Numbers</caption></figure>
+      
+<exercise id="eip-id17960617">
+<problem id="eip-id10926944">
+<para id="id2261147">Begin with the complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math>. Compute
+the complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mi>j</m:mi><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> in its Cartesian and polar forms. The complex
+number <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> is sometimes called perp<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>. Explain why by writing perp<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> as
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math>. What is <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math>? Repeat this problem for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>3</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>j</m:mi><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.</para>
+</problem>
+</exercise>
+      <para id="id2261352"><emphasis effect="bold">Powers.</emphasis> If the complex number <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> multiplies itself <m:math><m:mi>N</m:mi></m:math> times, then the
+result is
+      </para>
+      <equation id="eip-113"><m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mi>N</m:mi></m:msup><m:mo>=</m:mo><m:msubsup><m:mi>r</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>N</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2261382">This result may be proved with a simple induction argument. Assume <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi>k</m:mi></m:msubsup><m:mo>=</m:mo><m:msubsup><m:mi>r</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi>k</m:mi></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math>. (The assumption is true for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo></m:mrow></m:math>) Then use the recursion <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msubsup><m:mo>=</m:mo><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi>k</m:mi></m:msubsup><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msubsup><m:mi>r</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math>. Iterate this recursion (or induction) until <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mi>N</m:mi></m:mrow></m:math>.
+Can you see that, as <emphasis effect="italics">n</emphasis> ranges from <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi></m:mrow></m:math>, the angle of z§ranges from
+<emphasis effect="italics">θ<sub>1</sub></emphasis> to <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>, to <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> and the radius ranges from <emphasis effect="italics">r<sub>1</sub></emphasis> to <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>r</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>, to <m:math overflow="scroll"><m:msubsup><m:mi>r</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:msubsup></m:math> ? This
+result is explored more fully in Problem 1.19.
+      </para>
+      <para id="id2261774"><emphasis effect="bold">Complex Conjugate.</emphasis> Corresponding to every complex number <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math>
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> is the complex conjugate
+      </para>
+      
+      <equation id="eip-223"><m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2261829">The complex number <m:math><m:mi>z</m:mi></m:math> and its complex conjugate are illustrated in <link target-id="uid6"/>.
+The recipe for finding complex conjugates is to “change <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">o</m:mi><m:mo>-</m:mo><m:mi>j</m:mi></m:mrow></m:math>. This changes
+the sign of the imaginary part of the complex number.
+      </para>
+      <figure id="uid6"><media id="uid6_media" alt="The Cartesian graph contains two line segments extending from the origin. The y axis is labeled the imaginary axis and the x-axis is labeled the real axis. The upper line follows a positive slope from the origin to a point labeled z. About half way up on this line is the label r. The bottom line follows a negative slope from the origin to a point labeled z^*. About half way up on this line is the label r. About halfway up on this line is a curve labeling the angle from the line to the x-axis -θ. Another curve extends from the x-axis to the upper line labeling the angle θ.">
+          <image mime-type="image/png" src="../../media/pic006.png" id="uid6_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 184. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic006.eps" id="uid6_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption><emphasis effect="italics">A Complex Variable and Its Complex Conjugate</emphasis>
+        </caption></figure>
+      <para id="id2261941"><emphasis effect="bold">Magnitude Squared.</emphasis> The product of <emphasis effect="italics">z</emphasis> and its complex conjugate is
+called the magnitude squared of <emphasis effect="italics">z</emphasis> and is denoted by <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>z</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> :</para>
+      
+      <equation id="eip-487"><m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mi>z</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mi>z</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>y</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>r</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo>.</m:mo></m:math>     </equation><para id="id2262112">Note that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>z</m:mi><m:mo>|</m:mo><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow></m:math> is the radius, or magnitude, that we defined in <link document="m21411">"Geometry of Complex Numbers"</link>.</para>
+<exercise id="eip-id26260814">
+<problem id="eip-id26435987">
+      <para id="id2262138">
+         Write <m:math>
+<m:msup>
+<m:mi>z</m:mi>
+<m:mi>*</m:mi>
+</m:msup>
+</m:math>
+ as <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mi>z</m:mi><m:mi>w</m:mi></m:mrow></m:math>. Find <m:math>
+<m:mi>w</m:mi></m:math> in its Cartesian and polar forms.
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id4461658">
+<problem id="eip-id4461660">
+      <para id="id2262189">
+         Prove that angle <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id12465875">
+<problem id="eip-id12331774">
+      <para id="id2262247">
+ Show that the real and imaginary parts of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> may be written as
+      <equation id="id2262281">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>z</m:mi>
+                <m:mo>*</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id2262326">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi> Im </m:mi>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mover>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+              <m:mo>¯</m:mo>
+            </m:mover>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>z</m:mi>
+                <m:mo>*</m:mo>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+        </m:math>
+      </equation>
+</para>
+</problem>
+</exercise>
+      <para id="id2262379">
+<emphasis effect="bold">Commutativity, Associativity, and Distributivity.</emphasis> The complex numbers commute, associate, and distribute under addition and multiplication
+as follows:</para>
+      
+      <equation id="id2262443"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+</m:mtd>
+<m:mtd>       
+       <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+       <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+</m:mtd>       
+   </m:mtr>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+      
+      <equation id="id2262492"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>        
+                <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            <m:mo>+</m:mo>       
+     <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+</m:mtd>
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+     </m:mtd>
+</m:mtr>
+
+
+
+
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>.</m:mo>
+       
+</m:mtd>
+</m:mtr>      
+
+</m:mtable>
+    </m:math>
+      </equation>
+      
+      
+      
+      <para id="id2262719"><emphasis effect="bold">Identities and Inverses.</emphasis> In the field of complex numbers, the complex number <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">0</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi mathvariant="normal">0</m:mi></m:mrow></m:math> (denoted by 0) plays the role of an additive identity, and
+the complex number <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mi mathvariant="normal">0</m:mi></m:mrow></m:math> (denoted by 1) plays the role of a multiplicative
+identity:</para>
+      
+      <equation id="id2262807"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mi>z</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+              <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+       <m:mi>z</m:mi>
+</m:mtd>
+<m:mtd>       
+       <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+       <m:mn>0</m:mn>
+              <m:mo>+</m:mo>
+              <m:mi>z</m:mi>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+           <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mi>z</m:mi>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mn>1</m:mn>
+            <m:mi>z</m:mi>
+            <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+      <para id="id2262834">
+        In this field, the complex number <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>z</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the additive inverse
+of <emphasis effect="italics">z</emphasis>, and the complex number <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mfrac><m:mi>x</m:mi><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>y</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>+</m:mo><m:mi>j</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mrow><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>y</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math> is the multiplicative
+inverse:
+      </para>
+      
+      <equation id="id2262998"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+              <m:mi>z</m:mi>
+              <m:mo>+</m:mo>
+              <m:mo>(</m:mo>
+              <m:mo>-</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>       
+       <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+       <m:mn>0</m:mn>
+       </m:mtd>
+</m:mtr>
+        <m:mtr>
+<m:mtd>
+            <m:mi>z</m:mi>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mn>1</m:mn>
+            <m:mo>.</m:mo>
+       
+</m:mtd>
+</m:mtr>
+</m:mtable>
+        </m:math>
+      </equation>
+
+<exercise id="eip-id4127104">
+<problem id="eip-id4127106">      
+<para id="id2263027">
+   Show that the additive inverse of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> may be written as
+<m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math>
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id17037125">
+<problem id="eip-id26519338">
+      <para id="id2263092">
+   Show that the multiplicative inverse of <m:math>
+<m:mi>z</m:mi>
+</m:math> may be written as
+      <equation id="id2263109"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:msup><m:mi>z</m:mi>
+<m:mo>*</m:mo></m:msup>
+                <m:mi>z</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mo>*</m:mo>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:msup>
+                  <m:mi>y</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mspace width="4.pt"/>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mrow>
+                <m:mi mathvariant="italic">x</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi mathvariant="italic">jy</m:mi>
+              </m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+     
+  Show that <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mi>z</m:mi></m:mrow></m:math> is real. Show that <m:math overflow="scroll"><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> may also be written as
+     
+      <equation id="id2263243">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>r</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+     Plot <m:math><m:mi>z</m:mi></m:math> and <m:math overflow="scroll"><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> for a representative <m:math><m:mi>z</m:mi></m:math>.
+      </para>
+</problem>
+</exercise>
+      
+<exercise id="eip-id22537184">
+<problem id="eip-id22537186">
+<para id="id2263336">
+   Prove <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>j</m:mi></m:mrow></m:math>.
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id3238847">
+<problem id="eip-id26818947">
+      <para id="id2263373">
+  Find <m:math overflow="scroll"><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mn>1</m:mn></m:mrow></m:math>.
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id26248928">
+<problem id="eip-id26248930">
+      <para id="id2263418">Prove <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>r</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup><m:mi>z</m:mi></m:mrow></m:mfrac><m:mi>z</m:mi></m:mrow></m:mstyle></m:math>. Plot <m:math><m:mi>z</m:mi></m:math> and <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>z</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup></m:math>
+for a representative <m:math><m:mi>z</m:mi></m:math>.
+      </para>
+</problem>
+</exercise>
+
+<exercise id="eip-id6475931">
+<problem id="eip-id6475933">
+      <para id="id2263572">
+   Find all of the complex numbers <m:math>
+<m:mi>z</m:mi></m:math> with the property that
+<m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>z</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:msup><m:mi>z</m:mi><m:mo>*</m:mo></m:msup></m:mrow></m:math>. Illustrate these complex numbers on the complex plane.
+      </para>
+</problem>
+</exercise>
+      <para id="id2263614">
+        <emphasis effect="bold">Demo 1.2 (MATLAB).</emphasis> Create and run the following script file (name it Complex Numbers)<footnote id="uid7"><emphasis effect="italics">If you are using PC-MATLAB, you will need to name your file cmplxnos.m.</emphasis></footnote>
+      </para>
+      <code id="eip-692" display="block">clear, clg
+j=sqrt(-1)
+z1=1+j*.5,z2=2+j*1.5
+z3=z1+z2,z4=z1*z2
+z5=conj(z1),z6=j*z2
+axis([-4 4 -4 4]),axis('square'),plot([0 z1],'-o')
+hold on
+plot([0 z2],'-o'),plot([0 z3],'-+'),plot([0 z4],'-*'),
+plot([0 z5],'x'),plot([0 z6],'-x')</code><figure id="uid8"><media id="uid8_media" alt="This Cartesian graph contains six line segments extending from the origin. Four line segments exist in quadrant I. The uppermost line in this quadrant extends from the origin to a point labeled prod. The line below this on is shorter and extends to a point labeled z2. The line below this one is the longest line and extends to a point labeled sum. The bottom line is the shortest and extends to a point labeled z1. In quadrant II there is only one line segment. The line segment follows a negative slope from the origin to perp(z2). There are no lines in quadrand III. Quandrants four also contain a single line segment. It follows a negative slope and extends from the origin to a point labeled conj(z1).">
+          <image mime-type="image/png" src="../../media/pic007.png" id="uid8_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 141. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic007.eps" id="uid8_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption><emphasis effect="italics">Complex Numbers (Demo 1.2)</emphasis>
+        </caption></figure>
+      
+      <para id="id2264070">With the help of Appendix 1, you should be able to annotate each line of this
+program. View your graphics display to verify the rules for add, multiply,
+conjugate, and perp. See <link target-id="uid8"/>.
+      </para>
+
+
+
+
+<exercise id="fs-id26919259">
+<problem id="fs-id26919261">
+<para id="fs-id4736516">Prove that 
+<m:math>
+<m:msup>
+<m:mi>z</m:mi>
+<m:mn>0</m:mn>
+</m:msup>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+</m:math>.
+</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id26919229">
+<problem id="fs-id18638893">
+<para id="fs-id18638895">
+(MATLAB) Choose <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mn>1.05</m:mn>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mn>2</m:mn>
+<m:mi>π </m:mi>
+<m:mo>/</m:mo>
+<m:mn>16</m:mn>
+</m:mrow>
+</m:msup>
+</m:math>
+and
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mn>0.95</m:mn>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mn>2</m:mn>
+<m:mi>π </m:mi>
+<m:mo>/</m:mo>
+<m:mn>16</m:mn>
+</m:mrow>
+</m:msup>
+</m:math>.
+Write a MATLAB program to compute and plot
+<m:math>
+<m:msubsup>
+<m:mrow>
+<m:mi>z</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:msubsup>
+</m:math>
+and 
+<m:math>
+<m:msubsup>
+<m:mrow>
+<m:mi>z</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mn>2</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:msubsup>
+</m:math>
+for
+<m:math>
+<m:mi>n</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+<m:mo>,</m:mo>
+<m:mn>2</m:mn>
+<m:mo>,</m:mo>
+<m:mo>...</m:mo>
+<m:mo>,</m:mo>
+<m:mn>32</m:mn>
+<m:mo>.</m:mo>
+</m:math>
+You should observe a figure like <link target-id="uid9"/>.
+</para>
+</problem>
+</exercise>
+
+      <figure id="uid9"><media id="uid9_media" alt="A graph of two concentric swirl designs.">
+          <image mime-type="image/png" src="../../media/pic008.png" id="uid9_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 252. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic008.eps" id="uid9_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption><emphasis effect="italics">Powers of z</emphasis>
+        </caption></figure>
+    </section>
+  </content>
+</document>

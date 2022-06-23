@@ -1,0 +1,1152 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Signal Sampling</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47377</md:content-id>
+  <md:title>Signal Sampling</md:title>
+  <md:abstract>This module introduces sampling of a continuous time signal to produce a discrete time signal, including a computation of the spectrum of the sampled signal and a discussion of its implications for reconstruction.</md:abstract>
+  <md:uuid>21a5171c-2969-4889-adbe-4b57007eb146</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id309531">Digital computers can process discrete time signals using extremely flexible and powerful algorithms. However, most signals of interest are continuous time signals, which is how data almost always appears in nature. This module introduces the concepts behind converting continuous time signals into discrete time signals through a process called sampling.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Sampling</title>
+      <para id="id309547">Sampling a continuous time signal produces a discrete time signal by selecting the values of the continuous time signal at evenly spaced points in time. Thus, sampling a continuous time signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> gives the discrete time signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>s</m:mi></m:msub></m:math> defined by <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math> The sampling angular frequency is then given by <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:mrow></m:math>.</para><para id="id309999">It should be intuitively clear that multiple continuous time signals sampled at the same rate can produce the same discrete time signal since uncountably many continuous time functions could be constructed that connect the points on the graph of any discrete time function. Thus, sampling at a given rate does not result in an injective relationship. Hence, sampling is, in general, not invertible.</para>
+      <example id="eip-285"><para id="id311361">For instance, consider the signals <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:math> defined by</para>
+        <equation id="id311378">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>t</m:mi>
+              </m:mfrac>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <equation id="id311414">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mn>5</m:mn>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>t</m:mi>
+              </m:mfrac>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id311453">and their sampled versions <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:math> with sampling period <m:math overflow="scroll"><m:mrow><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>=</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math></para><equation id="id311504"><m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+            </m:mrow>
+          </m:math>
+        </equation><equation id="id311559"><m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mn>5</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation><para id="id311619">Notice that since</para>
+        <equation id="id311624">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mn>5</m:mn>
+              <m:mi>π</m:mi>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>π</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>n</m:mi>
+              <m:mi>π</m:mi>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mi>π</m:mi>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id311699">it follows that</para>
+        <equation id="id311704"><m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>=</m:mo>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation><para id="id311779">Hence, <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and <m:math overflow="scroll"><m:mi>y</m:mi></m:math> provide an example of distinct functions with the same sampled versions at a specific sampling rate.</para>
+      </example>
+      <para id="id310009">It is also useful to consider the relationship between the frequency domain representations of the continuous time function and its sampled versions. Consider a signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> sampled with sampling period <m:math overflow="scroll"><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:math> to produce the discrete time signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Let us define the continuous-time "impulse train"
+	
+	<equation id="eq21"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">p</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:ci type="fn">δ</m:ci>
+		  <m:apply><m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:apply><m:times/>
+		      <m:ci>n</m:ci><m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+</para><para id="eip-580">Using Fourier series, it can be shown that
+
+	<equation id="samplingeq5">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">p</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			</m:apply>
+			<m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		      </m:apply>
+		      <m:ci>k</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation></para><para id="eip-582">Multiplying 
+	<m:math><m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply></m:math> by the impulse train yields the
+	"continuous-time sampled signal" 
+	<m:math><m:apply>
+	    <m:ci type="fn"><m:msub>
+		<m:mi>x</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub></m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply></m:math>:
+	
+	<equation id="eq6"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub></m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>n</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply><m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply><m:times/>
+			<m:ci>n</m:ci><m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub></m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		    <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:apply>
+		      <m:divide/>
+			<m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		      </m:apply>
+		      <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		    </m:apply>
+		    <m:ci>k</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	</equation></para><para id="eip-416">Taking the CTFT of 
+	<m:math>
+	  <m:apply><m:ci type="fn"><m:msub>
+		<m:mi>x</m:mi><m:mi>s</m:mi>
+	      </m:msub></m:ci><m:ci>t</m:ci></m:apply>
+	</m:math>,
+	
+	
+	<equation id="eq7"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>X</m:mi><m:mi>s</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub>
+		      <m:mi>x</m:mi><m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		    </m:apply>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>k</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:apply><m:minus/>
+			  <m:infinity/>
+			</m:apply></m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:apply>
+			    <m:divide/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			    </m:apply>
+			    <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+			  </m:apply>
+			  <m:ci>k</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply></m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub>
+		      <m:mi>x</m:mi><m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>j</m:ci>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>f</m:ci>
+			    <m:apply>
+				<m:divide/>
+				<m:ci>k</m:ci>
+				<m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+			    </m:apply>
+			  </m:apply>
+			  <m:ci>t</m:ci> 
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		</m:apply>
+		<m:apply>
+		<m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply></m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+		    <m:mi>X</m:mi><m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:ci>k</m:ci>
+			    <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation></para><para id="eip-603">Notice that 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn"><m:msub>
+		<m:mi>X</m:mi><m:mi>s</m:mi>
+	      </m:msub></m:ci>
+	      <m:ci>f</m:ci>
+	  </m:apply></m:math> is a summation of scaled and shifted
+	  copies of <m:math><m:apply>
+	    <m:ci type="fn"><m:msub>
+		<m:mi>X</m:mi><m:mi>c</m:mi>
+	      </m:msub></m:ci>
+	      <m:ci>f</m:ci>
+	  </m:apply>
+	</m:math>.  
+We now investigate the relationship between the CTFT and the
+	DTFT:
+	
+	<equation id="samplingeq9"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply> 
+		<m:ci type="fn">X</m:ci>
+	        <m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:ci>Ω</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:lowlimit>
+		<m:apply><m:minus/>
+		  <m:infinity/>
+		</m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		      <m:mi>x</m:mi><m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>n</m:ci>
+		    <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>Ω</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	  </m:apply>
+
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:lowlimit>
+		<m:apply><m:minus/>
+		  <m:infinity/>
+		</m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply></m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub>
+			  <m:mi>x</m:mi><m:mi>c</m:mi>
+			</m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>Ω</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:lowlimit>
+		<m:apply><m:minus/>
+		  <m:infinity/>
+		</m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi><m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>n</m:ci>
+			<m:msub><m:ci>T</m:ci><m:ci>s</m:ci></m:msub>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>Ω</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation>
+
+	where 	
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>x</m:mi><m:mi>c</m:mi>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">δ</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>t</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:ci>Ω</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is nonzero if and only if 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>t</m:ci>
+	      <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	<equation id="eqn9a"><m:math display="block"> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply> 
+	      <m:ci type="fn">X</m:ci>
+		  <m:ci>Ω</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:lowlimit>
+		<m:apply><m:minus/>
+		  <m:infinity/>
+		</m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi><m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>n</m:ci>
+			<m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:ci>Ω</m:ci>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>t</m:ci>
+			  <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:lowlimit>
+	      <m:apply><m:minus/>
+		<m:infinity/>
+	      </m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+		      <m:mi>x</m:mi><m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar><m:ci>n</m:ci></m:bvar>
+		    <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply></m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+		  	<m:minus/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>Ω</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>t</m:ci>
+			<m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:lowlimit>
+	      <m:apply><m:minus/>
+		<m:infinity/>
+	      </m:apply></m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		    <m:mi>x</m:mi><m:mi>s</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>j</m:ci>
+		      <m:ci>Ω</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>t</m:ci>
+			<m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	  </m:apply>
+	</m:math>
+    </equation>
+
+	where 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>  
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>x</m:mi><m:mi>c</m:mi>
+		  </m:msub></m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply><m:minus/>
+		    <m:infinity/>
+		  </m:apply></m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:ci type="fn">δ</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>x</m:mi><m:mi>s</m:mi>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+so that
+
+	<equation id="samplingeq10"><m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply> 
+		<m:ci type="fn">X</m:ci>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn"><m:msub>
+		    <m:mi>X</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>Ω</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+
+	Plugging <link target-id="eq7" strength="3"/> into <link target-id="samplingeq10" strength="3"/> yields:
+
+	<equation id="samplingeq11"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply> 
+		<m:ci type="fn">X</m:ci>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/>
+		      <m:infinity/>
+		    </m:apply></m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>X</m:mi><m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>Ω</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		      <m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation></para><para id="eip-119">Notice that the DTFT of the sampled signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">x</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> is a summation of scaled, stretched, and shifted
+	copies of the CTFT of the continuous signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn"><m:msub>
+		<m:mi>x</m:mi><m:mi>c</m:mi>
+	      </m:msub></m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply></m:math>. </para></section>
+    <section id="cid3" class="cn">
+      <title>Sampling Summary</title>
+      <para id="id311810">Sampling a continuous time signal produces a discrete time signal by selecting the values of the continuous time signal at equally spaced points in time. However, we have shown that this relationship is not injective as multiple continuous time signals can be sampled at the same rate to produce the same discrete time signal. This is related to a phenomenon called aliasing which will be discussed in later modules. Consequently, the sampling process is not, in general, invertible. Nevertheless, as will be shown in the module concerning reconstruction, the continuous time signal can be recovered from its sampled version if some additional assumptions hold.</para>
+    </section>
+  </content>
+</document>

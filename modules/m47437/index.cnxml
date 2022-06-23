@@ -1,0 +1,256 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Continuous Time Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47437</md:content-id>
+  <md:title>Continuous Time Systems</md:title>
+  <md:abstract>Describes continuous time systems.</md:abstract>
+  <md:uuid>f06d235d-5a3f-40c4-ad00-2c227d8a8bea</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1" class="in">
+      <title>Introduction</title>
+      <para id="id62167">As you already now know, a continuous time system operates on a continuous time signal input and produces a continuous time signal output. There are numerous examples of useful continuous time systems in signal processing as they essentially describe the world around us. The class of continuous time systems that are both linear and time invariant, known as continuous time LTI systems, is of particular interest as the properties of linearity and time invariance together allow the use of some of the most important and powerful tools in signal processing.</para>
+    </section>
+    <section id="cid2" class="th">
+      <title>Continuous Time Systems</title>
+      <section id="uid1">
+        <title>Linearity and Time Invariance</title>
+        <para id="id62192">A system <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is said to be linear if it satisfies two important conditions. The first, additivity, states for every pair of signals <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:math> that <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math>. The second, homogeneity of degree one, states for every signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and scalar <m:math overflow="scroll"><m:mi>a</m:mi></m:math> we have <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mi>x</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>a</m:mi><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math>. It is clear that these conditions can be combined together into a single condition for linearity. Thus, a system is said to be linear if for every signals <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:math> and scalars <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi></m:mrow></m:math> we have that</para>
+        <equation id="id62671">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mi>x</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>y</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>a</m:mi>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>y</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id62725">Linearity is a particularly important property of systems as it allows us to leverage the powerful tools of linear algebra, such as bases, eigenvectors, and eigenvalues, in their study.</para>
+        <para id="id62732">A system <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is said to be time invariant if a time shift of an input produces the corresponding shifted output. In other, more precise words, the system <m:math overflow="scroll"><m:mi>H</m:mi></m:math> commutes with the time shift operator <m:math overflow="scroll"><m:msub><m:mi>S</m:mi><m:mi>T</m:mi></m:msub></m:math> for every <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>∈</m:mo><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:math>. That is,</para>
+        <equation id="id62121">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>S</m:mi>
+                <m:mi>T</m:mi>
+              </m:msub>
+              <m:mi>H</m:mi>
+              <m:mo>=</m:mo>
+              <m:mi>H</m:mi>
+              <m:msub>
+                <m:mi>S</m:mi>
+                <m:mi>T</m:mi>
+              </m:msub>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id62993">Time invariance is desirable because it eases computation while mirroring our intuition that, all else equal, physical systems should react the same to identical inputs at different times.</para>
+        <para id="id63000">When a system exhibits both of these important properties it allows for a more straigtforward analysis than would otherwise be possible. As will be explained and proven in subsequent modules, computation of the system output for a given input becomes a simple matter of convolving the input with the system's impulse response signal. Also proven later, the fact that complex exponential are eigenvectors of linear time invariant systems will enable the use of frequency domain tools such as the various Fouier transforms and associated transfer functions, to describe the behavior of linear time invariant systems.</para><example id="eip-954"><para id="id63017">Consider the system <m:math overflow="scroll"><m:mi>H</m:mi></m:math> in which</para>
+        <equation id="id63028">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id63064">for all signals <m:math overflow="scroll"><m:mi>f</m:mi></m:math>.
+Given any two signals <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>,</m:mo><m:mi>g</m:mi></m:mrow></m:math> and scalars <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi></m:mrow></m:math></para>
+        <equation id="id63103">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>g</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>g</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>a</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>g</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>a</m:mi>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>g</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id63244">for all real <m:math overflow="scroll"><m:mi>t</m:mi></m:math>. Thus, <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is a linear system.
+For all real <m:math overflow="scroll"><m:mi>T</m:mi></m:math> and signals <m:math overflow="scroll"><m:mi>f</m:mi></m:math>,</para>
+        <equation id="id63280">
+          <m:math overflow="scroll" mode="display">
+            <m:mrow>
+              <m:msub>
+                <m:mi>S</m:mi>
+                <m:mi>T</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>H</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mi>S</m:mi>
+                <m:mi>T</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>f</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>T</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mi>H</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>-</m:mo>
+                  <m:mi>T</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>=</m:mo>
+              <m:mi>H</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>S</m:mi>
+                  <m:mi>T</m:mi>
+                </m:msub>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:math>
+        </equation>
+        <para id="id63420">for all real <m:math overflow="scroll"><m:mi>t</m:mi></m:math>. Thus, <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is a time invariant system.
+Therefore, <m:math overflow="scroll"><m:mi>H</m:mi></m:math> is a linear time invariant system.</para>
+      </example>
+      </section>
+      
+      </section>
+    <section id="cid3" class="cn">
+      <title>Continuous Time Systems Summary</title>
+      <para id="id63659">Many useful continuous time systems will be encountered in a study of signals and systems. This course is most interested in those that demonstrate both the linearity property and the time invariance property, which together enable the use of some of the most powerful tools of signal processing. It is often useful to describe them in terms of rates of change through linear constant coefficient ordinary differential equations.</para>
+    </section>
+  </content>
+</document>

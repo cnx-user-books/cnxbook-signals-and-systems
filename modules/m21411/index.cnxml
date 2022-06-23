@@ -1,0 +1,461 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Geometry of Complex Numbers</title>
+  <metadata>
+  <md:content-id>m21411</md:content-id><md:title>Geometry of Complex Numbers</md:title>
+  <md:abstract/>
+  <md:uuid>648cc204-8dfd-4511-ab00-a4ece7deb1f2</md:uuid>
+</metadata>
+
+<content>
+    
+    <note id="eip-674">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258268">The most fundamental new idea in the study of complex numbers is
+the “imaginary number” <m:math>
+<m:mi>j</m:mi></m:math>. This imaginary number is defined to be the square
+root of <m:math>
+<m:mo>-</m:mo>
+<m:mn>1</m:mn>
+</m:math>:</para>
+    
+    <equation id="eip-662"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>j</m:mi>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msqrt>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2258947">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mi>j</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258971">The imaginary number <m:math><m:mi>j</m:mi></m:math> is used to build complex numbers <m:math><m:mi>x</m:mi></m:math> and <m:math><m:mi>y</m:mi></m:math> in the following way:</para>
+    <equation id="eip-425"><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow>
+<m:mo>.</m:mo></m:math></equation><para id="id2259012">We say that the complex number <m:math><m:mi>z</m:mi></m:math> has “real part” <m:math><m:mi>x</m:mi></m:math> and “imaginary part” <m:math><m:mi>y</m:mi></m:math>:</para>
+    
+    <equation id="eip-627"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi> Re </m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>]</m:mo>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi> Im </m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2259098">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi> Re </m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>]</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>x</m:mi>
+          <m:mo>;</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi> Im </m:mi>
+          <m:mo>[</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>]</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>y</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259141">In MATLAB, the variable <m:math><m:mi>x</m:mi></m:math> is denoted by <code>real(z)</code>, and the variable <m:math><m:mi>y</m:mi></m:math> is
+denoted by <code>imag(z)</code>. In communication theory, <m:math><m:mi>x</m:mi></m:math> is called the “in-phase”
+component of <m:math><m:mi>z</m:mi></m:math>, and <m:math><m:mi>y</m:mi></m:math> is called the “quadrature” component. We call <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> the <emphasis effect="italics">Cartesian</emphasis> representation of <m:math><m:mi>z</m:mi></m:math>, with real component <m:math><m:mi>x</m:mi></m:math> and imaginary component <m:math><m:mi>y</m:mi></m:math>. We say that the Cartesian pair <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math><emphasis effect="italics">codes</emphasis> the complex
+number <m:math><m:mi>z</m:mi></m:math>.</para>
+    <para id="id2259289">We may plot the complex number <m:math><m:mi>z</m:mi></m:math> on the plane as in <link target-id="uid1"/>. We
+call the horizontal axis the “real axis” and the vertical axis the “imaginary
+axis.” The plane is called the “complex plane.” The radius and angle of the
+line to the point <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> are</para>
+    
+    <equation id="eip-426"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>r</m:mi>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:msup>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+          </m:msqrt>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2258212">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mo form="prefix">tan</m:mo>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mi>x</m:mi>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259641">See <link target-id="uid1"/>. In MATLAB, <m:math><m:mi>r</m:mi></m:math> is denoted by <code>abs(z)</code>, and <m:math><m:mi>θ</m:mi></m:math> is denoted by <code>angle(z)</code>.</para>
+    
+    <figure id="uid1"><media id="uid1_media" alt="This Cartesian graph contains a line segment extending from the origin to a point labeled z=x-jy=re^{jθ}. The line segment has a positive slope and is labeled r. The angle between this line and the x axis is marked by a curved line and it labeled θ. There is a point in the middle of the positive side of the x axis and it is labeled x=rcosθ. There is a similar point on the positive side of the y axis and it is labeled rsinθ=y. The y axis is labeled imaginary axis (j) and the x axis is labeled real axis.">
+        <image mime-type="image/png" src="../../media/pic001.png" id="uid1_onlineimage" width="550"><!-- NOTE: attribute width changes image size online (pixels). original width is 235. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic001.eps" id="uid1_printimage" print-width="82.85mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Cartesian and Polar Representations of the Complex Number <emphasis effect="italics">z</emphasis></caption></figure>
+    <para id="id2259691">The original Cartesian representation is obtained from the radius <m:math><m:mi>r</m:mi></m:math> and
+angle <m:math><m:mi>θ</m:mi></m:math> as follows:</para>
+    
+    <equation id="eip-460"><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow><m:mtext>cos</m:mtext>
+<m:mi>θ</m:mi></m:math></equation><equation id="id2259736">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>y</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>r</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>s</m:mi>
+          <m:mi>i</m:mi>
+          <m:mi>n</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>θ</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259769">The complex number <m:math><m:mi>z</m:mi></m:math> may therefore be written as</para>
+    <equation id="id2259783"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+                  <m:mi>z</m:mi>
+</m:mtd>
+<m:mtd>        
+  <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>x</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>y</m:mi>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>      
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mi>r</m:mi>
+<m:mtext>cos</m:mtext>
+<m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>r</m:mi><m:mtext>sin</m:mtext> <m:mi>θ</m:mi></m:mtd>
+</m:mtr>
+    <m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi>r</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>(</m:mo>
+          <m:mspace width="1.pt"/>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mspace width="1.pt"/>
+          <m:mi>s</m:mi>
+          <m:mi>i</m:mi>
+          <m:mi>n</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>θ</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2259896">The complex number <m:math overflow="scroll"><m:mtext>cos</m:mtext><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext>sin</m:mtext><m:mi>θ</m:mi></m:math> is, itself, a number that may be represented
+on the complex plane and coded with the Cartesian pair  <m:math overflow="scroll"><m:mo>(</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>,</m:mo><m:mtext>sin</m:mtext> <m:mi>θ</m:mi><m:mo>)</m:mo>
+</m:math>. This is
+illustrated in <link target-id="uid2"/>. The radius and angle to the point <m:math overflow="scroll"><m:mi>z</m:mi><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext>sin</m:mtext> <m:mi>θ</m:mi></m:math>
+are 1 and <m:math><m:mi>θ</m:mi></m:math>. Can you see why?</para>
+    <figure id="uid2"><media id="uid2_media" alt=" This Cartesian graph contains a line segment extending from the origin to a point labeled cosθ+jsinθ=e^{jθ}. The line segment has a positive slope and is labeled 1. The angle between this line and the x axis is marked by a curved line and it labeled θ. There is a point in the middle of the positive side of the x axis and it is labeled cosθ. There is a similar point on the positive side of the y axis and it is labeled sinθ. The y axis is labeled imaginary axis and the x axis is labeled real axis.">
+        <image mime-type="image/png" src="../../media/pic002.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 231. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic002.eps" id="uid2_printimage" print-width="81.58mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Complex Number <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mspace width="1.pt"/><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mo form="prefix">sin</m:mo><m:mspace width="1.pt"/><m:mi>θ</m:mi></m:mrow></m:math></caption></figure>
+    <para id="id2260026">The complex number <m:math><m:mtext>cos</m:mtext><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext>sin</m:mtext><m:mi>θ</m:mi></m:math> is of such fundamental importance
+to our study of complex numbers that we give it the special symbol <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> :</para>
+    <equation id="eip-343"><m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext>sin</m:mtext><m:mi>θ</m:mi><m:mo>.</m:mo></m:math></equation>
+    <para id="id2260112">As illustrated in <link target-id="uid2"/>, the complex number <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> has radius 1 and angle
+<m:math><m:mi>θ</m:mi></m:math>. With the symbol <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>, we may write the complex number <m:math><m:mi>z</m:mi></m:math> as</para>
+    
+    <equation id="eip-724"><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260196">We call <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> a <emphasis effect="italics">polar</emphasis> representation for the complex number <m:math><m:mi>z</m:mi></m:math>. We say that
+the polar pair <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mi>∠</m:mi><m:mi>θ</m:mi></m:mrow></m:math><emphasis effect="italics">codes</emphasis> the complex number <m:math><m:mi>z</m:mi></m:math>. In this polar representation,
+we define <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>z</m:mi><m:mo>|</m:mo><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow></m:math> to be the <emphasis effect="italics">magnitude</emphasis> of <m:math><m:mi>z</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">arg</m:mo><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>θ</m:mi></m:mrow></m:math> to be the angle, or
+<emphasis effect="italics">phase</emphasis>, of <m:math><m:mi>z</m:mi></m:math>:</para>
+    
+    <equation id="eip-186"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>r</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2260355">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>a</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>g</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>(</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260387">With these definitions of magnitude and phase, we can write the complex
+number <m:math><m:mi>z</m:mi></m:math> as</para>
+    
+    <equation id="eip-329"><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mi>z</m:mi><m:mo>|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo form="prefix">arg</m:mo><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260442">Let's summarize our ways of writing the complex number <emphasis effect="italics">z</emphasis> and record
+the corresponding geometric codes:</para>
+    <equation id="eip-697"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mi>z</m:mi>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mi>r</m:mi>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>θ</m:mi>
+</m:mrow>
+</m:msup>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>|</m:mo>
+<m:mi>z</m:mi>
+<m:mo>|</m:mo>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mspace width="4pt"/>
+<m:mo form="prefix">arg</m:mo>
+<m:mo>(</m:mo>
+<m:mi>z</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:msup>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd/>
+<m:mtd>
+<m:mo>↓</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd>
+<m:mo>↓</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd/>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd/>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>,</m:mo>
+<m:mi>y</m:mi>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd>
+<m:mi>r</m:mi>
+<m:mi>∠</m:mi>
+<m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd/>
+<m:mtd/>
+</m:mtr>
+</m:mtable>
+
+</m:math>
+</equation><para id="id2260456">In <link document="m21415">"Roots of Quadratic Equations"</link> we show that the definition 
+
+<m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo></m:mrow><m:mtext>cos</m:mtext><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext>sin</m:mtext><m:mi>θ</m:mi></m:math> is more than
+symbolic. We show, in fact, that 
+
+<m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is just the familiar function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> evaluated
+at the imaginary argument <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:math>. We call <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> a “complex exponential,”
+meaning that it is an exponential with an imaginary argument.</para>
+    
+<exercise id="fs-id19627017">
+<problem id="fs-id19627019">
+<para id="id2260661">Prove <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>n</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math> and 
+
+<m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:mi>j</m:mi></m:mrow></m:math>. Evaluate <m:math overflow="scroll"><m:mrow><m:msup><m:mi>j</m:mi><m:mn>3</m:mn></m:msup><m:mo>,</m:mo><m:msup><m:mi>j</m:mi><m:mn>4</m:mn></m:msup></m:mrow><m:mo>,</m:mo><m:msup><m:mi>j</m:mi><m:mn>5</m:mn></m:msup></m:math>.</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id25108893">
+<problem id="fs-id25108896">
+    <para id="id2260794">Prove <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>[</m:mo><m:mo>(</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>m</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>]</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mi>j</m:mi><m:mo>,</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>[</m:mo><m:mo>(</m:mo><m:mn>3</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>m</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>]</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>j</m:mi><m:mo>,</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>m</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>,
+and <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:mi>π</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Plot these identities on the complex plane. (Assume <m:math><m:mi>m</m:mi></m:math> is an integer.)</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id24978696">
+<problem id="fs-id25892424">
+    <para id="id2260965">Find the polar representation <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> for each of the following
+complex numbers:
+    <list id="fs-id23246086" list-type="enumerated" number-style="lower-alpha"><item> <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mn>1</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mn>1</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>j</m:mi><m:mn>1</m:mn></m:mrow></m:math>.</item></list>
+   Plot the points on the complex plane.
+</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id19312858">
+<problem id="fs-id19312860">
+    <para id="id2261098"> Find the Cartesian representation <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> for each of the
+following complex numbers:
+    <list id="fs-id15717226" list-type="enumerated" number-style="lower-alpha"><item> <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msqrt><m:mn>2</m:mn></m:msqrt><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msqrt><m:mn>2</m:mn></m:msqrt><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>4</m:mn></m:mrow></m:msup></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>3</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>4</m:mn></m:mrow></m:msup></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msqrt><m:mn>2</m:mn></m:msqrt><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>3</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math>.</item></list>
+    Plot the points on the complex plane.</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id21044883">
+<problem id="fs-id19047597">
+    <para id="id2261264"> The following geometric codes represent complex numbers. Decode each by writing down the corresponding complex number <emphasis effect="italics">z</emphasis>:
+    <list id="fs-id19896412" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>7</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mspace width="8.pt"/><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math>   ?</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>5</m:mn><m:mo>)</m:mo><m:mspace width="8.pt"/><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math>    ?</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>6</m:mn><m:mi>∠</m:mi><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>8</m:mn><m:mspace width="8.pt"/><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math>?</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>4</m:mn><m:mi>∠</m:mi><m:mn>7</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>8</m:mn><m:mspace width="8.pt"/><m:mi>z</m:mi><m:mo>=</m:mo></m:mrow></m:math>?</item></list>
+</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id16630550">
+<problem id="fs-id16630552">
+    <para id="id2261418">Show that 
+
+<m:math overflow="scroll"><m:mrow><m:mi>Im</m:mi><m:mo>[</m:mo><m:mi>j</m:mi><m:mi>z</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi> Re </m:mi><m:mo>[</m:mo><m:mi>z</m:mi><m:mo>]</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>z</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi> Im </m:mi><m:mo>[</m:mo><m:mi>z</m:mi><m:mo>]</m:mo></m:mrow></m:math>.
+Demo 1.1 (MATLAB). Run the following MATLAB program in order to
+compute and plot the complex number <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mi>i</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>360</m:mn><m:mo>,</m:mo><m:mi>i</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mn>360</m:mn></m:mrow></m:math>:
+    <code id="fs-id4363587" display="block">
+          j=sqrt(-1)
+          n=360
+          for i=1:n,circle(i)=exp(j*2*pi*i/n);end;
+          axis('square')
+          plot(circle)
+</code>
+Replace the explicit for loop of line 3 by the implicit loop
+<code id="fs-id4363590" display="block">
+          circle=exp(j*2*pi*[1:n]/n);
+</code>
+    
+to speed up the calculation. You can see from <link target-id="uid3"/> that the complex number 
+<m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>, 
+
+evaluated at angles 
+
+<m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>360</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>360</m:mn><m:mo>)</m:mo><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>, turns out complex
+numbers that lie at angle <m:math><m:mi>θ</m:mi></m:math> and radius 1. We say that <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is a complex number
+that lies on the unit circle. We will have much more to say about the unit
+circle in Chapter 2.</para>
+</problem>
+</exercise>
+    <figure id="uid3"><media id="uid3_media" alt="This Cartesian graph contains a circle that is equally present in all four quadrants. The width of the circle is from -1 to 1 and the height is from -1 to 1 as well.">
+        <image mime-type="image/png" src="../../media/pic003.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 163. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic003.eps" id="uid3_printimage" print-width="4in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Complex Numbers <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> for <m:math overflow="scroll"><m:mrow><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>θ</m:mi><m:mo>≤</m:mo><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math> (Demo 1.1)</caption></figure>
+  </content>
+</document>

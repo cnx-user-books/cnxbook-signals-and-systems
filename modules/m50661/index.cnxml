@@ -1,0 +1,131 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Frequency-Domain Analysis of Linear Time-Invariant Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m50661</md:content-id>
+  <md:title>Frequency-Domain Analysis of Linear Time-Invariant Systems</md:title>
+  <md:abstract>Describes intuition to be obtained from a Fourier-domain analysis of LTI systems</md:abstract>
+  <md:uuid>973ca3b6-8456-408b-93fa-df95c36620d0</md:uuid>
+</metadata>
+
+<content>
+<para id="eip-331">Convolution is the standard tool for the analysis of linear time-invariance (LTI) systems. Recall that for an LTI system, the impulse response <m:math><m:apply><m:ci type="fn">h</m:ci><m:ci>t</m:ci></m:apply></m:math> (which, as its name indicates, is the output of the system for an impulse <m:math><m:apply><m:ci type="fn">𝛿</m:ci><m:ci>t</m:ci></m:apply></m:math>) is the only system knowledge required to compute the output to an arbitrary input as 
+<m:math>
+  <m:apply>
+    <m:eq/>
+      <m:apply>
+      <m:ci type="fn">y</m:ci>
+      <m:ci>t</m:ci>
+    </m:apply>
+    <m:apply>
+      <m:mo>*</m:mo>
+      <m:apply>
+	<m:ci type="fn">x</m:ci>
+	<m:ci>t</m:ci>
+      </m:apply>
+      <m:apply>
+	<m:ci type="fn">h</m:ci>
+	<m:ci>t</m:ci>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math>. Recall, also, that convolution involves a nontrivial computation involving shifting, multiplication, and accumulation. Thus, it becomes highly convenient to compute the output of the LTI system in the frequency domain by applying a Fourier transform to the LTI system equation, which results in 
+<m:math>
+  <m:apply>
+    <m:eq/>
+      <m:apply>
+      <m:ci type="fn">Y</m:ci>
+      <m:ci>f</m:ci>
+    </m:apply>
+    <m:apply>
+      <m:times/>
+      <m:apply>
+	<m:ci type="fn">X</m:ci>
+	<m:ci>f</m:ci>
+      </m:apply>
+      <m:apply>
+	<m:ci type="fn">H</m:ci>
+	<m:ci>f</m:ci>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math>. Here, 
+<m:math><m:apply><m:ci type="fn">Y</m:ci><m:ci>f</m:ci></m:apply></m:math>, <m:math><m:apply><m:ci type="fn">X</m:ci><m:ci>f</m:ci></m:apply></m:math>, and <m:math><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:math> denote the Fourier transforms of <m:math><m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply></m:math>, <m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply></m:math>, and <m:math><m:apply><m:ci type="fn">h</m:ci><m:ci>t</m:ci></m:apply></m:math>, respectively. In summary, the Fourier transform allows us to obtain the output of a LTI system by performing simple multiplication instead of a complicated convolution. </para><para id="eip-218">We can also obtain a significant amount of intuition about LTI systems by considering them from the frequency domain. Since Fourier transforms are complex-valued, we can rewrite the multiplication process as a product of magnitudes, 
+<m:math>
+  <m:apply>
+    <m:eq/>
+    <m:apply>
+      <m:abs/>
+      <m:apply>
+	<m:ci type="fn">Y</m:ci>
+	<m:ci>f</m:ci>
+      </m:apply>
+    </m:apply>
+    <m:apply>
+      <m:apply>
+	<m:abs/>
+        <m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:ci type="fn">X</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:apply>
+    </m:apply>
+    <m:apply>
+      <m:apply>
+        <m:times/>
+	<m:apply>
+	  <m:abs/>
+	  <m:apply>
+	    <m:ci type="fn">X</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+        <m:apply>
+	  <m:abs/>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math>, and a sum of phases, 
+<m:math>
+  <m:apply>
+    <m:eq/>
+    <m:apply>
+      <m:mo>∠</m:mo>
+      <m:apply>
+	<m:ci type="fn">Y</m:ci>
+	<m:ci>f</m:ci>
+      </m:apply>
+    </m:apply>
+    <m:apply>
+      <m:plus/>
+      <m:apply>
+	<m:mo>∠</m:mo>
+	<m:apply>
+	  <m:ci type="fn">X</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:apply>
+      <m:apply>
+	<m:mo>∠</m:mo>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math>. </para><para id="eip-881">Recall that <m:math><m:apply><m:abs/><m:apply><m:ci type="fn">X</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math>, intuitively, represents the "magnitude" of the presence of a complex sinusoid of frequency <m:math><m:mi>f</m:mi></m:math> in the input signal <m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply></m:math>; similarly, <m:math><m:apply><m:abs/><m:apply><m:ci type="fn">Y</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> represents the "magnitude" of the presence of the same complex sinusoid in the output signal <m:math><m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply></m:math>. Therefore, we can argue that due to the pointwise nature of function multiplication the effect of the LTI system is to scale the "magnitude" of each complex sinusoid in the input independently to obtain the output, with the scaling factors being given by the Fourier transform of the impulse response <m:math><m:apply><m:abs/><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math>, and these factors being distinct for each possible frequency <m:math><m:mi>f</m:mi></m:math>.</para><para id="eip-593">Similarly, recall that <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">X</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> represents the delay of the complex sinusoid of frequency <m:math><m:mi>f</m:mi></m:math> when it is present in the input signal <m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply></m:math>; similarly, <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">Y</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> represents the delay of the complex sinusoid of frequency <m:math><m:mi>f</m:mi></m:math> when it is present in the output signal <m:math><m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply></m:math>. Therefore, we can argue that the LTI system imposes an additional delay of <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> to each complex sinusoid present in the input to obtain the delay's output of the same complex sinusoid, and this factor <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> is specific to each possible frequency due to the pointwise nature of function addition.</para><para id="eip-277">Remarkably, these are the only two things that an LTI system can do to an input signal, and these operations are specific to each frequency of the input signal's Fourier decomposition. Note, for example, that an LTI system can remove a specific frequency <m:math><m:mi>f</m:mi></m:math> from an input signal by setting <m:math><m:apply><m:eq/><m:apply><m:ci type="fn">H</m:ci><m:mi>f</m:mi></m:apply><m:ci>0</m:ci></m:apply></m:math>; however, an LTI system cannot "add" new frequencies to an input signal if they were not already present, and an LTI system cannot change the values of the frequencies present in the signal (that is, an LTI system cannot perform modulation; by the same token, a modulator is not an LTI system).</para><para id="eip-147">It is also worth noting that the delay of a complex sinusoid with a given phase is linearly dependent on its frequency. Thus, a delay system (which we know is LTI) is characterized by a phase <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math> that will be linearly dependent on the value of the frequency <m:math><m:ci>f</m:ci></m:math>. This is contrast with an LTI system whose phase response is independent of the frequency, i.e., with constant <m:math><m:apply><m:mo>∠</m:mo><m:apply><m:ci type="fn">H</m:ci><m:ci>f</m:ci></m:apply></m:apply></m:math>; such a system will actually delay each complex exponential with a different delay that is inversely proportional to the frequency <m:math><m:ci>f</m:ci></m:math>.</para></content>
+
+</document>

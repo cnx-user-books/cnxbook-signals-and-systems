@@ -1,0 +1,1650 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Representing Complex Numbers in a Vector Space</title>
+  <metadata>
+  <md:content-id>m21414</md:content-id><md:title>Representing Complex Numbers in a Vector Space</md:title>
+  <md:abstract/>
+  <md:uuid>d1d9d730-b10e-43d5-a048-2cd86450482f</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-788">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258263">So far we have coded the complex number 
+<m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> 
+with the Cartesian
+pair 
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> and with the polar pair <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>r</m:mi><m:mi>∠</m:mi><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+ We now show how the complex
+number <m:math>
+<m:mi>z</m:mi>
+</m:math> may be coded with a two-dimensional vector <m:math>
+<m:mi mathvariant="bold">z</m:mi>
+</m:math> and show how this
+new code may be used to gain insight about complex numbers.</para>
+    <para id="id2258988"><emphasis effect="bold">Coding a Complex Number as a Vector.</emphasis> We code the complex
+number <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>y</m:mi></m:mrow></m:math> with the two-dimensional vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">z</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi>x</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>y</m:mi></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>:</para>
+    
+    <equation id="eip-95"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>x</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>y</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>z</m:mi>
+          <m:mo>⇔</m:mo>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>x</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>y</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259108">We plot this vector as in <link target-id="uid1"/>. We say that the vector <m:math><m:mi mathvariant="bold">z</m:mi></m:math> belongs to a “vector space.” This means that vectors may be added and scaled according to the rules</para>
+    
+    
+    
+    <equation id="eip-512"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+   <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>    
+            <m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <equation id="eip-672"><m:math>
+<m:mrow>
+<m:mi>a</m:mi>
+          <m:mi mathvariant="bold">z</m:mi>
+<m:mo>=</m:mo>
+<m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+</m:mrow>
+</m:math></equation><figure id="uid1"><media id="uid1_media" alt="This Cartesion graph contains a line segment extending from the origin to a point labeled Z in quadrant I.">
+        <image mime-type="image/png" src="../../media/pic017.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 161. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic017.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Vector z Coding the Complex Number z</caption></figure>
+    <para id="id2259513">Furthermore, it means that an additive inverse <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi mathvariant="bold">z</m:mi></m:mrow></m:math>, an additive identity <m:math overflow="scroll"><m:mrow><m:mn mathvariant="bold">0</m:mn></m:mrow></m:math>,
+and a multiplicative identity 1 all exist:</para>
+    
+    <equation id="eip-487"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mo>+</m:mo>
+          <m:mo>(</m:mo>
+          <m:mo>-</m:mo>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2259563"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>l</m:mi>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259588">The vector <m:math>
+<m:mn mathvariant="bold">0</m:mn>
+</m:math> is <m:math overflow="scroll"><m:mrow><m:mn mathvariant="bold">0</m:mn><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>.</para>
+    <para id="id2259626">Prove that vector addition and scalar multiplication satisfy
+these properties of commutation, association, and distribution:</para>
+    <equation id="id2259636"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259689"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259777"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>a</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>b</m:mi>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi>a</m:mi>
+          <m:mi>b</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="bold">z</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259814"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>a</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi>a</m:mi>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mi>a</m:mi>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+         
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259887"><emphasis effect="bold">Inner Product and Norm.</emphasis> The <emphasis effect="italics">inner product</emphasis> between two vectors
+<m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> is defined to be the real number</para>
+    <equation id="eip-609"><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2259933">We sometimes write this inner product as the vector product (more on this
+in <link document="m21454">Linear Algebra</link>)</para>
+    <equation id="id2260006"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+     <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msubsup>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>T</m:mi>
+          </m:msubsup>
+          <m:msub>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>[</m:mo>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mspace width="5pt"/>
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo>]</m:mo>
+<m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mn mathvariant="normal">x</m:mn><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mn mathvariant="normal">y</m:mn><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced>
+<m:mo>=</m:mo>
+<m:mo>(</m:mo>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>)</m:mo>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    
+<exercise id="fs-id17877323">
+<problem id="fs-id17171574">
+    <para id="id2260177">Prove <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math></para></problem> </exercise>
+    <para id="id2260248">When <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mi mathvariant="bold">z</m:mi></m:mrow></m:math>, then the inner product between <m:math><m:mi>z</m:mi></m:math> and itself is the
+<emphasis effect="italics">norm squared</emphasis> of <m:math><m:mi mathvariant="bold">z</m:mi></m:math>:</para>
+    
+    <equation id="eip-536"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>y</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260379">These properties of vectors seem abstract. However, as we now show, they
+may be used to develop a vector calculus for doing complex arithmetic.</para>
+    <para id="id2260385"><emphasis effect="bold">A Vector Calculus for Complex Arithmetic.</emphasis> The addition of two complex numbers <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> corresponds to the addition of the vectors <m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and 
+<m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> :</para>
+    
+    <equation id="eip-468"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⇔</m:mo>
+          <m:mtable>
+<m:mtr>
+<m:mtd>
+   <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>    
+            <m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mtd>
+</m:mtr>
+</m:mtable>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260554">The scalar multiplication of the complex number <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> by the real number <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> corresponds to scalar multiplication of the vector <m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> by <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> :</para>
+    <equation id="eip-639"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⇔</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260735">Similarly, the multiplication of the complex number <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> by the real number <m:math>
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>
+is</para>
+    <equation id="eip-378"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>y</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>↔</m:mo>
+          <m:msub>
+            <m:mi>y</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260885">The complex product <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mi>j</m:mi><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> is therefore represented as</para>
+    
+    <equation id="eip-408"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>↔</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo>+</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261057">This representation may be written as the inner product</para>
+    
+    <equation id="eip-282"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>↔</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi mathvariant="bold">v</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:msub>
+                      <m:mi mathvariant="bold">z</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi mathvariant="bold">w</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:msub>
+                      <m:mi mathvariant="bold">z</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261162">where <m:math>
+<m:mi mathvariant="bold">v</m:mi>
+</m:math> and <m:math>
+<m:mi mathvariant="bold">w</m:mi>
+</m:math> are the vectors <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">v</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">w</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>. By defining the
+matrix</para>
+    
+    <equation id="eip-530"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261348">we can represent the complex product <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> as a matrix-vector multiply (more
+on this in <link document="m21454">Linear Algebra</link>):</para>
+    
+    <equation id="eip-761"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>↔</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261508">With this representation, we can represent rotation as</para>
+    
+    <equation id="eip-312"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>z</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mi>z</m:mi>
+          <m:mo>↔</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261638">We call the matrix <m:math overflow="scroll"><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:math> a “rotation matrix.”</para>
+<exercise id="fs-id19392289">
+<problem id="fs-id19230225">
+    <para id="id2261704">Call <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> the rotation matrix:</para>
+    <equation id="id2261730"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="bold">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261810">Show that <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">R</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> rotates by <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math>. What can you say about <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">R</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo><m:mi mathvariant="normal">w</m:mi></m:mrow></m:math> when
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">w</m:mi><m:mo>=</m:mo><m:mi mathvariant="bold">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo><m:mi mathvariant="bold">z</m:mi></m:mrow></m:math>? </para></problem>
+</exercise>
+<exercise id="fs-id18629528">
+<problem id="fs-id18629530">
+    <para id="id2261906">Represent the complex conjugate of <m:math>
+<m:mi>z</m:mi></m:math> as</para>
+    <equation id="id2261924"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mo>*</m:mo>
+          </m:msup>
+          <m:mspace width="4.pt"/>
+          <m:mo>↔</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>a</m:mi>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mi>b</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>c</m:mi>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mi>d</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>x</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>y</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262007">and find the elements <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>,</m:mo><m:mi>b</m:mi><m:mo>,</m:mo><m:mi>c</m:mi></m:mrow></m:math>, and <m:math>
+<m:mi>d</m:mi>
+</m:math> of the matrix.</para>
+</problem>
+</exercise>
+    <para id="id2262042"><emphasis effect="bold">Inner Product and Polar Representation.</emphasis> From the norm of a vector, we derive a formula for the magnitude of <m:math>
+<m:mi>z</m:mi>
+</m:math> in the polar representation
+<m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> :</para>
+    <equation id="eip-772"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>r</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>y</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262179">If we define the coordinate vectors <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>, then we
+can represent the vector <m:math>
+<m:mi>z</m:mi>
+</m:math> as</para>
+    <equation id="eip-429"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">z</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi mathvariant="bold">z</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mrow><m:mo>(</m:mo><m:mi mathvariant="bold">z</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:msub><m:mi mathvariant="bold">e</m:mi><m:mn>2</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2262278">See <link target-id="uid2"/>. From the figure it is clear that the cosine and sine of the
+angle <m:math>
+<m:mi>θ</m:mi></m:math> are</para>
+    
+    <equation id="eip-915"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">e</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>;</m:mo>
+<m:mspace width="4pt"/>
+          <m:mo form="prefix">sin</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">e</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation><figure id="uid2"><media id="uid2_media" alt="">
+        <image mime-type="image/png" src="../../media/pic018.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 175. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic018.eps" id="uid2_printimage" print-width="03in"/>
+      </media>
+      
+    <caption>Representation of z in its Natural Basis</caption></figure>
+    <para id="id2262488">This gives us another representation for any vector <m:math><m:mi>z</m:mi></m:math>:</para>
+    <equation id="eip-558"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mi>θ</m:mi>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mi>θ</m:mi>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262585">The inner product between two vectors <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> is now</para>
+    <equation id="eip-431"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">e</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msubsup>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">e</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msubsup>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi mathvariant="bold">z</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mo>,</m:mo>
+                      <m:msub>
+                        <m:mi mathvariant="bold">e</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi mathvariant="bold">e</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi mathvariant="bold">z</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mo>,</m:mo>
+                      <m:msub>
+                        <m:mi mathvariant="bold">e</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msub>
+                      <m:mi mathvariant="bold">e</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="bold">e</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo form="prefix">sin</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>    
+      </m:math>
+    </equation>
+    
+    
+    <para id="id2263123">It follows that <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mo form="prefix">sin</m:mo>
+<m:msub><m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> may be written as</para>
+    <equation id="eip-451"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo>
+<m:mspace width="5pt"/>
+<m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi mathvariant="bold">z</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2263224">This formula shows that the cosine of the angle between two vectors <m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and
+<m:math>
+<m:msub>
+<m:mi mathvariant="bold">z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>, which is, of course, the cosine of the angle of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math>, is the ratio of the inner
+product to the norms.</para>
+<exercise id="fs-id19392340">
+<problem id="fs-id16759713">
+    <para id="id2263402">Prove the Schwarz and triangle inequalities and interpret them:</para>
+    <equation id="id2263411"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mtext>Schwarz</m:mtext>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="bold">z</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>≤</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2263531"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mtext>triangle</m:mtext>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mi>I</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>≤</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="bold">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="bold">z</m:mi>
+          <m:mn>3</m:mn>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation>
+</problem>
+</exercise>
+<!--empty paragraphs get left behind.-->
+  </content>
+</document>

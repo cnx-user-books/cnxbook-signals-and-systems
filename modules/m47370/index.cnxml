@@ -1,0 +1,721 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Discrete Time Fourier Transform (DTFT)</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47370</md:content-id>
+  <md:title>Discrete Time Fourier Transform (DTFT)</md:title>
+  <md:abstract>Details the discrete-time fourier transform.</md:abstract>
+  <md:uuid>abc1d9ac-cf38-48a3-8fd0-6b8210949d9a</md:uuid>
+</metadata>
+
+<content>
+
+    <section id="eip-375" class="in"><title>Introduction</title><para id="eip-557">In this module, we will derive an expansion for
+	arbitrary discrete-time functions, and in doing so, derive the <term>Discrete Time Fourier Transform</term> (DTFT).</para><para id="introduction">Since <link document="m10060">complex
+	  exponentials</link> are <link document="m10500">
+	  eigenfunctions of linear time-invariant (LTI)
+	  systems</link>, calculating the output of an LTI system
+	  <m:math><m:ci>ℋ</m:ci></m:math> given
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>j</m:ci>
+		<m:ci>Ω</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> as an input amounts to simple multiplication, where
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>Ω</m:ci>
+		</m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math> is the eigenvalue corresponding to <m:math><m:ci>Ω</m:ci></m:math>.  As shown in the figure, a simple exponential input would yield the output
+
+	<equation id="equation1"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		  <m:ci type="fn" class="discrete">y</m:ci>
+		  <m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>Ω</m:ci>
+		</m:apply> 
+	        <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+		       <m:ci>Ω</m:ci>
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+              </m:apply>
+</m:apply>
+	  </m:math>
+	</equation></para><figure id="figure1"><media id="id16571020" alt=""><image src="../../media/cnx_omegafigure.png" mime-type="image/png"/></media>
+	
+      <caption>Simple LTI system.
+	</caption></figure><para id="calculation">Using this and the fact that <m:math><m:ci>ℋ</m:ci></m:math>
+	is linear, calculating
+	<m:math display="inline">
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">y</m:ci>
+		  <m:ci>n</m:ci>
+	      </m:apply>
+	</m:math> for combinations of <term>complex exponentials</term> is also
+	straightforward.
+	
+	
+
+
+      </para>
+
+      <para id="eip-434"><m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>1</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>2</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>Ω</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>1</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>Ω</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>1</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:sum/>
+		  <m:domainofapplication>
+		    <m:ci>l</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>l</m:mi>
+		    </m:msub>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>l</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:domainofapplication>
+		    <m:ci>l</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:times/>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>l</m:mi>
+		    </m:msub>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:msub>
+			<m:mi>Ω</m:mi>
+			<m:mi>l</m:mi>
+		      </m:msub>
+		    </m:apply>
+		    <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>l</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math></para><para id="p3">The action of <m:math><m:ci>H</m:ci></m:math> on an input such
+	as those in the two equations above is easy to explain.  
+	<emphasis> <m:math><m:ci>ℋ</m:ci></m:math> independently
+	scales</emphasis> each exponential component
+	<m:math display="inline">
+	  <m:apply>
+	           <m:exp/>
+	           <m:apply>
+		       <m:times/>
+		       <m:ci>j</m:ci>
+                       <m:msub>
+		           <m:ci>Ω</m:ci>
+		           <m:mn>l</m:mn>
+		    </m:msub>  
+		       <m:ci>n</m:ci>
+	           </m:apply>
+	         </m:apply>
+	</m:math> 
+	by a different complex number
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:msub>
+		<m:mi>Ω</m:mi>
+		<m:mi>l</m:mi>
+	      </m:msub>	    
+	    </m:apply>
+	    <m:complexes/>
+	  </m:apply>
+	</m:math>.  As such, if we can write a function
+	<m:math>
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">y</m:ci>
+		  <m:ci>n</m:ci>
+	      </m:apply>
+	</m:math>
+	as a combination of complex exponentials it allows us to easily calculate the output of a system.
+      </para><para id="eip-66">Now, we will look to use the power of complex exponentials to see how we may
+	represent arbitrary signals in terms of a set of simpler functions by
+	superposition of a number of complex exponentials.  Below we will present the
+	<term>Discrete-Time Fourier Transform</term> (DTFT).  Because the
+	DTFT deals with nonperiodic signals, we must find a
+	way to include all real frequencies in the
+	general equations. For the DTFT we simply let N go to infinity. This will also change the summation over integers to an integration over real numbers.</para></section>
+
+
+<section id="eip-79" class="th"><title>DTFT synthesis</title><para id="eip-338">It can be demonstrated that an arbitrary <m:math><m:ci>N</m:ci></m:math>-periodic <link document="N/A">
+Discrete Time-periodic function</link> 
+	<m:math>
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	</m:math> can be written as a linear combination of harmonic
+	complex sinusoids
+
+	<equation id="discreteeq2"><m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>j</m:ci>
+			<m:apply>
+			  <m:msub>
+	      <m:mi>Ω</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+			</m:apply>
+			<m:ci>k</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math></equation>
+	
+	where 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:msub>
+	      <m:mi>Ω</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+	      </m:apply>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is the fundamental frequency.  For almost all 
+	<m:math display="inline">
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	</m:math> of practical interest, there exists
+	<m:math display="inline">
+	  <m:msub>
+	    <m:mi>c</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msub>
+	</m:math> to make <link target-id="discreteeq2"/> true.  If
+	<m:math display="inline">
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	</m:math> is finite energy, then the equality in <link target-id="discreteeq2"/> 
+	holds in the sense of energy convergence; with discrete-time signals, there are no concerns for divergence as there are with continuous-time signals.
+      </para><para id="eip-192">The 
+	<m:math display="inline">
+	  <m:msub>
+	    <m:ci>c</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:msub>
+	</m:math> - called the Fourier coefficients -
+	tell us "how much" of the sinusoid
+	<m:math display="inline">
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+<m:ci>j</m:ci>
+	      <m:msub>
+		<m:mi>Ω</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	      <m:ci>k</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> is in 
+	<m:math display="inline">
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	</m:math>.   
+
+	The formula shows 
+	<m:math display="inline">
+	  <m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	</m:math> as a sum of complex exponentials, each of which is easily processed by an
+	LTI system (since it is an eigenfunction of
+	<emphasis>every</emphasis> LTI system).  Mathematically, 
+	it tells us that the set of
+	complex exponentials 
+	<m:math display="inline">
+	  <m:set>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>k</m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>j</m:ci>
+		  <m:msub>
+		    <m:mi>Ω</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		  <m:ci>k</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:set>
+	</m:math> form a basis for the space of N-periodic discrete
+	time functions.
+      </para><section id="eip-582"><title>Equations</title><equation id="equus"><title>Discrete-Time Fourier Transform</title><m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn" class="continuous">X</m:ci>
+		      <m:ci>Ω</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:sum/>
+	    <m:bvar>
+	      <m:ci>n</m:ci>
+	    </m:bvar>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:minus/>
+		<m:infinity/>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:uplimit>
+	      <m:infinity/>
+	    </m:uplimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci>Ω</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation><equation id="equus2"><title>Inverse DTFT</title><m:math>
+  <m:apply>
+    <m:eq/>
+    <m:apply>
+      <m:ci type="fn" class="discrete">x</m:ci>
+      <m:ci>n</m:ci>
+    </m:apply>
+    <m:apply>
+      <m:times/>
+      <m:apply>
+        <m:divide/>
+        <m:cn>1</m:cn>
+        <m:apply>
+          <m:times/>
+          <m:cn>2</m:cn>
+          <m:pi/>
+        </m:apply>
+      </m:apply>
+      <m:apply>
+        <m:int/>
+        <m:bvar>
+          <m:ci>Ω</m:ci>
+        </m:bvar>
+        <m:lowlimit>
+          <m:apply>
+            <m:minus/>
+            <m:pi/>
+          </m:apply>
+        </m:lowlimit>
+        <m:uplimit>
+          <m:pi/>
+        </m:uplimit>
+        <m:apply>
+          <m:times/>
+          <m:apply>
+            <m:ci type="fn">X</m:ci>
+            <m:ci>Ω</m:ci>
+          </m:apply>
+          <m:apply>
+            <m:exp/>
+            <m:apply>
+              <m:times/>
+              <m:ci>j</m:ci>
+              <m:ci>Ω</m:ci>
+              <m:ci>n</m:ci>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math></equation><para id="p_eqs">
+	  <note id="id11730803" type="warning">It is not uncommon to see the above formula written slightly different.  One of the most common differences is the way that the exponential is written.  The above equations use the radial	    frequency variable <m:math><m:ci>Ω</m:ci>
+	    </m:math> in the exponential, where
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>Ω</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>F</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, but it is also common to include the more explicit expression, 
+	    <m:math>
+	      <m:apply>
+		<m:times/>
+		<m:ci>j</m:ci>
+		<m:ci>2</m:ci>
+		<m:pi/>
+		<m:ci>F</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>, in the exponential.
+Sometimes DTFT notation is expressed as <m:math>
+  <m:apply>
+    <m:ci>X</m:ci>
+    <m:apply>
+      <m:exp/>
+      <m:apply>
+        <m:times/>
+        <m:ci>j</m:ci>
+        <m:ci>Ω</m:ci>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math>, to make it clear that it is not a CTFT (which is denoted as <m:math>
+  <m:apply>
+    <m:ci>X</m:ci>
+    <m:ci>ω</m:ci>
+  </m:apply>
+</m:math>). 
+	    <link document="m10161">Click here</link> for an
+	    overview of the notation used in Connexion's DSP modules.
+	  </note></para>
+      </section>
+    </section>
+
+
+<section id="eip-570" class="ie"><title>DTFT Definition demonstration</title><para id="eip-109"><figure id="demo"><media id="thumbnailmedia" alt="DTFT Demo">
+      <image mime-type="image/png" src="../../media/Lecture15-DTFT Definition_display.cdf" thumbnail="Lecture15-DTFT Definition.png" width="400"/>
+<object width="400" height="400" src="Lecture15-DTFT Definition_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/Lecture15-DTFT Definition.png" width="500"/>
+   </media>
+
+        
+<caption>Click on the above thumbnail image (when online) to download an interactive Mathematica Player demonstrating Discrete Time Fourier Transform. To Download, right-click and save target as .cdf. </caption></figure>
+</para></section>
+
+
+<section id="eip-511" class="cn"><title>DTFT Summary</title><para id="eip-522">Because complex exponentials are eigenfunctions of LTI systems, it is often useful to represent signals using a set of complex exponentials as a basis.  The discrete time Fourier transform synthesis formula expresses a discrete time, aperiodic function as the infinite sum of continuous frequency complex exponentials.
+	<equation id="eq_syn"><m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn" class="continuous">X</m:ci>
+		      <m:ci>Ω</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:sum/>
+	    <m:bvar>
+	      <m:ci>n</m:ci>
+	    </m:bvar>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:minus/>
+		<m:infinity/>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:uplimit>
+	      <m:infinity/>
+	    </m:uplimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>j</m:ci>
+		    <m:ci>Ω</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation><equation id="eq_ana"><m:math>
+  <m:apply>
+    <m:eq/>
+    <m:apply>
+      <m:ci type="fn" class="discrete">x</m:ci>
+      <m:ci>n</m:ci>
+    </m:apply>
+    <m:apply>
+      <m:times/>
+      <m:apply>
+        <m:divide/>
+        <m:cn>1</m:cn>
+        <m:apply>
+          <m:times/>
+          <m:cn>2</m:cn>
+          <m:pi/>
+        </m:apply>
+      </m:apply>
+      <m:apply>
+        <m:int/>
+        <m:bvar>
+          <m:ci>Ω</m:ci>
+        </m:bvar>
+        <m:lowlimit>
+          <m:apply>
+            <m:minus/>
+            <m:pi/>
+          </m:apply>
+        </m:lowlimit>
+        <m:uplimit>
+          <m:pi/>
+        </m:uplimit>
+        <m:apply>
+          <m:times/>
+          <m:apply>
+            <m:ci type="fn">X</m:ci>
+            <m:ci>Ω</m:ci>
+          </m:apply>
+          <m:apply>
+            <m:exp/>
+            <m:apply>
+              <m:times/>
+              <m:ci>j</m:ci>
+              <m:ci>Ω</m:ci>
+              <m:ci>n</m:ci>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:apply>
+  </m:apply>
+</m:math></equation></para>
+</section>
+
+    
+
+    
+
+  </content>
+</document>

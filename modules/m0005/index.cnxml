@@ -1,0 +1,397 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Introduction to Systems</title>
+
+  <metadata>
+  <md:content-id>m0005</md:content-id><md:title>Introduction to Systems</md:title>
+  <md:abstract>Introduction to the concept of a system, which is a mechanism for
+manipulating signals.  Feedback concepts and superpositions are also
+briefly mentioned.
+</md:abstract>
+  <md:uuid>a35a48e5-9084-49f3-9811-460dc8db9c23</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1"> 
+      <emphasis>Signals are manipulated by systems</emphasis>. 
+
+      <!--
+      As demonstrated in the figures below ( <cnxn target="cascade"
+      strength="9"> Cascade interconnection </cnxn>,
+    <cnxn target="parallel" strength="9">
+      Parallel interconnection
+    </cnxn>,
+    <cnxn target="feedback" strength="9">
+      Feedback interconnection 
+    </cnxn>),
+      systems that process information have an input signal (or have
+      several input signals), and produce output signal(s).
+      -->
+
+      Mathematically, we represent what a system does by the notation  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:apply>
+            <m:ci type="fn">y</m:ci>
+            <m:ci>t</m:ci>
+          </m:apply>
+          <m:apply>
+            <m:ci type="fn" class="functional">S</m:ci>
+            <m:apply>
+              <m:ci type="fn">x</m:ci>
+              <m:ci>t</m:ci>
+            </m:apply>
+          </m:apply>
+	</m:apply>
+      </m:math>, 
+      with  
+      <m:math><m:ci>x</m:ci></m:math> 
+      representing the input signal and
+      <m:math><m:ci>y</m:ci></m:math>
+      the output signal. 
+    </para>
+
+    <figure id="systemdef" orient="horizontal">
+      <title>Definition of a system</title>
+      <media id="id5261087" alt="">
+        <image src="../../media/systemdef.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/systemdef.eps" mime-type="application/postscript"/>
+      </media> 
+      <caption>
+	The system depicted has input 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	and output 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.  
+	Mathematically, systems operate on function(s) to produce
+	other function(s).  In many ways, systems are like functions,
+	rules that yield a value for the dependent variable (our
+	output signal) for each value of its independent variable (its
+	input signal).  The notation
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="functional">S</m:ci>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+	corresponds to this block diagram.  We term 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn" class="functional">S</m:ci>
+	    <m:ci>·</m:ci>
+	  </m:apply>
+	</m:math>
+	the input-output relation for the system.
+      </caption>
+    </figure>
+
+    <para id="para1fix">
+      This notation mimics the mathematical symbology of
+      a function: A system's input is analogous to an independent 
+      variable and its output the dependent variable. For the
+      mathematically inclined, a system is a <term>functional</term>:
+      a function of a function (signals are functions).
+    </para>    
+    
+    <para id="para2"> 
+      Simple systems can be connected together--one system's output
+      becomes another's input--to accomplish some overall design. 
+      Interconnection topologies can be quite complicated, but
+      usually consist of weaves of three basic interconnection forms.
+    </para>
+
+    <section id="subsect1">
+      <title>Cascade Interconnection</title>
+      <figure id="cascade">
+	<title>cascade</title>
+	<media id="id5116304" alt="">
+          <image src="../../media/cascade-4d7a.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/cascade.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The most rudimentary ways of interconnecting systems are
+	  shown in the figures in this section.  This is the cascade
+	  configuration.
+	</caption>
+      </figure>
+      <para id="para3"> 
+	The simplest form is when one system's output is connected only
+	to another's input. Mathematically, 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">w</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="functional">
+		<m:msub>
+		  <m:mi>S</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, and  
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="functional">
+		<m:msub>
+		  <m:mi>S</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci type="fn">w</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, with the information contained in
+
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+
+	processed by the first, then the second system. In some cases,
+	the ordering of the systems matter, in others it does not. For
+	example, in the
+	<link document="m0002" target-id="commsys" strength="3">
+	  fundamental model of communication
+	</link> 
+	the ordering most certainly matters.
+      </para>
+    </section>
+
+
+    <section id="subsect2">
+      <title>Parallel Interconnection</title>
+      <figure id="parallel">
+	<title>parallel</title>
+	<media id="id1164861670782" alt="">
+          <image src="../../media/parallel.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/parallel.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The parallel configuration.
+	</caption>
+      </figure>
+      <para id="para03">
+	A signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	is routed to two (or more) systems, with this signal appearing
+	as the input to all systems simultaneously and with equal
+	strength. Block diagrams have the convention that signals
+	going to more than one system are not split into pieces along
+	the way. Two or more systems operate on
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	and their outputs are added together to create the output 	
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>. 
+	Thus,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:ci type="fn" class="functional">
+		  <m:msub>
+		    <m:mi>S</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn" class="functional">
+		  <m:msub>
+		    <m:mi>S</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	and the information in   
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	is processed separately by both systems.
+      </para>
+    </section>
+
+
+    <section id="subsect">
+      <title>Feedback Interconnection</title>
+
+      <figure id="feedback">
+	<title>feedback</title>
+	<media id="id2693550" alt="">
+          <image src="../../media/feedback.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/feedback.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The feedback configuration.
+	</caption>
+      </figure>
+
+      <para id="para04">
+	The subtlest interconnection configuration has a system's
+	output also contributing to its input. Engineers would say the
+	output is "fed back" to the input through system 2, hence the
+	terminology. The mathematical statement of the <link target-id="feedback" strength="3">feedback interconnection</link>
+	is that the feed-forward system produces the output:
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="functional">
+		<m:msub>
+		  <m:mi>S</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci type="fn">e</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	The input
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">e</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	equals the input signal minus the output of some other
+	system's output to
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>:  
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">e</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn" class="functional">
+		  <m:msub>
+		    <m:mi>S</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	Feedback systems are omnipresent in control problems, with the
+	error signal used to adjust the output to achieve some
+	condition defined by the input (controlling) signal. For
+	example, in a car's cruise control system,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	is a constant representing what speed you want, and  
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	is the car's speed as measured by a speedometer. In this
+	application, system 2 is the identity system (output equals input).
+      </para>
+    </section>
+  </content>
+</document>

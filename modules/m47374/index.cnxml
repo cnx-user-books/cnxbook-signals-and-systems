@@ -1,0 +1,973 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"> 
+  <title>Properties of the DTFT</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47374</md:content-id>
+  <md:title>Properties of the DTFT</md:title>
+  <md:abstract>Gives various Fourier transform properties</md:abstract>
+  <md:uuid>00c82e3d-1955-4e51-b6c8-b63b7907d523</md:uuid>
+</metadata>
+
+<content>
+
+<section id="eip-222" class="in"><title>Introduction</title><para id="eip-126">This module will look at some of the basic properties of the
+      <link document="m10108" strength="3">Discrete-Time Fourier
+      Transform</link> (DTFT). 
+      
+      <note id="id254226" type="note">
+	We will be discussing these properties for aperiodic,
+	discrete-time signals but understand that very similar
+	properties hold for continuous-time signals and periodic
+	signals as well.
+      </note></para></section>
+
+    
+
+    <section id="eip-597"><title>Table of DTFT Properties</title><table id="fig1000" frame="all" summary="DTFT properties"><title>Discrete-Time Fourier Transform Properties</title>
+<tgroup cols="3" align="left" colsep="1" rowsep="1"><thead valign="top">
+	    <row>
+	      <entry>
+		
+	      </entry>
+	      <entry>
+		Sequence Domain
+	      </entry>
+	      <entry>
+		Frequency Domain
+	      </entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>
+		Linearity
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:plus/>
+		    <m:apply><m:times/>
+		      <m:ci><m:msub><m:mn>a</m:mn><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply><m:ci type="fn" class="discrete"><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply><m:times/>
+		      <m:msub><m:cn>a</m:cn><m:cn>2</m:cn></m:msub>
+		      <m:apply><m:ci type="fn" class="discrete"><m:msub><m:mi>s</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:plus/>
+		    <m:apply><m:times/>
+		      <m:ci><m:msub><m:mn>a</m:mn><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply><m:ci><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply><m:times/>
+		      <m:ci><m:msub><m:mn>a</m:mn><m:mn>2</m:mn></m:msub></m:ci>
+		      <m:apply><m:ci><m:msub><m:mi>S</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Conjugate Symmetry
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:conjugate/><m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply></m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> 
+		    <m:apply><m:conjugate/>
+		      <m:apply><m:ci>S</m:ci>
+			<m:apply><m:minus/><m:ci>Ω</m:ci></m:apply>
+		      </m:apply>
+		    </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Time Scaling (Expansion)
+	      </entry>
+	      <entry>
+<m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub><m:mi>s</m:mi><m:mi>c</m:mi></m:msub><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo>
+        </m:mrow>
+          <m:mo>=</m:mo>
+        <m:mrow>
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mfenced separators="" open="{" close="">
+                  <m:mtable>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mi>s</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>c</m:mi><m:mo>]</m:mo>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                        <m:mrow>
+                          <m:mtext>if</m:mtext>
+                          <m:mspace width="4.pt"/>
+                          <m:mi>n</m:mi>
+                          <m:mo>/</m:mo>
+                          <m:mi>c</m:mi>
+                          <m:mspace width="4.pt"/>
+                          <m:mtext>is integer</m:mtext>
+                        </m:mrow>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd columnalign="left">
+                        <m:mn>0</m:mn>
+                      </m:mtd>
+                      <m:mtd columnalign="left">
+                          <m:mtext>otherwise</m:mtext>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mfenced>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mrow>
+      </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> 
+		    <m:apply><m:ci>S</m:ci>
+		      <m:apply><m:times/><m:ci>c</m:ci><m:ci>Ω</m:ci></m:apply>
+		    </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Time Reversal
+	      </entry>
+	      <entry>
+		<m:math mode="inline">
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:apply><m:minus/><m:ci>n</m:ci></m:apply></m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> 
+		    <m:apply><m:ci>S</m:ci>
+		      <m:apply><m:minus/><m:ci>Ω</m:ci></m:apply>
+		    </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Time Delay
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:ci type="fn" class="discrete">s</m:ci>
+		    <m:apply><m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci><m:msub><m:mi>n</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:apply><m:exp/><m:apply><m:minus/><m:apply><m:times/>
+			  <m:ci>j</m:ci><m:ci>Ω</m:ci>
+			  <m:ci><m:msub><m:mi>n</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+			</m:apply></m:apply></m:apply>
+		    <m:apply><m:ci>S</m:ci>
+<m:ci>Ω</m:ci>		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    
+	    <row>
+	      <entry>
+		Multiplication by n
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:ci>n</m:ci>
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		      <m:ci>j</m:ci>
+		    <m:apply><m:diff/>
+		      <m:bvar><m:ci>Ω</m:ci></m:bvar>
+		      <m:apply><m:ci type="function">S</m:ci>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Sum
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:sum/>
+		    <m:bvar><m:ci>n</m:ci></m:bvar>
+		    <m:lowlimit><m:apply><m:minus/><m:infinity/></m:apply></m:lowlimit>
+		    <m:uplimit><m:infinity/></m:uplimit>
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:ci>S</m:ci>
+			<m:ci>0</m:ci> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Value at Origin
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:cn>0</m:cn></m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:mfrac><m:cn>1</m:cn><m:mrow><m:cn>2</m:cn><m:pi/></m:mrow></m:mfrac><m:apply><m:int/>
+		    <m:bvar><m:ci>Ω</m:ci></m:bvar>
+		    <m:lowlimit><m:apply><m:minus/>
+			<m:pi/>
+		      </m:apply></m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply><m:ci>S</m:ci>
+			  <m:ci>Ω</m:ci>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Time Convolution
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:ci type="fn" class="discrete"><m:msub><m:ci>s</m:ci><m:cn>1</m:cn></m:msub></m:ci><m:ci>n</m:ci> </m:apply> <m:mo>*</m:mo><m:apply><m:ci type="fn" class="discrete"><m:msub><m:ci>s</m:ci><m:cn>2</m:cn></m:msub></m:ci><m:ci>n</m:ci> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:apply><m:ci><m:msub><m:ci>S</m:ci><m:cn>1</m:cn></m:msub></m:ci><m:ci>Ω</m:ci></m:apply>
+		    <m:apply><m:ci><m:msub><m:ci>S</m:ci><m:cn>2</m:cn></m:msub></m:ci><m:ci>Ω</m:ci></m:apply>
+                </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Frequency Convolution
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/><m:apply><m:ci type="fn" class="discrete"><m:msub><m:ci>s</m:ci><m:cn>1</m:cn></m:msub></m:ci><m:ci>n</m:ci> </m:apply> <m:apply><m:ci type="fn" class="discrete"><m:msub><m:ci>s</m:ci><m:cn>2</m:cn></m:msub></m:ci><m:ci>n</m:ci> </m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:mfrac><m:cn>1</m:cn><m:mrow><m:cn>2</m:cn><m:pi/></m:mrow></m:mfrac><m:apply><m:int/>
+		    <m:bvar><m:ci>u</m:ci></m:bvar>
+		    <m:lowlimit><m:apply><m:times/><m:cn>2</m:cn><m:pi/></m:apply></m:lowlimit>
+		    <m:apply><m:times/>
+                      <m:apply><m:ci><m:msub><m:ci>S</m:ci><m:cn>1</m:cn></m:msub></m:ci><m:ci>u</m:ci></m:apply>
+                      <m:apply><m:ci><m:msub><m:ci>S</m:ci><m:cn>2</m:cn></m:msub></m:ci><m:mrow><m:apply><m:minus/><m:ci>Ω</m:ci><m:ci>u</m:ci></m:apply></m:mrow></m:apply>
+		      </m:apply>
+ </m:apply></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Parseval's Theorem
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:sum/>
+		    <m:bvar><m:ci>n</m:ci></m:bvar>
+		    <m:lowlimit><m:apply><m:minus/><m:infinity/></m:apply></m:lowlimit>
+		    <m:uplimit><m:infinity/></m:uplimit>
+		    <m:apply><m:power/>
+		      <m:apply><m:abs/><m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply></m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:mfrac><m:cn>1</m:cn><m:mrow><m:cn>2</m:cn><m:pi/></m:mrow></m:mfrac><m:apply><m:int/>
+		    <m:bvar><m:ci>Ω</m:ci></m:bvar>
+		    <m:lowlimit><m:apply><m:minus/>
+			<m:pi/>
+		      </m:apply></m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply><m:power/>
+		      <m:apply><m:abs/><m:apply><m:ci>S</m:ci>
+			      <m:ci>Ω</m:ci>
+			</m:apply></m:apply><m:cn>2</m:cn></m:apply> </m:apply></m:math>
+	      </entry>
+	    </row>
+<row>
+	      <entry>
+		Complex Modulation
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:apply><m:exp/><m:apply><m:times/>
+			<m:ci>j</m:ci>
+			<m:ci><m:msub><m:mi>Ω</m:mi><m:mi>0</m:mi></m:msub></m:ci><m:ci>n</m:ci>
+		      </m:apply></m:apply>
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:ci>S</m:ci>
+			<m:apply><m:minus/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci><m:msub><m:mi>Ω</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+			</m:apply>
+		      </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		Amplitude Modulation
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply>
+		    <m:apply><m:cos/><m:apply><m:times/>
+			<m:ci><m:msub><m:mi>Ω</m:mi><m:mi>0</m:mi></m:msub></m:ci><m:ci>n</m:ci>
+		      </m:apply></m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:divide/>
+		    <m:apply><m:plus/>
+		      <m:apply><m:ci>S</m:ci>
+<m:apply><m:minus/><m:ci>Ω</m:ci><m:ci><m:msub><m:mi>Ω</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:apply>
+		      </m:apply>
+		      <m:apply><m:ci>S</m:ci>
+			    <m:apply><m:plus/>
+			      <m:ci>Ω</m:ci>
+			      <m:ci><m:msub><m:mi>Ω</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			    </m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>2</m:cn> </m:apply> </m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:times/>
+		    <m:apply><m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci></m:apply>
+		    <m:apply><m:sin/><m:apply><m:times/>
+			<m:ci><m:msub><m:mi>Ω</m:mi><m:mn>0</m:mn></m:msub></m:ci><m:ci>n</m:ci>
+		      </m:apply></m:apply> </m:apply> </m:math>
+	      </entry>
+	      <entry>
+		<m:math mode="inline"> <m:apply><m:divide/>
+		    <m:apply><m:minus/>
+		      <m:apply><m:ci>S</m:ci>
+<m:apply><m:minus/><m:ci>Ω</m:ci><m:ci><m:msub><m:mi>Ω</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:apply>
+		      </m:apply>
+		      <m:apply><m:ci>S</m:ci>
+			    <m:apply><m:plus/>
+			      <m:ci>Ω</m:ci>
+			      <m:ci><m:msub><m:mi>Ω</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			    </m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply><m:times/><m:cn>2</m:cn><m:ci>j</m:ci></m:apply> </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+	  </tbody>
+
+
+
+</tgroup><caption>Discrete-time Fourier transform properties and relations.</caption>
+</table></section><section id="prop_intro" class="th"><title>Discussion of Fourier Transform Properties</title><section id="sect2">
+	<title>Linearity</title>
+	<para id="para2">
+	  The combined addition and scalar multiplication properties
+	  in the table above demonstrate the basic property of
+	  linearity. What you should see is that if one takes the
+	  Fourier transform of a linear combination of signals then it
+	  will be the same as the linear combination of the Fourier
+	  transforms of each of the individual signals. This is crucial
+	  when using a <link document="m10099" strength="2">table</link>
+	  of transforms to find the transform of a more complicated
+	  signal.
+	</para>
+	
+	<example id="eg_lin">
+	  <para id="p_eg1">
+	    We will begin with the following signal:
+	    
+	    <equation id="eq1_eg1"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">z</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    Now, after we take the Fourier transform, shown in the
+	    equation below, notice that the linear combination of the
+	    terms is unaffected by the transform.
+
+	    <equation id="eq2_eg1"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">Z</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>1</m:mn></m:msub>
+			</m:ci>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>2</m:mn></m:msub>
+			</m:ci>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</example>
+
+      </section>
+
+      <section id="sect3"><title>Symmetry</title>
+	<para id="para3">Symmetry is a property that can make life quite easy when
+	  solving problems involving Fourier transforms.  Basically
+	  what this property says is that since a rectangular function
+	  in time is a sinc function in frequency, then a sinc
+	  function in time will be a rectangular function in
+	  frequency.  This is a direct result of the similarity
+	  between the forward DTFT and the inverse DTFT.  The only
+	  difference is the scaling by
+	  <m:math><m:apply><m:times/><m:cn>2</m:cn><m:pi/></m:apply></m:math>
+	  and a frequency reversal.
+	</para>
+      </section>
+
+      <section id="sect4"><title>Time Scaling</title>
+	<para id="para4">
+	  This property deals with the effect on the frequency-domain
+	  representation of a signal if the time variable is
+	  altered. The most important concept to understand for the
+	  time scaling property is that signals that are narrow in
+	  time will be broad in frequency and <foreign>vice
+	  versa</foreign>.  The simplest example of this is a delta
+	  function, a <link document="m0004" target-id="pulsedef" strength="2">unit pulse</link> with a
+	  <emphasis>very</emphasis> small duration, in time that
+	  becomes an infinite-length constant function in frequency.
+	</para>
+	<para id="p_tscale2">In contrast to the CTFT property, the DTFT time scaling property is available only for expansion in the time domain. This is because decimation discards samples of the original signal and therefore there is no unique relationship between the original signal and a decimated signal (that is, a decimated signal could correspond to many original signals) that would provide a single transformation between the original DTFT and the "decimated" DTFT. The intuition from CTFT still holds for expansion: expanding the signal in time compacts the DTFT in frequency.</para></section>
+
+      <section id="sect5"><title>Time Shifting</title>
+	<para id="para5">Time shifting shows that a shift in time is equivalent to a
+	  linear phase shift in frequency.  Since the frequency
+	  content depends only on the shape of a signal, which is
+	  unchanged in a time shift, then only the phase spectrum will
+	  be altered. This property is proven below:
+	</para>
+
+	<example id="eg_tshift">
+	  <para id="p_egtshift">We will begin by letting
+	    
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">z</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">f</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:ci>η</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+
+	    Now let us take the Fourier transform with the previous
+	    expression substituted in for 
+	    <m:math><m:apply>
+		<m:ci type="fn" class="discrete">z</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>.
+
+	    <equation id="eq1_tshift"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">Z</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+		  <m:mrow>
+		    <m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>η</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>Ω</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:mrow>
+		</m:apply>
+	      </m:math>
+	    </equation>
+Now let us make a simple change of variables, where
+<m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>σ</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>n</m:ci>
+		  <m:ci>η</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.  Through the calculations below, you can see
+	    that only the variable in the exponential is altered thus
+	    only changing the phase in the frequency domain.
+
+	    <equation id="eq2_tshift"><m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">Z</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+		  <m:mrow>
+		    <m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>σ</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>σ</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>Ω</m:ci>
+			    <m:apply>
+			      <m:plus/>
+			      <m:ci>σ</m:ci>
+			      <m:ci>η</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:mrow>
+		  
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>η</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:mrow>
+		      <m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>σ</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">f</m:ci>
+			  <m:ci>σ</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:ci>Ω</m:ci>
+			      <m:ci>σ</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:mrow>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>η</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">F</m:ci>
+		      <m:ci>Ω</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math></equation></para></example>	
+
+      </section>
+
+
+      <section id="sect7"><title>Convolution</title>
+	<para id="para7">
+	  Convolution is one of the big reasons for converting signals
+	  to the frequency domain, since convolution in time becomes
+	  multiplication in frequency.  This property is also another
+	  excellent example of symmetry between time and frequency.
+	  It also shows that there may be little to gain by changing
+	  to the frequency domain when multiplication in time is
+	  involved.
+	</para>
+
+	<para id="p_conv2">We will introduce the convolution integral here, but if you
+	  have not seen this before or need to refresh your memory,
+	  then look at the <link document="m10087" strength="3">discrete-time convolution</link> module for a
+	  more in depth explanation and derivation.
+	</para>
+
+	<equation id="eq_conv1"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">y</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+              <m:mrow>
+		  <m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+<m:mo>*</m:mo>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+              </m:mrow>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>η</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>η</m:ci>
+		  </m:apply>		  
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci>η</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation></section>
+
+      <section id="sect8">
+	<title>Time Differentiation</title>
+	<para id="para8">Since <link document="m10084" strength="2">LTI</link>
+	  systems can be represented in terms of differential
+	  equations, it is apparent with this property that converting
+	  to the frequency domain may allow us to convert these
+	  complicated differential equations to simpler equations
+	  involving multiplication and addition.  This is often looked
+	  at in more detail during the study of the <link document="m10110" strength="2">Z Transform</link>.
+	</para>
+
+      </section><section id="eip-433"><title>Parseval's Relation</title><para id="p935"><equation id="parsevalsrelation"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+                  <m:apply>
+                  <m:minus/>
+		  <m:infinity/>
+                  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">f</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	       <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>Ω</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:ci type="fn">F</m:ci>
+			  <m:ci>Ω</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+           </m:apply>
+	  </m:math>
+	</equation>
+	
+	Parseval's relation tells us that the energy of a signal is equal to the energy of its Fourier transform.
+
+ <figure id="pars"><media id="id1169358748861" alt=""><image src="../../media/DTFTpars.png" mime-type="image/png"/></media>
+      </figure>	
+	
+      </para>
+
+     
+	    
+    </section>
+
+
+      <section id="sect6"><title>Modulation (Frequency Shift)</title>
+	<para id="para6">
+	  Modulation is absolutely imperative to communications
+	  applications.  Being able to shift a signal to a different
+	  frequency, allows us to take advantage of different parts of
+	  the electromagnetic spectrum is what allows us to transmit
+	  television, radio and other applications through the same
+	  space without significant interference.
+	</para>
+
+	<para id="p_mod2">
+	  The proof of the frequency shift property is very similar to
+	  that of the <link target-id="sect5" strength="3">time
+	    shift</link>; however, here we would use the inverse Fourier
+	  transform in place of the Fourier transform.  Since we went
+	  through the steps in the previous, time-shift proof, below
+	  we will just show the initial and final step to this proof:
+
+	  <equation id="eq1_mod"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">z</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>Ω</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>φ</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation><equation id="eq2_mod"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">z</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>φ</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation></para>
+
+
+      </section>
+
+   </section><section id="eip-581"><title>Online Resources</title><para id="eip-834">The following online resources provide interactive explanations of the properties of the CTFT: 
+
+</para>
+
+<para id="eip-396"><link url="http://www.jhu.edu/signals/dtftprops/indexDTFTprops.htm">Discrete-Time Fourier Transform Properties (Johns Hopkins University)</link>
+
+</para>
+</section><section id="eip-220" class="ie"><title>Properties Demonstration</title><para id="eip-588">
+An interactive example demonstration of the properties is included below:
+
+<figure id="eip-id1167688659119"><media id="id1171259452474" alt=""><labview src="CTFTSPlab.llb" viname="CTFTMain_Menu.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="540" width="840"><param name="lvfppviname" value="CTFTMain_Menu.vi"/></labview></media>
+
+<caption>Interactive Signal Processing Laboratory Virtual Instrument created using NI's Labview.</caption></figure>
+</para></section>
+
+    
+  </content>
+</document>

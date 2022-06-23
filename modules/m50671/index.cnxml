@@ -1,0 +1,378 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Causality and Stability of Continuous-Time Linear Time-Invariant Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m50671</md:content-id>
+  <md:title>Causality and Stability of Continuous-Time Linear Time-Invariant Systems</md:title>
+  <md:abstract>Describes causality and stability for continuous-time LTI systems</md:abstract>
+  <md:uuid>4d6af8b4-d24b-4ecb-89e7-b677cfdd5b05</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Introduction</title>
+      <para id="id77663">We have previously defined the system properties of causality and bounded-input bounded-output (BIBO) stability. We have also determined that a linear time-invariant (LTI) system is completely determined by its impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>: the output <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> for an arbitrary input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is obtained via convolution as <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>*</m:mo><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>. It should not be surprising then that one can determine whether an LTI system is causal or BIBO stable simply by inspecting its impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    </section>
+    <section id="cid2">
+      <title>Causality</title>
+      <para id="id78116">Recall that a system is causal if its output <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> at time <m:math overflow="scroll"><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:math> depends only on the input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> for values of <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>≤</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. Consider then the characterization of the system by the convolution integral:</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id78472">
+We replace the time variable <m:math overflow="scroll"><m:mi>t</m:mi></m:math> by a fixed value <m:math overflow="scroll"><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:math>:</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:msub>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id78586">
+For this input to depend only on values of time <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:mo>≤</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math> (where <m:math overflow="scroll"><m:mi>τ</m:mi></m:math> represents a second time variable), we must have its contribution to the integral being nulled out by requiring the value of the impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>τ</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for values of <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:mo>&gt;</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. By making a change of variables <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>τ</m:mi></m:mrow></m:math> (so that <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>t</m:mi></m:mrow></m:math>), this means that we require <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>t</m:mi><m:mo>&gt;</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>; this means that we require <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</para>
+      <para id="id78794">Thus, we obtain that <emphasis effect="italics">an LTI system with impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is causal if and only if <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for all <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</emphasis></para>
+    </section>
+    <section id="cid3">
+      <title>BIBO Stability</title>
+      <para id="id78859">Recall that a system is BIBO stable if whenever the input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is bounded (that is, if there exists <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mi>M</m:mi></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>t</m:mi></m:math>) then we have that the system output is also bounded (that is, if there exists <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mi>N</m:mi></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>t</m:mi></m:math>). As before, consider then the characterization of the system by the convolution integral:</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id79071">
+We apply absolute value to both sides and use the straightforward bound on the absolute value of an integral:</para>
+      <equation id="uid4"><m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mfenced separators="" open="|" close="|">
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mfenced>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:msubsup>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mfenced>
+                  <m:mo>≤</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mrow>
+                  <m:mo>≤</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mi>M</m:mi>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>M</m:mi>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                  <m:mo>,</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation><para id="id79369">
+where the next-to-last step uses the boundedness of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Thus, if we have that the integral has a finite value, then we have established a finite upper bound on <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math>, which implies BIBO stability.</para>
+      <para id="id79410">Thus, we obtain that <emphasis effect="italics">an LTI system with impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is BIBO stable if and only if <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mrow><m:mo>|</m:mo><m:mi>h</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> is finite.</emphasis></para>
+    </section>
+    <section id="cid4">
+      <title>Summary</title>
+      <para id="id79477">The derivations above show that it is significantly easier to verify whether a system is causal and/or BIBO stable when it is linear and time-invariant. In such a case, we simply need to perform straightforward evaluations of the system's impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    </section>
+  </content>
+</document>

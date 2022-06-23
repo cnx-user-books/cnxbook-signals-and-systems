@@ -1,0 +1,380 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Causality and Stability of Discrete-Time Linear Time-Invariant Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m50677</md:content-id>
+  <md:title>Causality and Stability of Discrete-Time Linear Time-Invariant Systems</md:title>
+  <md:abstract>Describes the analysis of causality and stability for discrete-time linear time-invariant systems.</md:abstract>
+  <md:uuid>f6467e09-3ddd-41d8-bdd8-bba013e9c0c8</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Introduction</title>
+      <para id="id299462">We have previously defined the system properties of causality and bounded-input bounded-output (BIBO) stability. We have also determined that a linear time-invariant (LTI) system is completely determined by its impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>: the output <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> for an arbitrary input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> is obtained via convolution as <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>*</m:mo><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>. It should not be surprising then that one can determine whether an LTI system is causal or BIBO stable simply by inspecting its impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>.</para>
+    </section>
+    <section id="cid2">
+      <title>Causality</title>
+      <para id="id299914">Recall that a system is causal if its output <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>[</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:math> at time <m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:math> depends only on the input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> for values of <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>≤</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. Consider then the characterization of the system by the convolution sum:</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>]</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id300090">
+We replace the time variable <m:math overflow="scroll"><m:mi>t</m:mi></m:math> by a fixed value <m:math overflow="scroll"><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:math>:</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>[</m:mo>
+                  <m:msub>
+                    <m:mi>n</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:msub>
+                  <m:mo>]</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:msub>
+                      <m:mi>n</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id300205">
+For this input to depend only on values of time <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>≤</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math> (where <m:math overflow="scroll"><m:mi>m</m:mi></m:math> represents a second time variable), we must have its contribution to the integral being nulled out by requiring the value of the impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>m</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for values of <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>&gt;</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. By making a change of variables <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>m</m:mi></m:mrow></m:math> (so that <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>=</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>n</m:mi></m:mrow></m:math>), this means that we require <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub><m:mo>-</m:mo><m:mi>n</m:mi><m:mo>&gt;</m:mo><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>; this means that we require <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</para>
+      <para id="id300413">Thus, we obtain that <emphasis effect="italics">an LTI system with impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> is causal if and only if <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for all <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</emphasis></para>
+    </section>
+    <section id="cid3">
+      <title>BIBO Stability</title>
+      <para id="id300477">Recall that a system is BIBO stable if whenever the input <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> is bounded (that is, if there exists <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mi>M</m:mi></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>n</m:mi></m:math>) then we have that the system output is also bounded (that is, if there exists <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>y</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mi>N</m:mi></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>t</m:mi></m:math>). As before, consider then the characterization of the system by the convolution integral:</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo>[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>]</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mrow>
+                    <m:mo>[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo>]</m:mo>
+                  </m:mrow>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id300870">
+We apply absolute value to both sides and use the triangle inequality on a sum:</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mfenced separators="" open="|" close="|">
+                  <m:mi>y</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mfenced>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mfenced separators="" open="|" close="|">
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mfenced>
+                  <m:mo>≤</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mo>≤</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>M</m:mi>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>M</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mo>,</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id301167">
+where the next-to-last step uses the boundedness of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>. Thus, if we have that the integral has a finite value, then we have established a finite upper bound on <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>y</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo><m:mo>|</m:mo></m:mrow></m:math>, which implies BIBO stability.</para>
+      <para id="id301208">Thus, we obtain that <emphasis effect="italics">an LTI system with impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math> is BIBO stable if and only if <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mrow><m:mo>|</m:mo><m:mi>h</m:mi><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math> is finite.</emphasis></para>
+    </section>
+    <section id="cid4">
+      <title>Summary</title>
+      <para id="id301280">The derivations above show that it is significantly easier to verify whether a system is causal and/or BIBO stable when it is linear and time-invariant. In such a case, we simply need to perform straightforward evaluations of the system's impulse response <m:math overflow="scroll"><m:mrow><m:mi>h</m:mi><m:mo>[</m:mo><m:mi>n</m:mi><m:mo>]</m:mo></m:mrow></m:math>.</para>
+    </section>
+  </content>
+</document>

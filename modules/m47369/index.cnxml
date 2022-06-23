@@ -1,0 +1,247 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Discrete Time Aperiodic Signals</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47369</md:content-id>
+  <md:title>Discrete Time Aperiodic Signals</md:title>
+  <md:abstract>This module describes discrete time aperiodic signals.</md:abstract>
+  <md:uuid>17c811f7-3882-45d7-90c7-7377feb0db40</md:uuid>
+</metadata>
+
+<content>
+  
+<section id="eip-706" class="in"><title>Introduction</title><para id="eip-8">This module describes the type of signals acted on by the Discrete Time Fourier Transform.
+</para></section>
+
+<section id="eip-614" class="th"><title>Periodic and Aperiodic Signals</title><para id="eip-282">When a function repeats
+ itself exactly after some given period, or cycle, we say it's <emphasis>periodic</emphasis>.
+A <term>periodic function</term> can be
+      mathematically defined as:
+
+      <equation id="eq1"><m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">f</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">f</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>n</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>m</m:ci>
+		  <m:ci>N</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar><m:ci>m</m:ci>
+	    </m:bvar>
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>m</m:ci>
+	      <m:integers/>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      where 
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>N</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math> represents the <term>fundamental period</term> of the signal, which is the smallest positive value of <m:math><m:ci>N</m:ci></m:math> for the signal to repeat.  Because of this,
+      you may also see a signal referred to as an <m:math><m:ci>N</m:ci></m:math>-periodic signal.
+      Any function that satisfies this equation is said to be <term>periodic</term> with period <m:math><m:ci>N</m:ci></m:math>.
+
+Periodic signals in discrete time repeats themselves in each cycle. However, only integers are allowed as time variable in discrete time. We denote signals in such case as 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete">f</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>, where <m:math><m:ci>n</m:ci></m:math> takes value over the integers.
+
+
+Here's an example of a <term>discrete-time periodic signal</term> with period <m:math><m:ci>N</m:ci></m:math>:
+
+<figure id="dtpsfigure"><title>discrete-time periodic signal</title><media id="dtpsmedia" alt="">
+    <image mime-type="image/png" src="../../media/DTPeriodic.PNG"/>
+  </media>
+  
+<caption>Notice the function is the same after a time shift of <m:math><m:ci>N</m:ci></m:math>
+  </caption></figure></para><para id="eip-354">We can think of <term>periodic functions</term> (with period
+      <m:math><m:ci>N</m:ci></m:math>) two different ways:
+   <list id="fs-id1167651711046" list-type="enumerated"><item>     as functions on <emphasis>all</emphasis> of 
+      <m:math><m:reals/></m:math>
+
+    
+    <figure id="fig1"><media id="id11381801" alt=""><image src="../../media/cnx_figure2.png" mime-type="image/png"/></media>
+      
+    <caption>discrete time periodic function over all of <m:math><m:reals/></m:math> where
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">f</m:ci>
+	      <m:ci><m:msub>
+		<m:mi>n</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">f</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci><m:msub>
+		  <m:mi>n</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </caption></figure></item>
+    <item>
+or, we can cut out all of the redundancy, and think of them
+      as functions on an interval
+      <m:math display="inline">
+	<m:apply>
+	  <m:interval>
+	    <m:cn>0</m:cn>
+	    <m:ci>N</m:ci>
+	  </m:interval>
+	</m:apply>
+      </m:math> (or, more generally, 
+      <m:math display="inline">
+	<m:apply>
+	  <m:interval>
+	    <m:ci>a</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>a</m:ci>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:interval>
+	</m:apply>
+      </m:math>).  If we know the signal is <m:math><m:ci>N</m:ci></m:math>-periodic then all the
+      information of the signal is captured by the above interval.
+
+    
+    <figure id="fig2"><media id="id11378137" alt=""><image src="../../media/cnx_figure3.png" mime-type="image/png"/></media>
+      
+    <caption>Remove the redundancy of the period function so that 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">f</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	is undefined outside 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:interval>
+	      <m:cn>0</m:cn>
+	      <m:ci>N</m:ci>
+	    </m:interval>
+	  </m:apply>
+	</m:math>.	
+      </caption></figure></item>
+</list></para><para id="eip-689">An <term>aperiodic</term> DT function, however, 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete">f</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>
+      does not repeat for <emphasis>any</emphasis> 
+      <m:math>
+	<m:apply>
+	  <m:in/>
+	  <m:ci>N</m:ci>
+	  <m:reals/>
+	</m:apply>
+      </m:math>; 
+      <foreign>i.e.</foreign> there exists no <m:math><m:ci>N</m:ci>
+      </m:math> such that <link target-id="eq1"> this equation</link> holds. This broader class of signals can only be acted upon by the DTFT.
+    </para>
+
+<para id="aperiodic">
+
+Suppose we have such an aperiodic function <m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete">f</m:ci>
+
+	  <m:ci>n</m:ci>
+	</m:apply>
+</m:math>
+. We can construct a periodic extension of 
+<m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete">f</m:ci>
+
+	  <m:ci>n</m:ci>
+	</m:apply>
+</m:math> called 
+<m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete"><m:msub><m:mi>f</m:mi><m:mn>No</m:mn></m:msub></m:ci>
+
+	  <m:ci>n</m:ci>
+	</m:apply>
+</m:math>
+, where 
+<m:math>
+	<m:apply>
+	  <m:ci type="fn" class="discrete">f</m:ci>
+
+	  <m:ci>n</m:ci>
+	</m:apply>
+</m:math> 
+is repeated every 
+
+<m:math>
+<m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub>
+</m:math>
+seconds. If we take the limit as <m:math>
+<m:apply>
+<m:tendsto/>
+<m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub>
+<m:infinity/>
+</m:apply>
+</m:math>, we obtain a precise model of an aperiodic signal for which all rules that govern periodic signals can be applied, including Fourier Analysis (with an important modification). For more detail on this distinction, see the module on the <term>Discete Time Fourier Transform</term>.
+
+</para></section>
+
+    
+    
+
+    
+
+    
+<section id="eip-ie" class="ie"><title>Aperiodic Signal Demonstration</title><para id="eip-109"><figure id="demoonline"><media id="CNXdemoonline" alt="AperiodicDemo">
+<image mime-type="image/png" src="../../media/APeriodicDiscreteDrill_display.cdf" thumbnail="APeriodicDiscreteDrill_display.png" width="400"/>
+<object width="400" height="400" src="APeriodicDiscreteDrill_display.cdf" mime-type="application/vnd.wolfram.cdf" for="webview2.0"/>
+<image mime-type="application/postscript" for="pdf" src="../../media/APeriodicDiscreteDrill_display.png" width="400"/>
+</media>
+<caption>Click on the above thumbnail image (when online) to download an interactive Mathematica Player testing Periodic versus Aperiodic Signals. To download, right-click and save as .cdf.</caption></figure>
+</para></section>
+
+<section id="eip-791" class="cn"><title>Conclusion</title><para id="eip-838">A discrete periodic signal is completely defined by its values in one period, such as the interval <m:math><m:mo>[</m:mo><m:cn>0</m:cn><m:mo>,</m:mo><m:ci>N</m:ci><m:mo>]</m:mo></m:math>.
+Any aperiodic signal can be defined as an infinite sum of periodic functions, a useful definition that makes it possible to use Fourier Analysis on it by assuming all frequencies are present in the signal.
+</para></section>
+
+
+</content>
+
+</document>

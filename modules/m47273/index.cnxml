@@ -1,0 +1,279 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Energy and Power of Continuous-Time Signals</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m47273</md:content-id>
+  <md:title>Energy and Power of Continuous-Time Signals</md:title>
+  <md:abstract>Energy and power for continuous time signals</md:abstract>
+  <md:uuid>25eb4a39-e783-48c5-8162-ed5c66d31309</md:uuid>
+</metadata>
+
+<content>
+
+  <para id="s0p1">
+      From physics we've learned that energy is work and power is work per time
+      unit. Energy was measured in Joule (J) and work in Watts(W).
+      In signal processing energy and power are defined more loosely without
+      any necessary physical units, because the signals may represent very
+      different physical entities. We can say that energy and power are a
+      measure of the signal's "size".
+  </para>
+  <section id="s1">
+      <title>Signal Energy</title>
+
+      <section id="s1s1">
+          <title>Analog signals</title>	      
+	  <para id="s1s1p1">
+	      Since we often think of a signal as a function of varying
+	      amplitude through time, it seems to reason that a good
+	      measurement of the strength of a signal would be the area
+	      under the curve.  However, this area may have a negative part.
+	      This negative part does not have less strength than a positive
+	      signal of the same size. This suggests either squaring the signal or taking its absolute
+	      value, then finding the area under that curve.  It turns out
+	      that what we call the energy of a signal is the
+	      area under the squared signal, see <link target-id="f1"/>
+	  </para>
+	  <para id="s1s1p2">
+	      <note id="id1164431433082" type="Energy - Analog signal"><label>Energy - Analog signal</label>
+	          <m:math>
+		      <m:apply>
+		          <m:eq/>
+			  <m:ci><m:msub><m:mi>E</m:mi><m:mi>a</m:mi></m:msub></m:ci>
+			  <m:apply>
+			      <m:int/>
+			      <m:bvar><m:ci>t</m:ci></m:bvar>
+			      <m:lowlimit><m:apply><m:minus/><m:infinity/></m:apply></m:lowlimit>
+			      <m:uplimit><m:infinity/></m:uplimit>
+			      <m:apply>
+			          <m:power/>
+				  <m:apply>
+				      <m:abs/>
+				      <m:apply>
+				          <m:ci>x</m:ci>
+				          <m:ci>t</m:ci>
+				      </m:apply>
+				  </m:apply>
+				  <m:cn>2</m:cn>
+			      </m:apply>
+			  </m:apply>
+		      </m:apply>
+		  </m:math>
+	      </note>
+	      Note that we have used squared magnitude(absolute value) if the signal
+	      should be complex valued. If the signal is real, we can leave out the magnitude
+	      operation.
+
+	      <figure id="f1" orient="vertical">
+                  <subfigure id="id4297200">
+	              <media id="id1164430698614" alt=""><image src="../../media/signal.png" mime-type="image/png"/></media>
+		      <caption>Signal x(t)</caption>
+                  </subfigure>
+                  <subfigure id="id1164430042958">
+	              <media id="id2711526" alt=""><image src="../../media/signal_energy.png" mime-type="image/png"/></media>
+		      <caption>The energy of x(t) is the shaded region</caption>
+                  </subfigure>
+                  <caption>Sketch of energy calculation</caption>
+	      </figure>
+	  </para>
+
+      </section>
+
+      </section><!--End section s1-->
+
+  <section id="s2">
+      <title>Signal Power</title>
+      <para id="s2p1">
+	  Our definition of energy seems reasonable, and it is.
+	  However, what if the signal does not decay fast enough?  In this case we
+	  have infinite energy for any such signal.  Does this mean that
+	  a fifty hertz sine wave feeding into your headphones is as
+	  strong as the fifty hertz sine wave coming out of your outlet?
+	  Obviously not.  This is what leads us to the idea of
+	  <emphasis>signal power</emphasis>, which in such cases is a more
+	  adequate description.
+
+	  <figure id="f2"><media id="id1164430019477" alt=""><image src="../../media/infinite_energy_arunMod.png" mime-type="image/png"/></media>
+	      
+	  <caption>Signal with inifinite energy</caption></figure></para>
+
+      <section id="s2s1">
+          <title>Analog signals</title>	      
+	  <para id="s2s1p1">For analog signals we define power as
+	      <emphasis>energy per time interval</emphasis>.
+	      <note id="id1164430091259" type="Power - analog signal"><label>Power - analog signal</label>
+	          <m:math>
+		      <m:apply>
+		          <m:eq/>
+			  <m:ci><m:msub><m:mi>P</m:mi><m:mi>a</m:mi></m:msub></m:ci>
+			    <m:mrow>
+			      <m:munder>
+				<m:mo movablelimits="true" form="prefix">lim</m:mo>
+				<m:mrow>
+				  <m:mi>T</m:mi>
+				  <m:mo>→</m:mo>
+				  <m:mi>∞</m:mi>
+				</m:mrow>
+			      </m:munder>
+			    <m:apply>
+			      <m:times/>
+			      <m:apply>
+			          <m:divide/>
+				  <m:cn>1</m:cn>
+				  <m:ci><m:mi>T</m:mi></m:ci>
+			      </m:apply>
+			      <m:apply>
+			          <m:int/>
+				  <m:bvar><m:ci>t</m:ci></m:bvar>
+				  <m:lowlimit>
+				      <m:apply>
+				          <m:minus/>
+					  <m:apply>
+					      <m:divide/>
+					      <m:ci><m:mi>T</m:mi></m:ci>
+					      <m:cn>2</m:cn>
+					  </m:apply>
+				      </m:apply>
+				  </m:lowlimit>
+				  <m:uplimit>
+				      <m:apply>
+				          <m:divide/>
+					  <m:ci><m:mi>T</m:mi></m:ci>
+					  <m:cn>2</m:cn>
+				      </m:apply>
+				  </m:uplimit>
+				  <m:apply>
+				      <m:power/>
+				      <m:apply>
+				          <m:abs/>
+					  <m:apply>
+					      <m:ci>x</m:ci>
+					      <m:ci>t</m:ci>
+					  </m:apply>
+				      </m:apply>
+				      <m:cn>2</m:cn>
+				  </m:apply>
+			      </m:apply>
+			  </m:apply>
+			</m:mrow>
+		      </m:apply>
+		  </m:math>
+	      </note>
+
+	  </para><para id="eip-483">For periodic analog signals, the power needs to only be measured across a single period.
+	      <note id="id11644300912592" type="Power - analog signal"><label>Power - periodic analog signal with period <m:math><m:ci><m:msub><m:mi>T</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math></label>
+	          <m:math>
+		      <m:apply>
+		          <m:eq/>
+			  <m:ci><m:msub><m:mi>P</m:mi><m:mi>a</m:mi></m:msub></m:ci>
+			  <m:apply>
+			      <m:times/>
+			      <m:apply>
+			          <m:divide/>
+				  <m:cn>1</m:cn>
+				  <m:ci><m:msub><m:mi>T</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			      </m:apply>
+			      <m:apply>
+			          <m:int/>
+				  <m:bvar><m:ci>t</m:ci></m:bvar>
+				  <m:lowlimit>
+				      <m:apply>
+				          <m:minus/>
+					  <m:apply>
+					      <m:divide/>
+					      <m:ci><m:msub><m:mi>T</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+					      <m:cn>2</m:cn>
+					  </m:apply>
+				      </m:apply>
+				  </m:lowlimit>
+				  <m:uplimit>
+				      <m:apply>
+				          <m:divide/>
+					  <m:ci><m:msub><m:mi>T</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+					  <m:cn>2</m:cn>
+				      </m:apply>
+				  </m:uplimit>
+				  <m:apply>
+				      <m:power/>
+				      <m:apply>
+				          <m:abs/>
+					  <m:apply>
+					      <m:ci>x</m:ci>
+					      <m:ci>t</m:ci>
+					  </m:apply>
+				      </m:apply>
+				      <m:cn>2</m:cn>
+				  </m:apply>
+			      </m:apply>
+			  </m:apply>
+		      </m:apply>
+		  </m:math>
+	      </note></para></section><example id="eip-49"><para id="exa2p1">Given the signal
+		      <m:math>
+			  <m:apply>
+			      <m:eq/>
+			      <m:apply>
+			          <m:ci>x</m:ci>
+				  <m:ci>t</m:ci>
+			      </m:apply>
+			      <m:apply>
+			          <m:sin/>
+				   <m:apply>
+				      <m:times/>
+				      <m:cn>2</m:cn>
+				      <m:pi/>
+				      <m:ci>t</m:ci>
+				  </m:apply>
+			      </m:apply>
+			  </m:apply>
+		      </m:math>, shown in <link target-id="f3"/>, calculate the power for one period.
+		  </para>
+		  <para id="exa2p2">
+		      For the analog sine we have
+		      <m:math>
+			  <m:apply>
+			  <m:eq/>
+			  <m:ci><m:msub><m:mi>P</m:mi><m:mi>a</m:mi></m:msub></m:ci>
+			  <m:apply>
+			      <m:times/>
+			      <m:apply>
+			          <m:divide/>
+				  <m:cn>1</m:cn>
+				  <m:cn>1</m:cn>
+			      </m:apply>
+			      <m:apply>
+			          <m:int/>
+				  <m:bvar><m:ci>t</m:ci></m:bvar>
+				  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+				  <m:uplimit><m:cn>1</m:cn></m:uplimit>
+				  <m:apply>
+				      <m:power/>
+				      <m:apply>
+				          <m:sin/>
+					  <m:apply>
+					      <m:times/>
+					      <m:cn>2</m:cn>
+					      <m:pi/>
+					      <m:ci>t</m:ci>
+					  </m:apply>
+				      </m:apply>
+				      <m:cn>2</m:cn>
+				  </m:apply>
+			      </m:apply>
+			  </m:apply>
+			  <m:apply>
+			      <m:divide/>
+			      <m:cn>1</m:cn>
+			      <m:cn>2</m:cn>
+			  </m:apply>
+			  </m:apply>
+		  </m:math>.
+	          </para>
+	          
+<figure id="f3"><media id="id1164430692659" alt=""><image src="../../media/sine_analog_arunMod.png" mime-type="image/png"/></media>
+  
+<caption>Analog sine.
+  </caption></figure></example></section><!--End section s2-->
+  </content>
+
+  
+</document>
