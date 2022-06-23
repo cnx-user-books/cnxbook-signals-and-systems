@@ -1,0 +1,371 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Polos y Ceros</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c9d23988-67c5-4267-bd02-5e23b24c8453</md:uuid>
+</metadata>
+
+  <content>
+    
+    <section id="intro">
+      <title>Introducción</title>
+      
+      <para id="para1">
+
+Es muy difícil analizar cualitativamente la <link document="m10110" strength="2">transformada de Laplace</link> y la <link document="m12951" strength="2">transformada Z</link>, ya que al graficar su magnitud y ángulo a su parte real e imaginaria da como resultado varias graficas de superficies de dos dimensiones en espacios de tres dimensiones. Por esta razón, es común el examinar la grafica de la <link document="m0028" strength="2">función de transferencia</link> con sus polos y ceros y tratar una vez mas una idea cualitativa de lo que hace el sistema.
+
+
+      </para>
+      
+      <para id="para2">
+	Dada a una función de transformación continua, en el dominio de Laplace,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>s</m:ci>
+	  </m:apply>
+	</m:math>,  o en el dominio discreto de Z, <m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>, un cero es cualquier valor de 
+	<m:math><m:ci>s</m:ci></m:math> o
+	<m:math><m:ci>z</m:ci></m:math> para los cuales la función de transferencia es cero, un polo  es cualquier valor de 	<m:math><m:ci>s</m:ci></m:math> o
+	<m:math><m:ci>z</m:ci></m:math> para la cual la función de trasferencia es infinita. Lo siguiente da a una definición precisa: 
+	<definition id="z_def">
+  	  <term>Ceros</term>
+  	  <meaning id="idm1591904">
+El valor(es) para
+	    <m:math><m:ci>z</m:ci></m:math>donde el <emphasis>numerador</emphasis> de la función de trasferencia es iguala cero
+
+ 
+	  </meaning>
+	  <meaning id="idm13794064">
+
+
+Las frecuencias complejas que hacen que la ganancia de la función de transferencia del filtro sea cero.
+	    
+	  </meaning>
+  	</definition>
+	
+	<definition id="p_def">
+  	  <term>polos</term>
+  	  <meaning id="idm3494464">
+El valor(es) para
+
+
+
+ <m:math><m:ci>z</m:ci></m:math>donde el <emphasis>denominador</emphasis> de la función de transferencia es igual a cero
+
+	  </meaning>
+	  <meaning id="idm9521840">
+
+Las frecuencias complejas que hacen de la ganancia de la función de transferencia del filtro se infinita.
+	    
+	  </meaning>
+  	</definition>
+      </para>
+    </section>
+    
+    <section id="plots">
+      <title>Graficas de los Polos y Ceros</title>
+      <para id="pp">
+
+Cuando graficamos estos en su plano s o z, representamos los ceros con “o” y los polos con “x”. Vea este <link document="m10556" strength="2">modulo</link> para observa detalladamente como graficar los ceros y polos en la transformada-z en el plano-z.
+
+
+	
+      </para>
+      
+      <example id="exa1">
+	<para id="para3">
+	  Encuentre los polos y ceros de la función de trasferencia 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>6</m:cn>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:cn>8</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  y grafique los resultados en el plano-s.
+	</para>
+	
+	<para id="para4">
+	  Lo primero que tenemos que reconocer que la función de transferencia será igual a cero cuando lo de arriba, 
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>s</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>6</m:cn>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:cn>8</m:cn>
+	    </m:apply>
+	  </m:math>, sea igual a cero. Para encantar que esto iguala a cero factorizamos esto para obtener,
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:cn>4</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+Esto da a ceros en 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>s</m:ci>
+	      <m:cn>-2</m:cn>
+	    </m:apply>
+	  </m:math>
+	  y
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>s</m:ci>
+	      <m:cn>-4</m:cn>
+	    </m:apply>
+	  </m:math>.   Si esta función hubiera sido mas complicada, talvez tendríamos que usar la formula cuadrática.
+	</para>
+	
+	<para id="para5">
+	 Para los polos, tenemos que reconocer que la función de transferencia será infinita cuando la parte de abajo es cero. Esto sucede cuando
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>s</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>
+	 es cerro para encontrar esto, tenemos que factorizar la función esto nos da
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	Lo que significa que tenemos raíces imaginarias de
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:apply>
+		  <m:root/>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	 y
+	  <m:math>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:apply>
+		  <m:root/>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="para6">
+	  Al graficar esto nos da  <link target-id="fig1"/>
+	</para>
+<!--
+	<figure id='pz_roc'>
+	  <name>Regi&#243;n de Convergencia para la grafica de polos y ceros</name>
+	  <media type='image/jpeg' src='zp_roc.jpg'/>
+	  <caption>
+
+Esta area reprecenta la ROC de la funcion de transferencia.
+	   	  </caption>
+        </figure>
+-->
+
+	<figure id="fig1">
+	  <title>Grafica de Polos y Zeros</title>
+	  <media id="idm9540752" alt=""><image src="../../media/pz1.png" mime-type="image/png"/></media>
+	  <caption>Mestra de la Grafica</caption>
+	</figure>
+      </example>
+
+      
+      <para id="para7">
+
+Ya que hemos encontrado y graficado los polos y cero, tenemos que preguntarnos que es lo que nos dice esta grafica. Lo que podemos deducir es que magnitud de la función de trasferencia será mayor cuando se encuentre cerca de los polos y menos cuando se encuentre cerca de los ceros. Esto nos da un entendimiento cualitativo de lo que el sistema hace en varias frecuencias y es crucial para la función de <link document="m12834" strength="2">estabilidad</link>.
+
+
+	
+      </para>
+    </section>
+
+    <section id="sect1">
+      <title>Repeticiones de Polos y Ceros</title>
+      <para id="para8">
+	Es posible obtener mas de un polo lo cero en el mismo punto. Por ejemplo, la función de transferencia discreta 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>z</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	tendrá dos ceros en el origen y la función 	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:ci>s</m:ci>
+		<m:cn>25</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	tender 25 polos en el origen.
+
+      </para>
+    </section>
+    
+    <section id="sect2">
+      <title>La Cancelación de Polos y Ceros </title>
+      <para id="para9">
+	Un error común es el pensar que la función
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>s</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	 es la misma que
+	<m:math>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>s</m:ci>
+	    <m:cn>3</m:cn>
+	  </m:apply>
+	</m:math>.
+	En teoría son equivalentes, ya que el polo y el cero que se encuentra en
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>s</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+
+se cancelan mutuamente lo que es conocido como  la cancelación de polos y ceros. Sin embargo, piense lo que pasaría si esto fuera una función de transferencia de un sistema que fue creado físicamente con un circuito. En este caso, no es común que el polo y el cero permanezca en un mismo lugar. Un cambio de temperatura, podría causar que ellos se movieran. Si esto pasara se crearía volatilidad en esa área, ya que ocurrió un cambio de infinito en un polo a cero en el cero en una región de señales. Generalmente es una mala manera de eliminar un polo. Una mejor manera de mover el polo a otro lugar es usando la <term>teoría de control</term>.
+
+
+
+	
+      </para>
+    </section>
+
+  </content>
+</document>

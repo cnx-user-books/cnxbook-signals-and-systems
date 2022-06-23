@@ -1,0 +1,948 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Derivación de la Ecuación de Coeficientes de Fourier</title>
+   
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4f701740-e93f-4e30-8f03-8816516fb04b</md:uuid>
+</metadata>
+
+  <content>
+    <section id="int">
+      <title>Introducción</title>
+      <para id="p1_int">Usted debería estar familiarizado con la existencia de la ecuación general de las <link document="m10496" target-id="fs" strength="3">series de Fourier</link> que es la siguiente:
+
+	<equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	De lo que estamos interesados aquí es el como combinar los coeficientes de Fourier, 
+	<m:math display="inline">
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math>, dado a una función 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.  En la siguiente explicación lo llevaremos paso por paso por la derivación de la ecuación generar para los coeficientes de Fourier dado a una función. 
+      </para> 
+    </section>
+
+    <section id="deriv">
+      <title>Derivación</title>
+      <para id="p1_der">
+Para resolver la ecuación  <link target-id="eq1" strength="3"/> para
+	<m:math display="inline">
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math>, tenemos que hacer una  pequeña manipulación algebraica. Primero que todo, tenemos que multiplicar los dos lados de <link target-id="eq1"/> por 
+	<m:math display="inline">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci><m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub></m:ci>
+					<m:ci>k</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>, donde 
+	<m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci>k</m:ci>
+			<m:integers/>
+		</m:apply>
+	</m:math>.
+
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>k</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>k</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Ahora integraremos los dos lados sobre el periodo,
+	<m:math><m:ci>T</m:ci></m:math>:
+
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>k</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:ci>k</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	En el lado derecho podemos intercambiar la sumatoria y el integral y sacar la constante fuera del integral.
+
+	<equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>k</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:uplimit>
+								<m:ci>T</m:ci>
+							</m:uplimit>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Ahora que hemos hecho esto lo que al parecer es mas complicado, nos enfocaremos en tan solo el integral, 
+	<m:math display="inline">
+		<m:apply>
+			<m:int/>
+			<m:bvar>
+				<m:ci>t</m:ci>
+			</m:bvar>
+			<m:uplimit>
+				<m:ci>T</m:ci>
+			</m:uplimit>
+			<m:lowlimit>
+				<m:cn>0</m:cn>
+			</m:lowlimit>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci><m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>n</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>, que se encuentra en el lado derecho de la ecuación. Para este integral debemos considerar solo dos casos:  
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> y
+	<m:math display="inline">
+		<m:apply>
+			<m:neq/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>.  Para 
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> tenemos: 
+
+	<equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Para 
+	<m:math display="inline">
+		<m:apply>
+			<m:neq/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>, tenemos:
+
+	
+	<equation id="eq6">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:neq/>
+						<m:ci>n</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:uplimit>
+								<m:ci>T</m:ci>
+							</m:uplimit>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:apply>
+								<m:cos/>
+								<m:apply>
+									<m:times/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:int/>
+								<m:bvar>
+									<m:ci>t</m:ci>
+								</m:bvar>
+								<m:uplimit>
+									<m:ci>T</m:ci>
+								</m:uplimit>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:apply>
+									<m:sin/>
+									<m:apply>
+										<m:times/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:apply>
+											<m:minus/>
+											<m:ci>n</m:ci>
+											<m:ci>k</m:ci>
+										</m:apply>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Pero
+	<m:math display="inline">
+		<m:apply>
+			<m:cos/>
+			<m:apply>
+				<m:times/>
+				<m:ci><m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	tiene periodos con números enteros para, 
+	<m:math display="inline">
+		<m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>, entre  <m:math><m:cn>0</m:cn></m:math> y 
+	<m:math><m:ci>T</m:ci></m:math>.  Imagine la grafica de un  coseno; por que tiene periodos con números enteros, hay áreas de igual valor debajo y arriba del eje de las ordenadas en la grafica. Este hecho es verdadero para 
+	<m:math display="inline">
+		<m:apply>
+			<m:sin/>
+			<m:apply>
+				<m:times/>
+				<m:ci><m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> también. Lo que significa
+
+	<equation id="eq7">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:cos/>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	También para el integral de una función de seno. Por eso, podemos concluir lo siguiente sobre nuestro integral: 
+	
+	<equation id="eq8">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:ci>T</m:ci>
+						<m:apply>
+							<m:eq/>
+							<m:ci>n</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:piece>
+					<m:otherwise>
+						<m:cn>0</m:cn>
+					</m:otherwise>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+ 	    
+Regresemos a nuestra complicada ecuación,
+	<link target-id="eq4" strength="3"/>, 
+
+para ver si podemos encontrar una ecuación para nuestros coeficientes de Fourier. Usando los hechos que ya hemos probado, podemos ver que única vez que la ecuación 
+ <link target-id="eq4" strength="3"/>tiene valores de no cero como resultado es cuando  <m:math><m:ci>k</m:ci></m:math> y
+	<m:math><m:ci>n</m:ci></m:math> son iguales: 
+	
+	<equation id="eq9">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>T</m:ci>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Finalmente nuestra ecuación general para los coeficientes de Fourier es:
+
+	<equation id="eq10">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <section id="sub1">
+	<title>Pasos para Encontrar los Coeficientes de Fourier</title>
+	<para id="p1_sub1">
+Para encontrar los coeficientes de Fourier de una 
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>periódica:
+
+	  <list id="steps" list-type="enumerated">
+	<item>
+	   Por alguna  <m:math><m:ci>k</m:ci></m:math>, multiplique
+	      <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> por
+	      <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci><m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:ci>k</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>, saque el área por debajo de la curva (dividiendo por  <m:math><m:ci>T</m:ci></m:math>).
+	    </item>
+	<item>
+	  Repita el paso (1) para todo  
+	      <m:math display="inline">
+			<m:apply>
+				<m:in/>
+				<m:ci>k</m:ci>
+				<m:integers/>
+			</m:apply>
+		</m:math>.
+	    </item>
+</list>
+</para>
+      </section>
+
+    </section>
+
+  </content>
+</document>

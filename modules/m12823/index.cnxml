@@ -1,0 +1,201 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Operaciones para Señales</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9fa60ee0-6108-48f3-a7fc-c551d1503f13</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p1">Este módulo muestra dos operaciones para señales, cambio en el tiempo y  escala en el tiempo. Operación de señales son operaciones realizadas sobre la variable tiempo de la señal. Estas operaciones son componentes comunes en el mundo real y como tales las debemos entender a fondo cuando se esté aprendiendo sobre sistemas y señales.
+    </para>
+    
+    <section id="sec1">
+      <title>Desplazamiento en el eje del Tiempo</title>
+      <para id="p2">El desplazamiento en el tiempo, como su nombre lo sugiere, es trasladar la señal en el eje del tiempo. Esto se hace sumando o restando la cantidad  del desplazamiento de tiempo a la función. Restando una cantidad fija en la variable de el tiempo tendrá un cambio en la señal hacia la derecha (retrasa) por esa cantidad, por el contrario al sumar una cantidad a la variable de el tiempo la señal se desplazará hacia la izquierda (avanza).
+      </para>
+      <figure id="fig1" orient="vertical">
+	<media id="idp7841600" alt=""><image src="../../media/sigops1.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	 mueve (retrasa) 
+	  <m:math display="inline">
+			<m:ci>f</m:ci>
+		</m:math> 
+	  a la derecha
+	  <m:math display="inline">
+			<m:ci>T</m:ci>
+		</m:math>.
+	</caption>
+</figure>
+    </section>
+
+    <section id="sec2">
+      <title>Escala en el eje del Tiempo</title>
+      <para id="p3">Escalar el tiempo es comprimir y/o expandir una señal  al multiplicar las variables del tiempo por alguna cantidad. Si esa cantidad es mayor que uno, la señal se vuelve angosta, esto es conocido como compresión, cuando la cantidad es menor que uno, la señal se vuelve ancha y a esto lo conoceremos como expansión. Normalmente, estas operaciones  les toman a las personas un tiempo en comprender, debido a que la intuición de las personas es que al multiplicar por una cantidad  más grande que uno la señal será expandida y menor que uno será comprimida.      </para>
+
+      <figure id="fig2" orient="vertical"><media id="idp14420976" alt=""><image src="../../media/sigops2.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci>a</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	  comprime
+	  <m:math display="inline">
+			<m:ci>f</m:ci>
+		</m:math> por
+	  <m:math display="inline">
+			<m:ci>a</m:ci>
+		</m:math>.
+	</caption>
+</figure>
+    </section>
+
+    <example id="exam1">
+      <para id="p4">Las señales cambiadas y escaladas en el tiempo pueden ser contrarias unas de las otras. Este ejemplo muestra una manera de practicar estas operaciones hasta que desarrolle un sentido de como se debería ver la señal después de ciertas operaciones.
+      </para>
+      <para id="p5">
+	Dado
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	, grafique
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:times/>
+					<m:ci>a</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+      </para>
+      <figure id="fig3" orient="horizontal">
+	<subfigure id="fig4">
+		<media id="idp14514352" alt=""><image src="../../media/sigops4.png" mime-type="image/png"/></media>
+		<caption>Empieze con
+	    <m:math display="inline">
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="fig5">
+		<media id="idp10312016" alt=""><image src="../../media/sigops5.png" mime-type="image/png"/></media>
+		<caption>Luego remplace
+	    <m:math display="inline">
+				<m:ci>t</m:ci>
+			</m:math>
+	    con
+	    <m:math display="inline">
+				<m:apply>
+					<m:times/>
+					<m:ci>a</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math>
+	    para obtener
+	    <m:math display="inline">
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci>a</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="fig6">
+		<media id="idp10332416" alt=""><image src="../../media/sigops6.png" mime-type="image/png"/></media>
+		<caption>Finalmente, remplace
+	    <m:math display="inline">
+				<m:ci>t</m:ci>
+			</m:math>
+	    con
+	    <m:math display="inline">
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+					<m:apply>
+						<m:divide/>
+						<m:ci>b</m:ci>
+						<m:ci>a</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>
+	    para obtener
+	    <m:math display="inline">
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:ci>a</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:apply>
+									<m:divide/>
+									<m:ci>b</m:ci>
+									<m:ci>a</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:ci>a</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:ci>b</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+</figure>
+    </example>
+
+    <section id="sec4">
+      <title>Reflexión en el eje del Tiempo </title>
+      <para id="p7">Una pregunta muy natural que se considera cuando se está aprendiendo a escalar el tiempo es: ¿qué pasaría si la variable del tiempo es multiplicada por un número negativo? La respuesta para esto es la inversión en el tiempo. Esta operación invierte el eje del tiempo, en otras palabras, cambia la señal respecto al eje de las ordenadas.
+      </para>
+      <figure id="fig7">
+	<media id="idp14424720" alt=""><image src="../../media/sigops3.png" mime-type="image/png"/></media>
+	<caption>Reflexión en el eje del Tiempo 
+</caption>
+</figure>
+    </section>
+  </content>
+</document>

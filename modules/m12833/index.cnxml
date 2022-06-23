@@ -1,0 +1,536 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Convolución Discreta</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9a90f126-467b-464a-9e21-5cb70b1a8864</md:uuid>
+</metadata>
+  
+  
+  <content>
+    <section id="sec1">
+      <title>Ideas Generales</title>
+      <para id="p1">Convolución es un valor que se extiende a todos los sistemas que son <term><link document="m12822" strength="3">invariantes linear del tiempo</link></term> (<term>LTI</term> - Linear Time Invariant). La idea de convolución discreta es la misma que la de <link document="m12828" strength="3">convolución continua</link>. Por esta razón, puede ser de gran ayuda el ver las dos versiones para que usted entienda la extrema importancia del concepto. Recuerde que la convolución es un instrumento poderoso al determinar el resultado de un sistema después de saber la una entrada arbitraria y la respuesta al impulso del sistema. Puede ser también útil al ver la convolución gráficamente con sus propios ojos y jugar con este concepto un poco, así que experimente con las <link url="http://www.jhu.edu/~signals">aplicaciones</link> que están disponibles en la Internet. Estos recursos ofrecerán métodos diferentes para aprender este concepto crucial. 
+	</para>
+    </section>
+    
+    <section id="con_sum">
+      <title>Suma de Convolución </title>
+      <para id="p_cint">
+	Como ya ha sido mencionado, la suma de convolución provee una manera matemáticamante concisa para expresar el resultado de un sistema LTI, basado en una entrada arbitraria para una señal discreta y también el saber la respuesta del sistema. La <term>suma de convolución</term> es expresada como
+
+	<equation id="eq_csum">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	
+Así como en tiempo continuo la convolución es representado por el símbolo *, y puede ser escrita como
+	<equation id="eq_convshort">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Al hacer un simple cambio de variables en la suma de convolución,
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>k</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+podemos demostrar fácilmente que la convolución es <term>conmutativa</term>:
+
+	
+	<equation id="eq_convshort2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+Para mas información sobre las características de convolución, lea las <link document="m12829" strength="3">propiedades de convolución</link>. 
+	
+	</para>
+    </section>
+
+
+    <section id="sec2">
+      <title>Derivación</title>
+      <para id="p3">Sabemos que las señales discretas pueden ser representadas por la suma de impulses discretos que están desplazados y escalados. Ya que estamos asumiendo que el sistema es linear e invariante con el tiempo, se ve razonable decir que la entrada de la señal esta formada por impulses que también están escalados y desplazados, esto en turno daría como resultado del sistema una suma de respuesta de impulse que también están escaladas y desplazadas. Esto es exactamente lo que ocurre en <term>convolución</term>. Abajo presentamos una manera matemática rigurosa de ver esta derivación:
+	      </para>
+
+      <para id="p3a">
+	Al dejar <m:math><m:ci>ℋ</m:ci></m:math> ser un sistema DT LTI, empezaremos con la siguiente ecuación y trabajaremos hasta llegar a la suma de convolucion !
+
+	<equation id="conv_der">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn" class="discrete">δ</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:ci type="fn" class="discrete">ℋ</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn" class="discrete">δ</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">ℋ</m:ci>
+							<m:apply>
+								<m:ci type="fn" class="discrete">δ</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+Demos un vistazo rápido a los pasos tomados en la derivación anterior. Después de nuestra ecuación inicial, nosotros usamos la <link document="m12824" target-id="sifting" strength="2"> propiedad de desplazamiento </link>del DT para re-escribir la función, 
+
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, 
+	como una  suma de funciones multiplicada por una suma unitaria. Después, movemos el operador <m:math><m:mo>ℋ</m:mo></m:math> y la sumatoria 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">ℋ</m:ci>
+			<m:ci>˙</m:ci>
+		</m:apply>
+	</m:math> es linear, en el sistema DT. Por esta linealidad y por el hecho que,
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> es constante podemos extraer la constantes ya mencionadas y nada mas multiplicar la ecuación por
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">ℋ</m:ci>
+			<m:ci>˙</m:ci>
+		</m:apply>
+	</m:math>.  Final mente , usamos el dato que	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">ℋ</m:ci>
+			<m:ci>˙</m:ci>
+		</m:apply>
+	</m:math> es invariante con el tiempo para llegar a nuestra ecuación deseada- la suma de convolucion !
+      </para>
+
+
+      <para id="p4">
+	Un ejemplo grafico puede ayudar en demostrar por que la convolución  funciona
+      </para>
+
+      <figure id="figx">
+	<media id="idp1588912" alt=""><image src="../../media/dtconv1e.png" mime-type="image/png"/></media>
+	<caption>
+Una simple entrada con impulso da como resultado la respuesta de impulso del sistema.
+	
+	</caption>
+</figure>
+
+      <figure id="figx2">
+	<media id="idp959584" alt=""><image src="../../media/dtconv2e.png" mime-type="image/png"/></media>
+	<caption>
+Un impulso escalado como entrada da como resultado una respuesta escalada, ya que tiene la propiedad de escalmiento para un sistema lineal.	  
+
+	</caption>
+</figure>
+
+      <figure id="figx3">
+	<media id="idm471904" alt=""><image src="../../media/dtconv3e.png" mime-type="image/png"/></media>
+	<caption>
+Ahora usaremos la propiedad de tiempo invariante del sistema para demostrar que una entrada que esta dasplazada da como resultado una salida con la misma forma, solo que esta desplazada por la misma cantidad que la entrada.
+ 	</caption>
+</figure>
+
+      <figure id="figx4">
+	<media id="idp574624" alt=""><image src="../../media/dtconv4e.png" mime-type="image/png"/></media>
+	<caption>
+Ahora usaremos la propiedad de adicion del sistema lineal para completar la figura.ya que cualquier señal discreta es nada mas la suma de impulsos discretos que estan desplazados y escalados, podemos encontrar la salida con tan solo saber la señal de entrada y su respuesta al impulso.
+	</caption>
+</figure>
+    </section>
+
+   
+    
+    <section id="sec4">
+      <title>Convolucion a través del Eje del Tiempo ( Un método grafico)</title>
+      <para id="p7">
+	En esta sección desarrollaremos una interpretación grafica de la convolución discreta. Empezaremos por escribir la suma de convolución dejando
+	<m:math display="inline">
+		<m:ci>x</m:ci>
+	</m:math>
+	ser causal, de tamaño -<m:math><m:ci>m</m:ci></m:math> y
+	<m:math display="inline">
+		<m:ci>h</m:ci>
+	</m:math>
+	ser causal, del tamaño-<m:math><m:ci>k</m:ci></m:math>, en un sistema LTI. Esto nos da una sumatoria finita,
+
+	<equation id="eq_eg2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>l</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>m</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>l</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>l</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Note que para cualquier
+	<m:math display="inline">
+		<m:ci>n</m:ci>
+	</m:math>
+	tenemos la suma de productos de 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci>
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mi>l</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>
+	desplazados en el tiempo por
+	<m:math display="inline">
+		<m:apply>
+			<m:ci>
+				<m:msub>
+					<m:mi>h</m:mi>
+					<m:mrow>
+						<m:mo>−</m:mo>
+						<m:mi>l</m:mi>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>.  Esto es una manera de decir que multiplicamos los términos de	<m:math display="inline">
+		<m:ci>x</m:ci>
+	</m:math>
+	por los términos reflexionados en el tiempo de 
+	<m:math display="inline">
+		<m:ci>h</m:ci>
+	</m:math>
+	y los sumamos después.       </para>
+
+      <para id="p8">
+Regresamos a los ejemplos anteriores:</para>
+
+      <figure id="eg2_fig1">
+	<media id="idp1981136" alt=""><image src="../../media/dtconv6e.png" mime-type="image/png"/></media>
+	<caption>
+Esto es lo que esperamos encontrar.
+	
+	</caption>
+</figure>
+
+      <figure id="eg2_fig2">
+	<media id="idp1767648" alt=""><image src="../../media/dtconv7e.png" mime-type="image/png"/></media>
+	<caption>
+
+Esto es el reflejo de la respuesta del impulso,
+	
+	  <m:math display="inline">
+			<m:ci>h</m:ci>
+		</m:math>
+	  , y se empieza a mover atravez del tiempo
+	  <m:math display="inline">
+			<m:cn>0</m:cn>
+		</m:math>.
+	</caption>
+</figure>
+
+      <figure id="eg2_fig3">
+	<media id="idp6327856" alt=""><image src="../../media/dtconv8e.png" mime-type="image/png"/></media>
+	<caption>
+Continuamos con el moviimiento. Vea que al tiempo	  
+	  <m:math display="inline">
+			<m:cn>1</m:cn>
+		</m:math>
+	  , estamos multiplicando dos elementos de la señalde entraday dos elementos de la respuesta del impulso.
+	</caption>
+</figure>
+
+      <figure id="eg2_fig4a">
+	<media id="idm7865056" alt=""><image src="../../media/dtconv9e.png" mime-type="image/png"/></media>
+      </figure>
+      
+      <figure id="eg2_fig4b">
+	<media id="idm6915328" alt=""><image src="../../media/dtconv10e.png" mime-type="image/png"/></media>
+	<caption>
+Si seguimos esto un paso mas,
+	
+	  <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>n</m:ci>
+				<m:cn>4</m:cn>
+			</m:apply>
+		</m:math>, pordiamos ver que producimos la misma salida que vimos en el ejemplo inicial.
+
+	</caption>
+</figure>
+
+      <!--
+      <figure id='eg2_fig4c'>
+	<media type="image/png" src="dconv8b_3.png"/>
+	<caption>
+	  See how this method follows through to produce the same
+	  output we saw in the initial example.
+	</caption>
+      </figure>
+      -->
+
+      <para id="p8a">
+Los que estamos haciendo en la demostración de arriba es reflejar la respuesta del impulso en el tiempo y “ hacerlo caminar a través” de la entrada en la señal.
+Claramente, esto da el mismo resultado que escalar, desplazar, y sumar respuestas de impulsos. 
+      </para>
+      
+      <para id="p9">
+Este método de reflexión en el tiempo, y de mover a través de  la señal es una manera común de presentar la convolución, ya que demuestra como la convolución construye el resultado a través del eje del tiempo. 
+</para>
+    </section>
+  </content>
+</document>

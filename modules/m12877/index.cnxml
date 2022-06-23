@@ -1,0 +1,1161 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Normas</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>47a9673c-dba5-4001-9cd0-e68326b17f58</md:uuid>
+</metadata>
+
+  <content>
+    <section id="int">
+      <title>Introducción</title>
+      <para id="p1_int">
+	Mucho del lenguaje utilizado en esta sección será familiar para usted- debe de haber estado expuesto a los conceptos de 
+
+	<list id="lista" list-type="bulleted">
+	<item>
+		<link document="m10755" strength="3">producto interno</link>
+	</item>
+	<item>
+	    ortogonalidad
+	  </item>
+	<item>
+		<link document="m10760" strength="3">expansión de base</link>
+	</item>
+</list>
+
+	en el contexto de
+
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+            <m:reals/>
+            <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>.
+	Vamos a tomar lo que conocemos sobre vectores y aplicarlo a funciones (señales de tiempo continuo). 
+</para>
+    </section>
+
+
+    <section id="sec2">
+      <title>Normas</title>
+      <para id="para8">
+        La <term>norma</term> de un vector es un número real que representa el 
+        "tamaño" de el vector.
+      </para>
+
+      <example id="exam2">
+        <para id="para9">
+          En <m:math>
+		<m:apply>
+			<m:power/>
+			<m:reals/>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>, podemos  definir la norma que sea la longitud geométrica de los vectores.
+       </para>
+
+        <figure id="fig2">
+          <media id="idp3456880" alt=""><image src="../../media/norm_f1.png" mime-type="image/png"/></media>
+        </figure>
+
+        <para id="para10">
+          <m:math display="inline">
+            <m:apply>
+              <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:vector>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:vector>
+            </m:apply>
+          </m:math>, norma
+          <m:math>
+            <m:apply>
+              <m:eq/>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+            </m:apply>
+          </m:math>
+        </para>
+
+        <para id="para11">
+          Matemáticamente, una norma
+          <m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>·</m:ci>
+		</m:apply>
+	</m:math>
+          es solo una función (tomando un vector y regresando un número real) que satisface tres reglas
+        </para>
+
+      </example>
+
+      <para id="para12">
+        Para ser una norma,
+        <m:math>
+          <m:apply>
+            <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+            <m:ci>·</m:ci>
+          </m:apply>
+        </m:math>
+        debe satisfacer:
+        <list id="list5" list-type="enumerated">
+          <item>la norma de todo vector es positiva
+            <m:math>
+              <m:apply>
+                <m:forall/>
+		<m:bvar><m:ci type="vector">x</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:in/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci>S</m:ci>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:gt/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+              </m:apply>
+            </m:math>
+          </item>
+          <item>
+        escalando el vector, se escala la norma por la misma cantidad  
+            <m:math>
+              <m:apply>
+                <m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>α</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+            </m:math> para todos los vectores
+            <m:math>
+              <m:ci type="vector">x</m:ci>
+            </m:math>
+            y escalares
+            <m:math>
+              <m:ci>α</m:ci>
+            </m:math>
+          </item>
+
+          <item>
+            Propiedad del Triángulo: 
+            <m:math display="inline">
+              <m:apply>
+                <m:leq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+            </m:math> para todos los vectores
+            <m:math>
+              <m:ci type="vector">x</m:ci>
+            </m:math>,
+            <m:math>
+              <m:ci type="vector">y</m:ci>
+            </m:math>.  “El “tamaño“ de la suma de dos vectores es menor o igual a la suma de sus tamaños”
+          </item>
+        </list>
+      </para>
+
+      <para id="para13">
+        Un <link document="m10767" strength="3">espacio vectorial</link> con 
+	  una norma bien definida es llamado un <term>espacio vectorial normado
+         </term> o <term>espacio lineal normado</term>.
+      </para>
+
+      <section id="sub1">
+	<title>Ejemplos</title>
+	
+	<example id="eg1">
+	  <para id="para14">
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> (ó
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>),
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:vector>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>…</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>-</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:vector>
+	      </m:apply>
+	    </m:math>,
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:domainofapplication>
+		    <m:cn>1</m:cn>
+		  </m:domainofapplication>
+		  <m:ci>x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>i</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> con esta norma es llamado
+	    <m:math>
+	      <m:ci>
+		<m:mrow>
+		  <m:mrow>
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msup>
+		  </m:mrow>
+		  <m:mo>(</m:mo>
+		  <m:mo>[</m:mo>
+		  <m:mn>0</m:mn>
+		  <m:mo>,</m:mo>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>-</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+		  <m:mo>]</m:mo>
+		  <m:mo>)</m:mo>
+		</m:mrow>
+	      </m:ci>
+	    </m:math>.
+	  </para>
+
+	  <figure id="fig3">
+	<media id="idp4479056" alt=""><image src="../../media/norm_f2.png" mime-type="image/png"/></media>
+	<caption>Colección de todas las 
+	      <m:math display="inline">
+			<m:apply>
+				<m:in/>
+				<m:ci type="vector">x</m:ci>
+				<m:apply>
+					<m:power/>
+					<m:reals/>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	      con
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+					<m:domainofapplication>
+						<m:cn>1</m:cn>
+					</m:domainofapplication>
+					<m:ci>x</m:ci>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	</example>
+	
+	<example id="eg2">
+	  <para id="para15">
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> (ó
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>),
+	    con norma
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:domainofapplication>
+		    <m:cn>2</m:cn>
+		  </m:domainofapplication>
+		  <m:ci>x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar><m:ci>i</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:abs/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>x</m:mi>
+			    <m:mi>i</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> es llamado
+	    <m:math>
+	      <m:ci>
+		<m:mrow>
+		  <m:mrow>
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:mrow>
+		  <m:mo>(</m:mo>
+		  <m:mo>[</m:mo>
+		  <m:mn>0</m:mn>
+		  <m:mo>,</m:mo>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>-</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+		  <m:mo>]</m:mo>
+		  <m:mo>)</m:mo>
+		</m:mrow>
+	      </m:ci>
+	    </m:math> (la usual "norma Euclideana").
+	  </para>
+
+	  <figure id="fig4">
+	    <media id="idm5750880" alt=""><image src="../../media/norm_f3.png" mime-type="image/png"/></media>
+	    <caption>Colección de todas las 
+	      <m:math display="inline">
+		<m:apply> 
+		  <m:in/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:reals/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      with
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:cn>2</m:cn>
+		    </m:domainofapplication>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:math>
+	    </caption>
+	  </figure>
+	</example>
+	
+	<example id="eg3">
+	  <para id="para16">
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:reals/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> (or
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>,
+	    with norm
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:domainofapplication>
+		    <m:infinity/>
+		  </m:domainofapplication>
+		  <m:ci>x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:max/>
+		  <m:bvar><m:ci>i</m:ci></m:bvar>
+		  <m:apply>
+		    <m:abs/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    is called
+	    <m:math>
+	      <m:ci>
+		<m:mrow>
+		  <m:mrow>
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mi>∞</m:mi>
+		    </m:msup>
+		  </m:mrow>
+		  <m:mo>(</m:mo>
+		  <m:mo>[</m:mo>
+		  <m:mn>0</m:mn>
+		  <m:mo>,</m:mo>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>-</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+		  <m:mo>]</m:mo>
+		  <m:mo>)</m:mo>
+		</m:mrow>
+	      </m:ci>
+	    </m:math>
+	  </para>
+
+	  <figure id="fig5">
+	    <media id="idm6207920" alt=""><image src="../../media/norm_f4.png" mime-type="image/png"/></media>
+	    <caption>
+	      <m:math display="inline">
+		<m:apply> 
+		  <m:in/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:reals/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      con
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:infinity/>
+		    </m:domainofapplication>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:math>
+	    </caption>
+	  </figure>
+
+	</example>
+      </section>
+
+      <section id="sub2">
+	<title>Espacios de Secuencias y Funciones</title>
+	<para id="para17">
+	  Podemos definir normas similares para espacios de secuencias y funciones.
+	</para>
+
+	<para id="para18">
+	 Señales de tiempo discreto= secuencia de números 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:set>
+		<m:ci>…</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>-2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>-1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math>
+	  <list id="list6" list-type="bulleted">
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:cn>1</m:cn>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar><m:ci>i</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>i</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>ℓ</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mi>ℤ</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:domainofapplication>
+			<m:cn>1</m:cn>
+		      </m:domainofapplication>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:cn>2</m:cn>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>i</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:infinity/>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:abs/>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">x</m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>ℓ</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mi>ℤ</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:domainofapplication>
+			<m:cn>2</m:cn>
+		      </m:domainofapplication>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:ci>p</m:ci>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>i</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:infinity/>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:abs/>
+			  <m:apply>
+			    <m:ci type="fn" class="discrete">x</m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:ci>p</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>p</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>ℓ</m:mi>
+			  <m:mi>p</m:mi>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mi>ℤ</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:domainofapplication>
+			<m:ci>p</m:ci>
+		      </m:domainofapplication>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:infinity/>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>
+		    <m:mrow>
+		      <m:munder>
+			<m:mi>sup</m:mi>
+			<m:mi>i</m:mi>
+		      </m:munder>
+		      <m:mo>|</m:mo>
+		      <m:mi>x</m:mi>
+		      <m:mo>[</m:mo>
+		      <m:mi>i</m:mi>
+		      <m:mo>]</m:mo>
+		      <m:mo>|</m:mo>
+		    </m:mrow>
+		  </m:ci>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>ℓ</m:mi>
+			  <m:mi>∞</m:mi>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mi>ℤ</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:domainofapplication>
+			<m:infinity/>
+		      </m:domainofapplication>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+	</para>
+
+	<para id="para19">
+	  Para funciones continuas en el tiempo:
+	  <list id="list7" list-type="bulleted">
+	    <item>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:ci>p</m:ci>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:int/>
+		      <m:bvar><m:ci>t</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:infinity/>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:abs/>
+			  <m:apply>
+			    <m:ci type="fn">f</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:ci>p</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>p</m:ci>
+		    </m:apply>
+		  </m:apply>                      
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>L</m:mi>
+			  <m:mi>p</m:mi>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mi>ℝ</m:mi>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:ci>p</m:ci>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    <item> (En el intervalo)
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:ci>p</m:ci>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:int/>
+		      <m:bvar><m:ci>t</m:ci></m:bvar>
+		      <m:lowlimit>
+			<m:cn>0</m:cn>                              
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>T</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:abs/>
+			  <m:apply>
+			    <m:ci type="fn">f</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:ci>p</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>p</m:ci>
+		    </m:apply>
+		  </m:apply>                      
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:implies/>
+		  <m:apply>
+		    <m:in/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:mrow>
+			<m:msup>
+			  <m:mi>L</m:mi>
+			  <m:mi>p</m:mi>
+			</m:msup>
+			<m:mo>(</m:mo>
+			<m:mo>[</m:mo>
+			<m:mn>0</m:mn>
+			<m:mo>,</m:mo>
+			<m:mi>T</m:mi>
+			<m:mo>]</m:mo>
+			<m:mo>)</m:mo>
+		      </m:mrow>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:domainofapplication>
+		      <m:ci>p</m:ci>
+		    </m:domainofapplication>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+	</para>
+
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,2025 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Región de Convergencia para la Transformada- Z</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8f20fcc7-8255-4e46-97ea-6b3c8df80e41</md:uuid>
+</metadata>
+
+  <content>
+    <section id="generaldef">
+      <title>La Región de Convergencia</title>
+      <para id="defofROC">La región de convergencia, también conocida  como <term>ROC</term>, es importante entender por que define la región donde la <link document="m12951" strength="2">transformada-z</link>  existe. La <term>transformada–z</term> se define por
+	
+	<equation id="z-transform">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	 La ROC para una
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+	,  es definida como el rango de 
+	<m:math>
+		<m:ci>z</m:ci>
+	</m:math>
+para la cual la transformada-z converge. Ya que la transformada–z es una <term>serie de potencia</term>, converge cuando
+	
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">x</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:power/>
+				<m:ci>z</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	 es absolutamente sumable. En otras palabras,
+	<equation id="ROC">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>z</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>	
+tiene que ser satisfecha para la convergencia.
+	
+      </para>   
+    </section>
+    <section id="properties">
+      <title>Propiedades de la Región de Convergencia</title>
+      <para id="prop1">
+La región de convergencia tiene propiedades que dependen de la características de la señal,
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>.
+	
+      </para>
+      <para id="prop2">
+	<list id="propertylist">
+	<item id="property1">
+		<emphasis>La ROC no tiene que contener algún polo.</emphasis>
+	   Por definición un polo es donde
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">X</m:ci>
+				<m:ci>z</m:ci>
+			</m:apply>
+		</m:math>
+	   es infinito. Ya que
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">X</m:ci>
+				<m:ci>z</m:ci>
+			</m:apply>
+		</m:math>
+
+tiene que ser finita para todas las <m:math><m:ci>z</m:ci></m:math> para tener convergencia, no puede existir ningún polo para ROC.
+
+	  </item>
+	<item id="property2">
+		<emphasis>Si 
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>
+	      es una secuencia de duración finita, entonces la ROC es todo el plano-z, excepto en
+	      <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>z</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+	      o 
+	      <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:abs/>
+						<m:ci>z</m:ci>
+					</m:apply>
+					<m:infinity/>
+				</m:apply>
+			</m:math>.
+	    </emphasis>
+ Una secuencia de <term>duración finita</term> es aquella que tienen valor de no cero en un intervalo finito 
+
+	    
+	    <m:math>
+			<m:apply>
+				<m:leq/>
+				<m:ci>
+					<m:msub>
+						<m:mo>n</m:mo>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mo>n</m:mo>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>.  
+	
+Mientras que cada valor de 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">x</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>
+	     es finito entonces la secuencia será absolutamente sumable. Cuando
+	    <m:math>
+			<m:apply>
+				<m:gt/>
+				<m:ci>
+					<m:msub>
+						<m:mi>n</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	    entonces existirá
+	    <m:math>
+			<m:apply>
+				<m:inverse/>
+				<m:ci>z</m:ci>
+			</m:apply>
+		</m:math>
+	   términos por lo tanto la ROC no incluye 
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>z</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>.
+	   Cuando 
+	    <m:math>
+			<m:apply>
+				<m:lt/>
+				<m:ci>
+					<m:msub>
+						<m:mi>n</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	   la suma será infinita por lo tanto la ROC no incluye
+	    
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>.
+	  Pero si,
+	    <m:math>
+			<m:apply>
+				<m:leq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>n</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	     entonces la ROC incluirá
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>z</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>, 
+	  y cuando
+	    <m:math>
+			<m:apply>
+				<m:geq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>n</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	 la ROC incluirá
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>.
+
+Con esta condiciones, la única señal que tiene una ROC que cubre todo el plano-z es
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>c</m:ci>
+					<m:apply>
+						<m:ci type="fn" class="discrete">δ</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>.
+	
+	  </item>
+</list>
+      </para>
+
+      <figure id="finitedurseq">
+	<media id="idp2077200" alt=""><image src="../../media/finite.png" mime-type="image/png"/></media>
+	<caption>Ejemplo de una secuencia de duracion finita.</caption>
+</figure>
+
+      <para id="stupidcnxmldoesntallowfiguresinparas">
+	Las siguientes propiedades se aplican a secuencias con duración infinita. Como se menciono anterior mente la transformada-z converge cuando
+	<m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:infinity/>
+		</m:apply>
+	</m:math>.
+	Así que podemos escribir 
+	
+	<equation id="zderiv1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:ci type="fn">X</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:leq/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:sum/>
+							<m:bvar>
+								<m:ci>n</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn" class="discrete">x</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:power/>
+									<m:ci>z</m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:sum/>
+							<m:bvar>
+								<m:ci>n</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:abs/>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">x</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:power/>
+										<m:ci>z</m:ci>
+										<m:apply>
+											<m:minus/>
+											<m:ci>n</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:sum/>
+							<m:bvar>
+								<m:ci>n</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:abs/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">x</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+								<m:apply>
+									<m:power/>
+									<m:apply>
+										<m:abs/>
+										<m:ci>z</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Podemos separar la suma infinita en su tiempo positive y negativa. Por lo tanto 
+	
+	<equation id="nplusp">
+		<m:math>
+			<m:apply>
+				<m:leq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:ci type="fn">X</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:ci type="fn">N</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">P</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	donde
+	
+	<equation id="negside">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">N</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:cn>-1</m:cn>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:abs/>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	y
+	
+	<equation id="posside">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">P</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:abs/>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	Para que
+	<m:math>
+		<m:apply>
+			<m:abs/>
+			<m:apply>
+				<m:ci type="fn">X</m:ci>
+				<m:ci>z</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	se infinita,
+	<m:math>
+		<m:apply>
+			<m:abs/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">x</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	tiene que estar restringida entonces definamos 
+	
+	<equation id="nltzero">
+		<m:math>
+			<m:apply>
+				<m:leq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>C</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:power/>
+						<m:ci>
+							<m:msub>
+								<m:mi>r</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	para
+	<m:math display="block">
+		<m:apply>
+			<m:lt/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	y
+	
+	<equation id="ngeqzero">
+		<m:math>
+			<m:apply>
+				<m:leq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>C</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:power/>
+						<m:ci>
+							<m:msub>
+								<m:mi>r</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+para
+	<m:math display="block">
+		<m:apply>
+			<m:geq/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	De estos también se pueden derivar más propiedades:
+
+	<list id="stupidcnxmldoesntallowfiguresinlists">
+		<item id="property3">
+			<emphasis>
+	      Si
+	      <m:math>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:math>
+	     es una secuencia del lado derecho entonces la ROC se extiende hacia fuera en el ultimo polo desde
+	      <m:math>
+					<m:apply>
+						<m:ci type="fn">X</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:math>.	      
+	    </emphasis>
+ Una <term>secuencia del lado derecho</term> es aquella  donde
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+	    para
+	    <m:math>
+				<m:apply>
+					<m:lt/>
+					<m:cn>n</m:cn>
+					<m:ci>
+						<m:msub>
+							<m:mo>n</m:mo>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:infinity/>
+				</m:apply>
+			</m:math>.
+	    Si vemos la porción del tiempo  positive de la ultima derivación, se puede deducir que 
+	    
+	    <equation id="furtherposderiv">
+				<m:math>
+					<m:apply>
+						<m:leq/>
+						<m:apply>
+							<m:ci type="fn">P</m:ci>
+							<m:ci>z</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:eq/>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>C</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:apply>
+									<m:sum/>
+									<m:bvar>
+										<m:ci>n</m:ci>
+									</m:bvar>
+									<m:lowlimit>
+										<m:cn>0</m:cn>
+									</m:lowlimit>
+									<m:uplimit>
+										<m:infinity/>
+									</m:uplimit>
+									<m:apply>
+										<m:times/>
+										<m:apply>
+											<m:power/>
+											<m:ci>
+												<m:msub>
+													<m:mi>r</m:mi>
+													<m:mn>2</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:ci>n</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:power/>
+											<m:apply>
+												<m:abs/>
+												<m:ci>z</m:ci>
+											</m:apply>
+											<m:apply>
+												<m:minus/>
+												<m:ci>n</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>C</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:apply>
+									<m:sum/>
+									<m:bvar>
+										<m:ci>n</m:ci>
+									</m:bvar>
+									<m:lowlimit>
+										<m:cn>0</m:cn>
+									</m:lowlimit>
+									<m:uplimit>
+										<m:infinity/>
+									</m:uplimit>
+									<m:apply>
+										<m:power/>
+										<m:apply>
+											<m:divide/>
+											<m:ci>
+												<m:msub>
+													<m:mi>r</m:mi>
+													<m:mn>2</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:apply>
+												<m:abs/>
+												<m:ci>z</m:ci>
+											</m:apply>
+										</m:apply>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+
+	   Por lo tanto para que la suma converja,  
+	    <m:math>
+				<m:apply>
+					<m:gt/>
+					<m:apply>
+						<m:abs/>
+						<m:ci>z</m:ci>
+					</m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>r</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:math>,
+	     así que la ROC de una secuencia del lado derecho tiene la forma de
+	    <m:math>
+				<m:apply>
+					<m:gt/>
+					<m:apply>
+						<m:abs/>
+						<m:ci>z</m:ci>
+					</m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>r</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:math>.
+	  </item>
+	</list>
+</para>
+
+
+      <figure id="rtsided">
+	<media id="idm295952" alt=""><image src="../../media/rtsided1.png" mime-type="image/png"/></media>
+	<caption>Secuencia de lado derecho</caption>
+</figure>
+      
+      <figure id="rtsided2">
+	<media id="idp2589760" alt=""><image src="../../media/rtsided2.png" mime-type="image/png"/></media>
+	<caption>LA ROC de una secuencia de lado derecho.</caption>
+</figure>
+
+
+      <para id="parafix2">
+	<list id="listfix2">
+	<item id="property4">
+		<emphasis>
+	    Si 
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>
+	    es una secuencia del lado izquierdo, entonces la ROC se extiende hacia dentro desde el polo mas cercano en
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn">X</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+			</m:math>.
+	    </emphasis>
+Una secuencia del <term>lado izquierdo</term> es aquella donde
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	    para 
+	    <m:math>
+			<m:apply>
+				<m:gt/>
+				<m:cn>n</m:cn>
+				<m:ci>
+					<m:msub>
+						<m:mo>n</m:mo>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:infinity/>
+				</m:apply>
+			</m:apply>
+		</m:math>.
+	  Si vemos la porción del lado negativa de la ultima derivación se puede deducir que 
+	    
+	    <equation id="furthernegderiv">
+			<m:math>
+				<m:apply>
+					<m:leq/>
+					<m:apply>
+						<m:ci type="fn">N</m:ci>
+						<m:ci>z</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>C</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:sum/>
+								<m:bvar>
+									<m:ci>n</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:apply>
+										<m:minus/>
+										<m:infinity/>
+									</m:apply>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:cn>-1</m:cn>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:power/>
+										<m:ci>
+											<m:msub>
+												<m:mi>r</m:mi>
+												<m:mn>1</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:power/>
+										<m:apply>
+											<m:abs/>
+											<m:ci>z</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:minus/>
+											<m:ci>n</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>C</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:sum/>
+								<m:bvar>
+									<m:ci>n</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:apply>
+										<m:minus/>
+										<m:infinity/>
+									</m:apply>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:cn>-1</m:cn>
+								</m:uplimit>
+								<m:apply>
+									<m:power/>
+									<m:apply>
+										<m:divide/>
+										<m:ci>
+											<m:msub>
+												<m:mi>r</m:mi>
+												<m:mn>1</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:apply>
+											<m:abs/>
+											<m:ci>z</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>C</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:sum/>
+								<m:bvar>
+									<m:ci>k</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:cn>1</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:infinity/>
+								</m:uplimit>
+								<m:apply>
+									<m:power/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:abs/>
+											<m:ci>z</m:ci>
+										</m:apply>
+										<m:ci>
+											<m:msub>
+												<m:mi>r</m:mi>
+												<m:mn>1</m:mn>
+											</m:msub>
+										</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</equation>
+
+	   Por lo tanto para que la suma converja, 
+	    <m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>,
+	    así que la ROC de la secuencia del lado izquierdo tiene la forma de
+	    <m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>.
+	    
+	  </item>
+</list>
+      </para>
+
+      
+      <figure id="lefsided1">
+	<media id="idp1065312" alt=""><image src="../../media/lefsided1.png" mime-type="image/png"/></media>
+	<caption>Secuencia de lado izquierdo.</caption>
+</figure>
+
+      <figure id="lefsided2">
+	<media id="idp620992" alt=""><image src="../../media/lefsided2.png" mime-type="image/png"/></media>
+	<caption>La ROC de una secuencia de lado izquierdo.</caption>
+</figure>
+
+
+      <para id="parafix3">
+	<list id="listfix3">
+	<item id="property5">
+		<emphasis>
+	     Si
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>
+
+ es una secuencia con dos lados, la ROC va ser un anillo en el plano-z que esta restringida en su interior y exterior por un polo</emphasis>. Una <term>secuencia de dos lados</term> es aquella con duración infinita en direcciones positivas y negativas. De la derivación de las dos propiedades, podemos deducir que si
+	     	      
+	  
+	    <m:math>
+			<m:apply>
+				<m:lt/>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>
+	  converge, entonces el tiempo positivo y el tiempo negativo converge, y 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">X</m:ci>
+				<m:ci>z</m:ci>
+			</m:apply>
+		</m:math>
+	     converge también. Por eso la ROC de una secuencia de dos lados tiene la forma de
+	    <m:math>
+			<m:apply>
+				<m:lt/>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>r</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>.
+	  </item>
+</list>
+      </para>
+
+
+      <figure id="twosided1">
+	<media id="idm6390160" alt=""><image src="../../media/twosided1.png" mime-type="image/png"/></media>
+	<caption>Una secuencia de dos lados.</caption>
+</figure>
+      
+      <figure id="twosided2">
+	<media id="idm7278368" alt=""><image src="../../media/twosided2.png" mime-type="image/png"/></media>
+	<caption>La ROC de una secuancia de dos lados.</caption>
+</figure>
+	
+    </section>
+    
+    <section id="examples">
+      <title>Ejemplos</title>
+      <para id="ex">
+	Para entender esto mejor veremos los siguientes ejemplos. 
+      </para>
+
+      <example id="ex1">
+	<para id="e1">
+	 Tomemos 
+	  
+	  <equation id="ex1eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	  La transformada de
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:power/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:apply>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  es 
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:ci>z</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>z</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  con ROC en
+	  <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>	
+
+	
+	<figure id="ex1roc1a">
+	<media id="idm6754560" alt=""><image src="../../media/ex1roc1a.png" mime-type="image/png"/></media>
+	<caption>
+	    La ROC de 
+	    <m:math>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">u</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+
+
+	<para id="figspace1">
+La transformada de
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:power/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>-1</m:cn>
+					<m:cn>4</m:cn>
+				</m:apply>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  es 
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:ci>z</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>z</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>4</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	   con ROC en
+	  <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>-1</m:cn>
+				<m:cn>4</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+
+
+	<figure id="ex1roc1b">
+	<media id="idp2611040" alt=""><image src="../../media/ex1roc1b.png" mime-type="image/png"/></media>
+	<caption>
+	    La ROC de 
+	    <m:math>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>-1</m:cn>
+						<m:cn>4</m:cn>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">u</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+
+	
+	<para id="figspace2">
+	  Usando linealidad, 
+	  <equation id="ex1eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>X</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:divide/>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:plus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>8</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:plus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  Al observar esto se vuelve claro que hay dos cero, uno en 
+	  <m:math>
+		<m:cn>0</m:cn>
+	</m:math>	    
+	 y el otro en 
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>8</m:cn>
+		</m:apply>
+	</m:math>, 
+	 y dos polos, uno en
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>, 
+	  y en
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>-1</m:cn>
+			<m:cn>4</m:cn>
+		</m:apply>
+	</m:math>.
+	Usando las propiedades, la ROC es 
+	  <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+	
+	<figure id="ex1roc2">
+	<media id="idp3218512" alt=""><image src="../../media/ex1roc2.png" mime-type="image/png"/></media>
+	<caption>
+	    La ROC de 
+	    
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>-1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+			
+
+      </example>
+      <example id="ex2">
+	<para id="e2">
+	Ahora tomemos 
+	  <equation id="ex2eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>-1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	  La transformada y ROC de 
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:power/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>-1</m:cn>
+					<m:cn>4</m:cn>
+				</m:apply>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>	
+	  fueron mostradas en
+	  <link target-id="ex1" strength="3"> el ejemplo anterior</link>.
+	   La transformada de
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:minus/>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  es
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:ci>z</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>z</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  con una ROC en
+	  <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+
+	<figure id="ex2roc1">
+	<media id="idp7178336" alt=""><image src="../../media/ex2roc1.png" mime-type="image/png"/></media>
+	<caption>
+	   La ROC de 
+	    <m:math>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">u</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	
+	<para id="figspace4">
+Usando linealidad,
+	  <equation id="ex2eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>X</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:divide/>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:plus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:ci>z</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>8</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:plus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  Podemos observar que hay dos ceros, en 
+	  <m:math>
+		<m:cn>0</m:cn>
+	</m:math>	    
+	  y 
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>16</m:cn>
+		</m:apply>
+	</m:math>, 
+	   y dos polos en  
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>, 
+	  y
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>-1</m:cn>
+			<m:cn>4</m:cn>
+		</m:apply>
+	</m:math>.
+	 En este caso la ROC es
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+
+	
+	<figure id="ex2roc2">
+	<media id="idm6789760" alt=""><image src="../../media/ex2roc2.png" mime-type="image/png"/></media>
+	<caption>
+	    La ROC de 
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>-1</m:cn>
+								<m:cn>4</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>.
+	  </caption>
+</figure>
+
+
+      </example>
+    </section>          
+  </content>  
+</document>

@@ -1,0 +1,974 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Ejemplos de DTFT</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>29b2360d-a4be-4319-b82d-b86056ee5fa3</md:uuid>
+</metadata>
+
+  <content>
+
+    <example id="ex2001"> 
+      <para id="p1">
+	Calculemos la transformada de Fourier en tiempo discreto para la secuencia del  exponencial  decadente 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:power/>
+					<m:ci>a</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">u</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	, donde
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">u</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> la secuencia del Escalón unitario. Al remplazar la expresión de la señal la formula de la transformada de Fourier.
+      </para>
+      
+      <equation id="eqn0004">
+	<title>Formula de la Transformada de Fourier </title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:ci>f</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar><m:ci>n</m:ci></m:bvar>
+				<m:uplimit><m:infinity/></m:uplimit>
+				<m:lowlimit>
+					<m:apply>
+						<m:minus/>
+						<m:infinity/>
+					</m:apply>
+				</m:lowlimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:ci>a</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">u</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+								<m:ci>f</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar><m:ci>n</m:ci></m:bvar>
+				<m:uplimit><m:infinity/></m:uplimit>
+				<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:times/>
+						<m:ci>a</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+
+      <para id="p2">
+	La suma es un caso especial de <term>series geométricas</term>.
+
+	<equation id="eqn0005">
+		<title>Series Geométricas </title>
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>α</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:lt/>
+						<m:apply>
+							<m:abs/>
+							<m:ci>α</m:ci>
+						</m:apply>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>n</m:ci></m:bvar>
+						<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+						<m:uplimit><m:infinity/></m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:ci>α</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Así, por mientras que 
+	<m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>a</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>
+	, tenemos nuestra transformada de Fourier.
+	
+	<equation id="eqn0006">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">S</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>f</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>a</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>f</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <para id="p4">
+Usando la relación de Euler, podemos expresar la magnitud y el ángulo de este espectro.
+
+	<equation id="eqn0007a">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:ci type="fn">S</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+								<m:ci>f</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:root/>
+						<m:apply>
+							<m:plus/>
+							<m:apply>
+								<m:power/>
+								<m:apply>
+									<m:minus/>
+									<m:cn>1</m:cn>
+									<m:apply>
+										<m:times/>
+										<m:ci>a</m:ci>
+										<m:apply>
+											<m:cos/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+												<m:ci>f</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:ci>a</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+								<m:apply>
+									<m:power/>
+									<m:apply>
+										<m:sin/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>f</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eqn0007b">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:arg/>
+					<m:apply>
+						<m:ci type="fn">S</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+								<m:ci>f</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:arctan/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:ci>a</m:ci>
+								<m:apply>
+									<m:sin/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>f</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:cn>1</m:cn>
+								<m:apply>
+									<m:times/>
+									<m:ci>a</m:ci>
+									<m:apply>
+										<m:cos/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>f</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <para id="p5">
+	No importa que valor de  <m:math><m:ci>a</m:ci></m:math> escojamos, las formulas anteriores demuestran claramente la naturaleza periódica del espectro de señales discretas en el tiempo.   <link target-id="fig1001" strength="3"/> muestra como el espectro es un función periódica. Tan solo tenemos que considerar el espectro entre 
+	<m:math>
+		<m:apply>
+			<m:minus/>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+	y 
+	<m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math> 
+	para definirla  unambiguosamente. Cuando 
+	<m:math>
+		<m:apply>
+			<m:gt/>
+			<m:ci>a</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	, tenemos un espectro de pasa bajas – el espectro desaparece cuando la frecuencia incrementa de 
+	<m:math>
+		<m:cn>0</m:cn>
+	</m:math> 
+	a
+	<m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>
+	— con una 
+	<m:math>
+		<m:ci>a</m:ci>
+	</m:math> 
+
+incrementa nos lleva a un contenido mayor de frecuencias bajas; para
+	<m:math>
+		<m:apply>
+			<m:lt/>
+			<m:ci>a</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	,tenemos un espectro de pasa altas. (<link target-id="fig1002" strength="3"/>).
+      </para>
+    </example>
+    
+    <figure id="fig1001" orient="horizontal">
+	<media id="idm6612784" alt=""><image src="../../media/spectrum10-08f5.png" mime-type="image/png"/></media>
+	<caption> 
+	El espectro de la señal exponencial
+	(<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>a</m:ci>
+				<m:cn>0.5</m:cn>
+			</m:apply>
+		</m:math>) es mostrado sobre el rango de frecuencias	<m:math>
+			<m:interval>
+				<m:cn>-2</m:cn>
+				<m:cn>2</m:cn>
+			</m:interval>
+		</m:math>, claramente demostrando la periodicidad de toda la espectra discreta en el tiempo. EL ángulo tiene las unidades en grados.
+      </caption>
+</figure>                 
+
+    <figure id="fig1002" orient="horizontal">
+	<media id="idp1316592" alt=""><image src="../../media/spectrum11.png" mime-type="image/png"/></media>
+	<caption>
+El espectro de varias señales exponenciales es mostrado aquí	
+.  ¿Cual es la relación  aparente entre el espectro de
+	<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>a</m:ci>
+				<m:cn>0.5</m:cn>
+			</m:apply>
+		</m:math> 
+	y
+	<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>a</m:ci>
+				<m:cn>-0.5</m:cn>
+			</m:apply>
+		</m:math>
+	?
+      </caption>
+</figure>
+
+    <example id="ex2002">
+
+      <para id="p6">
+	Análogo a una señal de pulso análogo encontramos el espectro de la secuencia de pulso de tamaño-
+	<m:math>
+		<m:ci>N</m:ci>
+	</m:math> 
+	pulse sequence.
+      </para>
+
+      <equation id="eqn0008">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:piecewise>
+	      <m:piece>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:leq/>
+		  <m:cn>0</m:cn>
+		  <m:ci>n</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>N</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:piece>
+	      <m:otherwise>
+		<m:cn>0</m:cn>
+	      </m:otherwise>
+	    </m:piecewise>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <para id="p7">
+La transformada de Fourier de esta secuencia tiene la forma de una serie geométrica truncada. </para>
+
+      <equation id="eqn0009">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+	      <m:uplimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:uplimit>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <para id="p8">
+Para las llamadas series geométricas finitas, sabemos que 
+
+      <equation id="eqn0010">
+		<title>
+Series Geométricas Finitas
+</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>n</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:ci>
+							<m:msub>
+								<m:mi>n</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:plus/>
+							<m:ci>N</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>
+									<m:msub>
+										<m:mi>n</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:mi>n</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:power/>
+								<m:ci>α</m:ci>
+								<m:ci>N</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:ci>α</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	para <emphasis>todos</emphasis> los valores de 	<m:math>
+		<m:ci>α</m:ci>
+	</m:math>
+	.  
+      </para>
+    </example>
+
+    <exercise id="exer1">
+      <problem id="idp1762416">
+	<para id="prob1">
+	  Derive esta formula para la formula de series geométrica finitas. El “truco” es el considerar la diferencia entre la suma de las series y la suma de las series multiplicada por 
+	  <m:math>
+		<m:ci>α</m:ci>
+	</m:math>
+	  .
+	</para>
+      </problem>
+
+      <solution id="idp2420720">
+	<para id="sol1">
+	<equation id="eqnsol1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>α</m:ci>
+						<m:apply>
+							<m:sum/>
+							<m:bvar><m:ci>n</m:ci></m:bvar>
+							<m:lowlimit>
+								<m:ci>
+									<m:msub>
+										<m:mi>n</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:plus/>
+									<m:ci>N</m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>
+											<m:msub>
+												<m:mi>n</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:power/>
+								<m:ci>α</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>n</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:ci>
+								<m:msub>
+									<m:mi>n</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:plus/>
+								<m:ci>N</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>
+										<m:msub>
+											<m:mi>n</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:apply>
+							<m:plus/>
+							<m:ci>N</m:ci>
+							<m:ci>
+								<m:msub>
+									<m:mi>n</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:mi>n</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation> 
+
+	  la cual, después de algunas manipulaciones, da la formula de la suma geométrica.	</para>
+      </solution>
+    </exercise>
+    
+    <para id="p10">
+      Aplicando este resultado da (<link target-id="fig1003" strength="3"/>.)
+    </para>
+
+    <equation id="eqn0011">
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>N</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+    </equation>
+
+    <para id="p11"> 
+El radio de las funciones de seno tiene la forma genérica de 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:apply>
+				<m:sin/>
+				<m:apply>
+					<m:times/>
+					<m:ci>N</m:ci>
+					<m:ci>x</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:sin/>
+				<m:ci>x</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      , que es mejor conocida como la <term>función de sinc discreta </term>, 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">dsinc</m:ci>
+			<m:ci>x</m:ci>
+		</m:apply>
+	</m:math>
+      .  Por lo tanto, nuestra transformada puede ser expresada como       <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:ci>f</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:pi/>
+								<m:ci>f</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">dsinc</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:ci>f</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      .  El espectro del pulso discreto contiene muchas ondulaciones, las cuales el numero incrementa con 
+      <m:math>
+		<m:ci>N</m:ci>
+	</m:math>
+      , la duración del pulso.
+    </para>
+    
+    <figure id="fig1003" orient="horizontal">
+	<media id="idp2243936" alt=""><image src="../../media/spectrum12.png" mime-type="image/png"/></media>
+	<caption>
+El espectro para un pulse de tamaño-diez es mostrado aquí. ¿Puedé usted explicar la apariencia complicada que el ángulo tiene?
+      </caption>
+</figure>
+
+  </content>
+</document>

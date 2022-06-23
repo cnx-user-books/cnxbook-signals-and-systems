@@ -1,0 +1,1259 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Algebra Lineal: Conceptos Básicos</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>997ebd01-7f33-494c-880c-4fd90bfd158d</md:uuid>
+</metadata>
+
+  <content>
+    <para id="intro">Este pequeño tutorial da algunos términos clave de álgebra lineal, no pretende remplazar o ser muy provechoso como en aquellos que  usted pretende ganar una profundidad en álgebra lineal. En cambio esto es una  pequeña introducción a algunos términos e ideas de álgebra lineal para darnos un pequeño repaso para aquellos que tratan de tener un mejor entendimiento o de aprender sobre eigenvectores (vectores propios) y eigenfunciones (funciones propias), que juegan un papel muy importante en la obtención  de ideas importantes en Señales y Sistemas. La meta de estos conceptos es de proveer un respaldo para la descomposición de señales y para conducirnos a la derivación de las  <link document="m12893" strength="3"> Series de Fourier</link>.
+    </para>
+
+    <section id="lin_ind">
+      <title>Independencia Lineal</title>
+      <para id="p1_lin">Un  conjunto de vectores 
+	<m:math display="inline">
+		<m:apply>
+			<m:forall/>
+			<m:bvar>
+				<m:ci>x</m:ci>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:in/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mi>i</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:power/>
+						<m:complexes/>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>…</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:apply>
+	</m:math> es <term>linealmente independiente</term> si ninguno de los vectores puede escribirse como una combinación lineal de los otros.      </para>
+      
+      <definition id="linearind"><term>1  Linealmente Independiente</term>
+	<meaning id="idm7645200">
+	  Un conjunto dado de vectores 	  <m:math display="inline">
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>…</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:math>, es linealmente independiente si 	  
+	  <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	  
+	  solo cuando	  <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub></m:ci>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub></m:ci>
+				<m:ci>…</m:ci>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub></m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</meaning>
+	<example id="eg1_def">
+		<para id="p1_eg1def">Dados los siguientes dos vectores:
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>3</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>-6</m:cn>
+					<m:cn>-4</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	    Estos son <emphasis>no linealmente independientes</emphasis>  por el siguiente argumento, el cual por inspección, se puede ver que no se apega a la definición anterior de independencia lineal:
+
+	    <m:math display="block">
+		<m:apply>
+			<m:implies/>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:cn>-2</m:cn>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	    Otro método para ver la independencia de los vectores es graficando los vectores.  Observando estos dos vectores geométricamente (como en la siguiente  <link target-id="fig1"/>), uno puede otra vez probar que estos vectores son <emphasis>no</emphasis>
+	    linealmente independientes.  
+	  </para>
+	</example>
+</definition>
+      
+      <figure id="fig1">
+	<media id="idm1819216" alt=""><image src="../../media/vec_f1.png" mime-type="image/png"/></media>
+	<caption>
+	  Representación gráfica de dos vectores que no son linealmente independientes.
+	</caption>
+      </figure> 
+      
+      
+      <example id="eg2_def">
+	<para id="p1_eg2def">
+	  Dados los siguientes dos vectores:
+	  
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>3</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	  Estos son <emphasis>linealmente independientes</emphasis> ya que
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:times/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub></m:ci>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub></m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  
+	  solo si
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci><m:msub>
+					<m:mi>c</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub></m:ci>
+			<m:ci><m:msub>
+					<m:mi>c</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub></m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.  Basados en la definición, esta demostración muestra que estos vectores son linealmente independientes. También podemos graficar estos dos vectores (véase <link target-id="fig2"/>) para checar la independencia lineal.	</para>
+      </example>
+      
+      <figure id="fig2">
+	<media id="idm7815488" alt=""><image src="../../media/vec_f2.png" mime-type="image/png"/></media>
+	<caption>
+	  Representación gráfica de dos vectores que son linealmente independientes.
+	</caption>
+      </figure> 
+      
+
+      <exercise id="exer1">
+	<problem id="idm7096464">
+		<para id="p1_ex1">
+	  ¿Son
+	    <m:math display="inline">
+				<m:apply>
+					<m:set>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>3</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:set>
+				</m:apply>
+			</m:math> linealmente independientes?
+	    
+	    <m:math display="block">
+				<m:apply>
+					<m:eq/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:vector>
+							<m:cn>3</m:cn>
+							<m:cn>2</m:cn>
+						</m:vector>
+					</m:apply>
+				</m:apply>
+			</m:math>
+			<m:math display="block">
+				<m:apply>
+					<m:eq/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:vector>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:vector>
+					</m:apply>
+				</m:apply>
+			</m:math>
+			<m:math display="block">
+				<m:apply>
+					<m:eq/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>3</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:vector>
+							<m:cn>-1</m:cn>
+							<m:cn>0</m:cn>
+						</m:vector>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</para>
+	</problem>
+	<solution id="idp476800">
+		<para id="sol_1">
+	    Jugando un poco con los vectores y haciendo intentos de prueba y error, descubrimos la siguiente relación:
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:minus/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>3</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	    
+	    donde encontramos una combinación lineal de estos tres vectores igual a cero sin utilizar los coeficientes igual a cero. Por lo tanto, estos vectores son ¡<emphasis>no
+	    linealmente independientes</emphasis>!
+	  </para>
+	</solution>
+</exercise>
+      
+      <para id="p33">
+	Como podemos ver en los dos ejemplos anteriores, a veces la independencia de vectores puede ser vista fácilmente a través de una gráfica. Sin embargo esto no es tan sencillo, cuando se nos dan tres o más vectores. Puede decir fácilmente cuando o no estos vectores son independientes  <link target-id="fig3"/>.  Probablemente no, esto es, por lo cual el método usado en la solución anterior se vuelve importante.       </para>
+            
+      <figure id="fig3">
+	<media id="idp5964480" alt=""><image src="../../media/vec_f3.png" mime-type="image/png"/></media>
+	<caption>
+	  Gráfica de tres vectores. Puede ser mostrado que la combinación lineal existe entre los tres, y por lo tanto estos son 
+	  <emphasis>no</emphasis> linealmente independientes.
+	</caption>
+</figure> 
+
+      <para id="p_not">
+	<note type="observación" id="idm897856"><label>Observación</label>
+	  Un conjunto de <m:math><m:ci>m</m:ci></m:math> vectores en
+	  <m:math display="inline">
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math> no puede ser linealmente independiente si 	  <m:math display="inline">
+			<m:apply>
+				<m:gt/>
+				<m:ci>m</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>.
+	</note>
+</para>
+
+    </section>
+
+    
+    <section id="span_sec">
+      <title>Subespacio Generado</title>
+      <para id="p1_span">
+	<definition id="def_span">
+	<term>Subespacio Generado </term>
+	<meaning id="idm1669408">
+	    El <link document="m10297" target-id="defn2" strength="2">subespacio generado o span</link> del conjuto de vectores	    <m:math display="inline">
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>…</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:math>
+	    es el conjunto de vectores que pueden ser escritos como una combinación lineal de	    <m:math display="inline">
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>…</m:ci>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:math>
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">subespacio generado</m:ci>
+					<m:apply>
+						<m:set>
+							<m:ci type="vector">
+								<m:msub>
+									<m:mi>x</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>…</m:ci>
+							<m:ci type="vector">
+								<m:msub>
+									<m:mi>x</m:mi>
+									<m:mi>k</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:set>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:set>
+						<m:apply>
+							<m:forall/>
+							<m:bvar>
+								<m:ci>α</m:ci>
+							</m:bvar>
+							<m:condition>
+								<m:apply>
+									<m:in/>
+									<m:ci><m:msub>
+											<m:mi>α</m:mi>
+											<m:mi>i</m:mi>
+										</m:msub></m:ci>
+									<m:apply>
+										<m:power/>
+										<m:complexes/>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:condition>
+							<m:apply>
+								<m:plus/>
+								<m:apply>
+									<m:times/>
+									<m:msub>
+										<m:mi>α</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+									<m:ci type="vector">
+										<m:msub>
+											<m:mi>x</m:mi>
+											<m:mn>1</m:mn>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:times/>
+									<m:ci><m:msub>
+											<m:mi>α</m:mi>
+											<m:mn>2</m:mn>
+										</m:msub></m:ci>
+									<m:ci type="vector">
+										<m:msub>
+											<m:mi>x</m:mi>
+											<m:mn>2</m:mn>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+								<m:ci>…</m:ci>
+								<m:apply>
+									<m:times/>
+									<m:ci><m:msub>
+											<m:mi>α</m:mi>
+											<m:mi>k</m:mi>
+										</m:msub></m:ci>
+									<m:ci type="vector">
+										<m:msub>
+											<m:mi>x</m:mi>
+											<m:mi>k</m:mi>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:set>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</meaning>
+	<example id="eg1_spn">
+		<para id="p1_eg1">
+	      Dado el vector
+	      <m:math display="block">
+				<m:apply>
+					<m:eq/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>x</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:vector>
+							<m:cn>3</m:cn>
+							<m:cn>2</m:cn>
+						</m:vector>
+					</m:apply>
+				</m:apply>
+			</m:math>
+
+	      el subespacio generado de 	      <m:math display="inline">
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:math>
+	      es una <emphasis>linea</emphasis>.
+	    </para>
+	</example>
+	<example id="eg2_spn">
+		<para id="p1_eg2">
+	      Dado los vectores	      
+	      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>3</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>x</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	      El subespacio generado por estos vectores es
+	      <m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>.
+
+	    </para>
+	</example>
+</definition>
+      </para>
+    </section>
+
+
+    <section id="sec_bas">
+      <title>Bases</title>
+      <para id="p1_bas">
+	<definition id="def_bas">
+	<term>Base</term>
+	<meaning id="idp1004512">
+	    Una base para 
+	    <m:math display="inline">
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>
+	    es un conjunto de vectores que: (1) generan
+	    <m:math display="inline">
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>
+		<emphasis>y</emphasis> (2) es linealmente independiente.
+	  </meaning>
+</definition>
+
+	Claramente, un conjunto de <m:math><m:ci>n</m:ci></m:math> vectores linealmente independientes es una <term>base</term> para	<m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+
+      <example id="eg1_bas">
+	<para id="p1_eg1b">
+	 Dado el siguiente vector
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>e</m:mi>
+					<m:mi>i</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>0</m:cn>
+					<m:ci>⋮</m:ci>
+					<m:cn>0</m:cn>
+					<m:cn>1</m:cn>
+					<m:cn>0</m:cn>
+					<m:ci>⋮</m:ci>
+					<m:cn>0</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  
+	 donde el <m:math><m:cn>1</m:cn></m:math> esta siempre en la 	  <m:math><m:ci>i</m:ci></m:math>-esima posición y los valores restantes son ceros.  Entonces la <term>base</term> para 
+	  <m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> es	  
+	  <m:math display="block">
+		<m:apply>
+			<m:set>
+				<m:apply>
+					<m:forall/>
+					<m:bvar>
+						<m:ci>i</m:ci>
+					</m:bvar>
+					<m:condition>
+						<m:apply>
+							<m:eq/>
+							<m:ci>i</m:ci>
+							<m:apply>
+								<m:list>
+									<m:cn>1</m:cn>
+									<m:cn>2</m:cn>
+									<m:ci>…</m:ci>
+									<m:ci>n</m:ci>
+								</m:list>
+							</m:apply>
+						</m:apply>
+					</m:condition>
+					<m:apply>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>e</m:mi>
+								<m:mi>i</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>
+	<note type="note" id="idm712224">
+		<m:math display="inline">
+			<m:apply>
+				<m:set>
+					<m:apply>
+						<m:forall/>
+						<m:bvar>
+							<m:ci>i</m:ci>
+						</m:bvar>
+						<m:condition>
+							<m:apply>
+								<m:eq/>
+								<m:ci>i</m:ci>
+								<m:apply>
+									<m:list>
+										<m:cn>1</m:cn>
+										<m:cn>2</m:cn>
+										<m:ci>…</m:ci>
+										<m:ci>n</m:ci>
+									</m:list>
+								</m:apply>
+							</m:apply>
+						</m:condition>
+						<m:apply>
+							<m:ci type="vector">
+								<m:msub>
+									<m:mi>e</m:mi>
+									<m:mi>i</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:set>
+			</m:apply>
+		</m:math>	
+	    es llamada la <term>base canónica</term>.
+	  </note>
+</para>
+      </example>
+
+      <example id="eg2_bas">
+	<para id="p1_eg2bas">
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>h</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>1</m:cn>
+					<m:cn>1</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>h</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>1</m:cn>
+					<m:cn>-1</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>h</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>h</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> es una base para	  <m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>.
+	</para>
+      </example>
+
+
+      <figure id="fig4">
+	<media id="idp5450992" alt=""><image src="../../media/vec_f4.png" mime-type="image/png"/></media>
+	<caption>
+	  Gráfica de bases para 
+	  <m:math display="inline">
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure> 
+
+      <para id="p2_bas">
+	Si	<m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>…</m:ci>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> es una base para 	<m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, entonces podemos expresar <emphasis>cualquier</emphasis>
+	<m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> como una combinación lineal de 
+	<m:math display="inline">
+		<m:ci><m:msub>
+				<m:mi>b</m:mi>
+				<m:mi>i</m:mi>
+			</m:msub></m:ci>
+	</m:math>'s:
+
+	<m:math display="block">
+		<m:apply>
+			<m:forall/>
+			<m:bvar>
+				<m:ci>α</m:ci>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:in/>
+					<m:ci><m:msub>
+							<m:mi>α</m:mi>
+							<m:mi>i</m:mi>
+						</m:msub></m:ci>
+					<m:complexes/>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">x</m:ci>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>b</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>b</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>b</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+      <example id="eg3_bas">
+	<para id="p1_eg3bas">
+	  Dado el siguiente vector,	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  
+	  escribiendo
+	  <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	</m:math> en términos de 
+	  <m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>e</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>e</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> nos da
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>e</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>e</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+      </example>
+      
+      <exercise id="exer_bas">
+	<problem id="idm1136144">
+	  <para id="exer1_p1">
+	    Trate de escribir   <m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	</m:math>
+	    en términos de 	    <m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>h</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>h</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> (definidos en el ejemplo anterior).
+	  </para>
+	</problem>
+
+	<solution id="idp6351360">
+	  <para id="sol1_p1">	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>h</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>-1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>h</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="p_fin">En los dos ejemplos de bases anteriores,
+	<m:math display="inline">
+		<m:ci type="vector">x</m:ci>
+	</m:math> es el mismo vector en ambos casos, pero podemos expresarlo de varias diferentes maneras (dimos solo dos de las muchas posibilidades). Se puede extender aun más la idea de bases para <term>espacio de funciones</term>.
+	
+	<note type="nota" id="idm8134048"><label>Nota</label>
+	  : Como se menciono en la introducción, estos conceptos de álgebra lineal nos ayudaran para entender las  <link document="m12893" strength="3">Series de Fourier</link>, las que nos dicen que podemos expresar las funciones periódicas	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>, 
+	 en términos de sus funciones de bases
+	   <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci><m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub></m:ci>
+					<m:ci>n</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>.
+	</note>
+</para>
+	
+    </section>
+
+  </content>
+</document>

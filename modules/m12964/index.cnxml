@@ -1,0 +1,1556 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Muestreo</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>de52c956-85ff-4112-b776-ada88000c1ca</md:uuid>
+</metadata>
+  
+  
+  <content>
+    <section id="int">
+      <title>Introducción</title>
+      
+      <!-- figure -->
+      
+      <para id="para1">
+	Una computadora puede procesar <term> señales de tiempo discreto</term> usando un lagoritmo extremandamente flexible y poderoso. Mas sin embargo la mayoria de las señales de interes son de 
+	<term>tiempo continuo</term>, que es como casi siempre aparecen al natural.
+      </para>
+
+      <para id="para3">
+	Este modulo introduce la idea de trasladar los problemas de tiempo continuo en unos de tiempo discreto, y podra leer más de los detalles de la importancia de el <term>muestreo</term>.
+      </para>
+
+      <list id="questions" list-type="bulleted">
+	<title>Preguntas clave</title>
+	<item>¿Cómo pasamos de una señal de tiempo continuo a una señal de tiempo discreto (muestreo, A/D)?
+	</item>
+	<item>¿Cuándo podemos <link document="m12969" strength="3">reconstruir </link> una señal CT exacta de sus muestras  (reconstrucción, D/A)?
+	</item>
+	<item>¿Manipular la señal DT es lo que reconstruir la señal?
+	</item>
+</list>
+    </section>
+
+    <section id="sec2">
+      <title>Muestreo</title>
+      <para id="para4">
+	Muestreo  (y reconstrucción) son los mejores entendimiento en dominio de frecuencia. Empezaremos viendo algunos ejemplos:
+      </para>
+
+      <exercise id="expl1">
+	<problem id="idm333440">
+	  <para id="ex11">
+	    ¿Qué señal CT  
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> tiene la <link document="m12955" strength="3">CTFT</link> mostrada anterirormente?
+	
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>w</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">F</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>w</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:exponentiale/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>w</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+	  <figure id="fig1">
+	    <media id="idm8943984" alt=""><image src="../../media/samp1.png" mime-type="image/png"/></media>
+	    <caption>
+	      La (Transformada de Fourier de Tiempo Continuo)CTFT de 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>.
+	    </caption>
+	  </figure>
+	  
+
+	  <para id="ex13">
+	    Pista:  
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">F</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>F</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		    <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>F</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		    <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math> donde las dos partes de  
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">F</m:ci>
+		<m:apply>
+		  <m:times/>
+		    <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math> son:
+	  </para> 
+
+	  <figure orient="horizontal" id="fig2">
+	    <subfigure id="s1_fig2">
+	      <media id="idm9630576" alt=""><image src="../../media/samp2.png" mime-type="image/png"/></media>
+	    </subfigure>
+	    <subfigure id="s2_fig2">
+	      <media id="idm1533648" alt=""><image src="../../media/samp3.png" mime-type="image/png"/></media>
+	    </subfigure>
+	  </figure>
+	</problem>
+
+	<solution id="idm510208">
+	  <para id="ex12">
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>w</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</solution>
+      </exercise>
+
+      <exercise id="expl2">
+	<problem id="idm8367552">
+	  <para id="ex21">
+	    ¿Qué señal DT  
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> tiene la  <link document="m12861" strength="3">DTFT</link> mostrada anteriormente?
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>w</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>s</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+		    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	  
+	  <figure id="fig3">
+	    <media id="idm2028656" alt=""><image src="../../media/samp4.png" mime-type="image/png"/></media>
+	    <caption>
+	      DTFT que es périodica (con 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>period</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>) versión de 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">F</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math> en la <link target-id="fig1" strength="2"/>.
+	    </caption>
+	  </figure>
+	</problem>
+
+	<solution id="idp430736">
+	  <para id="ex22">	    
+	    Ya que 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">F</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math> afuera de  
+
+	    <m:math>
+	      <m:interval>
+		<m:cn>-2</m:cn>
+		<m:cn>2</m:cn>
+	      </m:interval>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>w</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>-2</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:cn>2</m:cn>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    También , ya que solo utilizamos un intervalo para reconstruir 
+
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> de su DTFT, tenemos 
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>w</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>-2</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:cn>2</m:cn>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>s</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+		    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    Ya que 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">F</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>F</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		    <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>en 
+	    <m:math>
+	      <m:interval>
+		<m:cn>-2</m:cn>
+		<m:cn>2</m:cn>
+	      </m:interval>
+	    </m:math>
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:ci>n</m:ci>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math> es decir 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> es una versión <emphasis>muestreada</emphasis> de
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise>
+
+
+      <figure id="fig4">
+	<media id="idm8605616" alt=""><image src="../../media/samp_big.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> es la señal de tiempo-continuo anterior y 	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math> es la versión muestreada de tiempo-discreto de 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </figure>
+      
+
+      <section id="sec3">
+	<title>Generalización</title>	
+	<para id="para10">
+	  Por supuesto, que los resultados de los ejemplos anteriores pueden ser generalizados a <emphasis>cualquier</emphasis>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> con 
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">F</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>w</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>, 
+	  <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>w</m:ci>
+			</m:apply>
+			<m:pi/>
+		</m:apply>
+	</m:math>, donde 
+	  
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es <term>limitado en banda </term> a 
+
+	  <m:math>
+		<m:interval>
+			<m:apply>
+				<m:minus/>
+				<m:pi/>
+			</m:apply>
+			<m:pi/>
+		</m:interval>
+	</m:math>.
+	</para>
+
+<!--
+	<para id="para12">
+	  Limitado en banda es 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> con 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">F</m:ci>
+		<m:apply>
+		  <m:times/>
+		    <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>, 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>w</m:ci>
+	      </m:apply>
+	      <m:pi/>
+	    </m:apply>
+	  </m:math> 
+	</para>
+-->
+
+	<figure orient="horizontal" id="fig5">
+	  <subfigure id="s1_fig5">
+	    <media id="idm1544816" alt=""><image src="../../media/samp_g1.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="s2_fig5">
+	    <media id="idm8978320" alt=""><image src="../../media/samp_g2.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <caption>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">F</m:ci>
+		<m:apply>
+		  <m:times/>
+		    <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math> es la  CTFT de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>.
+	  </caption>	  
+	</figure>
+	
+
+	<figure orient="horizontal" id="fig6">
+	  <subfigure id="s1_fig6">
+	    <media id="idm2221344" alt=""><image src="../../media/samp_g3.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="s2_fig6">
+	    <media id="idm10198256" alt=""><image src="../../media/samp_g4.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <caption>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>F</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math> es la  DTFT de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>.
+	  </caption>	  
+	</figure>
+	
+
+
+	<para id="para13">
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>F</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>w</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> es   <link document="m12893" strength="3">períodico</link> (con período
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		</m:apply>
+	</m:math>) versión de 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>w</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.  
+
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>F</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>w</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>es la DTFT de muestreo de señal en los enteros.
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>w</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es la  CTFT de señal.
+	</para>
+
+	<para id="para15">
+	  <note type="conclusion" id="idm9677904"><label>Conclusion</label>
+	    Si 
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es limitado en banda para 
+	    <m:math>
+		<m:interval>
+			<m:apply>
+				<m:minus/>
+				<m:pi/>
+			</m:apply>
+			<m:pi/>
+		</m:interval>
+	</m:math> entonces la  DTFT de la versión muestreada 
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">
+					<m:msub>
+						<m:mi>f</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es solo periódica  (con período 
+	    <m:math>
+		<m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		</m:apply>
+	</m:math>) versión de 
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>w</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	  </note>
+	</para>
+      </section>
+    </section>
+
+
+    <section id="sec4">
+      <title>Cambiando una Señal Discreta en una Señal Continua</title>
+
+      <para id="para16">
+	Ahora veamos como cambiar una señal DT en una señal continua en el tiempo. Sea
+
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>	  
+	    </m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> una señal DT con DTFT 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>F</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		    <m:imaginaryi/>
+		<m:ci>w</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </para>
+
+
+      <figure orient="horizontal" id="fig7">
+	<subfigure id="s1_fig7">
+	  <media id="idm1011936" alt=""><image src="../../media/samp_e1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="s2_fig7">
+	  <media id="idm1456496" alt=""><image src="../../media/samp_e2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>F</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		    <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> es la DTFT de 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</caption>	  
+      </figure>
+
+      <para id="para18">
+	Ahora, sea 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>imp</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">δ</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+
+	La señal CT, 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>imp</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>, es no-cero solo en los enteros donde hay implulsos de altura
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:mi>n</m:mi>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+
+      <figure id="fig8">
+	<media id="idm1426112" alt=""><image src="../../media/samp_e3.png" mime-type="image/png"/></media>
+      </figure>
+
+
+      <exercise id="exer3">
+	<problem id="idm1432016">
+	  <para id="exer31">
+	    ¿Cúal es la CTFT de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>imp</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>?
+	  </para>
+	</problem>
+
+	<solution id="idm2959376">
+	  <para id="exer32">
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>imp</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+
+	  <equation id="eq1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:apply>
+			<m:mover accent="true">
+			  <m:mi>F</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:apply>
+		      <m:mi>imp</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>imp</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>n</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:infinity/>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">
+			    <m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>s</m:mi>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">δ</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>t</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+		    <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:cn>t</m:cn>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+		    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+		    <m:imaginaryi/>
+			<m:ci>w</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>F</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		    <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+
+	  <para id="para28">
+	    Así que la CTFT de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>imp</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math> es <emphasis>igual</emphasis> a la DTFT de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </para>
+
+
+	  <para id="para20">
+	    <note type="nota" id="idm9973472"><label>Nota</label>
+	      Usamos la propiedad de desplazamiento para mostrar 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:cn>t</m:cn>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+		    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+		    <m:imaginaryi/>
+			<m:ci>w</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </note>
+	  </para>
+	  	
+	  <!-- figures 4 of them -->
+
+	</solution>
+      </exercise>
+
+
+      <para id="para25">
+	Ahora, dadas las muestras 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">
+				<m:msub>
+					<m:mi>f</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> de un limitado en banda para la señal
+	<m:math>
+		<m:interval>
+			<m:apply>
+				<m:minus/>
+				<m:pi/>
+			</m:apply>
+			<m:pi/>
+		</m:interval>
+	</m:math>, nuestro siguiente paso es ver como podemos  
+	<link document="m12969" strength="3">reconstruir</link>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+
+      <figure id="fig9">
+	<media id="idm411216" alt=""><image src="../../media/samp_blka.png" mime-type="image/png"/></media>
+	<caption>
+	  Diagrama de bloque mostrando  cada paso básico usado para reconstruir 	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>.  ¿Podemos hacer nuestro resultado igual a
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> exactamente?
+	</caption>
+      </figure>
+
+    </section>
+
+  </content>
+</document>

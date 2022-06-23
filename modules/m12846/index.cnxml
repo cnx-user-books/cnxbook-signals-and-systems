@@ -1,0 +1,437 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+  <title>Propiedades de la Transformada de Fourier Discreta en el Tiempo</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>3e401984-eba1-437e-ba10-4567d857b539</md:uuid>
+</metadata>
+  <content>
+    
+    
+    <table frame="all" id="fig1000" summary="">
+		<title>Propiedades de la Transformada de Fourier Discreta en el Tiempo </title>
+		<tgroup cols="3" align="left" colsep="1" rowsep="1">
+			<thead valign="top">
+				<row>
+					<entry>
+					</entry>
+					<entry>
+		Dominio de la Secuencia
+	      </entry>
+					<entry>
+		Dominio de la Frecuencia
+	      </entry>
+				</row>
+			</thead>
+			<tbody valign="top">
+				<row>
+					<entry>
+		Linearidad
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:plus/>
+								<m:apply><m:times/>
+									<m:ci><m:msub><m:mn>a</m:mn><m:mn>1</m:mn></m:msub></m:ci>
+									<m:apply><m:ci><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+								<m:apply><m:times/>
+									<m:msub><m:cn>a</m:cn><m:cn>2</m:cn></m:msub>
+									<m:apply><m:ci><m:msub><m:mi>s</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:plus/>
+								<m:apply><m:times/>
+									<m:ci><m:msub><m:mn>a</m:mn><m:mn>1</m:mn></m:msub></m:ci>
+									<m:apply><m:ci><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+											</m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+								<m:apply><m:times/>
+									<m:ci><m:msub><m:mn>a</m:mn><m:mn>2</m:mn></m:msub></m:ci>
+									<m:apply><m:ci><m:msub><m:mi>S</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+											</m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Simetría del Conjugado
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+						</m:math> real
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:eq/>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/><m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+										</m:apply></m:apply>
+								</m:apply>
+								<m:apply><m:conjugate/>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:minus/><m:apply><m:times/>
+													<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+												</m:apply></m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Simetría Par
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:eq/>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+								<m:apply><m:ci>s</m:ci><m:apply><m:minus/><m:ci>n</m:ci></m:apply></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:eq/>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/><m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+										</m:apply></m:apply>
+								</m:apply>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/><m:apply><m:minus/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+											</m:apply></m:apply></m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Simetría Impar
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:eq/>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+								<m:apply><m:minus/>
+									<m:apply><m:ci>s</m:ci>
+										<m:apply><m:minus/><m:ci>n</m:ci></m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:eq/>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/><m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+										</m:apply></m:apply>
+								</m:apply>
+								<m:apply><m:minus/>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:minus/><m:apply><m:times/>
+													<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+												</m:apply></m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Retrazo del Tiempo
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:ci>s</m:ci>
+								<m:apply><m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci><m:msub><m:mi>n</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:apply><m:exp/><m:apply><m:minus/><m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn>
+											<m:pi/><m:ci>f</m:ci>
+											<m:ci><m:msub><m:mi>n</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+										</m:apply></m:apply></m:apply>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/><m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+										</m:apply></m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Modulacion Compleja
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:apply><m:exp/><m:apply><m:times/>
+										<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+										<m:ci><m:msub><m:mi>f</m:mi><m:mi>0</m:mi></m:msub></m:ci><m:ci>n</m:ci>
+									</m:apply></m:apply>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:ci>S</m:ci>
+								<m:apply><m:exp/><m:apply><m:times/>
+										<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+										<m:apply><m:minus/>
+											<m:ci>f</m:ci>
+											<m:ci><m:msub><m:mi>f</m:mi><m:mi>0</m:mi></m:msub></m:ci>
+										</m:apply>
+									</m:apply></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Modulación de Amplitud 
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+								<m:apply><m:cos/><m:apply><m:times/>
+										<m:cn>2</m:cn><m:pi/>
+										<m:ci><m:msub><m:mi>f</m:mi><m:mi>0</m:mi></m:msub></m:ci><m:ci>n</m:ci>
+									</m:apply></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:divide/>
+								<m:apply><m:plus/>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+												<m:apply><m:minus/>
+													<m:ci>f</m:ci>
+													<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+												</m:apply>
+											</m:apply></m:apply>
+									</m:apply>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+												<m:apply><m:plus/>
+													<m:ci>f</m:ci>
+													<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+												</m:apply>
+											</m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+								<m:apply><m:sin/><m:apply><m:times/>
+										<m:cn>2</m:cn><m:pi/>
+										<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci><m:ci>n</m:ci>
+									</m:apply></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:divide/>
+								<m:apply><m:minus/>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+												<m:apply><m:minus/>
+													<m:ci>f</m:ci>
+													<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+												</m:apply>
+											</m:apply></m:apply>
+									</m:apply>
+									<m:apply><m:ci>S</m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/>
+												<m:apply><m:plus/>
+													<m:ci>f</m:ci>
+													<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+												</m:apply>
+											</m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+								<m:apply><m:times/><m:cn>2</m:cn><m:imaginaryi/></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Multiplicación por n
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:ci>n</m:ci>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:times/>
+								<m:apply><m:divide/>
+									<m:cn>1</m:cn>
+									<m:apply><m:minus/><m:apply><m:times/>
+											<m:cn>2</m:cn><m:imaginaryi/><m:pi/>
+										</m:apply></m:apply>
+								</m:apply>
+								<m:apply><m:diff/>
+									<m:bvar><m:ci>f</m:ci></m:bvar>
+									<m:apply><m:ci type="function">S</m:ci>
+										<m:apply><m:exp/><m:apply><m:times/>
+												<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+											</m:apply></m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Suma
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:sum/>
+								<m:bvar><m:ci>n</m:ci></m:bvar>
+								<m:lowlimit><m:apply><m:minus/><m:infinity/></m:apply></m:lowlimit>
+								<m:uplimit><m:infinity/></m:uplimit>
+								<m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:ci>S</m:ci>
+								<m:apply><m:exp/><m:apply><m:times/>
+										<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:cn>0</m:cn>
+									</m:apply></m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Valor en el Origen
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:ci>s</m:ci><m:cn>0</m:cn></m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:int/>
+								<m:bvar><m:ci>f</m:ci></m:bvar>
+								<m:lowlimit><m:apply><m:minus/>
+										<m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply>
+									</m:apply></m:lowlimit>
+								<m:uplimit>
+									<m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply>
+								</m:uplimit>
+								<m:apply><m:ci>S</m:ci>
+									<m:apply><m:exp/>
+										<m:apply><m:times/>
+											<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+				</row>
+				<row>
+					<entry>
+		Teorema de Parseval 
+	      </entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:sum/>
+								<m:bvar><m:ci>n</m:ci></m:bvar>
+								<m:lowlimit><m:apply><m:minus/><m:infinity/></m:apply></m:lowlimit>
+								<m:uplimit><m:infinity/></m:uplimit>
+								<m:apply><m:power/>
+									<m:apply><m:abs/><m:apply><m:ci>s</m:ci><m:ci>n</m:ci></m:apply></m:apply>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:math>
+					</entry>
+					<entry>
+						<m:math mode="inline">
+							<m:apply><m:int/>
+								<m:bvar><m:ci>f</m:ci></m:bvar>
+								<m:lowlimit><m:apply><m:minus/>
+										<m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply>
+									</m:apply></m:lowlimit>
+								<m:uplimit>
+									<m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply>
+								</m:uplimit>
+								<m:apply><m:power/>
+									<m:apply><m:abs/><m:apply><m:ci>S</m:ci>
+											<m:apply><m:exp/>
+												<m:apply><m:times/>
+													<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+												</m:apply>
+											</m:apply>
+										</m:apply></m:apply><m:cn>2</m:cn></m:apply>
+							</m:apply></m:math>
+					</entry>
+				</row>
+			</tbody>
+		</tgroup>
+	<caption> Propiedades de la Transformada de Fourier Discreta en el Tiempo y sus relaciones.</caption></table>
+
+  </content>
+</document>

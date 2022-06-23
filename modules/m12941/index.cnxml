@@ -1,0 +1,734 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Derivando la Transformada Rápida de Fourier</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>62e3cc0f-e14e-42b7-98a1-93d4f5ed0bb2</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="intro">
+      Para derivar la FFT,asumimos que la duración de la señal es una potencia de dos:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>N</m:ci>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:ci>l</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      .  Considere que pasa a los elementos pares numerados y a los elemenots  impares numerados de la solución de la secuencia en la DFT.
+    </para>
+
+    <equation id="zerozerozeroone">
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:ci>k</m:ci>
+	  </m:apply>
+
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:cn>2</m:cn>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>2</m:cn>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>N</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>N</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>N</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>N</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:minus/>
+			<m:imaginaryi/>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>N</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:minus/>
+			<m:imaginaryi/>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:apply>
+			    <m:minus/>
+		  	    <m:apply>
+			      <m:divide/>
+			      <m:ci>N</m:ci>
+			      <m:cn>2</m:cn>
+			    </m:apply>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>N</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply> 
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>N</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation>
+
+    <para id="expln"> 
+      Cada término en paréntesis al cuadrado tiene la  <term>forma</term> de una longitud  
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>N</m:ci>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>
+      de DFT.  La primera es una DFT de los elementos pares nuemrados,y la segunda es de los elementos impares numerados. La primer DFT es combinada con la segunda multiplicadno por el exponencial complejo 
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply> 
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      .  La media-longitud de la transformada es cada evaluación de los índices de frecuencia       <m:math>
+	<m:apply>
+	  <m:in/>
+	  <m:ci>k</m:ci>
+	  <m:set>
+	    <m:cn>0</m:cn>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>N</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:set>
+	</m:apply>
+      </m:math>
+      .  Normalmente el número de indices de frecuencia del rango de una calculación de la DFT esta entre cero y la longitud de la transformación menos uno.  La <term>ventaja computacional</term> de la  FFT viene de reconocer la natulareza del periódo de la transformada discreta de Fourier. La FFT simplemente reusa las soluciones hechas en la media-longitud de la transformada y las combina a través de sumas y multiplicaciones por
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply> 
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      , que no es periódica sobre 
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>N</m:ci>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>
+      , para rescribir la longitud-N DFT. La <link target-id="fig1001" strength="3"/> ilustra la descomposición. Como se mantiene, ahora resolvemos dos transformadas de longitudes-
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>N</m:ci>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>
+       (complejidad 
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:apply>
+	    <m:ci type="fn">O</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>N</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      ), multiplicar una de ellas por el exponencial complejo (complejidad 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      ), y sumar los resultados (complejidad 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      ).  En este punto, el total de complejidad sigue dominado por la mitad-longitud de la calculación de DFT, pero el coeficente de proporcionalidad ha sido reducido.
+    </para>
+
+    <para id="fun">
+      Ahora para la diversión. Por que 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>N</m:ci>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:ci>l</m:ci>
+	  </m:apply>
+	</m:apply> 
+      </m:math>
+      , cada una de las transformaciones de media-longitud puede ser reducida a una de dos cuartos-longitud, cada una de estas en dos octavos-longitud, etc.  Esta descomposición continua hasta que nos quedamos con una transformada de longitud -2 .  Esta transformada es absolutamente simple, involucrando solo sumas. Donde la primer etapa de la FFT tiene
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>N</m:ci>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math> transformadas de longitud-2  (vease la parte de abajo de la  <link target-id="fig1001" strength="3"/>).  Pares de estas transformadas son combinados suamando uno a otro multiplicado por el exponencial complejo. Cada par requiere 4 sumas y 4 multiplicaciones, dando un número total de computaciones igual a
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>8</m:cn>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>N</m:ci>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>N</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      .  Este número de computaciones no cambia de etapa a etapa. Ya que el número de etapas, el número de veces que la longitud puede ser dividida por dos, igual a
+      <m:math>
+	<m:apply>
+	  <m:log/>
+	  <m:logbase><m:cn>2</m:cn></m:logbase>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      , la complejidad de la FFT es 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>N</m:ci>
+	    <m:apply>
+	      <m:log/>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      .
+    </para>
+
+    <figure id="fig1001" orient="vertical">
+	<title>Descomposición de la DFT de longitud-8</title>
+	<subfigure id="oneoneohone">
+		<media id="idp12493120" alt=""><image src="../../media/sys9a.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="oneoneohtwo">
+		<media id="idp8661840" alt=""><image src="../../media/sys11a.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	La descomposición inicial de una longitud-8 DFT en términos usando índices pares e impares entradas marca la primera fase de convertirse en el algoritmo de la FFT. Cuando esta transformada de media-longitud esta completamente descompuesta, nos quedamos con el diagrama del panel inferior que representa la solución de la FFT de longitud-8.
+      </caption>
+</figure>
+
+    <para id="exampleexplained">
+      Haciendo un ejemplo haremos ahorros de procesos más obvios.
+      Veamos los detalles de la DFT de longitud-8. Como se muestra en la <link target-id="fig1001" strength="3"/>, primero descomponemos la DFT en dos DFT de longitud-4,con las salidas sumadas y restadas en pares. Considerando la  <link target-id="fig1001" strength="3"/> como el índice de frecuencia que va de 0 hasta 7,reciclamos valores de la DFT de longitud-4 para los calculos finales por la periódicidad de la salida de la DFT. Examinando como los pares de salidas se recojen juntas, creamos los alementos computacionales básicos conocidos como una   <term>mariposa</term> (<link target-id="fig1002" strength="3"/>).
+    </para>
+    
+    <figure id="fig1002">
+      <title>Mariposa</title>
+      <media id="idm356768" alt=""><image src="../../media/sys10-7eb8.png" mime-type="image/png"/></media>
+      <caption>
+	Los elementos computacionales básicos de la transformada rápida de Fourier es la mariposa. Toma dos números complejos, representados por  <emphasis>a</emphasis> y <emphasis>b</emphasis>, y forma las cantidades mostradas . Cada mariposa requiere una multiplicación compleja y dos sumas complejas.
+      </caption>
+    </figure>
+
+    <para id="afterexplication">
+      Considerando los procesos involucrando la salida de frecuencias comunes de la DFT de dos media-longitud, vemos que las dos multiplicaciones complejas son relacionadas unas con otras, y podemos reducir nuestro proceso en un futuro. Para descomposiciones posteriores las DFT de longitud-4 en las DFT de longitud-2 y combinando sus salidas, llegamos al resumen del diagrama de la transformada rápida de Fourier de longitud-8 (<link target-id="fig1001" strength="3"/>).
+      Aunque la multiplicación de los complejos es absolutamente simple 
+      (multiplicando por
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:pi/>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      significa partes negativas reales y partes imaginarias), contemos ésos para los propósitos de evaluar la complejidad como el complejo se multiplica por completo. Tenemos
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>N</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:cn>4</m:cn>
+	</m:apply>
+      </m:math>
+      multiplicaciones complejas y
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	  <m:cn>16</m:cn>
+	</m:apply>
+      </m:math>
+      sumas para cada etapa y
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:log/>
+	    <m:logbase><m:cn>2</m:cn></m:logbase>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	  <m:cn>3</m:cn>
+	</m:apply>
+      </m:math>
+      etapas, haciendo el número de procesos básicos
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>3</m:cn>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:apply>
+	    <m:log/>
+	    <m:logbase><m:cn>2</m:cn></m:logbase>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      como se predijo. 
+    </para>
+
+    <exercise id="exer1">
+      <problem id="idm951120"> 
+	<para id="prob1">
+	  Notese que el orden de la secuencia de entrada en dos partes de 
+	   <link target-id="fig1001" strength="3"/> no estan absolutamente iguales. ¿por que no?, ¿cómo esta determinado este orden?
+	</para>
+      </problem>
+
+      <solution id="idp7764688">
+	<para id="soln1">
+	  El panel de arriba no usa el algoritmo de FFT para procesar la DFT de longitud-4 mientras que el abajo si.El orden es determinado por el algoritmo.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="conclusion">
+      Otros lagoritmos "rápidos" han sido descubiertos, todos de los cuales hacen uso de cuantos factores tiene la transformada de longitud N. En teoria de números, el número de factores primos de un entero dado tiene medidas como <term>compuesto</term> es el.  El número 16 y 81 son altamente compuestos  (iguales a       <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>2</m:cn>
+	  <m:cn>4</m:cn>
+	</m:apply>
+      </m:math> 
+      y 
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>3</m:cn>
+	  <m:cn>4</m:cn>
+	</m:apply>
+      </m:math> 
+      respectivamente),el número 18 es menor asi que ( 
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>3</m:cn>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      ), y el 17 no del todo  (es primo).  a través de treinta años de desarrollo del algoritmo de la transformada de Fourier, el algoritmo original de 
+      Cooley-Tukey esta alejado de los usados con mas frecuancia. Es tan effciente computacionalmente hablando como la transformada de longitud  de potencia de dos  es frecuentemente usada sin importar la longitud actual de los datos.
+    </para>
+
+  </content>
+</document>

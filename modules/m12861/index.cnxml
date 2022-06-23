@@ -1,0 +1,168 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Transformada de Fourier Discreta en el Tiempo (DTFT)</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c1f76dd7-7509-4f2b-b353-e394cfb80cf4</md:uuid>
+</metadata>
+
+  <content>
+
+    <equation id="eqn1">
+	<title>Transformada de Fourier Discreta en el Tiempo</title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">X</m:ci>
+				<m:ci>ω</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:apply>
+						<m:minus/>
+						<m:infinity/>
+					</m:apply>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:infinity/>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+
+    <equation id="eqn2">
+	<title>Transformada Inversa  de Fourier Discreta en el Tiempo</title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">x</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>ω</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">X</m:ci>
+							<m:ci>ω</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+
+    <section id="sect1">
+      <title>Espacios Relevantes</title>
+      <para id="para1">La <link document="m10247" strength="2">transformada de Fourier en tiempo discreto</link> grafica señales discretas en el tiempo infinita en
+	<m:math>
+		<m:ci><m:msup>
+				<m:mi>l</m:mi>
+				<m:mn>2</m:mn>
+			</m:msup></m:ci>
+	</m:math>
+	, a señales de frecuencia continua con tamaño finito (o periódicas) en
+	<m:math>
+		<m:ci><m:msup>
+				<m:mi>L</m:mi>
+				<m:mn>2</m:mn>
+			</m:msup></m:ci>
+	</m:math>.
+      </para>
+
+      <figure id="fig1">
+	<media id="idm5966736" alt=""><image src="../../media/DTFT1.png" mime-type="image/png"/></media>
+	<caption>
+	  Grafica 
+	  <m:math>
+			<m:apply>
+				<m:ci type="fn"><m:msup>
+						<m:mi>l</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup></m:ci>
+				<m:integers/>
+			</m:apply>
+		</m:math>
+	  en el dominio del tiempo para
+	  <m:math>
+			<m:apply>
+				<m:ci type="fn"><m:msup>
+						<m:mi>L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup></m:ci>
+				<m:interval closure="closed-open">
+					<m:cn>0</m:cn>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+				</m:interval>
+			</m:apply>
+		</m:math>
+	  en el dominio de la frecuencia.
+	</caption>
+</figure>
+    </section>
+
+  </content>
+</document>

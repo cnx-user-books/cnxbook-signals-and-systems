@@ -1,0 +1,286 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Espacios de Hilbert</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0013f9f3-d0aa-4947-85f1-3ca0fef1a236</md:uuid>
+</metadata>  
+
+  <content>
+    <section id="sec2">
+      <title>Espacios de Hilbert </title>
+      <para id="p1_sec2">
+	Un espacio vectorial <m:math><m:ci>S</m:ci></m:math> con un 
+	<link document="m12876" strength="3">producto interno</link>
+	válido definido en él es llamado <term>espacio de producto interno</term>,
+	que tmabién es  <term>espacio lineal normado</term>.  Un	<term>espacio de Hilbert </term> es un espacio de producto interno que es completo con respecto a la norma  definida usando el producto interno.
+Los espacios de Hilbert fueron nombrados después de que <link url="http://www-history.mcs.st-andrews.ac.uk/history/Mathematicians/Hilbert.html">David
+	Hilbert</link>, convirtiera esta idea a través de sus estudios de ecuaciones integrales.  Definimos nuestra norma utilizando el producto interno como:
+
+	
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+					<m:ci type="vector">x</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:root/>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">x</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<!--  Following line may not be necessary as explain other condition -->
+	<!--  above 
+
+	<note type='fine print'>
+	  Actually, to be a Hilbert space, one more condition has to
+	  be met, but we will not worry about that here; all of our
+	  inner product specs will be Hilbert spaces
+	</note>
+ --> 
+
+	Los Espacios de Hilbert serán de ayuda para estudiar y generalizar los conceptos de la expansión de Fourier, transformada de Fourier, y además son muy importantes para el estudio de mecánica quántica. Los espacios de Hilbert son estudiados en análisis funcional una rama de las matemáticas.
+
+      </para>
+
+      <section id="hs_egs">
+	<title>Ejemplos de Espacios de Hilbert </title>
+	<para id="p1_hsegs">
+	  A continuación mostraremos una lista de algunos ejemplos de 
+         <link document="m10434" strength="2">espacios de Hilbert </link>.  Usted puede verificar que son validos para estudios de producto interno.
+	  <list id="list_hs_egs">
+	    <item>
+	     Para
+	      <m:math display="inline">
+		<m:apply>
+		  <m:power/>
+		  <m:complexes/>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>,
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:transpose/>
+		      <m:ci type="vector">y</m:ci>
+		    </m:apply>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:apply>
+			  <m:conjugate/>
+			  <m:ci><m:msub>
+			    <m:mi>y</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:conjugate/>
+			  <m:ci><m:msub>
+			    <m:mi>y</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+			</m:apply>
+			<m:mi>…</m:mi>
+			<m:apply>
+			  <m:conjugate/>
+			  <m:ci><m:msub>
+			    <m:mi>y</m:mi>
+			    <m:mrow>
+			      <m:mi>n</m:mi>
+			      <m:mo>−</m:mo>
+			      <m:mn>1</m:mn>
+			    </m:mrow>
+			  </m:msub></m:ci>
+			</m:apply>
+		      </m:matrixrow>
+		    </m:matrix>
+		    <m:vector>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci>⋮</m:ci>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>−</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		      </m:msub></m:ci>
+		    </m:vector>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>i</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub></m:ci>
+		      <m:apply>
+			<m:conjugate/>
+			<m:ci><m:msub>
+			  <m:mi>y</m:mi>
+			  <m:mi>i</m:mi>
+			</m:msub></m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      Espacio de funciones de energía finita compleja:
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>L</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">f</m:ci>
+		    <m:ci type="vector">g</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:conjugate/>
+			<m:apply>
+			  <m:ci type="fn">g</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      Espacio de secuencias sumables cuadradas:  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msup>
+		      <m:mi>ℓ</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msup>
+		  </m:ci>
+		  <m:integers/>
+		</m:apply>
+	      </m:math>
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>i</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>i</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:conjugate/>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">y</m:ci>
+			  <m:ci>i</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+	</para>
+      </section>
+    </section>
+
+  </content>  
+</document>

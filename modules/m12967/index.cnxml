@@ -1,0 +1,559 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Diseño de Filtros usando la Grafica de Polos y Ceros de la Transformada-Z</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8940b8d9-0391-4872-9963-11fe1d5903db</md:uuid>
+</metadata>
+
+  <content>
+
+  <section id="freq">
+     <title>Estimando la Respuesta de Frecuencia de un Plano-Z</title>
+
+     <para id="zp_freq">
+Un factor de motivación para el análisis de la grafica de polos y ceros es la relación de la respuesta de frecuencia del sistema. Basado en la posición de los polos y ceros, uno puede determinar la respuesta de la frecuencia. Este es un resultado de la correlación entre la repuesta de frecuencia y la función de transferencia evaluada en el círculo unitario de la grafica de polos y ceros. La respuesta de frecuencia, o DTFT, del sistema es definida por:
+       
+     <equation id="freqr1">     
+        <m:math>
+	  <m:apply>
+   	     <m:eq/>
+             <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	     </m:apply>
+             <m:apply>	         
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>z</m:ci>
+		</m:bvar>	
+		<m:condition>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>		
+		  </m:apply>
+		</m:condition>
+                <m:apply>
+                  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>	     
+                </m:apply>
+	     </m:apply>
+	     <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:ci>0</m:ci>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>M</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>			  
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>
+	  </m:apply>
+	</m:math>
+     </equation>
+
+	Al factorizar la función de transferencia a sus polos y ceros y el multiplicar el numerador y denominador por
+	<m:math><m:apply><m:exp/><m:apply><m:times/><m:imaginaryi/><m:ci>w</m:ci></m:apply></m:apply></m:math>
+	se obtiene lo siguiente:
+
+     <equation id="freqr2">
+	<m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>1</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>		  
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>c</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>		  			
+		    </m:apply>			
+		  </m:apply>
+
+		  <m:apply>
+		    <m:product/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>1</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>		  
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>d</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>		  			
+		    </m:apply>			
+		    
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	De la <link target-id="freqr2" strength="3"/> obtenemos la respuesta de frecuencia en una forma que se puede usar para interpretar las características físicas de las respuesta de frecuencia del filtro. El numerador y denominador contienen un producto en términos de la forma
+	<m:math><m:apply> 
+	    <m:abs/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply><m:exp/><m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:ci>w</m:ci>
+		</m:apply></m:apply>
+	      <m:ci>h</m:ci>
+	    </m:apply>
+	  </m:apply></m:math>,
+	donde <m:math><m:ci>h</m:ci></m:math> es cero, marcado por	<m:math><m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci></m:math>
+	o un polo, descrito por <m:math><m:ci>
+	    <m:msub>
+	      <m:mi>d</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci></m:math>. Los vectores son usados para representar el término y sus partes en el plano complejo. El polo o cero,
+	<m:math><m:ci>h</m:ci></m:math>, es un vector que viene del origen a la su lugar en cualquier parte del plano complejo y
+	<m:math><m:apply>
+	<m:exp/><m:apply><m:times/><m:imaginaryi/><m:ci>w</m:ci></m:apply>
+	</m:apply></m:math> es un vector que viene del origen hasta una posición en el circulo unitario.  El vector que conecta estos dos puntos, <m:math><m:apply> <m:abs/>
+	  <m:apply>
+	   <m:minus/>
+	   <m:apply><m:exp/><m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>w</m:ci>
+	   </m:apply></m:apply>
+	   <m:ci>h</m:ci>
+	  </m:apply>
+	</m:apply></m:math>, conecta el polo o cero a un lugar en el circulo unitario que depende del valor de
+	<m:math><m:ci>w</m:ci></m:math>. De esto, podemos empezar entender como la magnitud de la respuesta de frecuencia es un radio de distancias de polos y ceros presente en el plano-z y  <m:math><m:ci>w</m:ci></m:math> va de cero a pi. Estas características no ayudan a entender.<m:math><m:apply><m:abs/><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:apply></m:math>
+	 de la siguiente manera:
+
+
+	<equation id="freq_simple">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+		</m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>∏</m:ci>
+		  <m:ci>"distancias de los ceros"</m:ci>		
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>∏</m:ci>
+		  <m:ci>"distancias de los polos"</m:ci>		
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	</equation>
+
+	En conclusión, usando las distancias del círculo unitario a los polos y ceros, podemos graficar la respuesta de la frecuencia del sistema. Cuando <m:math><m:ci>w</m:ci></m:math> va de
+	<m:math><m:cn>0</m:cn></m:math> a <m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	  </m:apply>
+	</m:math>, las siguientes dos propiedades, tomadas de las ecuaciones anteriores, especifican como se debe graficar <m:math><m:apply>
+	    <m:abs/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	    </m:apply>
+	  </m:apply></m:math>.
+
+	<list id="mag_freq" list-type="enumerated">
+	  <title>Mientras se mueva alrededor del círculo unitario…</title>
+   	  <item>
+	   si esta cercas de un cero, la magnitud es chica. Si el cero esta sobre el circulo unitario, entonces la respuesta de frecuencia es cero en eso punto.</item>
+  	  <item>
+	  si esta cercas de un polo, la magnitud es grande. Si el polo esta sobre el circulo unitario, entonces la respuesta de frecuencia es infinita en ese punto.</item>
+ 	</list>
+
+      </para>
+    </section>
+
+
+<!-- ####################################################### -->
+<!-- #####################  NEW SECTION  ################### -->
+
+    <section id="freq_draw">
+     <title>Graficando la Respuesta de Frecuencia de una Grafica de Polos y Ceros</title>
+
+     <para id="draw1">
+	Veremos varios ejemplos donde se determina la magnitud de la respuesta de frecuencia de aun grafica de polos y ceros de una transformada-z. Si se le olvido o no sabe que es una grafica de polos y ceros, vea el modulo de <link document="m10556" strength="3">graficas de polos y ceros</link>.
+     </para>
+
+    <example id="eg1">
+	<para id="eg1-1">
+	 En este ejemplo, tomaremos una transformada-z sencilla mostrada aquí:
+
+	  <m:math display="block">
+             <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+                </m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>z</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>			
+		  <m:power/>
+		  <m:ci>z</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>	
+	      </m:apply>
+	    </m:apply>
+  	  </m:math>
+	  
+	  <m:math display="block">	    
+            <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+	      </m:apply>
+	      <m:apply>	
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>			 
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>w</m:ci>
+		    </m:apply>
+		  </m:apply>			 
+		</m:apply>	  	       		 
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	Para este ejemplo, algunos de los vectores representados por	  <m:math><m:apply>
+	      <m:abs/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply><m:exp/><m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>w</m:ci>
+		  </m:apply></m:apply>
+		<m:ci>h</m:ci>
+	      </m:apply>
+	    </m:apply></m:math>, para valores aleatorios de 
+	  <m:math><m:ci>w</m:ci></m:math>, son graficados específicamente en el plano complejo, visto en la siguenta <link target-id="eg1a_fig" strength="2">figura</link>. Estos vectores muestran como la amplitud de la respuesta de frecuencia cambia cuando
+	  <m:math><m:ci>w</m:ci></m:math> va de
+	  <m:math><m:cn>0</m:cn></m:math> a
+	  <m:math><m:apply><m:times/><m:cn>2</m:cn><m:pi/></m:apply></m:math>,
+	  también muestra el significado físico en términos de  <link target-id="freqr2" strength="3"/>. Se puede observar que cuando
+	  <m:math><m:apply><m:eq/><m:ci>w</m:ci><m:cn>0</m:cn></m:apply></m:math>, el vector es mayor así que la respuesta de frecuencia tendrá la mayor amplitud. Cuando
+	  <m:math><m:ci>w</m:ci></m:math> se acerca a 
+	  <m:math><m:pi/></m:math>, el tamaño del vector disminuye junto con la amplitud de 
+	  <m:math><m:apply><m:abs/><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:apply></m:math>. Ya que la transformada no contiene polos, nada mas tenemos un vector en vez de un radio como en la  <link target-id="freqr2" strength="3"/>.
+	</para>
+
+    	<figure orient="horizontal" id="eg1_fig">
+  	  <subfigure id="eg1_fig1">
+		<title>Grafica de polos y ceros</title>
+    	    	<media id="idm427296" alt=""><image src="../../media/filt_eg1_pz.jpg" mime-type="image/jpeg"/></media>  	
+	  </subfigure>
+  	  <subfigure id="eg1_fig2">
+		<title>Respuesta de Frecuancia: |H(w)|</title>
+		<media id="idp6963920" alt=""><image src="../../media/filt_eg1_fig.jpg" mime-type="image/jpeg"/></media>
+  	  </subfigure>
+	  <caption>
+
+La primera figura reprecenta la grafica de polos y ceros con unos cuantos vectores, la segunda muestra la respuesta de frecuancia que es maxima en +2 y es graficada entre positivo y negativo 
+	    <m:math><m:pi/></m:math>.
+	  </caption>
+	</figure>
+    </example>
+
+     <example id="eg2">
+     	<para id="eg2-1">
+	   En este ejemplo, una función de transferencia más compleja es analizada para poder representar la respuesta de la frecuencia del sistema
+
+	   <m:math display="block">
+             <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+                </m:apply>
+		<m:apply>
+		<m:divide/>
+		<m:ci>z</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>z</m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>	  	     
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>	
+		  </m:apply>	  	       
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+  	  </m:math>
+	  
+	  <m:math display="block">	    
+            <m:apply>
+		<m:eq/>
+ 		<m:apply>
+		  <m:ci type="fn">H</m:ci><m:ci>w</m:ci>
+                </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+	  	  <m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>	
+		  </m:apply>	  	       
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="eg2_figs">
+Pedemos observar dos figures que describes las ecuaciones anteriores. La cnxn target="eg2_fig1"/&gt; representa la grafica sencilla de polos y ceros de la transformada-z,
+	  
+	  <m:math><m:apply><m:ci type="fn">H</m:ci><m:ci>w</m:ci></m:apply></m:math>.  <link target-id="eg2_fig2"/> La secunda figura muestra la magnitud de la respuesta de frecuencia. Usando las formulas y lo dicho en la sección anterior, podemos ver que cuando
+	  <m:math><m:apply><m:eq/><m:ci>w</m:ci><m:cn>0</m:cn></m:apply></m:math>
+	la frecuencia será máxima ya que en este valor de,	  <m:math><m:ci>w</m:ci></m:math> el polo esta mas cerca del circulo unitario. El radio de la <link target-id="freqr2" strength="3"/> nos ayuda a ver la conducción matemáticamente  y ver la relación entre las distancias del circulo unitario y los polos y los ceros. Cuando
+	  <m:math><m:ci>w</m:ci></m:math> se mueve de
+	  <m:math><m:cn>0</m:cn></m:math> a <m:math><m:pi/></m:math>,
+observamos como el cero empieza a cubrir los efectos del polo y así hacer que la respuesta de frecuencia se vuelve casi igual a 
+	  <m:math><m:cn>0</m:cn></m:math>.
+	</para>
+
+	<figure orient="horizontal" id="eg2_fig">
+  	  <subfigure id="eg2_fig1">
+		<title>Grafica de Polos y Ceros</title>
+    	    	<media id="idp8019328" alt=""><image src="../../media/filt_eg2_pz.jpg" mime-type="image/jpeg"/></media>	  
+	  </subfigure>
+  	  <subfigure id="eg2_fig2">
+		<title>Respuesta de Frecuencia: |H(w)|</title>
+		<media id="idp7505200" alt=""><image src="../../media/filt_eg2_freq.jpg" mime-type="image/jpeg"/></media>
+  	  </subfigure>
+	  <caption>
+
+La primera fir=gura representa la grafica de polos y ceros, la segunda muestra la respuesta de frecuencia que es maxima en +2 y es graficada entre positivo y negativo
+		<m:math><m:pi/></m:math>.
+	  </caption>
+	</figure>
+
+     </example>
+    </section>
+    
+  </content>
+</document>

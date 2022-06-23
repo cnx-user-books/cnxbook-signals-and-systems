@@ -1,0 +1,639 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Transformada de Fourier de Tiempo Continuo (CTFT)</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0ff8e751-4050-40cd-84b3-9ae5e2cf0593</md:uuid>
+</metadata>
+
+  <!-- ****************************************** -->
+
+  <content>
+    
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p_intro">
+	Debido al gran número de señales de tiempo-continuo que estan presentes en las  <link document="m0039">series de Fourier
+	  </link> nos da una primera ojeada de cuantas maneras podemos representar algunas de estas señales de manera general: como una superposición de un nómero de señales senosoidales. Ahora podemos ver la manera de representar señales noperiodicas de tiempo continuo usando la misma idea de superposición. A continuación presentaremos la 
+	<term>Transformada de Fourier de Tiempo-Continuo</term> (CTFT), también conocida solo como Transformada de Fourier (FT).  Por que la 
+	CTFT ahora trataremos con señales no periodicas, encontraremos una manera de incluir  <emphasis>todas</emphasis>las frecuencias en ecuaciones en general.
+      </para>
+      
+      <section id="sub1">
+	<title>Ecuaciones</title>
+
+	<equation id="eqn1">
+	  <title>Transformada de Fourier de Tiempo-Continuo</title>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	<equation id="eqn2">
+	  <title>Inversa de la CTFT</title>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>Ω</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">ℱ</m:ci>
+		      <m:ci>Ω</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	
+	<para id="p_eq1">
+	  <note type="precaución" id="idm1864704"><label>Precaución</label>
+	    No se confunda con la notación - es común ver la formula anterior escrita un poco diferente.  Una de las diferencias más comunes echa por los profesores es la forma de escribir el exponente. Arriba escribimos la variable de la frecuancia readial <m:math><m:ci>Ω</m:ci>
+	    </m:math> en el exponencial, donde
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>Ω</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, pero también vemos que los profesores incluyen la expresión más explicicta, 
+	    <m:math>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>2</m:ci>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>, en el exponencial.  
+	    <link document="m10161">Véase aqui</link> para una descripción de la notación utilizada en los modulos de Procesamiento Digital de Señales DSP.
+	  </note>
+	</para>
+      </section>
+      
+      <para id="p_eq2">
+	La ecuacuión anterior para las CFT y su inversa vienen directamente de las series de Fourier y de nuesro entendimiento de sus coeficientes. Para la CTFT simplemente utilizamos la intergración en lugar de la simulación para ser capaces de expresar las señales periódicas. Esto debería tener sentido ya que simlemente estamos extendiendo las ideas de las series de Fourier para las CTFT para incluir las señales no-periódicas,y así todo el espectro de la frecuencia. Véase la
+	<link document="m0046">Derivación de la Transformada de  Fourier
+	  </link>  para una mirada más profunda del tema.
+      </para>
+    </section>
+    
+    
+    <section id="sect1"><title>Espacios Relevantes</title>
+      <para id="para1">
+	El mapeo de la Transformada de Fourier de Tiempo-Continuo de longitud-infinita, en señales de tiempo-continuo
+	<m:math><m:apply><m:power/><m:ci>L</m:ci><m:cn>2</m:cn></m:apply></m:math>
+	a longitud-infinita,señales de frecuancia-continua en 
+	<m:math><m:apply><m:power/><m:ci>L</m:ci><m:cn>2</m:cn></m:apply></m:math>.
+	Revisando el  <link document="m12865">Análisis de Fourier
+	  </link> para una descripción de todos los espacios usados en el análisis de Fourier.
+      </para>
+      
+      <figure id="fig1">
+<!--	<media type="image/jpeg" src="CTFT1.jpg"/> -->
+	<media id="idm7693408" alt=""><image src="../../media/CTFTspacee.png" mime-type="image/png"/></media>
+	<caption>
+	  Mapeando 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msup>
+		  <m:mi>L</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msup>
+	      </m:ci>
+	      <m:reals/>
+	    </m:apply>
+	  </m:math>
+	  en el dominio del tiempo a
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:msup><m:mi>L</m:mi><m:mn>2</m:mn></m:msup></m:ci>
+	      <m:reals/>
+	    </m:apply>
+	  </m:math>
+	  en el dominio de frecuencia.
+	</caption>
+      </figure>
+      
+      <para id="p_link">
+	Para más información de las caracteristicas de la CTFT,
+	por favor véase el modulo de las <link document="m10100">
+	  Propiedades de la Transformada de Fourier </link>.
+      </para>
+
+    </section>
+    
+    <section id="examples">
+      <title>Problemas de Ejemplo</title>
+      
+      <exercise id="exer1">
+	<problem id="idm8360528">
+	  <para id="prob_1">
+	    Encontrar la Transformada de Fourier(CTFT) de la función
+
+	    <equation id="eq_p1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:piecewise>
+		      <m:piece>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:ci>α</m:ci>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:geq/>
+			  <m:ci>t</m:ci>
+			  <m:cn>0</m:cn>
+			</m:apply>
+		      </m:piece>
+		      <m:otherwise>
+			<m:cn>0</m:cn>
+		      </m:otherwise>
+		    </m:piecewise>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</problem>
+	
+	<solution id="idp5582336">
+	  <para id="sol_1">
+	    Para poder calcular la transformada de Fourier, todo lo que necesitamos es usar los <link target-id="eqn1" strength="3"/>, <link document="m10060">expnenciales complejos</link>,
+	    y cálculos básicos.
+	    
+	    <equation id="sol1a">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">ℱ</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>Ω</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>α</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>Ω</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>α</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>Ω</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>-1</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>α</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    <equation id="sol1b">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">ℱ</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>α</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>Ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</solution>
+      </exercise>
+      
+
+
+      <!-- SECOND PROBLEM *****************  -->
+
+       <exercise id="exer2">
+	<problem id="idm108608">
+	  <para id="prob_2">
+	    Encontrar la inversa de la Transformada de Fourier de la onda cuadrada definda como:
+
+	    <equation id="eq_p2">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>Ω</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:piecewise>
+		      <m:piece>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:leq/>
+			  <m:apply>
+			    <m:abs/>
+			    <m:ci>Ω</m:ci>
+			  </m:apply>
+			  <m:cn>M</m:cn>
+			</m:apply>
+		      </m:piece>
+		      <m:otherwise>
+			<m:cn>0</m:cn>
+		      </m:otherwise>
+		    </m:piecewise>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</problem>
+	
+	<solution id="idp804704">
+	  <para id="sol_2">
+	    Aqui usaremos la <link target-id="eqn2" strength="3"/> para encontrar la inversa de la  FT, dado eso
+	      <m:math>
+		<m:apply>
+		  <m:neq/>
+		  <m:ci>t</m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>.
+	    
+	    <equation id="sol12a">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:int/>
+		      <m:bvar>
+			<m:ci>Ω</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>M</m:ci>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>M</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		    <m:bvar>
+		      <m:ci>Ω</m:ci>
+		    </m:bvar>
+
+		    <m:condition>
+		      <m:apply>
+		        <m:exp/>
+		        <m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>w</m:ci>
+			</m:apply>		
+		      </m:apply>
+		    </m:condition>
+<!--
+		    <m:interval>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>M</m:ci>
+		      </m:apply>
+		      <m:ci>M</m:ci>
+		    </m:interval>
+	-->	    
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:imaginaryi/>
+			  <m:ci>Ω</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>		    
+		  </m:apply>
+		  
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>M</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    <equation id="sol2b">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>M</m:ci>
+		      <m:pi/>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>sinc</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>M</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:pi/>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+	  </para>
+	</solution>
+      </exercise>
+
+    </section>
+
+  </content>
+</document>

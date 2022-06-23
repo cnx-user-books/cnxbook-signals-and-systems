@@ -1,0 +1,314 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Generalidades de Eigenvectores y Eigenvalores</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7a099dfc-95d7-409d-8210-90c81aaa7737</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="sec1">
+      <title>La Matriz y sus Eigenvectores</title>
+      <para id="p1_s1">
+	La razón por la cual estamos recalcando la importancia de los  <link document="m12870" strength="3">eigenvectores</link> es por que la acción de una matriz <m:math><m:ci>A</m:ci></m:math>
+	en uno de sus eigenvectores <m:math><m:ci type="vector">v</m:ci></m:math> es
+	<list id="list1" list-type="enumerated">
+		<item>
+	    Extremadamente fácil (y rápido) de calcular 
+	    
+	    <equation id="eq1">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:times/>
+							<m:ci>A</m:ci>
+							<m:ci type="vector">v</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:ci>λ</m:ci>
+							<m:ci type="vector">v</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+	    
+	    solo <emphasis>multiplicar</emphasis>
+			<m:math><m:ci type="vector">v</m:ci></m:math> por	    <m:math><m:ci>λ</m:ci>
+			</m:math>.
+	  </item>
+		<item>
+	   fácil de interpretar:  <m:math><m:ci>A</m:ci></m:math> solo
+	    <emphasis>escala</emphasis>
+			<m:math><m:ci type="vector">v</m:ci></m:math>, manteniendo su dirección constante y solo altera la longitud del vector.	  </item>
+	</list>
+
+	Si solo cada vector fuera un eigenvector de 
+	<m:math><m:ci>A</m:ci></m:math>....
+
+      </para>   
+    </section>
+
+    <section id="sec2">
+      <title>Usando el Espacio Generado por los  Eigenvectores </title>
+      <para id="p1_sec2">
+	Claro que no todos los vectores pero para ciertas matrices (incluidas aquellas con eigenvalores <m:math><m:ci>λ</m:ci></m:math>'s), cuyos eigenvectores
+	<link document="m12862" target-id="span_sec" strength="2">generan el subespacio </link>
+	<m:math display="inline">
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, lo que significa que para  <emphasis>cada</emphasis>
+	<m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, podemos encontrar
+	<m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:apply>
+				<m:set>
+					<m:ci><m:msub>
+							<m:mi>α</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>α</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>α</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+				</m:set>
+			</m:apply>
+			<m:complexes/>
+		</m:apply>
+	</m:math>
+	tal que:
+
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">x</m:ci>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>v</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>v</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>α</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>v</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Dada la  <link target-id="eq2" strength="2"/>, podemos reescribir
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:times/>
+				<m:ci>A</m:ci>
+				<m:ci type="vector">x</m:ci>
+			</m:apply>
+			<m:ci type="vector">b</m:ci>
+		</m:apply>
+	</m:math>. Esta ecuación esta modelada en nuestro sistema LTI ilustrado posteriormente:
+      </para>
+      
+      <figure id="fig1">
+	<media id="idp8770768" alt=""><image src="../../media/eigv_sys.png" mime-type="image/png"/></media>
+	<caption>
+	  Sistema LTI.
+	</caption>
+      </figure>
+
+      <para id="p2_sec2">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>b</m:ci>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>i</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>α</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci><m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub></m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+	El sistema LTI representado anteriormente representa nuestra <link target-id="eq1" strength="2"/>.  La siguiente es una ilustración de los paso para ir de  <m:math><m:ci type="vector">x</m:ci></m:math> a
+	<m:math><m:ci type="vector">b</m:ci></m:math>.
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:tendsto/>
+	    <m:apply>
+	      <m:tendsto/>
+	      <m:apply>
+		<m:tendsto/>
+		<m:ci type="vector">x</m:ci>
+		<m:apply>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci type="vector">α</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>V</m:ci>
+			<m:cn>-1</m:cn>
+		      </m:apply>
+		      <m:ci type="vector">x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:apply>
+		<m:times/>
+		<m:ci>Λ</m:ci>
+		 <m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>V</m:ci>
+		<m:ci>Λ</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>V</m:ci>
+		  <m:cn>-1</m:cn>
+		</m:apply>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">b</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Donde los tres pasos (las flechas) de la ilustración anterior representan las siguientes tres operaciones:
+	<list id="inter_list" list-type="enumerated">
+	  <item>
+	    Transformar <m:math><m:ci type="vector">x</m:ci> </m:math>
+	    usando	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:ci>V</m:ci>
+		<m:cn>-1</m:cn>
+	      </m:apply>
+	    </m:math> - nos da
+	    <m:math><m:ci type="vector">α</m:ci></m:math>
+	  </item>
+	  <item>
+	    Acción de <m:math><m:ci>A</m:ci></m:math> en una nueva base- una multiplicación por <m:math><m:ci>Λ</m:ci>
+	    </m:math>
+	  </item>
+	  <item>
+	   Regresar a la antigua base- transformada inversa usando la multiplicación por <m:math><m:ci>V</m:ci> </m:math>, lo que nos da <m:math><m:ci type="vector">b</m:ci></m:math>
+	  </item>
+	</list>
+
+      </para>
+    </section>
+
+  </content>
+</document>

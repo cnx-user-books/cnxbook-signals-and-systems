@@ -1,0 +1,392 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Señales en Tiempo-Discreto</title>
+
+  <metadata>
+  <md:content-id>m12820</md:content-id><md:title>Señales en Tiempo-Discreto</md:title>
+  <md:abstract>Las señales pueden ser representadas por cantidades discretas en vez de ser expresadas por una función de variable continua. Estas señales discretizadas no toman valores reales necesariamente. Muchas de las propiedades de las señales continuas son transferidas directamente al tiempo discreto.</md:abstract>
+  <md:uuid>8ed1732a-1e61-4dc3-9c03-540ef38daceb</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">Hasta este punto, hemos tratado solo con señales y sistemas <term>análogos</term>. En términos matemáticos, señales análogas son funciones que constan de cantidades continuas como sus variables independientes, por ejemplo, espacio y tiempo. <link document="m10342" strength="3"> Señales de tiempo-discreto </link> son funciones definidas en números enteros; son secuencias. Uno de los <link document="m0050" strength="2"> resultados fundamentales en la teoría de señales </link> detalla las condiciones en las cuales las señales análogas pueden ser trasformadas en una señal de tiempo-discreto y ser recuperada sin ningún tipo de <emphasis>error</emphasis>. Este resultado es importante por que las señales de tiempo-discreto pueden ser manipuladas por sistemas de respuesta instantánea como los son los programas de computadoras. En los módulos subsecuentes se describen como todos los sistemas análogos se pueden implementar virtualmente con el uso de software.</para>
+
+    <para id="para2"> 
+Sin darle importancia a estos resultados, las señales de tiempo-discreto tienen una forma más general, abarcando señales derivadas de señales análogas <emphasis>y de otro tipo </emphasis>de señales. Por ejemplo, los caracteres que forman un archivo de escritura proveniente de una secuencia, que también son una señal de tiempo-discreto. También tenemos que tratar con señales y sistemas de <link document="m10342" target-id="para11" strength="2"> valor simbólico </link> .  
+</para>
+
+    <para id="para3">Como en señales análogas, buscamos distintas maneras de descomponer señales discretas con valor real en sus componentes más simples. Con este método que nos lleva a un mayor entendimiento de estructura de señales, podemos usar esta estructura para representar información (crear maneras de representar información con señales) y de extraer información (extraer la información que es representada). Para señales de valor simbólico este método es diferente: desarrollamos una representación común para todas las señales de valor simbólico para así representar la información que ellas contienen de una manera unificada. Desde el punto de vista de la representación de información, la cuestión más importante es la eficiencia para las señales de valor simbólico y reales; la eficiencia es la manera más compacta y rápida de representar información para que pueda ser después extraída. </para>
+
+    <section id="sec1">
+      <title>Señales de Valores Reales y Complejos</title>
+      <para id="para4"> 
+	Una señal discreta es representada simbólicamente como <m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, 
+	donde 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:set>
+				<m:ci>…</m:ci>
+				<m:cn>-1</m:cn>
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+				<m:ci>…</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math>.
+
+	Usualmente dibujamos señales discretas por medio de diagramas de línea (Stem Plots) para enfatizar el hecho que son funciones definidas en números enteros. Podemos retrasar la señal discreta por un número, tal como se hace en las señales análogas. El retraso de un muestreo unitario es expresado por
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci>m</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, 
+	y es igual a uno cuando   
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+
+      <figure id="fig1"><title> Señal del Coseno en Tiempo-Discreto
+</title>
+	<media id="id1165427610730" alt="">
+          <image src="../../media/cosine.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/cosine.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+Señal del Coseno en Tiempo-Discreto es graficada con una "stem plot". ¿Puede usted encontrar la fórmula para esta señal?
+
+      
+        </caption>
+</figure>
+    </section>
+
+
+    <section id="sec2">
+      <title>Exponenciales Complejos</title>
+      <para id="para6">
+	La señal más importante es la 	<term>secuencia del exponencial complejo </term>.
+
+	<equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:ci>f</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+    </section>
+
+
+    <section id="sec3">
+      <title>Senosoidales</title>
+      <para id="para7">Los senosoidales discretos tienen la forma de 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:ci>A</m:ci>
+				<m:apply>
+					<m:cos/>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>f</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:ci>φ</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	 Al contrario de exponenciales complejos y senosoidales análogos que pueden tener frecuencias con cualquier valor real, frecuencias para señales discretas dan formas únicas <emphasis>solo </emphasis> cuando 	<m:math>
+		<m:ci>f</m:ci>
+	</m:math> 
+	 está en el intervalo 	<m:math>
+		<m:interval closure="open-closed">
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:interval>
+	</m:math>. 	
+	Esta propiedad se puede tener al notar que cuando se suma un valor a la frecuencia del exponencial complejo discreto no afecta en ninguna manera a los valores de la señal. 
+
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:apply>
+							<m:plus/>
+							<m:ci>f</m:ci>
+							<m:ci>m</m:ci>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>f</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>m</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:ci>f</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	
+La derivación es porque el exponencial complejo evaluado en un múltiplo de 
+
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		</m:apply>
+	</m:math> 
+	es igual a uno.
+      </para>
+    </section>
+
+
+    <section id="sec4">
+      <title>Muestreo Unitario</title>
+      <para id="para8">La segunda señal importante en el tiempo discreto,  está definida por:
+
+
+
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:eq/>
+							<m:ci>n</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+					<m:otherwise>
+						<m:cn>0</m:cn>
+					</m:otherwise>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+
+      <figure id="fig2">
+	<title>Muestreo Unitario</title>
+	<media id="id1165425347917" alt="">
+          <image src="../../media/unitsample.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/unitsample.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>Muestreo Unitario.</caption>
+</figure>
+
+
+      <para id="para9">Al examinar la gráfica de señales discretas, como el coseno mostrado en la figura  <link target-id="fig1" strength="2"/>,
+	se puede observar que todas la señales consisten en muestreos unitarios que son desplazados y escalados por un valor real. El valor de una secuencia a cualquier número  
+	<m:math>
+		<m:ci>m</m:ci>
+	</m:math> 
+	es escrito por 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math> 
+	y el desplazamiento que ocurre en  	<m:math>
+		<m:ci>m</m:ci>
+	</m:math>
+	es escrito por 
+
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci>m</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, 
+	por esta razón podemos descomponer <emphasis>cualquier </emphasis> señal en una suma de muestras unitarias desplazadas a una localización apropiada y escalada por el valor de una señal. 
+
+	<equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>m</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">s</m:ci>
+							<m:ci>m</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>m</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Este tipo de descomposición es única para señales discreta. 
+      </para>    
+
+      <para id="para10">Sistemas discretos pueden actuar sobre señales en tiempo discreto en forma similar a las vistas en señales y sistemas análogos. Debido al rol que juega el software sobre sistemas discretos, una gran variedad de sistemas pueden ser desarrolladas y construidas  a diferencia de las que se pueden lograr usando señales análogas. De hecho, una clase especial de señales análogas pueden ser convertidas en señales discretas, procesadas por software, y convertidas después en señales análogas, todo esto sin errores. Para estas señales, varios sistemas pueden ser producidos en software, con realizaciones análogas equivalentes siendo difíciles de formar, si no es que imposibles de diseñar.
+      </para>               
+    </section>
+
+
+    <section id="symbolic">
+      <title>Señales de Valores Simbólicos</title> 
+      <para id="para1b">Otro aspecto interesante de señales discretas es que sus valores no tienen que ser números reales. Nosotros si tenemos señales discretas con valores reales como el sinusoidal, pero también tenemos señales que indican una secuencia de números usados en el teclado de computadoras. Esos caracteres no son números reales, y como posible colección de valores, tienen muy poca estructura matemática y nada más constante con el hecho que son miembros de un conjunto. Cada elemento de una señal de valores simbólicos
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+	toma valores 
+	<m:math>
+		<m:set>
+			<m:ci>
+				<m:msub>
+					<m:mi>a</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:ci>…</m:ci>
+			<m:ci>
+				<m:msub>
+					<m:mi>a</m:mi>
+					<m:mn>K</m:mn>
+				</m:msub>
+			</m:ci>
+		</m:set>
+	</m:math>
+	que forman parte de un  <term>alfabeto </term>
+	<m:math>
+		<m:ci>A</m:ci>
+	</m:math>.  Esta terminología técnica no restringe los símbolos a ser miembros de un alfabeto del idioma ingles o griego. Ellos pueden representar caracteres en un teclado, byte (secuencias de 8-bits), números que pudieran significar una temperatura. Los sistemas digitales son construidos de circuitos digitales, que consisten <emphasis>completamente</emphasis> de circuitos con elementos análogos. La retransmisión y recepción de señales discretas, como el correo electrónico, son posibles gracias al uso de sistemas y señales análogas. Entender como las señales discretas y análogas se interelacionan una con otra es el objetivo principal de este curso.</para>
+    </section>
+  </content>
+</document>

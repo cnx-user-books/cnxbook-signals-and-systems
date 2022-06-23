@@ -1,0 +1,180 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Estabilidad BIBO</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>86f686fc-8ec5-4909-9096-c8b024bbccad</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">
+BIBO es para entrada acotada, salida acotada (bounded input, bounded output). BIBO estable es una condición, tal que cualquier entrada acotada nos da una salida acotada. Esto es que conforme nosotros pongamos una entrada estable, nos garantiza obtener una salida estable.
+    </para>
+
+    <para id="para2">
+Para entender este concepto, primero debemos ver que significa exactamente acotado. Una señal acotada es cualquier señal tal que existe un valor donde el valor absoluto de la señal nunca es mayor para algún  valor. Ya que el valor es arbitrario, lo que queremos decir es que en ningún punto la señal puede tender a infinito.
+    </para>
+
+    <figure id="fig1">
+	<media id="idm8233728" alt=""><image src="../../media/bibo.png" mime-type="image/png"/></media>
+	<caption>
+	Una señal acotada es una señal para la cual existe un constante 	<m:math>
+			<m:ci>A</m:ci>
+		</m:math>
+	tal que
+	<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar><m:ci>t</m:ci></m:bvar>
+				<m:apply>
+					<m:lt/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:ci>A</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+
+    <para id="para3">
+     Una vez que ya tenemos identificado lo que significa una señal acotada, debemos mover nuestra atención a la condición que un sistema debe poseer para garantizar  que si una señal pasa a través del sistema, una señal acotada se presentara en la salida. Resulta que un sistema <link document="m12822">LTI</link> 
+      continuo en el tiempo con una respuesta al impulso 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+      es estabilidad BIBO  <emphasis>si y solo si </emphasis>
+	<equation id="eqn1">
+		<title>Condición de Tiempo-Continuo para Estabilidad BIBO</title>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+      Esto es decir que la función de transferencia es <emphasis>absolutamente integrable</emphasis>.
+    </para>
+
+    <para id="para4">
+       Extendiendo este concepto a tiempo- discreto tomamos la transición  estándar de integración a sumatoria y obtenemos la función de transferencia     <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>,
+      que debe ser <emphasis>absolutamente sumable</emphasis>.  Esto es
+      <equation id="eqn2">
+		<title>Condición de Tiempo-Discreto para Estabilidad BIBO </title>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <section id="sect1">
+      <title>Estabilidad y Laplace</title>
+      <para id="para5">
+	 La estabilidad es muy fácil de deducir desde la  <link document="m12963">gráfica de polos y ceros </link> 
+	de una función de transferencia. 	La única condición necesaria para demostrar la estabilidad es demostrar que el eje-<m:math>
+		<m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>ω</m:ci>
+		</m:apply>
+	</m:math> es en la región de convergencia
+      </para>
+
+      <figure id="fig2" orient="horizontal">
+	<subfigure id="fig2a">
+		<media id="idm1397792" alt=""><image src="../../media/bibo2.png" mime-type="image/png"/></media>
+		<caption>
+	    Ejemplo de una gráfica de polos y ceros para un sistema estable de tiempo-continuo.</caption>
+	</subfigure>
+	<subfigure id="fig2b">
+		<media id="idp1165200" alt=""><image src="../../media/bibo3.png" mime-type="image/png"/></media>
+		<caption>
+	    Ejemplo de una gráfica de polos y ceros para un sistema inestable de tiempo continuo.</caption>
+	</subfigure>
+</figure>
+    </section>
+
+    <section id="sect2">
+      <title>Estabilidad y la Transformada Z</title>
+      <para id="para6">
+	   La estabilidad para las <link document="m12818" strength="2">señales de tiempo-discreto </link> en el <link document="m12951" strength="2">dominio-z</link> es tan fácil de demostrar como lo es para las señales de tiempo-continuo en el domino Laplace.   Sin embargo en lugar de la región de convergencia ROC (region of convergence) necesaria para contener el eje-<m:math>
+		<m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>ω</m:ci>
+		</m:apply>
+	</m:math>, la ROC debe contener el círculo unitario.</para>
+      <figure id="fig3" orient="horizontal">
+	<subfigure id="fig3a">
+		<media id="idm7910512" alt=""><image src="../../media/bibo4.png" mime-type="image/png"/></media>
+		<caption>Un sistema estable de tiempo-discreto.</caption>
+	</subfigure>
+	<subfigure id="fig3b">
+		<media id="idm27232" alt=""><image src="../../media/bibo5.png" mime-type="image/png"/></media>
+		<caption>Un sistema inestable de tiempo-discreto.</caption>
+	</subfigure>
+</figure>
+    </section>
+
+  </content>
+</document>

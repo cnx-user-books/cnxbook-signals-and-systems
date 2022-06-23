@@ -1,0 +1,405 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>El Fenómeno de Gibbs</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a14dbfa3-0fd2-4b58-8447-d0c2be0746d8</md:uuid>
+</metadata>
+  
+
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p_intro">Las <link document="m12893" strength="3">series de Fourier</link> son la representación de las señales periódicas continuas en el tiempo dado en términos de exponenciales complejos. Las <link document="m12927" strength="2">condiciones de Dirichlet</link> sugieren que las señales discontinuas pueden tener representación de serie de fourier siempre y cuando tengan un número finito de discontinuidades. Esto parece decir lo contrario de lo que hemos explicado, ya que los <link document="m12825" strength="3">exponenciales complejos</link> son funciones continuas. No parece que sea posible el poder reconstruir exactamente una función discontinua de un conjunto de funciones continuas. De hecho, no se puede. Sin embargo, podemos relajar la condición de ‘exactamente’  y remplazarla con la idea de “casi en todos lados”. Esto es para decir que la reconstrucción es exactamente la misma de la señal origina excepto en un numero de puntos finitas. Estos puntos ocurren en las discontinuidades. 
+	
+      </para>
+      
+      <section id="int_sub1">
+	<title>Historia</title>
+	<para id="p1_hist">
+En los 1800s, muchas maquinas fueron construidas para calcular los coeficientes de Fourier y re-sintetizar: 
+
+	  <equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>N</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:ci>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Albert Michelson (un físico experimental extraordinario) construyo una maquina en 1898 que podía calcular 
+	  <m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>hasta	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:apply>
+				<m:ci><m:mo>±</m:mo></m:ci>
+				<m:cn>79</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>, y re-sintetizo 
+
+	  <equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mn>79</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:cn>79</m:cn>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>-79</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:ci>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  La maquina funciono muy bien en todos los exámenes excepto en esos que tenían <term>funciones descontinúas</term>. Cuando una función cuadrada como la mostrada en <link target-id="four_four" strength="3"/>,fue dada a la maquina aparecieron “garabatos” alrededor de las discontinuidades, aunque el numero de los coeficientes de fourier llegaron a ser casi infinitos, los garabatos nunca desaparecieron- esto se puede observar en las <link target-id="four_four" strength="3"/>.  J. Willard Gibbs fue el primero en explicar este fenómeno en 1899, por eso estos puntos son conocidos como el <term>Fenómeno de Gibbs</term>.
+	
+	</para>
+      </section>
+
+    </section>
+
+    <section id="main">
+      <title>Explicación</title>
+      
+      <para id="m_p1">Empezaremos esta discusión tomando una señal con un número finito de discontinuidades (como el <term>pulso cuadrado</term>) y encontrando su representación de series de fourier. Entonces trataremos de reconstruir esta señal usando sus coeficientes de fourier. Vemos que entre mas coeficientes usemos, la señal reconstruida se parece más y más a la señal original.  Sin embargo, alrededor de las discontinuidades,  observamos ondulaciones que no desaparecen. Al considerar el uso de más coeficientes, las ondulaciones se vuelven estrechas, pero no desaparecen. Cuando llegamos a un número casi infinito de coeficientes, estas ondulaciones continúan ahí. Esto es cuando aplicamos la idea de casi en todos lados. Mientras estas ondulaciones siguen presentes (estando siempre arriba del 9% de la altura del pulso), el área dentro de ellas tiende a ser cero, lo que significa que la energía de las ondulaciones llega a ser cero.  Lo que demuestra que su anchura tiende a ser cero y podemos saber que la reconstrucción de la señal es exactamente igual ala señal original excepto en las discontinuidades. Ya que las condiciones de Dirichlet dicen que pueden haber un numero finito de discontinuidades, podemos concluir que el principio de casi en todos lados es cumplido. Este fenómeno es un caso específico de una <term>convergencia no-uniforme</term>.  
+	</para>
+
+      <para id="m_p2">
+Usaremos una función cuadrada, junto con sus series de Fourier, para ver figures donde se muestra este fenómeno con detalles un poco mas matemáticos.</para>
+
+      <section id="sub1">
+	<title> Función cuadrada</title>
+	<para id="p_sub1">Las series de Fourier de esta señal nos dicen que sus lados derechos e izquierdos son “iguales”. Para entender el fenómeno de Gibbs, necesitaremos redefinir la manera en la que vemos la igualdad.
+	
+	  <equation id="seriesrepresent">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:ci>
+						<m:msub>
+							<m:mi>a</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>1</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>a</m:mi>
+									<m:mi>k</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:cos/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>k</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+									<m:ci>T</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>1</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mi>k</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>k</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+									<m:ci>T</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>	
+      </section>
+
+      <section id="sub2">
+	<title>Ejemplo</title>
+	<para id="p_sub2">La siguiente <link target-id="four_four"/> nos muestra varias aproximaciones para las series de fourier de la <link document="m0041" strength="3"> función cuadrada</link>, usando un número variado de términos escrito por
+	    <m:math><m:ci>K</m:ci></m:math>:
+	</para>
+
+	<figure id="four_four">
+	<title>Fourier series approximation of a square wave</title>
+	<media id="idm6574480" alt=""><image src="../../media/fourier4.png" mime-type="image/png"/></media>
+	<caption> Aproximacion de las series de Fourier para
+
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">sq</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>. El numero de terminos en la suma de Fourier esta indicada en cada grafica, la funcion cuadrada es mostrada en dos periodos con una linea quebradiza. 
+	  </caption>
+</figure>
+
+	<para id="para1">Cuando comparamos la función cuadrada con su representación de la series de Fourier <link target-id="four_four" strength="3"/>, no se puede ver claramente que las dos son iguales. El hecho de que las series de fourier requieren más términos para una representación más exacta no es importante. Sin embargo, una inspección mas detallada <link target-id="four_four" strength="3"/> revela un posible problema: ¿la series de Fourier pueden igualar la función cuadrada en <emphasis>todos</emphasis> los valores de <m:math display="inline"><m:ci>t</m:ci></m:math>? ? En particular, en cualquier cambio de paso en la función, las series de fourier muestran un pico seguido por oscilaciones rápidas. Cuando se adhieren más términos a las series, las oscilaciones se vuelven más rápidas y más pequeñas, pero los picos no disminuyen. Consideremos intuitivamente esta pregunta matemática: ¿puede una función discontinua, como la función cuadrada, ser expresada como una suma, aun si es infinita, de funciones continuas? Uno tiene que sospechar que de hecho no se puede expresar. Esta pregunta le produjo a <link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">Fourier</link> criticas de la academia de ciencia Francesa (Lapace, Legendre, y Lagrande formaban parte del comité de revisión) por muchos anos de su presentación en 1907. Esto no fue resuelto por mas se cien anos, y la solución es algo importante e interesante de entender para un punto de vista practico. 
+	
+	 
+	  
+	
+	</para>
+
+	<para id="para2">Estos picos en la series de fourier de la función cuadrada <emphasis>nunca</emphasis> desaparecen; son llamados el <term>fenómeno de Gibb</term> nombrado por el físico Americano Josiah Willard Gibb. Ocurran cada vez que las señales discontinuas, y siempre estarán presentes cuando la señal tiene brincos.
+	</para>
+
+      </section>
+
+      <section id="equal">
+	<title>Redefiniendo Igualdad</title>
+	<para id="p_eq">Regresemos a la pregunta de igualdad; como se puede justificar la señal de igualdad en la <link document="m0039" target-id="sine">definición de la series de Fourier</link>? La respuesta parcial es que cada punto –todos los valores de
+	
+
+	  <m:math display="inline">
+		<m:ci>t</m:ci>
+	</m:math>--la igualdad <emphasis>no</emphasis> es garantizada. Lo que los matemáticos del siglo 19 fue que el error RMS de las series de Fourier eran cero.
+
+
+
+	  <equation id="eqn1">
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:limit/>
+					<m:bvar><m:ci>K</m:ci></m:bvar>
+					<m:lowlimit><m:infinity/></m:lowlimit>
+					<m:apply>
+						<m:ci type="fn">rms</m:ci>
+						<m:ci><m:msub>
+								<m:mi>ε</m:mi>
+								<m:mi>K</m:mi>
+							</m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+Lo que significa es que la diferencia entre la señal actual y su representación en fourier puede no ser cero, pero el cuadrado de esta cantidad tiene una integral igual a ¡<emphasis>cero</emphasis>! Es a través del valor de RMS que definimos igualdad: dos señales
+	
+
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>s</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub></m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>s</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub></m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+se dicen ser iguales en el <term>promedio cuadrado</term> si
+	
+
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">rms</m:ci>
+				<m:apply><m:minus/>
+					<m:ci><m:msub>
+							<m:mi>s</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>s</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub></m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>. Estas señales se dicen ser iguales <term>punto a  punto</term> si 
+
+
+
+	  <m:math display="inline">
+		<m:apply><m:eq/>
+			<m:apply>
+				<m:ci type="fn"><m:msub>
+						<m:mi>s</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub></m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn"><m:msub>
+						<m:mi>s</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub></m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+para todos los valores de
+
+	  <m:math display="inline">
+		<m:ci>t</m:ci>
+	</m:math>. 
+
+  Para las series de fourier, los picos del fenómeno de Gibbs tienen altura finita y anchura de cero: el error difiere de cero solo en punto aislado- cuando la señal periódica contiene discontinuidades- igual a 9% del tamaño de la discontinuidad. El valor de la función en conjunto de puntos finitos afecta el integral. Este efecto no explica la razón del porque definimos el valor de una función descontinúa en su discontinuidad. El valor que se escoja para esta discontinuidad no tiene una relevancia práctica para el espectro de la señal o el como el sistema responde a esta señal. Las series de fourier valoradas en “ en” la discontinuidad es el promedio de los valores en cualquier lado del salto. </para>
+      </section>
+    </section>
+    
+  </content>
+</document>

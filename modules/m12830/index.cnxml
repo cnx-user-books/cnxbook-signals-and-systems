@@ -1,0 +1,938 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+  
+  <title>Análisis en el Dominio del Tiempo para Sistemas Discretos</title>
+  
+  <metadata>
+  <md:content-id>m12830</md:content-id><md:title>Análisis en el Dominio del Tiempo para Sistemas Discretos</md:title>
+  <md:abstract>Los sistemas discretos permiten los procesos matemáticos  como lo es la ecuación diferencial.</md:abstract>
+  <md:uuid>d089c56b-4cea-40c7-80ac-276a4ceff4f9</md:uuid>
+</metadata>
+
+<content>
+    
+    <para id="p1">Una señal  discreta 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci><m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+      
+      es <emphasis>retrasada </emphasis> por
+      <m:math>
+		<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math>
+      
+      muestras, cuando se escribe       <m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+				<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, con
+      
+      <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.  Optamos por que 
+
+      <m:math>
+		<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math>
+tenga avances negativos sobre los números enteros. Opuesto a los <link document="m0006" target-id="delay">retrasos análogos</link>, los retrasos discretos en el tiempo <emphasis> solo </emphasis> pueden tener el valor de números enteros. En el dominio de la frecuencia, el retraso  de la señal corresponde a un desplazamiento linear en el ángulo de la señal discreta de la Transformada de Fourier
+    
+      <m:math>
+		<m:apply>
+			<m:ci><m:mo>↔</m:mo></m:ci>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+					<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+							<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">S</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+    </para>
+
+    
+    <para id="p2">Un sistema <emphasis>lineal </emphasis> discreto tiene propiedades de superposición:
+
+      <equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">S</m:ci>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+							<m:apply>
+								<m:ci type="fn"><m:msub>
+										<m:mi>x</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub>
+									<m:mi>a</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:ci type="fn"><m:msub>
+										<m:mi>x</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">S</m:ci>
+							<m:apply>
+								<m:ci type="fn"><m:msub>
+										<m:mi>x</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">S</m:ci>
+							<m:apply>
+								<m:ci type="fn"><m:msub>
+										<m:mi>x</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Un sistema discreto es llamado <emphasis> invariante al desplazamiento </emphasis> (<link document="m0006" target-id="para4wra"> análogo a los sistemas de tiempo invariante </link>) si el retraso en la entrada ocurre en la salida.
+    
+    </para>
+
+    
+    <para id="p2a">Si 
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:apply>
+					<m:ci type="fn">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, entonces
+
+      <equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">S</m:ci>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci>
+							<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>n</m:ci>
+						<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+     Nosotros usamos el término invariante al desplazamiento para enfatizar que el retraso puede ocurrir solo en los números enteros del sistema discreto, mientras tanto en las señales análogas, los retrasos pueden ser valores arbitrarios.
+    </para> 
+
+    <para id="p3">Nosotros queremos concentrarnos en sistemas que son lineales e invariantes al desplazamiento. Esto será lo que nos permitirá tener todo el control en el análisis del dominio de la frecuencia y el control de su implementación. Por que no tenemos una conexión física en la “construcción”del sistema, necesitamos solamente tener especificaciones matemáticas. En los sistemas análogos, las ecuaciones diferenciales especifican la entrada y la salida del dominio del tiempo. La correspondiente especificación discreta esta dada en una <term>ecuación diferencial</term>:
+
+      <equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci><m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci><m:ci>p</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+						<m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci><m:ci>q</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+     La salida de la señal 
+      <m:math>
+		<m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+	</m:math> 
+     es relacionada a sus valores <emphasis>pasados</emphasis> por medio de	<m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply><m:minus/><m:ci>n</m:ci><m:ci>l</m:ci></m:apply>
+		</m:apply>
+	</m:math>, 
+      
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>l</m:ci>
+			<m:set>
+				<m:cn>1</m:cn>
+				<m:ci>…</m:ci>
+				<m:ci>p</m:ci></m:set>
+		</m:apply>
+	</m:math>, a los valores actuales y a los valores pasados de la entrada de la señal se representan por medio de     
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">x</m:ci><m:ci>n</m:ci>
+		</m:apply>
+	</m:math>.
+      
+     Las características del sistema son determinadas por la elección de cuantos números tendran los coeficientes  <m:math><m:ci>p</m:ci></m:math> y 
+      <m:math><m:ci>q</m:ci></m:math> el  valor de los coeficientes      <m:math>
+		<m:set>
+			<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>…</m:ci>
+			<m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		</m:set>
+	</m:math> 
+
+     y
+
+      <m:math>
+		<m:set>
+			<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			<m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>…</m:ci>
+			<m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+		</m:set>
+	</m:math>.
+      
+      <note id="id1168747739366" type="ademas"><label>Ademas</label>Hay una asimetría en los coeficientes: 
+	¿Cuándo es 
+        <m:math display="inline">
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math>?  Estos coeficientes multiplicaran el término
+        <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+         en <link target-id="eq3" strength="2"/>. Nosotros dividiremos la ecuación por ella, lo cual no cambiara la relación de salida-entrada. Hemos creado la siguiente convención: 
+        <m:math>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math> es siempre uno. 
+      </note>
+</para> 
+
+    <para id="p4">Al contrario de una ecuación diferencial que solo provee una descripción <emphasis> implícita </emphasis> de un sistema (nosotros debemos resolver la ecuación diferencial), las ecuaciones  diferenciales proveen una manera <emphasis> explicita </emphasis> de resolverlas; calculando las salidas para cada entrada. Nosotros simplemente expresaremos las ecuaciones diferenciales con un programa que calcula cada salida usando valores previos, las corrientes del sistema  y las entradas previas.
+
+
+
+    </para>
+
+    <para id="intro">Las ecuaciones diferenciales son usualmente expresadas en el software con iteraciones de <emphasis> "for" </emphasis>. El programa de MATLAB da información de los primeros 1000 valores formados por medio de las salidas.
+    
+    </para>
+    
+    <code id="id1168762847980" display="block">
+      for n=1:1000
+      y(n) = sum(a.*y(n-1:-1:n-p)) + sum(b.*x(n:-1:n-q));
+      end
+    </code>
+
+    <para id="paratwo">Un detalle importante emerge cuando nosotros consideramos hacer que este programa funcione; de hecho, como esta escrito tiene (por lo menos) dos errores. 
+¿Qué valores de entrada y salida se pueden usar para calcular 
+      <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">y</m:ci><m:cn>1</m:cn>
+		</m:apply>
+	</m:math>?  Nosotros necesitamos  valores para       <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">y</m:ci><m:cn>0</m:cn>
+		</m:apply>
+	</m:math>,
+      <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">y</m:ci><m:cn>-1</m:cn>
+		</m:apply>
+	</m:math>, ..., valores que no tenemos aun.  Para calcular estos valores necesitaremos valores previos. La manera de salir de este problema es especificar las <term>condiciones iniciales </term>: debemos proveer <emphasis> p </emphasis>  los valores de la salida que ocurren antes que las entradas iniciales. Estos valores  pueden ser arbitrarios, la decisión impacta el como responde el sistema con las entradas. <emphasis>  Una  </emphasis> decisión ocasiona un sistema lineal: Hacer la condición inicial cero. La razón se encuentra en la definición de un <link document="m0006" target-id="linearsys" strength="3"> sistema lineal </link>: La única manera que las salidas de las suma pueda ser la suma de la salida individual ocurre cuando la condición inicial en cada caso es cero.</para>
+
+    
+    <exercise id="exer1">
+      <problem id="id1168761463733">
+	<para id="prob1">La  cuestión de la condición inicial se resuelve al entender la ecuación diferencial para cada entrada que empieza en algún índice. No obstante, el programa no trabaja por causa de la programación,  no es conceptual y contiene errores.  ¿Qué es esto? , ¿Comó se puede "arreglar"?</para>
+      </problem>
+
+      <solution id="id1168746271983">
+	<para id="soln1">
+Los índices pueden ser negativos, y esta condición no es permitida en MATLAB. Para arreglar esto, debemos empezar la señal después de esta condición.</para>
+      </solution>
+    </exercise>
+
+    <example id="p0">
+      <para id="exp1">Vamos a considerar un sistema simple con: 
+	<m:math>
+		<m:apply><m:eq/><m:ci>p</m:ci><m:cn>1</m:cn></m:apply>
+	</m:math> 
+	y
+	<m:math>
+		<m:apply><m:eq/><m:ci>q</m:ci><m:cn>0</m:cn></m:apply>
+	</m:math>.
+	
+	<equation id="eq1b">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>a</m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:apply>
+								<m:minus/><m:ci>n</m:ci><m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>b</m:ci>
+						<m:apply>
+							<m:ci type="fn">x</m:ci><m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <para id="p1b">Para calcular la salida de algún índice, esta ecuación diferencial  indica  que nosotros necesitamos la salida previa 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+		</m:apply>
+	</m:math> 
+	
+	y que la señal de la entrada occura en ese momento del tiempo. Sin entrar a detalle, vamos a calcular la salida del sistema para un muestreo unitario como entrada:
+	
+	<m:math>
+		<m:apply><m:eq/>
+			<m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+			<m:apply><m:ci type="fn">δ</m:ci><m:ci>n</m:ci></m:apply>
+		</m:apply>
+	</m:math>.  Ya que la entrada es cero para un índice negativo, nosotros debemos empezar por tratar de calcular la salida en 
+        <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>. 
+
+	<equation id="eq2b">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply><m:ci type="fn">y</m:ci><m:cn>0</m:cn></m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>a</m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:cn>-1</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:ci>b</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	¿Cuál es el valor de 
+        <m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+		</m:apply>
+	</m:math>?  Ya que hemos usado la entrada de valor cero para todos los índices negativos, es razonable asumir que la salida también tiene un valor de cero. Seguramente, la ecuación diferencial no describirá el <link document="m0006" target-id="linearsys" strength="2"> sistema lineal </link>  si la entrada, la cual es cero todo el tiempo no produjo  cero en la salida. Con esto podemos asumir:
+
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:cn>-1</m:cn>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>, dejando
+
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply><m:ci type="fn">y</m:ci><m:cn>0</m:cn></m:apply>
+			<m:ci>b</m:ci>
+		</m:apply>
+	</m:math>.  Para
+      <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>, la entrada de un muestrario unitario es cero, lo cual nos deja con la ecuación diferencial 
+
+	<m:math>
+		<m:apply>
+			<m:forall/>
+			<m:bvar><m:ci>n</m:ci></m:bvar>
+			<m:condition>
+				<m:apply><m:gt/><m:ci>n</m:ci><m:cn>0</m:cn></m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>a</m:ci>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Con esto nosotros podemos preveer como el filtro responde a esta entrada para hacer una tabla:
+
+	<equation id="eq3b">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>a</m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>b</m:ci>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+
+      <table id="fig1000" frame="all" summary="">
+	  <tgroup cols="3" align="left" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+		  <m:math><m:ci>n</m:ci></m:math>
+		</entry>
+		<entry>
+		  <m:math>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:math>
+		</entry>
+		<entry>
+		  <m:math>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply></m:math>
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  <m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>1</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:ci>b</m:ci></m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>1</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math>
+                   <m:apply><m:times/><m:ci>b</m:ci><m:ci>a</m:ci></m:apply>
+                  </m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>2</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:apply>
+		      <m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply><m:power/><m:ci>a</m:ci><m:cn>2</m:cn></m:apply>
+		    </m:apply>
+		  </m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  :
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  :
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:ci>n</m:ci></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math> 
+		    <m:apply><m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply><m:power/><m:ci>a</m:ci><m:ci>n</m:ci></m:apply>
+		    </m:apply>
+		  </m:math>
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+
+
+      <para id="p15">Los valores del coeficiente  determinan el comportamiento de la salida. El parámetro  <m:math><m:ci>b</m:ci></m:math> puede ser cualquier valor, y sirve como ganancia.  El efecto del  parámetro 
+	<m:math><m:ci>a</m:ci></m:math> es más complicado (<link target-id="fig1000" strength="2"/>).  Si es igual a cero, la salida simplemente es igual a la entrada por la ganancia <m:math><m:ci>b</m:ci></m:math>.  Para todos los valores que no son cero  de <m:math><m:ci>a</m:ci></m:math>, la salida perdura por siempre; tales sistemas son conocidos como <term>IRR</term> (<emphasis>R</emphasis>espuesta al <emphasis>I</emphasis>mpulso <emphasis>I</emphasis>nfinito). La razón para esta terminología es que el muestrario unitario también conocido como un impulso(especialmente en una situación analoga) y el sistema responden a un “impulso” que perdura por siempre. Si
+	<m:math><m:ci>a</m:ci></m:math> es positivo y menor que uno, la salida es una descomposición exponencial. Cuando
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>a</m:ci>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>, la salida es un escalón unitario. Si
+	<m:math><m:ci>a</m:ci></m:math> es negativa y más grande que 
+	<m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>,
+	la salida oscila mientras occurre una descomposición exponencial. Cuando
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>a</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>, la salida cambia su signo para siempre, alternando entre <m:math><m:ci>b</m:ci></m:math> y
+	<m:math><m:apply><m:minus/><m:ci>b</m:ci></m:apply></m:math>.
+	Hay efectos más dramáticos cuando
+	<m:math>
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:abs/>
+				<m:ci>a</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>; 
+
+si es positivo o negativo, la salida de la señal se hace más y más grande <emphasis>creciendo</emphasis> exponencialmente.
+ 
+      </para>
+
+      <figure id="fig1001">
+        <media id="id1168747480023" alt="">
+          <image src="../../media/sig21.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig21.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+La entrada para el ejemplo de  sistema simple, un muestreo unitario es mostrada arriba, con las salidas para varios valores de parametros de sistemas  mostradas abajo.
+	</caption>
+</figure>
+
+      <para id="p25">Valores positivos  de  <m:math><m:ci>a</m:ci></m:math> son usados en modelos de población para describir como el tamaño de una población crece a través del tiempo. Aquí, <m:math><m:ci>n</m:ci></m:math> puede corresponder a  generación. La ecuación diferencial indica que el número en la siguiente generación es algún múltiplo de un valor previo. Si este múltiplo es menor que uno, la población se extingue; si es mayor que uno, la población se incrementa.  La misma ecuación diferencial también describe el efectos del los interes compuesto. Aquí 
+	<m:math><m:ci>n</m:ci></m:math>  marca el tiempo en el cual el interes compuesto ocurre ( diario, mensual, etc.),
+	<m:math><m:ci>a</m:ci></m:math> es igual a la taza de interés  compuesto, y
+	<m:math>
+		<m:apply><m:eq/><m:ci>b</m:ci><m:cn>1</m:cn></m:apply>
+	</m:math> 
+	( el banco no da ninguna ganancia).
+
+En la aplicación para procesar  señales, nosotros típicamente requerimos que la salida continué acotada para cualquier entrada. Para nuestro ejemplo, eso significa que podemos restrigir 
+	<m:math>
+		<m:apply><m:eq/>
+			<m:apply><m:abs/>
+				<m:ci>a</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math> 
+y escoger valores para esto y la ganancia según su aplicación.
+	
+      </para>
+    </example>
+    
+
+    <exercise id="exer1b">
+      <problem id="id1168759939942"> 
+	<para id="probpara1">Note que en la  <link target-id="eq3" strength="2">ecuación diferencial</link>,
+	  
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci><m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci><m:ci>p</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+					<m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci><m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub><m:mi>b</m:mi><m:mn>q</m:mn></m:msub></m:ci>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci><m:ci>q</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  
+	  no tiene términos como
+	  
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply>
+				<m:plus/><m:ci>n</m:ci><m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+
+	  o
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+				<m:plus/><m:ci>n</m:ci><m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> en el lado derecho de la ecuación.  ¿Pueden estos términos ser incluidos?  ¿Por qué o por qué no?
+	</para>
+      </problem>
+
+      <solution id="id1168761581226">
+	<para id="solp1">Estos términos requieren que el sistema conozca el valor futuro de las entradas o de las salidas antes de que el valor actual haya sido calculado. Así que estos términos pueden causar problemas.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <figure id="fig1002">
+      <media id="id1168747319638" alt="">
+        <image src="../../media/sig22.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig22.eps" mime-type="application/postscript"/>
+      </media>
+	<caption>La grafica muestra la respuesta de un muestreo unitario con un filtro boxcar de longitud 5.</caption>
+</figure>                                    
+
+    <example id="ex2001"> 
+      <para id="para1">Un sistema un poco diferente que no contiene los coeficientes "<m:math><m:ci>a</m:ci></m:math>".
+         Considere la ecuación diferencial:	<equation id="eq0003">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>q</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:apply>
+								<m:plus/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>q</m:ci>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Ya que la salida del sistema nada mas depende de los valores actuales y previos de los valores de entrada, nosotros no necesitamos preocuparnos por las condiciones iniciales. Cuando la entrada es un muestreo unitario, el resultado es igual a 
+	
+	<m:math>
+		<m:apply>
+			<m:divide/><m:cn>1</m:cn><m:ci>q</m:ci>
+		</m:apply>
+	</m:math> 
+	para
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:set>
+				<m:cn>0</m:cn>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>q</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>, entonces es igual a cero después de eso. Estos sistemas son conocidos como <term>FIR</term> (<term>R</term>espuesta de <term>I</term>mpulso <term>F</term>inito o en ingles Finite Impulse Response) por que su respuesta de muestreo unitario tiene una duración finita. Al graficar esta respuesta se ve como (<link target-id="fig1002" strength="3"/>)la respuesta de muestreo unitario es un pulso de ancho <m:math><m:ci>q</m:ci></m:math> y altura 
+	
+	<m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>q</m:ci>
+		</m:apply>
+	</m:math>. 
+	
+Esta señal es también conocida como boxcar , por eso a este sistema se le  le da el nombre de <term>filtro de boxcar</term>. (En la proxima sección derivaremos su respuesta en frecuencia y desarrollaremos su interpretación al filtrar.) Por ahora, observe que la ecuación diferencial dice que cada valor en la salida es igual al promedio de la corriente de las entradas de los valores anteriores. Así, el valor de la salida es igual al <emphasis>promedio</emphasis> actual de los valores de las entradas precias <m:math><m:ci>q</m:ci></m:math>. Por lo tanto este  sistema se puede usar para producir el promedio de las temperaturas semanales (<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>q</m:ci>
+			<m:cn>7</m:cn>
+		</m:apply>
+	</m:math>) que se pueden actualizar diariamente.  
+      </para>
+    </example>   
+
+  </content>
+</document>

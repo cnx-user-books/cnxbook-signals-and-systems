@@ -1,0 +1,1620 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>La Ecuación de Diferencia</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1176acf7-3be0-4e63-889a-d6b3240e3fd0</md:uuid>
+</metadata>
+  
+  <content>
+
+    <section id="intro">
+      <title> Introducción</title>      
+      <para id="p_intro">
+ Uno de los conceptos más importantes para el DSP es poder representar la relación de entrada y salida de cualquier sistema LTI. Una <term>ecuación de diferencia de coeficiente linear constante </term>(LCCDE) nos sirve para expresar esta relación en un sistema discreto. El escribir la secuencia de entradas y salidas, las cuales representan las características del sistema LTI, como una ecuación de diferencia nos ayuda entender y manipular el sistema. 
+
+	
+	
+	<definition id="diff_eqtn">
+	  <term> La Ecuación de Diferencia</term>
+	  <meaning id="idm7881696">
+	   Es una ecuación que muestra la relación entra valores consecutivos de una secuencia y la diferencia entre ellos. Usualmente se escribe en una ecuación recurrente para que la salida del sistema se pueda calcular de las entradas de la señal y sus valores anteriores. 
+	  </meaning>
+	  
+	  <example id="eg_DE_def">
+	    <para id="p_def_diff">
+	      <equation id="eqtn_diff1">
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">y</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>7</m:cn>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">y</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">y</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>4</m:cn>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">x</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>	
+	      </equation>
+	    </para>
+	    
+	  </example>
+	</definition>
+	
+      </para>
+    </section>
+
+    <section id="gen">
+      <title>Formulas Generales para la Ecuación de Diferencia</title>
+      
+      <para id="p_gen1">
+
+
+
+	La ecuación de diferencia nos ayuda a describir la salida del sistema descrito por la formula para cualquier <m:math><m:ci>n</m:ci></m:math>.  La propiedad mas importante para esta ecuación es la habilidad de poder encontrar la transformada,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>z</m:ci>
+	  </m:apply>
+	</m:math>,
+	 del sistema. Las siguientes subsecciones veremos la forma genera de la ecuación diferencial en la conversión a la transformada-z directamente de su ecuación de diferencia. 
+      </para>
+
+      <section id="gen_sub1">
+	<title> Ecuación de Diferencia</title>
+	
+	<para id="p_gen_sub1">
+
+
+
+	  La forma general de este tipo de ecuación es la siguiente:
+	  
+	  <equation id="lccde_eqtn">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>N</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>k</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>M</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+También se puede expresar como una salida recurrente, la cual se ve así:
+
+	  <equation id="lccde_eqtn2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">y</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>a</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn" class="discrete">y</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>	
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	De esta ecuación, note que
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">y</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> representa las salidas y
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">x</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+epresenta las entradas. El valor de
+
+	  <m:math><m:ci>N</m:ci></m:math>representa el <term>orden</term> de la ecuación de diferencia que corresponde a la memoria del sistema representado. Ya que la ecuación depende de los valores pasados de la salida, para calcular una solución numérica, algunos valores pasados, conocidos como <term>condiciones iniciales</term>, se deben saber. 
+
+
+ 
+	</para>
+      </section>
+      
+      <section id="gen_sub2">
+	<title> Conversión a la Transformada-z</title>
+	<para id="p_gen_sub2">
+	  Usando la formula,  
+	  <link target-id="lccde_eqtn" strength="3"/>,podemos generalizar la <term>función de transferencia</term>, 
+
+
+
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	  </m:math>, para cualquier función de diferencia. Los siguientes pasos se deben de tomar para convertir cualquier función de diferencia en su función de diferencia. 
+Primero se tiene que tomar la <link document="m0046" strength="2">transformada de Fourier</link> de todos los términos en la <link target-id="lccde_eqtn" strength="3"/>.  Después usando la propiedad de linealidad para sacar  la transformada fuera de la sumatoria y usamos la propiedad de desplazamiento en el tiempo de la transformada –z para cambiar los términos desplazados en el tiempo a exponenciales. Después de hacer esto, llegamos a la siguiente ecuación:
+
+
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>.
+	  
+
+	  <equation id="eq_gsub1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">Y</m:ci>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>a</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">Y</m:ci>
+			  <m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>z</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>	
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">X</m:ci>
+			<m:ci>z</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <equation id="eq_gsub2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">Y</m:ci>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>z</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>k</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:ci>N</m:ci>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>a</m:mi>
+			      <m:mi>k</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>z</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>	
+	  
+	</para>
+      </section>
+      
+      <section id="gensub3">
+	<title>Conversión a la Respuesta de Frecuencia</title>
+	<para id="p_gensub3">
+	   Ya que tenemos la transformada- z, podemos tomar el siguiente paso y definir la respuesta a la frecuencia del sistema, o filtro, que esta siendo representado por la ecuación de diferencia. 
+	  
+	  <note type="note" id="idp1030112">
+	    Recuerde que la razón por la que usamos estas formulas es el poder diseñar un filtro. Un LCCDE es una de las maneras más fáciles de representar los filtros FIL. Al encontrar la respuesta de frecuencia, podemos ver las funciones básicas de cualquier filtro representado por una simple LCCDE. La formula general para la respuesta de frecuencia en la transformada-z es la siguiente.	    
+	  </note>
+
+	  La conversión es simplemente tomar la formula de la transformada-z,
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	  </m:math>,
+	   y remplazarla en cualquier instante de
+	  <m:math><m:ci>z</m:ci></m:math> 
+	  con 
+	  <m:math>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>w</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+
+	  <equation id="eq_gensub3">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>w</m:ci>
+		</m:apply>
+		<m:apply>	         
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		  <m:bvar>
+		    <m:ci>z</m:ci>
+		  </m:bvar>	
+		  <m:condition>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>w</m:ci>
+		      </m:apply>		
+		    </m:apply>
+		  </m:condition>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci><m:ci>z</m:ci>	     
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:ci>0</m:ci>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>w</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			</m:apply>			  
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+Después de que usted  entienda la derivación de esta formula vea el modulo titulado el <link document="m10548">filtro y la transformada-z</link> para que vea las ideas de la <link document="m12951" strength="3">transformada-z</link> y la ecuación de diferencia, y las  <link document="m10556" strength="3">graficas de polos y ceros</link> se usan al diseñar un filtro.
+	  
+	  
+	</para>
+      </section>	 
+
+    </section>
+
+    <section id="examples">
+      <title>Ejemplo</title>
+
+      <example id="eg1">
+	<title>Encontrando la Función de Diferencia</title>
+	
+	<para id="p_eg">
+	  Aquí se muestra un ejemplo de tomar los pasos opuestos a los descritos anteriormente: dada una función de transferencia uno puede calcular fácilmente la ecuación de diferencia del sistema.
+	  
+	  <equation id="eg1_ex1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>z</m:ci>	     
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>z</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>3</m:cn>
+			<m:cn>4</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+Dada una función de transferencia de un filtro, queremos encontrar la función de diferencia. Para hacer esto, expanda los os polinomios y divídalos por el orden mas alto de <m:math><m:ci>z</m:ci></m:math>.
+	  
+	  <equation id="eg1_ex2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>z</m:ci>	     
+		</m:apply>
+
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>z</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>z</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>3</m:cn>
+			<m:cn>4</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:ci>z</m:ci>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:ci>z</m:ci>
+		      </m:apply>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>8</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:cn>-1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:cn>4</m:cn>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>z</m:ci>
+			  <m:cn>-1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>3</m:cn>
+			<m:cn>8</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:cn>-2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  De esta función de transferencia, los coeficientes de los dos polinomios serán nuestros valores de 
+	  <m:math><m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci></m:apply>
+	  </m:math> y
+	  <m:math><m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci></m:apply>
+	  </m:math>que se encuentran el la forma general de la función de diferencias, <link target-id="lccde_eqtn" strength="3"/>.
+	 Usando estos coeficientes y la forma anterior de la función de transferencia, podemos escribir la ecuación de diferencia así: 
+
+
+
+	  <equation id="eg1_eq3">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">y</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>4</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">y</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>8</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	En el último paso re-escribimos la ecuación de diferencia en una forma más común, mostrando su naturaleza recurrente del sistema.
+
+	  <equation id="eg1_eq4">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">y</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">x</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>-1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>8</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	</para>
+      </example>
+    </section>
+
+    <section id="solve">
+      <title>Resolviendo un LCCDE</title>
+      <para id="p_solve">
+	Para resolver este tipo de ecuaciones y poderlas usar en el análisis de sistemas LTI, tenemos que encontrar las salidas del sistema que están basadas en una entrada del sistema,
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>,, y basadas en un conjunto de condiciones iniciales. Existen dos métodos para resolver un LCCDE: el <term>método directo</term>, y el <term>método indirecto</term>, este último basado en la transformada-z. En las siguientes subsecciones se explica brevemente las formulas para resolver los LCCDE así como el uso de estos dos métodos.
+
+      </para>
+      
+      <section id="direct_solve">
+	<title>Método Directo</title>
+	<para id="p_direct">	  
+La solución final de la salida, utilizando este método,  es una suma dividida en dos partes expresadas de la siguiente manera:
+
+
+	  <equation id="eq_direct">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>p</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+La primera parte,
+	  <m:math><m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>h</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>, se conoce como la <term>solución homogénea</term> y la segunda parte, 
+  
+	  <m:math><m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>h</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>,se le llama las <term>solución particular</term>. El siguiente método es similar al usado para resolver las ecuaciones diferenciales, así que si ya tomo un curso de ecuaciones diferenciales, este método le será familiar.
+
+
+	</para>
+
+	<section id="homog_sol">
+	  <title>Solución Homogénea</title>
+	  <para id="p_homo">
+	    Se empieza al asumir que la entrada es igual a cero,
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>.
+	    
+	     Después, tenemos que solucionar la ecuación de diferencia homogénea:
+
+	    <equation id="eq_hom1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">y</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    Para resolver esto, asumimos que la solución tiene la forma de un exponencial. Usaremos lambda, <m:math><m:ci>λ</m:ci></m:math>, para representar los términos exponenciales. Ahora tenemos que resolver la siguiente ecuación:
+	    
+	    <equation id="eq_hom2">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>λ</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+Expandiremos la ecuación y factorizaremos todos los términos de lambda. Esto nos dará un polinomio dentro del paréntesis, lo cual se conoce como <term>polinomio característico</term>. Las raíces de este polinomio son la clave para resolver esto ecuación. Si se tienen raíces diferentes, la solución general es la siguiente:
+
+	
+
+	    <equation id="eq_homsol1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mi>N</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mi>N</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	 Sin embargo, si la ecuación característica contiene múltiples raíces la solución mostrada anterior mente sufre algunos cambios. La versión modificada de la ecuación se muestra abajo, donde 
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>λ</m:mi>
+		  <m:mi>1</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math> tiene <m:math><m:ci>K</m:ci></m:math> raíces:
+	    
+	    <equation id="eq_homsol2">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>h</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>n</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>n</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>K</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>C</m:mi>
+			    <m:mi>N</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>λ</m:mi>
+			      <m:mi>N</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</section>
+
+	<section id="part_sol">
+	  <title>Solución Particular</title>
+	  <para id="p_part">
+	    Esta solución,
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mi>p</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>, será aquella que resuelva la ecuación de diferencia general:
+
+	    <equation id="part_lccde_eqtn">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>N</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>y</m:mi>
+			    <m:mi>p</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>	
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>k</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:ci>M</m:ci>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+Para resolverla, nuestra estimación de la solución para
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mi>p</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> tomara la forma de nuestra entrada,
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math>.  Después de esto, uno nada mas tiene que sustituir la respuesta y resolver la ecuación.
+	  </para>	  
+	</section>
+      </section> 
+
+      <section id="z_method">
+	<title>Método Indirecto</title>
+	<para id="p_ind">
+
+Este método utiliza la relación entre la ecuación de diferencia y la transformada-z, para encontrar la solución. La idea es convertir la ecuación de diferencia a su transformada-z, para obtener una salida, fue vista  <link target-id="gen" strength="3">anteriormente</link>,.
+
+
+
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">Y</m:ci>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	  </m:math>.
+	  Al usar la <link target-id="gen_sub2" strength="3">transformada inversa</link> y usando la expansión parcial de fracciones, podemos encontrar la solución.	</para>
+	
+      </section>
+
+    </section>
+  </content>
+</document>

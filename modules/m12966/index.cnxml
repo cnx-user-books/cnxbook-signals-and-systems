@@ -1,0 +1,562 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Entendiendo las Graficas de Polos y Ceros en el Plano-Z</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>572c29df-e6f8-496e-aa91-ce817293a409</md:uuid>
+</metadata>
+
+  <content>
+
+    <section id="definition">
+      <title>Introducción a los Polos y Ceros de la Trasformada-z</title>
+      
+      <para id="intro">
+
+Después de encontrar la transformada-z del sistema, uno puede usar la información del polinomio para representar la función gráficamente y así observar sus características. La transformada-z tendrá la siguiente estructura, basada en las <link document="m12960" strength="3">funciones racionales</link>:
+	
+	
+	<equation id="tf">   
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+    	 	<m:divide/>
+		<m:apply>
+		  <m:ci type="fn">P</m:ci><m:ci>z</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">Q</m:ci><m:ci>z</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>       
+      
+      <para id="intro2">
+	Los dos polinomios, <m:math><m:apply><m:ci type="fn">P</m:ci><m:ci>z</m:ci></m:apply></m:math> y
+	<m:math><m:apply><m:ci type="fn">Q</m:ci><m:ci>z</m:ci></m:apply></m:math>, nos dejan encontrar los <link document="m12963" strength="3">polos y ceros</link> de la transformada-z.
+
+
+
+	<definition id="z_def">
+  	  <term>ceros</term>
+  	  <meaning id="idm3718576">valor(es) de<m:math><m:ci>z</m:ci></m:math> donde
+	    <m:math><m:apply><m:eq/>
+		<m:apply><m:ci type="fn">P</m:ci><m:ci>z</m:ci></m:apply>
+		<m:apply><m:cn>0</m:cn></m:apply></m:apply>
+	    </m:math>.</meaning>
+	  <meaning id="idp721808">
+
+Las frecuencias complejas que hacen que la ganancia de la función de transferencia del filtro sea cero.
+	    </meaning>
+  	</definition>
+
+	<definition id="p_def">
+  	  <term>polos</term>
+  	  <meaning id="idm882448">valor(es) de <m:math><m:ci>z</m:ci></m:math> donde
+	    <m:math><m:apply><m:eq/>
+		<m:apply><m:ci type="fn">Q</m:ci><m:ci>z</m:ci></m:apply>
+		<m:apply><m:cn>0</m:cn></m:apply></m:apply>
+	    </m:math>.</meaning>
+	  <meaning id="idm9846496">
+	   Las frecuencias complejas que hacen que la ganancia de la función de transferencia del filtro sea infinita.</meaning>
+  	</definition>
+      </para>
+      
+      <example id="eg1">
+        <para id="eg1-1">
+	 Esta es la función de transferencia con polos y ceros.
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>z</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+      	</para>   
+	
+	<para id="eg1-2">
+	Los ceros son:
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg1-3">
+	  Los polos son: 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>4</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+      </example>
+
+    </section>
+
+    <section id="zplane">
+      <title>El Plano-z</title>
+
+      <para id="graph">
+	Después de encontrar los polos y ceros de una trasformada-z, se pueden graficar en el plano-z. El plano-z es un plano complejo con ejes reales e imaginarios para la variable compleja de 
+	<m:math><m:ci>z</m:ci></m:math>. La posición del plano complejo es dada por
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>r</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>θ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>	
+	</m:math>
+
+	y el ángulo se da del lado positive del eje real del plano y se escribe <m:math><m:ci>θ</m:ci></m:math>.  Al graficar los polos y ceros, los polos son mostrados con "x" y los ceros con "o".  La siguiente figura muestra el plano-z, así como  algunos ejemplos de como graficar polos y ceros en algún lugar particular en el plano.
+      </para>
+
+      <figure id="zplanepic">
+	<title>Plano-Z</title>
+	<media id="idm9543344" alt=""><image src="../../media/zplane.jpg" mime-type="image/jpeg"/></media>
+      </figure>
+
+    </section>
+
+    <section id="examples">
+      <title>Ejemplos de Graficas de Polos y Ceros</title>
+
+      <para id="eg_intro">
+	Esta sección contiene ejemplos de como encontrar polos y ceros de una función de transferencia y el como graficarlos en el plano-z.
+      </para>
+      
+      <example id="eg2">
+	<title> Grafica Simple de Polos y Ceros</title>
+	<para id="eg2-1">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>z</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </para>
+	
+	<para id="eg2-2">
+	  Los ceros son: 
+	  <m:math>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg2-3">
+	  Los polos son: 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>4</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<figure id="pz_eg2">
+	  <title>Graficas de Polos y Ceros</title>
+	  <media id="idm1074256" alt=""><image src="../../media/zp_eg1.jpg" mime-type="image/jpeg"/></media>
+	  <caption>
+Usando los ceros y polos de la funcion de transferencia, un cero es graficado a el valor cero y los dos polos se colocan en
+	    
+	    <m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply></m:math>
+	    y
+	    <m:math><m:apply><m:minus/><m:apply><m:divide/><m:cn>3</m:cn><m:cn>4</m:cn></m:apply></m:apply></m:math>
+	  </caption>
+        </figure>
+      </example>
+
+
+      <example id="eg3">
+	<title>Grafica Compleja de Polos y Ceros</title>
+	<para id="eg3-1">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:imaginaryi/>
+		  </m:apply>		  
+		</m:apply>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>			
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:imaginaryi/>
+		      </m:apply>			  
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>				   
+		      </m:apply>
+		      <m:apply>
+			
+			<m:times/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:imaginaryi/>
+			
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </para>
+	
+
+	<para id="eg3-2">
+	  Los ceros son: 
+	  <m:math>
+	    <m:set>
+	      <m:imaginaryi/>
+	      <m:apply>
+		<m:minus/>
+		<m:imaginaryi/>
+	      </m:apply>
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<para id="eg3-3">
+	  Los polos son: 
+	  <m:math>
+	    <m:set>
+	      <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>  
+	    </m:set>
+ 	  </m:math>
+	</para>
+
+	<figure id="pz_eg3">
+	  <title>Graficas de Polos y Ceros</title>
+	  <media id="idm2013600" alt=""><image src="../../media/zp_eg2.jpg" mime-type="image/jpeg"/></media>
+	  <caption>
+
+Usando los ceros y polos de la funcion de transferencia, los ceros son graficados en
+	    
+	    <m:math><m:apply><m:ci><m:mo>±</m:mo></m:ci><m:imaginaryi/>
+	      </m:apply></m:math>,
+los polos son colocados en
+	    
+	    <m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>,
+	    <m:math>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    y
+	    <m:math>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</figure>
+
+      </example>
+
+      <para id="pz_matlab">
+
+<emphasis>MATLAB</emphasis>- si se usa este programa, entonces usted podrá usar funciones que crean este tipo de graficas rápidamente. Abajo se muestra un programa que grafica polos y ceros del ejemplo anterior.
+
+      </para>
+
+      <code display="block" id="pzplot">
+	
+	% Set up vector for zeros
+	z = [j ; -j];
+
+	% Set up vector for poles
+	p = [-1 ; .5+.5j ; .5-.5j];
+
+	figure(1);
+	zplane(z,p);
+	title('Pole/Zero Plot for Complex Pole/Zero Plot Example');
+	
+      </code>
+    </section>
+
+
+    <section id="roc">
+      <title>Graficas de Polos y Ceros y la Región de Convergencia</title>
+      
+      <para id="roc_intro">
+
+La región de convergencia (ROC) para <m:math><m:apply><m:ci type="fn">X</m:ci><m:ci>z</m:ci></m:apply></m:math> en el plano-z de puede determinar de la grafica de polos y ceros. Aunque varias ROC pueden existir, donde cada una corresponde a una respuesta al impulse diferente, existen opciones que son mas practicas. Un ROC se puede escoger para hacer la función de transferencia causal y/o estable dependiendo de la grafica de polos y ceros.
+
+	<list id="roc_l">
+  	  <title>Propiedades de Filtro Sacadas de la ROC</title>
+  	  <item>
+Si la ROC se extiende hacia afuera desde su ultimo polo, entonces el sistema es <term>causal</term>.</item>
+  	  <item>
+Si la ROC incluye el círculo unitario, entonces el sistema es <term>estable</term>.</item>
+	</list>
+
+	La siguiente grafica es un posible ROC para la transformada-z del ejemplo <link target-id="eg2" strength="3">grafica simple de polos y ceros</link> la región mostrada indica la ROC elegida para el filtro. Podemos inferior que el filtro será causal y estable ya que tiene las propiedades mencionadas anteriormente.
+      </para>
+
+      <example id="eg_roc">
+	<para id="egroc">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>z</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>z</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<figure id="pz_roc">
+	  <title>La región de convergencia para la grafica de polos y ceros</title>
+	  <media id="idm2666944" alt=""><image src="../../media/zp_roc.jpg" mime-type="image/jpeg"/></media>
+	  <caption>
+La area representa la ROC para la funcion de transferencia. 
+	   
+	  </caption>
+        </figure>
+
+      </example>
+
+    </section>
+
+    <section id="freq">
+      <title>Respuesta de Frecuencia y el Plano-Z</title>
+
+      <para id="zp_freq">
+La razón por lo cual es importante el entender y crear las graficas de polos y ceros es su habilidad de ayudar en el diseño de filtros. Basado en la locación de los polos y ceros, la respuesta de la magnitud del filtro se puede comprender. Al empezar con este tipo de grafica, uno puede diseñar un filtro y obtener su función de transferencia fácilmente. Vea esta <link document="m10548" strength="3">sección</link> para obtener información sobre la relación de la grafica de polos y ceros con la respuesta de frecuencia.
+
+      </para>
+
+    </section>
+
+  </content>  
+</document>

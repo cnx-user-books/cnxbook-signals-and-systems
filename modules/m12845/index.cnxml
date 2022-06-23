@@ -1,0 +1,707 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Par de la Transformada de Fourier Discreta en el Tiempo</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5875fb39-e602-49a3-bb06-13c0510421c3</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="p1">
+
+Cuando obtenemos una señal discreta a muestrear una señal análoga, la frecuencia Nyquist corresponde a la frecuencia discreta 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>
+      .  Para demostrar esto, note que un senosoidal en la frecuencia Nyquist 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:ci><m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+     tiene una forma muestreada que iguala 
+      <equation id="eqn0002">
+		<title>Senosoidal en la Frecuencia Nyquist de 1/2T</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:cos/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:ci><m:msub>
+										<m:mi>T</m:mi>
+										<m:mi>s</m:mi>
+									</m:msub></m:ci>
+							</m:apply>
+						</m:apply>
+						<m:ci>n</m:ci>
+						<m:ci><m:msub>
+								<m:mi>T</m:mi>
+								<m:mi>s</m:mi>
+							</m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:cos/>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation></para>
+
+    <para id="p2">
+     El exponencial en la DTFT en la frecuencia 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math> 
+     igual
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:pi/>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:power/>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+				</m:apply>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      , lo que significa que la correspondencia entre una frecuencia análoga y una frecuencia discreta es establecida: 
+
+      <equation id="eqn0003">
+	<title>Relación para la Frecuencia Discreta en el Tiempo Análogo</title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>f</m:mi>
+					<m:mi>D</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:ci>
+					<m:msub>
+						<m:mi>f</m:mi>
+						<m:mi>A</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+</para>
+
+    <para id="p3">
+      onde      <m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>f</m:mi>
+				<m:mi>D</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math> 
+     y 
+      <m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>f</m:mi>
+				<m:mi>A</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math> representan las variables de frecuencia análoga y frecuencia discreta, respectivamente.  La <link document="m0050" target-id="alias" strength="3">figura de aliasing</link> provee otra manera para derivar este resultado. Conforme la duración de cada punto en la señal de muestreo periódica
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>p</m:mi>
+					<m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> se hace mas pequeña, las amplitudes de las repeticiones del espectro de la señal, que son  gobernadas por los <link document="m0050" target-id="pulse" strength="3">coeficientes de la series de Fourier</link> de
+     
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>p</m:mi>
+					<m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+      , se vuelve iguales.  
+      <footnote id="idm465440">
+	Examinar la <link document="m0050" target-id="pulse" strength="3"> señal de pulso periodica</link> revela que cuando
+      <m:math>
+			<m:ci>Δ</m:ci>
+		</m:math> 
+      se hace pequeña, el valor de
+      <m:math>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mn>0</m:mn>
+				</m:msub>
+			</m:ci>
+		</m:math>
+      , el coeficiente mas grande de Fourier, decae al valor cero: 
+      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:ci>A</m:ci>
+						<m:ci>Δ</m:ci>
+					</m:apply>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+      .  Así, para mantener un teorema de muestreo viable en términos matemáticos,
+      la amplitud
+      <m:math>
+			<m:ci>A</m:ci>
+		</m:math> 
+      debe incrementar a 
+      <m:math>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:ci>Δ</m:ci>
+			</m:apply>
+		</m:math>
+      , convirtiéndose infinitamente grande conformela duración del pulso disminuye.
+Sistemas prácticos usan un valor pequeño de      
+
+      <m:math>
+			<m:ci>Δ</m:ci>
+		</m:math>
+      , digamos
+      <m:math>
+			<m:apply>
+				<m:times/>
+				<m:cn>0.1</m:cn>
+				<m:ci><m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+		</m:math> y usan amplificadores para reescalar la señal.
+      </footnote>
+
+      Así, el espectro muestrario de la señal se convierte periódico con periodo 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+				<m:times/>
+				<m:ci><m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      . Así la frecuencia Nyquist       <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:ci><m:msub>
+						<m:mi>T</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      corresponde a la frecuencia 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>
+      .
+    </para>
+
+    <para id="p4">La transformada inversa de Fourier discreta en el tiempo se deriva fácilmente en la siguiente relación:
+
+    <equation id="eqn0012">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:uplimit>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:lowlimit>
+					<m:bvar><m:ci>f</m:ci></m:bvar>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+									<m:ci>m</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:plus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:pi/>
+									<m:ci>f</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:eq/>
+							<m:ci>m</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:piece>
+					<m:piece>
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:neq/>
+							<m:ci>m</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:piece>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <para id="p5">Así como encontramos que
+
+      <equation id="eqn0013">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar><m:ci>f</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">S</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:plus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar><m:ci>f</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>m</m:ci></m:bvar>
+						<m:domainofapplication><m:ci>m</m:ci></m:domainofapplication>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">s</m:ci>
+								<m:ci>m</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>f</m:ci>
+										<m:ci>m</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:plus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>f</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>m</m:ci></m:bvar>
+					<m:domainofapplication><m:ci>m</m:ci></m:domainofapplication>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">s</m:ci>
+							<m:ci>m</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar><m:ci>f</m:ci></m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:divide/>
+										<m:cn>1</m:cn>
+										<m:cn>2</m:cn>
+									</m:apply>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:divide/>
+									<m:cn>1</m:cn>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>f</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>m</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <para id="p6">
+     Los pares para la transformada de Fourier discretos en el tiempo son 
+
+      <equation id="eqn0014a">
+	<title>
+Pares de la Transformada de Fourier en Tiempo Discreto
+</title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+						<m:ci>f</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar><m:ci>n</m:ci></m:bvar>
+				<m:domainofapplication><m:ci>n</m:ci></m:domainofapplication>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+								<m:ci>f</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+	<equation id="eqn0014b">
+		<title>Pares de la Transformada de Fourier en Tiempo Discreto</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar><m:ci>f</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">S</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:plus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>f</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+  </content>
+</document>

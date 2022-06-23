@@ -1,0 +1,592 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Procesamiento de Tiempo Discreto de Señales de Tiempo Continuo</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>67f041fa-c6b0-4202-ba7a-d9544f57903e</md:uuid>
+</metadata>
+
+  <content>
+
+    <figure id="fig1">
+      
+      <media id="idp5181408" alt=""><image src="fig1.png" mime-type="image/png"/></media>
+      
+    </figure> 
+
+    <para id="para1">
+      ¿Cómo esta relacionada la CTFT de y(t) con la CTFT de F(t)? 
+    </para>
+
+    <para id="para2">
+      Sea 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">G</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> = respuesta de la frecuencia del filtro de reconstrucción 
+
+      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:ci type="fn">G</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>Y</m:mi><m:mi>imp</m:mi></m:msub>
+					</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+      donde 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub><m:mi>Y</m:mi><m:mi>imp</m:mi></m:msub>
+			</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es secuencia de impulso creada de
+      <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">
+				<m:msub><m:mi>y</m:mi><m:mi>s</m:mi></m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>. Así que, 
+
+      
+      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:ci type="fn">G</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>Y</m:mi><m:mi>s</m:mi></m:msub>
+					</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:ci type="fn">G</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>F</m:mi><m:mi>s</m:mi></m:msub>
+					</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:ci type="fn">G</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>r</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:ci type="fn">F</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:ci>ω</m:ci>
+										<m:ci>F</m:ci>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>r</m:ci>
+									</m:apply>
+									<m:ci>T</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>T</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">G</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>r</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:ci type="fn">F</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:ci>ω</m:ci>
+									<m:ci>F</m:ci>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>r</m:ci>
+								</m:apply>
+								<m:ci>T</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+      Ahora asumiremos que f(t) es limitado en banda a 
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:interval closure="closed-closed">
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:divide/>
+						<m:pi/>
+						<m:ci>T</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:pi/>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:interval>
+			<m:interval closure="closed-closed">
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:divide/>
+						<m:ci>
+							<m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+						</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:ci>
+						<m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+					</m:ci>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:interval>
+		</m:apply>
+	</m:math> y 
+
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">G</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es un filtro perfecto de recontrucción. Entonces 
+
+
+      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:piecewise>
+				<m:piece>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">F</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">H</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>ω</m:ci>
+									<m:ci>T</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:leq/>
+						<m:apply>
+							<m:abs/>
+							<m:ci>ω</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:divide/>
+							<m:pi/>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:piece>
+				<m:otherwise>
+					<m:cn>0</m:cn>
+				</m:otherwise>
+			</m:piecewise>
+		</m:apply>
+	</m:math>
+	<note type="nota" id="idm1105280"><label>Nota</label>
+		<m:math>
+			<m:apply>
+				<m:ci type="fn">Y</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math> tiene le mismo  "limite en banda" como 
+	<m:math>
+			<m:apply>
+				<m:ci type="fn">F</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>.</note>
+
+     Entonces, para señales limitadas en banda, y con un valor de muestra suficientemente alto y un filtro de reconstrucción perfecto 
+    </para>
+
+    
+    <figure id="fig2">
+      
+      <media id="idp5766720" alt=""><image src="fig2.png" mime-type="image/png"/></media>
+      
+    </figure> 
+
+
+    <para id="para3">
+      es equivalente a usar un filtro análogo LTI  
+    </para>
+    
+    <figure id="fig3">
+      
+      <media id="idm1153872" alt=""><image src="fig3.png" mime-type="image/png"/></media>
+      
+    </figure> 
+
+    
+    <para id="para4">
+     donde
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub><m:mi>H</m:mi><m:mi>a</m:mi></m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:piecewise>
+	    <m:piece>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>ω</m:ci>
+		    <m:ci>T</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:leq/>
+		<m:apply>
+		  <m:abs/>
+		  <m:ci>ω</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:pi/>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:piece>
+	    <m:otherwise>
+	      <m:cn>0</m:cn>
+	    </m:otherwise>
+	  </m:piecewise>
+	</m:apply>
+      </m:math>
+
+      Siendo cuidadosos podemos implementar el sistema LTI para señales limitadas en banda en nuestra propia computadora.
+    </para>
+
+
+    <figure id="fig4">
+      
+      <media id="idm1749760" alt=""><image src="fig4.png" mime-type="image/png"/></media>
+      
+    </figure> 
+
+
+    <para id="para5">
+      <term>Nota importante:</term>
+    </para>
+
+    <para id="para6">
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub><m:mi>H</m:mi><m:mi>a</m:mi></m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:ci>ω</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> = filtro inducido por nuestro sistema. 
+    </para>
+
+
+    <figure id="fig5">
+      
+      <media id="idp6880000" alt=""><image src="fig5.png" mime-type="image/png"/></media>
+      
+    </figure> 
+
+
+    <para id="para7">
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub><m:mi>H</m:mi><m:mi>a</m:mi></m:msub>
+	  </m:ci>
+	  <m:apply>
+	      <m:times/>
+	    <m:imaginaryi/>
+	    <m:ci>ω</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> es LTI si y solo si 
+      
+      <list id="list1">
+	<item>
+		<m:math><m:ci>h</m:ci></m:math>, es sistema DT es LTI
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:ci type="fn">F</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>, la entrada, es limitada en bada y el valor de la muestra es suficientemente grande.
+	</item>
+</list>
+
+    </para>
+
+  </content>
+  
+</document>

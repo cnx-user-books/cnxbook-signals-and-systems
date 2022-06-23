@@ -1,0 +1,1140 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Homework #1</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>db52f8e0-9ade-457b-a804-fb2333f8d748</md:uuid>
+</metadata>
+
+  
+  <content>
+    <para id="due_date">
+      <note type="due date" id="idp9170352"><label>Due date</label>
+	Noon, Thursday, September 5, 2002
+      </note>
+    </para>
+    
+    <section id="sec1">
+      <title>Assignment 1</title>
+      <para id="p1_sec1">
+	Homework, tests, and solutions from previous offerings of this
+	course are off limits, under the honor code.
+      </para>   
+
+      <section id="prob1">
+	<title>Problem 1</title>
+	<para id="p1_prob1">
+	  Form a study group of 3-4 members.  With your group, discuss
+	  and synthesize the major <emphasis>themes</emphasis> of this
+	  week of lectures.  Turn in a one page summary of your
+	  discussion.  You need turn in only one summary per group,
+	  but include the names of all group members.  Please do not
+	  write up just a "table of contents."
+	</para>
+      </section>
+
+      <section id="prob2">
+	<title>Problem 2</title>
+	<para id="p1_prob2">
+	  Construct a WWW page (with your
+	  <emphasis>picture</emphasis>) and email Mike Wakin
+	  (wakin@rice.edu) your name (as you want it to appear on the
+	  class web page) and the URL.  If you need assistance setting
+	  up your page or taking/scanning a picture (both are easy!),
+	  ask your classmates.
+	</para>
+      </section>
+
+      <section id="prob3_new">
+        <title>Problem 3: Learning Styles</title>
+	<para id="p1_pr3n">
+	  Follow this <link url="http://www2.ncsu.edu/unity/lockers/users/f/felder/public/Learning_Styles.html">learning
+	    styles link</link> (also found on the <link url="http://www-dsp.rice.edu/courses/elec301/">Elec 301
+	    web page</link>) and learn about the basics of learning
+	    styles.  Write a short summary of what you learned. Also,
+	    complete the "Index of learning styles" self-scoring
+	    test on the web and bring your results to class.
+	</para>
+      </section>
+
+      <section id="prob4">
+	<title>Problem 4</title>
+	<para id="p1_prob3">
+	  Make sure you know the material in <cite><cite-title>Lathi</cite-title></cite>,
+	  Chapter B, Sections 1-4, 6.1, 6.2, 7.  Specifically, be sure
+	  to review topics such as:
+	  
+	  <list id="list1_pr3">
+	    <item>
+	      complex arithmetic (adding, multiplying, powers)
+	    </item>
+	    <item>
+	      finding (complex) roots of polynomials
+	    </item>
+	    <item>
+	      <link document="m10596" strength="3">complex plane</link>
+	      and plotting roots
+	    </item>
+	    <item>
+	      vectors (adding, inner products)
+	    </item>
+	  </list>
+
+	</para>
+      </section>
+
+      <section id="prob5">
+	<title>Problem 5: Complex Number Applet</title>
+	<para id="p1_prob4">
+	  Reacquaint yourself with <link document="m0081">complex
+	    numbers</link> by going to the <link url="http://www.dsp.rice.edu/courses/elec301/applets.shtml">course
+	    applets web page</link> and clicking on the Complex
+	    Numbers applet (may take a few seconds to load).
+	</para>
+
+	<para id="p2_pr4">
+	  (a) Change the default add function to exponential (exp).
+	  Click on the complex plane to get a blue arrow, which is
+	  your complex number <m:math><m:ci>z</m:ci></m:math>.  Click
+	  again anywhere on the complex plane to get a yellow arrow,
+	  which is equal to
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:exp/>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	  </m:math>.  Now drag the tip of the blue arrow along
+	  the unit circle on with 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math> (smaller circle).  For which values of
+	  <m:math><m:ci>z</m:ci></m:math> on the unit circle does 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:exp/>
+	      <m:ci>z</m:ci>
+	    </m:apply>
+	  </m:math>
+	  also lie on the unit circle?  Why?
+	</para>
+
+	<para id="p3_pr4">
+	  (b) Experiment with the functions absolute (abs), real part
+	  (re), and imaginary part (im) and report your findings.
+	</para>	
+      </section>
+      
+      
+      <section id="prob6">
+	<title>Problem 6: Complex Arithmetic</title>
+	<para id="p1_prob5">
+	  Reduce the following to the <term>Cartesian</term> form, 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>a</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>b</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  
+	  Do <emphasis>not</emphasis> use your calculator!
+	</para>
+
+	<para id="p2_p5">
+	  (a)  <m:math>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>-1</m:cn>
+		  <m:imaginaryi/>
+		</m:apply>
+		<m:apply>
+		  <m:root/>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>  
+	      <m:cn>20</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p3_p5">
+	  (b)  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn type="complex-cartesian">1<m:sep/>2</m:cn>
+	      <m:cn type="complex-cartesian">3<m:sep/>4</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p4_p5">
+	  (c)  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:root/>
+		  <m:cn>3</m:cn>
+		</m:apply>
+		<m:imaginaryi/>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="p5_p5"> 
+	  (d)  <m:math>
+	    <m:apply>
+	      <m:root/>
+	      <m:imaginaryi/>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="p6_p5">
+	  (e)  <m:math>
+	    <m:apply>
+	      <m:power/>
+	      <m:imaginaryi/>
+	      <m:imaginaryi/>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </section>
+
+
+      
+      <section id="prob7">
+	<title>Problem 7: Roots of Polynomials</title>
+	<para id="p1_prob5a">
+	  Find the roots of each of the following polynomials (show
+	  your work).  Use MATLAB to check your answer with the
+	  <code>roots</code> command and to plot the roots in the
+	  complex plane.  Mark the root locations with an 'o'.  Put
+	  all of the roots on the same plot and identify the
+	  corresponding polynomial (<m:math><m:ci>a</m:ci></m:math>,
+	  <m:math><m:ci>b</m:ci></m:math>, <foreign>etc.</foreign>..).
+	</para>
+	
+	<para id="p2_p5a">
+	  (a)  <m:math>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>4</m:cn>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p3_p5a">
+	  (b)  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>z</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>4</m:cn>
+		  <m:ci>z</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p4_p5a">
+	  (c)  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>z</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>4</m:cn>
+		  <m:ci>z</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>8</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p5_p5a">
+	  (d)  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:cn>8</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p6_p5a">
+	  (e)  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>4</m:cn>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:cn>8</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	<para id="p7_p5a">
+	  (f)  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>z</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>4</m:cn>
+		<m:ci>z</m:ci>
+	      </m:apply>
+	      <m:cn>8</m:cn>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </section>
+
+      <section id="prob8">
+	<title>Problem 8: Nth Roots of Unity</title>
+	<para id="p1_prob6">
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		</m:apply>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> is called an 
+	  <term>Nth Root of Unity</term>.
+	</para>
+
+	<para id="p2_p6">
+	  (a)  Why?
+	</para>
+	
+
+	<para id="p3_p6">
+	  (b)  Let 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>z</m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		  <m:cn>7</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  Draw 
+	  <m:math>
+	    <m:set>
+	      <m:ci>z</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>7</m:cn>
+	      </m:apply>
+	    </m:set>
+	  </m:math>
+	  in the complex plane.
+	</para>
+	
+	<para id="p4_p6">
+	  (c)  Let 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>z</m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>4</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		  <m:cn>7</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  Draw 
+	  <m:math>
+	    <m:set>
+	      <m:ci>z</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>z</m:ci>
+		<m:cn>7</m:cn>
+	      </m:apply>
+	    </m:set>
+	  </m:math>
+	  in the complex plane.
+	</para>
+      </section>
+
+      
+      <section id="prob9">
+	<title>Problem 9: Writing Vectors in Terms of Other Vectors</title>
+	<para id="p1_prob7">
+	  A pair of vectors 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:in/>
+	      <m:ci type="vector">u</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> and 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:in/>
+	      <m:ci type="vector">v</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:complexes/>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> are called <term>linearly independent</term> if
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>α</m:ci>
+		  <m:ci>u</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>β</m:ci>
+		  <m:ci>v</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:mtext>
+                 if and only if  
+            </m:mtext>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>α</m:ci>
+	      <m:ci>β</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  It is a fact that we can write any vector in 
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+	      <m:complexes/>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math> 
+	  as a <term>weighted sum</term> (or <term>linear
+	    combination</term>) of any two linearly independent vectors,
+	  where the weights <m:math><m:ci>α</m:ci></m:math> and 
+	  <m:math><m:ci>β</m:ci></m:math> are complex-valued.
+	</para>
+
+	<para id="p2_p7">
+	  (a)  Write
+	  <m:math>
+	    <m:vector>		    
+	      <m:cn type="complex-cartesian">3<m:sep/>4</m:cn>		    
+	      <m:cn type="complex-cartesian">6<m:sep/>2</m:cn>
+	    </m:vector>
+	  </m:math>
+	  as a linear combination of
+	  <m:math>
+	    <m:vector>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:vector>
+	  </m:math>
+	  and 
+	  <m:math>
+	    <m:vector>
+	      <m:cn>-5</m:cn>
+	      <m:cn>3</m:cn>
+	    </m:vector>
+	  </m:math>.  That is, find 
+	  <m:math><m:ci>α</m:ci></m:math> and <m:math><m:ci>
+	      β</m:ci></m:math> such that
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>		
+	      <m:vector>		    
+		<m:cn type="complex-cartesian">3<m:sep/>4</m:cn>
+		<m:cn type="complex-cartesian">6<m:sep/>2</m:cn>
+	      </m:vector>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>α</m:ci>
+		  <m:vector>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:vector>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>β</m:ci>
+		  <m:vector>
+		    <m:cn>-5</m:cn>
+		    <m:cn>3</m:cn>
+		  </m:vector>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p3_p7">
+	  (b)  More generally, write 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:apply>
+		    <m:selector/>
+		    <m:ci>x</m:ci>
+                    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:apply>
+		    <m:selector/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:math> 
+	  as a linear combination of 
+	  <m:math>
+	    <m:vector>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:vector>
+	  </m:math>
+	  and 
+	  <m:math>
+	    <m:vector>
+	      <m:cn>-5</m:cn>
+	      <m:cn>3</m:cn>
+	    </m:vector>
+	  </m:math>.  We will denote the answer for a given 
+	  <m:math><m:ci type="vector">x</m:ci></m:math> as 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">α</m:ci>
+	      <m:ci type="vecotr">x</m:ci>
+	    </m:apply>
+	  </m:math> and 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">β</m:ci>
+	      <m:ci type="vecotr">x</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+	<para id="p4_p7">
+	  (c) Write the answer to (a) in matrix form,
+	  <foreign>i.e.</foreign> find a 2×2 matrix
+	  <m:math><m:ci>A</m:ci></m:math> such that
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+                 <m:matrix>
+		   <m:matrixrow>
+		     <m:apply>
+		       <m:selector/>
+		       <m:ci>x</m:ci>
+                       <m:cn>1</m:cn>
+		    </m:apply>
+		   </m:matrixrow>
+		   <m:matrixrow>
+		     <m:apply>
+		      <m:selector/>
+		      <m:ci>x</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:matrixrow>
+	        </m:matrix>
+	      </m:apply>
+	      <m:apply>
+		<m:vector>
+		  <m:apply>
+		    <m:ci type="fn">α</m:ci>
+		    <m:ci type="vecotr">x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">β</m:ci>
+		    <m:ci type="vecotr">x</m:ci>
+		  </m:apply>
+		</m:vector>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="p5_p7">
+	  (d)  Repeat (b) and (c) for a general set of linearly
+	  independent vectors
+	  <m:math>
+	    <m:ci type="vector">u</m:ci>
+	  </m:math> and 
+	  <m:math>
+	    <m:ci type="vector">v</m:ci>
+	  </m:math>.
+	</para>
+      </section>
+
+      
+      <section id="prob10">
+	<title>Problem 10: Fun with Fractals</title>
+	<para id="p1_prob8">
+	  A Julia set <m:math><m:ci>J</m:ci></m:math> is obtained by
+	  characterizing points in the complex plane.  Specifically,
+	  let
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>x</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:ci>μ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+
+	  with <m:math><m:ci>μ</m:ci></m:math> complex, and define
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  <m:math display="block">
+	    <m:ci>⋮</m:ci>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  
+	  Then for each <m:math><m:ci>x</m:ci></m:math> in the complex
+	  plane, we say 
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>x</m:ci>
+	      <m:ci>J</m:ci>
+	    </m:apply>
+	  </m:math> if the sequence
+
+	  <m:math display="block">
+	    <m:set>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	    </m:set>
+	  </m:math>
+
+	  does <emphasis>not</emphasis> tend to infinity.  Notice
+	  that if 
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>x</m:ci>
+	      <m:ci>J</m:ci>
+	    </m:apply>
+	  </m:math>, then each element of the sequence 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	    </m:set>
+	  </m:math> 
+	  also belongs to <m:math><m:ci>J</m:ci></m:math>.
+	</para>
+
+	<para id="p2_prob8">
+	  For most values of <m:math><m:ci>μ</m:ci></m:math>, the
+	  boundary of a Julia set is a fractal curve - it contains
+	  "jagged" detail no matter how far you zoom in on it.  The
+	  well-known Mandelbrot set contains all values of
+	  <m:math><m:ci>μ</m:ci></m:math> for which the
+	  corresponding Julia set is connected.
+	</para>
+
+	<para id="p3_p8">
+	  (a)  Let 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>μ</m:ci>
+	      <m:cn>-1</m:cn>
+	    </m:apply>
+	  </m:math>.  Is 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>x</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math> in <m:math><m:ci>J</m:ci></m:math>?
+	</para>
+
+	<para id="p3a_p8">
+	  (b)  Let 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>μ</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>. 
+	  What conditions on <m:math><m:ci>x</m:ci></m:math>
+	  ensure that <m:math><m:ci>x</m:ci></m:math> belongs to 
+	  <m:math><m:ci>J</m:ci></m:math>?
+	</para>
+
+	<para id="p4_p8">
+	  (c)  Create an approximate picture of a Julia set in MATLAB.
+	  The easiest way is to create a matrix of complex
+	  numbers, decide for each number whether it belongs to
+	  <m:math><m:ci>J</m:ci></m:math>, and plot the results
+	  using the <code>imagesc</code> command.  To
+	  determine whether a number belongs to
+	  <m:math><m:ci>J</m:ci></m:math>, it is helpful to define
+	  a limit <m:math><m:ci>N</m:ci></m:math> on the number of
+	  iterations of <m:math><m:ci>g</m:ci></m:math>.  For a
+	  given <m:math><m:ci>x</m:ci></m:math>, if the magnitude 
+	  <m:math>
+	    <m:apply>
+	      <m:abs/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	  remains below some threshold
+	  <m:math><m:ci>M</m:ci></m:math> for all
+	  <m:math>
+	    <m:apply>
+	      <m:leq/>
+	      <m:apply>
+		<m:leq/>
+		<m:cn>0</m:cn>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:math>, we say that <m:math><m:ci>x</m:ci></m:math>
+	  belongs to <m:math><m:ci>J</m:ci></m:math>.  The code
+	  below will help you get started:
+	</para>
+	
+	<code display="block" id="forloopexample">
+	  
+	  N = 100;      % Max # of iterations
+	  M = 2;        % Magnitude threshold
+	  mu = -0.75;   % Julia parameter
+	  realVals = [-1.6:0.01:1.6];
+	  imagVals = [-1.2:0.01:1.2];
+	  
+	  xVals = ones(length(imagVals),1) * realVals + ...
+	  j*imagVals'*ones(1,length(realVals));
+	  
+	  Jmap = ones(size(xVals));
+	  g = xVals;    % Start with g0
+
+	  % Insert code here to fill in elements of Jmap.  Leave a '1'
+	  % in locations where x belongs to J, insert '0' in the
+	  % locations otherwise.  It is not necessary to store all 100
+	  % iterations of g!
+
+	  imagesc(realVals, imagVals, Jmap);  
+	  colormap gray;
+	  xlabel('Re(x)');
+	  ylabel('Imag(x)');	  
+	  
+	  
+	</code>
+	
+
+	<para id="p3_prob8">
+	  This creates the following picture for 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>μ</m:ci>
+	      <m:cn>-0.75</m:cn>
+	    </m:apply>
+	  </m:math>,
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:cn>100</m:cn>
+	    </m:apply>
+	  </m:math>,
+	  and 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>M</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+	<figure id="fig1">
+	  <media id="idp9399920" alt=""><image src="../../media/figFrac1.png" mime-type="image/png"/></media>
+	  <caption>
+	    Example image where the x-axis is 
+      <m:math>
+	<m:apply>
+	  <m:real/>
+	  <m:ci>x</m:ci>
+	</m:apply>
+      </m:math> and the y-axis is
+      <m:math>
+	<m:apply>
+	  <m:imaginary/>
+	  <m:ci>x</m:ci>
+	</m:apply>
+      </m:math>.
+	  </caption>
+	</figure>
+	
+	<para id="p4_prob8">
+	  Using the <emphasis>same</emphasis> values for
+	  <m:math><m:ci>N</m:ci></m:math>,
+	  <m:math><m:ci>M</m:ci></m:math>, and
+	  <m:math><m:ci>x</m:ci></m:math>, create a picture of the
+	  Julia set for
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>μ</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>-0.391</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>0.587</m:cn>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Print out this picture and hand it in with your
+	  MATLAB code.
+
+	  <note type="Just for Fun" id="idp6649408"><label>Just for Fun</label>
+	    Try assigning different color values to Jmap.  For example,
+	    let Jmap indicate the first iteration when the magnitude
+	    exceeds <m:math><m:ci>M</m:ci></m:math>.  Tip: try
+	    <code>imagesc(log(Jmap))</code> and
+	    <code>colormap jet</code> for a neat picture.
+	  </note>
+	</para>
+      </section>
+
+    </section>
+
+  </content>  
+</document>

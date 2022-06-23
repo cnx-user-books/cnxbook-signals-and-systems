@@ -1,0 +1,1131 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Convolución de Tiempo-Continuo</title>
+
+  <metadata>
+  <md:content-id>m12828</md:content-id><md:title>Convolución de Tiempo-Continuo</md:title>
+  <md:abstract>Definir la convolución y obtener la Integral de Convolución.</md:abstract>
+  <md:uuid>677eb5cc-f30c-43f6-9ed4-a50d2ac6c649</md:uuid>
+</metadata>
+
+<content>
+    <section id="sect1">
+      <title>Motivación</title>
+      <para id="para1">
+	La convolución nos ayuda a determinar el efecto que tiene el sistema en la señal de entrada. Puede ser visto que el  <link document="m12822" strength="2">sistema lineal de tiempo invariante </link> es completamente caracterizado por su respuesta al impulso. A primera vista, esto puede parecer de pequeño uso, ya que las funciones de impulso no están bien definidas en aplicaciones reales. Sin embargo la <link document="m18124" target-id="sifting" strength="3"> propiedad de desplazamiento del impulso </link>  nos dice que una señal puede ser descompuesta en una suma infinita (integral) de impulsos escalados y desplazados. Conociendo como un sistema afecta un impulso simple, y entendiendo la manera en que una señal es abarcada por impulsos escaldos y sumados, suena razonable que sea posible escalar y sumar la respuesta al impulso a un sistema en para poder determinar que señal de salida resultara de una entrada en particular. Esto es precisamente lo que la convolución hace - <emphasis> la convolución determina la salida del sistema por medio conocimiento de la entrada y la respuesta al impulso del sistema</emphasis>.
+      </para>
+
+      <para id="para2">
+	En el resto de este modulo, vamos a examinar exactamente  como la convolución es definida a partir del razonamiento anterior. Esto resultara en la integral de convolución (véase la siguiente sección)  y sus   <link document="m12829" strength="3">propiedades</link>.
+	 Estos conceptos son muy importantes en la Ingeniería Eléctrica y harán la vida de los ingenieros mas sencilla si se invierte el tiempo en  entender que es lo que esta pasando. </para>
+
+      <para id="para2a">
+	Para poder entender completamente la convolución, será de utilidad también ver la <link document="m10087" strength="2">convolución de tiempo discreto </link>). También será de gran ayuda experimentar con los <link url="http://www.jhu.edu/~signals">applets</link> disponibles en internet.  Este recurso nos ofrecerá una aproximación mas crucial del concepto.      </para>
+    </section>
+
+
+    <section id="con_int">
+      <title>Integral de Convolución </title>
+      <para id="p_cint">
+	Como mencionamos anteriormente, la integral de convolución nos da una manera matemática fácil de expresar la salida de un sistema LTI basado en una señal arbitraria,	<m:math>
+		<m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,y la respuesta al impulso,
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.  La
+	<term>integral de convolución</term> es expresada como
+
+	<equation id="eq_cint">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	La convolución es una herramienta muy importante que es representada por el símbolo <m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		</m:apply>
+	</m:math>, y puede ser escrita como
+
+	<equation id="eq_convshort">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Haciendo unos cambios simples en las variables de la integral de convolución,
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>τ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	podemos ver que la convolución es 
+	<term>conmutativa</term>:
+	
+	<equation id="eq_convshort2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">x</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Para más información de las características de la integral de convolución, léase sobre la <link document="m12829" strength="3">Propiedades de la Convolución </link>. 
+      </para>
+
+      <para id="sec2_ex">
+	Ahora presentaremos dos aproximaciones distintas que se derivan de la integral de convolución. Estos procesos, junto con un ejemplo básico, nos ayudaran para construir una intuición sobre la convolución. 
+
+</para>
+    </section>
+
+
+    <section id="sect2">
+      <title>Proceso I: El método corto</title>
+      <para id="para3">Este proceso sigue de cerca el mencionado en la sección anterior en la  <link target-id="sect1" strength="2">Motivación</link>.  Para iniciar esto, es necesario establecer las asunciones que haremos. En este momento, la única obligada en nuestro sistema es que este sea lineal e invariante en el tiempo.
+	<list id="list1" list-type="enumerated">
+	<title>Breve descripción de los pasos de este Proceso:</title>
+	<item>Un impulso de entrada, nos da como salida una respuesta al impulso.</item>
+	<item>
+	   Un impulso desplazado nos da como salida una respuesta al impulso desplazada. Esto es debido a la invariante en el tiempo del sistema	  </item>
+	<item>
+	  	Podemos escalar el impulso de entrada para obtener como salida un impulso escaldo. Esto es usando la propiedad de linealidad de la multiplicación escalar.	  </item>
+	<item>
+	  Podemos sumar un número infinito de estos impulsos escalados para obtener un número infinito de sumas de respuestas al impulso escaladas. Esto es usando la cualidad de la aditividad de linealidad.	  </item>
+	<item>
+	 Ahora vemos que esta suma infinita no es mas que una integral, así que podemos convertir ambos lados en integrales.	  </item>
+	<item>
+	   Reconociendo que la entrada es la función 	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="function">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>, también reconocemos que la salida es exactamente la integral de convolución .	  </item>
+</list>
+</para>
+
+      <figure id="fig1">
+	<media id="id1170878003162" alt=""><image src="../../media/ctconvir1.png" mime-type="image/png"/></media>
+	<caption>
+	  Empezamos con un sistema definido por su respuesta al impulso,
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="function">h</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.
+	</caption>
+</figure>
+
+      <figure id="fig2">
+	<media id="id1170887276499" alt=""><image src="../../media/ctconvir2.png" mime-type="image/png"/></media>
+	<caption>
+	  Después consideramos una versión desplazada del impulso de entrada.
+	  Debido al tiempo invariante del sistema, obtenemos una versión de una salida desplazada de la respuesta al impulso.
+	</caption>
+</figure>
+      
+      <figure id="fig3">
+	<media id="id1170880739299" alt="">
+<image src="../../media/ctconvir4.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/ctconvir4.eps" mime-type="application/postscript"/></media>
+	<caption>
+	  Ahora usamos la parte de escalado de linealidad, escalando el sistemas por un valor,
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="function">f</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:math>,
+	  que es constante con respecto al sistema variable,
+	  <m:math><m:ci>t</m:ci></m:math>.
+	</caption>
+</figure>
+
+      <figure id="fig4">
+	<media id="id1170894664886" alt=""><image src="../../media/ctconvir3.png" mime-type="image/png"/></media>
+	<caption>
+	 Ahora podemos usar el aspecto de aditividad  de linealidad para sumar un número infinito de estos, para cada posible 	  <m:math><m:ci>τ</m:ci></m:math>. Como una suma infinita es exactamente una integral, terminamos con la integral conocida como integral de convolución. Usando la propiedad de desplazamiento, podemos reconocer el lado izquierdo como la entrada  	  <m:math>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.  
+	</caption>
+</figure>         
+    </section>
+
+    <section id="sect3">
+      <title>Proceso II: El método largo</title>
+      <para id="para4">
+Este método realmente no es muy diferente del anterior, sin embargo es un poco mas riguroso y mas largo. Esperanzadamente si no se comprendió bien el método de arriba, esto te ayudara para terminar de entender la convolución.
+      </para>
+      <para id="para5">
+	El primer paso en este método es definir una realización particular de la <link document="m18124" strength="2">
+	  función de impulso unitario</link>.  Para esto usaremos
+
+	
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>δ</m:mi>
+						<m:mi>Δ</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:piecewise>
+				<m:piece>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>Δ</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:lt/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:divide/>
+								<m:ci>Δ</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:ci>t</m:ci>
+						<m:apply>
+							<m:divide/>
+							<m:ci>Δ</m:ci>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:piece>
+				<m:otherwise>
+					<m:cn>0</m:cn>
+				</m:otherwise>
+			</m:piecewise>
+		</m:apply>
+	</m:math>
+</para>
+
+
+      <figure id="fig5">
+	<media id="id1170890132359" alt=""><image src="../../media/unitimpulsee.png" mime-type="image/png"/></media>
+	<caption>
+	  La realización de la función de impulso unitario que usaremos para esta derivación.
+	</caption>
+</figure>
+
+      <para id="para6_derII">
+Después de definir la realización de la unidad de respuesta al impulso, podemos obtener nuestra integral de convolución de los siguientes pasos que se encuentran en la siguiente tabla. Notemos que la columna de la izquierda representa la entrada y la columna de la derecha es la salida del sistema dada esa entrada.
+      </para>
+ 
+      <table id="tab_derivII" frame="all" summary="">
+	<title>Proceso II de la Integral de Convolución</title>
+	<tgroup cols="3" align="left" colsep="1" rowsep="1">
+	  <thead valign="top">
+	    <row>
+	      <entry align="center">Entrada</entry>
+	      <entry/>
+	      <entry align="center">Salida</entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:ci>δ</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:ci type="fn">h</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:ci>δ</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:ci type="fn">h</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:ci>δ</m:ci>
+			    <m:ci>Δ</m:ci>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:ci>Δ</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:ci>Δ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>Δ</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:ci>Δ</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:ci>Δ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:sum/>
+		      <m:domainofapplication>
+			<m:ci>n</m:ci>
+		      </m:domainofapplication>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn">f</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:ci>Δ</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">
+			    <m:msub>
+			      <m:ci>δ</m:ci>
+			      <m:ci>Δ</m:ci>
+			    </m:msub>
+			  </m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>t</m:ci>
+			    <m:apply>
+			      <m:times/>
+			      <m:ci>n</m:ci>
+			      <m:ci>Δ</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:ci>Δ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>Δ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:sum/>
+		      <m:domainofapplication>
+			<m:ci>n</m:ci>
+		      </m:domainofapplication>		    
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn">f</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:ci>Δ</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">h</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>t</m:ci>
+			    <m:apply>
+			      <m:times/>
+			      <m:ci>n</m:ci>
+			      <m:ci>Δ</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:ci>Δ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	     <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>τ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>τ</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>τ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>τ</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>τ</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>τ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry align="center">
+		<m:math><m:ci>→ h →</m:ci></m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci type="fn">y</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:int/>
+		      <m:bvar>
+			<m:ci>τ</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:apply>
+			  <m:minus/>
+			  <m:infinity/>
+			</m:apply>
+		      </m:lowlimit>
+		      <m:uplimit>
+			<m:infinity/>
+		      </m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:ci type="fn">f</m:ci>
+			  <m:ci>τ</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">h</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>t</m:ci>
+			    <m:ci>τ</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+
+      <!--
+      NOT SURE WHERE OR WHAT THIS FIGURE IS (COMMENTED OUT 6/3/2002)
+
+    <figure id="fig6">
+    <media type="image/png" src="ctconvo6.png"/>
+    </figure>
+      -->    
+      
+   
+    </section>
+
+    <section id="sect4">
+      <title>Implementación de la Convolución</title>
+      <para id="para7">
+	Tomando una visión mas cercana de la integral de convolución, encontramos que estamos multiplicando la señal de entrada por una respuesta al impulso invertida en tiempo e integrándola. Esto nos dará el valor de la salida de un valor dado de <m:math display="inline"><m:ci>t</m:ci></m:math>.  Si después nosotros cambiamos la respuesta al impulso invertida en tiempo por una pequeña cantidad, obtenemos la salida para otro valor de <m:math display="inline"><m:ci>t</m:ci></m:math>.  Repitiendo esto para cada posible valor de <m:math display="inline"><m:ci>t</m:ci></m:math>, nos da la función total de salida. Nosotros nunca haremos este método a mano, nos proporciona información con algunas entradas de que es lo que esta pasando. Encontramos que esencialmente estamos revirtiendo la función de la respuesta al impulso y desplazándola a través de la función de entrada, integrándola como vamos. Este método, descrito como el <term>metodo gráfico</term>,
+	 nos proporciona una manera sencilla de resolver las salidas para señales sencillas, mientras tanto mejoraremos nuestra intuición para los casos mas complejos donde confiaremos en las computadoras. De hecho las  <link url="http://www.ti.com">Texas Instruments</link>
+	se convierten en  <link url="http://dspvillage.ti.com/docs/toolssoftwarehome.jhtml">Procesamiento Digital
+	de Señales</link>  las cuales tienen un conjunto especial para cómputos así como para la convolución.
+
+      </para>
+
+      <example id="convolution_demo">
+	<para id="convolution_demo_1">
+	  Esta demostración ilustrara el método gráfico para la convolución. Véase <link document="m11550">aquí</link> para las instrucciones de cómo se usa este demo.	</para>
+	<media id="id5165853" alt="" display="block"><labview src="CT_Convolution.llb" viname="ct_convolution.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="ct_convolution.viinfo"/></labview></media>
+      </example>
+    </section>
+    
+    <section id="example">
+      <title>Ejemplos Básicos</title>
+      <para id="p_eg">
+	Veamos ejemplos de la convolución básica de tiempo-continuo para poder expresar algunas ideas mencionadas anteriormente en el ejemplo corto. Vamos a convolver dos pulsos unitarios, 	<m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	</m:math> y 
+	<m:math><m:apply><m:ci type="fn">h</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+      
+      <figure id="eg_fig1" orient="horizontal">
+	<subfigure id="subfig1">
+		<media id="id4563670" alt=""><image src="../../media/xte.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="subfig2">
+		<media id="id1170877721081" alt=""><image src="../../media/hte.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  Aqui hay dos señales básicas que usaremos para convolucionar juntas.
+	</caption>
+</figure>
+      
+      <section id="subs1">
+      	<title>Reflejada y Desplazada </title>
+      	<para id="p2_eg">
+Ahora tomaremos una de las funciones y la reflejaremos a través del eje de las y. Después debemos desplazar la función, así como el origen, el punto de la función que originalmente estaba en el origen, esta marcada como el punto  <m:math><m:ci>τ</m:ci>
+	</m:math>.  Este paso se muestra en la siguiente figura,	  <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Como la convolución es conmutativa no importa que función es reflejada y desplazada, sin embargo conforme las funciones se vuelven mas complicadas reflejar y desplazar la “correcta” nos hará el problema mas sencillo.</para>
+	
+	<figure id="eg_fig2">
+	<media id="id1170881385125" alt=""><image src="../../media/refshiftpulsee.png" mime-type="image/png"/></media>
+	<caption>
+	    El pulso unitario reflejado y desplazado.  </caption>
+</figure>
+      </section>
+      
+      <section id="subs2">
+      	<title>Regiones de Integración </title>
+      	<para id="p3_eg">
+      	 Ahora veremos la función y dividiremos su dominio en dos límites diferentes de integración. Estas dos regiones diferentes pueden ser entendidas pensando en como nos desplazamos <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply><m:minus/><m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> sobre la otra función. Si la función fuera mas complicada necesitaremos tener mas limites para que las partes sobrepuestas de las  dos funciones puedan ser expresadas en una integral lineal sencilla. Para este problema tendremos las siguientes cuatro regiones. Compárense estos limites de integración con los de los bosquejos de <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply><m:minus/><m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> y <m:math>
+		<m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> para ver si se puede entender el por que tenemos cuatro regiones.   Nótese que  <m:math><m:ci>t</m:ci>
+	</m:math> en los limites de integración se refiere al lado derecho de la función <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply><m:minus/><m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, marcada como <m:math><m:ci>t</m:ci>
+	</m:math> entre cero y uno en la gráfica.
+
+
+	  <list id="limits" list-type="enumerated">
+	<title>Los cuatro limites de integración  </title>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:ci>t</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:leq/>
+					<m:cn>0</m:cn>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:leq/>
+					<m:cn>1</m:cn>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:geq/>
+				<m:ci>t</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+</para>
+      </section>
+
+      <section id="subs3">
+	<title>Usando la Integral de Convolución</title>
+	<para id="p_subs3">
+	  
+	  Finalmente estamos listos para unas pequeñas matemáticas. Usando la integral de convolución, integremos el producto de 	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:ci type="fn">x</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">h</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+					<m:ci>τ</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Para la primer y cuarta región es trivial pues siempre será, <m:math><m:cn>0</m:cn></m:math>.
+	  La segunda región,  
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:leq/>
+				<m:cn>0</m:cn>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>, requiere las siguientes matemáticas:	  
+	  <equation id="eq_eg1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>t</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	  La tercer región, 
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:leq/>
+				<m:cn>1</m:cn>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>, Tomemos nota de los cambios en nuestra integración. Conforme movemos 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:apply><m:minus/><m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> a través de la otra función, la parte izquierda de la función,	  <m:math>
+		<m:apply>
+			<m:minus/><m:ci>t</m:ci>
+			<m:ci>1</m:ci>
+		</m:apply>
+	</m:math>, se convierte es nuestro limite inferior para la integral. Esto se muestra a través de la integral de convolución como
+	  <equation id="eq2_eg1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>1</m:ci>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:cn>1</m:cn>
+					</m:uplimit>
+					<m:apply>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>2</m:cn>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Las formulas anteriores muestran el método para calcular la convolución; sin embargo no deje que la simplicidad de este ejemplo lo confunda cuando trabaje con otros problemas. El método será el mismo, solo se tendrá que tratar con mas matemáticas en integrales mas complicadas. </para>
+      </section>
+
+      <section id="subs4">
+	<title>Resultados de la Convolución </title>
+	<para id="p_subs4">
+	  
+	 Así, obtenemos los siguientes resultados para nuestras cuatro regiones:	  
+	  <equation id="eq3_eg">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:piecewise>
+						<m:piece>
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:lt/>
+								<m:ci>t</m:ci>
+								<m:cn>0</m:cn>
+							</m:apply>
+						</m:piece>
+						<m:piece>
+							<m:ci>t</m:ci>
+							<m:apply>
+								<m:lt/>
+								<m:apply>
+									<m:leq/>
+									<m:cn>0</m:cn>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:piece>
+						<m:piece>
+							<m:apply>
+								<m:minus/>
+								<m:cn>2</m:cn>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:lt/>
+								<m:apply>
+									<m:leq/>
+									<m:cn>1</m:cn>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:piece>
+						<m:piece>
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:geq/>
+								<m:ci>t</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:piece>
+					</m:piecewise>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Ahora que encontramos el resultado para cada una de las cuatro regiones, podemos combinarlas y graficar la convolución de 	  <m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+			<m:apply>
+				<m:ci type="fn">x</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">h</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+
+	<figure id="eg_fig3">
+	<media id="id1170891078001" alt=""><image src="../../media/systemrespe.png" mime-type="image/png"/></media>
+	<caption>
+	    Muestra la respuesta al impulso de la entrada, 
+	    <m:math><m:apply>
+				<m:ci type="fn">x</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.
+	  </caption>
+</figure>      
+	
+      </section>
+    </section>
+
+  </content>
+</document>

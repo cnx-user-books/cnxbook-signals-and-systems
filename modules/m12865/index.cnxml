@@ -1,0 +1,176 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Análisis de Fourier</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c7ae0d28-f05a-4031-95c3-a86565abed4a</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1">El análisis de Fourier es elemental para entender el comportamiento de las señales de sistemas. Este es el resultado de que los senosoidales son <link document="m12874" strength="2">eigenfunciones</link>  de <link document="m12822" strength="2">sistemas lineales  variantes en el tiempo (LTI)</link>. Si pasamos cualquier senosoidal a través de un sistema LTI, obtenemos la versión escalada de cualquier sistema senosoidal como salida. Entonces, ya que el análisis de Fourier nos permite redefinir las señales en terminos de senosoidales, todo lo que tenemos que hacer es determinar el efecto que cualquier sistema tiene en todos los senosoidales posibles (su <link document="m0028" strength="2">función de transferencia</link>)  así tendremos un entendimiento completo del sistema. Así mismo, ya que podemos definir el paso de los senosoidales en el sistema como la multiplicación de ese senosoidal por la función de transferencia en la misma frecuencia, puedes convertir el paso de la señal a través de cualquier sistema de ser una <link document="m12829" strength="2">convolución</link> (en tiempo) a una multiplicación (en frecuencia) estas ideas son lo que dan el poder al análisis de Fourier.
+
+    </para>
+    <para id="para2">Ahora, después de haberle vendido el valor que tiene este método de análisis, nosotros debemos analizar exactamente lo que  significa el análisis Fourier. Las cuatro transformadas de Fourier que forman parte de este análisis son: <link document="m10097" strength="2">Series Fourier</link>, <link document="m10098" strength="2">Transformada de Fourier continua en el tiempo</link>,  <link document="m12861" strength="2">Transformada de Fourier en Tiempo Discreto</link>, y La <link document="m12843" strength="2">Transformada de Fourier Discreta</link>. Para este modulo, nosotros veremos la <link document="m12978" strength="2">trasformada de Laplace</link> y la <link document="m12959" strength="2">transformada Z</link>. Como extensiones de CTFT y DTFT respectivamente. Todas estas transformadas actúan esencialmente de la misma manera, al convertir una señal en tiempo en su señal equivalente en frecuencia (senosoidales). Sin embargo, dependiendo en la naturaleza de una señal especifica (<foreign>por ejemplo</foreign>, si es de tamaño finito o infinito, o si son discretas o continuas en el tiempo) hay una transformada apropiada para convertir las señales  en su dominio de frecuencia. La siguiente tabla muestra las cuatro transformadas de Fourier y el uso de cada una. También incluye la convolucion relevante para el espacio especificado. 
+     
+
+    </para>
+    
+    <table frame="all" id="table1" summary="">
+<title>Tabla de Representaciones para Fourier</title>
+<tgroup cols="4"><thead>
+		<row>
+			<entry>Transformada</entry>
+			<entry>Dominio del Tiempo</entry>
+			<entry>Dominio de la Frecuencia</entry>
+			<entry>Convolución</entry>
+		</row>
+	</thead>
+	<tbody>
+		<row>
+			<entry>Serie de Fourier Continua en el Tiempo</entry>
+			<entry align="center">
+				<m:math display="inline">
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>L</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:interval closure="closed-open">
+							<m:cn>0</m:cn>
+							<m:ci>T</m:ci>
+						</m:interval>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>l</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:integers/>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry>Tiempo Continuo Circular</entry>
+		</row>
+		<row>
+			<entry>Transformada de Fourier en Tiempo Continuo</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>L</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:reals/>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>L</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:reals/>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry>Tiempo Continuo Lineal</entry>
+		</row>
+		<row>
+			<entry>Transformada de Fourier Discreta en el Tiempo</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>l</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:integers/>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>L</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:interval closure="closed-open">
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+						</m:interval>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry>Tiempo Discreto Lineal</entry>
+		</row>
+		<row>
+			<entry>Transformada de Fourier Discreta</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>l</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup>
+						</m:ci>
+						<m:interval closure="closed-closed">
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:interval>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry align="center">
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>l</m:mi>
+								<m:mn>2</m:mn>
+							</m:msup></m:ci>
+						<m:interval closure="closed-closed">
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:interval>
+					</m:apply>
+				</m:math>
+			</entry>
+			<entry>Tiempo Discreto Circular</entry>
+		</row>
+	</tbody>
+
+</tgroup>
+</table>
+  </content>
+</document>

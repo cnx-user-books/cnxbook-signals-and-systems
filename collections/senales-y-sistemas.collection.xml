@@ -1,0 +1,181 @@
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="es">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10373</md:content-id>
+    <md:title>Señales y Sistemas</md:title>
+    <md:language>es</md:language>
+    <md:license url="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution License</md:license>
+    <md:uuid>4238bc07-3eed-4d07-b4e6-135dac3e0ecb</md:uuid>
+<md:slug>senales-y-sistemas</md:slug>
+</metadata>
+  <col:content>
+    <col:subcollection>
+      <md:title>Señales</md:title>
+      <col:content>
+        <col:module document="m12818"/>
+        <col:module document="m12823"/>
+        <col:module document="m12819"/>
+        <col:module document="m12824"/>
+        <col:module document="m12825"/>
+        <col:module document="m12820"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Sistemas</md:title>
+      <col:content>
+        <col:module document="m12822"/>
+        <col:module document="m12826"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Análisis de Sistemas de Tiempo Continuo en el Dominio del Tiempo</md:title>
+      <col:content>
+        <col:module document="m12985"/>
+        <col:module document="m12828"/>
+        <col:module document="m12829"/>
+        <col:module document="m12834"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Análisis de Sistemas Discretos en el Dominio del Tiempo</md:title>
+      <col:content>
+        <col:module document="m12830"/>
+        <col:module document="m12833"/>
+        <col:module document="m12831"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Repaso de Algebra Lineal</md:title>
+      <col:content>
+        <col:module document="m12862"/>
+        <col:module document="m12863"/>
+        <col:module document="m12870"/>
+        <col:module document="m12871"/>
+        <col:module document="m12872"/>
+        <col:module document="m12874"/>
+        <col:module document="m12875"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Series Fourier del Tiempo Continuo</md:title>
+      <col:content>
+        <col:module document="m12933"/>
+        <col:module document="m12893"/>
+        <col:module document="m12894"/>
+        <col:module document="m12896"/>
+        <col:module document="m12897"/>
+        <col:module document="m12898"/>
+        <col:module document="m12899"/>
+        <col:module document="m12900"/>
+        <col:module document="m12934"/>
+        <col:module document="m12927"/>
+        <col:module document="m12929"/>
+        <col:module document="m12932"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Espacios de Hilbert y Expansiones Ortogonales</md:title>
+      <col:content>
+        <col:module document="m12878"/>
+        <col:module document="m12877"/>
+        <col:module document="m12876"/>
+        <col:module document="m12879"/>
+        <col:module document="m12880"/>
+        <col:module document="m12881"/>
+        <col:module document="m12902"/>
+        <col:module document="m12928"/>
+        <col:module document="m12913"/>
+        <col:module document="m12919"/>
+        <col:module document="m12920"/>
+        <col:module document="m12931"/>
+        <col:module document="m12935"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Transformada Discreta de Fourier</md:title>
+      <col:content>
+        <col:module document="m12865"/>
+        <col:module document="m12848"/>
+        <col:module document="m12859"/>
+        <col:module document="m12860"/>
+        <col:module document="m12864"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Transformada Rápida de Fourier (FFT)</md:title>
+      <col:content>
+        <col:module document="m12937"/>
+        <col:module document="m12942"/>
+        <col:module document="m12941"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Convergencia</md:title>
+      <col:content>
+        <col:module document="m12943"/>
+        <col:module document="m12944"/>
+        <col:module document="m12945"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title> Transformada de Fourier Discreta en el Tiempo (DTFT)</md:title>
+      <col:content>
+        <col:module document="m10099"/>
+        <col:module document="m12843"/>
+        <col:module document="m12844"/>
+        <col:module document="m12861"/>
+        <col:module document="m12846"/>
+        <col:module document="m12845"/>
+        <col:module document="m12847"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Transformada de Fourier de Tiempo Continuo (CTFT)</md:title>
+      <col:content>
+        <col:module document="m12955"/>
+        <col:module document="m12957"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Teorema de Muestreo</md:title>
+      <col:content>
+        <col:module document="m12964"/>
+        <col:module document="m12969"/>
+        <col:module document="m12970"/>
+        <col:module document="m12971"/>
+        <col:module document="m12973"/>
+        <col:module document="m12974"/>
+        <col:module document="m12976"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Transformada de Laplace y Diseño de Sistemas</md:title>
+      <col:content>
+        <col:module document="m12978"/>
+        <col:module document="m12979"/>
+        <col:module document="m12959"/>
+        <col:module document="m12961"/>
+        <col:module document="m12962"/>
+        <col:module document="m12963"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>La Transformada Z y Filtros Digitales</md:title>
+      <col:content>
+        <col:module document="m12951"/>
+        <col:module document="m12950"/>
+        <col:module document="m12956"/>
+        <col:module document="m12958"/>
+        <col:module document="m12960"/>
+        <col:module document="m12965"/>
+        <col:module document="m12966"/>
+        <col:module document="m12967"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Tareas</md:title>
+      <col:content>
+        <col:module document="m10826"/>
+      </col:content>
+    </col:subcollection>
+  </col:content>
+</col:collection>

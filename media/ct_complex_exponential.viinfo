@@ -1,0 +1,25 @@
+<viinfo>
+  <binary>
+    <platform>windows</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/ct_complex_exponential.exe
+    </main>
+  </binary>
+  <binary>
+    <platform>linux</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/ct_complex_exponential_linux
+    </main>
+  </binary>
+  <binary>
+    <platform>solaris</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/ct_complex_exponential_solaris
+    </main>
+  </binary>
+  <source>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/Complex_Exponential.vi
+    </main>
+  </source>
+</viinfo>

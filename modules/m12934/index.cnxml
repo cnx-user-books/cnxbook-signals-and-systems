@@ -1,0 +1,1101 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Convergencia de las Series de Fourier</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>373617a7-2aef-4517-8610-3ab5a8e8a696</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p1_int">Antes de ver este módulo, esperamos que usted este completamente convencido que <emphasis>cualquier</emphasis>
+	<link target-id="m12933" strength="2">función periódica
+	</link>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, se puede representar como una suma de <link document="m12819" strength="2">senosoidales complejos</link>.  Si usted no lo esta, intente ver la sección de <link document="m12872" strength="2"> generalidades de eigenfunciones</link> o de <link document="m12874" strength="2">eigenfunciones de los sistemas LTI</link>.
+Hemos demostrado que podemos representar la señal como una suma de exponenciales usando las ecuaciones de las <link document="m12893" strength="3">series de Fourier</link> mostradas aquí: 
+  
+
+	<equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:domainofapplication>
+						<m:ci>n</m:ci>
+					</m:domainofapplication>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:mi>n</m:mi>
+										<m:mi>t</m:mi>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Fourier.html">Joseph
+	Fourier</link> insistió que estas ecuaciones eran verdaderas, pero nunca las pudo probar. Lagrange ridiculizó públicamente a Fourier y dijo que solo funciones continuas podrían ser representadas como <link target-id="eq1" strength="2"/> (así que probo que la <link target-id="eq1" strength="2"/>  funciona para funciones continuas en el tiempo). Sin embargo, nosotros sabemos que la verdad se encuentra entre las posiciones que Fourier y Lagrange tomaron.
+
+</para>
+    </section>
+
+    
+    <section id="sec2">
+      <title>Comprendiendo la Verdad</title>
+      <para id="p1_sec2">
+	Formulando nuestra pregunta matemáticamente, deje 
+
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:diff/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>f</m:mi>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:uplimit>
+					<m:ci>N</m:ci>
+				</m:uplimit>
+				<m:lowlimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+					</m:apply>
+				</m:lowlimit>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+donde
+	<m:math display="inline">
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math> es igual a los coeficientes de Fourier,
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>. (vea <link target-id="eq2" strength="3"/>).
+      </para>
+      
+      <para id="p2_sec2"><m:math display="inline">
+		<m:apply>
+			<m:diff/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>f</m:mi>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es la “reconstrucción parcial” de 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> 
+	usando los primeros 
+	<m:math>
+		<m:apply>
+			<m:plus/>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:ci>N</m:ci>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math> 
+	coeficientes de Fourier. 
+	<m:math display="inline">
+		<m:apply>
+			<m:diff/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>f</m:mi>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<emphasis>se aproxima</emphasis> a
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, con la aproximación mejorando cuando 
+	<m:math><m:ci>N</m:ci></m:math> se vuelve grande. Así que, podemos pensar que el conjunto 	<m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:apply>
+					<m:forall/>
+					<m:bvar>
+						<m:ci>N</m:ci>
+					</m:bvar>
+					<m:condition>
+						<m:apply>
+							<m:eq/>
+							<m:ci>N</m:ci>
+							<m:apply>
+								<m:set>
+									<m:cn>0</m:cn>
+									<m:cn>1</m:cn>
+									<m:ci>…</m:ci>
+								</m:set>
+							</m:apply>
+						</m:apply>
+					</m:condition>
+					<m:apply>
+						<m:diff/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>
+	es una <term>secuencia de funciones</term>, cada una aproximando 
+
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> mejor que la anterior. 
+      </para>
+
+      <para id="p3_sec2">La pregunta se convierte en , ¿sí esta secuencia converge a 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>?  ¿ 
+	<m:math display="inline">
+		<m:apply>
+			<m:tendsto/>
+			<m:apply>
+				<m:diff/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>f</m:mi>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	asi como a 
+	<m:math display="inline">
+		<m:apply>
+			<m:tendsto/>
+			<m:ci>N</m:ci>
+			<m:infinity/>
+		</m:apply>
+	</m:math>? Trataremos de responder estas preguntas al ver la convergencia de dos maneras diferentes:
+	<list id="list1" list-type="enumerated"><item>
+	  
+Viendo la <term>energía</term> de la señal de error: 
+	    <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>e</m:mi>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:diff/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	Viendo el 
+	    <m:math display="inline">
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math> 
+
+en <emphasis>cada</emphasis> punto y comparándolo con 
+	 
+	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.
+	  </item>
+</list>
+</para>
+
+      <section id="sub1">
+	<title>Primer Método</title>
+	<para id="p1_s1s2">Sea
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>e</m:mi>
+					<m:mi>N</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> 
+ la diferencia (i.e. error) entre la señal 
+
+
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> y su reconstrucción parcial 
+	  <m:math display="inline">
+		<m:apply>
+			<m:diff/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>f</m:mi>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>e</m:mi>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:diff/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Si
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msup>
+						<m:mi>L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup>
+				</m:ci>
+				<m:apply>
+					<m:interval>
+						<m:cn>0</m:cn>
+						<m:ci>T</m:ci>
+					</m:interval>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  (energía finita), entonces la energía de 
+	  <m:math display="inline">
+		<m:apply>
+			<m:tendsto/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>e</m:mi>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	 cuando
+	  <m:math display="inline">
+		<m:apply>
+			<m:tendsto/>
+			<m:ci>N</m:ci>
+			<m:infinity/>
+		</m:apply>
+	</m:math> es
+
+	  <equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:ci type="fn">
+									<m:msub>
+										<m:mi>e</m:mi>
+										<m:mi>N</m:mi>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:tendsto/>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:diff/>
+									<m:apply>
+										<m:ci type="fn">
+											<m:msub>
+												<m:mi>f</m:mi>
+												<m:mi>N</m:mi>
+											</m:msub>
+										</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Podemos comprobar esta ecuación usando la relación de Perseval al:
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:diff/>
+									<m:apply>
+										<m:ci type="fn">
+											<m:msub>
+												<m:mi>f</m:mi>
+												<m:mi>N</m:mi>
+											</m:msub>
+										</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>N</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:msub>
+										<m:mo>ℱ</m:mo>
+										<m:mi>n</m:mi>
+									</m:msub>
+									<m:apply>
+										<m:ci type="fn">f</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+								<m:apply>
+									<m:msub>
+										<m:mo>ℱ</m:mo>
+										<m:mi>n</m:mi>
+									</m:msub>
+									<m:apply>
+										<m:diff/>
+										<m:apply>
+											<m:ci type="fn">
+												<m:msub>
+													<m:mi>f</m:mi>
+													<m:mi>N</m:mi>
+												</m:msub>
+											</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:condition>
+						<m:apply>
+							<m:gt/>
+							<m:apply>
+								<m:abs/>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:ci>N</m:ci>
+						</m:apply>
+					</m:condition>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:abs/>
+							<m:ci><m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub></m:ci>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	  
+	Donde la ecuación antes del cero es la suma de la última parte 
+ de las series de Fourier. La cual se aproxima a cero por que 
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msup>
+						<m:mi>L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup>
+				</m:ci>
+				<m:apply>
+					<m:interval>
+						<m:cn>0</m:cn>
+						<m:ci>T</m:ci>
+					</m:interval>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  
+	  
+	Ya que el sistema físicos responden a la energía, las series de Fourier proveen una representación adecuada para todo 
+	  
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msup>
+						<m:mi>L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup>
+				</m:ci>
+				<m:apply>
+					<m:interval>
+						<m:cn>0</m:cn>
+						<m:ci>T</m:ci>
+					</m:interval>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> igualando la energía finita sobre un punto.
+
+	</para>
+      </section>
+
+      
+      <section id="sub2">
+	<title>Segundo Método</title>
+	<para id="p1_sub2">El hecho de que  
+	  <m:math display="inline">
+		<m:apply>
+			<m:tendsto/>
+			<m:ci><m:msub>
+					<m:mi>e</m:mi>
+					<m:mi>N</m:mi>
+				</m:msub></m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math> no nos dice nada sobre que 
+
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	 y
+	  <m:math display="inline">
+		<m:apply>
+			<m:limit/>
+			<m:bvar>
+				<m:ci>N</m:ci>
+			</m:bvar>
+			<m:lowlimit>
+				<m:infinity/>
+			</m:lowlimit>
+			<m:apply>
+				<m:diff/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>f</m:mi>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+sean <emphasis>iguales</emphasis> en cierto punto. Tomemos las siguientes funciones como un ejemplo:
+	  
+	</para>
+	
+	<figure orient="horizontal" id="figs1">
+	  <subfigure id="subf1">
+	    <media id="idp9759728" alt=""><image src="../../media/cverg1.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="subf2">
+	    <media id="idm307488" alt=""><image src="../../media/cverg2.png" mime-type="image/png"/></media>
+	  </subfigure>
+	</figure>
+	
+	<para id="p2_sub2">Dadas estas dos funciones 
+	
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> y
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, podemos observar que para todo <m:math><m:ci>t</m:ci>
+	</m:math>, 
+	  <m:math display="inline">
+		<m:apply>
+			<m:neq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">g</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, pero 
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:int/>
+				<m:bvar>
+					<m:ci>t</m:ci>
+				</m:bvar>
+				<m:uplimit>
+					<m:ci>T</m:ci>
+				</m:uplimit>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">g</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	<!-- Probabaly need to add a little more here, such as
+	  definining or explaining pointwise convergence -->
+
+De esto podemos derivar las siguientes relaciones: 
+
+	  <m:math display="block">
+		<m:apply>
+			<m:neq/>
+			<m:ci>Convergencia de energía </m:ci>
+			<m:ci>convergencia de punto por punto </m:ci>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:implies/>
+			<m:ci>Convergencia de punto por punto </m:ci>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msup>
+						<m:mi>convergencia en L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup>
+				</m:ci>
+				<m:apply>
+					<m:interval>
+						<m:cn>0</m:cn>
+						<m:ci>T</m:ci>
+					</m:interval>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+Sin embargo, lo contrario de la proposició no es cierto. 
+	</para>
+
+	<para id="p3_sub2">Resulta que si 
+	  	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+tiene una <term>discontinuidad</term> (como se puede observar en la figura de 
+	 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>) en
+	  <m:math>
+		<m:ci><m:msub>
+				<m:mi>t</m:mi>
+				<m:mn>0</m:mn>
+			</m:msub></m:ci>
+	</m:math>, entonces
+
+	  <m:math display="block">
+		<m:apply>
+			<m:neq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci><m:msub>
+						<m:mi>t</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci><m:msub>
+								<m:mi>t</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+
+	Mientras
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	  tenga algunas de las condiciones, entonces
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci><m:msup>
+						<m:mi>t</m:mi>
+						<m:mi>′</m:mi>
+					</m:msup></m:ci>
+			</m:apply>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>N</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci><m:msup>
+								<m:mi>t</m:mi>
+								<m:mi>′</m:mi>
+							</m:msup></m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+
+	  si 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+es <term>continua</term> en 
+	
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>t</m:ci>
+			<m:ci><m:msup>
+					<m:mi>t</m:mi>
+					<m:mi>′</m:mi>
+				</m:msup></m:ci>
+		</m:apply>
+	</m:math>.
+
+	</para>
+      </section>
+
+    </section>
+
+  </content>
+</document>

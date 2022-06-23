@@ -1,0 +1,34 @@
+<viinfo>
+  <binary>
+    <platform>windows</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/dft_analysis.exe
+    </main>
+    <subordinate>
+      http://cnx.rice.edu/content/m11601/latest/lvanlys.dll
+    </subordinate>
+  </binary>
+  <binary>
+    <platform>linux</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/dft_analysis_linux
+    </main>
+    <subordinate>
+      http://cnx.rice.edu/content/m11601/latest/lvanlys.so
+    </subordinate>
+  </binary>
+  <binary>
+    <platform>solaris</platform>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/dft_analysis_solaris
+    </main>
+    <subordinate>
+      http://cnx.rice.edu/content/m11601/latest/lvanlys.so
+    </subordinate>
+  </binary>
+  <source>
+    <main>
+      http://cnx.rice.edu/content/m11601/latest/DFT Analysis.llb
+    </main>
+  </source>
+</viinfo>

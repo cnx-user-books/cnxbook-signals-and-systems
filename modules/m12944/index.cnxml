@@ -1,0 +1,1642 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Convergencia de Vectores</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>2231b0cf-a61b-4433-a60c-15da86b5158c</md:uuid>
+</metadata>
+
+  <content>    
+    <section id="sec3">
+      <title>Convergencia de  Vectores</title>
+      <para id="p1_s3">Discutiremos la convergencia puntual y de la norma de vectores. 
+	También existen otros tipos de convergencia y uno en particular, la 
+	<link document="m10895" strength="2">convergencia uniforme</link>,
+	también puede ser estudiada. Para esta discusión, asumiremos que los vectores pertenecen a un <link document="m12877" strength="3"> espacio de vector normado</link>.
+      </para>
+      
+      <section id="s3_sub1">
+	<title>COnvergencia Puntual</title>
+	<para id="p1_s3s1">Una <link document="m12943" strength="3">secuencia</link>
+	<m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+			<m:bvar>
+				<m:ci>n</m:ci>
+			</m:bvar>
+			<m:interval>
+				<m:cn>1</m:cn>
+				<m:infinity/>
+			</m:interval>
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	
+	  converge <term>puntualmente</term> al límite 
+	  <m:math>
+		<m:ci type="vector">g</m:ci>
+	</m:math>
+	  si cada elemento de  
+	  <m:math>
+		<m:ci type="vector">
+			<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+		</m:ci>
+	</m:math> converge al elemento correspondiente en
+	  <m:math>
+		<m:ci type="vector">g</m:ci>
+	</m:math>.
+	  A continuación hay unos ejemplos para tratar de ilustrar esta idea.	</para>
+	
+	<example id="point_eg1">
+	  <para id="p1_pointeg1"><m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+			</m:ci>
+			<m:apply>
+				<m:vector>
+					<m:apply>
+						<m:ci type="fn" class="discrete">
+							<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+						</m:ci>
+						<m:ci>1</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">
+							<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+						</m:ci>
+						<m:ci>2</m:ci>
+					</m:apply>
+				</m:vector>
+			</m:apply>
+			<m:apply>
+				<m:vector>
+					<m:apply>
+						<m:plus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:minus/>
+						<m:cn>2</m:cn>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:vector>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	    
+	    Primero encontramos los siguiente limites para nuestras dos 
+	    <m:math>
+		<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+	</m:math>'s:
+
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">
+							<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+						</m:ci>
+						<m:ci>1</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">
+							<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+						</m:ci>
+						<m:ci>2</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>
+	    
+	    Después tenemos el siguiente,
+
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:ci type="vector">
+						<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:ci type="vector">g</m:ci>
+		</m:apply>
+	</m:math>
+	    
+	    puntual, donde 
+	    
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">g</m:ci>
+			<m:vector>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:vector>
+		</m:apply>
+	</m:math>.
+	  </para>
+	</example>
+	
+
+	<example id="point_eg2">
+	  <para id="p1_pointeg2"><m:math display="block">
+		<m:apply>
+			<m:forall/>
+			<m:bvar>
+				<m:ci>t</m:ci>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:in/>
+					<m:ci>t</m:ci>
+					<m:reals/>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:ci>t</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	    Como se hizo anteriormente, primero examinamos el límite
+
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+					</m:ci>
+					<m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:divide/>
+					<m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+
+	    donde
+	    <m:math>
+		<m:apply>
+			<m:in/>
+			<m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			<m:reals/>
+		</m:apply>
+	</m:math>.  Por lo tanto
+
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:ci><m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub></m:ci>
+			</m:apply>
+			<m:ci>g</m:ci>
+		</m:apply>
+	</m:math>
+	 
+	    puntualmente donde 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">g</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	    para toda
+	    <m:math>
+		<m:apply>
+			<m:in/>
+			<m:ci>t</m:ci>
+			<m:reals/>
+		</m:apply>
+	</m:math>.
+
+
+	    <!-- FIGURE GOES HERE -->
+</para>
+	</example>
+      </section>
+      
+
+      <section id="sec4">
+	<title>Norma de Convergencia</title>
+	<para id="p1_s4">La <link document="m12943" strength="3">secuencia</link>
+	<m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+			<m:bvar>
+				<m:ci>n</m:ci>
+			</m:bvar>
+			<m:interval>
+				<m:cn>1</m:cn>
+				<m:infinity/>
+			</m:interval>
+			<m:apply>
+				<m:set>
+					<m:ci type="vector">
+						<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+					</m:ci>
+				</m:set>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+	  converge a <m:math><m:ci type="vector">g</m:ci></m:math> en la norma si	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+					<m:apply>
+						<m:minus/>
+						<m:ci type="vector">
+							<m:msub><m:mi>g</m:mi><m:mi>n</m:mi></m:msub>
+						</m:ci>
+						<m:ci type="vecotr">g</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.  Aqui 
+	  <m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>˙</m:ci>
+		</m:apply>
+	</m:math> es la <link document="m12877">norma</link> del espacio vectorial correspondiente de
+	  <m:math>
+		<m:ci type="vector">
+			<m:msub>
+				<m:mi>g</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math>'s.  Intuitivamente esto significa que la distancia entre los vectores
+	  <m:math>
+		<m:ci type="vector">
+			<m:msub>
+				<m:mi>g</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math> y 
+	  <m:math>
+		<m:ci type="vector">g</m:ci>
+	</m:math> decrese a <m:math><m:cn>0</m:cn></m:math>.  
+	</para>
+	
+	<example id="eg1_s4">
+	  <para id="p1_e1s4"><m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>g</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:vector>
+				<m:apply>
+					<m:plus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>2</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:vector>
+		</m:apply>
+	</m:math>
+	    
+	    Sea 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">g</m:ci>
+			<m:vector>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:vector>
+		</m:apply>
+	</m:math>
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+					<m:apply>
+						<m:minus/>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>g</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci type="vector">g</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:root/>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:plus/>
+									<m:cn>1</m:cn>
+									<m:apply>
+										<m:divide/>
+										<m:cn>1</m:cn>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:minus/>
+								<m:cn>2</m:cn>
+								<m:apply>
+									<m:divide/>
+									<m:cn>1</m:cn>
+									<m:ci>n</m:ci>
+								</m:apply>
+								<m:cn>1</m:cn>
+							</m:apply>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:root/>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:power/>
+								<m:ci>n</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:power/>
+								<m:ci>n</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:root/>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	    Asi
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+					<m:apply>
+						<m:minus/>
+						<m:ci type="vector">
+							<m:msub>
+								<m:mi>g</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci type="vector">g</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>,
+
+	    Por lo tanto,  
+	    <m:math>
+		<m:apply>
+			<m:tendsto/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>g</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci type="vector">g</m:ci>
+		</m:apply>
+	</m:math> en la norma.
+	  </para>
+	</example>
+	
+	
+	<example id="eg2_s4">
+	  <para id="p1_e2s4">
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>t</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:leq/>
+		      <m:apply>
+			<m:leq/>
+			<m:cn>0</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:piece>
+		  <m:otherwise>
+		    <m:cn>0</m:cn>
+		  </m:otherwise>
+		</m:piecewise>
+	      </m:apply>
+	    </m:math>
+
+	    Sea 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	    para todo <m:math><m:ci>t</m:ci></m:math>.
+
+	    <equation id="eq3">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>n</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:cn>1</m:cn>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>t</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>n</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:interval>
+		      <m:cn>0</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:interval>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>t</m:ci>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>3</m:cn>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>3</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:ci>n</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	    
+	    Asi 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:limit/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:infinity/>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>n</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+
+	    Por lo tanto, 
+	    <m:math>
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math> en la norma.	  
+	  </para>
+	</example>
+      </section>
+    </section>
+
+
+    <section id="sec5">
+      <title>Puntual vs.Norma de Convergencia</title>      
+      <rule type="theorem" id="thrm_conv1">
+	<statement id="idp8089488">
+	  <para id="ruleexp1">Para 
+	    <m:math>
+		<m:apply>
+			<m:power/>
+			<m:reals/>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math>, la convergencia puntual y la norma de convergencia es equivalente.	  </para>
+	</statement>
+	<proof id="idm815392">
+	  <title>Puntual ⇒ Norma</title>
+	  <para id="ruleexp2">
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>i</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">g</m:ci>
+		  <m:ci>i</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    Asumiendo lo anterior, entonces 
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>g</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci type="vector">g</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>i</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>m</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>1</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>n</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>i</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">g</m:ci>
+			<m:ci>i</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	 
+	    Así,
+	    
+	    <equation id="eq4">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:infinity/>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci type="vector">
+			    <m:msub>
+			      <m:mi>g</m:mi>
+			      <m:mi>n</m:mi>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci type="vector">g</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:limit/>
+		    <m:bvar>
+		      <m:ci>n</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:infinity/>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>i</m:ci>
+		      </m:bvar>
+		      <m:uplimit>
+			<m:ci>m</m:ci>
+		      </m:uplimit>
+		      <m:lowlimit>
+			<m:cn>1</m:cn>
+		      </m:lowlimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:ci type="fn">
+			      <m:msub>
+				<m:mi>g</m:mi>
+				<m:mi>n</m:mi>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">g</m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>i</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:ci>m</m:ci>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>1</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:limit/>
+		      <m:bvar>
+			<m:ci>n</m:ci>
+		      </m:bvar>
+		      <m:lowlimit>
+			<m:infinity/>
+		      </m:lowlimit>
+		      <m:apply>
+			<m:power/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:ci type="fn">
+			      <m:msub>
+				<m:mi>g</m:mi>
+				<m:mi>n</m:mi>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">g</m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</proof>
+
+	<proof id="idp8055184">
+	  <title>Norma ⇒ Puntual</title>
+	  <para id="ruleexp3"><m:math display="block">
+		<m:apply>
+			<m:tendsto/>
+			<m:apply>
+				<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+				<m:apply>
+					<m:minus/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci type="vector">g</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	<equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:limit/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:infinity/>
+					</m:lowlimit>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>i</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>m</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>1</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:ci type="fn">
+										<m:msub>
+											<m:mi>g</m:mi>
+											<m:mi>n</m:mi>
+										</m:msub>
+									</m:ci>
+									<m:ci>i</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:ci type="fn">g</m:ci>
+									<m:ci>i</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>i</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:ci>m</m:ci>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>1</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:limit/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:infinity/>
+						</m:lowlimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:ci type="fn">
+										<m:msub>
+											<m:mi>g</m:mi>
+											<m:mi>n</m:mi>
+										</m:msub>
+									</m:ci>
+									<m:ci>i</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:ci type="fn">g</m:ci>
+									<m:ci>i</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	    Ya que cada término es mayor o igual a cero, todos los términos
+	    '<m:math><m:ci>m</m:ci></m:math>' deben ser cero.
+	    Así,
+	    
+	    <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:limit/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:infinity/>
+				</m:lowlimit>
+				<m:apply>
+					<m:power/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>g</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>i</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">g</m:ci>
+							<m:ci>i</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:cn>2</m:cn>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	    
+	    para todo <m:math><m:ci>i</m:ci></m:math>.  Por lo tanto,
+	    
+	    <m:math display="block">
+		<m:apply>
+			<m:tendsto/>
+			<m:ci type="vector">
+				<m:msub>
+					<m:mi>g</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci type="vector">g</m:ci>
+		</m:apply>
+		<m:mtext>   puntual</m:mtext>
+	</m:math>
+</para>
+	</proof>	
+      </rule>
+
+      <para id="para_note">
+	<note type="nota" id="idp9518608"><label>Nota</label>
+	  En un espacio de dimensión finita el teorema anterior ya no es cierto. Probaremos esto con contraejemplos mostrados a continuación.
+	</note>
+      </para>
+
+      <section id="sec5_sub1">
+	<title>Contra Ejemplos</title>
+
+	<example id="eg1_counter">
+	  <title>Puntual ⇒ Norma</title>
+	  <para id="p1_eg1c">
+	    Dada la siguiente función:
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:ci>n</m:ci>
+		    <m:apply>
+		      <m:lt/>
+		      <m:apply>
+			<m:lt/>
+			<m:cn>0</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>		 
+		  </m:piece>
+		  <m:otherwise>
+		    <m:cn>0</m:cn>
+		  </m:otherwise>
+		</m:piecewise>
+	      </m:apply>
+	    </m:math>
+
+	    Entonces 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:limit/>
+		  <m:bvar>
+		    <m:ci>n</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:infinity/>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+
+	    Esto significa que, 
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:mtext>  pointwise</m:mtext>
+	      </m:apply>
+	    </m:math>
+
+	    donde para todo <m:math><m:ci>t</m:ci></m:math>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+
+	  <para id="p2_egct1">
+	    Ahora, 
+	    
+	    <equation id="eg6">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      
+		      <m:ci><m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub></m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:ci type="fn">
+			    <m:msub>
+			      <m:mi>g</m:mi>
+			      <m:mi>n</m:mi>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>n</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:tendsto/>
+		    <m:ci>n</m:ci>
+		    <m:infinity/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    Ya que la norma de la función se eleva, no puede converger a cualquier función con norma finita.
+	  </para>
+	</example>
+
+
+	<example id="eg2_ctr">
+	  <title>Norma ⇒ Puntual</title>
+	  <para id="p1_eg2c">
+	    Dada la siguiente función:
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:lt/>
+		      <m:apply>
+			<m:lt/>
+			<m:cn>0</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>		 
+		  </m:piece>
+		  <m:otherwise>
+		    <m:cn>0</m:cn>
+		  </m:otherwise>
+		</m:piecewise>
+	      </m:apply>
+	      <m:mtext>  si n es par</m:mtext>
+	    </m:math>
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:cn>-1</m:cn>
+		    <m:apply>
+		      <m:lt/>
+		      <m:apply>
+			<m:lt/>
+			<m:cn>0</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>		   
+		  </m:piece>
+		  <m:otherwise>
+		    <m:cn>0</m:cn>
+		  </m:otherwise>
+		</m:piecewise>
+	      </m:apply>
+	      <m:mtext>  si n es impar</m:mtext>
+	    </m:math>
+
+	    Entonces,
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci><m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		    <m:ci>g</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:tendsto/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    donde 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	    para todo <m:math><m:ci>t</m:ci></m:math>.  Entonces,
+	    
+	    <m:math display="block">
+	      <m:apply>
+		<m:tendsto/>
+		<m:ci><m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+		<m:ci>g</m:ci>
+	      </m:apply>
+	      <m:mtext>  en la norma</m:mtext>
+	    </m:math>
+
+	    Sin embargo, en 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>t</m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>, 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math> oscila entre -1 y 1, Y por lo tanto es no convergente.  Así, 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	     <emphasis>no</emphasis> tiene convergencia puntual.
+	  </para>
+	</example>
+      </section>
+
+      <section id="sub_prob">
+	<title>Problemas</title>
+	<para id="p1_sp">
+	  Pruebe si las siguientes secuencias tienen convergencia puntual, norma de convergencia, o ambas se mantienen en sus limites.
+	  <list id="list2_p" list-type="enumerated">
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>		    
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:lt/>
+			<m:cn>0</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>
+		      <m:apply>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:leq/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>		    
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	    </item>
+	    
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>		      
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>n</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:geq/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>		    
+		      <m:apply>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:lt/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+	</para>
+      </section>
+    </section>
+    
+  </content>  
+</document>

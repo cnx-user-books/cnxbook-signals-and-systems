@@ -1,0 +1,869 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Espacio de  Funciones</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b2c76f0c-bb9e-45dc-b62e-e3a18198c687</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">
+      También podemos encontrar <link document="m10760" strength="3">basis
+      vectores base </link> para <link document="m12878" strength="3">espacios vectoriales      </link> con exepción de
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:reals/>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>. 
+    </para>
+
+    
+    <para id="para2">
+      Sea      <m:math><m:ci><m:msub><m:mi>P</m:mi><m:mi>n</m:mi></m:msub></m:ci></m:math>
+      un espacio vectorial de orden polinomial n-esimo en (-1, 1) con coeficientes reales 
+ (verificar que 
+      <m:math><m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci></m:math>
+      es un  <foreign>espacio vectorial</foreign> en casa).
+    </para>
+
+    
+    <example id="example1">
+      <para id="exam1para1">
+	<m:math><m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci></m:math>
+	= {todos los polinomios cuadráticos}. Sea 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>, 
+	
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>, 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>t</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <para id="exam1para2">
+	<m:math>
+	  <m:set>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>  
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>  
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>  
+	  </m:set>
+	</m:math> <term>genera</term> 
+	<m:math><m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci></m:math>,
+	<foreign>es decir</foreign> puede escribir cualquier
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math> como 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply> 
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply> 
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply> 
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+ 
+	para algún 
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>
+	      <m:msub><m:mi>α</m:mi><m:mi>i</m:mi></m:msub>
+	    </m:ci>
+	    <m:reals/>
+	  </m:apply>
+	</m:math>. <note type="Nota" id="idm8995808"><label>Nota</label><m:math><m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci></m:math> 
+	es de dimensión 3.</note>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>t</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>3</m:cn>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </para>
+
+
+<!--
+    <figure id='fig1'>
+      <name></name>
+      <media type="image/png" src="fig1.png"/>
+      <caption></caption>
+    </figure> 
+-->
+      
+      <para id="exam1para3">
+	Base Alternativa 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:set>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>  
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>  
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>  
+	    </m:set>  
+	    <m:set>
+	      <m:cn>1</m:cn>
+	      <m:ci>t</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>3</m:cn>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>t</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+	  </m:apply>
+	</m:math>  
+
+	escribir  
+    <m:math>
+      <m:apply>
+	<m:ci type="fn">f</m:ci>
+	<m:ci>t</m:ci>
+      </m:apply>
+    </m:math> en términos de la nueva base 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>d</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>t</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>3</m:cn>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>4</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>3</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>0</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>d</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>1</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>0</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>1</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>3</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>
+		    <m:msub><m:mi>β</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>1</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>3</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:ci>
+		  <m:msub><m:mi>β</m:mi><m:mn>2</m:mn></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	por lo tanto 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>
+		<m:msub><m:mi>β</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci> 
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>4</m:cn>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub><m:mi>β</m:mi><m:mn>1</m:mn></m:msub>
+	    </m:ci> 
+	    <m:cn>-3</m:cn>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>3</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>
+		<m:msub><m:mi>β</m:mi><m:mn>2</m:mn></m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+
+	enotnces obtenemos 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>4.5</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>d</m:mi><m:mn>0</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>3</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>2</m:cn>
+		  <m:cn>3</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+		
+      </para>
+    </example>
+    
+
+    <example id="example2">
+      <para id="exam2para1">
+
+	<m:math>
+	  <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+	    <m:bvar><m:ci>n</m:ci></m:bvar>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:minus/>
+		<m:infinity/>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:uplimit>
+	      <m:infinity/>
+	    </m:uplimit>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>
+		  <m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> es una base para 
+	
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msup><m:mi>L</m:mi><m:mn>2</m:mn></m:msup>
+	    </m:ci>
+	    <m:list>
+	      <m:cn>0</m:cn>
+	      <m:ci>T</m:ci>
+	    </m:list>
+	  </m:apply>
+	</m:math>, 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>T</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+	      </m:apply>
+	      <m:ci>
+		<m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:domainofapplication>
+		<m:ci>n</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub><m:mi>C</m:mi><m:mi>n</m:mi></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>
+		      <m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <para id="exam2para2">
+	Calculamos la expansión de coeficientes con
+	
+	<equation id="eq1">
+	  <title>la formula de "cambio de base" </title>
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub><m:mi>C</m:mi><m:mi>n</m:mi></m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>t</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>T</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>
+			      <m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub>
+			    </m:ci>
+			    <m:ci>n</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<note type="nota" id="idp4657664"><label>Nota</label>Hay un número infinito de elementos en un conjuto de base, que significan que 
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msup><m:mi>L</m:mi><m:mn>2</m:mn></m:msup>
+	      </m:ci>
+	      <m:list>
+		<m:cn>0</m:cn>
+		<m:ci>T</m:ci>
+	      </m:list>
+	    </m:apply>
+	  </m:math>  es de dimensión infinita.</note>
+
+	Espacios de dimensión-infinita Infinite-dimensional son difíciles de visualizar. Podemos tomar mano de la intuición para reconocer que comparten varias de las propiedades con los espacios de dimensión finita. Muchos conceptos aplicados a ambos (como"expansión de base").Otros no (cambio de base no es una bonita formula de matriz).
+      </para>
+    </example>
+   
+  </content>
+  
+</document>

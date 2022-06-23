@@ -1,0 +1,611 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Región de Convergencia para la Transformada de Laplace</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>63787711-eef8-4c00-b2da-be79712180d7</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">
+
+Con la <link document="m10110" strength="2">transformada de Laplace</link>, el plano –s representa un conjunto de señales (<link document="m12825" strength="2">exponenciales complejos</link>). Para cualquier sistema LTI, alguna de estas señales puede causar que la salida del sistema inversa, mientras otras hacen que la salida del sistema diverja (“explote”). El conjunto de las señales que causa que la salida de los sistemas converja se encuentran en la <term>región de convergencia (ROC)</term>.este modulo discutirá como encontrar la región de convergencia para cualquier sistema LTI continuo. 
+
+   
+    </para>
+
+    <para id="para2">
+      Recuerde la definición de la transformada de Laplace, 
+      <equation id="eqn1">
+	<title>Transformada de Laplace</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">h</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+Si consideramos un exponencial complejo <link document="m12822" strength="2">causal</link>,
+     
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">h</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>a</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">u</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+      obtenemos la siguiente ecuación, 
+      <equation id="eqn2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>a</m:ci>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      evaluando esto obtenemos,
+      <equation id="eqn3">
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>-1</m:cn>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>s</m:ci>
+		<m:ci>a</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:limit/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:infinity/>
+		</m:lowlimit>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>s</m:ci>
+			<m:ci>a</m:ci>
+		      </m:apply>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      Nota que esta ecuación ira infinito cuando
+      <m:math>
+	<m:apply>
+	  <m:limit/>
+	  <m:bvar>
+	    <m:ci>t</m:ci>
+	  </m:bvar>
+	  <m:lowlimit>
+	    <m:infinity/>
+	  </m:lowlimit>
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>s</m:ci>
+		  <m:ci>a</m:ci>
+		</m:apply>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      vaya al infinito. Para entender por que pasa esto, tomaremos un paso mas al usar
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>s</m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>σ</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+     para realizar ecuaciones como 
+      <equation id="eqn4">
+	<m:math>
+	  <m:apply>
+	    <m:limit/>
+	    <m:bvar>
+	      <m:ci>t</m:ci>
+	    </m:bvar>
+	    <m:lowlimit>
+	      <m:infinity/>
+	    </m:lowlimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>ω</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>σ</m:ci>
+		      <m:ci>a</m:ci>
+		    </m:apply>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    Al reconocer que
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+       es senosoidal, se vuelve aparente
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci>σ</m:ci>
+		<m:ci>a</m:ci>
+	      </m:apply>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      va determinar si la ecuación explota o no. lo que encontramos es que si
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:ci>σ</m:ci>
+	  <m:ci>a</m:ci>
+	</m:apply>
+      </m:math>
+
+ es positivo, el exponencial va a tener una potencia negativa, lo que va a causar que esto se vaya a cero cuando <m:math><m:ci>t</m:ci></m:math>
+      vaya a infinito. Pero si
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:ci>σ</m:ci>
+	  <m:ci>a</m:ci>
+	</m:apply>
+      </m:math>
+    es negativa o cero, el exponencial no tendrá una potencia negativa, lo que prevendrá que vaya a cero y el sistema no va a converger. Lo que todo esto nos dice es que para una señal causar, tenemos convergencia cuando
+      <equation id="eqn5">
+	<title>Condición para Convergencia</title>
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:apply>
+	      <m:real/>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>a</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>
+
+    <para id="para3">
+
+Aunque no pasaremos por este proceso otra vez paras señales anticausales, podríamos hacerlo. Al hacerlo, nos daríamos cuenta que la condición necesaria para convergencia es cuando
+   
+      <equation id="eqn6">
+	<title>Condición Necesaria para Convergencia Anti-causal</title>
+	<m:math>
+	  <m:apply>
+	    <m:lt/>
+	    <m:apply>
+	      <m:real/>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>a</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>
+
+    <section id="sect1">
+      <title>Entendiendo el ROC Gráficamente</title>
+      <para id="para4">
+	Talvez la mejor manera del ver la región de convergencia es el ver el plano –S lo que observamos es que para un solo polo, la región de convergencia se encuentra a la derecha de las señales causales y a la izquierda de las señales anticausales. 
+      </para>
+
+      <figure id="fig1" orient="horizontal">
+	<subfigure id="fig1a">
+	  <media id="idm982144" alt=""><image src="../../media/laplaceroc1.png" mime-type="image/png"/></media>
+	  <caption>
+
+La ROC para una señal causal.
+	    </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+	  <media id="idp8519840" alt=""><image src="../../media/laplaceroc2.png" mime-type="image/png"/></media>
+	  <caption>
+	   La ROC para una señal anti-causal.</caption>
+	</subfigure>
+      </figure>
+
+      <para id="para5">
+	Después de reconocer esto, la pregunta necesaria es esta: ¿Que hacemos cuando tenemos polos múltiples? La respuesta más simple es que tenemos que tomar la intersección de todas las regiones de convergencias para cada respectivo polo.
+      </para>
+
+      <example id="exa1">
+	<para id="para6">
+	Encuentre
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	 y diga la región de convergencia para
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>a</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">u</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>b</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">u</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="para7">
+	  Al separa esto en dos términos obtenemos que las funciones de transferencia y la respectivas regiones de convergencia de 
+	  <equation id="eqn7">
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar><m:ci>s</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:real/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>a</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>H</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>s</m:ci>
+		      <m:ci>a</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	y
+	  <equation id="eqn8">
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar><m:ci>s</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:real/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>H</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>-1</m:cn>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>s</m:ci>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  Combinando esto obtenemos la región de convergencia de
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>b</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:real/>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>a</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  Si
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>a</m:ci>
+	      <m:ci>b</m:ci>
+	    </m:apply>
+	  </m:math>, podemos representar esto gráficamente. Si no, no abra una región de convergencia.
+	</para>
+
+	<figure id="fig2" orient="vertical">
+	  <media id="idp7216320" alt=""><image src="../../media/laplaceroc3.png" mime-type="image/png"/></media>
+	  <caption>Región de convergencia de
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	    si
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>a</m:ci>
+		<m:ci>b</m:ci>
+	      </m:apply>
+	    </m:math>.
+	  </caption>
+	</figure>
+      </example>
+    </section>
+
+  </content>
+</document>

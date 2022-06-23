@@ -1,0 +1,683 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Espacios de Hilbert comunes</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a25dec95-0920-43fc-b09a-1a0027a68f7f</md:uuid>
+</metadata>
+
+  <content>
+    <section id="sec1">
+      <title>Espacios de Hilbert comunes</title>
+      <para id="p1_sec1">
+	A continuación veremos los cuatro <link document="m12876" strength="3">Espacios de Hilbert </link> mas comunes con los que usted tendrá que tratar para la discusión y manipulación de señales y sistemas:
+      </para>
+
+      <section id="sub1">
+	
+
+	<para id="para1">
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+              <m:reals/>
+              <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math> (escalares reales ) y
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+              <m:complexes/>
+              <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math> (escalares complejos), también llamado
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msup>
+		  <m:mi>ℓ</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msup></m:ci>
+	      <m:interval>
+		<m:cn>0</m:cn>
+		<m:apply>
+		  <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		</m:apply>
+	      </m:interval>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="para2">
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">x</m:ci>
+			<m:vector>
+				<m:ci>
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>…</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>x</m:mi>
+						<m:mrow>
+							<m:mi>n</m:mi>
+							<m:mo>-</m:mo>
+							<m:mn>1</m:mn>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+			</m:vector>
+		</m:apply>
+	</m:math>
+	  Es una lista de números (secuencia finita).  El <link document="m12876" strength="3">producto interno</link> para nuestros dos espacios son las siguientes:
+	  <list id="list_ip">
+		<item>
+	      Producto interno 
+	      <m:math>
+				<m:apply>
+					<m:power/>
+					<m:reals/>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>:
+
+	      <equation id="eq1">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:scalarproduct/>
+							<m:ci type="vector">x</m:ci>
+							<m:ci type="vector">y</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:transpose/>
+								<m:ci type="vector">y</m:ci>
+							</m:apply>
+							<m:ci type="vector">x</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:sum/>
+							<m:bvar><m:ci>i</m:ci></m:bvar>
+							<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>x</m:mi>
+										<m:mi>i</m:mi>
+									</m:msub>
+								</m:ci>
+								<m:ci>
+									<m:msub>
+										<m:mi>y</m:mi>
+										<m:mi>i</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</item>
+		<item>
+	      Producto interno 
+	      <m:math>
+				<m:apply>
+					<m:power/>
+					<m:complexes/>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>:
+	      
+	      <equation id="eq2">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:scalarproduct/>
+							<m:ci type="vector">x</m:ci>
+							<m:ci type="vector">y</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:conjugate/>
+								<m:apply>
+									<m:transpose/>
+									<m:ci type="vector">y</m:ci>
+								</m:apply>
+							</m:apply>
+							<m:ci type="vector">x</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:sum/>
+							<m:bvar><m:ci>i</m:ci></m:bvar>
+							<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>x</m:mi>
+										<m:mi>i</m:mi>
+									</m:msub>
+								</m:ci>
+								<m:apply>
+									<m:conjugate/>
+									<m:ci>
+										<m:msub>
+											<m:mi>y</m:mi>
+											<m:mi>i</m:mi>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</item>
+	</list>
+</para>
+
+	<para id="para4">
+	  Modelo para: Señal de tiempo discreto en el intervalo 
+	  <m:math>
+	    <m:interval closure="closed">
+	      <m:cn>0</m:cn>
+	      <m:apply>
+		<m:minus/>
+                <m:ci>n</m:ci>
+                <m:cn>1</m:cn>
+	      </m:apply>
+	    </m:interval>
+	  </m:math> <emphasis>o</emphasis> Señal Periódica (con periodo 
+	  <m:math><m:ci>n</m:ci></m:math>) de tiempo discreto.
+	  <m:math>
+	    <m:vector>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>x</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>x</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>x</m:mi>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>-</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+		</m:msub>
+	      </m:ci>
+	    </m:vector>
+	  </m:math>
+	</para>
+
+	<figure id="fig1">
+	  <media id="idp6187392" alt=""><image src="../../media/fig1-ea2b.png" mime-type="image/png"/></media>
+	</figure>
+
+      </section>
+
+      <section id="sec2">
+	
+
+	<para id="para5">
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+              <m:ci type="fn">f</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+                  <m:msup>
+                    <m:mi>L</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+		</m:ci>
+		<m:apply>
+		  <m:interval>
+		    <m:ci>a</m:ci>
+		    <m:ci>b</m:ci>
+		  </m:interval>
+		</m:apply>
+	      </m:apply>                 
+	    </m:apply>
+	  </m:math>
+	  es una función de <emphasis>energía finita</emphasis> en
+	  <m:math>
+	    <m:interval closure="closed">
+	      <m:ci>a</m:ci>
+	      <m:ci>b</m:ci>
+	    </m:interval>
+	  </m:math>
+
+	  <equation id="eq3">
+	    <title>Inner Product</title>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+                <m:apply>
+                  <m:scalarproduct/>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci type="fn">g</m:ci>
+                </m:apply>
+                <m:apply>
+                  <m:int/>
+		  <m:bvar><m:ci>t</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:ci>a</m:ci>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>b</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	 Modelo para: Señal de tiempo continuo en el intervalo 
+	  <m:math>
+	    <m:interval closure="closed">
+	      <m:ci>a</m:ci>
+	      <m:ci>b</m:ci>
+	    </m:interval>
+	  </m:math>
+	  <emphasis>o</emphasis> Señal Periódica (con periodo 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+              <m:ci>T</m:ci>
+              <m:apply>
+                <m:minus/>
+		<m:ci>b</m:ci>
+		<m:ci>a</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:math>) de tiempo continuo
+	</para>
+	
+      </section>
+
+      <section id="sec3">
+	
+	<para id="para6">
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+              <m:ci>x</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+                  <m:msup>
+                    <m:mi>ℓ</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+		</m:ci>
+		<m:integers/>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  es una <emphasis>secuencia infinita de números </emphasis> que son cuadrados sumables	  <equation id="eq4">
+	    <title>Producto interno</title>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+                <m:apply>
+                  <m:scalarproduct/>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci type="fn">y</m:ci>
+                </m:apply>
+                <m:apply>
+                  <m:sum/>
+		  <m:bvar><m:ci>i</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">x</m:ci>
+		      <m:ci>i</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">y</m:ci>
+			<m:ci>i</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  Modelo para: Señal no-periódica de tiempo discreto 
+	</para>
+      </section>
+
+      <section id="sec4">
+	
+	<para id="para7">
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+              <m:ci type="fn">f</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+                  <m:msup>
+                    <m:mi>L</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+		</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> es una <emphasis>una función de energía finita </emphasis> en todo
+	  <m:math><m:reals/></m:math>.
+
+	  <equation id="eq5">
+	    <title>Producto interno</title>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+                <m:apply>
+                  <m:scalarproduct/>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci type="fn">g</m:ci>
+                </m:apply>
+                <m:apply>
+                  <m:int/>
+		  <m:bvar><m:ci>t</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  Modelo para: Señal no-periódica de tiempo continuo
+	</para>
+      </section>
+    </section>
+
+
+
+    <section id="sec5">
+      <title>Análisis de Fourier Asociado</title>
+
+      <para id="para8">
+        Cada uno de estos cuatro espacios de Hilbert tiene un análisis de Fourier asociado con el.
+        <list id="list1" list-type="bulleted">
+          <item>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msup>
+		    <m:mi>L</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msup>
+		</m:ci>
+		<m:interval>
+		  <m:ci>a</m:ci>
+		  <m:ci>b</m:ci>
+		</m:interval>
+	      </m:apply>
+	    </m:math> → Series de Fourier 
+          </item>
+
+          <item>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msup>
+		    <m:mi>ℓ</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msup>
+		</m:ci>
+		<m:apply>
+		  <m:interval>
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:interval>
+		</m:apply>
+	      </m:apply>
+	    </m:math> → Transformada Discreta de Fourier 
+          </item>
+
+          <item>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msup>
+		    <m:mi>L</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msup>
+		</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:math> → Transformada de Fourier 
+          </item>
+
+          <item>
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msup>
+		    <m:mi>ℓ</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msup>
+		</m:ci>
+		<m:integers/>
+	      </m:apply>
+	    </m:math> → Transformada Discreta de Fourier en Tiempo
+          </item>
+        </list>
+        Pero los cuatros están basados en el mismo principio (Espacio de Hilbert).
+        <note type="Nota Importante" id="idp7162800"><label>Nota Importante</label>no todos los espacios normalizados son espacios de Hilbert</note>
+        Por ejemplo: 
+        <m:math>
+          <m:ci>
+            <m:mrow>
+              <m:msup>
+                <m:mi>L</m:mi>
+                <m:mn>1</m:mn>
+              </m:msup>
+              <m:mo>(</m:mo>
+              <m:mi>ℝ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:ci>
+        </m:math>,
+        <m:math>
+          <m:apply>
+            <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+	      <m:domainofapplication>
+		<m:cn>1</m:cn>
+	      </m:domainofapplication>
+              <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>                  
+          </m:apply>
+        </m:math>. trate como usted pueda, de encontrar el producto interno que induce esta norma, es decir...tal que:
+        <m:math>
+          <m:apply>
+            <m:scalarproduct/>
+              <m:ci>·</m:ci>
+              <m:ci>·</m:ci>
+          </m:apply>
+        </m:math> such that
+        <equation id="eq9">
+          <m:math>
+            <m:apply>
+              <m:eq/>
+                <m:apply>
+                  <m:scalarproduct/>
+                    <m:ci type="fn">f</m:ci>
+                    <m:ci type="fn">f</m:ci>
+                </m:apply>
+                <m:apply>
+                  <m:power/>
+                    <m:apply>
+                      <m:int/>
+                        <m:bvar><m:ci>t</m:ci></m:bvar>
+                        <m:apply>
+                          <m:power/>
+                            <m:apply>
+                              <m:abs/>
+                                <m:apply>
+                                  <m:ci type="fn">f</m:ci>
+                                  <m:ci>t</m:ci>
+                                </m:apply>
+                            </m:apply>
+                            <m:cn>2</m:cn>
+                        </m:apply>
+                    </m:apply>
+                    <m:cn>2</m:cn>
+                </m:apply>
+                <m:apply>
+                  <m:power/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+	      <m:domainofapplication>
+		<m:cn>1</m:cn>
+	      </m:domainofapplication>
+              <m:ci>f</m:ci>
+	    </m:apply>
+                    <m:cn>2</m:cn>
+                </m:apply>
+            </m:apply>
+          </m:math>
+        </equation>
+        De echo, para todo el  espacio 
+        <m:math>
+    <m:apply>
+          <m:ci type="fn">
+              <m:msup>
+                <m:mi>L</m:mi>
+                <m:mi>p</m:mi>
+              </m:msup>
+          </m:ci>
+      <m:reals/>
+    </m:apply>
+        </m:math>
+        , 
+        <m:math>
+    <m:apply>
+          <m:ci type="fn">
+              <m:msup>
+                <m:mi>L</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+          </m:ci>
+      <m:reals/>
+    </m:apply>
+        </m:math>
+        es el <emphasis>único</emphasis> que es un espacio de Hilbert.
+      </para>
+
+      <figure id="fig2">
+	<media id="idp8956496" alt=""><image src="../../media/fig3-041f.png" mime-type="image/png"/></media>
+</figure>
+
+      <para id="fin">
+	Los espacios de Hilbert son en gran medida los más agradables, si se usa o estudia la 
+	<link document="m12928" strength="3">expansión de bases ortonormales </link> entonces usted empezara a ver por que esto es cierto.
+      </para>
+
+
+    </section>
+
+  </content>
+  
+</document>

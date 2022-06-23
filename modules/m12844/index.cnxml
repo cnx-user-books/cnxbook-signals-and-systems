@@ -1,0 +1,1082 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Transformada Discreta de Fourier (DFT)</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5fe8ba97-51a0-41e0-86f7-8a690d948891</md:uuid>
+</metadata>
+  
+  <content>
+    <para id="p1">La transformada de Fourier Discreta en el tiempo  (y también la transformada continua) pueden ser evaluadas cuando tenemos una expresión analítica para la señal. Suponga que tengamos una señal, como es la señal del habla usada en el capitulo anterior, para ella no existe una formula. Entonces ¿cómo podría usted calcular su espectro?  Por ejemplo, ¿cómo calculamos el espectrograma para el ejemplo de la <link document="m0049" target-id="spectrogram" strength="2"> señal de habla </link>?   La transformada de Fourier discreta ( DFT) nos permite calcula el espectro de información discreta en el tiempo. Estando en tiempo discreto podemos calcular exactamente el espectro, para señales análogas no existe manera similar para calcular su espectro similar. Para el espectro de señales análogas se tienen que construir equipo especial, que consiste en casi todos los casos de convertidores A / D y computaciones discretas. Análisis de el espectro discreta en el tiempo son mas flexibles que los análisis de las señales continuas. 
+
+
+    </para>
+    
+    <para id="p2">La formula del <link document="m10247" target-id="eqn1" strength="2">DTFT</link> es una suma que conceptualmente es fácil de calcular excepto por unos problemas. 
+    </para>    
+    
+    <list id="l1">
+	<item>
+	<emphasis>Duración de la señal</emphasis>. La suma se extiende sobre la duración de la señal, la cual tiene que ser finita para calcular el espectro de la señal. Es extremadamente difícil guardar una señal infinita, así que asumimos que la señal se extiende sobre 		
+	
+	<m:math>
+			<m:interval closure="closed">
+				<m:cn>0</m:cn>
+				<m:apply>
+					<m:minus/>
+					<m:ci>N</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:interval>
+		</m:math>.
+      </item>
+	<item>
+		<emphasis>Frecuencia continúa</emphasis>. Igual de importante que el problema de la duración de la señal  es el hecho que la frecuencia variable es continua: talvez solo se tenga que extender un periodo, como
+
+	<m:math>
+			<m:interval closure="closed">
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:interval>
+		</m:math>
+	o
+	<m:math>
+			<m:interval closure="closed">
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+			</m:interval>
+		</m:math>, 
+pero la formula DTFT requiere  evaluar el espectro de <emphasis>todas</emphasis> las frecuencias dentro del periodo. Calculemos el espectro de unas cuantas frecuencias; las mas obvias son las que tienen una espacio similar 
+	
+	<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>f</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:ci>k</m:ci>
+					<m:ci>K</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>, 
+	
+	<m:math>
+			<m:apply>
+				<m:in/>
+				<m:ci>k</m:ci>
+				<m:set>
+					<m:ci>k</m:ci>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>K</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:set>
+			</m:apply>
+		</m:math>.
+      </item>
+</list>
+    
+    <para id="p3">Así que definimos la <term>transformada discreta de Fourier</term> ( DFT) como  
+     
+      
+      <equation id="eqn1">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>k</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:in/>
+						<m:ci>k</m:ci>
+						<m:set>
+							<m:ci>0</m:ci>
+							<m:ci>…</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>K</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:set>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">S</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">s</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>n</m:ci>
+											<m:ci>k</m:ci>
+										</m:apply>
+										<m:ci>K</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+    
+    <para id="p4"> 
+Aquí, 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">S</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>
+      representa     
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">S</m:ci>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:cn>2</m:cn>
+					<m:pi/>
+					<m:apply>
+						<m:divide/>
+						<m:ci>k</m:ci>
+						<m:ci>K</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  
+    </para>
+
+    
+    <para id="intro">Podemos calcular el espectro en todas las frecuencias con espacio similar que queremos. Note que usted puede pensar de esta motivación computacional como <term>muestrear</term> el espectro; se vera mas sobre esta interpretación después. El problema ahora es el saber cuantas frecuencias son suficientes para capturar el como el espectro cambia con la frecuencia. Una manera de responder esta pregunta es determinando la formula de la transformada inversa discreta de Fourier: dado 
+   
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">S</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>,
+
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>k</m:ci>
+			<m:set>
+				<m:ci>0</m:ci>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>K</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>
+       ¿cómo encontramos       <m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>,
+      
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:set>
+				<m:ci>0</m:ci>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>N</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>? 
+     La formula estará en la siguiente manera
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>k</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>K</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">S</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:ci>K</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+      Substituyendo la formula DFT en este prototipo para la transformada inversa da       
+      
+      <equation id="zerozerozerotwo">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>K</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>m</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">s</m:ci>
+								<m:ci>m</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+												<m:ci>m</m:ci>
+												<m:ci>k</m:ci>
+											</m:apply>
+											<m:ci>K</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>n</m:ci>
+											<m:ci>k</m:ci>
+										</m:apply>
+										<m:ci>K</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+      
+   Note que la relación de ortogonalidad que usamos tiene un carácter diferente ahora.
+      
+      <equation id="zerozerozerothree">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>K</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>k</m:ci>
+											<m:ci>m</m:ci>
+										</m:apply>
+										<m:ci>K</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>k</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+									<m:ci>K</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:ci>K</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:eq/>
+								<m:ci>m</m:ci>
+								<m:set>
+									<m:ci>n</m:ci>
+									<m:apply>
+										<m:ci><m:mo>±</m:mo></m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>K</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:ci><m:mo>±</m:mo></m:ci>
+										<m:ci>n</m:ci>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:ci>K</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:ci>…</m:ci>
+								</m:set>
+							</m:apply>
+						</m:apply>
+					</m:piece>
+					<m:otherwise>
+						<m:cn>0</m:cn>
+					</m:otherwise>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+      
+    Nosotros obtenemos valores de no cero cada vez  que los dos índices difieren por múltiple de  <m:math><m:ci>K</m:ci></m:math>. Podemos expresar estos resultados como    
+      <m:math>
+		<m:apply>
+			<m:times/>
+			<m:ci>K</m:ci>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>l</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:ci>l</m:ci>
+				</m:condition>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>m</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:ci>l</m:ci>
+							<m:ci>K</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  
+
+      Así, nuestra formula se convierte
+      <equation id="zerozerozerofour">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>m</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">s</m:ci>
+							<m:ci>m</m:ci>
+						</m:apply>
+						<m:ci>K</m:ci>
+						<m:apply>
+							<m:sum/>
+							<m:bvar>
+								<m:ci>l</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:ci type="fn">δ</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>m</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:times/>
+										<m:ci>l</m:ci>
+										<m:ci>K</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+    Los números  <m:math><m:ci>n</m:ci></m:math> y
+      <m:math><m:ci>m</m:ci></m:math> existen en el rango       <m:math>
+		<m:apply>
+			<m:set>
+				<m:cn>0</m:cn>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>N</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>.        
+      Para obtener una transformada inversa, necesitamos sumar un <emphasis>solo</emphasis> muestreo unitario para      
+      <m:math>
+		<m:ci>m</m:ci>
+	</m:math>, 
+
+      <m:math>
+		<m:ci>n</m:ci>
+	</m:math> 
+     en este rango. Si no lo hiciéramos, 
+      <m:math>
+		<m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>      
+     igualaría a la suma de valores, y no tendríamos una transformada valida: una vez que regresemos al dominio de frecuencia, no podríamos obtener una ¡ambiguosidad! claramente, el termino 
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>l</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>       
+      siempre provee un muestreo unitario (nos  haremos cargo del factor de       <m:math>
+		<m:ci>K</m:ci>
+	</m:math>      
+      pronto). Si evaluamos el espectro en <emphasis>menos</emphasis> frecuencias que lo que dura la señal, el termino correspondiente a 
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>m</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>n</m:ci>
+				<m:ci>K</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+      aparecerá para algunos valores de
+      <m:math>
+		<m:ci>m</m:ci>
+	</m:math>, <m:math><m:ci>n</m:ci></m:math>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:set>
+					<m:cn>0</m:cn>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:set>
+			</m:apply>
+		</m:apply>
+	</m:math>. 
+      Esta situación significa que nuestra transformada prototipo iguala 
+      <m:math>
+		<m:apply>
+			<m:plus/>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">s</m:ci>
+				<m:apply>
+					<m:plus/>
+					<m:ci>n</m:ci>
+					<m:ci>K</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+      para cualquier valor de       <m:math>
+		<m:ci>n</m:ci>
+	</m:math>.  
+La única manera de eliminar este problema es el requerir  
+      <m:math>
+		<m:apply>
+			<m:geq/>
+			<m:ci>K</m:ci>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>:       
+<emphasis>tenemos</emphasis> que tener mas muestreos de frecuencia que lo que dura la señal. De esta manera, podemos regresar del dominio de frecuencia al cual entramos por la DFT.  
+  
+    </para>
+
+    <exercise id="exer1a">
+      <problem id="idp1278432">
+	<para id="tester1">
+	  Cuando tenemos menos muestreos de frecuencia que lo que dura la señal, algunos valores de la señal discreta igualan la suma de los valore de la señal original. Dada la interpretación del muestreo para el espectro, caracterice este efecto de una manera diferente. </para>
+      </problem>
+      <solution id="idp2847424">
+	<para id="tester2">
+	  Esta situación nos lleva a aliasing  en el dominio del tiempo. 	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="eqnintro"> 
+
+Otra manera para entender este requerimiento es el usar de teoría de ecuaciones lineares. Si escribimos la expresión para el DFT como un conjunto de ecuaciones lineares, 
+
+
+      <equation id="zerozerozerofivea">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">S</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:minus/>
+								<m:imaginaryi/>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>K</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:minus/>
+								<m:imaginaryi/>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+								<m:ci>K</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:ci>⋮</m:ci>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:minus/>
+								<m:imaginaryi/>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>K</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+								<m:ci>K</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:minus/>
+								<m:imaginaryi/>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>K</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+								<m:ci>K</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>K</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>      
+
+      tenemos
+      <m:math>
+		<m:ci>K</m:ci>
+	</m:math>.
+      
+ Obtenemos ecuaciones en 
+      <m:math>
+		<m:ci>N</m:ci>
+	</m:math>      
+      desconocidos si queremos encontrar la señal de su espectro muestreado.    
+Este requerimiento es imposible de encontrar si 
+      <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:ci>K</m:ci>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>; 
+      tenemos que tener 
+      <m:math>
+		<m:apply>
+			<m:geq/>
+			<m:ci>K</m:ci>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>.        
+      Nuestra de relación de ortogonalidad esencialmente dice que si tenemos el suficiente numero de ecuaciones (muestreos de frecuencia), el conjunto de ecuaciones que resultan de esto se pueden resolver.
+    </para>
+    
+    <para id="conventional">
+      Por convención, el numero de valores para las frecuencias del DFT  
+      <m:math>
+		<m:ci>K</m:ci>
+	</m:math> 
+  es elegido para igualar la duración de la señal  
+      <m:math>
+		<m:ci>N</m:ci>
+	</m:math>.  
+    El par para la transformada discreta de Fourier consiste de
+
+      <equation id="zerozerozerosixa">
+	<title>Par de la Transformada Discreta de Fourier</title>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">S</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">s</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply><m:minus/>
+							<m:apply><m:times/>
+								<m:imaginaryi/>
+								<m:apply><m:divide/>
+									<m:apply><m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+										<m:ci>n</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+	<equation id="zerozerozerosixb">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">s</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">S</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+											<m:ci>n</m:ci>
+											<m:ci>k</m:ci>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <example id="analysis_demo">
+      <para id="analysis_demo_1">
+	Use esta demostración para hacer un análisis del DFT para la señal.
+      </para>
+      <media id="idp241952" alt="" display="block"><labview src="DFT_Analysis.llb" viname="dft_analysis.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="dft_analysis.viinfo"/></labview></media>
+    </example>
+
+    <example id="synthesis_demo">
+      <para id="synthesis_demo_1">
+      Use esta demostración para sintetizar una señal de una secuencia DFT</para>
+      <media id="idp2882880" alt="" display="block"><labview src="DFT_Component_Manipulation.llb" viname="dft_synthesis.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="dft_synthesis.viinfo"/></labview></media>
+    </example>
+  </content>
+</document>

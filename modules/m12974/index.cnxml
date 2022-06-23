@@ -1,0 +1,305 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Filtros Anti-Aliasing</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c2996eb1-e4ea-4cb8-9541-4d4e9a3f40cd</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="sec1">
+      <title>Introduction</title>
+      <para id="para1">
+	La idea de  <link document="m12973" strength="3">aliasing</link>
+	fue descrita como el problema que ocurre si una señal es no <link document="m12964" strength="3">muestreada</link> en un valor suficientemente grande (por ejemplo, debajo de la <link document="m12971" strength="2">Frecuencia de Nyquist </link>).  Pero exactamente ¿qué tipo de distorción produce el aliasing?
+      </para>
+
+      <figure orient="vertical" id="fig1">
+	<subfigure id="subf1">
+	  <media id="idp25344" alt=""><image src="../../media/anti1.png" mime-type="image/png"/></media>
+	  
+	</subfigure>
+	<subfigure id="subf2">
+	  <media id="idp2555344" alt=""><image src="../../media/anti2.png" mime-type="image/png"/></media>
+	  
+	</subfigure>
+      </figure>
+
+      <para id="afterfigs">
+	Frecuencias altas en la señal original "se dobla" en frecuencias bajas. 
+      </para>
+      
+      <para id="para2">
+	Frecuencias altas disfrazadas como frecuencias bajas producen artefactos	<emphasis>altamente indeseables</emphasis> en la señal reconstruida.
+	<note type="Cuidado" id="idm7899984"><label>Cuidado</label>Debemos de evitar el aliasing de la forma que podamos.</note>
+      </para>
+    </section>
+    
+    <section id="sec2">
+      <title>Evitando el  Aliasing</title>
+      <para id="para3">
+	¿Cómo si esto es impracticamente/imposible para muestras como
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>Ω</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Ω</m:mi>
+		  <m:mi>B</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>?
+      </para>
+
+      <para id="para4">
+	Filtre hacia afuera las frecuencias anteriores
+	<m:math>
+		<m:apply>
+			<m:divide/>
+			<m:ci>
+				<m:msub>
+					<m:mi>Ω</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math>
+	<emphasis>antes </emphasis> de que muestree, la mejor forma de visualizarlo es imaginar los siguientes pasos:
+
+	<list id="samp_steps" list-type="enumerated">
+		<item>
+	    Tomar la CTFT (Transformada de Fourier de Tiempo-Continuo) de la señal, 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math>.
+	  </item>
+		<item>
+	    Pasar la señal a través de un filtro pasa bajas con las siguiente especificación, 
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci><m:msub>
+							<m:mi>ω</m:mi>
+							<m:mi>c</m:mi>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:divide/>
+						<m:ci><m:msub>
+								<m:mi>Ω</m:mi>
+								<m:mi>s</m:mi>
+							</m:msub></m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:math>.
+	  </item>
+		<item>
+	    Ahora tenemos una gráfica de nuestra señal en el dominio de frecuencia con todos los valores de  
+	    <m:math>
+				<m:apply>
+					<m:gt/>
+					<m:apply>
+						<m:abs/>
+						<m:ci>ω</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:ci><m:msub>
+								<m:mi>Ω</m:mi>
+								<m:mi>s</m:mi>
+							</m:msub></m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:math> igual a cero. Ahora tomamos la inversa de la CTFT para regresar a nuestra señal de tiempo continuo,
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>f</m:mi>
+							<m:mi>a</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math>.
+	  </item>
+		<item>
+	    Y finalmente estamos listos para muestrear nuestra señal.
+	  </item>
+	</list>
+</para>
+
+      <!-- fig graph -->
+
+      <example id="expl">
+	<para id="exp1">
+	  Valor de muestra para 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>CD</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn type="real">44.1</m:cn>
+		<m:ci>KHz</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>. 
+	</para>
+
+	<para id="exp2">
+	  Muchos instrumentos musicales, contienen las frecuencias arriba de 	  
+  <m:math>
+    <m:apply>
+      <m:times/><m:cn>22</m:cn>
+      <m:ci>KHz</m:ci>
+    </m:apply>
+  </m:math>
+	   (aun cucando no los podemos escuchar).
+	</para>
+
+	<para id="exp3">
+	  Debido a esto, podemos filtrar la señal de salida del instrumento antes de que la muestremos usando el siguiente filtro:
+	
+	<figure id="fig3">
+	  <media id="idp653744" alt=""><image src="../../media/anti3.png" mime-type="image/png"/></media>
+	  <caption>
+	    Este filtro cortara la frecuencia alta inecesaria, donde 
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:apply>
+		  <m:abs/>
+		  <m:ci><m:msub>
+		    <m:mi>ω</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:cn>22</m:cn>
+	    <m:ci>kHz</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</figure>
+	</para>
+
+	<para id="exp4">
+	  Ahora la señal esta lista para ser muestreada.
+	</para>
+      </example>
+
+
+      <example id="exmpl2">
+	<title>Otro Ejemplo</title>
+	<para id="exp21">
+	  El discurso del ancho de banda es 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:ci><m:mo>±</m:mo></m:ci>
+		<m:apply>
+		  <m:times/>
+		<m:cn>20</m:cn>
+	      <m:ci>kHz</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, pero es perfectamente inteligible cuando el filtrado pasa baja a un rango 
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>±</m:mo></m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>4</m:cn>
+	    <m:ci>kHz</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> .  Debido a esto podemos tomar una señal de discurso normal y pasarla a través del filtro como la mostrada en la  <link target-id="fig3" strength="3"/>, donde ahora ponemos 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:msub>
+		  <m:mi>ω</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:cn>4</m:cn>
+		  <m:ci>kHz</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  La señal que recibimos de este filtro solamente contiene valores donde  
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>ω</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>8</m:cn>
+		<m:pi/>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+	<!-- figure -->
+
+	<!-- figure -->
+
+	<!-- figure -->
+
+	<para id="exp22">
+	  Ahora podemos muestrear en  
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:times/>
+				<m:cn>16</m:cn>
+				<m:pi/>
+				<m:ci>k</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:cn>8</m:cn>
+				<m:ci>kHz</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> -- rango de la telefonía estandard.
+	</para>
+      </example>
+
+    </section>
+  </content>  
+</document>

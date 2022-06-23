@@ -1,0 +1,937 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Propiedades de la Transformada de Fourier de Tiempo-Continuo</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5adc4204-2cb9-41b5-a339-ce24cf8ded0e</md:uuid>
+</metadata>
+
+  <!-- ****************************************** -->
+
+  <content>
+
+    <para id="para1">
+      En este modulo veremos algunas de las propiedades básicas de la
+      <link document="m10098" strength="3">Transformada de Fourier de Tiempo-Continuo</link> (CTFT).  La primera sección contiene una tabla que ilustra las propiedades, y la siguiente sección discute unas de las propiedades mas interesantes más a fondo.
+      En la tabl, oprima en el nombre de la operación para ver la explicación se se encuentra más adelante. Véase   <link document="m12875" strength="3">este modulo</link> para una tabla expandida de las propiedades de Fourier.
+      
+      <note type="nota" id="idm2973168"><label>Nota</label>
+	Discutiremos estas propiedades para señales aperiodicas de tiempo-continuo pero entenderemos que propiedades similares se matienen para señales de tiempo-continuo y señales periódicas.
+      </note>
+      
+    </para>
+
+    <section id="sect1">
+      <title>Tabla de Propiedades de CTFT </title>
+      <table id="table1" summary="">
+	<tgroup cols="3">
+	  <thead>
+	    <row>
+	      <entry>Nombre de la Operación</entry>
+	      <entry>Señal ( 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>
+		) </entry>
+	      <entry>Transformada ( 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">F</m:ci>
+		    <m:ci>ω</m:ci>
+		  </m:apply>
+		</m:math>
+		)</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>
+		<link target-id="sect2" strength="2">Adición</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>F</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>ω</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>F</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>ω</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect2" strength="2">Multiplicación Escalar</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">F</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect3" strength="2">Simetría</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">F</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect4" strength="2">Escalamiento en el Tiempo</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:abs/>
+			<m:ci>α</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">F</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>ω</m:ci>
+			<m:ci>α</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect5" strength="2">Desplazamiento en el Tiempo</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>τ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">F</m:ci>
+		      <m:ci>ω</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>τ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect6" strength="2">Modulación (Desplazamiento de Frecuencias)</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>φ</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">F</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>ω</m:ci>
+		      <m:ci>φ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect7" strength="2">Convolución en el Tiempo</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:csymbol definitionURL="cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>F</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>F</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect7" strength="2">Convolución en la Frecuencia</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>1</m:mn></m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>2</m:mn></m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+
+	    <row>
+	      <entry>
+		<link target-id="sect8" strength="2">Diferenciación</link>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		      <m:degree>
+			<m:ci>n</m:ci>
+		      </m:degree>
+		    </m:bvar>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:power/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>ω</m:ci>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">F</m:ci>
+		      <m:ci>ω</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+    </section>
+
+    <section id="prop_intro">
+      <title>Discusión de las Propiedades de la Transformada de Fourier</title>
+      
+      <para id="p_sec1">
+	Después de haber visto la tabla anterior y tener un sentimiento de las proiedades de la CTFT, ahora nos tomaremos un poc más de tiempo para discutir de las propiedades más importantes y útiles.	
+      </para>
+      
+      <section id="sect2">
+	<title>Linealidad</title>
+	<para id="para2">
+	  La combinación de las propiedades de la adición y de la multiplicación escalar de la tabla anterior demuestran la propiedad básica de linealidada. Lo que debe de ver es que si uno toma la Transformada de Fourier de una combinación lineal de señales entonces esta será la misma que la combinación lineal de la transformada de Fourier de cada señal individual. Esto es crucial cuando usamos la <link document="m10099" strength="2">tabla</link>
+	  de las transformadas para encontrar la transformada de una señal más complicada.
+	</para>
+	
+	<example id="eg_lin">
+	  <para id="p_eg1">
+	    Empezaremos con la siguiente señal:
+	    
+	    <equation id="eq1_eg1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">z</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    Ahora, después de tomar la transformada de Fourier, mostrada en la siguiente ecuación, notemos que la combinación lineal de los términos no es afectada por la transformada.
+	    <equation id="eq2_eg1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">Z</m:ci>
+		    <m:ci>ω</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>1</m:mn></m:msub>
+			</m:ci>
+			<m:ci>ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>α</m:ci>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>F</m:mi><m:mn>2</m:mn></m:msub>
+			</m:ci>
+			<m:ci>ω</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</example>
+
+      </section>
+
+      <section id="sect3"><title>Simetría</title>
+	<para id="para3">
+	  La simetría es una propiedad que nos puede hacer la vida más fácil resolviendo problemas que involucran la transformada de Fourier. Basicamente ;p que dice esta propiedad es que ya que la función rectangular en el tiempo es una función  sinc en la frecuancia, entonces una función sinc en el tiempo será una función rectangular en la frecuencia. Este es un resultado directo de las similaridades entre la   CTFT y la inversa de la CTFT. La única diferencia es que es escalda por
+	  <m:math><m:apply><m:times/><m:cn>2</m:cn><m:pi/></m:apply></m:math>
+	  y una revocación de la frecuancia.
+	</para>
+      </section>
+
+      <section id="sect4"><title>Escalamiento en el Tiempo</title>
+	<para id="para4">
+	  Esta propiedad trata con el efecto de la representación del dominio de frecuancia de una señal si la variable tiempo es alterada. El concepto más importante par entender para la propiedad de escalammiento es que las señales que son estrechas en el tiempo son amplias en la frecuancia y <foreign>vice
+	  versa</foreign>.  El ejemplo más sencillo de esto es la función delta, un  <link document="m0004" target-id="pulsedef" strength="2"> pulso unitario</link> con una
+	  <emphasis>muy</emphasis> pequeña duración, en el tiempo que se convierte en función constante de longitud-infinita en frecuencia.
+	</para>
+	<para id="p_tscale2">
+	  La tabla anterior muestra esta idea para una transformación general del dominio-tiempo de la señal. Usted debería de ser capaz de notar que esta ecuación muestra la relación mencionada anteriormente: si la variable tiempo incrementa entonces el rango de la frecuencia sera decreciente.
+	</para>
+
+      </section>
+
+      <section id="sect5"><title>Desplazamiento en el tiempo</title>
+	<para id="para5">
+	  El desplazamiento en el tiempo muestra que un desplazo en el tiempo es equivalente a un desplazo de fase lineal en la frecuencia. Ya que el contenido de la frecuencia depende solamente de la forma de la señal, el cual es invariabe en el desplazo en el tiempo, entonces solamente la fase del espectro será alterada. Esta propiedad será provada facilmente usando la Transformada de Fourier, asi que mostraremos los pasos básicos a continuación:
+	</para>
+
+	<example id="eg_tshift">
+	  <para id="p_egtshift">
+	    Primero empezaremos dejando que
+	    
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">z</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+					<m:ci>τ</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+
+	    Ahora tomemos la transformada de Fourier con la expresión anterior sustituida para 
+	    <m:math><m:apply>
+			<m:ci type="fn">z</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+
+	    <equation id="eq1_tshift">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">Z</m:ci>
+					<m:ci>ω</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>ω</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	    Ahora hagamos un pequeño cambio de variables, donde
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>σ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.  A través de la calculación antarior, podemos ver que solamente la variable en el exponencial es alterada solo cambiando la fase en el dominio de la frecuencia.
+
+	    <equation id="eq2_tshift">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">Z</m:ci>
+					<m:ci>ω</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>σ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>ω</m:ci>
+									<m:apply>
+										<m:plus/>
+										<m:ci>σ</m:ci>
+										<m:ci>τ</m:ci>
+									</m:apply>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>σ</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>σ</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>ω</m:ci>
+										<m:ci>σ</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">F</m:ci>
+						<m:ci>ω</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	</example>	
+
+      </section>
+
+      <section id="sect6"><title>Modulació(Desplazo de la Frecuencia)</title>
+	<para id="para6">
+	  La modulación es absolutamente imprescindible para las aplicaciones de comunicaiones.  Siendo capaces de desplazar una señal a diferentes frecuencias, nos que mas que tomar ventaja de diferentes partes de los espectros del electromagnetismo es lo que nos permite transmitir la televisión, radio y otroas aplicaciones a través del mismo espacio sin interferencia significativa.
+	</para>
+
+	<para id="p_mod2">
+	  La demostración de la propiedad del desplzamiento de la frecuencia es muy similar a la de <link target-id="sect5" strength="3">desplazamiento en el tiempo</link>; Sin embargo, aqui usaremos la transformada inversa de Fourier.  Ya que vamos a través de los pasos anteriores, la demostración de desplazamiento ene l tiempo, a continuación solo mostrara los pasos iniciales y finales de esta demostración:
+
+	  <equation id="eq1_mod">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">z</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>ω</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>φ</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  Ahora simplemente reducimos esta ecuación por medio de un cambio de variable y simplificando los términos. Después probaremos la propiedad expresada en la tabla anterior:
+	  
+	  <equation id="eq2_mod">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">z</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>φ</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	</para>
+      </section>
+
+      <section id="sect7"><title>Convolución</title>
+	<para id="para7">
+	  Convolución es una de las grandes razones para convertir señales en dominios de frecuancia ya que la convolución en el tiempo se convierte en multiplicación en frecuencia. Esta propiedad es también otro buen ejemplo de la simetria entre el tiempo y la frecuencia.
+	  También muestra que hay muy poca ganancia cambiando el dominio de frecuancia cuando la multiplicación en el tiempo esta involucrada.
+	</para>
+
+	<para id="p_conv2">
+	  Introduciremos la integral de convolución, pero si no la ha visto anteriormente o necesita refrescar la memoria véase el modulo de  <link document="m12828" strength="3">convolución de tiempo-continuo</link> para una explicación mas profunda y su derivación.
+	</para>
+
+	<equation id="eq_conv1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:csymbol definitionURL="cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		  <m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>τ</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>		  
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>τ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+      </section>
+
+      <section id="sect8">
+	<title>Time Diferenciación</title>
+	<para id="para8">
+	  Ya que  los sistemas <link document="m12822" strength="2">LTI</link>
+	  pueden ser representados en términos de ecuaciones diferenciales, es evidente que con esta propiedad que conviertiendo al dominio de frecuencia nos permitirá convertir esta complicada ecuación diferencial a una ecuación más sencilla que involucre multiplicación y adición. Esto también es visto con mas detalle durante el estudi de la <link document="m10110" strength="2">Transformada de Laplace </link>.
+	</para>
+
+      </section>
+    </section>
+  </content>
+</document>

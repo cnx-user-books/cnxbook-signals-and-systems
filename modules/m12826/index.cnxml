@@ -1,0 +1,203 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Propiedades de los Sistemas</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a0491d2e-00ff-416b-aefb-1e191fe49b87</md:uuid>
+</metadata>
+
+
+  
+  <!-- End Header ******************************* -->
+  <!-- ****************************************** -->
+  
+  <content>
+    <section id="linear_sys"><title>Sistemas Lineales</title>
+      
+      <para id="p0">
+	Si un sistema es lineal, quiere decir que cuando la entrada de un sistema dado es escaldado por un valor, la salida del sistema es escalado por la misma cantidad.</para>
+      
+      <figure id="linear_scaling" orient="horizontal">
+	<title>Escalado Lineal</title>
+	<subfigure id="LSa">
+		<media id="idp7733248" alt=""><image src="../../media/xLy.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="LSb">
+		<media id="idp14083424" alt=""><image src="../../media/axLay.png" mime-type="image/png"/></media>
+	</subfigure>
+</figure>
+      
+      <para id="p1">En la  <link target-id="LSa"/> de arriba, la entrada  <m:math><m:ci>x</m:ci></m:math> del sistema lineal  <m:math><m:ci>L</m:ci></m:math> da la salida <m:math><m:ci>y</m:ci></m:math>. Si  <m:math><m:ci>x</m:ci></m:math> es escalada por un valor  <m:math><m:ci>α</m:ci></m:math> 
+	y es pasada a través del mismo sistema, como en la <link target-id="LSb"/>, la salida también será escalada por <m:math><m:ci>α</m:ci></m:math>.
+      </para>
+      
+      <para id="p2">Un sistema lineal también obedece el principio de superposición. Esto significa que si dos entradas son sumadas juntas y pasadas a través del sistema lineal, la salida será equivalente a la suma de las dos entradas evaluadas individualmente.</para>
+      
+      <figure id="superpositiona" orient="horizontal">
+	<subfigure id="superpositiona1">
+	  <media id="idp9589008" alt=""><image src="../../media/x1Ly1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="superpositiona2">
+	  <media id="idp14572928" alt=""><image src="../../media/x2Ly2.png" mime-type="image/png"/></media>
+	</subfigure>
+      </figure>
+      
+      <figure id="superpositionb">
+	<title>Principio de Superposición</title>
+	<media id="idp9676576" alt=""><image src="../../media/x1y1Lx2y2.png" mime-type="image/png"/></media>
+	<caption>Si <link target-id="superpositiona"/> es cierto, entonces el principio de superposicción dice que   <link target-id="superpositionb"/> también  es cierto.  Esto es válido para un sistema lineal.</caption>
+      </figure>
+      
+      <para id="p3">Esto es, si <link target-id="superpositiona"/> es cierta, entonces 
+	<link target-id="superpositionb"/> también es cierta para un sistema lineal.   La propiedad de escalado mencionada anteriormente también es válida para el principio de superposición.   Por lo tanto, si las entradas x y y son escaladas por factores α y β, respectivamente, entonces la suma de estas entradas escaladas dará la suma de las salidas escaladas individualmente.</para>
+      
+      <figure id="superposition_and_linearitya" orient="horizontal">
+	<subfigure id="superposition_and_linearitya1">
+	  <media id="idp8496112" alt=""><image src="../../media/ax1Lay1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="superposition_and_linearitya2">
+	  <media id="idp270768" alt=""><image src="../../media/bx2Lby2.png" mime-type="image/png"/></media>
+	</subfigure>
+      </figure>
+
+      <figure id="superposition_and_linearityb">
+	<title>Principio de Superposición con Escaldo Lineal</title>
+	<media id="idp9159360" alt=""><image src="../../media/ax1bx2Lay1by2.png" mime-type="image/png"/></media>
+	<caption>Dado <link target-id="superposition_and_linearitya"/> para un sistema lineal, 
+	  <link target-id="superposition_and_linearityb"/> también es válido.</caption>
+</figure>
+      
+    </section>
+    
+    <section id="ti_sys">
+      <title>Time-Invariant Systems</title>
+      
+      <para id="p4"> Un sistema invariante  en el tiempo TI (Time-Invariant) tiene la propiedad de que cierta entrada siempre dará la misma salida, sin consideración alguna a cuando la entrada fue aplicada al sistema.</para>
+      
+      <figure id="time-invariance" orient="horizontal">
+	<title>Sistema Invariante en el Tiempo</title>
+	<subfigure id="tia">
+	  <media id="idp10274512" alt=""><image src="../../media/xtTIyt.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="tib">
+	  <media id="idp7132304" alt=""><image src="../../media/xttoTIytto.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption><link target-id="tia"/> muestra una entrada en tiempo <m:math><m:ci>t</m:ci></m:math>  mientras que  <link target-id="tib"/>
+	  muestra la misma entrada  <m:math><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math> 
+	  segundos después. En un sitema invariante en el tiempo ambas salidas serán identicas excepto la de la  
+	   <link target-id="tib"/> estará retrasada por <m:math><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math>.
+	</caption>
+      </figure>
+      
+      <para id="p5">En esta figura, 
+	<m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply></m:math>
+	y
+	<m:math>
+		<m:apply><m:ci type="fn">x</m:ci><m:apply><m:minus/><m:ci>t</m:ci><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:apply></m:apply>
+	</m:math>
+	son pasadas a través del sistema TI. Ya que el sistema TI es invariante en el tiempo, las entradas	<m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply></m:math>
+	y
+	<m:math>
+		<m:apply><m:ci type="fn">x</m:ci><m:apply><m:minus/><m:ci>t</m:ci><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:apply></m:apply>
+	</m:math>
+	producen la misma salida. La única diferencia es que la salida debida a	<m:math>
+		<m:apply><m:ci type="fn">x</m:ci><m:apply><m:minus/><m:ci>t</m:ci><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:apply></m:apply>
+	</m:math>
+	es cambiada por el tiempo 	<m:math><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math>.</para>
+      
+      <para id="p6">Si un sistema es invariante en el tiempo o de tiempo variado puede ser visto  en la ecuación diferencial  (o ecuación en diferencia) descrita.  
+	<emphasis>Los sistemas invariantes en el tiempo son modelados con ecuaciones de coeficientes constantes</emphasis>. 
+	Una ecuación  diferencial(o en diferencia) de coeficientes constantes significa que los parámetros del sistema  <emphasis>no</emphasis> van cambiando a través del tiempo y que la entrada  nos dará el mismo resultado ahora,  así como después.</para>
+      
+    </section>
+    
+    <section id="lti_sys">
+      <title>3 Sistemas Lineales Invariantes en el Tiempo (LTI)</title>
+      
+      <para id="p7">A los sistemas que son lineales y al mismo tiempo invariantes en el tiempo nos referiremos a ellos como sistemas LTI (Linear Time-Invariant).</para>
+      
+      <figure id="lti_fig" orient="horizontal">
+	<title>Sistemas Lineales Invariantes en el Tiempo </title>
+	<subfigure id="ltia">
+	  <media id="idp10105264" alt=""><image src="../../media/xtLTIyt.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="ltib">
+	  <media id="idp8157200" alt=""><image src="../../media/axttoLTIaytto.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>Esto es una combinación de los dos casos de arriba. Dado que la entrada 	  <link target-id="ltib"/> es una versión escalada y desplazada en el tiempo de la entrada de   <link target-id="ltia"/>,  también es la salida.</caption>
+      </figure>
+      
+      <para id="p8">Como los sistemas LTI son subconjuntos de los sistemas lineales, estos obedecen al principio de superposición. En la figura de abajo, podemos ver el efecto de aplicar el tiempo invariante a la definición de sistema lineal de la sección anterior.</para>
+      
+      <figure id="lti_superposna" orient="horizontal">
+	<subfigure id="lti_superposna1">
+	  <media id="idp868672" alt=""><image src="../../media/x1tLTIy1t.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="lti_superposna2">
+	  <media id="idp221376" alt=""><image src="../../media/x2tLTIy2t.png" mime-type="image/png"/></media>
+	</subfigure>
+      </figure>
+
+      <figure id="lti_superposnb">
+	<title>Superposición en Sistemas Lineales Invariantes en el Tiempo </title>
+	<media id="idp1270656" alt=""><image src="../../media/superLTI.png" mime-type="image/png"/></media>
+	<caption>El principio de superposición aplicadado a un sistema LTI</caption>
+</figure>
+      
+      
+      <section id="lti_sys_series"><title>Sistemas LTI en Series </title>
+	
+	<para id="p9">Si dos o mas sistemas están en serie uno con otro, el orden puede ser intercambiado sin que se vea afectada la salida del sistema. Los sistemas en series también son llamados como sistemas en cascada.
+
+</para>
+	
+	<figure id="lti_sys_series_fig" orient="vertical">
+	  <title>Sistema LTI en Cascada</title>
+	  <subfigure id="cascadea">
+	  <media id="idp7790288" alt=""><image src="../../media/cascade.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="cascadeb">
+	  <media id="idp7636016" alt=""><image src="../../media/cascadeflip.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <caption>El orden de los sistemas LTI en cascada pueden ser intercambiado sin verse afectado el resultado.</caption>
+	</figure>
+	
+      </section>
+      
+      <section id="lti_sys_parallel"><title>Sistemas LTI en Paralelo</title>
+	
+	<para id="p10">Si dos o mas sistemas LTI están en paralelo con otro, un sistema equivalente es aquel que esta definido como la suma de estos sistemas individuales.</para>
+	
+	<figure id="lti_sys_parallel_fig" orient="horizontal">
+	  <title>Sistemas LTI en Paralelo</title>
+	  <subfigure id="parallelsys">
+	    <media id="idp7980528" alt=""><image src="../../media/parallelsystem.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="parallelsysequi">
+	    <media id="idp8595776" alt=""><image src="../../media/parallelsysequi.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <caption>Los sistemas de paralelo pueden ser resumidos en la suma de los sistemas.</caption>
+	</figure>
+	
+      </section>      
+    </section>
+    
+    <section id="causality"><title>Causalidad</title>
+      
+      <para id="p11"><emphasis>Un sistema es causal si este no depende de  valores futuros de las entradas para determinar la salida.</emphasis> Lo que significa que si la primer entrada es recibida en tiempo 
+	<m:math><m:ci><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math>, 
+	el sistema no deberá dar ninguna salida hasta ese tiempo. Un ejemplo de un sistema no-causal puede ser aquel que al “detectar” que viene un entrada da la salida antes de que la entrada llegue.</para>
+      
+      <figure id="noncausal_sys" orient="horizontal">
+	<title>Sistema no-Causal</title>
+	<media id="idp8626512" alt=""><image src="../../media/noncausalpic.png" mime-type="image/png"/></media>
+	<caption>En este sistema no-causal, la salida es producida dado a una entradad que ocurrió después  en el tiempo.</caption>
+      </figure>
+      
+      <para id="p12">Un sistema causal también se caracteriza por una 
+	<!--CNXN--> respuesta al impulso <m:math><m:apply><m:ci type="fn">h</m:ci><m:ci>t</m:ci></m:apply></m:math> que es cero para <m:math><m:apply><m:lt/><m:ci>t</m:ci><m:cn>0</m:cn></m:apply></m:math>. 
+</para>
+      
+    </section>
+    
+  </content>
+</document>

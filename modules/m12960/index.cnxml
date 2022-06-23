@@ -1,0 +1,450 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Funciones Racionales</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7e442a8b-ae39-4e93-804e-6dd1231df343</md:uuid>
+</metadata>
+  
+  <content>
+    
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p_intro">
+Cuando usamos operaciones con polinomios, el término de <term>funciones racionales</term> es una manera simple de describir una relación particular entre dos polinomios.
+
+      </para>
+      
+      <definition id="r_func">
+	<term>Función Racional</term>
+	<meaning id="idp393520">
+	Para dos polinomios cualquiera, A y B, su fracción es conocida cono una función racional.
+
+
+	</meaning>
+	
+	<example id="eg_rfunc">
+	  <para id="p_rfeg">
+	    Aquí se muestra un ejemplo de una función racional,
+	    <m:math>	    
+	      <m:apply><m:ci type="fn">f</m:ci><m:ci>x</m:ci></m:apply>
+	    </m:math>.
+	    Note que el numerador y denominador pueden ser polinomios de cualquier orden, pero la función racional es indefinida cuando el denominador es cero.
+	    
+	    <equation id="eq_rf">
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>		  
+			<m:power/>
+			<m:ci>x</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:apply>
+			    <m:power/>
+			    <m:ci>x</m:ci>
+			    <m:cn>2</m:cn>
+			  </m:apply>			  
+			</m:apply>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		      <m:cn>3</m:cn>
+		    </m:apply>		
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	  </para>
+	</example>	
+      </definition>
+
+      
+      <para id="p_intro2">
+
+Si usted ha empezado a usar la <link document="m12951" strength="3">transformada-z</link>, usted debió notar que todas las transformadas son funciones racionales. En seguida veremos algunas de las propiedades de las funciones racionales y como se pude usar para reveler características importantes de la transformada-z, y por lo tanto revelar una señal o un sistema  LTI.
+	      </para>
+    </section>
+    
+    
+    <section id="props">
+      <title>Propiedades de las Funciones Racionales</title>
+      <para id="p_prop1">
+
+Para poder entender lo que hace que las funciones racionales sean tan especiales, tenemos que observar algunas de sus propiedades y características. Si usted esta familiarizado con las funciones racionales y que las funciones básicas de algebra, podrá ir directamente a la <link target-id="rf_ztrans" strength="2">siguiente seccion</link> y ver como las funciones racionales nos ayudan a entender la transformada-z. 
+	
+      </para>
+      
+      <section id="prop1">
+	<title>Raíces</title>
+	<para id="fact">
+
+Para entender muchas de las características de las funciones racionales, tenemos que empezar por encontrar las raíces de la función racional. Para ser esto, factoricemos los dos polinomios para poder observar las raíces fácilmente. Como todos los polinomios, las raíces nos darán información sobre muchas de sus propiedades. Esta función nos muestra el resultado que da el factorizar la función racional anterior,
+	
+	  <link target-id="eq_rf" strength="3"/>. 
+	</para>
+	
+	<equation id="eq_rf_fact">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+	      </m:apply>		    
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>x</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>		
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	<para id="rts">
+	  Así, las raíces para esta función son las siguientes: 
+	</para>
+	
+	<para id="rts_num">
+	 Las raíces del numerador son:
+	  <m:math>
+	    <m:set>
+	      <m:cn>-2</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:set>
+ 	  </m:math>
+	</para>
+	
+	<para id="rts_den">
+	  Las raíces del denominador son:
+	  <m:math>
+	    <m:set>
+	      <m:cn>-3</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:set>
+	  </m:math>
+	</para>
+	
+	<para id="rts_warn">
+	  <note type="note" id="idm220848">
+	   Para entender las funciones racionales, es esencial el saber y entender las raíces que forman parte de esta función.
+	  </note>
+	</para>
+      </section>
+
+
+      <section id="discont">
+	<title>Discontinuidades</title>
+	<para id="p_dis">
+
+ Ya que estamos viendo la división de dos polinomios, tenemos que ver los valores de la variable que darán que el denominador de nuestra fracción sea cero. Cuando esto pasa, la función racional  se vuelve indefinida, por lo tanto, tenemos una discontinuidad en la función. Ya que sabemos nuestras raíces, es muy fácil saber cuando ocurre esto. Cuando tenemos una variable en el denominador igual a cualquier raíz en el denominador, la función se vuelve indefinida.
+	  
+	</para>
+	
+	<example id="eg_disc">
+	  <para id="eg_p">
+	    Usando la función racional anterior,
+	    <link target-id="eq_rf" strength="3"/>, podemos observar que función tendrá discontinuidades en los siguientes puntos:
+	    
+	    <!--<equation id='eg_disceq'> -->
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>x</m:ci>
+		<m:apply>
+		  <m:set>
+		    <m:cn>-3</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:set>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    
+	  </para>
+	</example>
+	
+	<para id="p_dis2">
+
+Con respecto al plano cartesiano podemos decir que las discontinuidades ocurren con respecto al eje de las <emphasis>x</emphasis>.  Esta discontinuidades serán <term>asintoticamente vertical</term> en la grafica y representara los valores donde la función esta indefinida. 
+	 
+	</para>
+	
+      </section>
+      
+      <section id="domain">
+	<title>Dominio</title>
+
+	<para id="p_dom">
+	Usando las raíces anteriores, el <term>dominio</term> de la función racional se puede definir. 
+	  
+	  <definition id="def_domain">
+	    <term>dominio</term>
+	    <meaning id="idp7807728">
+	     El grupo, o conjunto, de valores que son definidos por una función.  
+	    </meaning>
+	    <example id="def_eg">
+	      <para id="def_P1">
+		Usando la función racional anterior,  
+		<link target-id="eq_rf" strength="3"/>, el dominio se puede definir como cualquier numero real
+		<m:math><m:ci>x</m:ci></m:math> donde 
+		<m:math><m:ci>x</m:ci></m:math>  no iguala a 1 o negativa 3.  Expresando esto matemáticamente, obtenemos lo siguiente: 
+	      </para>
+
+	      <!-- should read:  {x set of Reals | x!=-3 & x!=1}  -->
+	      <equation id="def_dom_eqtn1">
+		<m:math>
+		  <m:apply>
+		    <m:set>
+		      <m:bvar>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>x</m:ci>
+			  <m:reals/>
+			</m:apply>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:and/>
+			  <m:apply>
+			    <m:neq/>
+			    <m:ci>x</m:ci>
+			    <m:cn>-3</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:neq/>
+			    <m:ci>x</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:condition>
+		     <!-- <m:ci> x </m:ci> -->
+		    </m:set>
+		  </m:apply>
+		</m:math>		
+	      </equation>
+	      
+	    </example>
+	  </definition>
+	</para>
+
+      </section>
+
+
+      <section id="intercepts">
+	<title>Intercepciones</title>
+
+	<para id="int_x">
+
+La <term>intercesión en la x</term> es definida como el punto (s) donde
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci><m:ci>x</m:ci>
+	    </m:apply>
+	  </m:math>,en otras palabras la salida de la función racional iguala a cero. Ya que hemos encontrado las raíces de la función este proceso es muy simple. Usando algebra, sabemos que la salida será cero cuando el numerador de la función igual a  cero. Por lo tanto, la función tendrá una intercepciones en  <m:math><m:ci>x</m:ci></m:math> cuando sea igual a una de las raíces del numerador.
+
+
+	</para>
+
+	<para id="int_y">
+
+La <term>intercepción y</term> ocurre cuando <m:math><m:ci>x</m:ci></m:math> es igual a cero. Se puede encontrar al tener todos los valores de	  <m:math><m:ci>x</m:ci></m:math> igual a cero y resolver la función racional.
+	</para>
+
+      </section>
+    </section>
+
+
+    <section id="rf_ztrans">
+      <title> Las Funciones Racionales y la Transformada-z</title>
+      <para id="p_rship1">
+	Como ya lo hemos mencionado todas las transformadas-z se pueden escribir como función racional, lo cual es la manera mas común de representar la transformada-z. Por esto, podemos usar las transformadas anteriores especialmente las de la raíces, para reveler algunas de las características de la señal  o sistema LTI descritos por la transformada-z. 
+      </para>
+
+      <para id="p_rship2">
+	La siguiente ecuación muestra la forma general de escribir la transformada-z como una función racional:
+
+	<equation id="rfunc_gen">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+	      </m:apply>
+	      <m:apply>
+    	 	<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>M</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>M</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		
+		<m:apply>		  
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:cn>-1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>N</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>z</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	  
+	</equation>
+
+Si usted ya vio el modulo titulado el <link document="m10556" strength="3">entender graficas de polos y ceros y la transformada-z</link>, usted sabrá como las raíces de las funciones racionales forman un papel importante para entender la transformada-z. La ecuación anterior, <link target-id="rfunc_gen" strength="3"/>, se puede expresar en una forma factorizada similar la función racional vista anterior menta, vea <link target-id="eq_rf_fact" strength="2"/>.   Por lo tanto podemos encontrar las raíces del numerador y denominador de la transformada-z. Las siguientes dos relaciones se vuelven obvias:
+	
+	<list id="ztrans_props">
+	  <title>Relación de Raíces en Polos y Ceros</title>
+	  <item> 
+
+Las raíces del numerado en la función racional son lo <term>ceros</term> en la transformada-z
+	
+	  </item>
+	  <item>
+
+Las raíces en el nominador de la función racional son los <term>polos</term> de la transformada-z
+	 
+	  </item>
+	</list>
+
+      </para>
+    </section>
+	
+    <section id="conc">
+      <title>Conclusión</title>
+      
+      <para id="p_conc">
+Una vez que usemos nuestro conocimiento de funciones razónales para encontrar sus raíces, podemos manipular una transformada-z en varias maneras útiles. Podemos usar este conocimiento para representar un sistema LTI gráficamente usando una <link document="m10556" strength="3">grafica de polos y ceros</link>, o para analizar o <link document="m10548" strength="3">diseñar un filtro digital a través de la transformada-z</link>.
+
+	
+      </para>      
+      
+    </section>
+
+  </content>
+</document>

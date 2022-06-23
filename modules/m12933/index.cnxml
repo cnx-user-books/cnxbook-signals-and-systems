@@ -1,0 +1,194 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Señales Periódicas</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8bd6ea59-e805-436c-bc35-58bb8b4ad745</md:uuid>
+</metadata>
+
+
+  <content>
+    <para id="p1">
+Recordemos que las funciones periódicas son funciones en las cuales su forma se repite exactamente después de un periodo o ciclo. Nosotros representaremos la definición de una <term>función periódica</term> matemáticamente como:
+     
+
+      <equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:apply>
+						<m:plus/>
+						<m:ci>t</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:ci>m</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:forall/>
+				<m:bvar><m:ci>m</m:ci>
+				</m:bvar>
+				<m:apply>
+					<m:in/>
+					<m:ci>m</m:ci>
+					<m:integers/>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+      
+     donde
+      <m:math>
+		<m:apply>
+			<m:gt/>
+			<m:ci>T</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math> representa el <term>periodo</term>. Por esta razón, usted podrá ver esta señal ser llamada la señal periódica-T. Cualquier función que satisfaga esta ecuación es periódica. 
+    </para>
+
+    <para id="p2">
+Podemos pensar en funciones periódicas (con periodo-<m:math><m:ci>T</m:ci></m:math>) de dos diferentes maneras: 
+      
+    </para>   
+
+    <para id="p3">
+      #1)  Como una función en <emphasis>todos</emphasis>
+	<m:math><m:reals/></m:math>
+</para>
+    
+    <figure id="fig1">
+      <media id="idp8430672" alt=""><image src="../../media/per_fxn1.png" mime-type="image/png"/></media>
+      <caption>
+	Función en todos<m:math><m:reals/></m:math> donde
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci><m:msub>
+		<m:mi>t</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci><m:msub>
+		  <m:mi>t</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </caption>
+    </figure>
+
+    
+    <para id="temp">
+    </para>
+
+    <para id="p4">
+      #2) O, podemos podemos recortar todas las redundancias, y pensar en ellas como funciones en un intervalo
+      <m:math display="inline">
+	<m:apply>
+	  <m:interval>
+	    <m:cn>0</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:interval>
+	</m:apply>
+      </m:math> (O, en términos generales,
+      <m:math display="inline">
+	<m:apply>
+	  <m:interval>
+	    <m:ci>a</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>a</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:interval>
+	</m:apply>
+      </m:math>).  Si sabemos que la señal es periódica-t entonces toda la información de la señal se encuentra en este intervalo. 
+    </para>
+    
+    <figure id="fig2">
+      <media id="idp8453856" alt=""><image src="../../media/per_fxn2.png" mime-type="image/png"/></media>
+      <caption>
+Remueva la redundancia de la funcion periodica para que
+	
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">f</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	no esta definido afuera
+	<m:math display="inline">
+	  <m:apply>
+	    <m:interval>
+	      <m:cn>0</m:cn>
+	      <m:ci>T</m:ci>
+	    </m:interval>
+	  </m:apply>
+	</m:math>.	
+      </caption>
+    </figure>
+
+
+    <para id="defn">
+     Una funcion <term>aperiodica</term> CT
+
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">f</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+no se repite para <emphasis>cualquier</emphasis>
+
+      <m:math>
+	<m:apply>
+	  <m:in/>
+	  <m:ci>T</m:ci>
+	  <m:reals/>
+	</m:apply>
+      </m:math>; 
+      <foreign>i.e.</foreign> no existe ninguna <m:math><m:ci>T</m:ci>
+      </m:math> s.t. <link target-id="eq1"> esta ecuacion</link> es verdadera.
+    </para>
+
+    <para id="question">
+      Pregunta: ¿ La definición de DT ?
+
+    </para>
+
+    <section id="contperiodic">
+      <title>Tiempo Continuo</title>
+      <para id="because">
+      </para>
+    </section>
+
+    <section id="discreteperiodic">
+      <title>Tiempo Discreto</title>
+      <para id="imust">
+      </para>
+    </section>
+
+    <para id="toadd">
+      Nota: Circular vs. Linear
+    </para>
+
+  </content>
+  </document>

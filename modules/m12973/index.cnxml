@@ -1,0 +1,520 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Aliasing</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>61397a3d-d45c-41eb-90be-11bb2e577c77</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="int">
+      <title>Introducción</title>
+      <para id="p1_int">
+	Cuando consideramos la <link document="m12969" strength="3">reconstrucción</link> de una señal, usted ya debe de estar familiarizado con la idea de el  <link document="m12971" strength="3">valor de Nyquist. </link>  Este concepto nos permite encontrar el valor de muestreo que nos dara una reconstrucción perfecta de nuestra señal.  Si nosotros muestreamos en un valor muy bajo (abajo del valor de Nyquist), entonces surgirán problemas para hacer una reconstrucción perfecta imposible-este problema es coocido como <term>aliasing</term> (algunos autores traducen este término como solapamiento).  Aliasing ocurre cuando hay un traslapo en el desplazamiento, copias périodicas en nuestra señal FT, es decir espectro.
+      </para>
+      
+      <para id="p1a_int">En el dominio de frecuencia, notaremos que parte de la señal se trasladara con la señal siguiente a él.  En este solapamiento los valores de la frecuencia serán sumados juntos y la forma del espectro de la señal será indeseablemente alterado. Este solapamiento o aliasing hace posible determinar correctamente la fuerza de la frecuencia.  La <link target-id="fig1a"/> nos da un ejemplo visual de este fenómeno:
+      </para>
+
+      <figure id="fig1a"><media id="idm1782864" alt=""><image src="../../media/alias_eg.png" mime-type="image/png"/></media>
+	<caption>
+	  El espectro de una señal limitada en banda (a W Hz) es mostrada arriba en la gráfica. Si el intervalo muestreado 
+	  <m:math>
+			<m:msub>
+				<m:mi>T</m:mi>
+				<m:mi>s</m:mi>
+			</m:msub>
+		</m:math>	    
+	  es elegida demasiado gande relativo con el ancho de banda 
+	  <m:math>
+			<m:ci>W</m:ci>
+		</m:math>, el aliasing ocurrira. En la gráfica de la parte de abajo, el intervalo muestreado es elegido suficientemente pequeño para evitar el
+	  aliasing. Note que si la señal no fuera limitada en banda, el componente del espectro siempre sería traslapado.
+	</caption>
+</figure>
+
+    </section>
+
+
+    <section id="sec2">
+      <title>Aliasing y Muestreo</title>
+      <para id="para1">
+
+	Si muestreamos demasiado lento, <foreign>es decir</foreign>, 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:forall/>
+	    <m:condition>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>T</m:ci>
+		<m:apply>
+		  <m:divide/>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub><m:mi>Ω</m:mi><m:mi>B</m:mi></m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:condition>
+	    <m:apply>
+	      <m:lt/>
+	      <m:ci>
+		<m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>
+		  <m:msub><m:mi>Ω</m:mi><m:mi>B</m:mi></m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	No podemos recuperar la señal de su muestra debido al aliasing. 
+      </para>
+
+
+      <example id="example1">
+	<para id="dum">
+	</para>
+	
+	<para id="exam1para1">
+	  Sea 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> tiene CTFT. 
+	</para>
+
+	<figure id="fig1">
+	  <media id="idm483472" alt=""><image src="../../media/alia_f1.png" mime-type="image/png"/></media>
+	  <caption>
+	    En esta figura, note la siguiente ecuación:  
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>
+		    <m:msub><m:mi>Ω</m:mi><m:mi>B</m:mi></m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>a</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</figure> 
+	
+	<para id="exam1para2">
+	  Sea 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> tiene CTFT. 
+	</para>
+
+	
+	<figure id="fig2">
+	  <media id="idm7687456" alt=""><image src="../../media/alia_f2.png" mime-type="image/png"/></media>
+	  <caption>
+	    Las porciones originales de la señal resultan del solapamiento con replicas desplazadas- mostrando la demostración visual del aliasing.
+	  </caption>
+	</figure> 
+	
+	<para id="exam1para3">
+	  Trate de bosquejar y resolver las siguientes ecuaciones por su cuenta:
+	  <list id="list1">
+	    <item>
+	     ¿Qué es lo que hace la  DTFT de 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mrow>
+			  <m:mn>1</m:mn>
+			  <m:mo>,</m:mo>
+			  <m:mi>s</m:mi>
+			</m:mrow>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math> ? 
+	    </item>
+	 
+	    <item>
+	      ¿Qué es lo que hace la DTFT de 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mrow>
+			  <m:mn>2</m:mn>
+			  <m:mo>,</m:mo>
+			  <m:mi>s</m:mi>
+			</m:mrow>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math> ? 
+	    </item>
+	
+	    <item>
+	      ¿Alguna otra señal tiene la misma DTFT como 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mrow>
+			<m:mn>1</m:mn>
+			<m:mo>,</m:mo>
+			<m:mi>s</m:mi>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> y 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mrow>
+			<m:mn>2</m:mn>
+			<m:mo>,</m:mo>
+			<m:mi>s</m:mi>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>?
+	    </item>
+	  </list>
+	</para>
+      </example>
+
+      <para id="exam1para6">CONCLUSIÓN: Si muestreamos debajo de la frecuencia de Nyquist, hay muchas señales que pueden producir la secuencia dada de la muestra. 
+      </para>
+
+      <figure id="fig5">
+	<media id="idm6234496" alt=""><image src="../../media/alia_f3a.png" mime-type="image/png"/></media>
+	<caption>
+	  Todas son iguales
+	</caption>
+      </figure> 
+      
+      <para id="exam1para7">
+	¿Por qué el término "aliasing"? Por que la misma muestra de secuencia puede ser representada por diferentes señales CT (en comparación a cuando muestreamos la frecuencia de Nyquist anterior, entonces la secuencia muestra representa una señal CT única).
+      </para>
+
+      <figure id="fig6">
+	<media id="idm6173328" alt=""><image src="../../media/alia_f4.png" mime-type="image/png"/></media>
+	<caption>
+	  Estas dos señales contienen las mismas cuatro muestras, con todo son señales muy diferentes.
+	</caption>
+      </figure> 
+
+      <example id="example2">
+	<para id="exam2para1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+	
+	
+	<figure id="fig7">
+	  <media id="idm13185200" alt=""><image src="../../media/cos.png" mime-type="image/png"/></media>
+	  <caption>
+	    La figura muestra la  función coseno, 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, 
+	    y su CTFT.
+	  </caption>
+	</figure> 
+
+
+	<para id="exam2para2">
+	  Caso 1: Muestra 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>8</m:cn>
+	      <m:pi/>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>rad</m:ci>
+	      <m:ci>seg</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math> ⇒ 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>T</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:ci>seg</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+	  <note type="note" id="idm3703232">
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>
+		  <m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>
+		    <m:msub><m:mi>Ω</m:mi><m:mi>B</m:mi></m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </note>
+	</para>
+
+<!--	
+	<figure id='fig8'>
+	  <name></name>
+	  <media type="image/png" src="fig8.png"/>
+	  <caption></caption>
+	</figure> 
+-->
+
+	<para id="exam2para3">
+	  Caso 2: Muestra 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>w</m:ci>
+		<m:ci>
+		  <m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+		</m:ci>
+	      </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>8</m:cn>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:pi/>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>rad</m:ci>
+	      <m:ci>seg</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math> ⇒ 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>T</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>3</m:cn>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:ci>seg</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+
+	  <note type="nota" id="idm4775472"><label>Nota</label>
+	    <m:math>
+	      <m:apply>
+		<m:lt/>
+		<m:ci>
+		  <m:msub><m:mi>Ω</m:mi><m:mi>s</m:mi></m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>
+		    <m:msub><m:mi>Ω</m:mi><m:mi>B</m:mi></m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </note>
+	</para>
+
+<!--
+	<figure id='fig9'>
+	  <name></name>
+	  <media type="image/png" src="fig9.png"/>
+	  <caption></caption>
+	</figure> 
+-->
+
+	<para id="exam2para4">
+	  Cuando corremos la DTFT del Caso #2 a través de los pasos de reconstrucción, nos damos cuenta que terminamos con el siguiente coseno:
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:mover accent="true">
+						<m:mi>f</m:mi>
+						<m:mo>~</m:mo>
+					</m:mover>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:cos/>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:pi/>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	  Esta es una versión "estrecha" de la versión original. Claramente nuestro valor de muestra no fue lo sufiencitemente alto para asegurar la reconstrucción correcta de las muestras.
+	</para>
+
+<!--
+	<figure id='fig10'>
+	  <name></name>
+	  <media type="image/png" src="fig10.png"/>
+	  <caption></caption>
+	</figure> 
+-->
+      </example>
+      
+<!--
+      <example id='example3'>
+	<name>Ejemplos:</name>
+
+	
+	<figure id='fig12'>
+	  <name></name>
+	  <media type="image/png" src="fig12.png"/>
+	  <caption></caption>
+	</figure> 
+	
+
+      </example>
+-->
+      <para id="something">Probablementa ya habra visto algunos efectos del aliasing tal como: una rueda del carro que da vuelta al revés en una película occidental.  Aquí hay algunas 	<link url="http://flowers.ofthenight.org/wagonWheel">
+	ligas</link> que ilustran dicho efecto, de bajo muestreo y aliasing. Este es un ejemplo de una imagen que tiene  <link url="http://www.dvp.co.il/filter/moire.html">artefactos de Moire
+	</link> como resultado de una escaneada a una frecuencia muy baja.
+      </para>
+
+    </section>
+  </content>
+</document>

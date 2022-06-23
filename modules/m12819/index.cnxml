@@ -1,0 +1,454 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+<title>Señales Útiles</title>
+
+  <metadata>
+  <md:content-id>m12819</md:content-id><md:title>Señales Útiles</md:title>
+  <md:abstract>Presenta tres señales útiles</md:abstract>
+  <md:uuid>6fedb8ed-9d11-401f-954b-a2abb3cbeba6</md:uuid>
+</metadata>
+
+<content>
+    <para id="p_intro">Antes de ver este módulo, usted tendrá que tener una idea básica sobre lo que es una señal, sus <link document="m12818" strength="2"> clasificaciones y operaciones </link>. Como un repaso, una señal es una función definida con respecto a una variable independiente. Regularmente, esta variable es el tiempo pero podría representar un índice para una secuencia, o un índice para cualquier número de cosas, o cualquier número de dimensiones. La mayor parte, si es que no todas, las señales que usted verá en sus estudios y en el mundo real podrán ser creadas de las señales básicas que aquí va a estudiar. Por esta razón, estas señales elementales son comúnmente conocidas como los <emphasis>fundamentos </emphasis>para cualquier otra señal.
+    
+    </para>
+
+
+    <section id="s_sin">
+      <title> Senosoidales</title>
+      <para id="p1_sin">Probablemente la señal elemental más importante que usted usará es el senosoidal evaluado en su parte real. En su forma de tiempo-continuo, la forma general de la función se expresa así
+
+	<equation id="eq_sin">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">x</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:cos/>
+						<m:apply>
+							<m:plus/>
+							<m:apply>
+								<m:times/>
+								<m:ci>ω</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:ci>φ</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	donde <m:math><m:ci>A</m:ci>
+	</m:math> es la amplitud,
+	<m:math><m:ci>ω</m:ci>
+	</m:math> es la frecuencia, y	<m:math><m:ci>φ</m:ci>
+	</m:math> representa el desplazamiento.
+	Note que es común ver que 	<m:math display="inline">
+		<m:apply>
+			<m:times/>
+			<m:ci>ω</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es remplazado con 	<m:math display="inline">
+		<m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.  Las señales senosoidales son periódicas, esto hace que su periodo, o cualquier señal periódica puedan ser expresada de la siguiente manera
+	
+	<equation id="eq_per">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>T</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <figure id="sinwav" orient="horizontal"><media id="id6443051" alt=""><image src="../../media/sinwave.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/sinwave.eps" mime-type="application/postscript"/></media>
+	<caption>
+	  Senosoidal con
+	  <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci>A</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:math>, 
+	  <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci>w</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:math>, y
+	  <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci>φ</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>.
+	</caption>
+</figure>      
+    </section>
+
+
+
+    <section id="sect3">
+      <title>Funciones de Exponenciales Complejos</title>
+      <para id="para3">Tal vez esta señal es tan importante como la senosoidal, la función de <term>exponencial complejo</term> se convertirá en una parte crítica para el estudio de señales y sistemas. La expresión general se escribe de la siguiente manera
+	
+	<equation id="eq_exp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>B</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	donde <m:math><m:ci>s</m:ci></m:math>, mostrado abajo, es un número complejo en términos de 
+	<m:math><m:ci>σ</m:ci></m:math>, con una fase constante, y con
+	<m:math><m:ci>ω</m:ci></m:math> siendo la frecuencia:
+	
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci>s</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>σ</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	
+	  Por favor vea el módulo de  <link document="m12825" strength="2">Exponencial Complejo </link>
+	<link document="m0004" target-id="sec2" strength="2">o los módulos de las otras señales elementales</link>.
+      </para>
+    </section>
+    
+    
+    <section id="realexp">
+      <title>Exponenciales reales</title>
+      <para id="p1_rexp">Como el nombre lo implica, los exponenciales reales contienen números no imaginarios y son simplemente expresados de la siguiente manera
+
+	<equation id="eq_reexp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>B</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>α</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	donde <m:math><m:ci>B</m:ci></m:math> y
+	<m:math><m:ci>α</m:ci></m:math> son parámetros reales. 	Las funciones de exponencial complejo oscilan, sin embargo, esta señal nada mas crece o decae dependiendo del valor de 
+
+	<m:math><m:ci>α</m:ci></m:math>.  
+	
+	<list id="reexp">
+		<item><term> Exponencial que decae
+</term>, cuando 
+	    <m:math>
+				<m:apply>
+					<m:lt/>
+					<m:ci>α</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+		</item>
+		<item><term>Exponencial que Crece</term>, cuando
+	    <m:math>
+				<m:apply>
+					<m:gt/>
+					<m:ci>α</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+		</item>
+	</list>
+</para>
+      
+      <figure id="fig_reexp" orient="horizontal"><subfigure id="subfig1">
+		<media id="id1171321816348" alt=""><image src="../../media/realexpD.png" mime-type="image/png"/></media>
+		<caption>
+	    Exponencial que decae
+	  </caption>
+	</subfigure>
+	<subfigure id="subfig2">
+		<media id="id1171321816372" alt=""><image src="../../media/realexpG.png" mime-type="image/png"/></media>
+		<caption>
+	    Exponencial que Crece
+	  </caption>
+	</subfigure>
+	<caption>
+	  Ejemplos de Exponenciales Reales
+	</caption>
+</figure>
+
+    </section>
+
+
+
+    <section id="sect2">
+      <title>Función de impulso unitario</title>
+      <para id="para2">La “función” de <term><link document="m12824" strength="3">impulso unitario</link></term> (o la función  <term> delta de Dirac</term>) es una señal que tiene una altura infinita y un ancho casi inexistente. Sin embargo, por la manera que es definida, al ser integrada da un valor de uno. Mientras en el mundo de ingeniería  esta señal es útil y ayuda a entender muchos conceptos, algunos matemáticos tienen problemas con esta al ser llamada función, porque no está definida en 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.
+	Los ingenieros se evitan este problema al mantenerla definida con una integral. El impulso unitario es comúnmente conocido como
+
+
+
+	<m:math display="block">
+		<m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+
+	La propiedad más importante de esta función es demostrada con la siguiente integral:      </para>
+
+
+      <equation id="eq_delta">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:ci type="fn">δ</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+    </section>
+
+
+    <section id="sect1">
+      <title>Función de Escalón unitario</title>
+      <para id="para1">Otra función básica para este curso es la función de <term>Escalón unitario</term> que se define como
+	
+	<equation id="eq_step">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">u</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:lt/>
+							<m:ci>t</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+					<m:piece>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:geq/>
+							<m:ci>t</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+          
+      <figure id="fig_unstep" orient="horizontal"><subfigure id="subfig1u">
+		<media id="id1171321629283" alt="">
+<image src="../../media/unit_step.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/unit_step.eps" mime-type="application/postscript"/></media>
+		<caption>
+Escalón unitario de Tiempo-Continuo	    
+
+	  </caption>
+	</subfigure>
+	<subfigure id="subfig2u">
+		<media id="id1171321629308" alt="">
+<image src="../../media/unit_stepD.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/unit_stepD.eps" mime-type="application/postscript"/></media>
+		<caption>
+Escalón unitario de Tiempo-Discreto	    
+ 
+	  </caption>
+	</subfigure>
+	<caption>
+	  Funciones Básicas del Escalón 
+	</caption>
+</figure>
+
+      <para id="p2_step">Note que esta función es discontinua en el origen; sin embargo no se necesita definirla en este punto ya que no es necesario en la teoría de la señal. La función de Escalón unitario es una señal muy útil para probar y definir otras señales. Por ejemplo, usando varias de estas señales movidas en el tiempo y multiplicadas por otras señales, se puede obtener alguna porción de la señal por la que fue multiplicada y eliminar el resto.</para>
+    </section>
+
+    
+    <section id="sect_ramp">
+      <title>Función Rampa</title>
+      <para id="p1_ramp">Esta función está relacionada con la función descrita anteriormente. La función Escalón unitario va desde cero a uno instantáneamente, pero esta función es la que mejor se parece a una función en la vida real, donde se necesita un tiempo para que la señal vaya incrementandose desde cero a su valor ajustado, en este caso uno. La función rampa está definida así:
+
+	<equation id="eq_ramp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">r</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:piecewise>
+					<m:piece>
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:lt/>
+							<m:ci>t</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+					<m:piece>
+						<m:apply>
+							<m:divide/>
+							<m:ci>t</m:ci>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>t</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:leq/>
+							<m:apply>
+								<m:leq/>
+								<m:cn>0</m:cn>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>t</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:piece>
+					<m:piece>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:gt/>
+							<m:ci>t</m:ci>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>t</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:piece>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+      
+      <figure id="fig_ramp" orient="horizontal">
+	<media id="id1171321629531" alt="">
+<image src="../../media/ramp.png" mime-type="image/png"/>
+<image for="pdf" src="../../media/ramp.eps" mime-type="application/postscript"/></media>
+	<caption>
+	  Función Rampa
+	</caption>
+</figure>
+      
+    </section>
+    
+  </content>
+</document>

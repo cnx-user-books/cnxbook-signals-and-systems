@@ -1,0 +1,501 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Condiciones de Dirichlet</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>043c830c-025c-4db2-b65f-1f80b4c10842</md:uuid>
+</metadata>
+
+
+  <content>
+    <para id="p1">Nombrado en honor del matemático Alemán Peter <term>Dirichlet</term>, las condiciones Dirichlet son las condiciones que garantizan la <term>existencia</term> y <term>convergencia</term> de las <link document="m10496" strength="3">series de Fourier</link> o de las <link document="m0046" strength="3">trasformadas de Fourier</link>.
+
+      
+    </para>
+    
+    <section id="sec1">
+      <title>Las Condiciones Débiles para las Series de Fourier</title>
+      <rule type="condición" id="rule1"><label>Condición</label><title>La Condición Débil de Dirichlet</title>
+	<statement id="idm471824">
+		<para id="p2">Para que las series de fourier existan, los coeficientes de fourier deben ser finitos, esta condición garantiza su existencia. Esencialmente dice que el integral del valor absoluto de la señal debe ser finito. Los límites de integración son diferentes para el caso de las series de fourier y de los del caso de las trasformada de Fourier. Este es el resultado que proviene directamente de las diferencias en las definiciones de las dos.
+	</para></statement>
+	<proof id="idp5380080">
+		<para id="p3">Las series de fourier existen (los coeficientes son finitas) si 
+
+	    <equation id="eqn1">
+		<title>
+		Las Condiciones Débiles para las Series de Fourier
+	      </title>
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	 Esto se puede probar usando la condición inicial de los coeficientes iniciales de las series de fourier que pueden ser finitas. 
+	    <equation id="eqn2">
+		<m:math display="display">
+			<m:apply>
+				<m:leq/>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:ci>T</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:int/>
+								<m:bvar>
+									<m:ci>t</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:ci>T</m:ci>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn">f</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:exp/>
+										<m:apply>
+											<m:minus/>
+											<m:apply>
+												<m:times/>
+												<m:imaginaryi/>
+												<m:apply>
+													<m:ci>
+														<m:msub>
+															<m:mi>ω</m:mi>
+															<m:mn>0</m:mn>
+														</m:msub>
+													</m:ci>
+												</m:apply>
+												<m:ci>n</m:ci>
+												<m:ci>t</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:abs/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:abs/>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:apply>
+												<m:ci>
+													<m:msub>
+														<m:mi>ω</m:mi>
+														<m:mn>0</m:mn>
+													</m:msub>
+												</m:ci>
+											</m:apply>
+											<m:ci>n</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Recordando los <link document="m10060" strength="2">exponenciales complejos</link>, sabemos que la ecuación anterior 
+	 
+	    <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>, nos da 
+	    
+	    <equation id="eqn4">
+		<m:math display="display">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:apply>
+							<m:abs/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eqn5">
+		<m:math display="display">
+			<m:apply>
+				<m:lt/>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	</proof>
+</rule>
+
+      <para id="sec2_p1">
+	<note type="nota" id="idm694624"><label>Nota</label>Si tenemos la función: 
+	  
+	  <m:math display="block">
+		<m:apply>
+			<m:forall/>
+			<m:bvar>
+				<m:ci>t</m:ci>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:leq/>
+					<m:apply>
+						<m:lt/>
+						<m:cn>0</m:cn>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+Entonces usted debería observar que esta función <emphasis>no tiene</emphasis> la condición necesaria.
+	
+	</note>
+</para>
+   
+      <section id="sec2">
+	<title>Las Condiciones Débiles para la Transformada de Fourier</title>
+	<rule type="condición" id="rule2"><label>Condición</label>
+	  <statement id="idm7873360">
+	    <para id="p4">La transformada de fourier existe si 
+	      
+	      <equation id="eqn6">
+		<title>las condiciones débiles para la trasformada de Fourier
+</title>
+		<m:math display="display">
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Esto se puede derivar de la misma manera en la que se derivo las condiciones débiles de Dirichlet para las series de fourier, se empieza con la definición y se demuestra que la transformada de fourier debe de ser menor que infinito en todas partes.</para>
+	  </statement>
+	</rule>
+      </section>
+    </section>
+
+    <section id="sec3">
+      <title> Las Condiciones Fuertes de Dirichlet</title>
+      <para id="p5">La transformada de Fourier existe si la señal tiene un número finito de discontinuidades y un número finito de <term>máximos</term> y <term>mínimos</term>. Para que las series de fourier existan las siguientes dos condiciones se deben de satisfacer (junto con la condición débil de Dirichlet):
+	
+
+	<list id="list1" list-type="enumerated">
+		<item>
+	    En un periodo, 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math> tiene solo un número finito de mínimos y máximos.
+	  </item>
+		<item>
+	En un periodo, 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math> tiene un numero finito de discontinuidades y cada una es finita.
+	  </item>
+	</list>
+Esto es a lo que nos referimos como las condiciones <term>fuertes de Dirichlet</term>. En teoría podemos pensar en señales que violan estas condiciones por ejemplo 
+	<m:math display="inline">
+		<m:apply>
+			<m:sin/>
+			<m:apply>
+				<m:log/>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	sin embargo, no es posible crear esta señal en un laboratorio. Por eso, cualquier señal en el mundo real tendrá una representación de Fourier. 
+      </para>
+
+		
+      <section id="eg_sub">
+	<title>Ejemplo</title>
+	<para id="p1_egs">Asumamos que tenemos la siguiente función e igualdad: 
+
+	  <equation id="eq_eg1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:diff/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:limit/>
+					<m:bvar>
+						<m:ci>N</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:infinity/>
+					</m:lowlimit>
+					<m:apply>
+						<m:diff/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	 Si
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> tiene las tres condiciones Fuertes de Dirichlet, entonces 
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:diff/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>τ</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	  en cualquier  <m:math><m:ci>τ</m:ci></m:math> donde
+	   <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es continuo y donde 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es discontinuo, 
+	   <m:math>
+		<m:apply>
+			<m:diff/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+es el valor <emphasis>promedio</emphasis> del lado derecho e izquierdo. Vea las siguientes <link target-id="figs"/> como un ejemplo:
+
+	</para>
+
+	<figure orient="horizontal" id="figs">
+	<subfigure id="subf1">
+		<media id="idp4279792" alt=""><image src="../../media/dircond1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="subf2">
+		<media id="idm71696" alt=""><image src="../../media/dircond2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	    Funciones Discontinuas, 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.		      
+	  </caption>
+</figure>
+
+	<para id="pfin">
+	<note type="nota" id="idp982288"><label>Nota</label>Las funciones que no cumplen con las condiciones de Dirichlet son patológicas como ingenieros, no estamos interesados en ellos.
+	  </note>
+</para>
+
+      </section>
+
+    </section>
+
+  </content>
+</document>

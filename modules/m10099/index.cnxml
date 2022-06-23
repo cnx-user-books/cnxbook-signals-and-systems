@@ -1,10 +1,10 @@
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
   
-  <title>Common Fourier Transforms</title>
+  <title>Tabla de Transformadas de Fourier Comunes</title>
   
   <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m10099</md:content-id>
-  <md:title>Common Fourier Transforms</md:title>
+  <md:title>Tabla de Transformadas de Fourier Comunes</md:title>
   <md:abstract>Lists time domain signal, frequency domain signal, and condition for
 twentytwo Fourier transforms.</md:abstract>
   <md:uuid>9f42266e-e73c-42ed-8698-190dae27bc87</md:uuid>

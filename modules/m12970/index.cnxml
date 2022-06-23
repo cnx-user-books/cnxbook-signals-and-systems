@@ -1,0 +1,779 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Más sobre Reconstrucción Perfecta</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7d68724f-4f36-4342-8126-3ffdf129f7d6</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="int">
+      <title>Introducción</title>
+      <para id="para1">   
+	En el modulo previo en <link document="m12969" strength="3">reconstrucción</link>, dimos una introducción de como trabaja la reconstrucción y temporalemte derivamos una ecuación usada para realizar una perfecta reconstrucción. Ahora tomemos un vistazo más cercano a la formula de la reconstrucción perfecta:
+
+	<equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>n</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>s</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:times/>
+									<m:pi/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>t</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:pi/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Escribiremos
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	en términos de las funciones sinc desplazadas y escaladas
+
+	<m:math display="block">
+		<m:msub>
+			<m:set>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:pi/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:set>
+			<m:apply>
+				<m:in/>
+				<m:ci>n</m:ci>
+				<m:integers/>
+			</m:apply>
+		</m:msub>
+	</m:math>
+
+	es una  <term><link document="m12862" target-id="sec_bas" strength="3">base</link></term> para el espacio de señales limitadas en bada
+
+	<m:math>
+		<m:interval closure="closed">
+			<m:apply>
+				<m:minus/>
+				<m:pi/>
+			</m:apply>
+			<m:pi/>
+		</m:interval>
+	</m:math>
+
+	.  Pero espere . . . .
+      </para>
+
+      
+      <section id="sec2">
+	<title>Formulas de la Derivada de Reconstrucción</title>
+	<para id="para2">
+	  ¿Que es
+	  <equation id="eq2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:scalarproduct/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:ci>?</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Este  <link document="m12876" strength="3">producto interno</link>
+	  puede ser difícil de calcular en el dominio del tiempo, asi que usaremos el
+	  <link document="m12931" strength="3">Teorema de Plancharel </link>
+
+	  <equation id="eq3">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:scalarproduct/>
+                  <m:ci>·</m:ci>
+                  <m:ci>·</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:int/>
+		    <m:bvar><m:ci>ω</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>ω</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	</para>
+
+	<figure id="fig1" orient="vertical">
+	  <subfigure id="subfig1">
+	    <media id="idp1108784" alt=""><image src="../../media/fig1a-8513.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="subfig2">
+	    <media id="idp647504" alt=""><image src="../../media/fig1b-e621.png" mime-type="image/png"/></media>
+	  </subfigure>
+	</figure>
+
+	<para id="dum">  
+	</para>
+
+	<para id="para3">
+	  si
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>n</m:ci>
+	      <m:ci>k</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  <equation id="eq4">
+	    <m:math>
+	      <m:apply>
+		<m:eq/> 
+		<m:apply>
+		  <m:scalarproduct/>
+                  <m:ci>
+                    <m:msub>
+                      <m:mi>sinc</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                  </m:ci>
+                  <m:ci>
+                    <m:msub>
+                      <m:mi>sinc</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:int/>
+		    <m:bvar><m:ci>ω</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>ω</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  si
+	  <m:math>
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci>n</m:ci>
+	      <m:ci>k</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  <equation id="eq5">
+	    <m:math>
+	      <m:apply>
+		<m:eq/> 
+		<m:apply>
+		  <m:scalarproduct/>
+                  <m:ci>
+                    <m:msub>
+                      <m:mi>sinc</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                  </m:ci>
+                  <m:ci>
+                    <m:msub>
+                      <m:mi>sinc</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:int/>
+		    <m:bvar><m:ci>ω</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>ω</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>ω</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:int/>
+		    <m:bvar><m:ci>ω</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:pi/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:pi/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>ω</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>k</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>k</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <note type="nota" id="idm6007904"><label>Nota</label>
+          En la <link target-id="eq5" strength="2"/> usamos el echo de que la integral de la senosoidal en un intervalo completo es 0 para simplificar nuestra ecuación.</note>
+
+	  Así,
+
+	  <equation id="eq6">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:scalarproduct/>
+                  <m:apply>
+                    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+                  <m:apply>
+                    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>k</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:piecewise>
+		  <m:piece>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:eq/>
+                      <m:ci>n</m:ci>
+                      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:piece>
+		  <m:piece>
+		    <m:cn>0</m:cn>
+		    <m:apply>
+		      <m:neq/>
+                      <m:ci>n</m:ci>
+                      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:piece>
+		</m:piecewise>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Por lo tanto 
+
+	  <m:math display="block">
+	    <m:msub>
+	      <m:set>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+                    <m:apply>
+                      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+                    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+                    <m:pi/>
+                    <m:apply>
+                      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>n</m:ci>
+                    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:set>
+	      <m:apply>
+		<m:in/>
+		<m:ci>n</m:ci>
+		<m:integers/>
+	      </m:apply>
+	    </m:msub>
+	  </m:math>
+
+	  es una <link document="m12902" target-id="orthon_b" strength="3">base ortonormal </link> (ONB) para el espacio de funciones limitadas de banda de
+
+	  <m:math>
+	    <m:interval closure="closed">
+	      <m:apply>
+		<m:minus/>
+		<m:pi/>
+	      </m:apply>
+	      <m:pi/>
+	    </m:interval>
+	  </m:math>
+	.
+
+	  <note type="muestreo" id="idm6715328"><label>Muestreo</label>Muestreo es lo mismo que calcular los coeficientes de  ONB,
+	     que es el producto interno con  sincs
+	  </note>
+	</para>
+      </section>
+    
+      <section id="sub2">
+	<title>Resumen</title>
+	<para id="p1_sub2">
+	  Una última vez para
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	  <m:math>
+	    <m:interval closure="closed">
+	      <m:apply>
+		<m:minus/>
+		<m:pi/>
+	      </m:apply>
+	      <m:pi/>
+	    </m:interval>
+	  </m:math> limitado en banda
+	    
+	    
+	  <equation id="eq7">
+	    <title>Síntesis</title>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+                  <m:bvar><m:ci>n</m:ci></m:bvar>
+                  <m:lowlimit>
+                    <m:apply>
+                      <m:minus/>
+		      <m:infinity/>
+                    </m:apply>
+                  </m:lowlimit>
+                  <m:uplimit>
+                    <m:infinity/>
+                  </m:uplimit>
+                  <m:apply>
+                    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:times/>
+			  <m:pi/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>t</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <equation id="eq8">
+	    <title>Análisis </title>
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn" class="discrete">
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+                  <m:condition>
+                    <m:apply>
+                      <m:eq/>
+		      <m:ci>t</m:ci>
+		      <m:ci>n</m:ci>
+                    </m:apply>
+                  </m:condition>
+                  <m:apply>
+                    <m:ci type="fn">f</m:ci>
+                    <m:ci>t</m:ci>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Para poder entender un poco más sobre como podemos reconstruir una señal exacatamente, será útil  <link document="m10799" strength="3">examinar la relación</link> entre las transformadas de Fourier  (CTFT
+	  y DTFT) a más profundidad.
+	</para>
+      </section>
+    </section>
+
+  </content>
+</document>

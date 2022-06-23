@@ -1,0 +1,469 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Propiedades de la Transformada de Laplace</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e338d65c-08c0-4d43-a078-b667ea8d2841</md:uuid>
+</metadata>
+
+  <content>
+
+    <table frame="all" id="table" summary="">
+      <tgroup cols="4" align="center" colsep="1" rowsep="1">
+	<colspec colwidth="*"/>
+	<colspec colwidth="*"/>
+	<colspec colwidth="*"/>
+	<colspec colwidth="*"/>
+	<thead>
+	  <row>
+	    <entry colname="property">Propiedad</entry>
+	    <entry colname="signal">Señal</entry>
+	    <entry colname="laplace">Transformada de Laplace </entry>
+	    <entry colname="roc">Región de Convergencia (ROC)</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry colname="property">
+	      Linealidad
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>β</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>β</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub>
+		      </m:ci>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Al menos una
+	      <m:math>
+		<m:apply>
+		  <m:intersect/>
+		  <m:ci><m:msub><m:mi>ROC</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:ci><m:msub><m:mi>ROC</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Desplazamiento en el Tiempo
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>s</m:ci>
+			<m:ci>τ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      <m:math><m:ci>ROC</m:ci></m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Desplazamiento de Frecuencia (modulación)
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>η</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">X</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>s</m:ci>
+		    <m:ci>η</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Desplazado una <m:math><m:ci>ROC</m:ci></m:math> (
+	      <m:math>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci>η</m:ci>
+		</m:apply>
+	      </m:math>
+	      debe de estar en la región de convergencia)
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Escalamiento en el Tiempo
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>α</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>s</m:ci>
+		      <m:ci>α</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Escalado una <m:math><m:ci>ROC</m:ci></m:math> (
+	      <m:math>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci>α</m:ci>
+		</m:apply>
+	      </m:math>
+	      debe de estar en la región de convergencia)
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Conjugación
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:conjugate/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:conjugate/>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      <m:math>
+		<m:ci>ROC</m:ci>
+	      </m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Convolución
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Al menos una
+	      <m:math>
+		<m:apply>
+		  <m:intersect/>
+		  <m:ci><m:msub><m:mi>ROC</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:ci><m:msub><m:mi>ROC</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Diferenciación en el Tiempo
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>s</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Al menos una <m:math><m:ci>ROC</m:ci></m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Diferenciación de la Frecuencia
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>s</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      <m:math>
+		<m:ci>ROC</m:ci>
+	      </m:math>
+	    </entry>
+	  </row>
+
+	  <row>
+	    <entry colname="property">
+	      Integración en el Tiempo
+	    </entry>
+	    <entry colname="signal">
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>τ</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>t</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="laplace">
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">X</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry colname="roc">
+	      Al menos una
+	      <m:math>
+		<m:apply>
+		  <m:intersect/>
+		  <m:ci>ROC</m:ci>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:real/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+  </content>
+</document>

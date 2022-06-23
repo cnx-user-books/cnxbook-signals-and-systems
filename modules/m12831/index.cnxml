@@ -1,0 +1,1254 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Convolución Circular y el DFT</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1c9afa85-d25b-46c2-a5af-943adb432204</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p1_intro">Usted debería familiarizarse con la <link document="m12833" strength="3">convolución discreta</link>, que nos explica como dos señales discretas 
+
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, la entrada del sistema, y 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn" class="discrete">h</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, la respuesta del sistema, se puede definir el resultado del sistema como
+	<equation id="eq_csum">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">x</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	
+	Cuando dos DFT son dadas (secuencias de tamaño finito usualmente del tamaño <m:math><m:ci>N</m:ci></m:math>), nosotros no podemos multiplicar esas dos señales así como así, como lo sugiere la formula de arriba usualmente conocida como <term>convolución linear</term>. Ya que las DFT son periódicas, tienen valores no cero para 
+	<m:math>
+		<m:apply>
+			<m:geq/>
+			<m:ci>n</m:ci>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math> así la multiplicación de estas dos señales será no cero para 
+	<m:math>
+		<m:apply>
+			<m:geq/>
+			<m:ci>n</m:ci>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>.  Necesitamos definir otro tipo de convolucion que dará como resultado nuestra señal convuelta teniendo el valor de cero fuera del rango
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:set>
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>N</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>.  Esto nos ayuda a desarrollar la idea de <term>convolución circular</term>, también conocida como convolución cíclica o periódica. 
+</para>
+    </section>
+
+    <section id="sec2">
+      <title>Formula de la Convolución Circular</title>
+      <para id="para1">¿Qué pasa cuando multiplicamos dos DFT una con la otra, donde 	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">Y</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> es la DFT de 	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">y</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>?
+
+	<equation id="eqa">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function" class="discrete">Y</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="function" class="discrete">F</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="function" class="discrete">H</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	cuando 
+	<m:math>
+		<m:apply>
+			<m:leq/>
+			<m:cn>0</m:cn>
+			<m:ci>k</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>N</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+      <para id="para2">
+
+Usando la formula sintetizada de DFT para 
+	<m:math>
+		<m:apply>
+			<m:ci type="function" class="discrete">y</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+	<equation id="eq2">
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="function" class="discrete">F</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="function" class="discrete">H</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:exponentiale/>
+								<m:apply>
+									<m:times/>
+									<m:ci>j</m:ci>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+      <para id="para3">
+Y aplicando análisis a la formula
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="function" class="discrete">F</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>m</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="function" class="discrete">f</m:ci>
+						<m:ci>m</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:power/>
+						<m:exponentiale/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>j</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>k</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:sum/>
+								<m:bvar>
+									<m:ci>m</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="function" class="discrete">f</m:ci>
+										<m:ci>m</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:power/>
+										<m:exponentiale/>
+										<m:apply>
+											<m:times/>
+											<m:apply>
+												<m:minus/>
+												<m:ci>j</m:ci>
+											</m:apply>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:ci>k</m:ci>
+											<m:ci>n</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:ci type="function" class="discrete">H</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:exponentiale/>
+								<m:apply>
+									<m:times/>
+									<m:ci>j</m:ci>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>m</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:ci>m</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:sum/>
+								<m:bvar>
+									<m:ci>k</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">H</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:power/>
+										<m:exponentiale/>
+										<m:apply>
+											<m:times/>
+											<m:ci>j</m:ci>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:ci>k</m:ci>
+											<m:apply>
+												<m:minus/>
+												<m:ci>n</m:ci>
+												<m:ci>m</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	donde podemos reducir la segunda sumatoria de la ecuación de arriba en 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:apply>
+							<m:ci>
+								<m:mo>(</m:mo>
+								<m:mo>(</m:mo>
+								<m:mi>n</m:mi>
+								<m:mo>−</m:mo>
+								<m:mi>m</m:mi>
+								<m:mo>)</m:mo>
+								<m:mo>)</m:mo>
+							</m:ci>
+						</m:apply>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">H</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:exponentiale/>
+							<m:apply>
+								<m:times/>
+								<m:ci>j</m:ci>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:ci>k</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+									<m:ci>m</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>m</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:ci>m</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:apply>
+									<m:ci>
+										<m:mo>(</m:mo>
+										<m:mo>(</m:mo>
+										<m:mi>n</m:mi>
+										<m:mo>−</m:mo>
+										<m:mi>m</m:mi>
+										<m:mo>)</m:mo>
+										<m:mo>)</m:mo>
+									</m:ci>
+								</m:apply>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> Igual a la convolución circular! cuando tenemos
+	<m:math>
+		<m:apply>
+			<m:leq/>
+			<m:cn>0</m:cn>
+			<m:ci>n</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>N</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> arriba , para obtener dos:
+
+	<equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:equivalent/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:mo>⊛</m:mo>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<note type="note" id="idp9741760">
+	Que la notación 
+	  <m:math>
+			<m:mo>⊛</m:mo>
+		</m:math> representa la convolucion circular "mod N".
+	</note>
+</para>
+
+      <section id="sub1">
+	<title>Pasos para la Convolución Circular</title>
+	<para id="para4">Los pasos a seguir para la convolucion cíclica son los mismos que se usan en la convolución linear, excepto que todos los cálculos para todos los índices están hecho"mod N" = "en la rueda"
+	</para>
+
+	<list id="step1" list-type="bulleted">
+	<title>Pasos para la Convolución Cíclica</title>
+	<item>Paso 1:  "Grafique"  
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>m</m:ci>
+			</m:apply>
+		</m:math> y 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:apply>
+								<m:mo>(</m:mo>
+								<m:mo>(</m:mo>
+								<m:mo>−</m:mo>
+								<m:mn>m</m:mn>
+								<m:mo>)</m:mo>
+								<m:mo>)</m:mo>
+							</m:apply>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+
+	<figure id="fig1">
+	  <subfigure id="sub1_f1">
+	    <media id="idp9298400" alt=""><image src="../../media/cconv_s1.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="sub2_f1">
+	    <media id="idp13387216" alt=""><image src="../../media/cconv_s2.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <caption>
+	    Step 1
+	  </caption>
+	</figure>
+
+	<list id="step2" list-type="bulleted">
+	<item>Paso 2:  "Rote" 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:apply>
+								<m:mo>(</m:mo>
+								<m:mo>(</m:mo>
+								<m:mo>−</m:mo>
+								<m:mn>m</m:mn>
+								<m:mo>)</m:mo>
+								<m:mo>)</m:mo>
+							</m:apply>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+		<m:math>
+			<m:ci>n</m:ci>
+		</m:math> en la dirección ACW ( dirección opuesta al reloj) para obtener
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:apply>
+							<m:mo>(</m:mo>
+							<m:mo>(</m:mo>
+							<m:mn>n</m:mn>
+							<m:mo>−</m:mo>
+							<m:mn>m</m:mn>
+							<m:mo>)</m:mo>
+							<m:mo>)</m:mo>
+						</m:apply>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math> (por ejemplo rote la secuencia,
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>, en dirección del reloj por <m:math><m:ci>n</m:ci></m:math>
+	    pasos).
+		  
+	  </item>
+</list>
+	
+	<figure id="fig2">
+	  <media id="idp9759504" alt=""><image src="../../media/cconv_s3.png" mime-type="image/png"/></media>
+	  <caption>
+	    Step 2
+	  </caption>
+	</figure>
+
+	<list id="step3" list-type="bulleted">
+	<item>Paso 3:  Multiplique punto por punto la rueda
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>m</m:ci>
+			</m:apply>
+		</m:math> y la rueda
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:apply>
+							<m:mo>(</m:mo>
+							<m:mo>(</m:mo>
+							<m:mn>n</m:mn>
+							<m:mo>−</m:mo>
+							<m:mn>m</m:mn>
+							<m:mo>)</m:mo>
+							<m:mo>)</m:mo>
+						</m:apply>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math> wheel.  
+
+	    <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:ci>sum</m:ci>
+				<m:apply>
+					<m:ci type="fn" class="discrete">y</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+
+	<list id="step4" list-type="bulleted">
+	<item>
+	    Paso 4:  Repite para 
+	    <m:math>
+			<m:apply>
+				<m:leq/>
+				<m:cn>0</m:cn>
+				<m:ci>n</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>N</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+
+
+	<example id="mainExmpl">
+	  <title>Convolve (n = 4)</title>
+	  
+	  <figure id="fig3">
+	<subfigure id="sub1_f3">
+		<media id="idp9135456" alt=""><image src="../../media/cconv_p1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="sub2_f3">
+		<media id="idp89984" alt=""><image src="../../media/cconv_p2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+Dos señales discretas que seran convolucionadas.
+	  
+	    </caption>
+</figure>
+	  
+	  <para id="paraex1">
+	    <list id="eg_l1">
+	      <item>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">h</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:apply>
+			  <m:mo>(</m:mo>
+			  <m:mo>(</m:mo>
+			  <m:mo>−</m:mo>
+			  <m:mi>m</m:mi>
+			  <m:mo>)</m:mo>
+			  <m:mo>)</m:mo>
+			</m:apply>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:math>
+	      </item>
+	    </list>
+	  </para>
+
+	  <figure id="fig4">
+	    <media id="idp6166144" alt=""><image src="../../media/cconv_p3.png" mime-type="image/png"/></media>
+	  </figure>
+	  
+
+	  <para id="paraex2">
+	    Multiplique
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math> y
+	    <m:math>
+		<m:ci>sume</m:ci>
+	</m:math> para dar: 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+			<m:cn>3</m:cn>
+		</m:apply>
+	</m:math>
+</para>
+
+	  <para id="paraex3">
+	    <list id="eg_l2">
+	      <item>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">h</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:apply>
+			  <m:mo>(</m:mo>
+			  <m:mo>(</m:mo>
+			  <m:mn>1</m:mn>
+			  <m:mo>−</m:mo>
+			  <m:mi>m</m:mi>
+			  <m:mo>)</m:mo>
+			  <m:mo>)</m:mo>
+			</m:apply>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:math>
+	      </item>
+	    </list>
+	  </para>
+
+	  <figure id="fig5">
+	    <media id="idp7763904" alt=""><image src="../../media/cconv_p4.png" mime-type="image/png"/></media>
+	  </figure>
+	  
+	  <para id="paraex4">
+	    Multiplique
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math> y
+	    <m:math>
+		<m:ci>sume</m:ci>
+	</m:math> para dar: 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+			<m:cn>5</m:cn>
+		</m:apply>
+	</m:math>
+</para>
+
+	  <para id="paraex5">
+	    <list id="eg_l3">
+	      <item>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">h</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:apply>
+			  <m:mo>(</m:mo>
+			  <m:mo>(</m:mo>
+			  <m:mn>2</m:mn>
+			  <m:mo>−</m:mo>
+			  <m:mi>m</m:mi>
+			  <m:mo>)</m:mo>
+			  <m:mo>)</m:mo>
+			</m:apply>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:math>
+	      </item>
+	    </list>
+	  </para>
+	  
+	  <figure id="fig6">
+	    <media id="idp9763952" alt=""><image src="../../media/cconv_p5.png" mime-type="image/png"/></media>
+	  </figure>
+	  
+	  <para id="paraex6">
+	    Multiplique 
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math> y
+	    <m:math>
+		<m:ci>sume</m:ci>
+	</m:math> para dar: 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+			<m:cn>3</m:cn>
+		</m:apply>
+	</m:math>
+</para>
+
+	  <para id="paraex7">
+	    <list id="eg_l4">
+	      <item>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">h</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:apply>
+			  <m:mo>(</m:mo>
+			  <m:mo>(</m:mo>
+			  <m:mn>3</m:mn>
+			  <m:mo>−</m:mo>
+			  <m:mi>m</m:mi>
+			  <m:mo>)</m:mo>
+			  <m:mo>)</m:mo>
+			</m:apply>
+			<m:mi>N</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:math>
+	      </item>
+	    </list>
+	  </para>
+
+  	  <figure id="fig7">
+	    <media id="idm613712" alt=""><image src="../../media/cconv_p6.png" mime-type="image/png"/></media>
+	  </figure>
+
+	  <para id="paraex8">
+	    Multiplique 
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math> y
+	    <m:math>
+		<m:ci>sume</m:ci>
+	</m:math> para dar: 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:cn>3</m:cn>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>
+</para>
+	</example>
+
+	<example id="vi_demo">
+	  <para id="para_vi_demo_1">La Siguiente Demostración le permite este algoritmo. Vea <link document="m11550">aquí</link> para instrucciones de como se usa este demo.
+
+	   
+	  </para>
+	  <media id="idm670304" alt="" display="block"><labview src="DT_Circular_Convolution.llb" viname="dt_circular_convolution.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="dt_circular_convolution.viinfo"/></labview></media>
+	</example>
+      </section>
+
+
+      <section id="sub2">
+	<title>Algoritmo Alterno</title>
+	<list id="altmeth" list-type="bulleted">
+	<title>Algoritmo de Convolución Circular Alterno</title>
+	<item>
+	    Paso 1:  Calcule el DFT de
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math> que da 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">F</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+		</m:math> 
+	   y calcule el DFT de
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">h</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math> que da 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">H</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+		</m:math>.
+	  </item>
+	<item>
+	    Paso 2:  Multiplique punto por punto 
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">Y</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">F</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">H</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	    Paso 3:  Invierta el DFT  
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">Y</m:ci>
+				<m:ci>k</m:ci>
+			</m:apply>
+		</m:math> que da
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+
+
+	<para id="palt1">Parece una manera repetitiva de hacer las cosas, <emphasis>pero</emphasis> existen maneras <emphasis>rápidas</emphasis> de calcular una secuencia DFT. 
+	  
+	</para>
+	<para id="palt2">
+Para convolucionar circularmente dos secuencias de
+	  <m:math>
+		<m:cn>2</m:cn>
+	</m:math>
+	<m:math>
+		<m:ci>N</m:ci>
+	</m:math>-puntos:
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">y</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>m</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:ci>m</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">h</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:apply>
+									<m:ci>
+										<m:mo>(</m:mo>
+										<m:mo>(</m:mo>
+										<m:mi>n</m:mi>
+										<m:mo>−</m:mo>
+										<m:mi>m</m:mi>
+										<m:mo>)</m:mo>
+										<m:mo>)</m:mo>
+									</m:ci>
+								</m:apply>
+								<m:mi>N</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  Para cualquier 
+	  <m:math>
+		<m:ci>n</m:ci>
+	</m:math> : 
+	  <m:math>
+		<m:ci>N</m:ci>
+	</m:math> 
+	  múltiplos,
+	  <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math> 
+	  sumas
+	</para>
+	<para id="palt3">
+	<m:math>
+		<m:ci>N</m:ci>
+	</m:math> 
+	  puntos implica
+	  <m:math>
+		<m:apply>
+			<m:power/>
+			<m:ci>N</m:ci>
+			<m:cn>2</m:cn>
+		</m:apply>
+	</m:math> 
+	multiplicaciones, 
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:ci>N</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>N</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+	  sumas implica una complejidad de 	  <m:math>
+		<m:apply>
+			<m:ci type="fn">O</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:ci>N</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	</para>
+      </section>
+    </section>
+
+  </content>
+</document>

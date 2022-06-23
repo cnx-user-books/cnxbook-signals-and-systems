@@ -1,0 +1,1130 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>La Transformada Z: Definición</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>15167202-f7b8-4b52-a300-4ec889dde921</md:uuid>
+</metadata>
+
+  <content>
+    <section id="definition">
+      <title>Definición Básica de la Transformada-Z</title>
+      <para id="defining_equations">La <term>transformada-z</term> de una secuencia es definida por  
+
+	<equation id="z-transform">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+Algunas veces esta ecuación es conocida como la <term>transformada-z bilateral</term>. En veces la transformada-z es definida  por 
+
+
+	<equation id="unilateral_z-transform">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+la cual es conocida como la <term>transformada-z unilateral</term>.
+
+
+      </para>
+
+      <para id="fourier_relationship">Hay una relación cercana entre la transformada-z y la <term>transformada de Fourier</term> de una señal discreta, la cual es definida como 
+	
+
+	<equation id="DTFT">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>ω</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	Note que cuando
+	<m:math>
+		<m:apply>
+			<m:power/>
+			<m:ci>z</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	es remplazada con
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	 la transformada-z se convierte en la transformada de Fourier. Cuando la transformada de Fourier existe, 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci>z</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	, 
+
+ la cual debe de tener la magnitud unitaria para <m:math><m:ci>z</m:ci></m:math>.
+      </para>
+    </section>
+
+    <section id="complex_plane">
+      <title> El Plano Complejo </title>
+      <para id="c_p">Para entender la relación entre la transformada de fourier y la transformada-z uno tiene que ver el plano complejo o el <term>plano-z</term>. echemos un vistazo al plano complejo: 
+	
+	</para>
+
+	<figure id="zplanepic">
+	<title>Plano-Z</title>
+	<media id="idp7690000" alt=""><image src="../../media/zplane1.jpg" mime-type="image/jpeg"/></media>
+</figure>
+ 
+	<para id="parafix">El plano-Z es un plano complejo con un eje imaginario y real que se reflejen eso se refiere a la variable compleja <m:math><m:ci>z</m:ci></m:math>.  . La posición en el plano complejo es dada por 
+	
+	
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:ci>r</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:exponentiale/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+ 
+, y el ángulo se toma del eje real positive al rededor del plano y es dado por
+ <m:math><m:ci>ω</m:ci></m:math>.  
+	<m:math><m:apply><m:ci type="fn">X</m:ci><m:ci>z</m:ci></m:apply></m:math> es definida en todos los lados del plano.  <m:math><m:apply><m:ci type="fn">X</m:ci><m:apply><m:exp/><m:apply><m:times/><m:imaginaryi/><m:ci>ω
+	</m:ci></m:apply></m:apply></m:apply></m:math>es definida solo donde
+	<m:math><m:apply><m:eq/><m:apply><m:abs/><m:ci>z</m:ci></m:apply><m:cn>1
+	</m:cn></m:apply></m:math>,
+la cual se refiere al circulo unitario. Por ejemplo,
+	<m:math><m:apply><m:eq/><m:ci>ω</m:ci><m:cn>1</m:cn></m:apply></m:math>
+	en
+	<m:math><m:apply><m:eq/><m:ci>z</m:ci><m:cn>1</m:cn></m:apply></m:math>
+	y
+	<m:math><m:apply><m:eq/><m:ci>ω</m:ci><m:apply><m:pi/></m:apply></m:apply></m:math>
+	en
+	<m:math><m:apply><m:eq/><m:ci>z</m:ci><m:cn>-1</m:cn></m:apply></m:math>.
+	 Esto ayuda por que, al representar la transformada de fourier como una transformada-z en el círculo unitario, se puede ver muy fácilmente la periodicidad de la transformada de Fourier.
+      </para>
+    </section>
+
+    <section id="Reg_of_Convergence">
+      <title>Región de Convergencia</title>
+      <para id="R_O_C">La región de convergencia, también conocida como <term>ROC</term>, es importante entender por que define la región donde la transformada-z existe. La ROC para una
+	
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">x</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+	, is defined as the range of 
+	<m:math>
+		<m:ci>z</m:ci>
+	</m:math>
+es definida como el rango de z para la cual la transformada-z converge. Ya que la transformada –z es una <term>serie de potencia</term>, converge cuando
+	
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">x</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:power/>
+				<m:ci>z</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+es absolutamente sumable. En otras palabras,
+	<equation id="ROC">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">x</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>z</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>	
+	Se tiene que satisface para la convergencia. Esto se explica mejor al ver  las diferentes ROC de las transformadas-z de
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:power/>
+				<m:ci>α</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	y
+	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:apply>
+				<m:power/>
+				<m:ci>α</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">u</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>n</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+      </para> 
+
+      <example id="ROC1">
+	<para id="rsexpseq1">
+	Para
+	  <equation id="ROC1eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	<figure id="ROC1sig1">
+	<media id="idp7128816" alt=""><image src="../../media/sig1.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	   donde
+	    <m:math><m:apply><m:eq/><m:ci>α</m:ci><m:cn>0.5</m:cn></m:apply></m:math>.
+	  </caption>
+</figure>
+	<para id="rsexpseq2">
+	<equation id="ROC1eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:power/>
+						<m:apply>
+							<m:times/>
+							<m:ci>α</m:ci>
+							<m:apply>
+								<m:power/>
+								<m:ci>z</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	Esta secuencia es un ejemplo de una exponencial del lado derecho por que tiene un valor de no cero para 
+	  <m:math>
+		<m:apply>
+			<m:geq/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.
+	 Solo converge cuando 
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:times/>
+					<m:ci>α</m:ci>
+					<m:apply>
+						<m:inverse/>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>.  
+	Cuando converge, 
+	  <equation id="ROC1eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>α</m:ci>
+							<m:apply>
+								<m:inverse/>
+								<m:ci>z</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:ci>z</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>z</m:ci>
+						<m:ci>α</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	 Si
+	  <m:math>
+		<m:apply>
+			<m:geq/>
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:times/>
+					<m:ci>α</m:ci>
+					<m:apply>
+						<m:inverse/>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>, 
+	   entonces las series,
+	  <m:math>
+		<m:apply>
+			<m:sum/>
+			<m:bvar>
+				<m:ci>n</m:ci>
+			</m:bvar>
+			<m:lowlimit>
+				<m:cn>0</m:cn>
+			</m:lowlimit>
+			<m:uplimit>
+				<m:infinity/>
+			</m:uplimit>
+			<m:apply>
+				<m:power/>
+				<m:apply>
+					<m:times/>
+					<m:ci>α</m:ci>
+					<m:apply>
+						<m:inverse/>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+no convergen. Así que el ROC es el rango de valores cuando 	  
+	  <equation id="ROC1mathmatically1">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:times/>
+						<m:ci>α</m:ci>
+						<m:apply>
+							<m:inverse/>
+							<m:ci>z</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+	 o, equivalentemente, 
+	  <equation id="ROC1mathmatically2">
+		<m:math>
+			<m:apply>
+				<m:gt/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:abs/>
+					<m:ci>α</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+    
+	<figure id="ROC1fig1">
+	<media id="idp6605680" alt=""><image src="../../media/ROC1.jpg" mime-type="image/jpeg"/></media>
+	<caption>ROC para
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math> donde
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>α</m:ci>
+				<m:cn>0.5</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+      </example>
+      <example id="ROC2">
+	<para id="lsexpseq1">
+	Para
+	  <equation id="ROC2eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	<figure id="ROC2sig2">
+	<media id="idp9692688" alt=""><image src="../../media/sig2_2.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	  donde
+	    <m:math><m:apply><m:eq/><m:ci>α</m:ci><m:cn>0.5</m:cn></m:apply></m:math>.
+	  </caption>
+</figure>
+	<para id="lsexpseq2">
+	<equation id="ROC2eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">x</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:power/>
+								<m:ci>α</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">u</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>-n</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>z</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:cn>-1</m:cn>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:power/>
+								<m:ci>α</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>z</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:cn>-1</m:cn>
+						</m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:ci>α</m:ci>
+									<m:cn>-1</m:cn>
+								</m:apply>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>1</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:ci>α</m:ci>
+									<m:cn>-1</m:cn>
+								</m:apply>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:ci>α</m:ci>
+									<m:cn>-1</m:cn>
+								</m:apply>
+								<m:ci>z</m:ci>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	En este caso la ROC es en el rango de valores donde
+	  <equation id="ROC2mathmatically1">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:cn>-1</m:cn>
+						</m:apply>
+						<m:ci>z</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+	o, equivalentemente 
+	  <equation id="ROC2mathmatically2">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:abs/>
+					<m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:abs/>
+					<m:ci>α</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation> 
+	  Si la ROC se satisface, entonces
+	   <equation id="ROC2eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">X</m:ci><m:ci>z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:ci>α</m:ci>
+									<m:cn>-1</m:cn>
+								</m:apply>
+								<m:ci>z</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:ci>z</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>z</m:ci>
+						<m:ci>α</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	<figure id="ROC2fig1">
+	<media id="idm830816" alt=""><image src="../../media/ROC2.jpg" mime-type="image/jpeg"/></media>
+	<caption>ROC para 
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">x</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:power/>
+							<m:ci>α</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">u</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+      </example>
+    </section>
+
+  </content>
+</document>

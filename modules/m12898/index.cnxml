@@ -1,0 +1,1772 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Propiedades de Simetría de las Series de Fourier</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>157a8acc-d9cb-48d4-a988-8cfba1f6f0c3</md:uuid>
+</metadata>
+    
+  
+  <content>
+    <section id="sym">
+      <title>Propiedades de Simetría</title>
+      
+      <section id="real">
+	<title>Señales Reales</title>
+	<para id="preal">	  
+	Señales reales tienen una serie de fourier con un conjugado simétrico.
+
+	  <rule type="theorem" id="realtheorem">
+		<statement id="idm8206000">
+			<para id="cocacola">
+				<emphasis>Si</emphasis>
+				<m:math>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:math>
+		es real eso implica que 
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:conjugate/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+
+		(<m:math>
+					<m:apply>
+						<m:conjugate/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+		es el complejo conjugado de 
+		<m:math>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:math>),
+		<emphasis>entonces</emphasis>
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:conjugate/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mrow>
+										<m:mo>-</m:mo>
+										<m:mi>n</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+		lo cual implica que 
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:real/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:real/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mrow>
+										<m:mo>-</m:mo>
+										<m:mi>n</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		<foreign>Por ejemplo</foreign>, la parte real de 
+		<m:math>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:math> 
+		es par, y 
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:imaginary/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:imaginary/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mrow>
+											<m:mo>-</m:mo>
+											<m:mi>n</m:mi>
+										</m:mrow>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		<foreign>Por ejemplo</foreign>, tla parte imaginaria de
+		<m:math>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:math> 
+		es impar. Vea <link target-id="fig1"/>. Lo que tambien implica que
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:abs/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:abs/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mrow>
+										<m:mo>-</m:mo>
+										<m:mi>n</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		Por ejemplo, que la magnitud es par, y que la
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci><m:mo>∠</m:mo></m:ci>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:ci><m:mo>∠</m:mo></m:ci>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mrow>
+											<m:mo>-</m:mo>
+											<m:mi>n</m:mi>
+										</m:mrow>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		<foreign>Por ejemplo</foreign>, el ángulo es impar.
+	      </para>
+		</statement>
+		<proof id="idm1810592">
+			<para id="classic">
+				<equation id="drpepperisbetter">
+					<m:math>
+						<m:apply>
+							<m:eq/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mrow>
+										<m:mo>-</m:mo>
+										<m:mi>n</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:divide/>
+									<m:cn>1</m:cn>
+									<m:ci>T</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:int/>
+									<m:bvar>
+										<m:mi>t</m:mi>
+									</m:bvar>
+									<m:lowlimit>
+										<m:cn>0</m:cn>
+									</m:lowlimit>
+									<m:uplimit>
+										<m:ci>T</m:ci>
+									</m:uplimit>
+									<m:apply>
+										<m:times/>
+										<m:apply>
+											<m:ci type="fn">f</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:exp/>
+											<m:apply>
+												<m:times/>
+												<m:imaginaryi/>
+												<m:ci>
+													<m:msub>
+														<m:mi>ω</m:mi>
+														<m:mn>0</m:mn>
+													</m:msub>
+												</m:ci>
+												<m:ci>n</m:ci>
+												<m:ci>t</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:forall/>
+								<m:bvar>
+									<m:mi>t</m:mi>
+								</m:bvar>
+								<m:condition>
+									<m:apply>
+										<m:eq/>
+										<m:apply>
+											<m:ci type="fn">f</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:conjugate/>
+											<m:apply>
+												<m:ci type="fn">f</m:ci>
+												<m:ci>t</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:condition>
+								<m:apply>
+									<m:conjugate/>
+									<m:apply>
+										<m:times/>
+										<m:apply>
+											<m:divide/>
+											<m:cn>1</m:cn>
+											<m:ci>T</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:int/>
+											<m:bvar>
+												<m:mi>t</m:mi>
+											</m:bvar>
+											<m:lowlimit>
+												<m:cn>0</m:cn>
+											</m:lowlimit>
+											<m:uplimit>
+												<m:ci>T</m:ci>
+											</m:uplimit>
+											<m:apply>
+												<m:times/>
+												<m:apply>
+													<m:conjugate/>
+													<m:apply>
+														<m:ci type="fn">f</m:ci>
+														<m:ci>t</m:ci>
+													</m:apply>
+												</m:apply>
+												<m:apply>
+													<m:exp/>
+													<m:apply>
+														<m:minus/>
+														<m:apply>
+															<m:times/>
+															<m:imaginaryi/>
+															<m:ci>
+																<m:msub>
+																	<m:mi>ω</m:mi>
+																	<m:mn>0</m:mn>
+																</m:msub>
+															</m:ci>
+															<m:ci>n</m:ci>
+															<m:ci>t</m:ci>
+														</m:apply>
+													</m:apply>
+												</m:apply>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:conjugate/>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:divide/>
+										<m:cn>1</m:cn>
+										<m:ci>T</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:int/>
+										<m:bvar>
+											<m:mi>t</m:mi>
+										</m:bvar>
+										<m:lowlimit>
+											<m:cn>0</m:cn>
+										</m:lowlimit>
+										<m:uplimit>
+											<m:ci>T</m:ci>
+										</m:uplimit>
+										<m:apply>
+											<m:times/>
+											<m:apply>
+												<m:ci type="fn">f</m:ci>
+												<m:ci>t</m:ci>
+											</m:apply>
+											<m:apply>
+												<m:exp/>
+												<m:apply>
+													<m:minus/>
+													<m:apply>
+														<m:times/>
+														<m:imaginaryi/>
+														<m:ci>
+															<m:msub>
+																<m:mi>ω</m:mi>
+																<m:mn>0</m:mn>
+															</m:msub>
+														</m:ci>
+														<m:ci>n</m:ci>
+														<m:ci>t</m:ci>
+													</m:apply>
+												</m:apply>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:conjugate/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:math>
+				</equation>
+			</para>
+			<figure id="fig1" orient="vertical">
+				<subfigure id="fig1a">
+					<media id="idp1040656" alt=""><image src="../../media/m10838ae.png" mime-type="image/png"/></media>
+				</subfigure>
+				<subfigure id="fig1b">
+					<media id="idm1528368" alt=""><image src="../../media/m10838ce.png" mime-type="image/png"/></media>
+				</subfigure>
+				<caption>
+					<m:math>
+						<m:apply>
+							<m:eq/>
+							<m:apply>
+								<m:real/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:real/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mrow>
+											<m:mo>-</m:mo>
+											<m:mi>n</m:mi>
+										</m:mrow>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:math>,
+		    y
+		    <m:math>
+						<m:apply>
+							<m:eq/>
+							<m:apply>
+								<m:imaginary/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:imaginary/>
+									<m:ci>
+										<m:msub>
+											<m:mi>c</m:mi>
+											<m:mrow>
+												<m:mo>-</m:mo>
+												<m:mi>n</m:mi>
+											</m:mrow>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:math>.		    
+		  </caption>
+			</figure>
+			<figure id="fig" orient="vertical">
+				<subfigure id="fig1c">
+					<media id="idm1756864" alt=""><image src="../../media/m10838be.png" mime-type="image/png"/></media>
+				</subfigure>
+				<subfigure id="fig1d">
+					<media id="idp929936" alt=""><image src="../../media/m10838de.png" mime-type="image/png"/></media>
+				</subfigure>
+				<caption>
+					<m:math>
+						<m:apply>
+							<m:eq/>
+							<m:apply>
+								<m:abs/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:abs/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mrow>
+											<m:mo>-</m:mo>
+											<m:mi>n</m:mi>
+										</m:mrow>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:math>,
+		    y
+		    <m:math>
+						<m:apply>
+							<m:eq/>
+							<m:apply>
+								<m:ci><m:mo>∠</m:mo></m:ci>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci><m:mo>∠</m:mo></m:ci>
+									<m:ci>
+										<m:msub>
+											<m:mi>c</m:mi>
+											<m:mrow>
+												<m:mo>-</m:mo>
+												<m:mi>n</m:mi>
+											</m:mrow>
+										</m:msub>
+									</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:math>.
+		  </caption>
+			</figure>
+		</proof>
+	</rule>
+</para>
+      </section>
+
+
+      <section id="realandeven">
+	<title>Señales Reales y Pares</title>
+	<para id="sleep">
+	Las señales reales y pares tienen series de fourier que son pares y reales.
+
+	  <rule id="realevenrule" type="theorem">
+		<statement id="rest">
+			<para id="slumber">
+				<emphasis>If</emphasis>
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:conjugate/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+		y 
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		<foreign>Por ejemplo</foreign>, las señal es real y par, entonces 
+		<emphasis>entonces</emphasis>
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mrow>
+									<m:mo>-</m:mo>
+									<m:mi>n</m:mi>
+								</m:mrow>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:math> 
+		y
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:conjugate/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>.
+	      </para>
+		</statement>
+		<proof id="selah">
+			<para id="shuteye">
+	<equation id="realevenprf">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:divide/>
+									<m:ci>T</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:divide/>
+								<m:ci>T</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>
+											<m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:divide/>
+										<m:ci>T</m:ci>
+										<m:cn>2</m:cn>
+									</m:apply>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:cn>0</m:cn>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci>
+												<m:msub>
+													<m:mi>ω</m:mi>
+													<m:mn>0</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:ci>n</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:divide/>
+									<m:ci>T</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci>
+												<m:msub>
+													<m:mi>ω</m:mi>
+													<m:mn>0</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:ci>n</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:divide/>
+									<m:ci>T</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>
+											<m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:apply>
+									<m:divide/>
+									<m:ci>T</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci>
+												<m:msub>
+													<m:mi>ω</m:mi>
+													<m:mn>0</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:ci>n</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>2</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:divide/>
+								<m:ci>T</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:cos/>
+								<m:apply>
+									<m:times/>
+									<m:ci>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+		y 
+		<m:math>
+		<m:apply>
+			<m:cos/>
+			<m:apply>
+				<m:times/>
+				<m:ci>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+		son reales lo cual implica que 
+		<m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math>
+		es real.  También 
+		<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:cos/>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:cos/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+		entonces 
+		<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mrow>
+						<m:mo>-</m:mo>
+						<m:mi>n</m:mi>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>.
+		Es tán fácil demostrar que 
+		<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:cos/>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+		ya que
+		<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+
+		<m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math>,
+		y
+		<m:math>
+		<m:apply>
+			<m:cos/>
+			<m:apply>
+				<m:times/>
+				<m:ci>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+		son reales y pares.
+	      </para>
+		</proof>
+	</rule>
+</para>
+      </section>
+      
+      
+      <section id="reallyodd">
+	<title>Señales Reales e Impares</title>
+	<para id="strange">
+	  Señales reales e impares tienen series de fourier que son impares y completamente imaginarias.
+	  <rule type="theorem" id="weird">
+		<statement id="peculiar">
+			<para id="awkward">
+				<emphasis>Si</emphasis>
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+		y
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:conjugate/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>,
+		<foreign>Por ejemplo</foreign>, la señal es real y impar,
+		<emphasis>entonces</emphasis>
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mrow>
+										<m:mo>-</m:mo>
+										<m:mi>n</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+		y
+		<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:conjugate/>
+								<m:ci>
+									<m:msub>
+										<m:mi>c</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>, 
+		Por ejemplo, 
+		<m:math>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:math>
+		es impar y completamente imaginaria.
+	      </para>
+		</statement>
+		<proof id="idp771680">
+			<para id="lameproof">
+		Hágalo usted en casa.		
+	      </para>
+		</proof>
+	</rule>
+
+	  Si
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	es impar, podemos expenderlos en términos de
+	  <m:math>
+		<m:apply>
+			<m:sin/>
+			<m:apply>
+				<m:times/>
+				<m:ci>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>:
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:cn>1</m:cn>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:infinity/>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+      </section>  
+    </section>
+
+    <section id="sumsec">  
+      <title>Resumen</title>
+      <para id="symm">Podemos encontrar 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>f</m:mi>
+					<m:mi>e</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, 
+	una función par, y 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>f</m:mi>
+					<m:mi>o</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+	una función impar, por que 
+	
+	<equation id="yrammus">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>e</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>f</m:mi>
+								<m:mi>o</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	lo cual implica, que para cualquier 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+	podemos encontrar 
+	<m:math>
+		<m:apply>
+			<m:set>
+				<m:ci>
+					<m:msub>
+						<m:mi>a</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math>
+	y
+	<m:math>
+		<m:apply>
+			<m:set>
+				<m:ci>
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> 
+	que da
+	
+	<equation id="summary">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:ci>0</m:ci>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>a</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:cos/>
+								<m:apply>
+									<m:times/>
+									<m:ci>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:ci>1</m:ci>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:ci>
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:times/>
+									<m:ci>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+									</m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+    </section>
+
+    <!--     
+  <example id='sawtooth'>
+  <name>La Funci&#243;n de Sawtooth </name>
+  <para id='blaf'>
+
+  </para>
+
+
+  <figure id='sawwave'>
+  <media type='image/png' src='sawwave.png'/>
+  <caption>
+  <m:math>
+  <m:apply>
+  <m:eq/>
+  <m:ci>T</m:ci>
+  <m:ci>1</m:ci>
+  </m:apply>
+  </m:math>
+    and
+  <m:math>
+  <m:apply>
+  <m:eq/>
+  <m:ci>
+  <m:msub>
+  <m:mi>&omega;</m:mi>
+  <m:mn>0</m:mn>
+  </m:msub>
+  </m:ci>
+  <m:apply>
+  <m:times/>
+  <m:ci>2</m:ci>
+  <m:pi/>
+  </m:apply>
+  </m:apply>
+  </m:math>.
+  </caption>
+  </figure>
+  </example>
+    -->
+
+
+    <example id="triangle">
+      <title>La Función Triangular</title>
+      
+      <figure id="triwave">
+	<media id="idm8645968" alt=""><image src="../../media/triwave.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>T</m:ci>
+				<m:ci>1</m:ci>
+			</m:apply>
+		</m:math>
+	y
+	  <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci>2</m:ci>
+					<m:pi/>
+				</m:apply>
+			</m:apply>
+		</m:math>.
+	</caption>
+</figure>
+      
+      
+      <para id="trip1">
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	es real e impar.
+
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:piecewise>
+				<m:piece>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:times/>
+							<m:cn>4</m:cn>
+							<m:ci>A</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:power/>
+								<m:pi/>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>n</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:set>
+							<m:ci>…</m:ci>
+							<m:cn>-11</m:cn>
+							<m:cn>-7</m:cn>
+							<m:cn>-3</m:cn>
+							<m:cn>1</m:cn>
+							<m:cn>5</m:cn>
+							<m:cn>9</m:cn>
+							<m:ci>…</m:ci>
+						</m:set>
+					</m:apply>
+				</m:piece>
+				<m:piece>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>4</m:cn>
+								<m:ci>A</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:power/>
+									<m:pi/>
+									<m:cn>2</m:cn>
+								</m:apply>
+								<m:apply>
+									<m:power/>
+									<m:ci>n</m:ci>
+									<m:cn>2</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:set>
+							<m:ci>…</m:ci>
+							<m:cn>-9</m:cn>
+							<m:cn>-5</m:cn>
+							<m:cn>-1</m:cn>
+							<m:cn>3</m:cn>
+							<m:cn>7</m:cn>
+							<m:cn>11</m:cn>
+							<m:ci>…</m:ci>
+						</m:set>
+					</m:apply>
+				</m:piece>
+				<m:piece>
+					<m:cn>0</m:cn>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:set>
+							<m:ci>…</m:ci>
+							<m:cn>-4</m:cn>
+							<m:cn>-2</m:cn>
+							<m:cn>0</m:cn>
+							<m:cn>2</m:cn>
+							<m:cn>4</m:cn>
+							<m:ci>…</m:ci>
+						</m:set>
+					</m:apply>
+				</m:piece>
+			</m:piecewise>
+		</m:apply>
+	</m:math>
+	
+	¿Es
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mrow>
+							<m:mo>-</m:mo>
+							<m:mi>n</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>?
+      </para>
+
+
+      <figure id="trianglefs">
+	<media id="idm723840" alt=""><image src="../../media/m10838ee.png" mime-type="image/png"/></media>
+	<caption>
+Series de Fourier para una funcion triangular.	 
+ 
+	</caption>
+</figure>
+    </example>
+
+
+    <para id="p347">
+	<note id="idp533200">
+Usualmente podemos juntar información sobre la <emphasis>suavidad</emphasis> de una señal al examinar los coeficientes de Fourier.
+	
+      </note>
+      Hecha un vistazo a los ejemplos anteriores. Las funciones del pulso y sawtooth
+      no son continuas y sus series de Fourier disminuyen como 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>.
+     La función triangular es continua, pero no es diferenciable, y sus series de Fourier disminuyen como 
+      <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+				<m:power/>
+				<m:ci>n</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+    </para>
+    
+    <para id="p582">
+     Las siguientes 3 propiedades nos darán una mejor idea de esto.
+    </para>
+  
+  </content>  
+</document>

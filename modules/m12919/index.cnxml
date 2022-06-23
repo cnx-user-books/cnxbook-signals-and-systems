@@ -1,0 +1,797 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Base de la Ondoleta de Haar</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>6be3507a-3ab5-494f-b8e2-7f1998b2f885</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="intr">
+      <title>Introducción</title>
+      <para id="para1">Las <link document="m12893" strength="3">series de Fourier </link> es una útil  <link document="m10760" strength="3">
+	  representación ortonormal </link> en
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msup>
+					<m:mi>L</m:mi>
+					<m:mn>2</m:mn>
+				</m:msup>
+			</m:ci>
+			<m:interval>
+				<m:ci>0</m:ci>
+				<m:ci>T</m:ci>
+			</m:interval>
+		</m:apply>
+	</m:math>
+	especialmente para entradas en sistemas LTI. Sin embargo es útil para algunas aplicaciones, es decir, procesamiento de imagenes (recordando el 
+	<link document="m10092" strength="3">fenomeno de Gibb</link>).
+      </para>
+
+      <para id="para2">
+	Las <term>ondoletas</term>, descubiertas en los pasados 15 años, son otro tipos de base para 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msup>
+		<m:mi>L</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msup>
+	    </m:ci>
+	    <m:interval>
+	      <m:ci>0</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:interval>
+	  </m:apply>
+	</m:math>
+	y tiene varias propiedades.
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Comparación de Base</title>
+      <para id="para3">
+	Las series de Fourier -
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math> dan información frecuente. Las funciones de la base duran todo el intervalo entero.
+      </para>
+
+      <figure id="fig1">
+	<media id="idp478656" alt=""><image src="../../media/fig1-2696.png" mime-type="image/png"/></media>
+	<caption>Funciones de la base de Fourier </caption>
+      </figure>
+
+      <para id="para4">
+	Ondoletas - las funciones de la base con frecuencia nos dan información pero es 
+	<emphasis>local</emphasis> en el tiempo.
+      </para>
+
+      <figure id="fig2">
+	<media id="idm1719040" alt=""><image src="../../media/fig2-1b71.png" mime-type="image/png"/></media>
+	<caption>Funciones de la Base de la Ondoleta</caption>
+      </figure>
+
+      <para id="para5">En la base de Fourier, las funciones de la base son <emphasis>armónicas
+	  multiples</emphasis> de
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+      <figure id="fig3">
+	<media id="idp3635728" alt=""><image src="../../media/fig3-4f65.png" mime-type="image/png"/></media>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>base</m:ci>
+				<m:set>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:root/>
+								<m:ci>T</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>
+									<m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:set>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+
+      <para id="para6">
+	En la <link document="m10437" strength="2">base de la ondoleta de Haar </link>, las funciones de la base son  <emphasis>escaladas y trasladadas</emphasis> de la version de la "ondoleta madre"
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">ψ</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+
+      <figure id="fig4">
+	<media id="idp242800" alt=""><image src="../../media/fig4s.png" mime-type="image/png"/></media>
+</figure>
+
+      <para id="para7">
+	Funciones base
+	<m:math>
+		<m:set>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>ψ</m:mi>
+						<m:mrow>
+							<m:mi>j</m:mi>
+							<m:mo>,</m:mo>
+							<m:mi>k</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:set>
+	</m:math>
+	se les pone un índice por un  <emphasis>escalar</emphasis> j y un 
+	<emphasis>desplazamiento</emphasis> k.
+      </para>
+
+      <para id="para8">
+	Sea
+	<m:math>
+		<m:apply>
+			<m:forall/>
+			<m:condition>
+				<m:apply>
+					<m:lt/>
+					<m:apply>
+						<m:leq/>
+						<m:cn>0</m:cn>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:ci>T</m:ci>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">φ</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	Entonces
+	<m:math>
+		<m:set>
+			<m:bvar>
+				<m:apply>
+					<m:ci type="fn">φ</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:power/>
+						<m:cn>2</m:cn>
+						<m:apply>
+							<m:divide/>
+							<m:ci>j</m:ci>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">ψ</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:power/>
+									<m:cn>2</m:cn>
+									<m:ci>j</m:ci>
+								</m:apply>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:and/>
+					<m:apply>
+						<m:in/>
+						<m:ci>j</m:ci>
+						<m:ci>ℤ</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:eq/>
+						<m:ci>k</m:ci>
+						<m:ci>
+							<m:mrow>
+								<m:mn>0</m:mn>
+								<m:mo>,</m:mo>
+								<m:mn>1</m:mn>
+								<m:mo>,</m:mo>
+								<m:mn>2</m:mn>
+								<m:mo>,</m:mo>
+								<m:mi>…</m:mi>
+								<m:mo>,</m:mo>
+								<m:mrow>
+									<m:msup>
+										<m:mn>2</m:mn>
+										<m:mi>j</m:mi>
+									</m:msup>
+									<m:mo>-</m:mo>
+									<m:mn>1</m:mn>
+								</m:mrow>
+							</m:mrow>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:ci type="fn">φ</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:power/>
+					<m:cn>2</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:ci>j</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">ψ</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:power/>
+								<m:cn>2</m:cn>
+								<m:ci>j</m:ci>
+							</m:apply>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:set>
+	</m:math>
+</para>
+
+      <figure id="fig5">
+	<media id="idp1515232" alt=""><image src="../../media/fig5a.png" mime-type="image/png"/></media>
+</figure>
+
+      <equation id="eq1">
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">ψ</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:piecewise>
+				<m:piece>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:lt/>
+						<m:apply>
+							<m:leq/>
+							<m:cn>0</m:cn>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:divide/>
+							<m:ci>T</m:ci>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:piece>
+				<m:piece>
+					<m:cn>-1</m:cn>
+					<m:apply>
+						<m:lt/>
+						<m:apply>
+							<m:leq/>
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:divide/>
+								<m:ci>T</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:ci>T</m:ci>
+					</m:apply>
+				</m:piece>
+			</m:piecewise>
+		</m:apply>
+	</m:math>
+</equation>
+
+      <figure id="fig6">
+	<media id="idp55680" alt=""><image src="../../media/fig6-443e.png" mime-type="image/png"/></media>
+      </figure>
+
+      <para id="para9">
+Sea
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>ψ</m:mi>
+						<m:mrow>
+							<m:mi>j</m:mi>
+							<m:mo>,</m:mo>
+							<m:mi>k</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:power/>
+					<m:cn>2</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:ci>j</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">ψ</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:power/>
+								<m:cn>2</m:cn>
+								<m:ci>j</m:ci>
+							</m:apply>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+      <figure id="fig7">
+	<media id="idm1207744" alt=""><image src="../../media/fig7a-b9f1.png" mime-type="image/png"/></media>
+</figure>
+
+      <para id="para10">Más grande <m:math><m:ci>j</m:ci></m:math> → "delgado" la función de la base
+	,
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>j</m:ci>
+			<m:set>
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+				<m:ci>…</m:ci>
+			</m:set>
+		</m:apply>
+	</m:math>,
+	<m:math>
+		<m:apply>
+			<m:power/>
+			<m:cn>2</m:cn>
+			<m:ci>j</m:ci>
+		</m:apply>
+	</m:math>
+	cambia a cada  escala:
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>k</m:ci>
+			<m:ci>
+				<m:mrow>
+					<m:mn>0</m:mn>
+					<m:mo>,</m:mo>
+					<m:mn>1</m:mn>
+					<m:mo>,</m:mo>
+					<m:mi>…</m:mi>
+					<m:mo>,</m:mo>
+					<m:mrow>
+						<m:msup>
+							<m:mn>2</m:mn>
+							<m:mi>j</m:mi>
+						</m:msup>
+						<m:mo>-</m:mo>
+						<m:mn>1</m:mn>
+					</m:mrow>
+				</m:mrow>
+			</m:ci>
+		</m:apply>
+	</m:math>
+</para>
+
+      <para id="para11">
+	Checar: cada
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>ψ</m:mi>
+					<m:mrow>
+						<m:mi>j</m:mi>
+						<m:mo>,</m:mo>
+						<m:mi>k</m:mi>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	tiene energia unitaria
+      </para>
+
+      <figure id="fig8">
+	<media id="idm1180416" alt=""><image src="../../media/fig8s.png" mime-type="image/png"/></media>
+</figure>
+
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:implies/>
+            <m:apply>
+              <m:eq/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>ψ</m:mi>
+			<m:mrow>
+			  <m:mi>j</m:mi>
+			  <m:mo>,</m:mo>
+			  <m:mi>k</m:mi>
+			</m:mrow>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+            </m:apply>
+            <m:apply>
+              <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mrow>
+		    <m:mo>∥</m:mo>
+		    <m:msub>
+		      <m:mi>ψ</m:mi>
+		      <m:mrow>
+			<m:mi>j</m:mi>
+			<m:mo>,</m:mo>
+			<m:mi>k</m:mi>
+		      </m:mrow>
+		    </m:msub>
+		    <m:mo>(</m:mo>
+		    <m:mi>t</m:mi>
+		    <m:mo>)</m:mo>
+		    <m:mo>∥</m:mo>
+		  </m:mrow>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>1</m:cn>
+            </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <para id="para12">Cualesquiera dos funciones de la base son ortogonales.
+      </para>
+
+      <figure id="fig9" orient="horizontal">
+	<subfigure id="subfig1">
+		<media id="idp1482816" alt=""><image src="../../media/fig9a.png" mime-type="image/png"/></media>
+		<caption>Misma escala</caption>
+	</subfigure>
+	<subfigure id="subfig2">
+		<media id="idm8685648" alt=""><image src="../../media/fig9b.png" mime-type="image/png"/></media>
+		<caption>Diferente escala</caption>
+	</subfigure>
+	<caption>Integral del producto = 0</caption>
+</figure>
+
+      <para id="para13">
+	También,
+	<m:math>
+		<m:set>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>ψ</m:mi>
+					<m:mrow>
+						<m:mi>j</m:mi>
+						<m:mo>,</m:mo>
+						<m:mi>k</m:mi>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+			<m:ci type="fn">φ</m:ci>
+		</m:set>
+	</m:math> generan
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msup>
+					<m:mi>L</m:mi>
+					<m:mn>2</m:mn>
+				</m:msup>
+			</m:ci>
+			<m:interval>
+				<m:ci>0</m:ci>
+				<m:ci>T</m:ci>
+			</m:interval>
+		</m:apply>
+	</m:math>
+</para>
+    </section>
+    
+
+    <section id="sec3">
+      <title>Transformada de la Ondoleta de Haar</title>
+      <para id="para14">Usando lo que conocemos sobre <link document="m10755" strength="3">espacios de Hilbert </link>: Para cualquier
+	<m:math>
+		<m:apply>
+			<m:in/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">
+					<m:msup>
+						<m:mi>L</m:mi>
+						<m:mn>2</m:mn>
+					</m:msup>
+				</m:ci>
+				<m:interval>
+					<m:ci>0</m:ci>
+					<m:ci>T</m:ci>
+				</m:interval>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	podemos escribir
+	<equation id="eq3">
+		<title>Sintesis</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>j</m:ci></m:bvar>
+						<m:condition>
+							<m:ci>j</m:ci>
+						</m:condition>
+						<m:apply>
+							<m:sum/>
+							<m:bvar><m:ci>k</m:ci></m:bvar>
+							<m:condition>
+								<m:ci>k</m:ci>
+							</m:condition>
+							<m:apply>
+								<m:times/>
+								<m:ci>
+									<m:msub>
+										<m:mi>w</m:mi>
+										<m:mrow>
+											<m:mi>j</m:mi>
+											<m:mo>,</m:mo>
+											<m:mi>k</m:mi>
+										</m:mrow>
+									</m:msub>
+								</m:ci>
+								<m:apply>
+									<m:ci type="fn">
+										<m:msub>
+											<m:mi>ψ</m:mi>
+											<m:mrow>
+												<m:mi>j</m:mi>
+												<m:mo>,</m:mo>
+												<m:mi>k</m:mi>
+											</m:mrow>
+										</m:msub>
+									</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:ci type="fn">φ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation><equation id="eq4">
+		<title>Análisis</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>w</m:mi>
+						<m:mrow>
+							<m:mi>j</m:mi>
+							<m:mo>,</m:mo>
+							<m:mi>k</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:int/>
+					<m:bvar><m:ci>t</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>ψ</m:mi>
+									<m:mrow>
+										<m:mi>j</m:mi>
+										<m:mo>,</m:mo>
+										<m:mi>k</m:mi>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation><equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:int/>
+					<m:bvar><m:ci>t</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>T</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">φ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<note type="nota" id="idm2508032"><label>Nota</label>los
+	  <m:math>
+			<m:ci>
+				<m:msub>
+					<m:mi>w</m:mi>
+					<m:mrow>
+						<m:mi>j</m:mi>
+						<m:mo>,</m:mo>
+						<m:mi>k</m:mi>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+		</m:math> son <emphasis>reales</emphasis></note>
+	La transformación de Haar es <emphasis>muy útil</emphasis> especialemte en 
+	<emphasis>compresión de imagenes.</emphasis>
+</para>
+
+      <example id="synthesis_demo">
+	<para id="synthesis_demo_1">
+	  Esta demostración nos permite crear una señal por combinación de sus funciones de la base de Haar, ilustrando la ecuación de sistesis de la ecuación de la Transformada de la Ondoleta de Haar. Veámos  <link document="m11550">aquí</link> para las instrucciones de como usar el demo.
+	</para>
+	<media id="idm9801904" alt="" display="block"><labview src="HaarSynth.llb" viname="haar_synthesis.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="haar_synthesis.viinfo"/></labview></media>
+      </example>
+    </section>
+  </content>
+  
+</document>

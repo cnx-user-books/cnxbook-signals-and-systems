@@ -1,0 +1,465 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Función de Impulso</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f3d3f81c-f116-44bf-9a6c-fad287a5e227</md:uuid>
+</metadata>
+  
+  <content>
+    <para id="para1">En ingeniería usualmente se maneja la idea de una acción ocurriendo a un determinado punto. Puede ser una fuerza en ese punto o una señal en un punto del tiempo, se convierte necesario desarrollar alguna manera cuantitativa de definir este hecho. Esto nos lleva a la idea de un pulso unitario. Es probablemente la segunda señal más importante en el estudio de señales y sistemas después del <link document="m12825" strength="3">Exponencial Complejo</link>.</para>
+
+    <section id="sect1">
+      <title>Función Delta de Dirac </title>
+      <para id="para2">La Función Delta de Dirac, conocida también como el impulso unitario o función delta es una función infinítamente angosta, infinítamente alta, cuya integral tiene un valor <term>unitario </term> (Ver <link target-id="eq_un" strength="3"/> abajo).   Tal vez la manera mas simple de visualizar esto es usar un pulso rectangular que va de
+	<m:math display="inline">
+		<m:apply>
+			<m:minus/>
+			<m:ci>a</m:ci>
+			<m:apply>
+				<m:divide/>
+				<m:ci>ε</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	a
+	<m:math display="inline">
+		<m:apply>
+			<m:plus/>
+			<m:ci>a</m:ci>
+			<m:apply>
+				<m:divide/>
+				<m:ci>ε</m:ci>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	con una altura de
+	<m:math display="inline">
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>ε</m:ci>
+		</m:apply>
+	</m:math>.
+	Al momento de tomar su límite,
+	<m:math display="inline">
+		<m:apply>
+			<m:limit/>
+			<m:bvar>
+				<m:ci>ε</m:ci>
+			</m:bvar>
+			<m:lowlimit>
+				<m:cn>0</m:cn>
+			</m:lowlimit>
+		</m:apply>
+	</m:math>, podemos observar que su ancho tiende a ser cero y su altura tiende a infinito conforme su área total permanece constante con un valor de uno. La función del impulso usualmente se escribe como	<m:math>
+		<m:apply>
+			<m:ci type="fn">δ</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>
+
+      <equation id="eq_un">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:ci type="fn">δ</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <figure id="fig1">
+	<media id="idp8145104" alt=""><image src="../../media/impulsefunc1.png" mime-type="image/png"/></media>
+	<caption>
+Esta es una manera de visualizar la Función Delta de Dirac.	 
+ 
+	</caption>
+</figure>
+
+      <figure id="fig2">
+	<media id="idp10380496" alt=""><image src="../../media/impulsefunc2.png" mime-type="image/png"/></media>
+	<caption>
+	 Por que es difícil dibujar algo que es infinitamente alto, nosotros representamos la Delta de Dirac con una flecha centrada en el punto donde es aplicada. Si queremos escalarla, podemos escribir el valor de escalamiento a un lado de la flecha. Este es un muestreo unitario ( no tiene escala).	</caption>
+</figure>
+      
+      <section id="sifting">
+	<title>La propiedad de desplazamiento del impulso  </title>
+	<para id="para3">El primer paso para comprender los resultados que esta función nos brinda, es examinar lo que sucede cuando esta función es multiplicada por alguna otra función.
+	  <equation id="eqn1">
+		<m:math display="display">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">δ</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">δ</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	Esta función es cero en todas partes excepto en el origen, así que básicamente estamos eliminando el valor de la función de multiplicación al evaluarla en cero.</para>
+	<para id="para4">A primera vista esto no parece tener mayor importancia, porque ya sabemos que el impulso evaluado en cero es infinito, y todo lo multiplicado por infinito da un resultado infinito. Pero, ¿qué pasa si integramos el resultado de la multiplicación?
+
+
+
+	  <equation id="eqn2">
+		<title>Propiedad de Desplazamiento </title>
+		<m:math display="display">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	 Finalmente lo que obtuvimos es una simple función evaluada en cero. Si hubiéramos usado	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:ci>T</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	 en vez de
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+	  podríamos haber desplazado
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>T</m:ci>
+		</m:apply>
+	</m:math>.  A esto es lo que llamaremos la <term>propiedad de desplazamiento </term> de la función de Dirac, el cual se usa frecuentemente para definir el impulso unitario.
+	</para>
+	<para id="p23">Esta propiedad es muy útil al momento de desarrollar la idea de <link document="m12828" strength="2">convolución </link> la cual es una de los fundamentos principales para el procesamiento de señales. Al usar convolución  y esta propiedad podemos representar una aproximación a cualquier resultado de un sistema si se conoce la respuesta al impulso del sistema y su señal de entrada. De clic en el link de convolución que aparece arriba para mas información sobre este tema.
+	</para>
+      </section>
+
+      <section id="oth_props">
+	<title>Otras Propiedades del Impulso</title>
+	<para id="p1_oth">En esta sección se muestran algunas otras propiedades de el impulso sin entrar en los detalles de probar las propiedades- esta parte la dejaremos para que usted verifique las propiedades ya que son sencillas de comprobar. Note que estas propiedades funcionan para el tiempo continuo <emphasis>y </emphasis>discreto.
+	  
+
+	  <list id="props">
+	<title>Propiedades de Impulso Unitario</title>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci>α</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:abs/>
+							<m:ci>α</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">δ</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:diff/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:apply>
+						<m:ci type="fn">u</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>, donde  
+	      <m:math><m:apply>
+				<m:ci type="fn">u</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> es el escalón unitario.
+	    </item>
+</list>
+</para>
+      </section>
+
+    </section>
+
+
+    <section id="sect3">
+      <title>Impulso de tiempo-discreto (muestreo unitario)</title>
+      <para id="para5">La extensión de la función impulso unitario al tiempo-discreto se convierte en una trivialidad. Todo lo que realmente necesitamos es darnos cuenta que la integración en tiempo-continuo equivale a una sumatoria en tiempo-discreto. Por lo tanto buscaremos una señal que al sumarla sea cero y al mismo tiempo sea cero en todas partes excepto en el origen.
+	
+	<equation id="eqn3">
+	<title>Impulso de Tiempo-Discreto </title>
+	<m:math display="display">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">δ</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:piecewise>
+				<m:piece>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+				</m:piece>
+				<m:otherwise>
+					<m:cn>0</m:cn>
+				</m:otherwise>
+			</m:piecewise>
+		</m:apply>
+	</m:math>
+</equation>
+</para>
+
+      <figure id="fig3"><media id="idp9108576" alt=""><image src="../../media/impulsefunc3.png" mime-type="image/png"/></media>
+	<caption> Representación gráfica del impulso discreto
+
+	 </caption>
+</figure>
+      
+      <para id="p2_dis">Al analizar una gráfica de tiempo-discreto de cualquier señal discreta, uno puede notar que todas las señales discretas están compuestas de un conjunto de muestras unitarias que están escalados y desplazados en el tiempo. Si dejamos que el valor de una secuencia en cada entero <m:math><m:ci>k</m:ci>
+	</m:math> sea descrita por
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">s</m:ci><m:ci>k</m:ci>
+		</m:apply>
+	</m:math> y la muestra unitaria retrasado que ocurre en 	<m:math><m:ci>k</m:ci>
+	</m:math> sea escrito como	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">δ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>n</m:ci><m:ci>k</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, nosotros podríamos escribir cualquier señal como la suma de impulsos unitarios retrasados que son escalados por un valor de la señal, o por coeficientes de escalamiento.
+
+	<equation id="eq2_dis">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">s</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">s</m:ci><m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">δ</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>n</m:ci><m:ci>k</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Esta descomposición es una propiedad que solo se aplica a señales de tiempo-discreto y resulta ser una propiedad muy útil para estas señales.
+
+	<note type="note" id="idp10548192">Usando el razonamiento anterior, nosotros hemos desarrollado la ecuación<link target-id="eq2_dis" strength="3"/>, la cual es un concepto fundamental usado en la <link document="m12833" strength="3">convolución de tiempo-discreto</link>.
+	</note>
+</para>
+    </section>
+
+    <section id="imp_resp">
+      <title>La Respuesta de Impulso</title>
+      <para id="p1_ir">La <term> respuesta de impulso </term> es exactamente lo que su nombre implica- la respuesta de un sistema LTI, como por ejemplo un filtro, cuando la señal de entrada del sistema es un impulso unitario (o muestra unitaria). Un sistema puede ser completamente descrito por su respuesta al impulso por las razones explicadas previamente, ya que todas las señales pueden ser representadas por una superposición de señales. Una respuesta al impulso da una descripción equivalente a la dada por una <link document="m0028" strength="3">función de transferencia</link>, ya que existen <link document="m12978" strength="2">Transformadas de Laplace </link> para cada una.
+	
+      <note type="notation" id="idp8344768"><label>Notation</label>
+	Casi toda la literatura usa  <m:math><m:apply><m:ci type="fn">δ</m:ci><m:ci>t</m:ci>
+			</m:apply></m:math> y
+	  <m:math><m:apply><m:ci type="fn" class="discrete">δ</m:ci><m:ci>n</m:ci></m:apply></m:math>
+	   para diferenciar entre un impulso de tiempo-continuo y un impulso de tiempo-discreto.
+      </note>
+</para>
+    </section>
+
+  </content>
+</document>

@@ -1,0 +1,890 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Propiedades de la Convolución</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4ecb718b-2038-4d9b-8d4c-080aaaa9fcaf</md:uuid>
+</metadata>
+  
+  <content>
+    <para id="intro">
+  En este modulo veremos varias de las propiedades de convolución que mas prevalecen. Nótese que estas propiedades se aplican a ambas  <link document="m12828">convoluciones de tiempo continuo </link>
+       <link document="m12833"> y de tiempo discreto </link>.
+      (Véase los dos módulos anteriores si necesita un repaso de convolución). También para algunas demostraciones de las propiedades, usaremos las integrales de tiempo-continuo, pero podemos probarlas de la misma manera usando las sumatorias de tiempo-discreto.
+
+</para>
+
+    <section id="sect3">
+      <title>Asociatividad</title>
+
+      <rule type="theorem" id="asso">
+	<title>Ley Asociativa</title>
+	
+	<statement id="idm264128">
+	  <para id="rule_assos">
+	    
+	    <equation id="eqn3">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</statement>
+      </rule>
+      
+      <figure id="fig3">
+	<media id="idm411408" alt=""><image src="../../media/convassocs.png" mime-type="image/png"/></media>
+	<caption>
+	  Implicación gráfica de la propiedad de asociatividad de la convolución.
+	</caption>
+</figure>
+    </section>
+
+    <section id="sect1">
+      <title>Conmutatividad</title>
+      
+      <rule type="theorem" id="comm">
+	<title>: Ley Conmutativa</title>
+	<statement id="idp921632">
+	  <para id="ruleexp1">
+	    
+	    <equation id="eqn1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">h</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:ci type="fn">h</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</statement>
+
+	<proof id="idp750800">
+	  <para id="ruleexp2">
+	     Para probar la  <link target-id="eqn1"/>, lo único que tenemos que hacer es un pequeño cambio de variable en nuestra integral de convolución (o suma),
+	    <equation id="eq_comm1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	    Dejando	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>τ</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:ci>τ</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, podemos mostrar fácilmente que la convolución es	    <term>conmutativa</term>:
+	    
+	    <equation id="eq_comm2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq_convshort2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	</proof>	
+      </rule>
+      
+      <figure id="fig1">
+	<media id="idm7114976" alt=""><image src="../../media/convcomms.png" mime-type="image/png"/></media>
+	<caption>
+	  La figura muestra que ambas funciones pueden ser vistas como entradas del sistema mientras lo otro es la respuesta al impulso.
+	</caption>
+</figure>
+
+    </section>
+    
+    <section id="sect2">
+      <title>Distribución</title>
+      
+      <rule type="theorem" id="dist">
+	<title>Ley Distributiva</title>
+	
+	<statement id="idm6852336">
+	  <para id="p1_dist">
+	    
+	    <equation id="eqn2">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>f</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	</statement>
+	
+	<proof id="idm491808">
+	  <para id="p2_dis">
+	    La demostración de este teorema puede ser tomada directamente de la definición de convolución y usando la linealidad de la integral.	  </para>
+	</proof>
+      </rule>
+            
+      <figure id="fig2">
+	<media id="idm6753328" alt=""><image src="../../media/convdists.png" mime-type="image/png"/></media>
+</figure>
+      
+    </section>
+    
+    <section id="sect4">
+      <title>Desplazamiento en el Tiempo</title>
+      <rule type="theorem" id="shft">
+	<title>Propiedad de Desplazamiento</title>
+	
+	<statement id="idp2761744">
+	  <para id="p1_shft">
+	    Para <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">c</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">h</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>, entonces
+	    
+	    <equation id="eqn4a">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">c</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+						<m:ci>T</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    y
+	    <equation id="eqn4b">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">c</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+						<m:ci>T</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	</statement>
+      </rule>
+   	  
+      <figure id="fig4" orient="vertical">
+	<subfigure id="fig4a">
+	  <media id="idp865088" alt=""><image src="../../media/convts1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="fig4b">
+	  <media id="idp1991808" alt=""><image src="../../media/convts2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="fig4c">
+	  <media id="idm7016240" alt=""><image src="../../media/convts3.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  Demostración Gráfica de la propiedad de desplazamiento.
+	</caption>
+      </figure>
+    </section>
+    
+    <section id="sect5">
+      <title>Convolución con un Impulso</title>
+
+      <rule type="theorem" id="imp">
+	<title>Convolución con Impulso Unitario</title>
+	<statement id="idp2209344">
+		<para id="rule_imp">
+			<equation id="eqn6">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">δ</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</para>
+	</statement>
+	<proof id="idp2496640">
+		<para id="p_impprf">
+	    Para este demostración, dejaremos que  	    <m:math>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci><m:ci>t</m:ci>
+				</m:apply>
+			</m:math> sea el impulso unitario localizado en el origen. Usando la definición de convolución empezamos con la integral de convolución	    
+	    <equation id="eq_imp1">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">δ</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>τ</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">δ</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:apply>
+										<m:minus/>
+										<m:ci>t</m:ci>
+										<m:ci>τ</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+
+	   De la definición del impulso unitario, conocemos que 
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">δ</m:ci><m:ci>τ</m:ci>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math> siempre que 	    <m:math>
+				<m:apply>
+					<m:neq/>
+					<m:ci>τ</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>.  Usamos este hecho para reducir la ecuación anterior y obtener lo siguiente:
+
+	    
+	    <equation id="eq_imp2">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">δ</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>τ</m:ci>
+							</m:bvar>
+							<m:lowlimit>
+								<m:apply>
+									<m:minus/>
+									<m:infinity/>
+								</m:apply>
+							</m:lowlimit>
+							<m:uplimit>
+								<m:infinity/>
+							</m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">δ</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:int/>
+								<m:bvar>
+									<m:ci>τ</m:ci>
+								</m:bvar>
+								<m:lowlimit>
+									<m:apply>
+										<m:minus/>
+										<m:infinity/>
+									</m:apply>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:infinity/>
+								</m:uplimit>
+								<m:apply>
+									<m:apply>
+										<m:ci type="fn">δ</m:ci>
+										<m:ci>τ</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+	    
+	    La integral de 	    <m:math>
+				<m:apply>
+					<m:ci type="fn">δ</m:ci><m:ci>τ</m:ci>
+				</m:apply>
+			</m:math> 
+	    solo tendrá un valor cuando 
+	    <m:math>
+				<m:apply><m:eq/>
+					<m:ci>τ</m:ci><m:cn>0</m:cn>
+				</m:apply>
+			</m:math> (de la definición del impulso unitario), por lo tanto esa integral será igual a uno. Donde podemos simplificar la ecuación de nuestro teorema:
+	    
+	    <equation id="eq_imp3">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci>δ</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci>f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</para>
+	</proof>
+</rule>
+      
+      <figure id="fig5" orient="vertical">
+	<subfigure id="fig5a">
+	  <media id="idm6748960" alt=""><image src="../../media/convimp1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="fig5b">
+	  <media id="idm7669504" alt=""><image src="../../media/convimp2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  Las figuras y ecuaciones anteriores, revelan la función identidad del impulso unitario.
+      </caption>
+      </figure>
+    </section>
+
+    <section id="sect6">
+      <title>Ancho</title>
+      <para id="para2">
+	En tiempo continuo, si la   	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Duración</m:ci>
+				<m:ci type="fn"><m:msub>
+						<m:mi>f</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>T</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub></m:ci>
+		</m:apply>
+	</m:math>
+	y la Duración
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn"/>
+				<m:ci type="fn"><m:msub>
+						<m:mi>f</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>T</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub></m:ci>
+		</m:apply>
+	</m:math>
+	, entonces
+	<equation id="eqn7">
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">Duración</m:ci>
+				<m:apply>
+					<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+					<m:apply>
+						<m:ci><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>T</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>T</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+</para>
+      
+      <figure id="fig6" orient="vertical">
+	<subfigure id="fig6a">
+		<media id="idm7679520" alt=""><image src="../../media/convwidth1png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="fig6b">
+		<media id="idp1883648" alt=""><image src="../../media/convwidth2png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="fig6c">
+		<media id="idm7097536" alt=""><image src="../../media/convwidth3png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	  En tiempo continuo, la duración de la convolución resulta igual a la suma de las longitudes de cada una de las dos señales convolucionadas.
+	</caption>
+</figure>
+    </section>
+
+    <para id="para222">
+     En tiempo discreto si la Duración  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn"/>
+				<m:ci type="fn"><m:msub>
+						<m:mi>f</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>N</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub></m:ci>
+		</m:apply>
+	</m:math>
+      y la Duración
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn"/>
+				<m:ci type="fn"><m:msub>
+						<m:mi>f</m:mi>
+						<m:mn>2</m:mn>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:ci type="fn"><m:msub>
+					<m:mi>N</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub></m:ci>
+		</m:apply>
+	</m:math>
+      , entonces
+      <equation id="eqn722">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">Duración</m:ci>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+						<m:apply>
+							<m:ci><m:msub><m:mi>f</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci><m:msub><m:mi>f</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:plus/>
+						<m:ci>
+							<m:msub>
+								<m:mi>N</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:mi>N</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <section id="sect7"><title>Causalidad</title>
+      <para id="para3">
+	Si <m:math><m:ci>f</m:ci></m:math> y
+	<m:math><m:ci>h</m:ci></m:math> son ambas causales, entonces 
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+	    <m:ci>f</m:ci>
+	    <m:ci>h</m:ci>
+	  </m:apply>
+	</m:math> también es causal.
+      </para>
+    </section>
+
+  </content>
+</document>

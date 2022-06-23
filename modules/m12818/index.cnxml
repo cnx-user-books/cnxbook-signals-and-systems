@@ -1,0 +1,570 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Clasificación y Propiedades de las Señales</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1d4b29f4-410f-4daa-ae2a-cad517cd8252</md:uuid>
+</metadata>
+  
+  <content>
+    
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="para1">Este módulo explicará algunos fundamentos para la clasificación de señales. Es básicamente una lista de definiciones y propiedades que son fundamentales para la discusión de señales y sistemas. Deberá notar que en algunas discusiones como la de <link document="m10055" strength="2">señales de energía vs. señales de potencia</link> han sido asignadas con su propio módulo para una discusión mas completa, y no van a ser incluidas.
+
+
+
+	</para>
+    </section>
+
+    <section id="sec2">
+      <title>Clasificación de Señales </title>
+      <para id="p1_sec2">Junto con las clasificaciones de señales mostradas a continuación, es importante entender la <link document="m12822" strength="3">Clasificación de Sistemas</link>.</para>
+
+      <section id="sect1">
+	<title>Tiempo Continuo vs. Tiempo Discreto </title>
+	<para id="para2">Como el nombre lo sugiere, esta clasificación se puede establecer, después de saber si el eje del tiempo (eje de las abscisas)  es <term>discreto</term> o <term>continuo</term> (<link target-id="fig1"/>).  Una señal continua en  el tiempo tendrá un valor para todos los números reales que  existen en el eje del tiempo. En contraste a esto, una <link document="m12820" strength="3">señal discreta </link>en el tiempo  es comúnmente creada utilizando el <link document="m0050" strength="3">Teorema de Muestreo</link> para discretizar una señal continua, de esta manera la señal nada mas tendrá valores en los espacios que tienen una separación igual y son creados en el eje del tiempo. 
+	 </para>
+
+	<figure id="fig1">
+	<media id="idp316944" alt=""><image src="../../media/sigclass1.png" mime-type="image/png"/></media>
+</figure>
+
+      </section>
+      
+
+      <section id="sect2">
+	<title>Análogo vs. Digital</title>
+	<para id="para3">La diferencia entre lo <term>análogo</term> y lo <term>digital</term> es muy similar a la diferencia entre el tiempo continuo y el tiempo discreto. Sin embargo, en este caso, la diferencia es con respecto al valor de la función (eje de las ordenadas) (<link target-id="fig2"/>).  Análogo corresponde al eje <emphasis> y</emphasis> continuo, mientras lo digital corresponde al  eje <emphasis> y</emphasis> discreto. Un ejemplo de una señal digital es una secuencia binaria, donde la función solo tiene valores de cero o uno. 
+	</para>
+	<figure id="fig2">
+	<media id="idp12429264" alt=""><image src="../../media/sigclass2.png" mime-type="image/png"/></media>
+</figure>
+      </section>
+
+      <section id="sect3">
+	<title>Periódico vs. Aperiódico</title>
+	<para id="para4"><link document="m12933" strength="3">Señales periódicas</link> se repiten con un <term> periodo</term>
+	<m:math><m:ci>T</m:ci></m:math>, mientras las señales aperiódicas o no periódicas no se repiten(<link target-id="fig3"/>). Podemos definir una función periódica mediante la siguiente expresión matemática, donde <m:math><m:ci>t</m:ci>
+	</m:math> puede ser cualquier número y <m:math><m:ci>T</m:ci>
+	</m:math> es una constante positiva:
+
+	  <equation id="per">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:apply>
+						<m:plus/>
+						<m:ci>T</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+El <term>periodo fundamental</term> de esta función,
+	  	  <m:math><m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, es el valor más pequeño de <m:math><m:ci>T</m:ci>
+	</m:math> que permita la validación de la <link target-id="per" strength="3"/>.
+
+	</para>
+
+	<figure id="fig3" orient="vertical">
+	<subfigure id="fig3a">
+		<media id="idp6353920" alt=""><image src="../../media/sigclass3.png" mime-type="image/png"/></media>
+		<caption> Una señal periódica con periodo
+	      <m:math>
+				<m:ci>
+					<m:msub>
+						<m:mi>T</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="fig3b">
+		<media id="idp13266944" alt=""><image src="../../media/sigclass4.png" mime-type="image/png"/></media>
+		<caption>Una señal Aperiódica</caption>
+	</subfigure>
+</figure>
+
+      </section>
+
+      <section id="sect4">
+	<title>Causal vs. Anticausal vs. Nocausal</title>
+	<para id="para5">Las señales <term>causales</term> son señales que tienen valor de cero en el tiempo negativo, y las señales <term>anticausales</term> tienen valor cero en el tiempo positivo. Las señales <term>nocausales</term> son señales con valor de cero en el tiempo positivo y negativo(<link target-id="fig4"/>).  
+
+
+	</para>
+
+	<figure id="fig4" orient="vertical">
+	<subfigure id="fig4a">
+		<media id="idm637360" alt=""><image src="../../media/sigclass05.png" mime-type="image/png"/></media>
+		<caption>Una señal causal</caption>
+	</subfigure>
+	<subfigure id="fig4b">
+		<media id="idp7720656" alt=""><image src="../../media/sigclass06.png" mime-type="image/png"/></media>
+		<caption>Una señal anticausal</caption>
+	</subfigure>
+	<subfigure id="fig4c">
+		<media id="idp12799280" alt=""><image src="../../media/sigclass7.png" mime-type="image/png"/></media>
+		<caption>Una señal nocausal</caption>
+	</subfigure>
+</figure>
+
+      </section>
+
+      <section id="sect5">
+	<title>Par vs. Impar</title>
+	<para id="para6">Una <term>señal par</term> es cualquier señal <m:math><m:ci>f(t)</m:ci></m:math> que
+satisface
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  las señales pares se pueden detectar fácilmente por que son	  <emphasis>simétricas</emphasis> en el eje vertical.  Una
+	  <term>señal impar</term>,  es una señal 	  <m:math><m:ci>f</m:ci></m:math> que satisface
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math> (<link target-id="fig5"/>).
+	</para>
+
+	<figure id="fig5" orient="vertical">
+	<subfigure id="fig5a">
+		<media id="idm1243280" alt=""><image src="../../media/sigclass8.png" mime-type="image/png"/></media>
+		<caption>Una señal par</caption>
+	</subfigure>
+	<subfigure id="fig5b">
+		<media id="idp9830912" alt=""><image src="../../media/sigclass9.png" mime-type="image/png"/></media>
+		<caption>Una señal impar</caption>
+	</subfigure>
+</figure>
+
+	<para id="para7">
+	Usando las definiciones de par e impar, podemos demostrar que cualquier señal se puede escribir como una combinación de una señal par e  impar. Cada señal tiene una descomposición par-impar. Para demostrar esto, no tenemos más que examinar una ecuación.  	  <equation id="eqn1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:plus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  Al multiplicar y sumar esta expresión, demostramos que lo  explicado anteriormente es cierto. También se puede observar  que	  <m:math>
+		<m:apply>
+			<m:plus/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	satisface a una función par, y que 	  <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:apply>
+					<m:minus/>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	  satisface a una función impar (<link target-id="fig6"/>).
+	</para>
+	<example id="exa1">
+	  <figure id="fig6" orient="vertical"><subfigure id="fig6a">
+		<media id="idp9324288" alt=""><image src="../../media/sigclass10.png" mime-type="image/png"/></media>
+		<caption>Esta señal será descompuesta usando la descomposición Par-Impar</caption>
+	</subfigure>
+	<subfigure id="fig6b">
+		<media id="idp9521600" alt=""><image src="../../media/sigclass011.png" mime-type="image/png"/></media>
+		<caption>Parte Par:		<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">e</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:plus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="fig6c">
+		<media id="idp9029824" alt=""><image src="../../media/sigclass012.png" mime-type="image/png"/></media>
+		<caption>Parte Impar:
+		<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">o</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="fig6d">
+		<media id="idp7370192" alt=""><image src="../../media/sigclass013.png" mime-type="image/png"/></media>
+		<caption>Revisa:
+		<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:ci type="fn">e</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">o</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+</figure>
+	</example>
+      </section>
+
+
+      <section id="randet">
+	<title>Determinístico vs. Aleatorio </title>
+	<para id="p1_ran">Una señal <term>determinística</term>  es una señal en la cual cada valor está fijo y puede ser determinado por una expresión matemática, regla, o tabla. Los valores futuros de esta señal pueden ser calculados usando sus valores anteriores teniendo una confianza completa en los resultados. Una <term><link document="m10649" strength="3">señal aleatoria</link></term>, tiene mucha fluctuación respecto a su comportamiento. Los valores futuros de una señal aleatoria no se pueden predecir con exactitud, solo se pueden basar en los <link document="m10656" strength="3">promedios </link> de conjuntos de señales con características similares (<link target-id="fig_det"/>).
+	  </para>
+
+	<figure id="fig_det" orient="vertical"><subfigure id="figdeta">
+		<media id="idp393888" alt=""><image src="../../media/ran_sin.png" mime-type="image/png"/></media>
+		<caption>Señal Determinística</caption>
+	</subfigure>
+	<subfigure id="figdetb">
+		<media id="idp6075856" alt=""><image src="../../media/ran_nos.png" mime-type="image/png"/></media>
+		<caption>Señal Aleatoria</caption>
+	</subfigure>
+</figure>
+
+      </section>
+
+      <section id="rightleft">
+	<title>Hemisferio Derecho vs. Hemisferio Izquierdo </title>
+	<para id="p1_rl">Este tipo de señales son aquellas cuyo valor es cero entre una variable definida y la infinidad positiva o negativa. 
+	 Matemáticamente hablando,  una señal de hemisferio-derecho es definida como cualquier señal donde
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math> para
+	  <m:math display="inline">
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:lt/>
+				<m:ci>t</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>t</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:infinity/>
+		</m:apply>
+	</m:math>, y una señal de hemisferio-izquierdo es definida como cualquier señal donde	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math> para
+	  <m:math display="inline">
+		<m:apply>
+			<m:gt/>
+			<m:apply>
+				<m:gt/>
+				<m:ci>t</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>t</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:infinity/>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Las siguientes figuras son un ejemplo de esto (<link target-id="figLR"/>). Las dos figuras “empiezan” en	  <m:math display="inline">
+		<m:ci>
+			<m:msub>
+				<m:mi>t</m:mi>
+				<m:mn>1</m:mn>
+			</m:msub>
+		</m:ci>
+	</m:math> y luego se extienden a infinidad positiva o negativa con casi todos los valores siendo cero.	<figure id="figLR" orient="vertical"><subfigure id="figLRa">
+			<media id="idp7948848" alt=""><image src="../../media/sigp_0R.png" mime-type="image/png"/></media>
+			<caption>Señal de Hemisferio-Derecho</caption>
+		</subfigure>
+		<subfigure id="figLRb">
+			<media id="idp7500912" alt=""><image src="../../media/sigp_0L.png" mime-type="image/png"/></media>
+			<caption>Señal de Hemisferio-Izquierdo</caption>
+		</subfigure>
+	</figure>
+</para>
+
+      </section>
+
+      <section id="finvsinf">
+	<title>Tamaño finito vs. Tamaño infinito </title>
+	<para id="p1_fi">Como el nombre lo implica, las señales se pueden caracterizar dependiendo de su tamaño el cual puede ser infinito o finito. Casi todas las señales finitas se utilizan cuando se tiene una señal discreta o se tiene una secuencia de valores. En términos matemáticos,
+	  
+	  	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> es una <term>señal de tamaño finito </term> si tiene un valor 	  <emphasis>que no sea cero </emphasis> en un intervalo finito
+
+	  <m:math display="block">
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:lt/>
+				<m:ci>
+					<m:msub>
+						<m:mi>t</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:ci>
+				<m:msub>
+					<m:mi>t</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>
+
+	  donde
+	  <m:math display="inline">
+		<m:apply>
+			<m:gt/>
+			<m:ci>
+				<m:msub>
+					<m:mi>t</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:infinity/>
+			</m:apply>
+		</m:apply>
+	</m:math> y
+	  <m:math display="inline">
+		<m:apply>
+			<m:lt/>
+			<m:ci>
+				<m:msub>
+					<m:mi>t</m:mi>
+					<m:mn>2</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:infinity/>
+		</m:apply>
+	</m:math>.  Se puede ver un ejemplo en  <link target-id="figFin"/>.
+	  De igual manera,  <term>una señal de tamaño infinito</term>
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, es definida con valores no-cero para todos los números reales:	    <m:math display="block">
+		<m:apply>
+			<m:leq/>
+			<m:apply>
+				<m:leq/>
+				<m:infinity/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:infinity/>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+</para>
+
+	<figure id="figFin"><media id="idp12102864" alt=""><image src="../../media/finite.png" mime-type="image/png"/></media>
+	<caption>Señal de tamaño finito. Note que solo tiene valores que no son cero en un conjunto, intervalo finito.</caption>
+</figure>
+	
+      </section>
+
+    </section>
+  </content>
+</document>

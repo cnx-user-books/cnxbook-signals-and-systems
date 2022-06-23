@@ -1,0 +1,1503 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Desigualdad de Cauchy-Schwarz</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>14865204-42ee-4f9a-a265-4783acb091a7</md:uuid>
+</metadata>
+  
+  
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p1_intro">
+	Recordando que en 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+	    <m:reals/>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:math>, 
+
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci type="vector">x</m:ci>
+	      <m:ci type="vector">y</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		<m:ci type="vector">y</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:ci>θ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:leq/>
+	      <m:apply>
+		<m:abs/>
+		<m:apply>
+		  <m:scalarproduct/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:ci type="vector">y</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:ci type="vector">y</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	La misma relación se mantiene para <link document="m12876" strength="3"> espacios de producto interno</link>.
+      </para>
+        
+      <section id="csi">
+	<title>Desigualdad de Cauchy-Schwarz </title>
+	<para id="p1_csi">
+	  
+	  <definition id="csi_def">
+	<term>Desigualdad de Cauchy-Schwarz </term>
+	<meaning id="idm1409712">
+	      Para  <m:math><m:ci type="vector">x</m:ci></m:math>, 
+	      <m:math><m:ci type="vector">y</m:ci></m:math> en un espacio de producto interno
+	      <m:math display="block">
+			<m:apply>
+				<m:leq/>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+						<m:ci type="vector">x</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+
+	      que mantiene la igualdad <emphasis>si y solo si </emphasis>
+		<m:math><m:ci type="vector">x</m:ci></m:math> y <m:math><m:ci type="vector">y</m:ci></m:math> son <link document="m12862" target-id="lin_ind" strength="2">linealmente dependientes</link>, <foreign>es decir</foreign>
+		<m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">x</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci>α</m:ci>
+					<m:ci type="vector">y</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math> para un escalar
+	      <m:math><m:ci>α</m:ci></m:math>. 
+	    </meaning>
+</definition>	
+	</para>
+      </section>
+    </section>
+
+    <section id="sec2">
+      <title>Detector de Filtro Acoplado</title>
+      <para id="p1_sec2">
+	También conocido como una de las aplicaciones de  Cauchy-Schwarz.
+      </para>
+      
+      <section id="sub1_s2">
+	<title>Conceptos detrás de los Filtros Acoplados</title>
+	<para id="p1_s1s2">
+	  
+	  Dados dos vectores, <m:math><m:ci type="vector">f
+	    </m:ci>
+	</m:math> y <m:math><m:ci type="vector">g</m:ci></m:math>, entonces la desigualdad de Cauchy-Schwarz
+	    CSI (Cauchy-Schwarz Inequality) es <emphasis>maximizada</emphasis> cuando
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>f</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:ci>α</m:ci>
+				<m:ci>g</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Esto nos dice que:
+	  
+	  <list id="list1">
+		<item>
+			<m:math><m:ci type="vector">f</m:ci></m:math> es en la misma 
+	       "dirección" como <m:math><m:ci type="vector">g</m:ci></m:math>.
+	</item>
+		<item>
+	      Si <m:math><m:ci type="vector">f</m:ci></m:math> y
+	      <m:math><m:ci type="vector">g</m:ci></m:math> son
+	      funciones,
+	      <m:math display="inline">
+				<m:apply>
+					<m:eq/>
+					<m:ci>f</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci>α</m:ci>
+						<m:ci>g</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math> significa que <m:math><m:ci type="vector">f</m:ci></m:math> y <m:math><m:ci type="vector">g</m:ci></m:math> tienen la misma forma.
+	    </item>
+	</list>
+
+	  Por ejemplo, suponiendo que tenemos un conjunto de señales, definidas como 
+	  <m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>,
+	  y que queremos ser capaces de decir cual, y si alguna de estas señales se asemeja a otra señal dada
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+	<note type="Estrategia" id="idp1317792"><label>Estrategia</label>
+	    Para poder encontrar las señal(es) que se asemeja a 
+	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> tomamos el producto interno. Si 
+	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>g</m:mi>
+						<m:mi>i</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> se asemeja a  
+	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>, entonces el valor absoluto del producto interno,
+	    
+	    <m:math display="inline">
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msub>
+								<m:mi>g</m:mi>
+								<m:mi>i</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>, será <emphasis>largo</emphasis>.
+	  </note>	  
+	  
+	  Esta idea de ser capaz de medir el rango de dos señales “semejantes” nos da un <term>Detector de Filtro Acoplado</term>. 
+	</para>
+      </section>
+      
+      <section id="sub2_s2">
+	<title>Comparando Señales</title>
+	<para id="p1_s2d2">
+	  El simple uso de Filtro Acoplado será tomar un conjunto de “candidatos”  de señales, digamos que nuestro conjunto de 
+	  <m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mn>1</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mn>2</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>g</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>, y tratar de acoplarla a nuestra “plantilla” de señal,
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.  Por ejemplo digamos que tenemos las siguientes plantillas 
+	  (<link target-id="fig1"/>) y señales de candidatos (<link target-id="fig2"/>):
+	</para>
+
+	<figure id="fig1">
+	  <title>Señal Platilla</title>
+	  <media id="idm1127104" alt=""><image src="../../media/csi_f1.png" mime-type="image/png"/></media>
+	  <caption>
+	   Nuestra señal de la queremos encontrar una semejante a esta.
+	  </caption>
+	</figure>
+	
+	<figure orient="horizontal" id="fig2">
+	<title>Señales Candidatas</title>
+	<subfigure id="subf1">
+		<media id="idp1269472" alt=""><image src="../../media/csi_f2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="subf2">
+		<media id="idm1255328" alt=""><image src="../../media/csi_f3.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	    Claramente podemos ver cual de las señales nos dará una mejor semejanza a nuestra señal de platilla.
+	  </caption>
+</figure>
+	
+	<para id="p2_s1s2">
+	  Ahora si nuestra única pregunta fuera cual de estas funciones se acerca mas 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	  entonces fácilmente tenemos la respuesta basada en la inspección 	   <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>.  Sin embargo, este no siempre será el caso. También querremos obtener un método o algoritmo que pueda automatizar estas comparaciones. O tal vez queramos  tener un valor cuantitativo expresando que tan similares son las señales. Para tratar estas especificaciones, presentaremos un método mas formal para comparar señales, el cual, tal como se menciono anteriormente, esta basado en el producto interno.
+	</para>
+
+	<para id="p3_s1s2">
+	  Para poder ver cuales de las señales candidatas, 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> ó 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>, 
+	  mejor se asemeja a 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> % necesitamos realizar los siguientes pasos:
+
+	  <list id="mfilt_steps">
+	<item>
+	      Normalice  
+	      <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">
+					<m:msub>
+						<m:mi>g</m:mi>
+						<m:mi>i</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	      Tome el producto interno con 
+	      <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	      Encuentre el más grande
+	    </item>
+</list>
+
+	  O ponerlo matemáticamente 
+	  <equation id="eq2">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>Mejor candidato</m:ci>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#argmax"/>
+		  <m:domainofapplication>
+		    <m:ci>i</m:ci>
+		  </m:domainofapplication>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:scalarproduct/>
+			<m:ci type="vector">f</m:ci>
+			<m:ci type="vector">
+			  <m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>i</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>g</m:mi>
+			  <m:mi>i</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	</para>
+      </section>
+      
+      
+      <section id="sub3_s2">
+	<title>Encontrando un Patrón</title>
+	<para id="p1_s2s3">
+	  Extendiendo estos pensamientos del Filtro Acoplado para encontrar semejanzas entre señales, podemos usar la idea de buscar un patrón en una señal larga. La idea es simplemente realizar en varias ocasiones el mismo cálculo como lo hicimos anteriormente; sin embargo, ahora en lugar de calcular en diferentes señales, simplemente realizamos el producto interno con una versión diferente cambiada por nuestra señal  patrón. Por ejemplo, digamos que tenemos las siguientes dos señales: una señal patrón   (<link target-id="fig3"/>) y una señal larga (<link target-id="fig4"/>).
+	</para>
+
+	<figure id="fig3">
+	  <title>Señal Patrón</title>
+	  <media id="idp664224" alt=""><image src="../../media/csi_pattern.png" mime-type="image/png"/></media>
+	  <caption>
+	    El patrón que estamos buscando en una nuestra señal larga teniendo una longitud <m:math><m:ci>T</m:ci></m:math>.
+	  </caption>
+	</figure>
+	
+	<figure id="fig4">
+	  <title>Señal Larga</title>
+	  <media id="idm725408" alt=""><image src="../../media/csi_long.png" mime-type="image/png"/></media>
+	  <caption>
+	    Este es una señal larga que contiene un pieza que ensambla en nuestra señal patrón.
+	  </caption>
+	</figure>
+
+	<para id="p2_s2s3">
+	  Aquí vemos dos señales  cambiadas por nuestra señal patrón, cambiando las señales por 	  <m:math>
+	    <m:ci><m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub></m:ci>
+	  </m:math> and 
+	  <m:math>
+	    <m:ci><m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub></m:ci>
+	  </m:math>.  Estas dos posibilidades nos dan los siguientes cálculos y resultados:
+
+	  <list id="list_shft">
+	    <item>
+	      Cambio de 
+	      <m:math>
+		<m:ci><m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	      </m:math>:
+	      
+	      <equation id="eq3">
+		<m:math>
+		 <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:int/>
+			<m:bvar>
+			  <m:ci>t</m:ci>
+			</m:bvar>
+			<m:uplimit>
+			  <m:apply>
+			    <m:plus/>
+			    <m:ci><m:msub>
+			      <m:mi>s</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub></m:ci>
+			    <m:ci>T</m:ci>
+			  </m:apply>
+			</m:uplimit>
+			<m:lowlimit>
+			  <m:ci><m:msub>
+			    <m:mi>s</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub></m:ci>
+			</m:lowlimit>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:ci type="fn">g</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">f</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>t</m:ci>
+			      <m:ci><m:msub>
+				<m:mi>s</m:mi>
+				<m:mn>1</m:mn>
+			      </m:msub></m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:root/>
+			<m:apply>
+			  <m:int/>
+			  <m:bvar>
+			    <m:ci>t</m:ci>
+			  </m:bvar>
+			  <m:uplimit>
+			    <m:apply>
+			      <m:plus/>
+			      <m:ci><m:msub>
+				<m:mi>s</m:mi>
+				<m:mn>1</m:mn>
+			      </m:msub></m:ci>
+			      <m:ci>T</m:ci>
+			    </m:apply>
+			  </m:uplimit>
+			  <m:lowlimit>
+			    <m:ci><m:msub>
+			      <m:mi>s</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub></m:ci>
+			  </m:lowlimit>
+			  <m:apply>
+			    <m:power/>
+			    <m:apply>
+			      <m:abs/>
+			      <m:apply>
+				<m:ci type="fn">g</m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>"largo"</m:ci>
+		  </m:apply>
+		</m:math>
+	      </equation>
+	    </item>
+
+	    <item>
+	        Cambio de  
+	      <m:math>
+		<m:ci><m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	      </m:math>:
+	      
+	      <equation id="eq4">
+		<m:math>
+		 <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:int/>
+			<m:bvar>
+			  <m:ci>t</m:ci>
+			</m:bvar>
+			<m:uplimit>
+			  <m:apply>
+			    <m:plus/>
+			    <m:ci><m:msub>
+			      <m:mi>s</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub></m:ci>
+			    <m:ci>T</m:ci>
+			  </m:apply>
+			</m:uplimit>
+			<m:lowlimit>
+			  <m:ci><m:msub>
+			    <m:mi>s</m:mi>
+			    <m:mn>2</m:mn>
+			  </m:msub></m:ci>
+			</m:lowlimit>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:ci type="fn">g</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">f</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>t</m:ci>
+			      <m:ci><m:msub>
+				<m:mi>s</m:mi>
+				<m:mn>2</m:mn>
+			      </m:msub></m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:root/>
+			<m:apply>
+			  <m:int/>
+			  <m:bvar>
+			    <m:ci>t</m:ci>
+			  </m:bvar>
+			  <m:uplimit>
+			    <m:apply>
+			      <m:plus/>
+			      <m:ci><m:msub>
+				<m:mi>s</m:mi>
+				<m:mn>2</m:mn>
+			      </m:msub></m:ci>
+			      <m:ci>T</m:ci>
+			    </m:apply>
+			  </m:uplimit>
+			  <m:lowlimit>
+			    <m:ci><m:msub>
+			      <m:mi>s</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub></m:ci>
+			  </m:lowlimit>
+			  <m:apply>
+			    <m:power/>
+			    <m:apply>
+			      <m:abs/>
+			      <m:apply>
+				<m:ci type="fn">g</m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>"pequeño"</m:ci>
+		  </m:apply>
+		</m:math>
+	      </equation>
+	    </item>
+	  </list>
+
+	  Por lo tanto podemos definir una ecuación generalizada para nuestro filtro acoplado:
+
+	  <equation id="eq5">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:ci>filtro acoplado</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <equation id="eq6">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>		
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>s</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:int/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>s</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:ci>s</m:ci>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>s</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		      <m:condition>
+			<m:apply>
+			  <m:ci type="fn">
+			    <m:msup>
+			      <m:mi>L</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msup>
+			  </m:ci>
+			  <m:interval>
+			    <m:ci>s</m:ci>
+			    <m:apply>
+			      <m:plus/>
+			      <m:ci>s</m:ci>
+			      <m:ci>T</m:ci>
+			    </m:apply>
+			  </m:interval>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:apply>
+			  <m:ci type="fn">g</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  donde el numerado de la  <link target-id="eq6" strength="3"/> es
+	  la convolución de 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Ahora para poder decidir si o no el resultado de nuestro detector de filtro acoplado es bastante grande para indicar una aceptación correcta entre las dos señales, definimos
+	  <term>nivel de referencia</term>.  Si 
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:geq/>
+	      <m:apply>
+		<m:ci type="fn">m</m:ci>
+		<m:ci><m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+	      </m:apply>
+	      <m:ci>nivel de referencia</m:ci>
+	    </m:apply>
+	  </m:math>
+
+	  después podemos tener una semejanza en la locación 
+	  <m:math display="inline">
+	    <m:ci><m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub></m:ci>
+	  </m:math>.
+	</para>
+      </section>
+      
+
+      <section id="sub3">
+	<title>Ejemplos Prácticos</title>
+	<section id="sub3a">
+	  <title>Detección de Imagen</title>
+
+	  <para id="p1_2d">
+	    En 2-D, este concepto es usado para acoplar imágenes juntas, tal como verificar las huellas digitales para seguridad o para  acoplar fotos de alguien. Por ejemplo esta idea puede ser usada para los libros del tan conocido “¿dónde esta Waldo?” si se nos da la siguiente platilla (<link target-id="subfig1"/>) y una pieza del libro “¿dónde esta Waldo?”,(<link target-id="subfig2"/>),
+	  </para>
+	  
+	  <figure orient="horizontal" id="waldo">
+	    <subfigure id="subfig1">
+	      <media id="idp839632" alt=""><image src="../../media/waldo_head.png" mime-type="image/png"/></media>
+	    </subfigure>
+	    <subfigure id="subfig2">
+	      <media id="idm376032" alt=""><image src="../../media/waldo_pic.png" mime-type="image/png"/></media>
+	    </subfigure>
+	    <caption>
+	      Ejemplo de la imagen de ¿Dónde esta Waldo?".  Nuestro detector de Filtro Acoplado puede ser implementado para detectar una semejanza posible para Waldo. 
+	    </caption>
+	  </figure>
+	  
+	  <para id="p2_2d">
+	    Entonces fácilmente podemos crear un programa para encontrar la imagen que más se asemeje a  la imagen de la cabeza de Waldo en la figura larga. Simplemente podemos implementar nuestro algoritmo de filtro acoplado: tomar el producto interno de cada cambio y véase que tan larga es nuestra respuesta resultante. Esta idea fue implementada en esta misma imagen para un <link url="http://www.owlnet.rice.edu/~elec301/Projects99/waldo/process.html">
+	    Proyecto de Señales y Sistemas </link> 
+	    (véase esta liga para saber mas) en la Universidad de Rice.
+	  </para>
+	</section>
+
+	
+	<section id="sub3b">
+	  <title>Sistemas de Comunicaciones</title>
+	  <para id="p1_sub3b">
+	    Los detectores de Filtro Acoplado son usualmente usados en <link document="m0002" strength="3">Sistemas de Comunicación</link>.
+	    De echo, estos los detectores mas óptimos para el ruido Gaussaniano. Las señales en la vida real también son distorsionadas por el medio ambiente que las rodea, así que es una lucha constante para descubrir maneras capaces de recibir señales torcidas y después ser capaces de filtrarlas de alguna manera para determinar cual era la señal original. Los filtros acoplados nos proveen una manera de comparar la señal recibida con dos  posibles señales (“plantilla”) y determinar cual es la que más se asemeja a la señal recibida.
+	  </para>
+	  <para id="p1a_sub3b">
+	   Por ejemplo a continuación tenemos un ejemplo simplificado de la <link document="m0545" strength="3">Frecuencia Desplazada de Keying </link>
+	    (Frequency Shift Keying FSK) donde tenemos las siguientes condiciones para '1' y	    '0':
+	  </para>
+
+	  <figure id="fig_fsk1">
+	<media id="idp5283440" alt=""><image src="../../media/mfilt_1a.png" mime-type="image/png"/></media>
+	<caption>
+	      Frecuencia Desplazada de Keying para '1' y '0'.
+	    </caption>
+</figure>
+
+	  <para id="p2_sub3b">
+	    Basados en la codificación anterior, podemos crear una señal digital basada en 0’s y 1’s poniendo juntos los dos “códigos” anteriores en número infinito de maneras. Para este ejemplo transmitiremos tres números básicos de 3-bits: 101, desplegado en la siguiente <link target-id="fig_fsk2"/>:
+	  </para>
+
+	  <figure id="fig_fsk2">
+	    <media id="idm849920" alt=""><image src="../../media/mfilt_2.png" mime-type="image/png"/></media>
+	    <caption>
+	      La corriente del bit "101" codificado con el FSK anterior.
+	    </caption>
+	  </figure>
+
+	  <para id="p3_sub3b">
+	    Ahora la imagen anterior representa nuestra señal original que será transmitida por algún sistema de comunicación, el cual inevitablemente pasa a través del “canal de comunicación”, la parte del sistema que distorsionara y alterara nuestra señal. Mientras que nuestro ruido no sea muy grande, nuestro filtro acoplado nos mantendrá despreocupados de estos cambios de nuestra señal transmitida. Una vez que la señal ha sido recibida, pasamos la señal del ruido a través de un sistema simple, similar a la versión simplificada mostrada a continuación en la <link target-id="fig_fsk3"/>:
+	  </para>
+	  
+	  <figure id="fig_fsk3">
+	<media id="idp5590064" alt=""><image src="../../media/mfilt_3a.png" mime-type="image/png"/></media>
+	<caption>
+	      Diagrama de bloque del detector de filtro acoplado.
+	    </caption>
+</figure>
+	  
+	  <para id="p4_sub3b">
+	<link target-id="fig_fsk3"/> El diagrama anterior básicamente muestra que nuestra señal con ruido será pasada (asumiremos que pasara un “bit” a la vez) y que esta señal será separada y pasada a través de dos detectores de filtros acoplados diferentes. Cada uno comparara la señal con ruido para cada uno de los códigos que definimos para ‘1’ y ‘0’. Después este valor será pasado y cualquier valor que sea grande 
+	    (<foreign>es decir </foreign> cualquier señal de código FSK a la señal ruidosa que mejor se asemeje) será el valor que el recibidor tome. Por ejemplo, el primer bit que será enviado a través,  será un ‘1’ así que el nivel de arriba del diagrama de bloque será el valor más alto, donde denotando que el ‘1’ fue enviado por la señal, aunque la señal aparezca muy ruidosa y distorsionada.
+	  </para>
+	</section>
+      </section>
+    </section>
+
+    <section id="sec3">
+      <title>Demostración de la Desigualdad de Cauchy-Schwarz </title>
+      <para id="p1_sec3">
+	Veremos la demostración de la desigualdad de Cauchy-Schwarz (Cauchy-Schwarz Inequality (CSI) )para un <term>espacio vectorial real </term>.
+	
+	<rule type="teorema" id="rule1"><label>Teorema</label>
+	  <title>Desigualdad de Cauchy-Schwarz para un espacio vectorial real</title>
+	  <statement id="idp892912">
+	    <para id="ruleexp1">
+	      Para
+	      <m:math display="inline">
+		<m:apply>
+		  <m:in/>
+		  <m:ci>f</m:ci>
+		  <m:ci>Espacio de Hilbert  S</m:ci>
+		</m:apply>
+	      </m:math> y 
+	       <m:math display="inline">
+		<m:apply>
+		  <m:in/>
+		  <m:ci>g</m:ci>
+		  <m:ci>Espacio de Hilbert  S</m:ci>
+		</m:apply>
+	      </m:math>, mostrar que:
+
+	      <equation id="eq7">
+		<m:math>
+		  <m:apply>
+		    <m:leq/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:scalarproduct/>
+			<m:ci>f</m:ci>
+			<m:ci>g</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>g</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </equation>
+		
+	      con la igualdad si y solo si 
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>g</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>α</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	    </para>
+	  </statement>
+
+	  <proof id="idm786032">
+	    <list id="list_proof">
+	      <item>
+		Si    
+		<m:math display="inline">
+		  <m:apply>
+		      <m:eq/>
+		      <m:ci>g</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>α</m:ci>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>,
+		  mostrar
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>f</m:ci>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		  
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>f</m:ci>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>f</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>α</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>α</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:abs/>
+			  <m:apply>
+			    <m:scalarproduct/>
+			    <m:ci>f</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>α</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>	     
+
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>f</m:ci>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:abs/>
+			    <m:ci>α</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			</m:apply>		  
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  Esto verifica nuestro argumento anterior de la desigualdad de CS		      
+	      </item>
+
+	      <item>
+		  
+		Si    
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:neq/>
+		      <m:ci>g</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>α</m:ci>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>,
+		  mostrar
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:lt/>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>f</m:ci>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  donde tenemos 
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:forall/>
+		      <m:bvar>
+			<m:ci>β</m:ci>
+		      </m:bvar>
+		      <m:condition>
+			<m:apply>
+			  <m:in/>
+			  <m:ci>β</m:ci>
+			  <m:reals/>
+			</m:apply>
+		      </m:condition>
+		      <m:apply>
+			<m:neq/>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>β</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			  <m:ci>g</m:ci>
+			</m:apply>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:math> 
+
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:lt/>
+			<m:cn>0</m:cn>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:apply>
+			      <m:plus/>
+			      <m:apply>
+				<m:times/>
+				<m:ci>β</m:ci>
+				<m:ci>f</m:ci>
+			      </m:apply>
+			      <m:ci>g</m:ci>
+			    </m:apply>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:scalarproduct/>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>β</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			  <m:ci>g</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>β</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			  <m:ci>g</m:ci>
+			</m:apply>		    
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:power/>
+			    <m:ci>β</m:ci>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:scalarproduct/>
+			    <m:ci>f</m:ci>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci>β</m:ci>
+			  <m:apply>
+			    <m:scalarproduct/>
+			    <m:ci>f</m:ci>
+			    <m:ci>g</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:scalarproduct/>
+			  <m:ci>g</m:ci>
+			  <m:ci>g</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		  
+
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:power/>
+			    <m:ci>β</m:ci>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:power/>
+			    <m:apply>
+			      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			      <m:ci>f</m:ci>
+			    </m:apply>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci>β</m:ci>
+			  <m:apply>
+			    <m:scalarproduct/>
+			    <m:ci>f</m:ci>
+			    <m:ci>g</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:ci>g</m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  Y obtenemos una cuadrática en <m:math><m:ci>β</m:ci>
+		  </m:math>.  Visualmente el polinomio cuadrático en 		  <m:math>
+		    <m:apply>
+		      <m:gt/>
+		      <m:ci>β</m:ci>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		  </m:math> 
+		  para todo <m:math><m:ci>β</m:ci></m:math>.  También nótese que el polinomio no tiene raíces reales y que el discriminante es menor que 0…	   
+		
+	      <m:math display="block">
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:power/> 
+		      <m:ci>β</m:ci> 
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/> 
+		    <m:ci>b</m:ci> 
+		    <m:ci>β</m:ci>
+		  </m:apply>
+		  <m:ci>c</m:ci>
+		</m:apply>
+	      </m:math> tiene discriminante
+	      <m:math display="inline">
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:power/> 
+		    <m:ci>β</m:ci> 
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>4</m:cn>
+		    <m:ci>a</m:ci>
+		    <m:ci>c</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math> donde tenemos:
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>a</m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>b</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:scalarproduct/>
+		      <m:ci>f</m:ci>
+		      <m:ci>g</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>c</m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		      <m:ci>g</m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>		  
+		</m:apply>
+	      </m:math>
+	      
+	      Por lo tanto podemos colocar estos valores en el discriminante del  polinomio de arriba para obtener:
+
+	      <equation id="eq8">
+		<m:math>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>4</m:cn>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:abs/>
+			    <m:apply>
+			      <m:scalarproduct/>
+			      <m:ci>f</m:ci>
+			      <m:ci>g</m:ci>
+			    </m:apply>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>4</m:cn>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:ci>f</m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			    <m:ci>g</m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </equation>
+
+	      <equation id="eq9">
+		<m:math>
+		  <m:apply>
+		    <m:lt/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:scalarproduct/>
+			<m:ci>f</m:ci>
+			<m:ci>g</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+			<m:ci>g</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </equation>
+
+	     Y finalmente hemos probado la formula de la desigualdad de desigualdad de Cauchy-Schwarz para un espacio vectorial real.
+		
+		<note type="pregunta" id="idm8094304"><label>Pregunta</label>
+		  ¿Qué cambios tenemos que hacer para hacer la demostración para un espacio vectorial complejo? (la respuesta se la dejamos al lector)
+		</note>
+	      </item>
+	    </list>
+	  </proof>
+	</rule>
+	
+      </para>
+    </section>
+
+  </content>
+</document>

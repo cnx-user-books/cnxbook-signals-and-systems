@@ -1,0 +1,1144 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Extensión Periódica de las DTFS</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9c3d27c2-6432-41cd-9cd1-b9f067cdb153</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="sec1">
+      <title>Introducción</title>
+      <para id="para1">Ya que contamos con entendimiento de lo que son las <link document="m12848" target-id="dtfs" strength="3">series discretas de Fourier (DTFS)</link>,  podemos considerar la <emphasis>extensión periódica</emphasis> de 	
+	
+	<m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">c</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> (coeficientes discretos de Fourier). Las figures básicas mostradas a continuación muestran una simple ilustración de como nosotros podríamos representar una secuencia en forma de señales periódicas graficadas sobre un numero infinito de intervalos.      
+      </para>
+
+      <figure id="fig1" orient="vertical">
+	<subfigure id="subfig1a">
+		<media id="idm1570352" alt=""><image src="../../media/fig1a-fe63.png" mime-type="image/png"/></media>
+		<caption>vectores</caption>
+	</subfigure>
+	<subfigure id="subfig1b">
+		<media id="idm1275344" alt=""><image src="../../media/fig1b-a611.png" mime-type="image/png"/></media>
+		<caption>secuencias periodicas</caption>
+	</subfigure>
+</figure>
+
+      <exercise id="exer1">
+	<problem id="idm44080">
+	  <para id="prob2">¿Porqué una extensión <link document="m12933">periódica</link> de los coeficientes de la DFTS
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">c</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>
+	   tiene sentido?
+	  </para>
+	</problem>
+	<solution id="idm2713728">
+	  <para id="soln1">
+	    Aliasing:
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>b</m:mi>
+					<m:mi>k</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+						</m:apply>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:ci>k</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<equation id="soln1eq">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mrow>
+							<m:mi>k</m:mi>
+							<m:mo>+</m:mo>
+							<m:mi>N</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+							<m:ci>N</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:plus/>
+							<m:ci>k</m:ci>
+							<m:ci>N</m:ci>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>k</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+							<m:ci>N</m:ci>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>
+	</equation>
+	    → Coeficientes DTFS también son periódicos con periodo  <m:math><m:ci>N</m:ci></m:math>.
+	  </para>
+	</solution>
+      </exercise>
+    </section>
+
+    
+    <section id="sec2">
+      <title>Ejemplos</title>
+      <example id="exam1">
+	<title>Función Cuadrada Discreta</title>
+
+	<figure id="fig2">
+	  <media id="idm10482544" alt=""><image src="../../media/fig2-91e4.png" mime-type="image/png"/></media>
+	</figure>
+
+	<para id="para3">
+Calcule la DTFS 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">c</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math> usando:
+	  <equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">c</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>n</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">f</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:ci>k</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Como en las series de Fourier continuas, podemos tomar la sumatoria en cualquier intervalo, para tener
+
+	  <equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>n</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>
+									<m:msub>
+										<m:mi>N</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:ci>
+								<m:msub>
+									<m:mi>N</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:uplimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Deje que
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>m</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>n</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mi>N</m:mi>
+						<m:mn>1</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,(así tenemos una serie geométrica que empieza en 0)
+	  <equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>m</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:ci>
+									<m:msub>
+										<m:mi>N</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>m</m:ci>
+										<m:ci>
+											<m:msub>
+												<m:mi>N</m:mi>
+												<m:mn>1</m:mn>
+											</m:msub>
+										</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>m</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:ci>
+									<m:msub>
+										<m:mi>N</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>m</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Ahora, usando la “formula parcial de sumatoria”
+
+	  <equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>n</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>M</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:power/>
+						<m:ci>a</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:power/>
+							<m:ci>a</m:ci>
+							<m:apply>
+								<m:plus/>
+								<m:ci>M</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:ci>a</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>
+								<m:msub>
+									<m:mi>N</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar><m:ci>m</m:ci></m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:ci>
+									<m:msub>
+										<m:mi>N</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:power/>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:ci>k</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:ci>m</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>
+								<m:msub>
+									<m:mi>N</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:plus/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:ci>
+													<m:msub>
+														<m:mi>N</m:mi>
+														<m:mn>1</m:mn>
+													</m:msub>
+												</m:ci>
+											</m:apply>
+											<m:cn>1</m:cn>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>k</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Manipulándola para que se vea como el sinc (distribuya)
+
+	  <equation id="eq6">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>k</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:ci>N</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>k</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:plus/>
+											<m:ci>
+												<m:msub>
+													<m:mi>N</m:mi>
+													<m:mn>1</m:mn>
+												</m:msub>
+											</m:ci>
+											<m:apply>
+												<m:divide/>
+												<m:cn>1</m:cn>
+												<m:cn>2</m:cn>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci>k</m:ci>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:apply>
+												<m:plus/>
+												<m:ci>
+													<m:msub>
+														<m:mi>N</m:mi>
+														<m:mn>1</m:mn>
+													</m:msub>
+												</m:ci>
+												<m:apply>
+													<m:divide/>
+													<m:cn>1</m:cn>
+													<m:cn>2</m:cn>
+												</m:apply>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>k</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:ci>N</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci>k</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:apply>
+											<m:divide/>
+											<m:cn>1</m:cn>
+											<m:cn>2</m:cn>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci>k</m:ci>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:apply>
+												<m:divide/>
+												<m:cn>1</m:cn>
+												<m:cn>2</m:cn>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:sin/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+									<m:ci>k</m:ci>
+									<m:apply>
+										<m:plus/>
+										<m:ci>
+											<m:msub>
+												<m:mi>N</m:mi>
+												<m:mn>1</m:mn>
+											</m:msub>
+										</m:ci>
+										<m:apply>
+											<m:divide/>
+											<m:cn>1</m:cn>
+											<m:cn>2</m:cn>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:sin/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:pi/>
+									<m:ci>k</m:ci>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:ci>
+					<m:mtext>digital sinc</m:mtext>
+				</m:ci>
+			</m:apply>
+		</m:math>
+	</equation>
+	<note type="note" id="idm1572928">
+¡es periódica!  <link target-id="fig_mat1"/>, <link target-id="fig_mat2"/>, y <link target-id="fig_mat3"/> muestran como nuestra función y coeficientes para distintos valores de 	   
+	    <m:math>
+			<m:msub>
+				<m:mi>N</m:mi>
+				<m:mn>1</m:mn>
+			</m:msub>
+		</m:math>.
+	  </note>
+</para>
+		
+	<figure orient="horizontal" id="fig_mat1">
+	<subfigure id="sub1_f1">
+		<media id="idm708160" alt=""><image src="../../media/dtfs1.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<subfigure id="sub2_f1">
+		<media id="idm3528928" alt=""><image src="../../media/dtfs1a.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de 
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">c</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>N</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>	
+
+	<figure orient="horizontal" id="fig_mat2">
+	<subfigure id="sub1_f2">
+		<media id="idm1932256" alt=""><image src="../../media/dtfs2.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<subfigure id="sub2_f2">
+		<media id="idm2011760" alt=""><image src="../../media/dtfs2a.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">c</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>N</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+				<m:cn>3</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>	
+
+
+	<figure orient="horizontal" id="fig_mat3">
+	<subfigure id="sub1_f3">
+		<media id="idm3552768" alt=""><image src="../../media/dtfs3.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<subfigure id="sub2_f3">
+		<media id="idm9150240" alt=""><image src="../../media/dtfs3a.png" mime-type="image/png"/></media>
+		<caption>
+	      Grafíca de
+	      <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">c</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+	<caption>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>N</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+				<m:cn>7</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>	
+
+
+
+      </example>
+
+      <example id="exam2">
+	<title>Sonido de un Pájaro</title>
+
+	<figure id="exam2fig1">
+	  <media id="idm13799824" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+	</figure>
+
+      </example>
+
+      <example id="exam3">
+	<title>Análisis Espectral de la DFTS</title>
+
+	<figure id="exam3fig1">
+	  <media id="idm10435600" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+	</figure>
+
+      </example>
+
+      <example id="exam4">
+	<title>Recuperando la Señal</title>
+
+	<figure id="exam4fig1">
+	  <media id="idm1893344" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+	</figure>
+
+      </example>
+
+      <example id="exam5">
+	<title>Compresión (1-D)</title>
+
+	<figure id="exam5fig1">
+	  <media id="idm3131936" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+	</figure>
+
+      </example>
+
+      <example id="exam6">
+	<title>Compresión de Imágenes</title>
+
+	<figure id="exam6fig1" orient="vertical">
+	<subfigure id="exam6fig1a">
+		<media id="idm2175696" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+		<caption>Imagen de 256 por 256  (65,636 pixeles)</caption>
+	</subfigure>
+	<subfigure id="exam6fig1b">
+		<media id="idm3210400" alt=""><image src="../../media/nofig.png" mime-type="image/png"/></media>
+		<caption> Imagen reconstruida usando 6000 coefícientes</caption>
+	</subfigure>
+	<caption>We've cut down on storage space by &gt; 90% (while incurring
+	    some loss)</caption>
+</figure>
+      </example>
+    </section>
+
+  </content>  
+</document>

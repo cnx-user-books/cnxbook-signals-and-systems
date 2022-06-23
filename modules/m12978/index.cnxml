@@ -1,0 +1,682 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>La Transformada de Laplace</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7ce95fe1-c251-47fe-b99f-b39d787b1a81</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">
+      La transformada de Laplace es una generalización de la  <link document="m12955" strength="2">Transformada de Fourier de Tiempo-Continuo</link>.  Sin embargo, en lugar de usar  <link document="m12848" strength="2">funciones senosoidales complejas </link> de la forma
+      <m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+      como lo hace  la CTFT, la transformada de laplace utiliza una forma más generalizada, 
+      <m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+      donde
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>s</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>σ</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+    </para>
+
+    <para id="para2">
+      Aunque las transformadas de Laplace rara vez se resuelven mediante integración
+      (si no por medio de <link document="m12959" strength="2">tabla</link> y uso de computadoras (<foreign>por ejemplo</foreign> Matlab) es más comun), aquí veremos los <term>pares bilaterales de la transformada de Laplace </term>.  Esto define la transformada de Laplace y su inversa. Notese las similitudes entre la transformada de Laplace y su inversa.  Esto nos dara como resultado muchas de las simetrias encontradas en el  <link document="m12865" strength="2">análisis de Fourier.
+      </link>
+
+      <equation id="eqn1">
+		<title>Transformada de Laplace </title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">F</m:ci>
+					<m:ci>s</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>t</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eqn2">
+		<title>Transformada Inversa de Laplace</title>
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+							<m:imaginaryi/>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>s</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>c</m:ci>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:infinity/>
+								</m:apply>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:apply>
+								<m:plus/>
+								<m:ci>c</m:ci>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:infinity/>
+								</m:apply>
+							</m:apply>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">F</m:ci>
+								<m:ci>s</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+    <section id="sect1">
+      <title>Encontrando la Transformada de Laplace y su Inversa</title>
+      <section id="sect1a">
+	<title>Resolviendo la Integral</title>
+	<para id="para3">
+	  Probablemente el método más difícil y menos usado para encontrar la Transformada de Laplace es resolviendo la integral.  Aunque es técnicamente posible es extremadamente consumidor de tiempo. Dada la facilidad de los siguientes dos métodos para encontrarla, no se vera de otra manera. Las integrales estan primordialmente para entender de donde se originan los siguientes métodos.
+	</para>
+      </section>
+
+      <section id="sect1b">
+	<title>Usando una Computadora</title>
+	<para id="para4">
+	  El uso de una computadora para encontrar la transformada de Laplace es relativamente sencillo.  Matlab tiene dos funciones,
+	  <code>laplace</code> e
+	  <code>ilaplace</code>, las dos forman parte de las librerias simbolicas, y encontraremos la transformada de Laplace y su inversa respectivamente. Este método es preferido generalmente para funciones más complicadas.  Funciones más sencillas e ideales usualmente se encuetran más facil mediante el uso de  <link target-id="sect1c" strength="2">tablas</link>.
+	</para>
+      </section>
+
+      <section id="sect1c">
+	<title>Usando Tablas</title>
+	<para id="para5">
+	  Cuando se aprende por primera vez la transformada de Laplace, las tablas es la forma más comun para encontrarla. Con suficiente práctica las tablas se hacen inecesarias. Para el proposito de sta sección, nos enfocaremos en la transformada inversa de Laplace, dado que la gran parte del diseño de aplicaciones empieza en el dominio de Laplace y dan como resultado una solución en el dominio del tiempo.
+	  El método es el siguiente:
+
+	  <list id="list1" list-type="enumerated">
+	<item>
+	      Se escribe la función que se desea transformar
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:ci>s</m:ci>
+			</m:apply>
+		</m:math>,
+	      como la suma de otras funciones
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:ci>s</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>i</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>1</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>m</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:ci type="fn"><m:msub>
+								<m:mi>H</m:mi>
+								<m:mi>i</m:mi>
+							</m:msub></m:ci>
+						<m:ci>s</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	      donde cada una de las 
+	      <m:math>
+			<m:ci><m:msub>
+					<m:mi>H</m:mi>
+					<m:mi>i</m:mi>
+				</m:msub></m:ci>
+		</m:math>
+	      se encuentra en la  <link document="m12959" strength="2">tabla</link>.
+	    </item>
+	<item>
+	      Invertir cada
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn"><m:msub>
+						<m:mi>H</m:mi>
+						<m:mi>i</m:mi>
+					</m:msub></m:ci>
+				<m:ci>s</m:ci>
+			</m:apply>
+		</m:math>
+	      para obtener su
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn"><m:msub>
+						<m:mi>h</m:mi>
+						<m:mi>i</m:mi>
+					</m:msub></m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>.
+	    </item>
+	<item>
+	      Se suma cada 
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn"><m:msub>
+						<m:mi>h</m:mi>
+						<m:mi>i</m:mi>
+					</m:msub></m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	      para obtener
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">h</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>i</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>1</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:ci>m</m:ci>
+					</m:uplimit>
+					<m:apply>
+						<m:ci type="fn"><m:msub>
+								<m:mi>h</m:mi>
+								<m:mi>i</m:mi>
+							</m:msub></m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+	</para>
+
+	<example id="exa1">
+	  <para id="para6">
+	    Calcule
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	    para
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar><m:ci>s</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:real/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:cn>-5</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>s</m:ci>
+		      <m:cn>5</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+
+	  <para id="para7">
+	    Esto puede ser resuelto directamente usando la  <link document="m12959" strength="2">tabla</link> para ser
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">h</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:cn>5</m:cn>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+	</example>
+
+	<example id="exa2">
+	  <para id="para8">
+	    Encontrar la representación en el dominio del tiempo
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>,
+	    de
+	    <m:math>
+		<m:apply>
+			<m:forall/>
+			<m:bvar><m:ci>s</m:ci></m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:gt/>
+					<m:apply>
+						<m:real/>
+						<m:ci>s</m:ci>
+					</m:apply>
+					<m:cn>-10</m:cn>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:ci>s</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>25</m:cn>
+					<m:apply>
+						<m:plus/>
+						<m:ci>s</m:ci>
+						<m:cn>10</m:cn>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+	  <para id="para9">
+	    Para resolver esto, primero notemos que
+	    <m:math>
+		<m:apply>
+			<m:ci type="fn">H</m:ci>
+			<m:ci>s</m:ci>
+		</m:apply>
+	</m:math>
+	    también puede ser escrito como
+	    <m:math>
+		<m:apply>
+			<m:times/>
+			<m:cn>25</m:cn>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:apply>
+					<m:plus/>
+					<m:ci>s</m:ci>
+					<m:cn>10</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Entonces podemos ir a la <link document="m12959" strength="2">tabla</link> para encontrar
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">h</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:cn>25</m:cn>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:cn>10</m:cn>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+	</example>
+
+	<example id="exa3">
+	  <para id="para10">
+	    Podemos extender los dos ejemplos anteriores encontrando
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	    para
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar><m:ci>s</m:ci></m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:gt/>
+		    <m:apply>
+		      <m:real/>
+		      <m:ci>s</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>5</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>s</m:ci>
+			<m:cn>5</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>25</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>s</m:ci>
+			<m:cn>10</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+
+	  <para id="para11">
+	    Para realizar esto, tomamos ventaja de la propiedad de aditividad y linealidad y el método de los tres pasos descrito anteriormente para obtner como resultado
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">h</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>5</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>25</m:cn>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>10</m:cn>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</example>
+
+	<para id="para12">
+	  Para ejemplos más complicados, seriá más difícil descomponer la función de transferencia en partes que se encuentren en la tabla. En este caso, es necesario el uso de  <link document="m2111" strength="2">expansión en fracciones parciales </link> para obtener la función de transferencia en una forma más útil.
+	</para>
+      </section>
+    </section>
+
+    <section id="sect2">
+      <title>Visualizando la Transformada de Laplace</title>
+      <para id="para13">
+	Con la transfromada de Fourier, tenemos una <term>función de valores complejos</term> de <emphasis> variables puramente imaginarias</emphasis>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">F</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.  Esto es algo que se podría visualizar mediante gráficas en 2-dimensiones (parte real e imaginaria o magnitud y fase).  Sin emabrgo, con Laplace tenemos una  <term>función de valores complejos</term> de una <emphasis>variable compleja</emphasis>.
+	Para examinar la magnitud y la fase o la parte real e imaginaria de esta función, debemos examinar  la gráfica de superficie en 3-dimensiones de cada componente.
+      </para>
+
+      <figure id="fig1" orient="horizontal">
+	<title>Ejemplo de gráficas real e imaginaria</title>
+	<subfigure id="fig1a">
+	  <media id="idp804960" alt=""><image src="../../media/laplace1.png" mime-type="image/png"/></media>
+	  <caption>
+	    La parte real de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+	  <media id="idp3241056" alt=""><image src="../../media/laplace2.png" mime-type="image/png"/></media>
+	  <caption>
+	    La parte Imaginaria de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<caption>
+	  Parte real e imaginaria de  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	  son cada una superficies en 3-dimensiones.
+	</caption>
+      </figure>
+
+      <figure id="fig2" orient="horizontal">
+	<title>Ejemplos de gráficas de magnitud y fase</title>
+	<subfigure id="fig2a">
+	  <media id="idp271920" alt=""><image src="../../media/laplace3.png" mime-type="image/png"/></media>
+	  <caption>
+	    La magnitud de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<subfigure id="fig2b">
+	  <media id="idp2076240" alt=""><image src="../../media/laplace4.png" mime-type="image/png"/></media>
+	  <caption>
+	    La fase de 
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	    </m:math>
+	  </caption>
+	</subfigure>
+	<caption>
+	  Magnitud y Fase de  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	  son también superficies en 3-dimensiones. Esta representación es más comun que las partes real e imaginaria.
+	</caption>
+      </figure>
+
+      <para id="para14">
+	Mientras que estas son maneras legitimas de ver una señal en el dominio de Laplace, es algo difícil dibujarlas y analizarlas.
+	Por esta razon, un método más sencillo ha sido desarrollado;
+	que aquí no será discutido a detalle, el métode de <link document="m12963" strength="2">Polos y Ceros</link>
+	donde es mucho más sencillo de entender la Transformada de Laplace y su contraparte discreta en el tiempo la <link document="m12951" strength="2">Transformada Z</link> y son representadas gráficamente.      </para>
+    </section>
+
+  </content>
+</document>

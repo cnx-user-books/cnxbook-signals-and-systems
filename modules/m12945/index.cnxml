@@ -1,0 +1,483 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Convergencia Uniforme de Secuencias de Funciones</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8fda3853-0104-4de4-832e-deefa3f61a0c</md:uuid>
+</metadata>
+
+
+  <content>
+    <section id="sec6">
+      <title>Convergencia Uniforme de Secuencias de Funciones</title>
+      <para id="p1_s6">
+	para esta discusión, solo consideraremos las funciones con 
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>g</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub></m:ci>
+	</m:math> donde
+	
+	<m:math display="block">
+	  <m:apply>
+	    <m:tendsto/>
+	    <m:reals/>
+	    <m:reals/>
+	  </m:apply>
+	</m:math>
+	
+	<definition id="unif">
+	  <term>Convergencia Uniforme</term>
+	  <meaning id="idp483744">
+	    La <link document="m12943" strength="3">secuencia</link> 
+	    <m:math>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:interval>
+		  <m:cn>1</m:cn>
+		  <m:infinity/>
+		</m:interval>
+		<m:set>
+		  <m:ci type="vector"><m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		</m:set>	    
+	      </m:apply>
+	    </m:math> 
+	    converge uniformemente a la funció
+	    <m:math><m:ci>g</m:ci></m:math> si para cada
+	    <m:math>
+	      <m:apply>
+		<m:gt/>
+		<m:ci>ε</m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math> existe un entero
+	    <m:math><m:ci>N</m:ci></m:math> tal que
+	    <m:math>
+	      <m:apply>
+		<m:geq/>
+		<m:ci>n</m:ci>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	    </m:math> implica que 
+
+	    <equation id="eq7">
+	      <m:math>
+		<m:apply>
+		  <m:leq/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn"><m:msub>
+			    <m:mi>g</m:mi>
+			    <m:mi>n</m:mi>
+			  </m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:math>
+	    </equation>
+
+	    para <emphasis>todo</emphasis> 
+	    <m:math>
+	      <m:apply>
+		<m:in/>
+		<m:ci>t</m:ci>
+		<m:reals/>
+	      </m:apply>
+	    </m:math>.
+	  </meaning>
+	</definition>
+
+	Obviamente toda secuencia uniformemente continua es de convergencia <link document="m12944" strength="3">puntual</link> . La diferencia entre convergencia puntual y uniformemente continua es esta:
+	Si
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:set>
+	</m:math> converge puntualmente a 
+	<m:math><m:ci>g</m:ci></m:math>, entonces para todo 
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>ε</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math> y para toda 
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>t</m:ci>
+	    <m:reals/>
+	  </m:apply>
+	</m:math> hay un entero <m:math><m:ci>N</m:ci></m:math>
+	que depende de <m:math><m:ci>ε</m:ci></m:math>
+	<emphasis>y</emphasis> <m:math><m:ci>t</m:ci></m:math> tal que <link target-id="eq7" strength="3"/> se mantiene si
+	<m:math>
+	  <m:apply>
+	    <m:geq/>
+	    <m:ci>n</m:ci>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:math>.  Si 
+	<m:math>
+	  <m:set>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:set>
+	</m:math> 
+	converge uniformemente a  <m:math><m:ci>g</m:ci></m:math>, es posible que para cada  
+	<m:math>
+	  <m:apply>
+	    <m:gt/>
+	    <m:ci>ε</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math> enocntrar <emphasis>un</emphasis> entero
+	<m:math><m:ci>N</m:ci></m:math> que será par todo
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>t</m:ci>
+	    <m:reals/>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <example id="eg1_unif">
+	<para id="p1_eg1u">
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>t</m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Sea 
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> 
+	  dado.  Entonces escoja 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:apply>
+		<m:ceiling/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>ε</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Obviamente,
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:geq/>
+		  <m:ci>n</m:ci>
+		  <m:ci>N</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:leq/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>g</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>ε</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+		  
+	  para toda <m:math><m:ci>t</m:ci></m:math>.  Así, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn"><m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> converge uniformemente a 
+	  <m:math><m:cn>0</m:cn></m:math>.  
+	</para>
+      </example>
+
+      <example id="eg2_unif">
+	<para id="p1_eg2u">
+	  
+	  <m:math display="block">
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>t</m:ci>
+		  <m:reals/>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>g</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>t</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+
+	  <!-- FIGURE HERE -->
+
+
+	  Obviamente para cualquier
+	  <m:math>
+	    <m:apply>
+	      <m:gt/>
+	      <m:ci>ε</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> no podemos encontrar una función sencilla
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>g</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> para la cual la <link target-id="eq7" strength="3"/> se mantiene con
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math> para todo <m:math><m:ci>t</m:ci></m:math>.  Así 
+	  <m:math>
+	    <m:ci><m:msub>
+		<m:mi>g</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	  </m:math> no es convergente uniformemente. Sin embargo tenemos:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:tendsto/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>g</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">g</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:mtext>  puntual</m:mtext>
+	  </m:math>
+	
+	  <note type="conclusión" id="idm6737632"><label>Conclusión</label>
+	    La convergencia uniforme siempre implica convergencia puntual, pero la cpnvergencia puntual no necesariamente garantiza la convergencia uniforme. 
+	  </note>	  
+	</para>
+      </example>
+
+
+      <section id="s7_subf">
+	<title>Problems</title>
+	<para id="p1_f">
+	  Pruebe rigurosamente si las siguientes funciones convergen puntualmente o uniformemente, o ambas.
+
+	  <list id="list_unif" list-type="enumerated">
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>t</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+
+	    <item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>g</m:mi>
+			<m:mi>n</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:gt/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>
+		      <m:cn>0</m:cn>
+		      <m:apply>
+			<m:leq/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list>
+	</para>
+      </section>
+    </section>
+	    
+  </content>  
+</document>

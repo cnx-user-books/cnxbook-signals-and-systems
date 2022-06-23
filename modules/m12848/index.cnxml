@@ -1,0 +1,2296 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Análisis de Fourier en Espacios Complejos</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>36f71b3d-923f-4b76-bd3d-a03ecf2cb557</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p1_int">Para este momento usted debería estar familiarizado con la derivación de la <link document="m10496" strength="3">series de Fourier</link> de tiempo continuo, funciones <link document="m10744" strength="3">periódicas </link>. Esta derivación nos lleva a las siguientes ecuaciones las cuales usted debería conocer: 
+	
+		<equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:domainofapplication>
+						<m:ci>n</m:ci>
+					</m:domainofapplication>
+					<m:apply>
+						<m:times/>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:domainofapplication>
+							<m:ci>n</m:ci>
+						</m:domainofapplication>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci>f</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	donde
+	<m:math>
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math>
+	nos dice la cantidad de frecuencia en	<m:math>
+		<m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+					<m:mi>ω</m:mi>
+					<m:mn>0</m:mn>
+				</m:msub></m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+	in
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+      </para>   
+
+      <para id="p2_int">En este módulo derivaremos una expansión similar para funciones periódicas y discretas en el tiempo. Al hacerlo, nosotros derivaremos las <term>series de Fourier discretas en el tiempo</term> (DTFS), también conocidas como  <link document="m12844" strength="2">trasformadas discretas de Fourier </link>(DFT). 
+	
+      </para>
+    </section>
+
+
+    <section id="sec2">
+      <title>Derivación del DTFS</title>
+      <para id="p1_sec2">Así como en la función periódica continua en el tiempo puede ser vista como una función en el intervalo 
+	<m:math>
+		<m:interval>
+			<m:cn>0</m:cn>
+			<m:ci>T</m:ci>
+		</m:interval>
+	</m:math>
+</para>
+      
+      <figure orient="horizontal" id="fanal_figs"><subfigure id="subf1">
+		<media id="idp3864448" alt=""><image src="../../media/fanal1.png" mime-type="image/png"/></media>
+		<caption>
+	    Función periódica
+	  </caption>
+	</subfigure>
+	<subfigure id="subf2">
+		<media id="idp1634368" alt=""><image src="../../media/fanal2.png" mime-type="image/png"/></media>
+		<caption>
+	    Función en el intervalo
+	    <m:math>
+				<m:interval>
+					<m:cn>0</m:cn>
+					<m:ci>T</m:ci>
+				</m:interval>
+			</m:math>
+		</caption>
+	</subfigure>
+	<caption>
+Solo consideraremos un intervalo  para la función periódica en esta sección.
+	  
+	</caption>
+</figure>
+
+      <para id="p2_sec2">Una señal periódica discreta en el tiempo (con periodo 
+	<m:math><m:ci>N</m:ci></m:math>) se puede ver  como un conjunto de números finitos. Por ejemplo, digamos que tenemos el siguiente conjunto de números que describe una señal discreta, donde 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>N</m:ci>
+			<m:cn>4</m:cn>
+		</m:apply>
+	</m:math>:
+
+	<m:math display="block">
+		<m:set>
+			<m:ci>…</m:ci>
+			<m:cn>3</m:cn>
+			<m:cn>2</m:cn>
+			<m:cn>-2</m:cn>
+			<m:cn>1</m:cn>
+			<m:cn>3</m:cn>
+			<m:ci>…</m:ci>
+		</m:set>
+	</m:math>;
+	
+Podemos representar esta señal como una señal periódica o como un intervalo simple de la siguiente forma:
+      </para>
+
+      <figure orient="horizontal" id="fanal_dis"><subfigure id="subf1_dis">
+		<media id="idp2699152" alt=""><image src="../../media/fanal3.png" mime-type="image/png"/></media>
+		<caption>
+	    Función periódica
+	  </caption>
+	</subfigure>
+	<subfigure id="subf2_dis">
+		<media id="idp401408" alt=""><image src="../../media/fanal4.png" mime-type="image/png"/></media>
+		<caption>
+	    Funcion en el intervalo
+	    <m:math>
+				<m:interval>
+					<m:cn>0</m:cn>
+					<m:ci>T</m:ci>
+				</m:interval>
+			</m:math>
+		</caption>
+	</subfigure>
+	<caption>
+Aquí nada mas observamos un periodo de la señal que tiene un vector de tamaño cuatro y esta contenida en
+	 
+	  <m:math>
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:cn>4</m:cn>
+			</m:apply>
+		</m:math>.		 
+	</caption>
+</figure>
+      
+      <para id="p3_sec2"><note type="note" id="idp6307280">El conjunto de señales de tiempo discreto con periodo
+	  <m:math><m:ci>N</m:ci></m:math> es igual a
+	   <m:math>
+			<m:apply>
+				<m:power/>
+				<m:complexes/>
+				<m:ci>N</m:ci>
+			</m:apply>
+		</m:math>.
+	</note>
+      Tal como en el caso continuo, formaremos una base usando <term>senosoidales armónicos</term>. Antes de esto, es necesario ver las senosoidales complejas discretas con mas detalle. 
+	
+      </para>
+      
+      <section id="sub1_s2">
+	<title>Senosoidales Complejos</title>
+	<para id="p1_s1s2">Si usted esta familiarizado con la  <link document="m0004" strength="3">señal senosoidal</link> básica y con los <link document="m12825" strength="3">exponenciales complejos</link> entonces usted no tendrá ningún problema para entender esta sección. En todos los libros, usted verá que la senosoidal compleja discreta se escribe así: 
+
+
+	  <m:math display="block">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+
+	<example id="eg1_cmplxsin">	  
+	  <figure id="fig1"><media id="idm7208480" alt=""><image src="../../media/csin1.png" mime-type="image/png"/></media>
+	<caption>
+	    Senosoidal compleja con frecuencia
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>ω</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	</example>
+
+
+	<example id="eg2_cmplxsin">	  
+	  <figure id="fig2"><media id="idp5184064" alt=""><image src="../../media/csin2.png" mime-type="image/png"/></media>
+	<caption>
+	      Senosoidal compleja con frecuencia
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>ω</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:pi/>
+					<m:cn>4</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	</example>
+
+	
+	<section id="ssub1">
+	  <title>En el Plano Complejo</title>
+	  <para id="p1_ssub1">Nuestra senosoidal compleja se puede graficar en nuestro <link document="m10596" strength="3">plano complejo</link>,  el cual nos permite visualizar fácilmente los cambios de la senosoidal compleja y extraer algunas propiedades. El valor absoluto de nuestra senosoidal compleja tiene las siguientes características:
+	   
+
+	    <equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:in/>
+						<m:ci>n</m:ci>
+						<m:reals/>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>ω</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	    
+	  El cual nos dice que nuestra senosoidal compleja únicamente toma valores que se encuentran en el círculo unitario. Con respecto al ángulo, la siguiente afirmación es verdadera:
+
+	    <equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci><m:mo>∠</m:mo></m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>w</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	  
+	
+	  <para id="p2_ssub1">Cuando <m:math><m:ci>n</m:ci></m:math> incrementa, podemos ver 
+	    <m:math display="inline">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> igualando los valores que obtenemos al movernos en contra de las manecillas del reloj alrededor del círculo unitario. Observe las siguiente figuras <link target-id="cir_series"/> para una mejor ilustración: 
+	  </para>
+
+
+	  <figure orient="horizontal" id="cir_series"><subfigure id="cirsubf1">
+		<media id="idm6598528" alt=""><image src="../../media/fanalcir2.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>n</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="cirsubf2">
+		<media id="idm7887904" alt=""><image src="../../media/fanalcir3.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>n</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="cirsubf3">
+		<media id="idp6082112" alt=""><image src="../../media/fanalcir4.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>n</m:ci>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<caption>
+	      Estas imágenes muestran que cuando <m:math><m:ci>n</m:ci>
+		</m:math> incrementa, el valor de
+	      <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math> 
+
+se mueve en contra de las manecillas del reloj alrededor del círculo unitario.
+	      	      
+	    </caption>
+</figure>
+
+	  <para id="p3_ssub1">
+	<note type="note" id="idm676992">Para que
+	      <m:math display="inline">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+	      sea <link document="m12933" strength="3">periódica</link>,  necesitamos que
+	      <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>N</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math> 
+	      para algún  <m:math><m:ci>N</m:ci></m:math>.
+	    </note>
+</para>
+
+	  <example id="eg3">
+	    <para id="p1_eg3">Nuestro primer ejemplo nos permite ver una señal periódica donde 
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>ω</m:ci>
+			<m:apply>
+				<m:divide/>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:pi/>
+				</m:apply>
+				<m:cn>7</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	     y 
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>N</m:ci>
+			<m:cn>7</m:cn>
+		</m:apply>
+	</m:math>.
+	    </para>
+		
+	    <figure orient="horizontal" id="fcir_examples">
+	<subfigure id="subegf1">
+		<media id="idm1403536" alt=""><image src="../../media/fcirN1.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>N</m:ci>
+					<m:cn>7</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="subegf2">
+		<media id="idm6936960" alt=""><image src="../../media/fplot1.png" mime-type="image/png"/></media>
+		<caption>
+		  Aquí tenemos una grafíca de
+		  <m:math>
+				<m:apply>
+					<m:real/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:cn>7</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>.
+		</caption>
+	</subfigure>
+</figure>	    
+	  </example>
+
+
+	  <example id="eg4">
+	    <para id="p1_eg4">
+	     Ahora observemos los resultados de graficar una señal no periódica donde 
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>ω</m:ci>
+			<m:cn>1</m:cn>
+		</m:apply>
+	</m:math>
+	      y
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>N</m:ci>
+			<m:cn>7</m:cn>
+		</m:apply>
+	</m:math>.
+	    </para>
+		
+	    <figure orient="horizontal" id="fcir_examples2"><subfigure id="subeg2f1">
+		<media id="idm6580320" alt=""><image src="../../media/fcirN2.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>N</m:ci>
+					<m:cn>7</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="subeg2f2">
+		<media id="idm1239600" alt=""><image src="../../media/fplot2.png" mime-type="image/png"/></media>
+		<caption>
+		 Aquí tenemos una gráfica de
+		  <m:math>
+				<m:apply>
+					<m:real/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>.
+		</caption>
+	</subfigure>
+</figure>
+	  </example>
+	</section>
+
+
+	<section id="ssub2">
+	  <title>Aliasing</title>
+	  <para id="p1_ssub2">Nuestra senosoidal compleja tiene la siguiente propiedad:
+
+	    <equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>ω</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:plus/>
+							<m:ci>ω</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+						</m:apply>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	   Dada a esta propiedad, si tenemos una senosoidal con frecuencia 
+	    <m:math>
+		<m:apply>
+			<m:plus/>
+			<m:ci>ω</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+			</m:apply>
+		</m:apply>
+	</m:math>, observaremos que esta señal tendrá un “aliasing” con una senosoidal de frecuencia  <m:math><m:ci>ω</m:ci></m:math>.
+
+	    <note type="note" id="idp2369232">
+	     Cada 
+	      <m:math>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	      es única para  
+	      <m:math display="inline">
+			<m:apply>
+				<m:in/>
+				<m:ci>ω</m:ci>
+				<m:apply>
+					<m:interval closure="closed-open">
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+						</m:apply>
+					</m:interval>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</note>
+</para>
+	</section>
+
+	<section id="ssub3">
+	  <title>Frecuencias “Negativas”</title>
+	  <para id="p1_ss3">
+Si nos dan una frecuencia 
+	    <m:math display="inline">
+		<m:apply>
+			<m:lt/>
+			<m:apply>
+				<m:lt/>
+				<m:pi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+			</m:apply>
+		</m:apply>
+	</m:math>, entonces esta señal será representada en nuestro plano complejo como:
+	  </para>
+
+	  <figure orient="horizontal" id="fig8"><subfigure id="sfig8_1">
+		<media id="idp1942448" alt=""><image src="../../media/fanal_neg1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="sfig8_2">
+		<media id="idp223008" alt=""><image src="../../media/fanal_neg2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+Gráfica de nuestra senosoidal compleja con una frecuencia mayor que <m:math><m:pi/></m:math>.
+	    </caption>
+</figure>
+
+	  <para id="p2_ss3">De nuestras imágenes mostradas arriba, el valor de nuestra senosoidal compleja en el plano complejo se puede interpretar como girar “hacia atrás” (en dirección de las manecillas del reloj) alrededor del círculo unitario con frecuencia 
+	    <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+			</m:apply>
+			<m:ci>ω</m:ci>
+		</m:apply>
+	</m:math>.  Girar en sentido contrario de las manecillas del reloj <m:math><m:ci>w</m:ci></m:math>  es lo mismo que girar en sentido de las manecillas del reloj 
+	     <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+			</m:apply>
+			<m:ci>ω</m:ci>
+		</m:apply>
+	</m:math>.
+	  </para>
+	  
+	  <example id="eg5"><para id="p1_eg5">Graficaremos nuestra senosoidal compleja, 
+	      <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>, donde tenemos 
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>ω</m:ci>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:cn>5</m:cn>
+						<m:pi/>
+					</m:apply>
+					<m:cn>4</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math> y 
+	      <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>n</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>.
+	    </para>
+	<figure id="fig9"><media id="idp1985296" alt=""><image src="../../media/fanal_neg3.png" mime-type="image/png"/></media>
+		<caption>
+La gráfica anterior de la frecuencia dada es idéntica	a una donde	
+
+		<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>ω</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>3</m:cn>
+								<m:pi/>
+							</m:apply>
+							<m:cn>4</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>.
+	      </caption>
+	</figure>
+	<para id="p2_eg5">Esta gráfica es la misma que una senosoidal de frecuencia “negativa
+	      <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:apply>
+				<m:divide/>
+				<m:apply>
+					<m:times/>
+					<m:cn>3</m:cn>
+					<m:pi/>
+				</m:apply>
+				<m:cn>4</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	 
+	      <note type="point" id="idp1375280"><label>Point</label>Tiene más sentido elegir un intervalo entre
+		<m:math>
+			<m:apply>
+				<m:interval closure="closed-open">
+					<m:apply>
+						<m:minus/>
+						<m:pi/>
+					</m:apply>
+					<m:pi/>
+				</m:interval>
+			</m:apply>
+		</m:math> 
+		para  <m:math><m:ci>ω</m:ci>
+		</m:math>.
+	      </note>
+</para>
+</example>
+	  
+	  <para id="p3_ssub3">Recuerde que 
+	    <m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> y
+	    <m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	    son <term>conjugados</term>.  Esto nos da la siguiente notación y propiedad:
+	    <equation id="eq6">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:conjugate/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	    Las partes reales  de ambas exponenciales de la ecuación de arriba son las mismas; la parte imaginaria son los negativos de una a la otra. Esta idea es la definición básica de un conjugado.  
+	  </para>
+	</section>
+      </section>
+
+      <para id="p4_sec2">Ya que hemos visto los conceptos de senosoidales complejas, retomaremos la idea de encontrar una base para las señales periódicas en tiempo discreto. Después de observar las senosoidales complejas, tenemos que responder la pregunta sobre cuales senosoidales en tiempo discreto necesitamos para representar secuencias periódicas con un periodo  <m:math><m:ci>N</m:ci></m:math>.
+	
+	<note type="Pregunta Equivalente" id="idp5807392"><label>Pregunta Equivalente</label>Encuentre un  conjunto de vectores 
+	  <m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:eq/>
+						<m:ci>n</m:ci>
+						<m:set>
+							<m:cn>0</m:cn>
+							<m:ci>…</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:set>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:ci type="vector">
+						<m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mi>k</m:mi>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+
+	  tal que 
+	  <m:math>
+			<m:set>
+				<m:ci type="vector">
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:set>
+		</m:math>
+	  sea una <term>base</term> para
+	  <m:math>
+			<m:ci><m:msup>
+					<m:mi>ℂ</m:mi>
+					<m:mi>n</m:mi>
+				</m:msup></m:ci>
+		</m:math>
+	</note>
+
+	Para resolver la pregunta de arriba, usaremos las senosoidales “Armónicos” con una frecuencia fundamental de 
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>
+				<m:msub>
+					<m:mi>ω</m:mi>
+					<m:mn>0</m:mn>
+				</m:msub></m:ci>
+			<m:apply>
+				<m:divide/>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:pi/>
+				</m:apply>
+				<m:ci>N</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>:
+
+	<equation id="eq7"><title>Senosoidales Armónicas</title>
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:ci>k</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</equation>
+</para>
+
+      <figure orient="horizontal" id="harsin_figs"><subfigure id="hs_subf1">
+		<media id="idp2176880" alt=""><image src="../../media/hsin1.png" mime-type="image/png"/></media>
+		<caption>
+	   Senosoidal armónico con
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>k</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="hs_subf2">
+		<media id="idp1990352" alt=""><image src="../../media/hsin2.png" mime-type="image/png"/></media>
+		<caption>
+	    Parte imaginaria del senosoidal,
+	    <m:math>
+				<m:apply>
+					<m:imaginary/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:cn>1</m:cn>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>, con
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>k</m:ci>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<subfigure id="hs_subf3">
+		<media id="idp4915168" alt=""><image src="../../media/hsin3.png" mime-type="image/png"/></media>
+		<caption>
+	    Parte imaginaria del senosoidal,
+	    <m:math>
+				<m:apply>
+					<m:imaginary/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:cn>2</m:cn>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>, con
+	    <m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci>k</m:ci>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:math>
+		</caption>
+	</subfigure>
+	<caption>
+	  Ejemplos de nuestras armónicos senosoidales.
+	</caption>
+</figure>
+      
+      <para id="p5_sec2">
+	<m:math display="inline">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:pi/>
+					</m:apply>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:ci>k</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es periódica con periodo <m:math><m:ci>N</m:ci>
+	</m:math> y tiene <m:math><m:ci>k</m:ci></m:math> “ciclos” entre 
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math> y 
+	<m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:apply>
+				<m:minus/>
+				<m:ci>N</m:ci>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	
+	<rule type="theorem" id="harmonic_sin"><statement id="idp1658704">
+			<para id="p1_state">Si dejamos
+	      <m:math display="block">
+		<m:apply>
+			<m:forall/>
+			<m:bvar>
+				<m:ci>n</m:ci>
+			</m:bvar>
+			<m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:ci>n</m:ci>
+					<m:set>
+						<m:cn>0</m:cn>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:set>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:root/>
+							<m:ci>N</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:ci>k</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	      
+donde el término exponencial es un vector en  
+	      <m:math>
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>, entonces 
+	      <m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+			<m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:ci>k</m:ci>
+					<m:set>
+						<m:cn>0</m:cn>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:set>
+				</m:apply>
+			</m:condition>
+			<m:apply>
+				<m:set>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub></m:ci>
+				</m:set>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	      es una   <term><link document="m12902" target-id="orthon_b" strength="3">base ortonormal</link></term> para 
+	      <m:math>
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>.
+
+	    </para>
+		</statement>
+		<proof id="idp372704">
+			<para id="p1_prf">Primero que todo, debemos demostrar que 
+	      <m:math>
+		<m:apply>
+			<m:set>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+			</m:set>
+		</m:apply>
+	</m:math> es ortonormal,  <foreign>por ejemplo </foreign>
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>l</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:ci><m:msub>
+					<m:mi>δ</m:mi>
+					<m:mrow>
+						<m:mi>k</m:mi>
+						<m:mi>l</m:mi>
+					</m:mrow>
+				</m:msub></m:ci>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>l</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">
+							<m:msub>
+								<m:mi>b</m:mi>
+								<m:mi>k</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:conjugate/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mi>l</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:ci>k</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>l</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<equation id="eq8">
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>l</m:mi>
+						</m:msub></m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci>l</m:ci>
+									<m:ci>k</m:ci>
+								</m:apply>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	      Si
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>l</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>, 
+	       entonces
+	      
+	      <equation id="eq9">
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>l</m:mi>
+						</m:msub></m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:cn>1</m:cn>
+			</m:apply>
+		</m:math>
+	</equation>
+		
+	      Si
+	      <m:math>
+		<m:apply>
+			<m:neq/>
+			<m:ci>l</m:ci>
+			<m:ci>k</m:ci>
+		</m:apply>
+	</m:math>, 
+	      entonces tenemos que usar la “fórmula de sumatoria parcial” mostrada abajo:
+
+	      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>n</m:ci>
+				</m:bvar>
+				<m:uplimit>
+					<m:apply>
+						<m:minus/>
+						<m:ci>N</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:uplimit>
+				<m:lowlimit>
+					<m:cn>0</m:cn>
+				</m:lowlimit>
+				<m:apply>
+					<m:power/>
+					<m:ci>α</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:ci>N</m:ci>
+					</m:lowlimit>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:minus/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:ci>α</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:minus/>
+						<m:cn>1</m:cn>
+						<m:ci>α</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:power/>
+						<m:ci>α</m:ci>
+						<m:ci>N</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:minus/>
+					<m:cn>1</m:cn>
+					<m:ci>α</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<!--  FOLLOWING NOT REALLY NEEDED
+	    
+	      Now we use the above property in <cnxn target='eq8'
+	      strength='8'/> when 
+	      <m:math>
+		<m:apply>
+		  <m:neq/>
+		  <m:ci>l</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:math>:
+-->
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>l</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:times/>
+									<m:cn>2</m:cn>
+									<m:pi/>
+								</m:apply>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:minus/>
+								<m:ci>l</m:ci>
+								<m:ci>k</m:ci>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	     en esta ecuación podemos decir que  
+	      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>α</m:ci>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+						</m:apply>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:minus/>
+						<m:ci>l</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>, así podemos ver como esta expresión se encuentra en la forma que necesitamos utilizar para nuestra fórmula de sumatoria parcial. 
+
+	      <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:ci><m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>l</m:mi>
+					</m:msub></m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>l</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>l</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:ci>N</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:cn>1</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:minus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>l</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+
+	 Así,
+	      
+	      <equation id="eq10">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>k</m:mi>
+						</m:msub></m:ci>
+					<m:ci><m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>l</m:mi>
+						</m:msub></m:ci>
+				</m:apply>
+				<m:apply>
+					<m:piecewise>
+						<m:piece>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:eq/>
+								<m:ci>k</m:ci>
+								<m:ci>l</m:ci>
+							</m:apply>
+						</m:piece>
+						<m:piece>
+							<m:cn>0</m:cn>
+							<m:apply>
+								<m:neq/>
+								<m:ci>k</m:ci>
+								<m:ci>l</m:ci>
+							</m:apply>
+						</m:piece>
+					</m:piecewise>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+			    
+	      Por lo tanto: 
+	      <m:math>
+		<m:set>
+			<m:ci><m:msub>
+					<m:mi>b</m:mi>
+					<m:mi>k</m:mi>
+				</m:msub></m:ci>
+		</m:set>
+	</m:math> es un conjunto ortonormal.  
+	      <m:math>
+		<m:set>
+			<m:ci><m:msub>
+					<m:mi>b</m:mi>
+					<m:mi>k</m:mi>
+				</m:msub></m:ci>
+		</m:set>
+	</m:math> es también un <link document="m12862" target-id="sec_bas" strength="3">base</link>,  ya que existen 
+	      <m:math><m:ci>N</m:ci></m:math> vectores que son      <link document="m12862" target-id="lin_ind" strength="3">linealmente independientes </link>   (ortogonalidad implica independencia linear).
+	    </para>
+			<para id="p2_prf">
+Finalmente, hemos demostrado que  los senosoidales armónicos 	      <m:math>
+		<m:set>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:root/>
+						<m:ci>N</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+							<m:ci>N</m:ci>
+						</m:apply>
+						<m:ci>k</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:set>
+	</m:math> forman una base ortonormal para 
+	      <m:math>
+		<m:ci><m:msup>
+				<m:mi>ℂ</m:mi>
+				<m:mi>n</m:mi>
+			</m:msup></m:ci>
+	</m:math>
+</para>
+		</proof>
+	</rule>
+</para>
+
+      <section id="dtfs">
+	<title>Series de Discretas de Fourier (DTFS)</title>
+	<para id="p1_dtfs">Utilizando los pasos anteriores en la derivación, usando nuestro entendimiento de <link document="m12876" strength="3">espacio Hilbert</link> , y finalmente usando la <link document="m12928" strength="3">expansión ortogonal</link>; el resto de la derivación es automática. Dada una señal periódica discreta (vector 
+	  
+	   <m:math>
+		<m:ci><m:msup>
+				<m:mi>ℂ</m:mi>
+				<m:mi>n</m:mi>
+			</m:msup></m:ci>
+	</m:math>)  
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>, podemos escribir:
+
+
+	  <equation id="eq11">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:root/>
+							<m:ci>N</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>k</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>k</m:mi>
+							</m:msub>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:ci>k</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq12">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:root/>
+							<m:ci>N</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">f</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:ci>k</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Nota: Casi toda la gente juntan los términos 
+	  <m:math>
+		<m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:apply>
+				<m:root/>
+				<m:ci>N</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> en la expresión para 
+	  <m:math>
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>k</m:mi>
+			</m:msub></m:ci>
+	</m:math>.  
+
+	  <note type="Series de Fourier de Tiempo Discreto" id="idp6576160"><label>Series de Fourier de Tiempo Discreto</label>
+	     Aquí se muestra la forma común de las DTFS tomando en cuenta la nota previa:
+	    
+	    <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>k</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:ci>k</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:ci><m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub></m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">f</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:apply>
+											<m:divide/>
+											<m:apply>
+												<m:times/>
+												<m:cn>2</m:cn>
+												<m:pi/>
+											</m:apply>
+											<m:ci>N</m:ci>
+										</m:apply>
+										<m:ci>k</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+
+	Esto es lo que el comando  <code>fft</code> de MATLAB hace.
+	  </note>
+</para>
+      </section>
+    </section>
+
+  </content>
+</document>

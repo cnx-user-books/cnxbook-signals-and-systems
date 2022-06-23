@@ -1,0 +1,1342 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Series de Fourier y los Sistemas LTI</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>22edf952-26ec-473a-84bc-e507ae5f9241</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title>Introduciendo las Series de Fourier a los Sistemas LTI</title>
+      <para id="p1">Antes de ver este modulo, usted debería familiarizarse con los conceptos de <link document="m12874">Eigenfunciones de los sistemas LTI</link>.  Recuerde, para 
+	
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math> sistema LTI tenemos la siguiente relación 
+      </para>
+      
+      <figure id="fig1">
+	<media id="idp900400" alt=""><image src="../../media/simpleLTIsys.png" mime-type="image/png"/></media>
+	<caption>
+Señales de entrada y salida para nuestro sitema LTI.
+	  
+	</caption>
+</figure>
+
+      <para id="p2">
+	donde
+	<m:math>
+		<m:apply>
+			<m:power/>
+			<m:exponentiale/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es una eigenfunción de 
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math>.  Su <link document="m12870">eigenvalor</link> correspondiente 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">H</m:ci>
+			<m:ci>s</m:ci>
+		</m:apply>
+	</m:math> pueden ser calculado usando la <link document="m10059">respuesta de impulso</link>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:ci>s</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:int/>
+				<m:bvar>
+					<m:ci>τ</m:ci>
+				</m:bvar>
+				<m:lowlimit>
+					<m:apply>
+						<m:minus/>
+						<m:infinity/>
+					</m:apply>
+				</m:lowlimit>
+				<m:uplimit>
+					<m:infinity/>
+				</m:uplimit>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">h</m:ci>
+						<m:ci>τ</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:power/>
+						<m:exponentiale/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:ci>s</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>  
+
+      <para id="p3">Así, usando la expansión de las <link document="m12893">series de Fourier</link>  para 
+	
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	<link document="m12933">periódica</link> donde usamos la entrada 	
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:domainofapplication>
+					<m:ci>n</m:ci>
+				</m:domainofapplication>
+				<m:apply>
+					<m:times/>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	en el sistema,
+      </para>      
+      
+      <figure id="fig2">
+	<media id="idp7027424" alt=""><image src="../../media/Transferfunc-277b.png" mime-type="image/png"/></media>
+	<caption>
+	 Sistema LTI 
+	</caption>
+</figure>
+      
+      <para id="p4">
+	nuestra salida 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> será
+
+        
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:domainofapplication>
+					<m:ci>n</m:ci>
+				</m:domainofapplication>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">H</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	Podemos ver que al aplicar las ecuaciones de expansión de series de fourier, podemos ir de 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> a 
+	<m:math>
+		<m:ci><m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math> y viceversa, y es lo mismo para la salida, <m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+</para>
+    </section>
+
+
+    <!-- ======= SECTION #2 ======================== -->
+
+
+    <section id="sec2">
+      <title>Efectos de las Series de Fourier</title>
+      <para id="p5">Podemos pensar de un sistema LTI como el ir <emphasis>moldeando</emphasis> el contenido de la frecuencia de la entrada. Mantenga en mente el sistema básico LTI que presentamos en <link target-id="fig2"/>.  
+	 El sistema LTI, <m:math><m:ci>ℋ</m:ci>
+	</m:math>, multiplica todos los coeficientes de Fourier y los escala.   
+      </para>
+
+      <!-- need some figures -->
+
+      <para id="p6">
+Dado los coeficientes de Fourier de la entrada 
+	<m:math>
+		<m:set>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:set>
+	</m:math> y los eigen valores del sistema 	<m:math>
+		<m:set>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>
+						<m:msub>
+							<m:mi>w</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:set>
+	</m:math>, las series de Fourier de la salida, es <m:math>
+		<m:set>
+			<m:apply>
+				<m:times/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>
+							<m:msub>
+								<m:mi>w</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:set>
+	</m:math> (una simple multiplicación de termino por termino). 
+	<note type="note" id="idp9819184"> los eigenvalores,
+	  <m:math>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>
+						<m:msub>
+							<m:mi>w</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>  describen completamente lo que un sistema LTI le hace a una señal periódica con periodo 
+	  <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>T</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:cn>2</m:cn>
+					<m:pi/>
+					<m:ci>
+						<m:msub>
+							<m:mi>w</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</note>
+</para>
+
+      <example id="eg_p1">
+	<para id="p1_egp1">
+	  ¿Qué hace este sistema?
+	</para>
+	<figure id="eg_fig1">
+	  <media id="idp685936" alt=""><image src="../../media/fslti_f1.png" mime-type="image/png"/></media>
+	</figure>  
+      </example>
+      
+      <example id="eg_p2">
+	<para id="p1_egp2">
+	Y, ¿esté sistema?	</para>	
+	<figure orient="horizontal" id="horfig">
+	  <subfigure id="subf1">
+	    <media id="idp812768" alt=""><image src="../../media/fslti_f2.png" mime-type="image/png"/></media>
+	  </subfigure>
+	  <subfigure id="subf2">
+	    <media id="idp8677680" alt=""><image src="../../media/fslti_f3.png" mime-type="image/png"/></media>
+	  </subfigure>
+	</figure>
+      </example>      
+    </section>
+
+
+    <section id="sec3">
+      <title>Examples</title>
+      <example id="expl1">
+	<title>El circuito RC </title>
+
+	<!-- need figure circuit -->      <!-- need figure graph -->
+	<!--
+      <figure orient="horizontal" id="RCcircuit">
+      <subfigure id="cir_1">
+      <media type="image/png" src="cir_1.jpg"/>
+      </subfigure>
+      <subfigure id="cir_2">
+      <media type="image/png" src="cir_2.jpg"/>
+      </subfigure>
+      </figure>
+	-->
+
+	<para id="long">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">h</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+
+	<para id="explpara">
+¿Qué es lo que este sistema hace a las series de fourier de la 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>?
+	</para>
+
+	<para id="calc">
+	 Calcula los eigenvalores de este sistema
+	  <equation id="eq_eg3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:ci>s</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:times/>
+								<m:ci>R</m:ci>
+								<m:ci>C</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:divide/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>τ</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:times/>
+									<m:ci>R</m:ci>
+									<m:ci>C</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>R</m:ci>
+							<m:ci>C</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>τ</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>τ</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:plus/>
+									<m:apply>
+										<m:divide/>
+										<m:cn>1</m:cn>
+										<m:apply>
+											<m:times/>
+											<m:ci>R</m:ci>
+											<m:ci>C</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:ci>s</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>R</m:ci>
+							<m:ci>C</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:plus/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:apply>
+									<m:times/>
+									<m:ci>R</m:ci>
+									<m:ci>C</m:ci>
+								</m:apply>
+							</m:apply>
+							<m:ci>s</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+						<m:bvar>
+							<m:ci>τ</m:ci>
+						</m:bvar>
+						<m:interval>
+							<m:cn>0</m:cn>
+							<m:infinity/>
+						</m:interval>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>τ</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:plus/>
+									<m:apply>
+										<m:divide/>
+										<m:cn>1</m:cn>
+										<m:apply>
+											<m:times/>
+											<m:ci>R</m:ci>
+											<m:ci>C</m:ci>
+										</m:apply>
+									</m:apply>
+									<m:ci>s</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:plus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>R</m:ci>
+							<m:ci>C</m:ci>
+							<m:ci>s</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+	<para id="explpara3">Ahora, decimos que a este circuito RC lo alimentamos con una entrada  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>  periódica (con periodo 
+	  
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>T</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:ci>
+					<m:msub>
+						<m:mi>w</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>).</para>
+	<para id="explpara4">
+Vea los eigen valores para 
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>s</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>
+					<m:msub>
+						<m:mi>w</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:abs/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>
+							<m:msub>
+								<m:mi>w</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:apply>
+					<m:abs/>
+					<m:apply>
+						<m:plus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:ci>R</m:ci>
+							<m:ci>C</m:ci>
+							<m:imaginaryi/>
+							<m:ci>
+								<m:msub>
+									<m:mi>w</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:apply>
+					<m:root/>
+					<m:apply>
+						<m:plus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:power/>
+								<m:ci>R</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>C</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>
+									<m:msub>
+										<m:mi>w</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:apply>
+								<m:power/>
+								<m:ci>n</m:ci>
+								<m:cn>2</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+	<!-- need figure -->
+	<!--
+      <figure id="RCfig3">
+      <media type="image/png" src="cir_3.jpg"/>
+      </figure>
+	-->
+
+	<para id="explpara5">
+	  El circuito RC es un sistema <emphasis>pasa bajas</emphasis>: pasa frecuencias bajas
+	  <m:math>
+		<m:ci>n</m:ci>
+	</m:math> alrededor de
+	  <m:math>
+		<m:cn>0</m:cn>
+	</m:math>) atenúa frecuencias altas (
+	  <m:math>
+		<m:ci>n</m:ci>
+	</m:math> grandes).
+	</para>
+      </example>
+      
+      <example id="expl2">
+	<title>Pulsó cuadrado a través del Circuito RC</title>
+	<!-- need figure for example -->
+	<!--
+      <figure id="ex2fig1">
+      <media type="image/png" src="ex2fig1.png"/>
+      </figure>
+	-->
+	<list id="RC_list" list-type="bulleted">
+	<item>
+	Señal de entrada : tomando las series de Fourier 
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:sin/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:divide/>
+									<m:pi/>
+									<m:cn>2</m:cn>
+								</m:apply>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:pi/>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+		<m:math>
+			<m:apply>
+				<m:divide/>
+				<m:cn>1</m:cn>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> en
+	    <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>n</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	   Sistema : Eigenvalores 
+	    <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">H</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>
+							<m:msub>
+								<m:mi>w</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:plus/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>R</m:ci>
+							<m:ci>C</m:ci>
+							<m:ci>
+								<m:msub>
+									<m:mi>w</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	  Señal de salida: tomando las series de Fourier de
+	    <m:math>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>d</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:ci type="fn">H</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>
+								<m:msub>
+									<m:mi>w</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:plus/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>R</m:ci>
+								<m:ci>C</m:ci>
+								<m:ci>
+									<m:msub>
+										<m:mi>w</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:sin/>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:divide/>
+									<m:pi/>
+									<m:cn>2</m:cn>
+								</m:apply>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:pi/>
+								<m:cn>2</m:cn>
+							</m:apply>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+	<para id="ex2thus">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>d</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>w</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:pi/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:pi/>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>		
+		      <m:ci>
+			<m:msub>
+			  <m:mi>w</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>	
+	</para>
+
+	<para id="ques1">
+	  ¿Qué podemos decir sobre 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> de
+	  <m:math>
+		<m:set>
+			<m:ci>
+				<m:msub>
+					<m:mi>d</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:set>
+	</m:math>?
+	  <list id="qlist" list-type="enumerated">
+	<item> ¿Es
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> real?
+	    </item>
+	<item>¿ Es
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> simétrico par?  ¿simétrico impar?</item>
+	<item>
+	   ¿Comó se 
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> ¿es mas “suave” que 
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>? (el radio de descomposición de 	      <m:math>
+			<m:ci>
+				<m:msub>
+					<m:mi>d</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:math> vs. 
+	      <m:math>
+			<m:ci>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:math>)
+	    </item>
+</list>
+</para>
+	<para id="finalpara">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>d</m:mi>
+		  <m:mi>n</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>w</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:pi/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:pi/>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>R</m:ci>
+			    <m:ci>C</m:ci>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>w</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+			<m:apply>
+			  <m:power/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:pi/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:pi/>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	</para>
+      </example>
+    </section>
+  </content>
+  
+</document>

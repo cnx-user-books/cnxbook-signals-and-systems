@@ -1,0 +1,451 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Clasificación y Propiedades de los Sistemas</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>328a1562-dabc-4e7f-acb6-1ee6b1119868</md:uuid>
+</metadata>
+  
+
+  <content>
+    
+    <section id="intro">
+      <title>Introducción</title>
+      <para id="p1_intro">En este módulo algunas de las clasificaciones básicas de sistemas serán temporalmente introducidas mientras que las propiedades más importantes de sistemas serán explicadas. Como puede ser visto, las propiedades de los sistemas proveen una manera sencilla de  separar un sistema de otro. Entender la  diferencia básica entre sistemas, y sus propiedades, será un concepto fundamental utilizado en  todos los cursos de  señales y sistemas, así como de procesamiento digital de señales (Digital Signal Processing) DSP. Una vez que el conjunto de señales puede ser identificado por compartir propiedades particulares, uno ya no tiene que proveer ciertas características del sistema cada vez, pero pueden ser aceptadas debido a la clasificación de los sistemas. También cabe recordar que las clasificaciones presentadas aquí pueden no ser  exclusivas (los sistemas pueden pertenecer a diferentes clasificaciones) ni únicas (hay	<link document="m0005" strength="2"> otros métodos de clasificación
+        </link>). Algunos ejemplos de sistemas simples se podrán encontrar <link document="m0006" strength="2">aqui</link>.
+     </para>
+    </section>
+    
+    <section id="overview">
+      <title>Classificación de los Sistemas</title>
+      <para id="p_over">
+	    A través de la siguiente clasificación, también es importante entender otras <link document="m10057" strength="2">Clasificaciones de Señales</link>.
+      </para>
+
+      <section id="dis_cont">
+	<title>Continúo vs. Discreto</title>
+	<para id="p1_disc">
+Esta tal vez sea la clasificación más sencilla de entender como la idea de tiempo-discreto y tiempo –continuo que es una de las propiedades más fundamentales de todas las señales y sistemas. Un sistema en donde las señales  de  entrada y de  salida son continuas  es un 
+	  <term>sistema continuo</term>, y uno en donde las señales de entrada y de salida son discretas es un  <term>sistema discreto </term>.
+	</para>
+      </section>
+
+
+      <section id="sect1">
+	<title>Lineal vs. No-lineal</title>
+	<para id="para1">
+	  Un sistema  <term>lineal</term>  es un sistema que obedece las propiedades de escalado (homogeneidad) y de superposición (aditiva), mientras que un sistema  <term>no-lineal</term>  es cualquier sistema que no obedece al menos una de estas propiedades.
+	</para>
+
+	<para id="para2">Para demostrar que un sistema <m:math display="inline"><m:ci>H</m:ci></m:math> obedece la propiedad  de escalado   se debe mostrar que: 
+
+	  <equation id="eqn1">
+		<m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function">H</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci>k</m:ci>
+						<m:apply>
+							<m:ci type="function">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>k</m:ci>
+					<m:apply>
+						<m:ci type="function">H</m:ci>
+						<m:apply>
+							<m:ci type="function">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	<figure id="fig1">
+	<media id="idp14135744" alt=""><image src="../../media/sysclass1.png" mime-type="image/png"/></media>
+	<caption>Un diagrama de bloque demostrando la propiedad de escalado de linealidad</caption>
+</figure>
+	<para id="para3">Para demostrar que un sistema <m:math display="inline"><m:ci>H</m:ci></m:math> 
+	  obedece la propiedad de superposición de linealidad se debe  mostrar que: 	  <equation id="eqn2">
+		<m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function">H</m:ci>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:ci type="function">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="function">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:ci type="function">H</m:ci>
+						<m:apply>
+							<m:ci type="function">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="function">H</m:ci>
+						<m:apply>
+							<m:ci type="function">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+	<figure id="fig2">
+	<media id="idp10501328" alt=""><image src="../../media/sysclass2.png" mime-type="image/png"/></media>
+	<caption>Un diagrama de bloque demostrando la propiedad de superposición de linealidad</caption>
+</figure>
+	<para id="para4">
+Es posible verificar la linealidad de un  sistema en un paso sencillo. Para hace esto, simplemente combinamos los dos primero pasos para obtener
+	  <equation id="eqn3">
+		<m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function">H</m:ci>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>k</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>f</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci>
+									<m:msub>
+										<m:mi>k</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub>
+								</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:ci type="function">
+									<m:msub>
+										<m:mi>f</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci>
+								<m:msub>
+									<m:mi>k</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="function">H</m:ci>
+							<m:apply>
+								<m:ci type="function">
+									<m:msub>
+										<m:mi>f</m:mi>
+										<m:mn>1</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci>
+								<m:msub>
+									<m:mi>k</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="function">H</m:ci>
+							<m:apply>
+								<m:ci type="function">
+									<m:msub>
+										<m:mi>f</m:mi>
+										<m:mn>2</m:mn>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+      </section>
+
+      <section id="sect2">
+	<title>Invariante en el  Tiempo vs. Variante en el Tiempo </title>
+	<para id="para5">Un sistema <term>invariante en el tiempo</term> es aquel que no depende de cuando ocurre: la forma de la salida no cambia con el retraso de la entrada. Es decir  que para un sistema 
+	  <m:math display="inline"><m:ci>H</m:ci></m:math> donde
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="function">H</m:ci>
+				<m:apply>
+					<m:ci type="function">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:ci type="function">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	  <m:math display="inline">
+		<m:ci>H</m:ci>
+	</m:math> es invariante en el tiempo si para toda
+	  <m:math display="inline"><m:ci>T</m:ci></m:math>
+	<equation id="eqn4">
+		<m:math display="display">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="function">H</m:ci>
+					<m:apply>
+						<m:ci type="function">f</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="function">y</m:ci>
+					<m:apply>
+						<m:minus/>
+						<m:ci>t</m:ci>
+						<m:ci>T</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+	<figure id="fig3">
+	<media id="idp13247040" alt=""><image src="../../media/sysclass3.png" mime-type="image/png"/></media>
+	<caption>
+	    Este diagrama de bloque muestra la condición de la invariante en el tiempo. La Salida es la misma si el retraso es colocado en la entrada o en la salida.	  </caption>
+</figure>
+	
+	<para id="p2_sect2">Cuando esta propiedad no aplica para un sistema, entonces decimos que el sistema es <term>variante en el tiempo</term> o que varía en el tiempo.
+	</para>
+
+      </section>
+
+      <section id="sect3">
+	<title>Causal vs. No-Causal </title>
+	<para id="para6">
+	  Un sistema  <term>causal</term> es aquel que es
+	  <term>no-anticipativo</term>; esto es, que las salidas  dependen   de entradas presentes y pasadas, pero no de entradas futuras. Todos los sistemas en “tiempo real” deben ser causales, ya que no pueden tener salidas futuras disponibles para ellos.</para>
+	<para id="p_futin">Uno puede pensar que la idea de salidas futuras no tiene mucho sentido físico; sin embargo, hasta ahora  nos hemos estado ocupando solamente del tiempo como nuestra variable dependiente, el cual no siempre es el caso. Imaginémonos que quisiéramos hacer procesamiento de señales; Entonces la variable dependiente representada por los píxeles de la derecha y de la izquierda (el “futuro”)  de la posición  actual de la imagen. Entonces tendríamos un sistema	  <term>no-causal</term>.
+</para>
+	<figure id="fig4" orient="vertical">
+	<subfigure id="fig4a">
+		<media id="idp13542560" alt=""><image src="../../media/sysclass4.png" mime-type="image/png"/></media>
+		<caption>Para que un sistema típico sea causal...</caption>
+	</subfigure>
+	<subfigure id="fig4b">
+		<media id="idp7461376" alt=""><image src="../../media/sysclass52.png" mime-type="image/png"/></media>
+		<caption>...la salida en tiempo 
+	      <m:math display="inline">
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>t</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:math>,
+	      <m:math display="inline">
+				<m:apply>
+					<m:ci>y</m:ci>
+					<m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>t</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>,
+	      puede solamente depender de la porción de la señal de entrada antes 	      <m:math display="inline">
+				<m:apply>
+					<m:ci>
+						<m:msub>
+							<m:mi>t</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:math>.
+	    </caption>
+	</subfigure>
+</figure>
+      </section>
+
+      <section id="sect4">
+	<title>Estable vs. Inestable</title>
+	<para id="p1_sec4">
+	  Un sistema  <term>estable</term> es uno donde las salidas no divergen así como las entradas tampoco divergen. Hay muchas maneras de decir que una señal “diverge”; por ejemplo puede tener energía infinita. Una definición particularmente útil de divergencia es relacionar si la señal esta acotada o no. Entonces se refiere al sistema como <term>entrada acotada-salida acotada (BIBO)</term> (Bounded input-bounded output)  establece que <emphasis>toda posible</emphasis> entrada acotada produce una salida acotada.</para>
+	<para id="p2_sec4">Representado esto de una manera matemática, un sistema estable debe tener las siguientes propiedades,donde	  <m:math><m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply>
+	</m:math> es la entrada y <m:math><m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply>
+	</m:math> es la salida; la cual debe satisfacer la condición 
+	  <equation id="eq1_s">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:leq/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>M</m:mi>
+								<m:mi>y</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	  cuando tenemos una entrada del sistema esta puede ser descrita como
+	  <equation id="eq2_s">
+		<m:math>
+			<m:apply>
+				<m:lt/>
+				<m:apply>
+					<m:leq/>
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">x</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>M</m:mi>
+								<m:mi>x</m:mi>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:infinity/>
+			</m:apply>
+		</m:math>
+	</equation>
+	<m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>M</m:mi>
+				<m:mi>x</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math>
+	  y
+	  <m:math>
+		<m:ci>
+			<m:msub>
+				<m:mi>M</m:mi>
+				<m:mi>y</m:mi>
+			</m:msub>
+		</m:ci>
+	</m:math>
+	  ambas representan un conjunto de números enteros positivos y esta relación se mantiene para toda <m:math><m:ci>t</m:ci>
+	</m:math>.
+	</para>
+	<para id="unstab">
+	  Si estas condiciones no son satisfechas, es decir, las salidas del sistema con entrada acotada crecen sin limite (divergen), entonces el sistema es 	   <term>inestable</term>.  Notemos que la estabilidad BIBO de un sistema lineal invariante en el  tiempo (LTI) es descrito cuidadosamente en términos de si es o no  <link document="m10113" strength="2">completamente integrable</link> la respuesta al impulso.
+
+	</para>
+      </section>
+
+    </section>
+  </content>
+</document>

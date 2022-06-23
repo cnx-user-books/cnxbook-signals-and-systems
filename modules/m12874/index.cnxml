@@ -1,0 +1,821 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Eigenfunciones de los Sistemas LTI</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>333e3a58-97cb-437c-b48d-48cb45661ccc</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title>Introducción</title>
+
+      <para id="p1">
+	Ahora que ya esta familiarizado con la noción de eigenvector de una “matriz de sistema”, si no lo esta de un pequeño repaso a las<link document="m12872" strength="3">generalidades de eigenvectores y eigenvalores </link>.  También podemos convertir las mismas ideas para sistemas LTI actuando en señales.  Un
+	<link document="m0005" strength="2">sistema lineal invariante en el tiempo (LTI) </link>
+
+	<!-- LTI link needs updating to better module -->
+	
+	<m:math>
+	  <m:ci>ℋ</m:ci>
+	</m:math>
+	operando en una salida continua 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">f</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	para producir una salida continua en el tiempo 	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">ℋ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+      </para>
+
+      
+      <figure id="f1">
+	<media id="idp7201936" alt=""><image src="../../media/transfn.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">ℋ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  <m:math>
+	    <m:ci>f</m:ci>
+	  </m:math>
+	  y
+	  <m:math>
+	    <m:ci>t</m:ci>
+	  </m:math>
+	  son señales de tiempo continuo(CT) y 
+	  <m:math>
+	    <m:ci>ℋ</m:ci>
+	  </m:math>
+	  es un operador LTI.
+	</caption>
+      </figure>
+
+      <para id="p1.2">
+	La matemática es análoga a una matriz 	
+	<m:math>
+	  <m:ci type="matrix">A</m:ci>
+	</m:math> de
+<m:math><m:ci>N</m:ci></m:math>x<m:math><m:ci>N</m:ci></m:math>
+	operando en un vector
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:ci>
+	      <m:msup> 
+		<m:ci>ℂ</m:ci>
+		<m:mi>N</m:mi>
+	      </m:msup>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+	para producir otro vector
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">b</m:ci>
+	    <m:ci>
+	      <m:msup> 
+		<m:ci>ℂ</m:ci> 
+		<m:mi>N</m:mi>
+	      </m:msup>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+	(véase matrices y sistemas LTI para una descripción).	
+<!--<cnxn module="m????" strength="5">-->
+<!--</cnxn>  link doesn't exist yet -->
+	
+	
+	<equation id="e2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="vector">A</m:ci>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">b</m:ci>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <figure id="f2">
+	<media id="idp5394784" alt=""><image src="../../media/transfn2.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="vector">A</m:ci>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">b</m:ci>
+	    </m:apply>
+	  </m:math>
+	  donde
+	  <m:math>
+	    <m:ci type="vector">x</m:ci>
+	  </m:math>
+	  y
+	  <m:math>
+	    <m:ci type="vector">b</m:ci>
+	  </m:math>
+	  estan en 
+	  <m:math>
+	    <m:ci>
+	      <m:msup> 
+		<m:ci>ℂ</m:ci> 
+		<m:mi>N</m:mi>
+	      </m:msup>
+	    </m:ci>
+	  </m:math>
+	  y
+	  <m:math>
+	    <m:ci type="vector">A</m:ci>
+	  </m:math>
+	  es una matriz de
+	  <m:math>
+	    <m:ci>N</m:ci>
+	  </m:math>
+	  x
+	  <m:math>
+	    <m:ci>N</m:ci>
+	  </m:math>
+	  .
+	</caption>
+      </figure>
+      
+      <para id="p1.3">
+	Solo como un <link document="m12870" strength="2">eigenvector</link>
+	de
+	<m:math>
+		<m:ci type="vector">A</m:ci>
+	</m:math>
+	es 
+	<m:math>
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">v</m:ci>
+			<m:ci>
+				<m:msup>
+					<m:ci>ℂ</m:ci>
+					<m:mi>N</m:mi>
+				</m:msup>
+			</m:ci>
+		</m:apply>
+	</m:math>
+	tal que 
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:times/>
+				<m:ci type="vector">A</m:ci>
+				<m:ci type="vector">v</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:times/>
+				<m:ci type="vector">λ</m:ci>
+				<m:ci type="vector">v</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	<m:math>
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">λ</m:ci>
+			<m:complexes/>
+		</m:apply>
+	</m:math>,
+
+
+      <figure id="f3">
+		<media id="idp7995952" alt=""><image src="../../media/transfn3.png" mime-type="image/png"/></media>
+		<caption>
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:times/>
+						<m:ci type="vector">A</m:ci>
+						<m:ci type="vector">v</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci type="vector">λ</m:ci>
+						<m:ci type="vector">v</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>
+	  donde
+	  <m:math>
+				<m:apply>
+					<m:in/>
+					<m:ci type="vector">v</m:ci>
+					<m:ci>
+						<m:msup>
+							<m:ci>ℂ</m:ci>
+							<m:mi>N</m:mi>
+						</m:msup>
+					</m:ci>
+				</m:apply>
+			</m:math>
+	  es un eigenvector de
+	  <m:math>
+				<m:ci type="vector">A</m:ci>
+			</m:math>.
+	</caption>
+	</figure>
+
+	podemos definir una <term>eigenfunción</term> (o
+	<term>eigenseñal</term>) de un sistema LTI  
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math>
+	para ser una señal
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	tal que
+
+	<equation id="e3">
+		<m:math>
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>λ</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:in/>
+						<m:ci>λ</m:ci>
+						<m:complexes/>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn" class="discrete">ℋ</m:ci>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>λ</m:ci>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+
+      <figure id="f4">
+	<media id="idm695984" alt=""><image src="../../media/transfn4.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">ℋ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>λ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  donde
+	  <m:math>
+	    <m:ci>f</m:ci>
+	  </m:math>
+	  es una eigenfunción de 
+	  <m:math>
+	    <m:ci>ℋ</m:ci>
+	  </m:math>.
+	</caption>
+      </figure>
+
+      <para id="p5">
+	Las Eiegenfunciones son las señales mas <emphasis>simples</emphasis> possibles 
+	para
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math>
+	π para operar en ellas: para calcular la salida, simplemente multiplicamos la entrada por un número complejo 
+	<m:math>
+		<m:ci>λ</m:ci>
+	</m:math>.
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Eigenfunciones para cualquier sistema LTI</title>
+      <para id="p2">
+	La clase de sistemas LTI tiene un conjunto de eigenfunciones en común:
+	el
+	<link document="m12825" strength="2"> exponencial complejo</link>
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>,
+	<m:math>
+		<m:apply>
+			<m:in/>
+			<m:ci>s</m:ci>
+			<m:complexes/>
+		</m:apply>
+	</m:math>
+	son eigenfunciones para <emphasis>todo</emphasis> sistema LTI.
+
+	<equation id="e4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>λ</m:mi>
+							<m:mi>s</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+
+
+      <figure id="f5">
+	<media id="idm1155520" alt=""><image src="../../media/transfn5.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn" class="discrete">ℋ</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>λ</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  donde
+	  <m:math>
+	    <m:ci>ℋ</m:ci>
+	  </m:math> es un sistema LTI.
+	</caption>
+      </figure>
+
+      <para id="p2.2">
+	<note id="idm230928">
+	  Mientras que 
+	  <m:math>
+	    <m:set>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci>s</m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:in/>
+		    <m:ci>s</m:ci>
+		    <m:complexes/>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:set>
+	  </m:math>
+	  siempre son eigenfunciones para todo sistema LTI, estas no son necesariamente las <emphasis>únicas</emphasis> eigenfunciones.
+	</note>
+      </para>
+
+      <para id="p3">
+	Podemos probar la 
+	<link target-id="e4" strength="3"/>
+	expresando la salida como una 
+	<link document="m12828" strength="2">convolución</link>
+	<!-- should link to module on Convolution for LTI systems -->
+	
+	de la entrada 
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> 
+	y de la 
+	<link document="m12824" strength="2">respuesta al impulso</link>
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	de
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math>:
+
+	<equation id="e6">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:ci>s</m:ci>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:int/>
+					<m:bvar>
+						<m:ci>τ</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn">h</m:ci>
+							<m:ci>τ</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:ci>s</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>τ</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>τ</m:ci>
+						</m:bvar>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">h</m:ci>
+								<m:ci>τ</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:ci>s</m:ci>
+										<m:ci>τ</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	Ya que la expresión de la derecha no depende de 
+	<m:math>
+		<m:ci>t</m:ci>
+	</m:math>,
+	es una constante
+	<m:math>
+		<m:apply>
+			<m:ci>
+				<m:msub>
+					<m:mi>λ</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>; Por lo tanto
+	<equation id="e7">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>λ</m:mi>
+							<m:mi>s</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	El eigenvalor
+	<m:math>
+		<m:apply>
+			<m:ci>
+				<m:msub>
+					<m:mi>λ</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>
+	es un número complejo que depende del exponente 
+	<m:math>
+		<m:ci>s</m:ci>
+	</m:math>
+	y por supuesto, el sistema 
+	<m:math>
+		<m:ci>ℋ</m:ci>
+	</m:math>.
+	Para hacer esta dependencia explicita, vamos a usar la notación 
+	<m:math>
+		<m:apply>
+			<m:equivalent/>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:ci>s</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>λ</m:mi>
+						<m:mi>s</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+      </para>
+      
+      <figure id="f6">
+	<media id="idm291440" alt=""><image src="../../media/transfn6.png" mime-type="image/png"/></media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  es la eigenfunción y  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	  </m:math>
+	  son eigenvalores.
+	</caption>
+      </figure>
+
+
+      <para id="p4">
+	Ya que la acción del operador LTI en esta eigenfunción  
+	<m:math>
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	es fácil de calcular y de interpretar, es conveniente representar una señal arbitraria
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	como una combinación lineal de exponentes complejos.  Las     
+	<link document="m12893" strength="2">Series de Fourier</link> 
+	nos dan la representación para una señal periódica continua en el tiempo, mientras que (poco más complicada)
+	<link document="m0046" strength="2"> transformada de Fourier</link> 
+	nos deja expandir señales arbitrarias de tiempo continuo.
+      </para>
+
+    </section>
+
+  </content>  
+</document>

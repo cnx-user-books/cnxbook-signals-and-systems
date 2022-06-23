@@ -1,0 +1,95 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+    <title>DFT: Transformada Rápida de Fourier</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>513d8825-63ce-4070-a1a2-266e35d81989</md:uuid>
+</metadata>
+  <content>
+
+
+    <para id="p1"> Ahora podemos calcular el espectro de una señal arbitraria: La Transformada de Fourier Discreta <link document="m0502" target-id="eqn1" strength="2">(DFT)</link>
+      calcula el espectro en <m:math mode="inline"><m:ci>N</m:ci></m:math> frecuencias igualmente espaciadas de una longitud- <m:math mode="inline"><m:ci>N</m:ci></m:math>
+      secuencias. Una edición que nunca se presenta en el "cálculo" análogo,como la realizada por un cirduito, es cuanto trabajo toma realizar la operación de procesamiento de señal como la filtración. En computación, esta consideración traslada del número de pasos básicos de computación requeridos para realizar el proceso. El número de pasos, conocidos como,la 
+      <term>complejidad</term>, se vuelve equivalente a cuanto tiempo toma el cálculo (que tanto tiempo tenemos que esperar para una respuesta). La complejidad no esta atada a computadoras especificas o lenguajes de programación, pero a cuantos pasos son requeridos en cualquier cálculo. Así, un procedimiento con complejidad indicada dice que el tiempo tomado será
+       <term>proporcional </term> a alguna cantidad de datos utilizados en el cálculo y en la cantidad demandada.  </para>
+
+    <para id="p2">
+      Por ejemplo, considerar la formula para la transformada discreta de Fourier.  Para cada frecuencia que elijamos, debemos multiplicar cada valor de la señal por un número complejo y sumar los resultados. Para una señal valorada-real, cada multiplicación real-por-complejo requiere dos multiplicaciones reales, significa que tenemos 
+      <m:math mode="inline">
+		<m:apply><m:times/><m:cn>2</m:cn><m:ci>N</m:ci></m:apply>
+	</m:math> multiplicaciones para realizarse. Para sumar los resultados juntos, debemos mantener la parte real y la imaginaria separadas. Sumando <m:math mode="inline">
+		<m:ci>N</m:ci></m:math>
+      números requiere <m:math mode="inline">
+		<m:apply><m:minus/><m:ci>N</m:ci><m:cn>1</m:cn></m:apply>
+	</m:math>
+      sumas. Constantemente, cada frecuencia requiere
+
+      <m:math mode="inline">
+		<m:apply><m:eq/>
+			<m:apply><m:plus/>
+				<m:apply><m:times/><m:cn>2</m:cn><m:ci>N</m:ci></m:apply>
+				<m:apply><m:times/>
+					<m:cn>2</m:cn>
+					<m:apply><m:minus/><m:ci>N</m:ci><m:cn>1</m:cn></m:apply>
+				</m:apply>
+			</m:apply>
+			<m:apply><m:minus/>
+				<m:apply><m:times/><m:cn>4</m:cn><m:ci>N</m:ci></m:apply>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      pasos básicos de realizar. Como tenemos <m:math mode="inline"><m:ci>N</m:ci></m:math> frecuencias, el número total de operaciones es  <m:math mode="inline">
+		<m:apply><m:times/>
+			<m:ci>N</m:ci>
+			<m:apply><m:minus/>
+				<m:apply><m:times/><m:cn>4</m:cn><m:ci>N</m:ci></m:apply>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>.  
+    </para> 
+
+    <para id="p3">
+      En cálculos de la complejidad, solo tenemos que preocuparnos de que sucede cuando la longitud incrementa, y tomar el término dominante
+      —aquí el término 
+      <m:math mode="inline">
+		<m:apply><m:times/>
+			<m:cn>4</m:cn>
+			<m:apply><m:power/><m:ci>N</m:ci><m:cn>2</m:cn></m:apply>
+		</m:apply>
+	</m:math> —como reflejo de cuanto trabajo esta involucrado haciendo la computación. Como una constante multiplicativa no importa ya que estamos haciendo una "proporcional" a la evaluación,encontramos que la DFT es un  <m:math mode="inline">
+		<m:apply><m:ci>O</m:ci><m:apply><m:power/><m:ci>N</m:ci><m:cn>2</m:cn></m:apply></m:apply></m:math>
+      procedimiento computacional. Esta notación es leída "orden <m:math mode="inline">
+		<m:ci>N</m:ci></m:math>-cuadrado".  Donde, si tenemos doble longitud, esperamos que el tiempo de la realización sea aproximadamente el cuadruple.
+    </para>
+
+    <exercise id="ex1">
+      <problem id="idm12583648"> <para id="p4"> Haciendo la evaluación de la complejidad para la DFT, asumimos que los datos son reales. Surgen tres preguntas. Primero que nada, el espectro de las señales tiene simetría conjugada, lo que significa que los componentes de las frecuencias negativas 
+	(<m:math mode="inline"> <m:apply><m:eq/> <m:ci>k</m:ci>
+	      <m:list>
+		<m:apply><m:plus/>
+		  <m:apply><m:divide/><m:ci>N</m:ci><m:cn>2</m:cn></m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:ci><m:mo>...</m:mo></m:ci>
+		<m:apply><m:plus/><m:ci>N</m:ci><m:cn>1</m:cn></m:apply>
+	      </m:list>
+	    </m:apply>
+	  </m:math> en la <link document="m0502" target-id="eqn1" strength="2">DFT</link>) pueden ser calculadas de los componentes de la frecuencia positiva correspondiente.  ¿Esta simetría cambia la complejidad de la Trasformada Directa de Fourier DFT?</para>
+	<para id="p5">
+	  En segundo lugar,supongamos que los datos son de valores complejos; ¿Cúal es la complejidad de la 
+	  DFT ahora?
+	</para>
+	<para id="p6"> Finalmete, pregunta menos importante pero interesante, supongamos que queremos <m:math mode="inline"><m:ci>K</m:ci></m:math> valores de fecuencias en lugar de  <m:math mode="inline"><m:ci>N</m:ci></m:math>;
+	  ¿Ahora cúal es la complejidad?
+	</para>
+      </problem>
+      <solution id="idm7268896">
+	<para id="p7"> Cuando la señal es de valor real, solo necesitamos la mitad del valor del espectro, pero la complejidad permanece sin cambios. Si los datos son de valores complejos,lo cual requiere de la retención de todos los datos, la complejidad es nuevamente la misma. Cuando se requieren solamente  <m:math mode="inline"><m:ci>K</m:ci></m:math> frecuencias, la complejidad es  <m:math mode="inline"><m:apply><m:ci>O</m:ci><m:mi>KN</m:mi></m:apply>
+	</m:math>.</para>
+      </solution>
+    </exercise>
+
+
+  </content>
+</document>

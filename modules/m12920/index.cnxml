@@ -1,0 +1,1006 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Bases Ortonormales en Espacios Reales y Complejos</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e2db8160-e1eb-436c-a743-d337a89c83a8</md:uuid>
+</metadata>
+
+  <content>
+    <section id="notat">
+      <title>Notación</title>
+      <para id="p1">El operador de la Transpuesta 
+	<m:math>
+		<m:apply>
+			<m:transpose/>
+			<m:ci type="matrix">A</m:ci>
+		</m:apply>
+	</m:math> voltea la matriz a través de su diagonal.
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="martix">A</m:ci>
+			<m:matrix>
+				<m:matrixrow>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>1</m:cn>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:matrixrow>
+				<m:matrixrow>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>2</m:cn>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>2</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:matrixrow>
+			</m:matrix>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:transpose/>
+				<m:ci type="martix">A</m:ci>
+			</m:apply>
+			<m:matrix>
+				<m:matrixrow>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>1</m:cn>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>2</m:cn>
+						<m:cn>1</m:cn>
+					</m:apply>
+				</m:matrixrow>
+				<m:matrixrow>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>1</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:selector/>
+						<m:ci>a</m:ci>
+						<m:cn>2</m:cn>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:matrixrow>
+			</m:matrix>
+		</m:apply>
+	</m:math> La <emphasis>columna</emphasis>
+	<m:math>
+		<m:ci>i</m:ci>
+	</m:math> de
+	<m:math>
+		<m:ci type="matrix">A</m:ci>
+	</m:math> es una <emphasis>fila</emphasis>
+	<m:math>
+		<m:ci>i</m:ci>
+	</m:math> de 
+	<m:math>
+		<m:apply>
+			<m:transpose/>
+			<m:ci type="matrix">A</m:ci>
+		</m:apply>
+	</m:math>
+</para>   
+
+      <para id="p2">
+	Recordando que el, <link document="m12876" strength="3">producto interno</link>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>⋮</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>x</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>-</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="vector">y</m:ci>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:mo>⋮</m:mo>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>-</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:transpose/>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">y</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:mo>…</m:mo>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>x</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:mo>⋮</m:mo>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>y</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>i</m:ci>
+	      </m:bvar>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:selector/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:ci>i</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:selector/>
+		  <m:ci type="vector">y</m:ci>
+		  <m:ci>i</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci type="vector">y</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> en 
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:reals/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+      </para>
+
+      <para id="p3">
+	Transpuesta Hermitiana 
+	<m:math>
+	  <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+	    <m:ci type="matrix">A</m:ci>
+	  </m:apply>
+	</m:math>, transpuesta y conjugada
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+	      <m:ci type="matrix">A</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:conjugate/>
+	      <m:apply>
+		<m:transpose/>
+		<m:ci type="matrix">A</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:scalarproduct/>
+	      <m:ci type="vector">y</m:ci>
+	      <m:ci type="vector">x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		<m:ci type="vector">x</m:ci>
+	      </m:apply>
+	      <m:ci type="vector">y</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>i</m:ci>
+	      </m:bvar>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:selector/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:ci>i</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:conjugate/>
+		  <m:apply>
+		    <m:selector/>
+		    <m:ci type="vector">y</m:ci>
+		    <m:ci>i</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> en 
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+      </para>
+
+      <para id="p4">
+	Sea 
+	<m:math>
+	  <m:set>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:mo>…</m:mo>
+	    <m:ci type="vector">
+	      <m:msub>
+		<m:mi>b</m:mi>
+		  <m:mrow>
+		    <m:mi>n</m:mi>
+		    <m:mo>-</m:mo>
+		    <m:mn>1</m:mn>
+		  </m:mrow>
+	      </m:msub>
+	    </m:ci>
+	  </m:set>
+	</m:math> 
+
+	una <link document="m12902" target-id="orthon_b" strength="3">base ortonormal</link> para
+
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:complexes/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	<m:math display="block">
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar><m:ci>i</m:ci></m:bvar>
+	    <m:condition/>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>i</m:ci>
+	      <m:set>
+		<m:cn>0</m:cn>
+		<m:cn>1</m:cn>
+		<m:mo>…</m:mo>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>n</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:set>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:scalarproduct/>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:condition/>
+	    <m:apply>
+	      <m:neq/>
+	      <m:ci>i</m:ci>
+	      <m:ci>j</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:scalarproduct/>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>j</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mi>j</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>      
+      </para>
+
+      <para id="p5">
+	Matriz de la base:
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="matrix">B</m:ci>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:ci>⋮</m:ci>
+		<m:ci>⋮</m:ci>
+		<m:ci/>
+		<m:ci>⋮</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>…</m:ci>
+		<m:ci type="vector">
+		  <m:msub>
+		    <m:mi>b</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>-</m:mo>
+			<m:mn>1</m:mn>
+		      </m:mrow>
+		  </m:msub>
+		</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>⋮</m:ci>
+		<m:ci>⋮</m:ci>
+		<m:ci/>
+		<m:ci>⋮</m:ci>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:apply>
+	</m:math>
+	Ahora, 
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		<m:ci type="matrix">B</m:ci>
+	      </m:apply>
+	      <m:ci type="matrix">B</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:mo>…</m:mo>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci/>
+		  <m:ci>⋮</m:ci>
+		  <m:ci/>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			  <m:mrow>
+			    <m:mi>n</m:mi>
+			    <m:mo>-</m:mo>
+			    <m:mn>1</m:mn>
+			  </m:mrow>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		</m:matrixrow>
+
+	      </m:matrix>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:ci>⋮</m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci/>
+		  <m:ci>⋮</m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>…</m:ci>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:ci>⋮</m:ci>
+		  <m:ci>⋮</m:ci>
+		  <m:ci/>
+		  <m:ci>⋮</m:ci>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:ci>⋮</m:ci>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			  <m:mrow>
+			    <m:mi>n</m:mi>
+			    <m:mo>-</m:mo>
+			    <m:mn>1</m:mn>
+			  </m:mrow>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			  <m:mrow>
+			    <m:mi>n</m:mi>
+			    <m:mo>-</m:mo>
+			    <m:mn>1</m:mn>
+			  </m:mrow>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			  <m:mrow>
+			    <m:mi>n</m:mi>
+			    <m:mo>-</m:mo>
+			    <m:mn>1</m:mn>
+			  </m:mrow>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci type="vector">
+		    <m:msub>
+		      <m:mi>b</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>-</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:apply>
+	</m:math>
+	
+      </para>
+      <para id="p6">Para una base ortonormal con una matriz de la base
+	<m:math>
+		<m:ci type="matrix">B</m:ci>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+				<m:ci type="matrix">B</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:inverse/>
+				<m:ci type="matrix">B</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> (
+	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:transpose/>
+				<m:ci type="matrix">B</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:inverse/>
+				<m:ci type="matrix">B</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> in 
+	<m:math>
+		<m:apply>
+			<m:power/>
+			<m:reals/>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> )
+	<m:math>
+		<m:apply>
+			<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+			<m:ci type="matrix">B</m:ci>
+		</m:apply>
+	</m:math> es fácil calcular mientras que 
+	<m:math>
+		<m:apply>
+			<m:inverse/>
+			<m:ci type="matrix">B</m:ci>
+		</m:apply>
+	</m:math> es difícil de calcular.
+      </para>
+      <para id="p7">Así que, para encontrar 
+	<m:math>
+		<m:set>
+			<m:ci>
+				<m:msub>
+					<m:mi>α</m:mi>
+					<m:mn>0</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:ci>
+				<m:msub>
+					<m:mi>α</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+			</m:ci>
+			<m:ci>…</m:ci>
+			<m:ci>
+				<m:msub>
+					<m:mi>α</m:mi>
+					<m:mrow>
+						<m:mi>n</m:mi>
+						<m:mo>-</m:mo>
+						<m:mn>1</m:mn>
+					</m:mrow>
+				</m:msub>
+			</m:ci>
+		</m:set>
+	</m:math> tal que 
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:sum/>
+				<m:bvar>
+					<m:ci>i</m:ci>
+				</m:bvar>
+				<m:apply>
+					<m:times/>
+					<m:ci>
+						<m:msub>
+							<m:mi>α</m:mi>
+							<m:mi>i</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>
+						<m:msub>
+							<m:mi>b</m:mi>
+							<m:mi>i</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	Calcular 
+	<m:math display="block">
+		<m:apply>
+			<m:implies/>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">α</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:inverse/>
+						<m:ci type="matrix">B</m:ci>
+					</m:apply>
+					<m:ci type="vector">x</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="vector">α</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#adjoint"/>
+						<m:ci type="matrix">B</m:ci>
+					</m:apply>
+					<m:ci type="vector">x</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	usando una base ortonormal nos libramos de la operación inversa.
+      </para>
+    </section>
+
+  </content>
+  
+</document>

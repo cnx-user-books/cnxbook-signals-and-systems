@@ -1,0 +1,790 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>El Exponencial Complejo</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f45444f0-d507-4cd8-8362-89e6be724fa8</md:uuid>
+</metadata>
+
+  <content>
+
+    <section id="intro">
+      <title>Bases para el Exponencial</title>
+      
+      <para id="para1">El <term>exponencial complejo </term>es una de las señales mas importantes y fundamentales en el análisis de señales y sistemas. Su importancia proviene de que sus funciones sirven como una base para las señales periódicas, como también sirven para poder caracterizar señales <link document="m12822" strength="2">lineales de tiempo invariante </link>. Antes de continuar, usted debería familiarizarse con los números <link document="m0081" strength="3"> complejos</link>.
+	      </para>
+
+      <section id="sub1_int">
+	<title>Exponential Básico </title>
+	<para id="p_sub1">Para todos los números  <m:math><m:ci>x</m:ci></m:math>, nosotros podemos derivar y definir fácilmente una función exponencial de una serie de Taylor  mostrada aquí:
+
+	  <equation id="eq1_basic_exp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:ci>x</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:cn>1</m:cn>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:power/>
+							<m:ci>x</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:factorial/>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:power/>
+							<m:ci>x</m:ci>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:factorial/>
+							<m:cn>2</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:power/>
+							<m:ci>x</m:ci>
+							<m:cn>3</m:cn>
+						</m:apply>
+						<m:apply>
+							<m:factorial/>
+							<m:cn>3</m:cn>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq2_basic_exp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:ci>x</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>k</m:ci>
+					</m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:factorial/>
+								<m:ci>k</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:power/>
+							<m:ci>x</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Podemos probar, usando un examen racional, que esta serie converge. De esta manera, podemos decir que la función exponencial mostrada arriba es continua y se puede definir fácilmente.
+	</para>
+	<para id="p2_sub1">De esta definición, podemos probar la siguiente propiedad de las exponenciales que resulta ser muy útil, especialmente para los exponenciales que se discutirán en la siguiente sección.
+
+	  <equation id="eq3_basic_exp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:plus/>
+						<m:ci>
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:ci>
+							<m:msub>
+								<m:mi>x</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<!-- Use double applys on purpose to
+		  force parenthesis in the rendering-->
+					<m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:ci>
+								<m:msub>
+									<m:mi>x</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:ci>
+								<m:msub>
+									<m:mi>x</m:mi>
+									<m:mn>2</m:mn>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+      </section>
+
+
+      <section id="sub2_int">
+	<title>Exponencial Complejo de Tiempo-Continuo</title> 
+	
+	<para id="p1_sub2">Para todos los números complejos 
+	  <m:math><m:ci>s</m:ci>
+	</m:math>, podemos definir una  <term>señal exponencial compleja de tiempo-continuo</term> como:
+
+
+
+	  
+	  <equation id="eq1_sub2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci><m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	donde <m:math><m:ci>A</m:ci></m:math> es una constante, 
+	  <m:math><m:ci>t</m:ci></m:math> es la variable independiente tiempo, y para  <m:math><m:ci>s</m:ci></m:math> imaginaria,
+
+	  <m:math>
+		<m:apply><m:eq/>
+			<m:ci>s</m:ci>
+			<m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:ci>ω</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>.
+	  
+	  De esta ecuación podemos revelar una importante identidad, la <term>identidad de Euler</term> (para más información sobre Euler lea su biografía<link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Euler.html">
+	  short biography</link>):
+	  
+	  <equation id="eq_eul">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>A</m:ci>
+						<m:apply>
+							<m:cos/>
+							<m:apply>
+								<m:times/>
+								<m:ci>ω</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:times/>
+							<m:ci>A</m:ci>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:times/>
+									<m:ci>ω</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	  
+De la identidad de Euler podemos separar la señal en su parte imaginaria y en su parte real. También podemos observar el uso de exponenciales para representar cualquier señal real. Si modificamos la frecuencia y  el ángulo, podriamos representar cualquier señal  por medio de una superposición de muchas señales—todas deben ser representadas por un exponencial.
+	</para>
+	
+	<para id="p2_sub2">La expresión anterior no incluye ninguna información del ángulo. Debemos generalizar la expresión de exponenciales para generalizar funciones senosoidales con cualquier valor en el ángulo, esto se logra al hacer una sustitución de 
+	  <m:math><m:ci>s</m:ci></m:math>,
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>s</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>σ</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci>ω</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>, que al final nos lleva a 
+
+	  <equation id="eqn1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:plus/>
+								<m:ci>σ</m:ci>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>ω</m:ci>
+								</m:apply>
+							</m:apply>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>σ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  donde <m:math><m:ci>S</m:ci></m:math> se define como  la <term>amplitud compleja</term>, o <term>fasor</term>, de los primeros dos términos de la ecuación de arriba
+	  <equation id="cmplxamp">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>S</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>σ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+		    
+	 Tomando en cuenta la identidad de Euler, podemos escribir el exponencial como un senosoidal, donde el término del ángulo es mas notable.
+	  <equation id="eq4_sub2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>σ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:cos/>
+							<m:apply>
+								<m:times/>
+								<m:ci>ω</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:times/>
+									<m:ci>ω</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  Esta fórmula se puede descomponer en su parte real e imaginaria:
+
+	  <equation id="eqn3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:real/>
+					<m:apply>
+						<m:ci type="function">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>σ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:cos/>
+						<m:apply>
+							<m:times/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eqn4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:imaginary/>
+					<m:apply>
+						<m:ci type="function">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>A</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>σ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+      </section>
+      
+
+      <section id="discrt_exp">
+	<title>Exponencial Complejo en Tiempo-Discreto</title>
+	<para id="p1_dis">Finalmente, hemos llegado a la última forma de señales exponenciales que nos interesan estudiar, la <term>señal exponencial compleja en tiempo-discreto</term>, de la cual no daremos tantos detalles como lo hicimos para su contraparte, ya que las dos siguen las mismas propiedades y usan la misma lógica ya explicada previamente. Por ser discreta, tiene una diferencia en la notación usada para representar su naturaleza discreta
+	  
+
+	   <equation id="eq1_dis">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci><m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>B</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:ci>s</m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>B</m:ci>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci>ω</m:ci>
+							<m:ci>n</m:ci>
+							<m:ci>T</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+donde
+	  <m:math>
+		<m:apply>
+			<m:times/>
+			<m:ci>n</m:ci>
+			<m:ci>T</m:ci>
+		</m:apply>
+	</m:math>
+	  representa los instantes de tiempo-discreto de la señal.
+	</para>
+      </section>
+    </section>
+
+    <section id="eul_rel">
+      <title>La Relación de Euler</title>
+      <para id="p1_eul">Junto a la identidad de Euler, Euler también describe una manera de representar una señal exponencial compleja en términos de su parte real e imaginaria usando la siguiente relación:
+
+	<equation id="eul1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:cos/>
+					<m:apply>
+						<m:times/>
+						<m:ci>ω</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:plus/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>w</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>w</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eul2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:sin/>
+					<m:apply>
+						<m:times/>
+						<m:ci>ω</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:minus/>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci>w</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:minus/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci>w</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:cn>2</m:cn>
+						<m:imaginaryi/>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eul3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:ci>w</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:cos/>
+						<m:apply>
+							<m:times/>
+							<m:ci>ω</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:sin/>
+							<m:apply>
+								<m:times/>
+								<m:ci>ω</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>
+    </section>
+
+
+    <section id="sect1">
+      <title>Dibujando el Exponencial Complejo</title>
+      <para id="para2">Hasta este momento, nosotros hemos demostrado como un exponencial complejo se puede separar en su parte real e imaginaria. Ahora tenemos que ver como se grafican todas estas partes. Podemos observar que la parte real y la parte imaginaria están compuestas por un senosoidal multiplicado por una función  de exponencial real. También sabemos que los senosoidales oscilan entre el valor uno y negativo uno. Entonces se puede ver que las partes reales e imaginarias del exponencial complejo oscilarán dentro de una ventana definida  por la parte real del exponencial. 
+      </para>
+
+      <figure id="fig1" orient="horizontal"><subfigure id="fig1a">
+		<media id="idp5282096" alt=""><image src="../../media/compexp1.png" mime-type="image/png"/></media>
+		<caption>
+	    Si <m:math><m:ci>σ</m:ci></m:math> es negativa, tenemos el caso de una ventana de un exponencial que desciende.
+	  </caption>
+	</subfigure>
+	<subfigure id="fig1b">
+		<media id="idm668912" alt=""><image src="../../media/compexp2.png" mime-type="image/png"/></media>
+		<caption>
+	    Si <m:math><m:ci>σ</m:ci></m:math> es positivo, tenemos el caso de una ventana de un exponencial que crece.</caption>
+	</subfigure>
+	<subfigure id="fig1c">
+		<media id="idp3223888" alt=""><image src="../../media/compexp3.png" mime-type="image/png"/></media>
+		<caption>
+	    Si <m:math><m:ci>σ</m:ci></m:math> es cero, 
+tenemos una ventana constante.</caption>
+	</subfigure>
+	<caption>
+	Las formas posibles para la parte real de un exponencial complejo. Note que la oscilación es el resultado de un coseno con un máximo local en
+	  <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>t</m:ci>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>.
+	</caption>
+</figure>
+
+      <para id="para3">
+	Mientras el  <m:math><m:ci>σ</m:ci></m:math> determina el índice de decrecimiento/ crecimiento,
+	<m:math><m:ci>ω</m:ci></m:math> determina el índice de las oscilaciones.  Esto se puede notar al observar  que 	<m:math><m:ci>ω</m:ci></m:math> es parte del argumento usado en la parte que corresponde al senosoidal.</para>
+
+      <exercise id="exer1">
+	<problem id="idp5587600"> 
+	  <para id="exer1a">¿Cómo se ven las partes imaginarias del exponencial complejo en el dibujo previo?
+	  </para>
+	</problem> 
+	<solution id="idp5123280"> 
+	  <para id="exer1b"> 
+Se ve igual excepto que la oscilación es senosoidal y no cosenoidal (pasa por el origen y no tiene ningún máximo local en 
+	    <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>t</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>).
+	  </para>
+	</solution>
+      </exercise>
+
+      <example id="vi_demo">
+        <para id="para_vi_demo_1">
+        La siguiente demostración le permite ver como el argumento cambia la forma del exponencial complejo. Por favor oprima <link document="m11550">aquí </link>para ver las instrucciones de como se usa este demo.
+  </para>
+        <media id="idp5938144" alt="" display="block"><labview src="Complex_Exponential.vi" viname="ct_complex_exponential.viinfo" version="7.0" mime-type="application/x-labview-vi"><param name="viinfo" value="ct_complex_exponential.viinfo"/></labview></media>
+      </example>
+    </section>
+
+    <section id="sect2">
+      <title>El Plano Complejo</title>
+      <para id="para4">Se convierte de extrema importancia el ver la variable compleja <m:math><m:ci>s</m:ci></m:math> como un punto en el <link document="m10596" strength="3">plano complejo</link> (el <term> plano-s</term>).
+	
+      </para>
+
+      <figure id="fig2"><media id="idm7300224" alt=""><image src="../../media/compexp04.png" mime-type="image/png"/></media>
+	<caption>
+	  Este es el plano-s.  Note que en cualquier momento en que <m:math><m:ci>s</m:ci></m:math> se encuentre en el lado derecho del plano, el exponencial complejo crecerá con el tiempo, mientras que si por el contrario <m:math><m:ci>s</m:ci></m:math> se encuentra en el lado izquierdo, el exponencial complejo disminuirá.
+	</caption>
+</figure>
+
+    </section>
+  </content>
+</document>

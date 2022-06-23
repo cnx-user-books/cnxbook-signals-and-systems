@@ -1,0 +1,935 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Generalidades de las Series de Fourier</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>65d1efaf-fd7c-4494-aec5-b7d32643bee3</md:uuid>
+</metadata>
+
+  <content>
+    <section id="intro">
+      <title> Introducción</title>
+      <para id="p1_int">El <link document="m12828">integral de convolucion</link> es una expresión fundamental que relación la entrada y la salida de un sistema LTI. Sin embargo, tiene tres problemas:
+	
+
+	<list id="list1" list-type="enumerated">
+		<item>
+	Puede ser tediosa para calcular.
+	  </item>
+		<item>
+	 Ofrece una interpretación física limitada de lo que el sistema esta realmente hacienda.
+	  </item>
+		<item>
+	Da muy poca información de como diseñar sistemas para lograr ciertas funciones.
+	  </item>
+	</list>
+
+Las <link document="m12893">series de Fourier</link>, junto la transformada de Fourier y la transformada de La Place, provee una manera de resolver estos tres puntos. El concepto de <link document="m10500">eigenfuncion</link> (o <link document="m10738">eigenvector</link>) es esencial para todos estos métodos. Ahora veremos como podemos re-escribir cualquier señal
+	
+	
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, en términos de <link document="m12825">exponenciales complejos</link>.
+      </para>
+
+      <para id="p2_int">De hecho, al hacer nuestras anotaciones de señales y sistemas lineares menos matemáticas, podemos extraer paralelos entre señales y sistemas con y <link document="m12862">algebra linear</link>. 
+	
+      </para>
+    </section>
+
+
+    <section id="sec1">
+      <title>Eigenfunciones en Sistemas LTI</title>
+      <para id="para1">
+	La acción que ejerce un  sistema LTI 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn" class="discrete">ℋ</m:ci>
+			<m:ci>…</m:ci>
+		</m:apply>
+	</m:math> 
+	en una de sus eigenfunciones 
+	<m:math display="inline">
+		<m:apply>
+			<m:exp/>
+			<m:apply>
+				<m:times/>
+				<m:ci>s</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> es
+
+	<list id="list1a" list-type="enumerated">
+		<item>
+	Extremadamente fácil (y rápida) de calcular	    
+	    <equation id="eq1">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">ℋ</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:ci>s</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn" class="discrete">H</m:ci>
+								<m:ci>s</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:ci>s</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</item>
+		<item>
+	Fácil de interpretar: 
+	    <m:math display="inline">
+				<m:apply>
+					<m:ci type="fn" class="discrete">ℋ</m:ci>
+					<m:ci>…</m:ci>
+				</m:apply>
+			</m:math> nada mas <emphasis>escala</emphasis> 			<m:math display="inline">
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:ci>s</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>, manteniendo una frecuencia constante.	  </item>
+	</list>
+	
+	Si tan solo todas las funciones fueran funciones de 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn" class="discrete">ℋ</m:ci>
+			<m:ci>…</m:ci>
+		</m:apply>
+	</m:math> ...
+      </para>
+
+      <section id="sub1">
+	<title>Sistemas LTI</title>
+	<para id="p1_s1s1">... claro, no todas las funciones pueden ser esto pero para sistemas LTI, sus eigenfunciones <link document="m12862" target-id="span_sec">expanden</link>  el espacio de <link document="m12933">funciones periódicas</link>, lo que significa que para, (casi) todas las funciones periódicas podemos encontrar 
+	
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> we can find
+	  <m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:set>
+		</m:apply>
+	</m:math> where 
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci>n</m:ci>
+			<m:integers/>
+		</m:apply>
+	</m:math> and 
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:msub>
+				<m:mi>c</m:mi>
+				<m:mi>i</m:mi>
+			</m:msub>
+			<m:complexes/>
+		</m:apply>
+	</m:math> such that:
+	  
+	  <equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	 Dada <link target-id="eq2"/>, podemos re-escribir 
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">ℋ</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math> como el siguiente sistema	</para>
+	
+	<figure id="fig1">
+	<media id="idp708688" alt=""><image src="../../media/Transferfunc-caeb.png" mime-type="image/png"/></media>
+	<caption>
+Funciones de Transferencia modeladas como un sistema LTI.
+	
+	  </caption>
+</figure>
+
+	<para id="p2_s1s1">
+	
+	  Donde tenemos: 
+
+	  <m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:domainofapplication>
+					<m:ci>n</m:ci>
+				</m:domainofapplication>
+				<m:apply>
+					<m:times/>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:sum/>
+				<m:domainofapplication>
+					<m:ci>n</m:ci>
+				</m:domainofapplication>
+				<m:apply>
+					<m:times/>
+					<m:msub>
+						<m:mi>c</m:mi>
+						<m:mi>n</m:mi>
+					</m:msub>
+					<m:apply>
+						<m:ci type="fn">H</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+							<m:ci>n</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	  Esta transformación de 
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> en
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	 también se puede ilustrar a través del proceso mostrado abajo.
+
+	  <equation id="lti">
+		<m:math display="block">
+			<m:apply>
+				<m:tendsto/>
+				<m:apply>
+					<m:tendsto/>
+					<m:apply>
+						<m:tendsto/>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:set>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+							</m:set>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:set>
+							<m:apply>
+								<m:times/>
+								<m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub>
+								<m:apply>
+									<m:ci type="fn">H</m:ci>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:set>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Donde los tres pasos  (flecha) en nuestra ilustración de arriba y representa a las siguientes tres operaciones:
+
+	  <list id="inter_list" list-type="enumerated">
+	<item>
+	      
+Transformación con análisis(ecuación de <link document="m12894">coeficientes de Fourier</link>):
+
+
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+										<m:mi>n</m:mi>
+										<m:mi>t</m:mi>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	  La acción de <m:math><m:ci>ℋ</m:ci></m:math> en las <link document="m10496">series de Fourier</link> – iguala a una multiplicación por 
+
+
+	      <m:math>
+			<m:apply>
+				<m:ci type="fn">H</m:ci>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	Regrese a las antiguas bases- transforme inversamente usando nuestra ecuación de síntesis que viene de las series de Fourier:
+
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">y</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar>
+						<m:ci>n</m:ci>
+					</m:bvar>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:apply>
+						<m:times/>
+						<m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+								<m:ci>n</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+</para>
+      </section>
+
+    </section>
+
+    <section id="sec2">
+      <title>Interpretación Física de las Series de Fourier</title>
+      <para id="p1_sec2">
+	Las series de Fourier 
+	<m:math display="inline">
+		<m:apply>
+			<m:set>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+			</m:set>
+		</m:apply>
+	</m:math>
+	de una señal 
+	<m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, definida en  <link target-id="eq2"/>, tiene una interpretación física muy importante. El coeficiente
+	<m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>
+	nos dice “que tanto” de la frecuencia 
+	<m:math display="inline">
+		<m:apply>
+			<m:times/>
+			<m:msub>
+				<m:mi>ω</m:mi>
+				<m:mn>0</m:mn>
+			</m:msub>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> existe en la señal.
+      </para>
+      
+      <para id="p2_sec2">Señales que cambien lentamente en el tiempo- señales <term>suaves</term>- tienen un gran
+	
+	<m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>
+	para pequeñas <m:math><m:ci>n</m:ci></m:math>.
+      </para>
+
+
+      <figure orient="horizontal" id="figs1">
+	<subfigure id="sub_11">
+		<media id="idp987472" alt=""><image src="../../media/fsnut_1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="sub_12">
+		<media id="idm180352" alt=""><image src="../../media/fsnut_2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	 Empezaremos con nuestra señal suave
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> en la izquierda, y despues usaremos las series de Fourier para encontrar los coeficientes de Fourier- lo cual se muestra en la figura de la derecha.
+	</caption>
+</figure>
+      
+      <para id="dum"/>
+      <para id="p3_sec2">Señales que cambian rápidamente con el tiempo- <term>señales ruidosas</term>-tienen una gran 
+	
+	<m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>
+	para grandes <m:math><m:ci>n</m:ci></m:math>.
+      </para>
+
+      
+      <figure orient="horizontal" id="figs2">
+	<subfigure id="sub_21">
+	  <media id="idm9574288" alt=""><image src="../../media/fsnut_3.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="sub_22">
+	  <media id="idm1957968" alt=""><image src="../../media/fsnut_4.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+Empezaremos con nuestra señal ruidosa
+	 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> en el lado izquierdo, y usaremos las series de Fourier pada encontrar los coeficientes de Fourier-  lo cual se muestra en la figura de la derecha.
+	</caption>
+      </figure>
+
+
+      <example id="eg1">
+	<title>Pulso Periódico</title>
+	<para id="p1_eg1">
+Tenemos la siguiente función de pulso,
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, en el intervalo 
+	  <m:math display="inline">
+		<m:apply>
+			<m:interval>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:divide/>
+						<m:ci>T</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:ci>T</m:ci>
+					<m:cn>2</m:cn>
+				</m:apply>
+			</m:interval>
+		</m:apply>
+	</m:math>:	  
+	</para>
+	     
+	<figure id="fig3">
+	<media id="idm2653120" alt=""><image src="../../media/fsnut_e1.png" mime-type="image/png"/></media>
+	<caption>
+	  Señal Periodica
+	    <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	
+	<para id="p1_eg2">
+	Usando nuestra formula para los coeficientes de Fourier, 
+	  <equation id="eq4">
+		<m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>T</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:ci>T</m:ci>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:cn>0</m:cn>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+										<m:mi>n</m:mi>
+										<m:mi>t</m:mi>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	Podemos calcular fácilmente nuestra 
+	  <m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>. ¡Dejaremos este cálculo como ejercicio para usted!  Después de resolver la ecuación para nuestra 
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>, obtenemos el siguiente resultado: 
+
+	  <equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+				<m:piecewise>
+					<m:piece>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:msub>
+									<m:mi>T</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:apply>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:eq/>
+							<m:ci>n</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+					<m:piece>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:apply>
+									<m:sin/>
+									<m:apply>
+										<m:times/>
+										<m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub>
+										<m:mi>n</m:mi>
+										<m:msub>
+											<m:mi>T</m:mi>
+											<m:mn>1</m:mn>
+										</m:msub>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:ci>n</m:ci>
+								<m:pi/>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:neq/>
+							<m:ci>n</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+					</m:piece>
+				</m:piecewise>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	 Para
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:msub>
+				<m:mi>T</m:mi>
+				<m:mn>1</m:mn>
+			</m:msub>
+			<m:apply>
+				<m:divide/>
+				<m:ci>T</m:ci>
+				<m:cn>8</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>, vea la siguiente figura para observar los siguientes resultados:
+	</para>
+	
+	<figure id="fig4">
+	<media id="idp863584" alt=""><image src="../../media/fsnut_e2.png" mime-type="image/png"/></media>
+	<caption>
+	   Nuestros coeficientes de Fourier cuando 
+	    <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>T</m:mi>
+					<m:mn>1</m:mn>
+				</m:msub>
+				<m:apply>
+					<m:divide/>
+					<m:ci>T</m:ci>
+					<m:cn>8</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+	
+	<para id="p2_eg1">
+	Nuestra señal 
+	  <m:math display="inline">
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	es plana excepto por dos orilla ( discontinuidades). Por esta razón, 
+	  <m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math>
+	 alrededor de 
+	  <m:math display="inline">
+		<m:apply>
+			<m:eq/>
+			<m:ci>n</m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>
+	  son grandes y 
+	  <m:math display="inline">
+		<m:msub>
+			<m:mi>c</m:mi>
+			<m:mi>n</m:mi>
+		</m:msub>
+	</m:math> se vuelve pequeña cuando <m:math><m:ci>n</m:ci></m:math>
+	  se acerca al infinito.
+	
+	  <note type="question" id="idm7883536"><label>Question</label>
+	 ¿ Por qué
+	    <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	   para
+	    <m:math display="inline">
+			<m:apply>
+				<m:eq/>
+				<m:ci>n</m:ci>
+				<m:set>
+					<m:ci>…</m:ci>
+					<m:cn>-4</m:cn>
+					<m:cn>4</m:cn>
+					<m:cn>8</m:cn>
+					<m:cn>16</m:cn>
+					<m:ci>…</m:ci>
+				</m:set>
+			</m:apply>
+		</m:math>?  (¿ qué parte de 
+	    <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:minus/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub>
+						<m:mi>n</m:mi>
+						<m:mi>t</m:mi>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>  se encuentra sobre el pulso de estos valores de 
+	    <m:math><m:ci>n</m:ci></m:math>?)
+	  </note>
+</para>
+	
+
+      </example>
+    </section>
+
+
+
+  </content>
+</document>

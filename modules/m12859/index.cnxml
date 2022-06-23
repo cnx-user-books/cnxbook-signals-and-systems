@@ -1,0 +1,973 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Ecuación de Matriz para la DTFS</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b294f144-1733-4a31-9dd1-618bee9bbcb3</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">La <link document="m10784" target-id="dtfs" strength="3">DTFS</link> es nada mas un cambio de <link document="m10734" target-id="sec_bas" strength="3">bases</link> en
+            <m:math>
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>.
+  Para comenzar, tenemos
+      <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+
+en términos de la <emphasis>base estándar</emphasis>.
+  
+     <equation id="eq1">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>e</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>e</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+						<m:ci>
+							<m:msub>
+								<m:mi>e</m:mi>
+								<m:mrow>
+									<m:mi>N</m:mi>
+									<m:mo>-</m:mo>
+									<m:mn>1</m:mn>
+								</m:mrow>
+							</m:msub>
+						</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>k</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>n</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:ci>k</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">δ</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>k</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:vector>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>⋮</m:ci>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:vector>
+				<m:apply>
+					<m:plus/>
+					<m:vector>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:cn>0</m:cn>
+						</m:apply>
+						<m:cn>0</m:cn>
+						<m:cn>0</m:cn>
+						<m:ci>⋮</m:ci>
+						<m:cn>0</m:cn>
+					</m:vector>
+					<m:vector>
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+						<m:cn>0</m:cn>
+						<m:ci>⋮</m:ci>
+						<m:cn>0</m:cn>
+					</m:vector>
+					<m:vector>
+						<m:cn>0</m:cn>
+						<m:cn>0</m:cn>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:cn>2</m:cn>
+						</m:apply>
+						<m:ci>⋮</m:ci>
+						<m:cn>0</m:cn>
+					</m:vector>
+					<m:ci>…</m:ci>
+					<m:vector>
+						<m:cn>0</m:cn>
+						<m:cn>0</m:cn>
+						<m:cn>0</m:cn>
+						<m:ci>⋮</m:ci>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>N</m:ci>
+								<m:cn>1</m:cn>
+							</m:apply>
+						</m:apply>
+					</m:vector>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+Tomando la DTFS, podemos escribir
+      <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+      en términos de la base de Fourier senosoidal      <equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>k</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:cn>0</m:cn>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>k</m:mi>
+							</m:msub>
+						</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:ci>k</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:vector>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>1</m:cn>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:cn>2</m:cn>
+					</m:apply>
+					<m:ci>⋮</m:ci>
+					<m:apply>
+						<m:ci type="fn" class="discrete">f</m:ci>
+						<m:apply>
+							<m:minus/>
+							<m:ci>N</m:ci>
+							<m:cn>1</m:cn>
+						</m:apply>
+					</m:apply>
+				</m:vector>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:vector>
+							<m:cn>1</m:cn>
+							<m:cn>1</m:cn>
+							<m:cn>1</m:cn>
+							<m:ci>⋮</m:ci>
+							<m:cn>1</m:cn>
+						</m:vector>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:vector>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>4</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:ci>⋮</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>2</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:vector>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci>
+							<m:msub>
+								<m:mi>c</m:mi>
+								<m:mn>2</m:mn>
+							</m:msub>
+						</m:ci>
+						<m:vector>
+							<m:cn>1</m:cn>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>4</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>8</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:ci>⋮</m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:apply>
+										<m:divide/>
+										<m:apply>
+											<m:times/>
+											<m:cn>4</m:cn>
+											<m:pi/>
+										</m:apply>
+										<m:ci>N</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:vector>
+					</m:apply>
+					<m:ci>…</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+ Podemos formar la matriz base (llamaremos esto 
+      <m:math><m:ci>W</m:ci></m:math> envés de<m:math><m:ci>B</m:ci></m:math>) al acomodar los vectores bases en las columnas obtenemos
+      <equation id="eq5">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="matrix">W</m:ci>
+				<m:matrix>
+					<m:matrixrow>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mn>1</m:mn>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>b</m:mi>
+									<m:mrow>
+										<m:mi>N</m:mi>
+										<m:mo>-</m:mo>
+										<m:mn>1</m:mn>
+									</m:mrow>
+								</m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:matrixrow>
+				</m:matrix>
+				<m:matrix>
+					<m:matrixrow>
+						<m:cn>1</m:cn>
+						<m:cn>1</m:cn>
+						<m:cn>1</m:cn>
+						<m:ci>…</m:ci>
+						<m:cn>1</m:cn>
+					</m:matrixrow>
+					<m:matrixrow>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>4</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:matrixrow>
+					<m:matrixrow>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>4</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>8</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:cn>2</m:cn>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:matrixrow>
+					<m:matrixrow>
+						<m:ci>⋮</m:ci>
+						<m:ci>⋮</m:ci>
+						<m:ci>⋮</m:ci>
+						<m:ci>⋮</m:ci>
+						<m:ci>⋮</m:ci>
+					</m:matrixrow>
+					<m:matrixrow>
+						<m:cn>1</m:cn>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:cn>2</m:cn>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:ci>…</m:ci>
+						<m:apply>
+							<m:exp/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+								<m:apply>
+									<m:minus/>
+									<m:ci>N</m:ci>
+									<m:cn>1</m:cn>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:matrixrow>
+				</m:matrix>
+			</m:apply>
+		</m:math>
+	</equation>
+
+      con
+      <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:apply>
+						<m:divide/>
+						<m:apply>
+							<m:times/>
+							<m:cn>2</m:cn>
+							<m:pi/>
+						</m:apply>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:ci>k</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+	<note type="note" id="idp975616">la entrada k-th fila y n-th columna es
+        <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>
+					<m:msub>
+						<m:mi>W</m:mi>
+						<m:mrow>
+							<m:mi>j</m:mi>
+							<m:mo>,</m:mo>
+							<m:mi>k</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+				<m:apply>
+					<m:exp/>
+					<m:apply>
+						<m:times/>
+						<m:imaginaryi/>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:times/>
+								<m:cn>2</m:cn>
+								<m:pi/>
+							</m:apply>
+							<m:ci>N</m:ci>
+						</m:apply>
+						<m:ci>k</m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:ci>
+					<m:msub>
+						<m:mi>W</m:mi>
+						<m:mrow>
+							<m:mi>n</m:mi>
+							<m:mo>,</m:mo>
+							<m:mi>k</m:mi>
+						</m:mrow>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:math>
+	</note>
+Así, aquí tenemos una simetría adicional
+      <m:math display="block">
+		<m:apply>
+			<m:implies/>
+			<m:apply>
+				<m:eq/>
+				<m:ci type="matrix">W</m:ci>
+				<m:apply>
+					<m:transpose/>
+					<m:ci type="matrix">W</m:ci>
+				</m:apply>
+			</m:apply>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:conjugate/>
+					<m:apply>
+						<m:transpose/>
+						<m:ci type="matrix">W</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:conjugate/>
+					<m:ci type="matrix">W</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:divide/>
+						<m:cn>1</m:cn>
+						<m:ci>N</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:inverse/>
+						<m:ci type="matrix">W</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+      (ya que
+      <m:math>
+		<m:set>
+			<m:apply>
+				<m:ci type="fn" class="discrete">
+					<m:msub>
+						<m:mi>b</m:mi>
+						<m:mi>k</m:mi>
+					</m:msub>
+				</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:set>
+	</m:math> son ortonormales)
+
+    </para>
+
+    <para id="para2">
+      Ahora podemos rescribir la ecuación DTFS en forma de matriz, donde tenemos:
+      
+      <list id="list_end">
+		<item>
+			<m:math>
+				<m:ci type="vector">f</m:ci>
+			</m:math> = señal (vector en
+	  <m:math>
+				<m:apply>
+					<m:power/>
+					<m:complexes/>
+					<m:ci>N</m:ci>
+				</m:apply>
+			</m:math>)
+	</item>
+		<item>
+			<m:math>
+				<m:ci type="vector">c</m:ci>
+			</m:math> = coeficientes DTFS (vector en
+	  <m:math>
+				<m:apply>
+					<m:power/>
+					<m:complexes/>
+					<m:ci>N</m:ci>
+				</m:apply>
+			</m:math>)
+	</item>
+	</list>
+</para>
+    
+    <table frame="all" id="table1" summary="">
+      
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+	<tbody>
+	  <row>
+	    <entry align="center">"synthesis"</entry>
+	    <entry align="center">
+	      <m:math>
+                <m:apply>
+                  <m:eq/>
+		  <m:ci type="vector">f</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci type="matrix">W</m:ci>
+		    <m:ci type="vector">c</m:ci>
+		  </m:apply>
+                </m:apply>
+              </m:math>
+            </entry>
+            <entry align="center">
+              <m:math>
+                <m:apply>
+                  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">c</m:ci>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:ci type="vector">
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+              </m:math>
+            </entry>
+          </row>
+          <row>
+            <entry align="center">"analysis"</entry>
+            <entry align="center">
+              <m:math>
+                <m:apply>
+                  <m:eq/>
+		  <m:ci type="vector">c</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:apply>
+			<m:transpose/>
+			<m:ci type="matrix">W</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci type="vector">f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:conjugate/>
+		      <m:ci type="matrix">W</m:ci>
+		    </m:apply>
+		    <m:ci type="vector">f</m:ci>
+		  </m:apply>
+                </m:apply>
+              </m:math>
+            </entry>
+            <entry align="center">
+              <m:math>
+                <m:apply>
+                  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">c</m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">f</m:ci>
+		    <m:ci type="vector">
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+                </m:apply>
+              </m:math>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <para id="para2a">Encontrar (e invertir) la DFTS es nada mas una <emphasis>multiplicación de matrices</emphasis>.
+      
+    </para>
+
+    <para id="para3">
+Todo lo que se encuentra en 
+      <m:math>
+		<m:apply>
+			<m:power/>
+			<m:complexes/>
+			<m:ci>N</m:ci>
+		</m:apply>
+	</m:math>
+esta <emphasis>limpio</emphasis>: no se utilizan límites, no se usan preguntas de convergencia, nada mas se utilice aritmética de matrices.  </para>
+
+  </content>
+  
+</document>

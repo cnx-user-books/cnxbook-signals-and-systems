@@ -1,0 +1,1696 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Sistemas Lineales CT y Ecuaciones Diferenciales</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>875499f0-beb2-4aba-8977-33f126cd2ce9</md:uuid>
+</metadata>
+
+  <content>
+    <section id="int">
+      <title>Sistemas Lineales de Tiempo-Continuo</title>
+      <para id="p1">
+	Físicamente realizable, los sistemas lineales invariantes en el tiempo pueden ser descritos por un conjuto de ecuaciones lineales diferenciales:
+      </para>
+
+      <figure id="fig1">
+	<media id="idm7958448" alt=""><image src="../../media/ctlin.png" mime-type="image/png"/></media>
+	<caption>
+	  Describción gráfica de un sistema básico lineal invariante en el tiempo con una entrada,
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> y una salida,
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</caption>
+      </figure>
+      
+      <para id="p2">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:diff/>
+		<m:bvar>
+		  <m:degree>
+		    <m:ci>n</m:ci>
+		  </m:degree>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mrow>
+		      <m:mi>n</m:mi>
+		      <m:mo>−</m:mo>
+		      <m:mn>1</m:mn>
+		    </m:mrow>
+		  </m:msub></m:ci>
+		<m:apply>	    
+		  <m:diff/>
+		  <m:bvar>
+		    <m:degree>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:degree>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>	    
+		  <m:diff/>
+		  <m:bvar>		
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>m</m:mi>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:degree>
+		      <m:ci>m</m:ci>
+		    </m:degree>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Equivalentemente,
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>i</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>n</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:degree>
+			<m:ci>i</m:ci>
+		      </m:degree>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:apply>
+		      <m:ci type="fn">y</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>i</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:ci>m</m:ci>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>b</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:degree>
+			<m:ci>i</m:ci>
+		      </m:degree>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:apply>
+		      <m:ci type="fn">f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	con 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci><m:msub>
+	      <m:mi>a</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub></m:ci>
+	    <m:mn>1</m:mn>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <para id="p3">
+	Es fácil mostra que estas ecuaciones definen un sistema que es lineal e invariante en el tiempo.  Entonces una pregunta natural es ¿cómo encontrar la respuesta al impulso del sistema
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> para una entrada  
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>?.  Recordando que tal solución se puede escribir como:
+
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">y</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:plus/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>y</m:mi>
+							<m:mi>i</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub>
+							<m:mi>y</m:mi>
+							<m:mi>s</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	Nos referimos a 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>y</m:mi>
+					<m:mi>i</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> como la  <term>respuesta de salida-cero</term> -- la solución homogenea debido a las condiciones iniciales del sistema. Nos referimos a 
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">
+				<m:msub>
+					<m:mi>y</m:mi>
+					<m:mi>s</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> como la <term>respuesta de estado-cero</term> -- la solución particular en respuesta a la entrada
+	<m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.  Ahora veremos como resolver cada una de estos componentes de la respuesta del sistema.
+      </para>
+      
+      
+      <section id="sec2">
+	<title>Encontrando la Respuesta de Entrada-Cero</title>
+	<para id="p1_sec2">
+	  La respuesta de la entrada-cero, 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>, es la respuesta del sistema debido solo a las condiciones iniciales .  	  
+	</para>
+
+	<example id="eg1">
+	  <title>Respuesta de la Entrada-Cero</title>
+	  <para id="p1_eg1">
+	    Poner un voltaje a través de una capacitor en un circuito dibujado a continuación y deje todo lo demás solo.
+	  </para>
+	  
+	  <figure id="fig2">
+	    <media id="idm747712" alt=""><image src="image1.png" mime-type="image/png"/></media>
+	    
+	  </figure>	  
+	</example>
+
+	<example id="eg2">
+	  <title>Respuesta de la Entrada-Cero</title>
+	  <para id="p1_eg2">
+	    Imagine una masa unidia a un resorte como se muestra a continuación. Cuando jala la masa hacia abajo y la suelte, usted tiene un ejemplo de la respuesta de la entrada-cero.
+	  </para>
+	  
+	  <figure id="fig3">
+	<media id="idp107008" alt=""><image src="image1.png" mime-type="image/png"/></media>
+	
+</figure>	  
+	</example>
+
+	<para id="p4">
+	  No hay entrada, así que resolvemos para:
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> tal que 
+
+	  <equation id="eq2">
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>i</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:ci>n</m:ci>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub></m:ci>
+		      <m:apply>
+			<m:diff/>
+			<m:bvar>
+			  <m:degree>
+			    <m:ci>i</m:ci>
+			  </m:degree>
+			  <m:ci>t</m:ci>
+			</m:bvar>
+			<m:apply>
+			  <m:ci type="fn">
+			    <m:msub>
+			      <m:mi>y</m:mi>
+			      <m:mn>0</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  Si <m:math><m:ci>D</m:ci></m:math> es el operador derivado, podemos escribir la ecuación anterior como:
+
+	  <equation id="eq3">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+	 	<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>D</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>−</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		      </m:msub></m:ci>
+		      <m:apply>	
+			<m:power/>
+			<m:ci>D</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>	    
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  Puesto que necesitamos una suma de varios 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>'s dervados para ser <m:math><m:cn>0</m:cn></m:math>
+	  <emphasis>para todo</emphasis> <m:math><m:ci>t</m:ci></m:math>, entonces
+
+	  <m:math>
+	    <m:apply>		
+	      <m:set>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>		
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:degree>
+		      <m:cn>2</m:cn>
+		    </m:degree>		
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>	
+		<m:ci>…</m:ci>
+	      </m:set>
+	    </m:apply>
+	  </m:math>
+
+	  deben de ser todos de la misma forma.
+	</para>
+
+	<para id="p2_sec2">
+	  
+	  Solo el exponencial, 
+	  <m:math>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> donde
+	  <m:math>
+	    <m:apply>
+	      <m:in/>
+	      <m:ci>s</m:ci>
+	      <m:complexes/>
+	    </m:apply>
+	  </m:math>, tiene esta propiedad (véase un libro de texto de  Ecuaciones Diferenciales para más detalles). Así que asumimos que,
+
+	  <equation id="eq4">
+	    <m:math>
+	      <m:apply>
+		<m:forall/>
+		<m:bvar>
+		  <m:ci>c</m:ci>
+		</m:bvar>
+		<m:condition>
+		  <m:apply>
+		    <m:neq/>
+		    <m:ci>c</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:condition>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>y</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>c</m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>s</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>	
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  para algun <m:math><m:ci>c</m:ci></m:math> y 
+	  <m:math><m:ci>s</m:ci></m:math>.	
+	</para>
+
+	<para id="p3_sec2">
+	  Since 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:diff/>
+		<m:bvar>		
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>c</m:ci>
+		<m:ci>s</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:diff/>
+		<m:bvar>
+		  <m:degree>
+		    <m:cn>2</m:cn>
+		  </m:degree>		
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>c</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>s</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, … tenemos
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>D</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+		    	<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub></m:ci>
+		    <m:apply>	
+		      <m:power/>
+		      <m:ci>D</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>
+	   	<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  <equation id="eq5">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>c</m:ci>
+
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>−</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		      </m:msub></m:ci>
+		      <m:apply>	
+			<m:power/>
+			<m:ci>s</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>	
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci>s</m:ci>
+		    </m:apply>	
+
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  
+	  <link target-id="eq5"/> se mantiene para todo <m:math><m:ci>t</m:ci></m:math> 
+	  solo cuando 
+
+	  <equation id="eq6">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>s</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		   <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mrow>
+			<m:mi>n</m:mi>
+			<m:mo>−</m:mo>
+		    	<m:mn>1</m:mn>
+		      </m:mrow>
+		    </m:msub></m:ci>
+		    <m:apply>	
+		      <m:power/>
+		      <m:ci>s</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>	
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>	
+
+		  <m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>	
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	
+	  Donde esta ecuación es conocida como la <term>ecuación característica </term> del sistema.  Los posibles valores de
+	  <m:math><m:ci>s</m:ci></m:math> son las raices o ceros de este polinomio
+	  <m:math>
+	    <m:set>
+	      <m:ci><m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub></m:ci>
+	      <m:ci><m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub></m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci><m:msub>
+		<m:mi>s</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	    </m:set>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub></m:ci>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>s</m:ci>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  es decir las posibles soluciones son: 
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+	  
+	  <m:math><m:ci>…</m:ci></m:math>, 
+
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Ya que el sistema es <emphasis>lineal</emphasis>, la solución general es de la forma:
+
+	  <equation id="eq7">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>y</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>n</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:ci><m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mi>n</m:mi>
+			</m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	
+	  Entonces, resolver para  
+	  <m:math>
+	    <m:set>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub></m:ci>
+	      <m:ci>…</m:ci>
+	      <m:ci><m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>n</m:mi>
+	      </m:msub></m:ci>
+	    </m:set>
+	  </m:math> usando las condiciones iniciales.
+	</para>
+
+	<example id="eg_opt">
+	  <para id="p1_egopt">
+	    Véase  Lathi p.108 para un buen ejemplo.	    
+	  </para>
+	</example>
+
+	<para id="pf_sec2">
+	  Generalmente asumimos que las IC's de un sistema son cero, lo que implica que
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>y</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>.  Sin embargo, el<emphasis>método</emphasis> de resolver para
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>y</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> se probará más adelante.
+	</para>
+      </section>
+
+
+      <section id="sec3">
+	<title>Encontrando la Respuesta del Estado-Cero</title>
+	<para id="p1_s3">
+	  Resolviendo una ecuación lienal diferencial
+
+	  <equation id="eq10">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>i</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>n</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:diff/>
+		      <m:bvar>
+			<m:degree>
+			  <m:ci>i</m:ci>
+			</m:degree>
+			<m:ci>t</m:ci>
+		      </m:bvar>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>i</m:ci>
+		  </m:bvar>
+		  <m:uplimit>
+		    <m:ci>m</m:ci>
+		  </m:uplimit>
+		  <m:lowlimit>
+		    <m:cn>0</m:cn>
+		  </m:lowlimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub></m:ci>
+		    <m:apply>
+		      <m:diff/>
+		      <m:bvar>
+			<m:degree>
+			  <m:ci>i</m:ci>
+			</m:degree>
+			<m:ci>t</m:ci>
+		      </m:bvar>
+		      <m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  dada una entrada específica
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math> es una tarea difícil en general.  Más importantemente, el método depende completamente en la naturaleza de  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">f</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>; si cambiamos la señal de entrada, debemos de re-resolver el sistema de ecuaciones para encontrar la respuesta del sistema.
+	</para>
+
+	<para id="p2_s3">
+	  La <link document="m12828" strength="3">Convolución</link> nos ayuda a pasar estas dificultades.  En la sección explicamos como la convolución nos ayuda a determinar la salida del sistema, dada solo la entrada
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> y la <link document="m18124" strength="2">respuesta al impulso </link> del sistema,
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>.
+	</para>
+	
+	<para id="p3_s3">
+	  Antes de derivar el procedimiento de convolución, mostramos que la respuesta al impulso  es derivada facilmente de su ecuación lineal diferencial (LDE).  Mostraremos la derivación del siguiente LDE, donde 
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:ci>m</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>:
+	  
+      <equation id="eq11">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:diff/>
+						<m:bvar>
+							<m:degree>
+								<m:ci>n</m:ci>
+							</m:degree>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mrow>
+									<m:mi>n</m:mi>
+									<m:mo>−</m:mo>
+									<m:mn>1</m:mn>
+								</m:mrow>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:degree>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:degree>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">y</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">y</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>b</m:mi>
+								<m:mi>m</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:degree>
+									<m:ci>m</m:ci>
+								</m:degree>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>b</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">f</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>b</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">f</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+      Podemos reescribir <link target-id="eq11" strength="3"/> como
+
+	  <equation id="eq12">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>Q</m:mi>
+							<m:mi>D</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>P</m:mi>
+							<m:mi>D</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  donde 
+	  
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">
+				<m:msub>
+					<m:mi>Q</m:mi>
+					<m:mi>D</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>·</m:ci>
+		</m:apply>
+	</m:math>
+
+	  es una operador que mapea 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math> al lado izquierdo de la <link target-id="eq11" strength="3"/>
+	<equation id="eq13">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub>
+							<m:mi>Q</m:mi>
+							<m:mi>D</m:mi>
+						</m:msub>
+					</m:ci>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:diff/>
+						<m:bvar>
+							<m:degree>
+								<m:ci>n</m:ci>
+							</m:degree>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mrow>
+									<m:mi>n</m:mi>
+									<m:mo>−</m:mo>
+									<m:mn>1</m:mn>
+								</m:mrow>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:degree>
+									<m:apply>
+										<m:minus/>
+										<m:ci>n</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:degree>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">y</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:ci>…</m:ci>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mn>1</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:diff/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:apply>
+								<m:ci type="fn">y</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>a</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">y</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	  
+	  y 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">
+				<m:msub>
+					<m:mi>P</m:mi>
+					<m:mi>D</m:mi>
+				</m:msub>
+			</m:ci>
+			<m:ci>·</m:ci>
+		</m:apply>
+	</m:math>
+	  mapea 
+	  <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>t</m:ci>
+		</m:apply>
+	</m:math>
+	  al lado derecho de la <link target-id="eq11" strength="3"/>.  Lathi muestra (en el  Apendice 2.1) que la respuesta al impulso del sistema descrito por  <link target-id="eq11" strength="3"/> es dado por:
+
+	  <equation id="eq14">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">h</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>b</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+						<m:apply>
+							<m:ci type="fn">δ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub>
+									<m:mi>P</m:mi>
+									<m:mi>D</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:apply>
+								<m:ci type="fn">
+									<m:msub>
+										<m:mi>y</m:mi>
+										<m:mi>n</m:mi>
+									</m:msub>
+								</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">μ</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  donde para 
+	  <m:math>
+		<m:apply>
+			<m:lt/>
+			<m:ci>m</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> we have 
+	  <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci><m:msub>
+					<m:mi>b</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub></m:ci>
+			<m:cn>0</m:cn>
+		</m:apply>
+	</m:math>.  También, 
+	  <m:math>
+		<m:ci><m:msub>
+				<m:mi>y</m:mi>
+				<m:mi>n</m:mi>
+			</m:msub></m:ci>
+	</m:math> igual a la respuesta salida-cero con las condiciones iniciales.
+
+	  <m:math display="block">
+		<m:apply>
+			<m:set>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>y</m:mi>
+								<m:mrow>
+									<m:mi>n</m:mi>
+									<m:mo>−</m:mo>
+									<m:mn>1</m:mn>
+								</m:mrow>
+							</m:msup>
+						</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">
+							<m:msup>
+								<m:mi>y</m:mi>
+								<m:mrow>
+									<m:mi>n</m:mi>
+									<m:mo>−</m:mo>
+									<m:mn>2</m:mn>
+								</m:mrow>
+							</m:msup>
+						</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+				<m:ci>…</m:ci>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">y</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:set>
+		</m:apply>
+	</m:math>
+</para>
+
+      </section>
+    </section>
+
+  </content>
+  
+</document>

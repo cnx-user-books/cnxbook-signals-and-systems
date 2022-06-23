@@ -1,0 +1,777 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Reconstrucción</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>354adda1-8d53-43b9-bee4-ec9bde3e214d</md:uuid>
+</metadata>
+
+  <content>
+    <section id="int">
+      <title>Introduction</title>
+      <para id="para1">
+	El proceso de reconstrucción empieza tomando una señal muestreada, que estará en tiempo discreto, y haciendo unas operaciones para poder convertirla en tiempo-continuo y con algo de suerte en una copia de la señal original. Un método básico usado para reconstruir una señal limitada en banda de
+	<m:math>
+		<m:interval closure="closed-closed">
+			<m:apply>
+				<m:minus/>
+				<m:pi/>
+			</m:apply>
+			<m:pi/>
+		</m:interval>
+	</m:math> de sus muestras en los enteros es hacer los siguientes pasos:
+
+	<list id="list1">
+		<item>
+	    cambiar muestra de la secuencia 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn" class="discrete">
+						<m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+					</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+			</m:math> en un tren de impulso 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>f</m:mi><m:mi>imp</m:mi></m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math>
+		</item>
+		<item>
+	    filtro pasa bajas 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">
+						<m:msub><m:mi>f</m:mi><m:mi>imp</m:mi></m:msub>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math> para obtener la reconstrucción 
+	    <m:math>
+				<m:apply>
+					<m:ci type="fn">
+						<m:mover accent="true">
+							<m:mi>f</m:mi>
+							<m:mo>~</m:mo>
+						</m:mover>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:math> ( freq. = π)
+	  </item>
+	</list>
+</para>
+      
+      <figure id="fig1">
+	<media id="idp2911584" alt=""><image src="../../media/recon_blka.png" mime-type="image/png"/></media>
+	<caption>
+	  Diagrama de bloque de reconstrucción con el filtro pasa bajas (lowpass filter (LPF)).
+	</caption>
+      </figure>       
+
+      <para id="para2">
+	La respuesta al impulso del filtro pasa bajas es
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">g</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.  La siguiente ecuación nos permite reconstruir nuestra señal
+	 (<link target-id="fig2"/>),
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:mover accent="true">
+		<m:mi>f</m:mi>
+		<m:mo>~</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.
+
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:mover accent="true">
+		    <m:mi>f</m:mi>
+		    <m:mo>~</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>f</m:mi><m:mi>imp</m:mi></m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>n</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn" class="discrete">
+			<m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:mover accent="true">
+		    <m:mi>f</m:mi>
+		    <m:mo>~</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">g</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">g</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      
+      <figure id="fig2">
+	<media id="idm7761824" alt=""><image src="../../media/recon_blk2.png" mime-type="image/png"/></media>
+	
+      </figure> 
+      
+
+      <section id="sec2">
+	<title>Ejemplos de Filtros g</title>
+
+	<example id="example1">
+	  <title> Filtros de Orden Cero</title>
+	  <para id="exam1para1">
+	    Este tipo de "filtro" es uno de los más básicos en los filtros de reconstrucción. Este simplemente mantiene el valor que esta en el
+	    <m:math> 
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> para <m:math><m:ci>τ</m:ci></m:math> segundos.
+	    Esto crea un bloque o pasos como función donde cada valor del pulso en	    <m:math> 
+	      <m:apply>
+		<m:ci type="fn" class="discrete">
+		  <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:math> es simplemente arrastrado al siguiente pulso.  La siguiente ecuación y la ilustración 
+              <link target-id="fig3">
+           </link> representan como el filtro de reconstrucción funciona con la siguiente <m:math><m:ci>g</m:ci></m:math>:
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">g</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:lt/>
+			  <m:cn>0</m:cn>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:ci>τ</m:ci>
+		      </m:apply>
+		    </m:piece>
+		    <m:otherwise>
+		      <m:cn>0</m:cn>
+		    </m:otherwise>
+		  </m:piecewise>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	    <equation id="eq2">
+	      <m:math> 
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar><m:ci>n</m:ci></m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:minus/>
+			<m:infinity/>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:uplimit>
+		      <m:infinity/>
+		    </m:uplimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn" class="discrete">
+			  <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">g</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </para>
+	  
+	  <figure orient="horizontal" id="fig3">
+	<subfigure id="s1_fig3">
+		<media id="idp238752" alt=""><image src="../../media/receg_f1.png" mime-type="image/png"/></media>
+	</subfigure>
+	<subfigure id="s2_fig3">
+		<media id="idm117600" alt=""><image src="../../media/receg_f2.png" mime-type="image/png"/></media>
+	</subfigure>
+	<caption>
+	      Mantiene el Orden Cero
+	    </caption>
+</figure> 
+
+	  <para id="exam1para1a">
+	    <note type="pregunta" id="idp1509856"><label>Pregunta</label>
+	      ¿Cómo es que 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:mover accent="true">
+		      <m:mi>f</m:mi>
+		      <m:mo>~</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> reconstruida con orden cero se compara con la original	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> en el domionio de frecuencia?
+	    </note>
+	  </para>	
+	</example>
+
+	<example id="example2">
+	  <title>Orden N-esimo</title>
+	  <para id="exam2para1">
+	    Aquí veremos algunos ejemplos rápidos de la varianza del filtro de  orden cero visto en el ejemplo anterior.
+	  </para>
+	  
+	  <figure orient="vertical" id="fig4">
+	    <subfigure id="s1_fig4">
+	      <media id="idm74048" alt=""><image src="../../media/recf_f1a.png" mime-type="image/png"/></media>
+	      <caption>
+		Primer Orden
+	      </caption>
+	    </subfigure>
+	    <subfigure id="s2_fig4">
+	      <media id="idm8288784" alt=""><image src="../../media/recf_f2a.png" mime-type="image/png"/></media>
+	      <caption>
+		Segundo Orden
+	      </caption>
+	    </subfigure>
+	    <subfigure id="s3_fig4">
+	      <media id="idm906304" alt=""><image src="../../media/recf_f3a.png" mime-type="image/png"/></media>
+	      <caption>
+		Orden ∞ 
+	      </caption>
+	    </subfigure>
+	    <caption>
+	      Ejemplo de N-esimo Orden (n-esimo orden es igual a un B-spline de n-esimo orden)
+	    </caption>
+	  </figure> 
+	</example>
+      </section>
+    </section>
+
+
+    <section id="sec3">
+      <title>Último Filtro de Reconstrucción </title>
+      
+      <para id="exe1para1">
+	<note type="pregunta" id="idm7646336"><label>Pregunta</label>
+	  ¿Cúal es el último filtro de reconstrucción?
+	</note>
+      </para>
+
+      <para id="exe1para2">
+	Recordando que ( <link target-id="fig8"/>)
+      
+      <figure id="fig8">
+		<media id="idm8567056" alt=""><image src="../../media/recon_blk3a.png" mime-type="image/png"/></media>
+		<caption>
+	  Diagrama de bloque de nuestra reconstrucción. Notese que cada una de estas señales tiene su propia CTFT o DTFT correspondiente.
+	</caption>
+	</figure>
+</para>
+
+      <para id="exe1para3">
+	Si 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">G</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>ω</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> tiene la siguiente forma (<link target-id="fig9"/>):
+      
+      <figure id="fig9">
+	<media id="idm1113856" alt=""><image src="../../media/square_wv.png" mime-type="image/png"/></media>
+	<caption>
+	  Filtro pasa baja ideal
+	</caption>
+      </figure>
+      </para>
+      
+      <para id="exe1para3a">
+	entonces 
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">
+					<m:mover accent="true">
+						<m:mi>f</m:mi>
+						<m:mo>~</m:mo>
+					</m:mover>
+				</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+
+	Por lo tanto,¡un filtro pasa baja ideal nos dara una reconstrucción perfecta!
+      </para>
+
+      <para id="exe1para4">
+	En el dominio en el tiempo, la respuesta al impulso 
+	<equation id="eq3">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">g</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:pi/>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+	<equation id="eq4">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:ci type="fn">
+						<m:mover accent="true">
+							<m:mi>f</m:mi>
+							<m:mo>~</m:mo>
+						</m:mover>
+					</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>n</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn">g</m:ci>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:sum/>
+					<m:bvar><m:ci>n</m:ci></m:bvar>
+					<m:lowlimit>
+						<m:apply>
+							<m:minus/>
+							<m:infinity/>
+						</m:apply>
+					</m:lowlimit>
+					<m:uplimit>
+						<m:infinity/>
+					</m:uplimit>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">
+								<m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+							</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:divide/>
+							<m:apply>
+								<m:sin/>
+								<m:apply>
+									<m:times/>
+									<m:pi/>
+									<m:apply>
+										<m:minus/>
+										<m:ci>t</m:ci>
+										<m:ci>n</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+							<m:apply>
+								<m:times/>
+								<m:pi/>
+								<m:apply>
+									<m:minus/>
+									<m:ci>t</m:ci>
+									<m:ci>n</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+				<m:apply>
+					<m:ci type="fn">f</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+</para>      
+    </section>
+
+
+    <section id="sec4">
+      <title>Conclusiones sorprendentes</title>
+      <para id="para9">
+	Si 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">f</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> es limitado en banda a  
+	<m:math>
+	  <m:interval closure="closed-closed">
+	    <m:apply>
+	      <m:minus/>
+	      <m:pi/>
+	    </m:apply>
+	    <m:pi/>
+	  </m:interval>
+	</m:math>, puede ser reconstruido perfectamente de su muestra en lo enteros 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn" class="discrete">
+		<m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:lowlimit><m:ci>n</m:ci></m:lowlimit>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<equation id="eq5">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn" class="discrete">
+		      <m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <para id="para10"> 
+	La ecuación anterior para una reconstrucción perfecta merece una  <link document="m12970" strength="3">mirada más cercana</link>, que se verá en la siguiente sección para un mejor entendimiento de la recostrucción. Aquí estan algunas cosas para empezar a pensar en ellas por ahorita:
+	  
+	<list id="list3">
+		<item>
+	    ¿ Que 
+	    <m:math>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:pi/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math> iguala a los enteros diferentes a  n? 
+	</item>
+		<item>
+	  ¿Cúal es el soporte de  
+	  <m:math>
+				<m:apply>
+					<m:divide/>
+					<m:apply>
+						<m:sin/>
+						<m:apply>
+							<m:times/>
+							<m:pi/>
+							<m:apply>
+								<m:minus/>
+								<m:ci>t</m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:times/>
+						<m:pi/>
+						<m:apply>
+							<m:minus/>
+							<m:ci>t</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>?
+	</item>
+	</list>
+</para>
+    </section>
+
+  </content>
+  
+</document>

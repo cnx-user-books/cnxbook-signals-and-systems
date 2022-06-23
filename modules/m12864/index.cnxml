@@ -1,0 +1,629 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Desplazamientos Circulares</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>3dda8df6-27a8-4d71-8901-cff789c78ac6</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="para1">Las muchas propiedades de la <link document="m12848" target-id="dtfs" strength="3">DFTS</link> se convierten sencillas (<emphasis>muy</emphasis> similares a las de las <link document="m10496" strength="3">Series de Fourier</link>) cuando entendemos el concepto de: <term>desplazamientos circulares</term>.
+      
+    </para>
+
+    <section id="sec1">
+      <title>Desplazamientos Circulares</title>
+
+      <para id="para2">Podemos describir  las secuencias <link document="m10744" strength="3">periódicas</link> teniendo puntos discretos en un círculo como su dominio.
+     
+      </para>
+
+      <figure id="fig1">
+	<media id="idm7603472" alt=""><image src="../../media/fig01.png" mime-type="image/png"/></media>
+</figure>
+
+      <para id="para3">
+       Desplazar  <m:math><m:ci>m</m:ci></m:math>,
+        <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:apply>
+				<m:plus/>
+				<m:ci>n</m:ci>
+				<m:ci>m</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>, corresponde a rotar el cilindro         <m:math><m:ci>m</m:ci></m:math> puntos  ACW (en contra del reloj). Para 	<m:math>
+		<m:apply>
+			<m:eq/>
+			<m:ci>m</m:ci>
+			<m:cn>-2</m:cn>
+		</m:apply>
+	</m:math>, obtenemos un desplazamiento igual al que se ve en la siguiente ilustración:
+      </para>
+
+      <figure id="fig2">
+	<media id="idp984080" alt=""><image src="../../media/fig2-fc8e.png" mime-type="image/png"/></media>
+	<caption>para
+          <m:math>
+			<m:apply>
+				<m:eq/>
+				<m:ci>m</m:ci>
+				<m:cn>-2</m:cn>
+			</m:apply>
+		</m:math>
+	</caption>
+</figure>
+
+      <figure id="fig3">
+	<media id="idp2266448" alt=""><image src="../../media/fig03.png" mime-type="image/png"/></media>
+</figure>
+
+      <para id="para4">
+       Para ciclar los desplazamientos seguiremos los siguientes pasos:</para>
+
+      <para id="para4a">
+        1) Escriba
+        <m:math>
+		<m:apply>
+			<m:ci type="fn">f</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math>
+        en el cilindro, ACW      </para>
+
+      <figure id="fig4">
+        <media id="idm7779296" alt=""><image src="../../media/fig4-c399.png" mime-type="image/png"/></media>
+        <caption>
+          <m:math>
+            <m:apply>
+              <m:eq/>
+                <m:ci>N</m:ci>
+                <m:cn>8</m:cn>
+            </m:apply>
+          </m:math></caption>
+      </figure>
+
+      <para id="para5">
+        2) Para ciclar por  <m:math><m:ci>m</m:ci></m:math>, gire el cilindro m lugares ACW
+        <m:math display="block">
+		<m:apply>
+			<m:ci><m:mo>→</m:mo></m:ci>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mrow>
+							<m:mo>((</m:mo>
+							<m:mi>n</m:mi>
+							<m:mo>+</m:mo>
+							<m:mi>m</m:mi>
+							<m:mo>))</m:mo>
+						</m:mrow>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+</para>
+
+      <figure id="fig5">
+        <media id="idp1108096" alt=""><image src="../../media/fig5-b920.png" mime-type="image/png"/></media>
+        <caption>
+          <m:math>
+            <m:apply>
+              <m:eq/>
+                <m:ci>m</m:ci>
+                <m:cn>-3</m:cn>
+            </m:apply>
+          </m:math></caption>
+      </figure>
+
+      <example id="exam1">
+        <para id="para6">
+          Si
+          <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+			<m:list>
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+				<m:cn>3</m:cn>
+				<m:cn>4</m:cn>
+				<m:cn>5</m:cn>
+				<m:cn>6</m:cn>
+				<m:cn>7</m:cn>
+			</m:list>
+		</m:apply>
+	</m:math>, entonces
+          <m:math>
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>
+					<m:mrow>
+						<m:msub>
+							<m:mrow>
+								<m:mo>((</m:mo>
+								<m:mrow>
+									<m:mi>n</m:mi>
+									<m:mo>-</m:mo>
+									<m:mi>3</m:mi>
+								</m:mrow>
+								<m:mo>))</m:mo>
+							</m:mrow>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:mrow>
+				</m:ci>
+			</m:apply>
+			<m:list>
+				<m:cn>3</m:cn>
+				<m:cn>4</m:cn>
+				<m:cn>5</m:cn>
+				<m:cn>6</m:cn>
+				<m:cn>7</m:cn>
+				<m:cn>0</m:cn>
+				<m:cn>1</m:cn>
+				<m:cn>2</m:cn>
+			</m:list>
+		</m:apply>
+	</m:math>
+</para>
+
+        <para id="para7">Es llamado <term>desplazamiento circular</term>, ya que nos estamos moviendo alrededor del círculo. El desplazamiento común es conocido como “desplazamiento linear” (un movimiento en una línea).
+       
+        </para>
+
+      </example>
+
+      <section id="sec1sub1">
+        <title>Notas para el desplazamiento circular</title>
+
+        <para id="sub1a">
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mrow>
+							<m:mo>((</m:mo>
+							<m:mi>n</m:mi>
+							<m:mo>+</m:mo>
+							<m:mi>N</m:mi>
+							<m:mo>))</m:mo>
+						</m:mrow>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+          Girar por <m:math><m:ci>N</m:ci></m:math> lugares es lo mismo que girar por una vuelta completa, o no moverse del mismo lugar.
+        </para>
+
+        <para id="sub1b">
+	<m:math display="block">
+		<m:apply>
+			<m:eq/>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mrow>
+							<m:mo>((</m:mo>
+							<m:mi>n</m:mi>
+							<m:mo>+</m:mo>
+							<m:mi>N</m:mi>
+							<m:mo>))</m:mo>
+						</m:mrow>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+			<m:apply>
+				<m:ci type="fn" class="discrete">f</m:ci>
+				<m:ci>
+					<m:msub>
+						<m:mrow>
+							<m:mo>((</m:mo>
+							<m:mi>n</m:mi>
+							<m:mo>-</m:mo>
+							<m:mrow>
+								<m:mo>(</m:mo>
+								<m:mi>N</m:mi>
+								<m:mo>-</m:mo>
+								<m:mi>m</m:mi>
+								<m:mo>)</m:mo>
+							</m:mrow>
+							<m:mo>))</m:mo>
+						</m:mrow>
+						<m:mi>N</m:mi>
+					</m:msub>
+				</m:ci>
+			</m:apply>
+		</m:apply>
+	</m:math>
+          Desplazar ACW <m:math><m:ci>m</m:ci></m:math> es equivalente a
+          desplazar CW 
+          <m:math>
+		<m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:ci>m</m:ci>
+		</m:apply>
+	</m:math>
+</para>
+
+        <figure id="fig6">
+          <media id="idp2570688" alt=""><image src="../../media/fig6-293f.png" mime-type="image/png"/></media>
+        </figure>
+
+        <para id="sub1c">
+	<m:math display="block">
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>
+				<m:msub>
+					<m:mrow>
+						<m:mo>((</m:mo>
+						<m:mo>-</m:mo>
+						<m:mi>n</m:mi>
+						<m:mo>))</m:mo>
+					</m:mrow>
+					<m:mi>N</m:mi>
+				</m:msub>
+			</m:ci>
+		</m:apply>
+	</m:math>
+
+          La expresión anterior, escribe los valores de
+          <m:math>
+		<m:apply>
+			<m:ci type="fn" class="discrete">f</m:ci>
+			<m:ci>n</m:ci>
+		</m:apply>
+	</m:math> para el lado del reloj.
+        </para>
+
+        <figure id="fig7" orient="horizontal">
+          <subfigure id="subfig7a">
+            <media id="idm6852272" alt=""><image src="../../media/fig7a-0c3a.png" mime-type="image/png"/></media>
+            <caption><m:math><m:apply>
+                       <m:ci type="fn" class="discrete">f</m:ci>
+                       <m:ci>n</m:ci></m:apply>
+                     </m:math>
+            </caption>
+          </subfigure>
+          <subfigure id="subfig7b">
+            <media id="idm5933088" alt=""><image src="../../media/fig7b.png" mime-type="image/png"/></media>
+            <caption>
+              <m:math>
+                <m:apply>
+                  <m:ci type="fn" class="discrete">f</m:ci>
+                  <m:ci>
+                    <m:msub>
+                      <m:mrow>
+                        <m:mo>((</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo>))</m:mo>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:msub>
+                  </m:ci>
+                </m:apply>
+              </m:math>
+            </caption>
+          </subfigure>
+        </figure>
+      </section>
+    </section>
+
+    <section id="sec2">
+      <title>Desplazamientos Circulares y el DFT</title>
+
+      <rule id="rule1" type="theorem">
+	<title>Desplazamiento Circular y el DFT</title>
+	<statement id="idm7638512">
+		<para id="rulepara1">
+           Si
+            <m:math display="block">
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>n</m:ci>
+				</m:apply>
+				<m:mover>
+					<m:mo>↔</m:mo>
+					<m:mtext>DFT</m:mtext>
+				</m:mover>
+				<m:apply>
+					<m:ci type="fn" class="discrete">F</m:ci>
+					<m:ci>k</m:ci>
+				</m:apply>
+			</m:math>
+           entonces
+            <m:math display="block">
+				<m:apply>
+					<m:ci type="fn" class="discrete">f</m:ci>
+					<m:ci>
+						<m:msub>
+							<m:mrow>
+								<m:mo>((</m:mo>
+								<m:mi>n</m:mi>
+								<m:mo>-</m:mo>
+								<m:mi>m</m:mi>
+								<m:mo>))</m:mo>
+							</m:mrow>
+							<m:mi>N</m:mi>
+						</m:msub>
+					</m:ci>
+				</m:apply>
+				<m:mover>
+					<m:mo>↔</m:mo>
+					<m:mtext>DFT</m:mtext>
+				</m:mover>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:exp/>
+						<m:apply>
+							<m:minus/>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:apply>
+									<m:divide/>
+									<m:apply>
+										<m:times/>
+										<m:cn>2</m:cn>
+										<m:pi/>
+									</m:apply>
+									<m:ci>N</m:ci>
+								</m:apply>
+								<m:ci>k</m:ci>
+								<m:ci>m</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:ci type="fn" class="discrete">F</m:ci>
+						<m:ci>k</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:math>
+            (<foreign>Por ejemplo</foreign>. Desplazamiento circular en el dominio del tiempo= desplazamiento del ángulo en el DFT)
+          </para></statement>
+	<proof id="idm6844192">
+		<para id="rulepara2">
+			<equation id="eq1">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:sum/>
+								<m:bvar><m:ci>k</m:ci></m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">F</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:exp/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:ci>k</m:ci>
+											<m:ci>n</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+
+            así que el desplazar el ángulo en el DFT
+
+            <equation id="eq2">
+				<m:math>
+					<m:apply>
+						<m:eq/>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:sum/>
+								<m:bvar><m:ci>k</m:ci></m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">F</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:exp/>
+										<m:apply>
+											<m:minus/>
+											<m:apply>
+												<m:times/>
+												<m:imaginaryi/>
+												<m:apply>
+													<m:divide/>
+													<m:apply>
+														<m:times/>
+														<m:cn>2</m:cn>
+														<m:pi/>
+													</m:apply>
+													<m:ci>N</m:ci>
+												</m:apply>
+												<m:ci>k</m:ci>
+												<m:ci>n</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+									<m:apply>
+										<m:exp/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:ci>k</m:ci>
+											<m:ci>n</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:divide/>
+								<m:cn>1</m:cn>
+								<m:ci>N</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:sum/>
+								<m:bvar><m:ci>k</m:ci></m:bvar>
+								<m:lowlimit>
+									<m:cn>0</m:cn>
+								</m:lowlimit>
+								<m:uplimit>
+									<m:apply>
+										<m:minus/>
+										<m:ci>N</m:ci>
+										<m:cn>1</m:cn>
+									</m:apply>
+								</m:uplimit>
+								<m:apply>
+									<m:times/>
+									<m:apply>
+										<m:ci type="fn" class="discrete">F</m:ci>
+										<m:ci>k</m:ci>
+									</m:apply>
+									<m:apply>
+										<m:exp/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:apply>
+												<m:divide/>
+												<m:apply>
+													<m:times/>
+													<m:cn>2</m:cn>
+													<m:pi/>
+												</m:apply>
+												<m:ci>N</m:ci>
+											</m:apply>
+											<m:ci>k</m:ci>
+											<m:apply>
+												<m:minus/>
+												<m:ci>n</m:ci>
+												<m:ci>m</m:ci>
+											</m:apply>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+						<m:apply>
+							<m:ci type="fn" class="discrete">f</m:ci>
+							<m:ci>
+								<m:msub>
+									<m:mrow>
+										<m:mo>((</m:mo>
+										<m:mi>n</m:mi>
+										<m:mo>-</m:mo>
+										<m:mi>m</m:mi>
+										<m:mo>))</m:mo>
+									</m:mrow>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+						</m:apply>
+					</m:apply>
+				</m:math>
+			</equation>
+		</para>
+	</proof>
+</rule>
+
+    </section>
+
+  </content>
+</document>

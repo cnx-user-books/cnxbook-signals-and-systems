@@ -1,0 +1,489 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Producto Interno</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ae7c0dd4-0906-478c-b116-f80ab8aae783</md:uuid>
+</metadata>
+
+  <content>
+    <section id="sec1">
+      <title>Definición: Producto Interno</title>
+      <para id="p1_sec1">
+	De seguro ya tiene una idea del <term>producto interno</term>, también conocido como <term>producto punto</term>, en 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:power/>
+	    <m:reals/>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> de alguno de sus cursos de matemáticas o de cómputo. Si no, definiremos el producto interno de la siguiente manera, tenemos dados algunas 
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">x</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:reals/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> y
+	<m:math display="inline">
+	  <m:apply>
+	    <m:in/>
+	    <m:ci type="vector">y</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:reals/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	
+	<definition id="in_prod">
+	  <term>Producto Interno</term>
+	  <meaning id="idm9073296">
+	   El producto interno esta definido matemáticamente de la siguiente manera:	    
+	    <equation id="eq1">
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:scalarproduct/>
+		    <m:ci type="vector">x</m:ci>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:transpose/>
+		      <m:ci type="vector">y</m:ci>
+		    </m:apply>
+		    <m:ci type="vector">x</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:matrix>
+		      <m:matrixrow>
+			<m:ci><m:msub>
+			  <m:mi>y</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+			<m:ci><m:msub>
+			  <m:mi>y</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+			<m:ci>…</m:ci>
+			<m:ci><m:msub>
+			  <m:mi>y</m:mi>
+			  <m:mrow>
+			    <m:mi>n</m:mi>
+			    <m:mo>−</m:mo>
+			    <m:mn>1</m:mn>
+			  </m:mrow>
+			</m:msub></m:ci>
+		      </m:matrixrow>
+		    </m:matrix>
+		    <m:vector>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		      <m:ci>⋮</m:ci>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mrow>
+			  <m:mi>n</m:mi>
+			  <m:mo>−</m:mo>
+			  <m:mn>1</m:mn>
+			</m:mrow>
+		      </m:msub></m:ci>
+		    </m:vector>
+		  </m:apply>
+		  <m:apply>
+		    <m:sum/>
+		    <m:bvar>
+		      <m:ci>i</m:ci>
+		    </m:bvar>
+		    <m:uplimit>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:uplimit>
+		    <m:lowlimit>
+		      <m:cn>0</m:cn>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci><m:msub>
+			<m:mi>x</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub></m:ci>
+		      <m:ci><m:msub>
+			<m:mi>y</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </equation>
+	  </meaning>
+	</definition>
+      </para> 
+
+      <section id="sub1_s1">
+	<title>Producto Interno en 2-D</title>
+	<para id="p1_s1s1">
+	  Si tenemos 
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">x</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:reals/>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math> y
+	  <m:math display="inline">
+		<m:apply>
+			<m:in/>
+			<m:ci type="vector">y</m:ci>
+			<m:apply>
+				<m:power/>
+				<m:reals/>
+				<m:cn>2</m:cn>
+			</m:apply>
+		</m:apply>
+	</m:math>, entonces podemos escribir el producto interno como:
+	  
+	  <equation id="eq2">
+		<m:math>
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci type="vector">x</m:ci>
+					<m:ci type="vector">y</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+						<m:ci type="vector">x</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:cos/>
+						<m:ci>θ</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</equation>
+
+	  donde <m:math><m:ci>θ</m:ci></m:math> es el ángulo entre
+	   <m:math><m:ci type="vector">x</m:ci></m:math> y
+	  <m:math><m:ci type="vector">y</m:ci></m:math>.
+	</para>
+	
+	<figure id="fig1">
+	  <media id="idp128416" alt=""><image src="../../media/inprod_f1.png" mime-type="image/png"/></media>
+	  <caption>
+	    Gráfica general de vectores y ángulos mencionados en las ecuaciones  anteriores. 
+	  </caption>
+	</figure>
+
+	<para id="p2_s1s1">
+	  Geométricamente, el producto interno nos dice sobre la
+	  <emphasis>fuerza</emphasis> de <m:math><m:ci type="vector">x</m:ci></m:math> en la dirección de  
+	  <m:math><m:ci type="vector">y</m:ci></m:math>. 
+	</para>
+	
+	<example id="eg2_sub1">
+	  <para id="p1_eg2">
+	    Por ejemplo, si
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		  <m:ci type="vector">x</m:ci>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:math>, entonces
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:scalarproduct/>
+		  <m:ci type="vector">x</m:ci>
+		  <m:ci type="vector">y</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/> 
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+		    <m:ci type="vector">y</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:cos/>
+		    <m:ci>θ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para> 
+	</example>
+	
+	<figure id="fig2">
+	<media id="idm9568320" alt=""><image src="../../media/inprod_f2.png" mime-type="image/png"/></media>
+	<caption>
+	    Gráfica de los dos vectores del ejemplo anterior.
+	  </caption>
+</figure>
+	
+	<para id="p3_s1s1">
+	  Las siguientes características son dadas por el producto interno:
+
+	  <list id="list_prop">
+	<item>
+		<m:math display="inline">
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci type="vector">x</m:ci>
+				<m:ci type="vector">y</m:ci>
+			</m:apply>
+		</m:math> mide la longitud de la 	     
+ <term>proyección</term> de <m:math><m:ci type="vector">y</m:ci></m:math> sobre 	      <m:math><m:ci type="vector">x</m:ci></m:math>.
+	    </item>
+	<item>
+		<m:math display="inline">
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci type="vector">x</m:ci>
+				<m:ci type="vector">y</m:ci>
+			</m:apply>
+		</m:math> es el <term>máximo</term> (dadas
+	      <m:math display="inline">
+			<m:apply>
+				<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+				<m:ci type="vector">x</m:ci>
+			</m:apply>
+		</m:math>, 
+	      <m:math display="inline">
+			<m:apply>
+				<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#norm"/>
+				<m:ci type="vector">y</m:ci>
+			</m:apply>
+		</m:math>) 
+
+	      donde <m:math>
+			<m:ci type="vector">x</m:ci></m:math>
+	      y <m:math><m:ci type="vector">y</m:ci></m:math> estan	      en la misma dirección (
+	      <m:math display="inline">
+			<m:apply>
+				<m:implies/>
+				<m:apply>
+					<m:eq/>
+					<m:ci>θ</m:ci>
+					<m:cn>0</m:cn>
+				</m:apply>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:cos/>
+						<m:ci>θ</m:ci>
+					</m:apply>
+					<m:cn>1</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>).
+	    </item>
+	<item>
+		<m:math display="inline">
+			<m:apply>
+				<m:scalarproduct/>
+				<m:ci type="vector">x</m:ci>
+				<m:ci type="vector">y</m:ci>
+			</m:apply>
+		</m:math> es cero cuando 
+	      <m:math display="inline">
+			<m:apply>
+				<m:implies/>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:cos/>
+						<m:ci>θ</m:ci>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+				<m:apply>
+					<m:eq/>
+					<m:ci>θ</m:ci>
+					<m:cn>90°</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>, <foreign>es decir</foreign>
+		<m:math>
+			<m:ci type="vector">x</m:ci></m:math> y
+ <m:math><m:ci type="vector">y</m:ci></m:math> son
+	      <term>ortogonales</term>. 
+	    </item>
+</list>
+	      
+	</para>
+      </section>
+
+      <section id="sub2">
+	<title>Reglas del Producto Interno</title>
+	<para id="p1_sub2">
+	  En general el producto interno en un espacio vectorial complejo es solo una función (tomando dos vectores y regresando un número complejo) que satisface ciertas condiciones:
+
+	  <list id="list_rules">
+	<item>
+	      Simetria Conjugada: 
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci type="vector">x</m:ci>
+					<m:ci type="vector">y</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:conjugate/>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	      Escalado:
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:apply>
+						<m:times/>
+						<m:ci>α</m:ci>
+						<m:ci type="vector">x</m:ci>
+					</m:apply>
+					<m:ci type="vector">y</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:times/>
+					<m:ci>α</m:ci>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	      Aditividad:
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:apply>
+						<m:plus/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">y</m:ci>
+					</m:apply>
+					<m:ci type="vector">z</m:ci>
+				</m:apply>
+				<m:apply>
+					<m:plus/>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">z</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">y</m:ci>
+						<m:ci type="vector">z</m:ci>
+					</m:apply>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+	<item>
+	      "Positividad":
+	      <m:math display="block">
+			<m:apply>
+				<m:forall/>
+				<m:bvar>
+					<m:ci>x</m:ci>
+				</m:bvar>
+				<m:condition>
+					<m:apply>
+						<m:neq/>
+						<m:ci type="vector">x</m:ci>
+						<m:cn>0</m:cn>
+					</m:apply>
+				</m:condition>
+				<m:apply>
+					<m:gt/>
+					<m:apply>
+						<m:scalarproduct/>
+						<m:ci type="vector">x</m:ci>
+						<m:ci type="vector">x</m:ci>
+					</m:apply>
+					<m:cn>0</m:cn>
+				</m:apply>
+			</m:apply>
+		</m:math>
+	</item>
+</list>
+
+	  <definition id="orthog">
+	<term>Ortogonal</term>
+	<meaning id="idm2610816">
+	      Decimos que  <m:math><m:ci type="vector">x</m:ci></m:math>
+	      y <m:math><m:ci type="vector">y</m:ci></m:math> son ortogonales si:
+	      <m:math display="block">
+			<m:apply>
+				<m:eq/>
+				<m:apply>
+					<m:scalarproduct/>
+					<m:ci type="vector">x</m:ci>
+					<m:ci type="vector">y</m:ci>
+				</m:apply>
+				<m:cn>0</m:cn>
+			</m:apply>
+		</m:math>
+	</meaning>
+</definition>
+	</para>
+      </section>
+    </section> 
+ 
+ </content>
+</document>

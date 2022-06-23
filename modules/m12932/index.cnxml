@@ -1,0 +1,414 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Resumen de las Series de Fourier</title>
+  
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>2a5bf2ba-6b45-4f50-a05c-df4bc8db40a5</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p1">Abajo veremos algunos de los conceptos más importantes de las <link document="m12893" strength="3">series de Fourier</link> y nuestro entendimiento usando eigenfunciones y eigenvalores. Ojala este familiarizado con este material para que este documento sirva como un repaso, pero si no, use todos los links de información dados en los temas. 
+   
+
+      <list id="sum_list" list-type="enumerated">
+	<item>
+Podemos representar una <link document="m12933" strength="2">función periódica</link> o una función en un intervalo” 
+	
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> 
+
+como la combinación de <link document="m12825" strength="3">exponenciales complejos</link>:
+	  <equation id="eq1">
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</equation>
+		<equation id="eq2">
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+					<m:apply>
+						<m:times/>
+						<m:apply>
+							<m:divide/>
+							<m:cn>1</m:cn>
+							<m:ci>T</m:ci>
+						</m:apply>
+						<m:apply>
+							<m:int/>
+							<m:bvar>
+								<m:ci>t</m:ci>
+							</m:bvar>
+							<m:uplimit>
+								<m:ci>T</m:ci>
+							</m:uplimit>
+							<m:lowlimit>
+								<m:cn>0</m:cn>
+							</m:lowlimit>
+							<m:apply>
+								<m:times/>
+								<m:apply>
+									<m:ci type="fn">f</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+								<m:apply>
+									<m:exp/>
+									<m:apply>
+										<m:minus/>
+										<m:apply>
+											<m:times/>
+											<m:imaginaryi/>
+											<m:ci><m:msub>
+													<m:mi>ω</m:mi>
+													<m:mn>0</m:mn>
+												</m:msub></m:ci>
+											<m:ci>n</m:ci>
+											<m:ci>t</m:ci>
+										</m:apply>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</equation>
+
+	Donde los coeficientes de Fourier,
+	  <m:math display="inline">
+			<m:ci><m:msub>
+					<m:mi>c</m:mi>
+					<m:mi>n</m:mi>
+				</m:msub></m:ci>
+		</m:math>, igualan cuanto de la frecuencia
+	    <m:math display="inline">
+			<m:apply>
+				<m:times/>
+				<m:ci><m:msub>
+						<m:mi>ω</m:mi>
+						<m:mn>0</m:mn>
+					</m:msub></m:ci>
+				<m:ci>n</m:ci>
+			</m:apply>
+		</m:math>
+	 existen en la señal.	
+	</item>
+	<item>
+	 Ya que
+	  <m:math display="inline">
+			<m:apply>
+				<m:exp/>
+				<m:apply>
+					<m:times/>
+					<m:imaginaryi/>
+					<m:ci><m:msub>
+							<m:mi>ω</m:mi>
+							<m:mn>0</m:mn>
+						</m:msub></m:ci>
+					<m:ci>n</m:ci>
+					<m:ci>t</m:ci>
+				</m:apply>
+			</m:apply>
+		</m:math>
+son <link document="m12900" strength="3">eigenfunciones de sistema LTI</link> podemos interpretar la acción de un sistema en una señale en termino de sus <link document="m10736" strength="3">eigenvalores</link>:	
+
+  
+
+	  <equation id="eq3">
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:ci type="fn">H</m:ci>
+						<m:apply>
+							<m:times/>
+							<m:imaginaryi/>
+							<m:ci><m:msub>
+									<m:mi>ω</m:mi>
+									<m:mn>0</m:mn>
+								</m:msub></m:ci>
+							<m:ci>n</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:int/>
+						<m:bvar>
+							<m:ci>t</m:ci>
+						</m:bvar>
+						<m:uplimit>
+							<m:infinity/>
+						</m:uplimit>
+						<m:lowlimit>
+							<m:apply>
+								<m:minus/>
+								<m:infinity/>
+							</m:apply>
+						</m:lowlimit>
+						<m:apply>
+							<m:times/>
+							<m:apply>
+								<m:ci type="fn">h</m:ci>
+								<m:ci>t</m:ci>
+							</m:apply>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:minus/>
+									<m:apply>
+										<m:times/>
+										<m:imaginaryi/>
+										<m:ci><m:msub>
+												<m:mi>ω</m:mi>
+												<m:mn>0</m:mn>
+											</m:msub></m:ci>
+										<m:ci>n</m:ci>
+										<m:ci>t</m:ci>
+									</m:apply>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</equation>
+		<list id="sublist">
+			<item>
+				<m:math display="inline">
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">H</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+	      
+	     es grande  ⇒ el sistema <emphasis>acentúa</emphasis> la frecuencia
+	     
+	      <m:math display="inline">
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:math>
+			</item>
+			<item>
+				<m:math display="inline">
+					<m:apply>
+						<m:abs/>
+						<m:apply>
+							<m:ci type="fn">H</m:ci>
+							<m:apply>
+								<m:times/>
+								<m:imaginaryi/>
+								<m:ci><m:msub>
+										<m:mi>ω</m:mi>
+										<m:mn>0</m:mn>
+									</m:msub></m:ci>
+								<m:ci>n</m:ci>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:math>
+	      
+	      es pequeño⇒ el sistema <emphasis>atenúa</emphasis> el 	      <m:math display="inline">
+					<m:apply>
+						<m:times/>
+						<m:ci><m:msub>
+								<m:mi>ω</m:mi>
+								<m:mn>0</m:mn>
+							</m:msub></m:ci>
+						<m:ci>n</m:ci>
+					</m:apply>
+				</m:math>
+			</item>
+		</list></item>
+	<item>
+	En adición el
+	  <m:math display="inline">
+			<m:apply>
+				<m:set>
+					<m:ci><m:msub>
+							<m:mi>c</m:mi>
+							<m:mi>n</m:mi>
+						</m:msub></m:ci>
+				</m:set>
+			</m:apply>
+		</m:math> de una función periódica 
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math> nos puede decir sobre: 
+	  
+	  <list id="sublist2">
+			<item>
+	      simetrías en
+	      <m:math display="inline">
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:math>
+			</item>
+			<item>
+	      suavidad en
+	      <m:math display="inline">
+					<m:apply>
+						<m:ci type="fn">f</m:ci>
+						<m:ci>t</m:ci>
+					</m:apply>
+				</m:math>, where donde la suavidad se puede interpretar como el radio de decadencia 
+	      <m:math display="inline">
+					<m:apply>
+						<m:abs/>
+						<m:ci><m:msub>
+								<m:mi>c</m:mi>
+								<m:mi>n</m:mi>
+							</m:msub></m:ci>
+					</m:apply>
+				</m:math>.
+	    </item>
+		</list>
+	</item>
+	<item>
+Podemos <emphasis>aproximar</emphasis> una función a de-sintetizar usando algunos valores en el coeficiente de fourier ( truncando la S.F.)
+	  
+
+	  <equation id="eq4">
+			<m:math>
+				<m:apply>
+					<m:eq/>
+					<m:apply>
+						<m:diff/>
+						<m:apply>
+							<m:ci type="fn">
+								<m:msub>
+									<m:mi>f</m:mi>
+									<m:mi>N</m:mi>
+								</m:msub>
+							</m:ci>
+							<m:ci>t</m:ci>
+						</m:apply>
+					</m:apply>
+					<m:apply>
+						<m:sum/>
+						<m:bvar>
+							<m:ci>n</m:ci>
+						</m:bvar>
+						<m:domainofapplication>
+							<m:apply>
+								<m:leq/>
+								<m:ci>n</m:ci>
+								<m:apply>
+									<m:abs/>
+									<m:ci>N</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:domainofapplication>
+						<m:apply>
+							<m:times/>
+							<m:ci><m:msub>
+									<m:mi>c</m:mi>
+									<m:mi>n</m:mi>
+								</m:msub></m:ci>
+							<m:apply>
+								<m:exp/>
+								<m:apply>
+									<m:times/>
+									<m:imaginaryi/>
+									<m:ci><m:msub>
+											<m:mi>ω</m:mi>
+											<m:mn>0</m:mn>
+										</m:msub></m:ci>
+									<m:ci>n</m:ci>
+									<m:ci>t</m:ci>
+								</m:apply>
+							</m:apply>
+						</m:apply>
+					</m:apply>
+				</m:apply>
+			</m:math>
+		</equation>		  
+
+	  Esta aproximación funciona bien donde
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	  es continuo pero no función también cuando  
+	  <m:math display="inline">
+			<m:apply>
+				<m:ci type="fn">f</m:ci>
+				<m:ci>t</m:ci>
+			</m:apply>
+		</m:math>
+	  is discontinuous.  es descontinuó esto es explicado por el <link document="m12929" strength="3">fenómeno de Gibb</link>. 
+	</item>
+</list></para>
+
+  </content>
+</document>
