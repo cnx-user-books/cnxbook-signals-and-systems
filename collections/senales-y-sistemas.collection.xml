@@ -1,15 +1,16 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="es">
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="es" authors="Richard Baraniuk">
   <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
     <md:content-id>col10373</md:content-id>
-    <md:title>Señales y Sistemas</md:title>
+    <md:title>Se&#xF1;ales y Sistemas</md:title>
     <md:language>es</md:language>
     <md:license url="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution License</md:license>
     <md:uuid>4238bc07-3eed-4d07-b4e6-135dac3e0ecb</md:uuid>
-<md:slug>senales-y-sistemas</md:slug>
-</metadata>
+    <md:slug>senales-y-sistemas</md:slug>
+  </metadata>
   <col:content>
     <col:subcollection>
-      <md:title>Señales</md:title>
+      <md:title>Se&#xF1;ales</md:title>
       <col:content>
         <col:module document="m12818"/>
         <col:module document="m12823"/>
@@ -27,7 +28,7 @@
       </col:content>
     </col:subcollection>
     <col:subcollection>
-      <md:title>Análisis de Sistemas de Tiempo Continuo en el Dominio del Tiempo</md:title>
+      <md:title>An&#xE1;lisis de Sistemas de Tiempo Continuo en el Dominio del Tiempo</md:title>
       <col:content>
         <col:module document="m12985"/>
         <col:module document="m12828"/>
@@ -36,7 +37,7 @@
       </col:content>
     </col:subcollection>
     <col:subcollection>
-      <md:title>Análisis de Sistemas Discretos en el Dominio del Tiempo</md:title>
+      <md:title>An&#xE1;lisis de Sistemas Discretos en el Dominio del Tiempo</md:title>
       <col:content>
         <col:module document="m12830"/>
         <col:module document="m12833"/>
@@ -101,7 +102,7 @@
       </col:content>
     </col:subcollection>
     <col:subcollection>
-      <md:title>Transformada Rápida de Fourier (FFT)</md:title>
+      <md:title>Transformada R&#xE1;pida de Fourier (FFT)</md:title>
       <col:content>
         <col:module document="m12937"/>
         <col:module document="m12942"/>
@@ -148,7 +149,7 @@
       </col:content>
     </col:subcollection>
     <col:subcollection>
-      <md:title>Transformada de Laplace y Diseño de Sistemas</md:title>
+      <md:title>Transformada de Laplace y Dise&#xF1;o de Sistemas</md:title>
       <col:content>
         <col:module document="m12978"/>
         <col:module document="m12979"/>
