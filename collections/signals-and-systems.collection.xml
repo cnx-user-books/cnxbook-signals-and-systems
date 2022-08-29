@@ -1,3 +1,30 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course">  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">  <md:content-id>col10803</md:content-id>  <md:title>Signals and Systems</md:title>      <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>  <md:language>en</md:language>        <md:uuid>a9a66e24-efba-488e-8fc4-91ac6b4b596b</md:uuid>
-<md:slug>signals-and-systems</md:slug>
-</metadata>  <col:content>          <col:module document="m27489"/>                            <col:module document="m27492"/>                            <col:module document="m27485"/>                            <col:module document="m27499"/>                            <col:module document="m27519"/>                            <col:module document="m26719"/>                            <col:module document="m27524"/>                            <col:module document="m27510"/>                            <col:module document="m26725"/>                            <col:module document="m26679"/>                            <col:module document="m27536"/>                            <col:module document="m26685"/>                            <col:module document="m26683"/>                            <col:module document="m26686"/>                            <col:module document="m26688"/>                            <col:module document="m26690"/>                            <col:module document="m27594"/>                    </col:content></col:collection>
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course" authors="Richard Baraniuk">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10803</md:content-id>
+    <md:title>Signals and Systems</md:title>
+    <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>
+    <md:language>en</md:language>
+    <md:uuid>a9a66e24-efba-488e-8fc4-91ac6b4b596b</md:uuid>
+    <md:slug>signals-and-systems</md:slug>
+  </metadata>
+  <col:content>
+    <col:module document="m27489"/>
+    <col:module document="m27492"/>
+    <col:module document="m27485"/>
+    <col:module document="m27499"/>
+    <col:module document="m27519"/>
+    <col:module document="m26719"/>
+    <col:module document="m27524"/>
+    <col:module document="m27510"/>
+    <col:module document="m26725"/>
+    <col:module document="m26679"/>
+    <col:module document="m27536"/>
+    <col:module document="m26685"/>
+    <col:module document="m26683"/>
+    <col:module document="m26686"/>
+    <col:module document="m26688"/>
+    <col:module document="m26690"/>
+    <col:module document="m27594"/>
+  </col:content>
+</col:collection>
