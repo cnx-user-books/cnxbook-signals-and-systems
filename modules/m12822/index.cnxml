@@ -268,7 +268,7 @@ Es posible verificar la linealidad de un  sistema en un paso sencillo. Para hace
 	</m:math> es invariante en el tiempo si para toda
 	  <m:math display="inline"><m:ci>T</m:ci></m:math>
 	<equation id="eqn4">
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:eq/>
 				<m:apply>

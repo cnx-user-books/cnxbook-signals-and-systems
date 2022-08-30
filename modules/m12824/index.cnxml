@@ -108,7 +108,7 @@ Esta es una manera de visualizar la Función Delta de Dirac.
 	<title>La propiedad de desplazamiento del impulso  </title>
 	<para id="para3">El primer paso para comprender los resultados que esta función nos brinda, es examinar lo que sucede cuando esta función es multiplicada por alguna otra función.
 	  <equation id="eqn1">
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:eq/>
 				<m:apply>
@@ -143,7 +143,7 @@ Esta es una manera de visualizar la Función Delta de Dirac.
 
 	  <equation id="eqn2">
 		<title>Propiedad de Desplazamiento </title>
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:eq/>
 				<m:apply>
@@ -354,7 +354,7 @@ Esta es una manera de visualizar la Función Delta de Dirac.
 	
 	<equation id="eqn3">
 	<title>Impulso de Tiempo-Discreto </title>
-	<m:math display="display">
+	<m:math>
 		<m:apply>
 			<m:eq/>
 			<m:apply>

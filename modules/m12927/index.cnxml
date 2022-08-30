@@ -54,7 +54,7 @@
 
 	 Esto se puede probar usando la condición inicial de los coeficientes iniciales de las series de fourier que pueden ser finitas. 
 	    <equation id="eqn2">
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:leq/>
 				<m:apply>
@@ -211,7 +211,7 @@ Recordando los <link document="m10060" strength="2">exponenciales complejos</lin
 	</m:math>, nos da 
 	    
 	    <equation id="eqn4">
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:eq/>
 				<m:apply>
@@ -245,7 +245,7 @@ Recordando los <link document="m10060" strength="2">exponenciales complejos</lin
 		</m:math>
 	</equation>
 	<equation id="eqn5">
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:lt/>
 				<m:infinity/>
@@ -304,7 +304,7 @@ Entonces usted debería observar que esta función <emphasis>no tiene</emphasis>
 	      <equation id="eqn6">
 		<title>las condiciones débiles para la trasformada de Fourier
 </title>
-		<m:math display="display">
+		<m:math>
 			<m:apply>
 				<m:lt/>
 				<m:apply>
