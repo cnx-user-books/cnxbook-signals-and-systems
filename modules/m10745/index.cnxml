@@ -1175,7 +1175,7 @@ m10089</para><section id="intro">
 	    Series coefficients:
 
 	    <equation id="eqn2">
-	      <m:math display="display">
+	      <m:math>
 		<m:apply>
 		  <m:leq/>
 		  <m:apply>
@@ -1377,7 +1377,7 @@ m10089</para><section id="intro">
 </m:apply>
 </m:math></equation>
 
-	    <equation id="eqn5"><m:math display="display">
+	    <equation id="eqn5"><m:math>
   <m:apply>
     <m:implies/>
     <m:ci/>
