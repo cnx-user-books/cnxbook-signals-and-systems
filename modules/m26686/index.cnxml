@@ -255,7 +255,7 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -299,10 +299,10 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>x</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mrow>
@@ -359,7 +359,7 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
                       </m:mstyle>
                     </m:msup>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -494,7 +494,7 @@ x \( t - T \)  matrix {
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -586,10 +586,10 @@ x \( t - T \)  matrix {
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msup>
                       <m:mi>e</m:mi>
                       <m:mstyle fontsize="8pt">
@@ -699,7 +699,7 @@ x \( t - T \)  matrix {
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -2360,7 +2360,7 @@ e rSup { size 8{ - 2 \( t - 4 \) } } u \( t - 4 \)  matrix {
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2386,10 +2386,10 @@ e rSup { size 8{ - 2 \( t - 4 \) } } u \( t - 4 \)  matrix {
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msub>
                       <m:mi>V</m:mi>
                       <m:mstyle fontsize="8pt">
@@ -2447,7 +2447,7 @@ e rSup { size 8{ - 2 \( t - 4 \) } } u \( t - 4 \)  matrix {
                     </m:mtable>
                     <m:mi>s</m:mi>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>

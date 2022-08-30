@@ -484,7 +484,7 @@
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -567,10 +567,10 @@
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msub>
                       <m:mover>
                         <m:mi>X</m:mi>
@@ -674,10 +674,10 @@
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msub>
                       <m:mover>
                         <m:mi>X</m:mi>
@@ -781,10 +781,10 @@
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msub>
                       <m:mover>
                         <m:mi>X</m:mi>
@@ -850,10 +850,10 @@
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:msub>
                       <m:mover>
                         <m:mi>X</m:mi>
@@ -891,7 +891,7 @@
                     <m:mi fontstyle="italic">Nϕ</m:mi>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>

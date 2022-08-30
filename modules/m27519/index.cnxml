@@ -1116,7 +1116,7 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1176,10 +1176,10 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow/>
+                  <m:mtd/>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -3362,12 +3362,7 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
           <m:annotation encoding="StarMath 5.0"> size 12{V rSub { size 8{i} }  \( s \) = {  {1}  over  {s+1} } } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id8410708">Therefore,</para>
     <para id="id7964715">
@@ -3528,12 +3523,7 @@ Develop efficient methods for analyzing LTI systems.</md:abstract>
     <para id="id7835438">Conclusion — Laplace transform method for finding the</para>
     <para id="id7835444">response of an LTI system</para>
     <para id="id7435011">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <figure id="id7558595">
         <media id="id1169366355240" alt=""><image src="graphics10.wmf" mime-type="image/wmf" height="94" width="275"/></media>
       </figure>

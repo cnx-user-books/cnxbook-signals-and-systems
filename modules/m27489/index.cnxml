@@ -585,12 +585,7 @@ x rSub { size 8{e} }  \( t \) = {  {1}  over  {2} }  \( x \( t \) +x \(  - t \) 
           <m:annotation encoding="StarMath 5.0"> size 12{x \( t \) = ital "Xe" rSup { size 8{ \( σ+jϖ \) t} } = ital "Xe" rSup { size 8{σt} }  \( "cos" \( ϖt \) +j"sin" \( ϖt \)  \) } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id10260806">and we get the family of damped sinusoidal functions.</para>
     <para id="id11427620">For x(t) = X

@@ -268,12 +268,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
           <m:annotation encoding="StarMath 5.0"> size 12{" -v" rSub { size 8{o} }  \[ n+1 \] + \( 2+a \) " v" rSub { size 8{o} }  \[ n \] "-v" rSub { size 8{o} }  \[ "n-1" \] ="av" rSub { size 8{i} }  \[ n \] } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id6174328">to obtain</para>
     <para id="id6174332">
@@ -1008,12 +1003,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
       </m:math>
     </para>
     <para id="id6117960">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id6117996">where the pole at z = p contributes to the causal response while the pole at z = 1/p contributes to the anti-causal response.</para>
     <para id="id6057507">
@@ -1028,7 +1018,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1178,10 +1168,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mtable>
                         <m:mtr>
@@ -1313,7 +1303,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -3106,7 +3096,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3137,10 +3127,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3171,10 +3161,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3214,10 +3204,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3252,7 +3242,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -4743,7 +4733,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4774,10 +4764,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4808,10 +4798,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4845,10 +4835,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4886,7 +4876,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -4934,7 +4924,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4973,10 +4963,10 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5015,7 +5005,7 @@ Insight into numerical methods for solving differential equations.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -5303,7 +5293,7 @@ I \( s \)
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5334,10 +5324,10 @@ I \( s \)
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5368,10 +5358,10 @@ I \( s \)
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5408,10 +5398,10 @@ I \( s \)
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5465,7 +5455,7 @@ I \( s \)
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>

@@ -2464,7 +2464,7 @@ Unstable systems can be stabilized with feedback.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2503,10 +2503,10 @@ Unstable systems can be stabilized with feedback.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2609,10 +2609,10 @@ Unstable systems can be stabilized with feedback.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2677,7 +2677,7 @@ Unstable systems can be stabilized with feedback.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -3283,7 +3283,7 @@ Unstable systems can be stabilized with feedback.</md:abstract>
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3370,10 +3370,10 @@ Unstable systems can be stabilized with feedback.</md:abstract>
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontstyle="italic">
                       <m:mrow>
                         <m:mtext>or</m:mtext>
@@ -3479,7 +3479,7 @@ Unstable systems can be stabilized with feedback.</md:abstract>
                       <m:mn>0</m:mn>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>

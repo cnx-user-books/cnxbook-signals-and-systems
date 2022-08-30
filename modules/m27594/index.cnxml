@@ -158,7 +158,7 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
     <figure id="id4559404">
       <media id="id1172214085015" alt=""><image src="../../media/graphics6-5dc9.png" mime-type="image/png" height="194" width="531"/></media>
     </figure>
-    <para id="id4054462"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>If the signal is transmitted at a carrier frequency
+    <para id="id4054462">If the signal is transmitted at a carrier frequency
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:msub><m:mi>f</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>c</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">=</m:mo><m:mtext>600</m:mtext></m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Mhz</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{f rSub { size 8{c} } ="600" ital "Mhz"} {}</m:annotation></m:semantics></m:math>, then the 
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>λ</m:mi><m:mo stretchy="false">≈</m:mo><m:mfrac><m:mrow><m:mrow><m:mn>3</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>8</m:mn></m:mrow></m:mstyle></m:msup></m:mrow><m:mtext> m/s</m:mtext></m:mrow><m:mrow><m:mrow><m:mn>6</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>8</m:mn></m:mrow></m:mstyle></m:msup></m:mrow><m:mi/><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Hz</m:mtext></m:mrow></m:mstyle></m:mrow></m:mfrac></m:mrow><m:mo stretchy="false">≈</m:mo><m:mn>0</m:mn></m:mrow><m:mtext>.</m:mtext><m:mn>5</m:mn><m:mi/><m:mi>m</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{λ approx  {  {3 times "10" rSup { size 8{8} } " m/s"}  over  {6 times "10" rSup { size 8{8} } ` ital "Hz"} }  approx 0 "." 5`m} {}</m:annotation></m:semantics></m:math> so that an antenna whose length is 
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mi>λ</m:mi><m:mo stretchy="false">/</m:mo><m:mtext>10</m:mtext></m:mrow><m:mo stretchy="false">≈</m:mo><m:mn>5</m:mn></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{λ/"10" approx 5} {}</m:annotation></m:semantics></m:math> cm which is much more manageable for the pigeon.</para>
@@ -257,7 +257,7 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -389,10 +389,10 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -464,10 +464,10 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -506,7 +506,7 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -782,7 +782,7 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -831,10 +831,10 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>x</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>f</m:mi>
@@ -897,10 +897,10 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                     <m:mo stretchy="false">)</m:mo>
                     <m:mi>,</m:mi>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>x</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>f</m:mi>
@@ -963,7 +963,7 @@ Modulation is fundamental to electronic communication systems—radio, TV, satel
                     <m:mo stretchy="false">)</m:mo>
                     <m:mtext>.</m:mtext>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -1006,7 +1006,7 @@ x \( f \) = {  {1}  over  {2} }  \( x rSub { size 8{m} }  \( f - f rSub { size 8
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1077,10 +1077,10 @@ x \( f \) = {  {1}  over  {2} }  \( x rSub { size 8{m} }  \( f - f rSub { size 8
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>y</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -1157,7 +1157,7 @@ x \( f \) = {  {1}  over  {2} }  \( x rSub { size 8{m} }  \( f - f rSub { size 8
                     <m:mo stretchy="false">)</m:mo>
                     <m:mtext>.</m:mtext>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>

@@ -41,12 +41,7 @@
     <para id="id7879300">I. DERIVATION OF SUPERPOSITION SUM/INTEGRAL</para>
     <para id="id8612842">We will show that for a DT system</para>
     <para id="id8910343">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <m:math>
         <m:semantics>
           <m:mrow>
@@ -608,7 +603,7 @@
     <para id="id2869523">Step 1 Plot x and h vs m since the convolution sum is on m.</para>
     <para id="id9116017">Step 2 Flip h[m] around the vertical axis to obtain h[−m].</para>
     <para id="id8642013">Step 3 Shift h[−m] by n to obtain h[n − m].</para>
-    <para id="id8750734"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>Step 4 Multiply to obtain x[m]h[n − m].</para>
+    <para id="id8750734">Step 4 Multiply to obtain x[m]h[n − m].</para>
     <para id="id8674999">Step 5 Sum on m to compute. 
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:munder><m:mo stretchy="false">∑</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>m</m:mi></m:mrow></m:mstyle></m:munder><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mi>m</m:mi></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ Sum cSub { size 8{m} }  {x \[ m \] h \[ n - m \] } } {}</m:annotation></m:semantics></m:math></para>
     <para id="id7026269">Step 6 Index n and repeat Steps 3-6.</para>
@@ -788,12 +783,7 @@
     </para>
     <para id="id3165724">7/ DT convolution properties — associative property</para>
     <para id="id8290682">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id9855598">
       <m:math>
@@ -1306,7 +1296,7 @@
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1372,10 +1362,10 @@
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mtable>
                         <m:mtr>
@@ -1455,7 +1445,7 @@
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -2227,7 +2217,7 @@
         </m:semantics>
       </m:math>
     </para>
-    <para id="id9519561"><m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math>If the input is a unit sample/impulse, x[n] = δ[n] and x(t) = δ(t) then since δ[n]
+    <para id="id9519561">If the input is a unit sample/impulse, x[n] = δ[n] and x(t) = δ(t) then since δ[n]
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>Z</m:mi></m:mrow></m:mstyle></m:mover></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ { dlrarrow }  cSup { size 8{Z} } } {}</m:annotation></m:semantics></m:math>1 and δ(t)
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mover><m:mo stretchy="false">⇔</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mi>L</m:mi></m:mrow></m:mstyle></m:mover></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ { dlrarrow }  cSup { size 8{L} } } {}</m:annotation></m:semantics></m:math>1, we have </para>
     <para id="id9551482">
@@ -2379,12 +2369,7 @@
           <m:annotation encoding="StarMath 5.0"> size 12{v rSub { size 8{i} }  \( t \) = {  {1}  over  {Δ} }  \( u \( t \)  - u \( t - Δ \)  \) } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id8604300">Therefore, we need only find the response of the network to a unit step vi(t)=u(t). We denote the step response as vo(t)=s(t) which is</para>
     <para id="id9082033">
@@ -2532,12 +2517,7 @@
     </figure>
     <para id="id8690122">The pulse response can be written as</para>
     <para id="id8690126">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <m:math>
         <m:semantics>
           <m:mrow>
@@ -3136,12 +3116,7 @@
           <m:annotation encoding="StarMath 5.0"> size 12{ Int cSub { size 8{ -  infinity } }  cSup { size 8{ infinity } }  { \( 1 - e rSup { size 8{ - αt} }  \) δ \( t \)  ital "dt"= \( 1 - e rSup { size 8{ - αt} }  \)  rSub { size 8{t=0} } } =0} {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
     </para>
     <para id="id9082610">Therefore, the second term is an impulse of area 0 which equals 0, so that the impulse response is
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msup><m:mi fontstyle="italic">αe</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mi fontstyle="italic">αt</m:mi></m:mrow></m:mrow></m:mstyle></m:msup></m:mrow><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{h \( t \) =αe rSup { size 8{ - αt} } u \( t \) } {}</m:annotation></m:semantics></m:math></para>

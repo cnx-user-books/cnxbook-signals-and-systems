@@ -471,7 +471,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
         <m:semantics>
           <m:mtable>
             <m:mtr>
-              <m:mrow>
+              <m:mtd>
                 <m:mn>1</m:mn>
                 <m:mrow>
                   <m:mstyle fontstyle="italic">
@@ -483,10 +483,10 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                   <m:mi>n</m:mi>
                 </m:mrow>
                 <m:mrow/>
-              </m:mrow>
+              </m:mtd>
             </m:mtr>
             <m:mtr>
-              <m:mrow>
+              <m:mtd>
                 <m:mn>0</m:mn>
                 <m:mrow>
                   <m:mstyle fontstyle="italic">
@@ -498,16 +498,16 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                   <m:mi>n</m:mi>
                 </m:mrow>
                 <m:mrow/>
-              </m:mrow>
+              </m:mtd>
             </m:mtr>
             <m:mtr>
-              <m:mrow>
+              <m:mtd>
                 <m:mrow/>
                 <m:mrow/>
-              </m:mrow>
+              </m:mtd>
             </m:mtr>
             <m:mtr>
-              <m:mrow>
+              <m:mtd>
                 <m:mfrac>
                   <m:mn>1</m:mn>
                   <m:mi>T</m:mi>
@@ -571,17 +571,17 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                 </m:mrow>
                 <m:mtable>
                   <m:mtr>
-                    <m:mrow>
+                    <m:mtd>
                       <m:mrow>
                         <m:mo stretchy="true">{</m:mo>
                         <m:mrow/>
                       </m:mrow>
                       <m:mrow/>
-                    </m:mrow>
+                    </m:mtd>
                   </m:mtr>
                 </m:mtable>
                 <m:mrow/>
-              </m:mrow>
+              </m:mtd>
             </m:mtr>
             <m:mtr>
               <m:mstyle fontsize="12pt">
@@ -764,7 +764,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -843,10 +843,10 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow/>
                     <m:mfrac>
                       <m:mn>1</m:mn>
@@ -941,10 +941,10 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                     </m:mstyle>
                     <m:mi>,</m:mi>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow/>
                     <m:mfrac>
                       <m:mn>1</m:mn>
@@ -1017,7 +1017,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                       </m:mfrac>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -2855,7 +2855,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                               <m:mi>X</m:mi>
                               <m:mmultiscripts>
                                 <m:mtext/>
-                                <m:mprescripts/>
+                                <m:none/><m:none/><m:mprescripts/>
                                 <m:mstyle fontsize="8pt">
                                   <m:mrow>
                                     <m:mi>T</m:mi>
@@ -2967,7 +2967,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                   <m:mi>X</m:mi>
                   <m:mmultiscripts>
                     <m:mtext/>
-                    <m:mprescripts/>
+                    <m:none/><m:none/><m:mprescripts/>
                     <m:mstyle fontsize="8pt">
                       <m:mrow>
                         <m:mi>T</m:mi>
@@ -3797,7 +3797,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -3909,10 +3909,10 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>x</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -3985,7 +3985,7 @@ Periodic signals occur frequently — motion of planets and their satellites, vi
                     </m:mrow>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -4006,7 +4006,7 @@ x \( t \) = {  {1}  over  {2} } + Sum cSub { size 8{n=1} }  cSup { size 8{ infin
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4118,10 +4118,10 @@ x \( t \) = {  {1}  over  {2} } + Sum cSub { size 8{n=1} }  cSup { size 8{ infin
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>x</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -4194,7 +4194,7 @@ x \( t \) = {  {1}  over  {2} } + Sum cSub { size 8{n=1} }  cSup { size 8{ infin
                     </m:mrow>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -4327,7 +4327,7 @@ x \( t \) = {  {1}  over  {2} } + Sum cSub { size 8{n=1} }  cSup { size 8{ infin
     </figure>
     <para id="id14244241">Hence,</para>
     <para id="id14244245"><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>x</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>W</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>u</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∗</m:mo><m:mi>h</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mrow><m:msubsup><m:mo stretchy="false">∫</m:mo><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">∞</m:mo></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mi>t</m:mi></m:mrow></m:mstyle></m:msubsup><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi fontstyle="italic">dτ</m:mi></m:mrow></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x rSub { size 8{W} }  \( t \) =u \( t \)  * h \( t \) = Int rSub { size 8{ -  infinity } }  rSup { size 8{t} }  {h \( τ \) dτ} } {}</m:annotation></m:semantics></m:math> where 
-<m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>2W</m:mn></m:mrow><m:mfrac><m:mrow><m:mtext>sin</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>2π</m:mn><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Wt</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>2π</m:mn><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Wt</m:mtext></m:mrow></m:mstyle></m:mrow></m:mfrac></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{h \( t \) =2W {  {"sin" \( 2π ital "Wt" \) }  over  {2π ital "Wt"} } } {}</m:annotation></m:semantics></m:math></para>
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>2W</m:mn></m:mrow><m:mfrac><m:mrow><m:mtext>sin</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>2π</m:mn><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Wt</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>2π</m:mn><m:mstyle fontstyle="italic"><m:mrow><m:mtext>Wt</m:mtext></m:mrow></m:mstyle></m:mrow></m:mfrac></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{h \( t \) =2W {  {"sin" \( 2π ital "Wt" \) }  over  {2π ital "Wt"} } } {}</m:annotation></m:semantics></m:math></para>
     <para id="id14178430">We evaluate the integral</para>
     <para id="id14178434">
       <m:math>

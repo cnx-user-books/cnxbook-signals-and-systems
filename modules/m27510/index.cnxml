@@ -1492,7 +1492,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 		<m:semantics>
 			<m:mtable>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:msup>
 							<m:mtext>tan</m:mtext>
 							<m:mstyle fontsize="8pt">
@@ -1555,13 +1555,13 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 							</m:mstyle>
 							<m:mo stretchy="false">˜</m:mo>
 						</m:mover>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow/>
+					<m:mtd/>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow>
 							<m:mi>π</m:mi>
 							<m:mo stretchy="false">+</m:mo>
@@ -1628,19 +1628,19 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 							</m:mstyle>
 							<m:mo stretchy="false">˜</m:mo>
 						</m:mover>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow/>
+					<m:mtd/>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow/>
 						<m:mrow/>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mi>∠</m:mi>
 						<m:mover accent="true">
 							<m:mi>X</m:mi>
@@ -1655,7 +1655,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 						</m:mrow>
 						<m:mtable>
 							<m:mtr>
-								<m:mrow>
+								<m:mtd>
 									<m:mrow>
 										<m:mo stretchy="true">{</m:mo>
 										<m:mrow>
@@ -1679,11 +1679,11 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 										</m:mrow>
 									</m:mrow>
 									<m:mrow/>
-								</m:mrow>
+								</m:mtd>
 							</m:mtr>
 						</m:mtable>
 						<m:mrow/>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
 					<m:mstyle fontsize="12pt">
@@ -1706,7 +1706,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 		<m:semantics>
 			<m:mtable>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow>
 							<m:mo stretchy="false">−</m:mo>
 							<m:msup>
@@ -1772,13 +1772,13 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 							</m:mstyle>
 							<m:mo stretchy="false">˜</m:mo>
 						</m:mover>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow/>
+					<m:mtd/>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow>
 							<m:mrow>
 								<m:mo stretchy="false">−</m:mo>
@@ -1848,19 +1848,19 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 							</m:mstyle>
 							<m:mo stretchy="false">˜</m:mo>
 						</m:mover>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow/>
+					<m:mtd/>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow/>
 						<m:mrow/>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mi>∠</m:mi>
 						<m:mover accent="true">
 							<m:mi>X</m:mi>
@@ -1878,7 +1878,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 						</m:mrow>
 						<m:mtable>
 							<m:mtr>
-								<m:mrow>
+								<m:mtd>
 									<m:mrow>
 										<m:mo stretchy="true">{</m:mo>
 										<m:mrow>
@@ -1902,11 +1902,11 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 										</m:mrow>
 									</m:mrow>
 									<m:mrow/>
-								</m:mrow>
+								</m:mtd>
 							</m:mtr>
 						</m:mtable>
 						<m:mrow/>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
 					<m:mstyle fontsize="12pt">
@@ -1927,12 +1927,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mover accent="true"><m:mi>X</m:mi><m:mo stretchy="false">˜</m:mo></m:mover></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ { tilde  {X}}} {}</m:annotation></m:semantics></m:math>(φ) is an odd function of φ.</para>
     <para id="id9460176">c/ Time shift</para>
     
-    <para id="element-208"><m:math>
-		<m:semantics>
-			<m:mrow/>
-			<m:annotation encoding="StarMath 5.0">{}</m:annotation>
-		</m:semantics>
-	</m:math>
+    <para id="element-208">
 	<m:math>
 		<m:semantics>
 			<m:mrow>
@@ -2427,7 +2422,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 				<m:mrow>
 					<m:mtable>
 						<m:mtr>
-							<m:mrow>
+							<m:mtd>
 								<m:mstyle fontsize="12pt">
 									<m:mrow>
 										<m:mrow>
@@ -2523,10 +2518,10 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 									</m:mrow>
 								</m:mstyle>
 								<m:mrow/>
-							</m:mrow>
+							</m:mtd>
 						</m:mtr>
 						<m:mtr>
-							<m:mrow>
+							<m:mtd>
 								<m:mover accent="true">
 									<m:mi>X</m:mi>
 									<m:mo stretchy="false">˜</m:mo>
@@ -2630,10 +2625,10 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 								<m:mo stretchy="false">]</m:mo>
 								<m:mi>,</m:mi>
 								<m:mrow/>
-							</m:mrow>
+							</m:mtd>
 						</m:mtr>
 						<m:mtr>
-							<m:mrow>
+							<m:mtd>
 								<m:mover accent="true">
 									<m:mi>X</m:mi>
 									<m:mo stretchy="false">˜</m:mo>
@@ -2677,7 +2672,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 								<m:mi>ϕ</m:mi>
 								<m:mo stretchy="false">)</m:mo>
 								<m:mrow/>
-							</m:mrow>
+							</m:mtd>
 						</m:mtr>
 					</m:mtable>
 					<m:mrow/>
@@ -3145,7 +3140,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 		<m:semantics>
 			<m:mtable>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mrow>
 							<m:mrow/>
 							<m:mo stretchy="false">=</m:mo>
@@ -3242,7 +3237,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 								<m:mrow/>
 							</m:mrow>
 						</m:mrow>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
 					<m:mstyle fontsize="12pt">
@@ -3261,7 +3256,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 		<m:semantics>
 			<m:mtable>
 				<m:mtr>
-					<m:mrow>
+					<m:mtd>
 						<m:mover accent="true">
 							<m:mi>X</m:mi>
 							<m:mo stretchy="false">˜</m:mo>
@@ -3380,7 +3375,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 								<m:mrow/>
 							</m:mrow>
 						</m:mrow>
-					</m:mrow>
+					</m:mtd>
 				</m:mtr>
 				<m:mtr>
 					<m:mstyle fontsize="12pt">
@@ -6766,7 +6761,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 				<m:mrow>
 					<m:mtable>
 						<m:mtr>
-							<m:mrow>
+							<m:mtd>
 								<m:mstyle fontsize="12pt">
 									<m:mrow>
 										<m:mrow>
@@ -6867,10 +6862,10 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 									</m:mrow>
 								</m:mstyle>
 								<m:mrow/>
-							</m:mrow>
+							</m:mtd>
 						</m:mtr>
 						<m:mtr>
-							<m:mrow>
+							<m:mtd>
 								<m:mrow/>
 								<m:mrow>
 									<m:munderover>
@@ -6931,7 +6926,7 @@ The development of the FFT algorithm to compute the DT Fourier series efficientl
 									</m:mrow>
 								</m:mrow>
 								<m:mrow/>
-							</m:mrow>
+							</m:mtd>
 						</m:mtr>
 					</m:mtable>
 					<m:mrow/>

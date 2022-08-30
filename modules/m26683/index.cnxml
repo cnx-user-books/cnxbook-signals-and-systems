@@ -27,12 +27,7 @@
     <para id="id12202909">I. REVIEW OF LAST LECTURE</para>
     <para id="id12202913">Solve linear differential equation for a causal exponential input</para>
     <para id="id11992837">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <m:math>
         <m:semantics>
           <m:mrow>
@@ -1281,18 +1276,8 @@
           <m:annotation encoding="StarMath 5.0"> size 12{ ital "ax" rSub { size 8{1} }  \( t \) + ital "bx" rSub { size 8{2} }  \( t \)  { dlrarrow }  cSup { size 8{L} }  ital "aX" rSub { size 8{1} }  \( s \) + ital "bX" rSub { size 8{2} }  \( s \) } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
+      
     </para>
     <para id="id12177843">The proof follows from the definition of the Laplace transform as a definite integral. Let
 <m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msub><m:mtext> ax</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:msub><m:mtext> bx</m:mtext><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{x \( t \)  =" ax" rSub { size 8{1} }  \( t \)  +" bx" rSub { size 8{2} }  \( t \) } {}</m:annotation></m:semantics></m:math>, and use the analysis formula.</para>
@@ -2740,18 +2725,8 @@
           <m:annotation encoding="StarMath 5.0"> size 12{ ital "ax" rSub { size 8{1} }  \( t \) + ital "bx" rSub { size 8{2} }  \( t \)  { dlrarrow }  cSup { size 8{L} }  ital "aX" rSub { size 8{1} }  \( s \) + ital "bX" rSub { size 8{2} }  \( s \) } {}</m:annotation>
         </m:semantics>
       </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
+      
     </para>
     <para id="id10840221">and previous results on the Laplace transforms of anti-causal and causal exponentials to give</para>
     <para id="id12088808">

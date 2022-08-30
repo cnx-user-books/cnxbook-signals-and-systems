@@ -2828,12 +2828,7 @@
       </m:math>
     </para>
     <para id="id9999914">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <media id="id5121214" alt=""><image src="../../media/graphics30-12fb.png" mime-type="image/png" height="318" width="384"/></media>
     </para>
     <para id="id3487112">A filter with a pair of complex conjugate zeros has a bandreject frequency response. The bandwidth of the bandreject filter decreases as the zero location approaches the unit circle.</para>

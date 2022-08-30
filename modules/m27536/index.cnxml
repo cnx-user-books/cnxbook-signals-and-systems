@@ -488,12 +488,7 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
     </para>
     <para id="id9441454">and express the vectors in polar form</para>
     <para id="id6746875">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <m:math>
         <m:semantics>
           <m:mrow>
@@ -1175,7 +1170,7 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1236,10 +1231,10 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>y</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -1302,10 +1297,10 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>y</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -1338,10 +1333,10 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
                       </m:mfrac>
                     </m:mfenced>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>y</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -1387,10 +1382,10 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
                       </m:mrow>
                     </m:mfenced>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>y</m:mi>
                     <m:mo stretchy="false">(</m:mo>
                     <m:mi>t</m:mi>
@@ -1420,7 +1415,7 @@ A common mode of thinking for signal processing tasks is “filtering.” All ph
                     <m:mo stretchy="false">)</m:mo>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -1622,7 +1617,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1655,10 +1650,10 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -1722,7 +1717,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -2338,7 +2333,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2439,10 +2434,10 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mtable>
                         <m:mtr>
@@ -2569,7 +2564,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                     </m:mrow>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -2599,7 +2594,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -2740,10 +2735,10 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mtable>
                         <m:mtr>
@@ -2894,7 +2889,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                     </m:mrow>
                     <m:mo stretchy="false">∣</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -3549,12 +3544,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
     </figure>
     <para id="id9774148">With R = C = 1, the frequency response is</para>
     <para id="id9442029">
-      <m:math>
-        <m:semantics>
-          <m:mrow/>
-          <m:annotation encoding="StarMath 5.0">{}</m:annotation>
-        </m:semantics>
-      </m:math>
+      
       <m:math>
         <m:semantics>
           <m:mrow>
@@ -4201,7 +4191,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -4290,10 +4280,10 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mi>Q</m:mi>
                       <m:mo stretchy="false">=</m:mo>
@@ -4364,10 +4354,10 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                     </m:mstyle>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mrow>
                       <m:mi>G</m:mi>
                       <m:mo stretchy="false">=</m:mo>
@@ -4424,7 +4414,7 @@ y \( t \) =X \lline H \( jω \)  \lline "cos" \( ωt+"arg" \( H \( jω \)  \)  \
                     <m:mi>t</m:mi>
                     <m:mo stretchy="false">)</m:mo>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
@@ -5092,7 +5082,7 @@ p rSub { size 8{2} } = -  left [ {  {1}  over  {2Q} }  right ] -  left [ left [ 
             <m:mrow>
               <m:mtable>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mstyle fontsize="12pt">
                       <m:mrow>
                         <m:mrow>
@@ -5168,10 +5158,10 @@ p rSub { size 8{2} } = -  left [ {  {1}  over  {2Q} }  right ] -  left [ left [ 
                       </m:mrow>
                     </m:mstyle>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
                 <m:mtr>
-                  <m:mrow>
+                  <m:mtd>
                     <m:mi>∠</m:mi>
                     <m:mi>R</m:mi>
                     <m:mrow>
@@ -5200,7 +5190,7 @@ p rSub { size 8{2} } = -  left [ {  {1}  over  {2Q} }  right ] -  left [ left [ 
                       </m:mrow>
                     </m:mrow>
                     <m:mrow/>
-                  </m:mrow>
+                  </m:mtd>
                 </m:mtr>
               </m:mtable>
               <m:mrow/>
